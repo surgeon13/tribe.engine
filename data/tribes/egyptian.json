@@ -1,0 +1,141 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "egyptian",
+    "name": { "en": "Egyptians" },
+    "theme": "Strong defense, cheap militia, stone wall synergy",
+    "graphics": {
+      "banner": "tribes/egyptian/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#C9A227",
+    "secondary": "#1A4A6E"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/egyptian/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Slave Militia" },
+        "stats": { "attack": 10, "defenseInfantry": 30, "defenseCavalry": 20, "speed": 7, "carry": 15 },
+        "cost": { "wood": 45, "clay": 60, "iron": 30, "crop": 15 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Ash Warden" },
+        "stats": { "attack": 30, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
+        "cost": { "wood": 115, "clay": 100, "iron": 145, "crop": 60 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Khopesh Warrior" },
+        "stats": { "attack": 65, "defenseInfantry": 50, "defenseCavalry": 20, "speed": 7, "carry": 45 },
+        "cost": { "wood": 170, "clay": 180, "iron": 220, "crop": 80 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Sopdu Explorer" },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Anhur Guard" },
+        "stats": { "attack": 50, "defenseInfantry": 110, "defenseCavalry": 50, "speed": 15, "carry": 50 },
+        "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Resheph Chariot" },
+        "stats": { "attack": 110, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 10, "carry": 70 },
+        "cost": { "wood": 450, "clay": 560, "iron": 610, "crop": 180 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Royal Chariot" },
+        "description": { "en": "Tevel slot 7 — Travian Egyptians have two chariot lines." },
+        "stats": { "attack": 95, "defenseInfantry": 100, "defenseCavalry": 130, "speed": 12, "carry": 60 },
+        "cost": { "wood": 420, "clay": 500, "iron": 550, "crop": 150 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": { "en": "Ram" },
+        "stats": { "attack": 55, "defenseInfantry": 30, "defenseCavalry": 95, "speed": 4, "carry": 0 },
+        "cost": { "wood": 995, "clay": 575, "iron": 340, "crop": 80 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": { "en": "Stone Catapult" },
+        "stats": { "attack": 65, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 980, "clay": 1510, "iron": 660, "crop": 100 },
+        "cropUpkeep": 6
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Nomarch" },
+        "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 4, "carry": 0 },
+        "cost": { "wood": 34000, "clay": 50000, "iron": 34000, "crop": 42000 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": { "en": "Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 5040, "clay": 6510, "iron": 4830, "crop": 4620 },
+        "cropUpkeep": 1
+      }
+    }
+  ],
+  "hero": {
+    "id": "egyptian_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Pharaoh's Champion" },
+    "description": { "en": "Egyptian hero — +25% resource production (tribe bonus)." },
+    "isBase": false,
+    "stats": { "attack": 75, "defenseInfantry": 130, "defenseCavalry": 90, "speed": 10, "carry": 80 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 6,
+    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "graphics": {
+      "sprite": "tribes/egyptian/hero/hero.png",
+      "icon": "tribes/egyptian/hero/hero_icon.png",
+      "portrait": "tribes/egyptian/hero/hero_portrait.png"
+    }
+  }
+}

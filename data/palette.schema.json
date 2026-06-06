@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tevel.local/schemas/palette.schema.json",
+  "title": "Tevel tribe palette",
+  "description": "Two-color tribe theme applied to units, buildings, and UI via recolor masks.",
+  "type": "object",
+  "required": ["primary", "secondary"],
+  "properties": {
+    "primary": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "Main tribe color — roofs, armor, banners, wall trim"
+    },
+    "secondary": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "Accent color — cloth, shields, decorative details"
+    }
+  },
+  "additionalProperties": false
+}

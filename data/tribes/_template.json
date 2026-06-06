@@ -1,0 +1,158 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "TRIBE_ID",
+    "name": { "en": "Tribe Name" },
+    "theme": "Short flavor / design notes for art and balance",
+    "graphics": {
+      "banner": "tribes/TRIBE_ID/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#000000",
+    "secondary": "#FFFFFF"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/TRIBE_ID/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Infantry I" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/01_infantry.png",
+          "icon": "tribes/TRIBE_ID/units/01_infantry_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Infantry II" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/02_infantry.png",
+          "icon": "tribes/TRIBE_ID/units/02_infantry_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Infantry III" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/03_infantry.png",
+          "icon": "tribes/TRIBE_ID/units/03_infantry_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Scout" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/04_scout.png",
+          "icon": "tribes/TRIBE_ID/units/04_scout_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Cavalry I" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/05_cavalry.png",
+          "icon": "tribes/TRIBE_ID/units/05_cavalry_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Cavalry II" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/06_cavalry.png",
+          "icon": "tribes/TRIBE_ID/units/06_cavalry_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Cavalry III" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/07_cavalry.png",
+          "icon": "tribes/TRIBE_ID/units/07_cavalry_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/08_ram.png",
+          "icon": "tribes/TRIBE_ID/units/08_ram_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/09_catapult.png",
+          "icon": "tribes/TRIBE_ID/units/09_catapult_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Chieftain" },
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/10_chief.png",
+          "icon": "tribes/TRIBE_ID/units/10_chief_icon.png"
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "graphics": {
+          "sprite": "tribes/TRIBE_ID/units/11_settler.png",
+          "icon": "tribes/TRIBE_ID/units/11_settler_icon.png"
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "TRIBE_ID_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Hero Name" },
+    "description": { "en": "Tribe-unique hero." },
+    "isBase": false,
+    "stats": {
+      "attack": 0,
+      "defenseInfantry": 0,
+      "defenseCavalry": 0,
+      "speed": 14,
+      "carry": 0
+    },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": [{ "type": "building", "id": "hero_mansion", "level": 1 }]
+    },
+    "graphics": {
+      "sprite": "tribes/TRIBE_ID/hero/hero.png",
+      "icon": "tribes/TRIBE_ID/hero/hero_icon.png",
+      "portrait": "tribes/TRIBE_ID/hero/hero_portrait.png"
+    }
+  }
+}

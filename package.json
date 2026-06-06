@@ -1,0 +1,14 @@
+{
+  "name": "tevel-tribe-engine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tevel tribe data engine and balance dashboard",
+  "scripts": {
+    "start": "node applet/launch.js",
+    "applet": "node applet/launch.js",
+    "build:data": "node scripts/build-dashboard-data.js",
+    "dashboard": "npm run start",
+    "hero:xp": "node scripts/generate-hero-xp.js"
+  }
+}

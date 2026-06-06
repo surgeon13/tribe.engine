@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tevel.local/schemas/hero.schema.json",
+  "title": "Tevel hero progression system",
+  "type": "object",
+  "required": ["version", "game", "leveling", "attributes", "tribeModifiers", "xpSources"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "game": { "const": "Tevel" },
+    "description": { "type": "string" },
+    "leveling": {
+      "type": "object",
+      "required": ["maxLevel", "attributePointsPerLevel", "levels"],
+      "properties": {
+        "maxLevel": { "type": "integer", "minimum": 1, "maximum": 200 },
+        "attributePointsPerLevel": { "type": "integer", "minimum": 0 },
+        "startingAttributePoints": { "type": "integer", "minimum": 0 },
+        "defaultAllocation": {
+          "type": "object",
+          "properties": {
+            "fightingStrength": { "type": "integer", "minimum": 0 },
+            "offBonus": { "type": "integer", "minimum": 0 },
+            "defBonus": { "type": "integer", "minimum": 0 },
+            "resources": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "fullHealOnLevelUp": { "type": "boolean" },
+        "curve": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "description": { "type": "string" },
+            "formula": { "type": "string" }
+          }
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["level", "xpTotal", "xpToNext"],
+            "properties": {
+              "level": { "type": "integer", "minimum": 1 },
+              "xpTotal": { "type": "integer", "minimum": 0 },
+              "xpToNext": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["id", "name", "effect"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "object" },
+          "description": { "type": "object" },
+          "effect": { "type": "object" },
+          "tribeScaling": { "type": "boolean" }
+        }
+      }
+    },
+    "tribeModifiers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "fightingStrengthPerPoint": { "type": "integer", "minimum": 0 },
+          "resourceProductionBonusPercent": { "type": "number", "minimum": 0 },
+          "playable": { "type": "boolean" }
+        }
+      }
+    },
+    "xpSources": { "type": "object" },
+    "health": { "type": "object" },
+    "death": { "type": "object" }
+  }
+}

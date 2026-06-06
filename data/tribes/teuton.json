@@ -1,0 +1,140 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "teuton",
+    "name": { "en": "Teutons" },
+    "theme": "Aggressive infantry and heavy cavalry, strong raiders",
+    "graphics": {
+      "banner": "tribes/teuton/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#4A3728",
+    "secondary": "#B8860B"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/teuton/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Clubswinger" },
+        "stats": { "attack": 40, "defenseInfantry": 20, "defenseCavalry": 5, "speed": 7, "carry": 60 },
+        "cost": { "wood": 95, "clay": 75, "iron": 40, "crop": 40 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Spearman" },
+        "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 },
+        "cost": { "wood": 145, "clay": 70, "iron": 85, "crop": 40 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Axeman" },
+        "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 30, "speed": 6, "carry": 50 },
+        "cost": { "wood": 130, "clay": 100, "iron": 150, "crop": 60 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Scout" },
+        "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 5, "speed": 9, "carry": 0 },
+        "cost": { "wood": 160, "clay": 100, "iron": 50, "crop": 50 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Paladin" },
+        "stats": { "attack": 55, "defenseInfantry": 100, "defenseCavalry": 40, "speed": 10, "carry": 110 },
+        "cost": { "wood": 370, "clay": 270, "iron": 290, "crop": 75 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Teutonic Knight" },
+        "stats": { "attack": 150, "defenseInfantry": 50, "defenseCavalry": 75, "speed": 9, "carry": 80 },
+        "cost": { "wood": 450, "clay": 515, "iron": 480, "crop": 80 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Teutonic Raider" },
+        "description": { "en": "Tevel slot 7 — Travian Teutons have two cavalry types." },
+        "stats": { "attack": 130, "defenseInfantry": 55, "defenseCavalry": 65, "speed": 10, "carry": 95 },
+        "cost": { "wood": 420, "clay": 400, "iron": 380, "crop": 75 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": { "en": "Ram" },
+        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
+        "cost": { "wood": 1000, "clay": 300, "iron": 350, "crop": 70 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": { "en": "Catapult" },
+        "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 640, "clay": 800, "iron": 180, "crop": 60 },
+        "cropUpkeep": 6
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Chief" },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": { "en": "Settler" },
+        "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3500, "clay": 4500, "iron": 2300, "crop": 4200 },
+        "cropUpkeep": 1
+      }
+    }
+  ],
+  "hero": {
+    "id": "teuton_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Teuton Hero" },
+    "isBase": false,
+    "stats": { "attack": 90, "defenseInfantry": 100, "defenseCavalry": 80, "speed": 9, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 6,
+    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "graphics": {
+      "sprite": "tribes/teuton/hero/hero.png",
+      "icon": "tribes/teuton/hero/hero_icon.png",
+      "portrait": "tribes/teuton/hero/hero_portrait.png"
+    }
+  }
+}

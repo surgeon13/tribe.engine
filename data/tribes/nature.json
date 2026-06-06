@@ -1,0 +1,144 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "nature",
+    "name": { "en": "Nature" },
+    "theme": "Oasis animals — no upkeep, captured with hero cages",
+    "graphics": {
+      "banner": "tribes/nature/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#3D6B35",
+    "secondary": "#8B6914"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/nature/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Rat" },
+        "stats": { "attack": 10, "defenseInfantry": 25, "defenseCavalry": 20, "speed": 1, "carry": 20 },
+        "cost": { "wood": 85, "clay": 75, "iron": 120, "crop": 25 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Spider" },
+        "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 40, "speed": 1, "carry": 20 },
+        "cost": { "wood": 125, "clay": 130, "iron": 60, "crop": 40 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Snake" },
+        "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 60, "speed": 1, "carry": 20 },
+        "cost": { "wood": 140, "clay": 150, "iron": 40, "crop": 60 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Bat" },
+        "stats": { "attack": 80, "defenseInfantry": 66, "defenseCavalry": 50, "speed": 1, "carry": 20 },
+        "cost": { "wood": 95, "clay": 120, "iron": 65, "crop": 25 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Wild Boar" },
+        "stats": { "attack": 50, "defenseInfantry": 70, "defenseCavalry": 33, "speed": 1, "carry": 20 },
+        "cost": { "wood": 250, "clay": 200, "iron": 125, "crop": 45 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Wolf" },
+        "stats": { "attack": 100, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 1, "carry": 20 },
+        "cost": { "wood": 250, "clay": 125, "iron": 250, "crop": 150 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Bear" },
+        "stats": { "attack": 250, "defenseInfantry": 140, "defenseCavalry": 200, "speed": 1, "carry": 20 },
+        "cost": { "wood": 250, "clay": 220, "iron": 135, "crop": 50 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": { "en": "Crocodile" },
+        "description": { "en": "Mapped to siege slot — heavy oasis predator." },
+        "stats": { "attack": 450, "defenseInfantry": 380, "defenseCavalry": 240, "speed": 1, "carry": 20 },
+        "cost": { "wood": 125, "clay": 250, "iron": 300, "crop": 65 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": { "en": "Tiger" },
+        "description": { "en": "Mapped to siege slot — high attack oasis beast." },
+        "stats": { "attack": 200, "defenseInfantry": 170, "defenseCavalry": 250, "speed": 1, "carry": 20 },
+        "cost": { "wood": 350, "clay": 350, "iron": 125, "crop": 80 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Elephant" },
+        "description": { "en": "Strongest nature unit — cannot conquer villages in Travian." },
+        "stats": { "attack": 600, "defenseInfantry": 440, "defenseCavalry": 520, "speed": 1, "carry": 20 },
+        "cost": { "wood": 350, "clay": 250, "iron": 135, "crop": 100 },
+        "cropUpkeep": 0
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": { "en": "Herd" },
+        "description": { "en": "Nature does not settle — placeholder for roster slot 11." },
+        "stats": { "attack": 0, "defenseInfantry": 60, "defenseCavalry": 60, "speed": 1, "carry": 0 },
+        "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+        "cropUpkeep": 0
+      }
+    }
+  ],
+  "hero": {
+    "id": "nature_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Primal Spirit" },
+    "description": { "en": "Not a playable hero — represents oasis guardian presence." },
+    "isBase": false,
+    "stats": { "attack": 300, "defenseInfantry": 250, "defenseCavalry": 280, "speed": 1, "carry": 0 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 0,
+    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "graphics": {
+      "sprite": "tribes/nature/hero/hero.png",
+      "icon": "tribes/nature/hero/hero_icon.png",
+      "portrait": "tribes/nature/hero/hero_portrait.png"
+    }
+  }
+}

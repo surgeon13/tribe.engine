@@ -1,0 +1,66 @@
+/**
+ * Graph & chart color palettes (tribe A vs B bars, stat bars, legends).
+ * Set via document.documentElement.dataset.graphPalette
+ */
+
+:root,
+[data-graph-palette="classic"] {
+  --chart-color-a: #f0c85c;
+  --chart-color-b: #4ec9d8;
+  --chart-color-a-dim: #d4a832;
+  --chart-color-b-dim: #2f9fad;
+}
+
+[data-graph-palette="sand"] {
+  --chart-color-a: #d4842e;
+  --chart-color-b: #9e4d72;
+  --chart-color-a-dim: #b86a22;
+  --chart-color-b-dim: #7a3d5c;
+}
+
+[data-graph-palette="ocean"] {
+  --chart-color-a: #5eb0ff;
+  --chart-color-b: #ff7a58;
+  --chart-color-a-dim: #3a8ee0;
+  --chart-color-b-dim: #e05a38;
+}
+
+[data-graph-palette="grove"] {
+  --chart-color-a: #66c888;
+  --chart-color-b: #f0c85c;
+  --chart-color-a-dim: #45a86a;
+  --chart-color-b-dim: #d4a832;
+}
+
+[data-graph-palette="vivid"] {
+  --chart-color-a: #d99aff;
+  --chart-color-b: #ff7ad8;
+  --chart-color-a-dim: #b06ae0;
+  --chart-color-b-dim: #e05ab0;
+}
+
+/* Per-stat colors — high saturation for ATK / DEF / SPD / TRN / COST bars & radar */
+:root {
+  --stat-atk: #ff5c38;
+  --stat-atk-glow: rgba(255, 92, 56, 0.55);
+  --stat-def-inf: #3d9eff;
+  --stat-def-cav: #6eb5ff;
+  --stat-def: #3d9eff;
+  --stat-def-glow: rgba(61, 158, 255, 0.5);
+  --stat-spd: #3de68a;
+  --stat-spd-glow: rgba(61, 230, 138, 0.5);
+  --stat-carry: #50d4c8;
+  --stat-carry-glow: rgba(80, 212, 200, 0.5);
+  --stat-trn: #ffc233;
+  --stat-trn-glow: rgba(255, 194, 51, 0.5);
+  --stat-cost: #c56bff;
+  --stat-cost-glow: rgba(197, 107, 255, 0.5);
+  --stat-bar-track: rgba(0, 0, 0, 0.35);
+  --stat-bar-track-border: rgba(255, 255, 255, 0.12);
+}
+
+[data-ui-theme="light"],
+[data-ui-theme="sand"] {
+  --stat-bar-track: rgba(0, 0, 0, 0.08);
+  --stat-bar-track-border: rgba(0, 0, 0, 0.12);
+}

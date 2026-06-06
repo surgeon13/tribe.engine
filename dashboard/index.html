@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tevel Tribe Engine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var t = localStorage.getItem("tevel-ui-theme");
+        if (t) document.documentElement.dataset.uiTheme = t;
+        else if (window.matchMedia("(prefers-color-scheme: light)").matches)
+          document.documentElement.dataset.uiTheme = "light";
+        else document.documentElement.dataset.uiTheme = "dark";
+        var g = localStorage.getItem("tevel-graph-palette");
+        document.documentElement.dataset.graphPalette = g || "classic";
+      })();
+    </script>
+    <link rel="stylesheet" href="themes.css" />
+    <link rel="stylesheet" href="graph-palettes.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <header class="brand">
+          <span class="brand-mark">T</span>
+          <div>
+            <h1>Tevel</h1>
+            <p>Tribe Engine</p>
+          </div>
+        </header>
+        <nav id="tribe-nav" class="tribe-nav" aria-label="Tribes"></nav>
+        <div id="theme-picker" class="sidebar-theme"></div>
+        <div id="graph-palette-picker" class="sidebar-theme sidebar-graph-palette"></div>
+        <footer class="sidebar-foot">
+          <button type="button" id="btn-compare" class="btn ghost">Compare tribes</button>
+          <button type="button" id="btn-refresh" class="btn primary">Rebuild data</button>
+          <button type="button" id="btn-hero-xp" class="btn ghost">Regen hero XP</button>
+          <p id="server-status" class="server-status">Connecting…</p>
+        </footer>
+      </aside>
+
+      <main class="main">
+        <header class="topbar" id="topbar">
+          <div class="topbar-row">
+            <div class="topbar-title">
+              <h2 id="tribe-name">—</h2>
+              <p id="tribe-theme" class="muted"></p>
+            </div>
+            <div class="view-tabs" role="tablist">
+              <button type="button" class="view-tab active" data-view="table" role="tab">Table</button>
+              <button type="button" class="view-tab" data-view="radar" role="tab">Stat graphs</button>
+            </div>
+            <div class="palette-swatch" id="palette-swatch"></div>
+          </div>
+        </header>
+
+        <section id="view-single">
+          <div class="summary-grid" id="summary-grid"></div>
+
+          <div id="panel-table" class="view-panel">
+            <section class="panel">
+              <div class="panel-head">
+                <h3>Troop roster</h3>
+                <label class="search">
+                  <span class="sr-only">Filter units</span>
+                  <input type="search" id="unit-filter" placeholder="Filter by name or role…" />
+                </label>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="troop-table">
+                  <thead>
+                    <tr>
+                      <th data-sort="slot">Slot</th>
+                      <th data-sort="name">Unit</th>
+                      <th data-sort="role">Role</th>
+                      <th data-sort="offense" class="num">Attack</th>
+                      <th data-sort="defenseInfantry" class="num">Def vs Inf</th>
+                      <th data-sort="defenseCavalry" class="num">Def vs Cav</th>
+                      <th data-sort="defenseCombined" class="num">Def avg</th>
+                      <th data-sort="speed" class="num">Speed</th>
+                      <th data-sort="carry" class="num">Carry</th>
+                      <th data-sort="cropUpkeep" class="num">Upkeep</th>
+                      <th data-sort="cost.wood" class="num" title="Wood">W</th>
+                      <th data-sort="cost.clay" class="num" title="Clay">C</th>
+                      <th data-sort="cost.iron" class="num" title="Iron">I</th>
+                      <th data-sort="cost.crop" class="num" title="Crop">Cr</th>
+                      <th data-sort="totalCost" class="num">Σ</th>
+                      <th data-sort="timeSeconds" class="num">Train</th>
+                      <th data-sort="building">Building</th>
+                    </tr>
+                  </thead>
+                  <tbody id="troop-tbody"></tbody>
+                </table>
+              </div>
+            </section>
+            <section class="panel" id="hero-panel">
+              <div class="panel-head"><h3>Hero</h3></div>
+              <div id="hero-content" class="hero-grid"></div>
+            </section>
+          </div>
+
+          <div id="panel-radar" class="view-panel hidden">
+            <section class="panel radar-panel">
+              <div class="panel-head panel-head-split">
+                <div>
+                  <h3>Stat graphs</h3>
+                  <p class="muted radar-hint">Efficiency stats per unit. Normalize by crop, resources, or training time — raw values stay in the keyline above each graph.</p>
+                </div>
+                <div class="stat-toolbar">
+                  <label class="stat-toolbar-field">
+                    <span class="muted">Normalize</span>
+                    <select id="stat-normalize-single" data-stat-normalize aria-label="Stat normalization"></select>
+                  </label>
+                  <div class="stat-display-tabs" role="tablist" aria-label="Stat display mode">
+                    <button type="button" class="view-tab active" data-stat-display="bars" role="tab">Bar list</button>
+                    <button type="button" class="view-tab" data-stat-display="grid" role="tab">Stat grid</button>
+                  </div>
+                </div>
+              </div>
+              <div class="radar-layout">
+                <div class="radar-main">
+                  <div id="radar-feature" class="radar-feature radar-feature--hero"></div>
+                  <div id="radar-hero-wrap" class="radar-hero-wrap hidden">
+                    <h4>Hero</h4>
+                    <div id="radar-hero" class="radar-feature small"></div>
+                  </div>
+                </div>
+                <aside class="radar-sidebar">
+                  <h4 class="radar-sidebar-title">All units</h4>
+                  <div id="radar-grid" class="radar-grid" aria-label="All units"></div>
+                </aside>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-compare" class="hidden">
+          <div class="panel compare-panel">
+            <div class="panel-head panel-head-split">
+              <div>
+                <h3>Multi-tribe comparison</h3>
+                <p class="muted compare-intro">Select tribes below, then switch tabs to compare stats, graphics, charts, or profile graphs.</p>
+              </div>
+              <div class="compare-picks">
+                <div id="compare-tribe-picker" class="compare-tribe-picker" aria-label="Tribes to compare"></div>
+                <p id="compare-picker-hint" class="muted compare-picker-hint hidden">
+                  Select at least two tribes to compare.
+                </p>
+              </div>
+            </div>
+            <div class="compare-toolbar">
+              <div class="compare-modes" role="tablist" aria-label="Comparison view">
+                <button type="button" class="view-tab active" data-compare-mode="table" role="tab">Table</button>
+                <button type="button" class="view-tab" data-compare-mode="graphics" role="tab">Graphics</button>
+                <button type="button" class="view-tab" data-compare-mode="charts" role="tab">Charts</button>
+                <button type="button" class="view-tab" data-compare-mode="radar" role="tab">Stat graphs</button>
+              </div>
+            </div>
+            <div id="compare-legend" class="compare-legend hidden" aria-label="Tribe colors"></div>
+            <div id="compare-summary" class="compare-summary hidden" aria-label="Tribe summary"></div>
+            <div id="compare-table-wrap" class="compare-content table-wrap">
+              <table class="data-table compare-table" id="compare-table">
+                <thead id="compare-thead"></thead>
+                <tbody id="compare-tbody"></tbody>
+              </table>
+            </div>
+            <div id="compare-graphics-wrap" class="compare-content compare-graphics-wrap hidden">
+              <div id="compare-banners" class="compare-banners"></div>
+              <div id="compare-graphics-grid" class="compare-graphics-grid" aria-label="Unit graphics by slot"></div>
+            </div>
+            <div id="compare-charts-wrap" class="compare-content compare-charts-wrap hidden">
+              <div class="chart-toolbar">
+                <label>
+                  <span class="muted">Metric</span>
+                  <select id="compare-chart-metric" aria-label="Chart metric"></select>
+                </label>
+                <label>
+                  <span class="muted">Normalize</span>
+                  <select id="stat-normalize-charts" data-stat-normalize aria-label="Chart normalization"></select>
+                </label>
+                <label>
+                  <span class="muted">Chart style</span>
+                  <select id="compare-chart-layout" aria-label="Chart layout"></select>
+                </label>
+              </div>
+              <div id="compare-chart-main" class="chart-panel"></div>
+              <div id="compare-chart-cost" class="chart-panel"></div>
+            </div>
+            <div id="compare-radar-wrap" class="compare-content compare-radar-wrap hidden">
+              <div class="compare-radar-toolbar">
+                <label class="stat-toolbar-field">
+                  <span class="muted">Normalize</span>
+                  <select id="stat-normalize-compare" data-stat-normalize aria-label="Compare stat normalization"></select>
+                </label>
+                <div class="stat-display-tabs" role="tablist" aria-label="Stat display mode">
+                  <button type="button" class="view-tab active" data-stat-display="bars" role="tab">Bar list</button>
+                  <button type="button" class="view-tab" data-stat-display="grid" role="tab">Stat grid</button>
+                </div>
+              </div>
+              <p id="compare-radar-hint" class="muted compare-radar-note"></p>
+              <div id="compare-radar-slots" class="compare-radar-slots compare-radar-slots-scroll"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,173 @@
+{
+  "$schema": "./buildings.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "description": "Shared building art uses maskPrimary/maskSecondary; tribe JSON palette tints all entries.",
+  "buildings": {
+    "main_building": {
+      "id": "main_building",
+      "category": "core",
+      "name": { "en": "Main Building" },
+      "graphics": {
+        "sprite": "buildings/base/main_building.png",
+        "icon": "buildings/base/main_building_icon.png",
+        "mask": "buildings/base/main_building_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "barracks": {
+      "id": "barracks",
+      "category": "military",
+      "name": { "en": "Barracks" },
+      "graphics": {
+        "sprite": "buildings/base/barracks.png",
+        "icon": "buildings/base/barracks_icon.png",
+        "mask": "buildings/base/barracks_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "stable": {
+      "id": "stable",
+      "category": "military",
+      "name": { "en": "Stable" },
+      "graphics": {
+        "sprite": "buildings/base/stable.png",
+        "icon": "buildings/base/stable_icon.png",
+        "mask": "buildings/base/stable_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "workshop": {
+      "id": "workshop",
+      "category": "military",
+      "name": { "en": "Workshop" },
+      "graphics": {
+        "sprite": "buildings/base/workshop.png",
+        "icon": "buildings/base/workshop_icon.png",
+        "mask": "buildings/base/workshop_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "rally_point": {
+      "id": "rally_point",
+      "category": "military",
+      "name": { "en": "Rally Point" },
+      "graphics": {
+        "sprite": "buildings/base/rally_point.png",
+        "icon": "buildings/base/rally_point_icon.png",
+        "mask": "buildings/base/rally_point_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "residence": {
+      "id": "residence",
+      "category": "civic",
+      "name": { "en": "Residence" },
+      "graphics": {
+        "sprite": "buildings/base/residence.png",
+        "icon": "buildings/base/residence_icon.png",
+        "mask": "buildings/base/residence_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "palace": {
+      "id": "palace",
+      "category": "civic",
+      "name": { "en": "Palace" },
+      "graphics": {
+        "sprite": "buildings/base/palace.png",
+        "icon": "buildings/base/palace_icon.png",
+        "mask": "buildings/base/palace_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "marketplace": {
+      "id": "marketplace",
+      "category": "civic",
+      "name": { "en": "Marketplace" },
+      "graphics": {
+        "sprite": "buildings/base/marketplace.png",
+        "icon": "buildings/base/marketplace_icon.png",
+        "mask": "buildings/base/marketplace_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "warehouse": {
+      "id": "warehouse",
+      "category": "resource",
+      "name": { "en": "Warehouse" },
+      "graphics": {
+        "sprite": "buildings/base/warehouse.png",
+        "icon": "buildings/base/warehouse_icon.png",
+        "mask": "buildings/base/warehouse_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "granary": {
+      "id": "granary",
+      "category": "resource",
+      "name": { "en": "Granary" },
+      "graphics": {
+        "sprite": "buildings/base/granary.png",
+        "icon": "buildings/base/granary_icon.png",
+        "mask": "buildings/base/granary_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "cranny": {
+      "id": "cranny",
+      "category": "resource",
+      "name": { "en": "Cranny" },
+      "graphics": {
+        "sprite": "buildings/base/cranny.png",
+        "icon": "buildings/base/cranny_icon.png",
+        "mask": "buildings/base/cranny_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "wall": {
+      "id": "wall",
+      "category": "defense",
+      "name": { "en": "Wall" },
+      "graphics": {
+        "sprite": "buildings/base/wall.png",
+        "icon": "buildings/base/wall_icon.png",
+        "mask": "buildings/base/wall_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "academy": {
+      "id": "academy",
+      "category": "special",
+      "name": { "en": "Academy" },
+      "graphics": {
+        "sprite": "buildings/base/academy.png",
+        "icon": "buildings/base/academy_icon.png",
+        "mask": "buildings/base/academy_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "smithy": {
+      "id": "smithy",
+      "category": "special",
+      "name": { "en": "Smithy" },
+      "graphics": {
+        "sprite": "buildings/base/smithy.png",
+        "icon": "buildings/base/smithy_icon.png",
+        "mask": "buildings/base/smithy_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    },
+    "hero_mansion": {
+      "id": "hero_mansion",
+      "category": "special",
+      "name": { "en": "Hero's Mansion" },
+      "graphics": {
+        "sprite": "buildings/base/hero_mansion.png",
+        "icon": "buildings/base/hero_mansion_icon.png",
+        "mask": "buildings/base/hero_mansion_mask.png",
+        "recolor": { "maskPrimary": "primary", "maskSecondary": "secondary" }
+      }
+    }
+  }
+}

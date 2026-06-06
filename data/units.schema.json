@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tevel.local/schemas/units.schema.json",
+  "title": "Tevel unit definitions",
+  "description": "Every tribe: 3 infantry, 1 scout, 3 cavalry, ram, catapult, chief, settler (slots 1–11) + 1 hero.",
+  "definitions": {
+    "localizedString": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string" }
+    },
+    "resourceCost": {
+      "type": "object",
+      "properties": {
+        "wood": { "type": "integer", "minimum": 0 },
+        "clay": { "type": "integer", "minimum": 0 },
+        "iron": { "type": "integer", "minimum": 0 },
+        "crop": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "combatStats": {
+      "type": "object",
+      "required": ["attack", "defenseInfantry", "defenseCavalry", "speed", "carry"],
+      "properties": {
+        "attack": { "type": "integer", "minimum": 0 },
+        "defenseInfantry": { "type": "integer", "minimum": 0 },
+        "defenseCavalry": { "type": "integer", "minimum": 0 },
+        "speed": { "type": "integer", "minimum": 1, "description": "Map fields per hour" },
+        "carry": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "unitRole": {
+      "type": "string",
+      "enum": ["infantry", "scout", "cavalry", "siege", "chief", "settler", "hero"]
+    },
+    "unitGraphics": {
+      "type": "object",
+      "properties": {
+        "sprite": { "type": "string" },
+        "icon": { "type": "string" },
+        "portrait": { "type": "string" },
+        "mask": { "type": "string", "description": "Recolor mask; tints with tribe palette when present" },
+        "sheet": { "type": "string" },
+        "frame": { "type": "integer", "minimum": 0 },
+        "notes": { "type": "string" },
+        "recolor": {
+          "type": "object",
+          "properties": {
+            "maskPrimary": { "const": "primary" },
+            "maskSecondary": { "const": "secondary" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "training": {
+      "type": "object",
+      "properties": {
+        "building": {
+          "type": "string",
+          "enum": ["barracks", "stable", "workshop", "residence", "palace", "hero_mansion"]
+        },
+        "timeSeconds": { "type": "integer", "minimum": 0 },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+              "type": { "type": "string", "enum": ["building", "research", "unit"] },
+              "id": { "type": "string" },
+              "level": { "type": "integer", "minimum": 1 }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "unit": {
+      "type": "object",
+      "required": ["id", "slot", "role", "category", "name", "stats", "cost", "cropUpkeep"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "slot": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 11,
+          "description": "Fixed roster slot (see roster.json)"
+        },
+        "role": { "$ref": "#/definitions/unitRole" },
+        "tier": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3,
+          "description": "Tier within infantry or cavalry (1–3)"
+        },
+        "siegeType": {
+          "type": "string",
+          "enum": ["wall", "building"],
+          "description": "For siege units: ram vs catapult"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["infantry", "cavalry", "siege", "scout", "chief", "settler", "hero"]
+        },
+        "name": { "$ref": "#/definitions/localizedString" },
+        "description": { "$ref": "#/definitions/localizedString" },
+        "stats": { "$ref": "#/definitions/combatStats" },
+        "cost": { "$ref": "#/definitions/resourceCost" },
+        "cropUpkeep": { "type": "integer", "minimum": 0 },
+        "training": { "$ref": "#/definitions/training" },
+        "graphics": { "$ref": "#/definitions/unitGraphics" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "isBase": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "hero": {
+      "type": "object",
+      "required": ["id", "role", "category", "name", "stats", "cost", "cropUpkeep", "progression"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "role": { "const": "hero" },
+        "category": { "const": "hero" },
+        "progression": {
+          "type": "string",
+          "const": "hero.system.json",
+          "description": "Global hero XP and attribute rules"
+        },
+        "name": { "$ref": "#/definitions/localizedString" },
+        "description": { "$ref": "#/definitions/localizedString" },
+        "stats": { "$ref": "#/definitions/combatStats" },
+        "cost": { "$ref": "#/definitions/resourceCost" },
+        "cropUpkeep": { "type": "integer", "minimum": 0 },
+        "training": { "$ref": "#/definitions/training" },
+        "graphics": { "$ref": "#/definitions/unitGraphics" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "isBase": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "tribeUnitRef": {
+      "type": "object",
+      "required": ["ref"],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "description": "Unit id from units.base.json (must match roster.json baseUnitId for that slot)"
+        },
+        "overrides": {
+          "type": "object",
+          "description": "Deep-merge patches (name, stats, graphics, etc.)"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "title": "Base unit catalog",
+      "type": "object",
+      "required": ["version", "game", "units"],
+      "properties": {
+        "version": { "type": "integer", "minimum": 1 },
+        "game": { "const": "Tevel" },
+        "roster": {
+          "type": "string",
+          "description": "Path to roster.json (slot layout)"
+        },
+        "units": {
+          "type": "object",
+          "minProperties": 11,
+          "maxProperties": 11,
+          "additionalProperties": { "$ref": "#/definitions/unit" }
+        }
+      }
+    },
+    {
+      "title": "Tribe definition",
+      "type": "object",
+      "required": ["version", "game", "tribe", "palette", "buildings", "troops", "hero"],
+      "properties": {
+        "version": { "type": "integer", "minimum": 1 },
+        "game": { "const": "Tevel" },
+        "tribe": {
+          "type": "object",
+          "required": ["id", "name"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+            "name": { "$ref": "#/definitions/localizedString" },
+            "theme": { "type": "string" },
+            "graphics": {
+              "type": "object",
+              "properties": {
+                "banner": { "type": "string" }
+              }
+            }
+          }
+        },
+        "palette": {
+          "description": "Two-color theme for units, buildings, and UI.",
+          "$ref": "./palette.schema.json"
+        },
+        "buildings": {
+          "type": "object",
+          "required": ["usePalette"],
+          "properties": {
+            "usePalette": {
+              "type": "boolean",
+              "description": "Tint all buildings.base.json entries with this tribe palette"
+            },
+            "spriteRoot": { "type": "string" },
+            "overrides": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "graphics": { "type": "object" }
+                }
+              }
+            }
+          }
+        },
+        "troops": {
+          "type": "array",
+          "description": "Exactly 11 entries, in roster slot order (see roster.json).",
+          "minItems": 11,
+          "maxItems": 11,
+          "items": { "$ref": "#/definitions/tribeUnitRef" }
+        },
+        "hero": {
+          "description": "Exactly one tribe-unique hero.",
+          "$ref": "#/definitions/hero"
+        }
+      }
+    }
+  ]
+}

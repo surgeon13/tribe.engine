@@ -1,0 +1,141 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "roman",
+    "name": { "en": "Romans" },
+    "theme": "Elite troops, strong infantry and cavalry, expensive training",
+    "graphics": {
+      "banner": "tribes/roman/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#8B1A1A",
+    "secondary": "#D4AF37"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/roman/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Legionnaire" },
+        "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 50 },
+        "cost": { "wood": 120, "clay": 100, "iron": 150, "crop": 30 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Praetorian" },
+        "stats": { "attack": 30, "defenseInfantry": 65, "defenseCavalry": 35, "speed": 5, "carry": 20 },
+        "cost": { "wood": 100, "clay": 130, "iron": 160, "crop": 70 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Imperian" },
+        "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 25, "speed": 7, "carry": 50 },
+        "cost": { "wood": 150, "clay": 160, "iron": 210, "crop": 80 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Equites Legati" },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 140, "clay": 160, "iron": 20, "crop": 40 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Equites Imperatoris" },
+        "stats": { "attack": 120, "defenseInfantry": 65, "defenseCavalry": 50, "speed": 14, "carry": 100 },
+        "cost": { "wood": 550, "clay": 440, "iron": 320, "crop": 100 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Equites Caesaris" },
+        "stats": { "attack": 180, "defenseInfantry": 80, "defenseCavalry": 105, "speed": 10, "carry": 70 },
+        "cost": { "wood": 550, "clay": 640, "iron": 800, "crop": 180 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Equites Regales" },
+        "description": { "en": "Tevel slot 7 — Travian Romans field two cavalry types; this slot extends the roster." },
+        "stats": { "attack": 150, "defenseInfantry": 72, "defenseCavalry": 78, "speed": 12, "carry": 85 },
+        "cost": { "wood": 520, "clay": 540, "iron": 560, "crop": 140 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": { "en": "Battering Ram" },
+        "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
+        "cost": { "wood": 900, "clay": 360, "iron": 500, "crop": 70 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": { "en": "Fire Catapult" },
+        "stats": { "attack": 75, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 950, "clay": 1350, "iron": 600, "crop": 90 },
+        "cropUpkeep": 6
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Senator" },
+        "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 4, "carry": 0 },
+        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "cropUpkeep": 5
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": { "en": "Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 5800, "clay": 5300, "iron": 7200, "crop": 5500 },
+        "cropUpkeep": 1
+      }
+    }
+  ],
+  "hero": {
+    "id": "roman_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Roman Hero" },
+    "description": { "en": "Travian Roman hero — +100 fighting strength per point (tribe bonus)." },
+    "isBase": false,
+    "stats": { "attack": 100, "defenseInfantry": 120, "defenseCavalry": 100, "speed": 8, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 6,
+    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "graphics": {
+      "sprite": "tribes/roman/hero/hero.png",
+      "icon": "tribes/roman/hero/hero_icon.png",
+      "portrait": "tribes/roman/hero/hero_portrait.png"
+    }
+  }
+}

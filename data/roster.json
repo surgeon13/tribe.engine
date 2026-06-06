@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "game": "Tevel",
+  "description": "Every tribe uses this exact composition: 11 trainable troop slots plus 1 hero.",
+  "slots": [
+    { "slot": 1, "role": "infantry", "index": 1, "baseUnitId": "inf_t1" },
+    { "slot": 2, "role": "infantry", "index": 2, "baseUnitId": "inf_t2" },
+    { "slot": 3, "role": "infantry", "index": 3, "baseUnitId": "inf_t3" },
+    { "slot": 4, "role": "scout", "index": 1, "baseUnitId": "scout" },
+    { "slot": 5, "role": "cavalry", "index": 1, "baseUnitId": "cav_t1" },
+    { "slot": 6, "role": "cavalry", "index": 2, "baseUnitId": "cav_t2" },
+    { "slot": 7, "role": "cavalry", "index": 3, "baseUnitId": "cav_t3" },
+    { "slot": 8, "role": "siege", "index": 1, "baseUnitId": "ram", "siegeType": "wall" },
+    { "slot": 9, "role": "siege", "index": 2, "baseUnitId": "catapult", "siegeType": "building" },
+    { "slot": 10, "role": "chief", "index": 1, "baseUnitId": "chief" },
+    { "slot": 11, "role": "settler", "index": 1, "baseUnitId": "settler" }
+  ],
+  "hero": {
+    "required": true,
+    "count": 1,
+    "description": "Tribe-unique hero; defined only in tribe files, not in the base catalog."
+  }
+}

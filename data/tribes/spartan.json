@@ -1,0 +1,141 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "spartan",
+    "name": { "en": "Spartans" },
+    "theme": "Crop-efficient defense, infantry scout, elite late-game hammer",
+    "graphics": {
+      "banner": "tribes/spartan/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#8B0000",
+    "secondary": "#FFD700"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/spartan/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Hoplite" },
+        "stats": { "attack": 50, "defenseInfantry": 46, "defenseCavalry": 40, "speed": 6, "carry": 50 },
+        "cost": { "wood": 120, "clay": 100, "iron": 150, "crop": 30 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Shieldsman" },
+        "stats": { "attack": 52, "defenseInfantry": 104, "defenseCavalry": 58, "speed": 8, "carry": 30 },
+        "cost": { "wood": 130, "clay": 150, "iron": 180, "crop": 70 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Twinsteel Therion" },
+        "stats": { "attack": 110, "defenseInfantry": 70, "defenseCavalry": 52, "speed": 6, "carry": 50 },
+        "cost": { "wood": 200, "clay": 180, "iron": 250, "crop": 90 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Sentinel" },
+        "description": { "en": "Infantry scout — 1 crop/h, strong vs enemy scouts." },
+        "stats": { "attack": 0, "defenseInfantry": 52, "defenseCavalry": 31, "speed": 9, "carry": 0 },
+        "cost": { "wood": 125, "clay": 105, "iron": 155, "crop": 35 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Elpida Rider" },
+        "stats": { "attack": 76, "defenseInfantry": 151, "defenseCavalry": 116, "speed": 16, "carry": 50 },
+        "cost": { "wood": 400, "clay": 500, "iron": 350, "crop": 120 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Corinthian Crusher" },
+        "stats": { "attack": 243, "defenseInfantry": 111, "defenseCavalry": 105, "speed": 9, "carry": 50 },
+        "cost": { "wood": 550, "clay": 650, "iron": 600, "crop": 180 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Spartan Horseman" },
+        "description": { "en": "Tevel slot 7 — completes three cavalry slots for Spartans." },
+        "stats": { "attack": 130, "defenseInfantry": 90, "defenseCavalry": 85, "speed": 12, "carry": 60 },
+        "cost": { "wood": 480, "clay": 520, "iron": 450, "crop": 140 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": { "en": "Ram" },
+        "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
+        "cost": { "wood": 900, "clay": 360, "iron": 500, "crop": 70 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": { "en": "Catapult" },
+        "stats": { "attack": 70, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 960, "clay": 1450, "iron": 630, "crop": 90 },
+        "cropUpkeep": 6
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Ephor" },
+        "stats": { "attack": 45, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 5, "carry": 0 },
+        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": { "en": "Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3500, "clay": 4500, "iron": 2300, "crop": 4200 },
+        "cropUpkeep": 1
+      }
+    }
+  ],
+  "hero": {
+    "id": "spartan_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Leonidas" },
+    "isBase": false,
+    "stats": { "attack": 110, "defenseInfantry": 150, "defenseCavalry": 90, "speed": 8, "carry": 80 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 6,
+    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "graphics": {
+      "sprite": "tribes/spartan/hero/hero.png",
+      "icon": "tribes/spartan/hero/hero_icon.png",
+      "portrait": "tribes/spartan/hero/hero_portrait.png"
+    }
+  }
+}

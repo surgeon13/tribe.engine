@@ -1,0 +1,140 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "gaul",
+    "name": { "en": "Gauls" },
+    "theme": "Fast cavalry, solid defense, fastest scouts",
+    "graphics": {
+      "banner": "tribes/gaul/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#2D5A27",
+    "secondary": "#C0C0C0"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/gaul/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Phalanx" },
+        "stats": { "attack": 15, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 7, "carry": 35 },
+        "cost": { "wood": 100, "clay": 130, "iron": 55, "crop": 30 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Swordsman" },
+        "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 20, "speed": 6, "carry": 45 },
+        "cost": { "wood": 140, "clay": 150, "iron": 185, "crop": 60 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Gaul Tracker" },
+        "description": { "en": "Tevel slot 3 — Travian Gauls have two infantry units; this slot completes the Tevel roster." },
+        "stats": { "attack": 35, "defenseInfantry": 45, "defenseCavalry": 55, "speed": 8, "carry": 40 },
+        "cost": { "wood": 120, "clay": 140, "iron": 120, "crop": 45 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Pathfinder" },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 },
+        "cost": { "wood": 160, "clay": 150, "iron": 50, "crop": 50 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Theutates Thunder" },
+        "stats": { "attack": 90, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 },
+        "cost": { "wood": 350, "clay": 450, "iron": 230, "crop": 60 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Druidrider" },
+        "stats": { "attack": 45, "defenseInfantry": 115, "defenseCavalry": 55, "speed": 16, "carry": 35 },
+        "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Haeduan" },
+        "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 165, "speed": 13, "carry": 65 },
+        "cost": { "wood": 500, "clay": 620, "iron": 520, "crop": 90 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": { "en": "Ram" },
+        "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 105, "speed": 4, "carry": 0 },
+        "cost": { "wood": 950, "clay": 555, "iron": 330, "crop": 75 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": { "en": "Trebuchet" },
+        "stats": { "attack": 70, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 960, "clay": 1450, "iron": 630, "crop": 90 },
+        "cropUpkeep": 6
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Chieftain" },
+        "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 0 },
+        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": { "en": "Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3500, "clay": 4500, "iron": 2300, "crop": 4200 },
+        "cropUpkeep": 1
+      }
+    }
+  ],
+  "hero": {
+    "id": "gaul_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Gaul Hero" },
+    "isBase": false,
+    "stats": { "attack": 85, "defenseInfantry": 110, "defenseCavalry": 95, "speed": 17, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 6,
+    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "graphics": {
+      "sprite": "tribes/gaul/hero/hero.png",
+      "icon": "tribes/gaul/hero/hero_icon.png",
+      "portrait": "tribes/gaul/hero/hero_portrait.png"
+    }
+  }
+}

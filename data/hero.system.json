@@ -1,0 +1,706 @@
+{
+  "$schema": "./hero.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "description": "Hero experience, leveling, and attribute progression (Travian Legends inspired).",
+  "leveling": {
+    "maxLevel": 100,
+    "attributePointsPerLevel": 4,
+    "startingAttributePoints": 4,
+    "defaultAllocation": {
+      "fightingStrength": 0,
+      "offBonus": 0,
+      "defBonus": 0,
+      "resources": 4
+    },
+    "fullHealOnLevelUp": true,
+    "curve": {
+      "id": "tevel_standard",
+      "description": "xpToNext = round(50 * level^1.85) for level N -> N+1",
+      "formula": "round(50 * pow(level, 1.85))"
+    },
+    "levels": [
+      {
+        "level": 1,
+        "xpTotal": 0,
+        "xpToNext": 50
+      },
+      {
+        "level": 2,
+        "xpTotal": 50,
+        "xpToNext": 180
+      },
+      {
+        "level": 3,
+        "xpTotal": 230,
+        "xpToNext": 382
+      },
+      {
+        "level": 4,
+        "xpTotal": 612,
+        "xpToNext": 650
+      },
+      {
+        "level": 5,
+        "xpTotal": 1262,
+        "xpToNext": 982
+      },
+      {
+        "level": 6,
+        "xpTotal": 2244,
+        "xpToNext": 1376
+      },
+      {
+        "level": 7,
+        "xpTotal": 3620,
+        "xpToNext": 1830
+      },
+      {
+        "level": 8,
+        "xpTotal": 5450,
+        "xpToNext": 2343
+      },
+      {
+        "level": 9,
+        "xpTotal": 7793,
+        "xpToNext": 2913
+      },
+      {
+        "level": 10,
+        "xpTotal": 10706,
+        "xpToNext": 3540
+      },
+      {
+        "level": 11,
+        "xpTotal": 14246,
+        "xpToNext": 4222
+      },
+      {
+        "level": 12,
+        "xpTotal": 18468,
+        "xpToNext": 4960
+      },
+      {
+        "level": 13,
+        "xpTotal": 23428,
+        "xpToNext": 5751
+      },
+      {
+        "level": 14,
+        "xpTotal": 29179,
+        "xpToNext": 6596
+      },
+      {
+        "level": 15,
+        "xpTotal": 35775,
+        "xpToNext": 7494
+      },
+      {
+        "level": 16,
+        "xpTotal": 43269,
+        "xpToNext": 8445
+      },
+      {
+        "level": 17,
+        "xpTotal": 51714,
+        "xpToNext": 9447
+      },
+      {
+        "level": 18,
+        "xpTotal": 61161,
+        "xpToNext": 10501
+      },
+      {
+        "level": 19,
+        "xpTotal": 71662,
+        "xpToNext": 11606
+      },
+      {
+        "level": 20,
+        "xpTotal": 83268,
+        "xpToNext": 12761
+      },
+      {
+        "level": 21,
+        "xpTotal": 96029,
+        "xpToNext": 13966
+      },
+      {
+        "level": 22,
+        "xpTotal": 109995,
+        "xpToNext": 15221
+      },
+      {
+        "level": 23,
+        "xpTotal": 125216,
+        "xpToNext": 16526
+      },
+      {
+        "level": 24,
+        "xpTotal": 141742,
+        "xpToNext": 17880
+      },
+      {
+        "level": 25,
+        "xpTotal": 159622,
+        "xpToNext": 19282
+      },
+      {
+        "level": 26,
+        "xpTotal": 178904,
+        "xpToNext": 20733
+      },
+      {
+        "level": 27,
+        "xpTotal": 199637,
+        "xpToNext": 22233
+      },
+      {
+        "level": 28,
+        "xpTotal": 221870,
+        "xpToNext": 23780
+      },
+      {
+        "level": 29,
+        "xpTotal": 245650,
+        "xpToNext": 25375
+      },
+      {
+        "level": 30,
+        "xpTotal": 271025,
+        "xpToNext": 27017
+      },
+      {
+        "level": 31,
+        "xpTotal": 298042,
+        "xpToNext": 28707
+      },
+      {
+        "level": 32,
+        "xpTotal": 326749,
+        "xpToNext": 30444
+      },
+      {
+        "level": 33,
+        "xpTotal": 357193,
+        "xpToNext": 32227
+      },
+      {
+        "level": 34,
+        "xpTotal": 389420,
+        "xpToNext": 34057
+      },
+      {
+        "level": 35,
+        "xpTotal": 423477,
+        "xpToNext": 35933
+      },
+      {
+        "level": 36,
+        "xpTotal": 459410,
+        "xpToNext": 37856
+      },
+      {
+        "level": 37,
+        "xpTotal": 497266,
+        "xpToNext": 39824
+      },
+      {
+        "level": 38,
+        "xpTotal": 537090,
+        "xpToNext": 41838
+      },
+      {
+        "level": 39,
+        "xpTotal": 578928,
+        "xpToNext": 43897
+      },
+      {
+        "level": 40,
+        "xpTotal": 622825,
+        "xpToNext": 46002
+      },
+      {
+        "level": 41,
+        "xpTotal": 668827,
+        "xpToNext": 48153
+      },
+      {
+        "level": 42,
+        "xpTotal": 716980,
+        "xpToNext": 50348
+      },
+      {
+        "level": 43,
+        "xpTotal": 767328,
+        "xpToNext": 52588
+      },
+      {
+        "level": 44,
+        "xpTotal": 819916,
+        "xpToNext": 54873
+      },
+      {
+        "level": 45,
+        "xpTotal": 874789,
+        "xpToNext": 57202
+      },
+      {
+        "level": 46,
+        "xpTotal": 931991,
+        "xpToNext": 59576
+      },
+      {
+        "level": 47,
+        "xpTotal": 991567,
+        "xpToNext": 61994
+      },
+      {
+        "level": 48,
+        "xpTotal": 1053561,
+        "xpToNext": 64456
+      },
+      {
+        "level": 49,
+        "xpTotal": 1118017,
+        "xpToNext": 66963
+      },
+      {
+        "level": 50,
+        "xpTotal": 1184980,
+        "xpToNext": 69513
+      },
+      {
+        "level": 51,
+        "xpTotal": 1254493,
+        "xpToNext": 72107
+      },
+      {
+        "level": 52,
+        "xpTotal": 1326600,
+        "xpToNext": 74744
+      },
+      {
+        "level": 53,
+        "xpTotal": 1401344,
+        "xpToNext": 77425
+      },
+      {
+        "level": 54,
+        "xpTotal": 1478769,
+        "xpToNext": 80149
+      },
+      {
+        "level": 55,
+        "xpTotal": 1558918,
+        "xpToNext": 82917
+      },
+      {
+        "level": 56,
+        "xpTotal": 1641835,
+        "xpToNext": 85727
+      },
+      {
+        "level": 57,
+        "xpTotal": 1727562,
+        "xpToNext": 88581
+      },
+      {
+        "level": 58,
+        "xpTotal": 1816143,
+        "xpToNext": 91477
+      },
+      {
+        "level": 59,
+        "xpTotal": 1907620,
+        "xpToNext": 94416
+      },
+      {
+        "level": 60,
+        "xpTotal": 2002036,
+        "xpToNext": 97398
+      },
+      {
+        "level": 61,
+        "xpTotal": 2099434,
+        "xpToNext": 100422
+      },
+      {
+        "level": 62,
+        "xpTotal": 2199856,
+        "xpToNext": 103489
+      },
+      {
+        "level": 63,
+        "xpTotal": 2303345,
+        "xpToNext": 106598
+      },
+      {
+        "level": 64,
+        "xpTotal": 2409943,
+        "xpToNext": 109750
+      },
+      {
+        "level": 65,
+        "xpTotal": 2519693,
+        "xpToNext": 112943
+      },
+      {
+        "level": 66,
+        "xpTotal": 2632636,
+        "xpToNext": 116179
+      },
+      {
+        "level": 67,
+        "xpTotal": 2748815,
+        "xpToNext": 119456
+      },
+      {
+        "level": 68,
+        "xpTotal": 2868271,
+        "xpToNext": 122775
+      },
+      {
+        "level": 69,
+        "xpTotal": 2991046,
+        "xpToNext": 126137
+      },
+      {
+        "level": 70,
+        "xpTotal": 3117183,
+        "xpToNext": 129539
+      },
+      {
+        "level": 71,
+        "xpTotal": 3246722,
+        "xpToNext": 132984
+      },
+      {
+        "level": 72,
+        "xpTotal": 3379706,
+        "xpToNext": 136469
+      },
+      {
+        "level": 73,
+        "xpTotal": 3516175,
+        "xpToNext": 139997
+      },
+      {
+        "level": 74,
+        "xpTotal": 3656172,
+        "xpToNext": 143565
+      },
+      {
+        "level": 75,
+        "xpTotal": 3799737,
+        "xpToNext": 147175
+      },
+      {
+        "level": 76,
+        "xpTotal": 3946912,
+        "xpToNext": 150826
+      },
+      {
+        "level": 77,
+        "xpTotal": 4097738,
+        "xpToNext": 154518
+      },
+      {
+        "level": 78,
+        "xpTotal": 4252256,
+        "xpToNext": 158250
+      },
+      {
+        "level": 79,
+        "xpTotal": 4410506,
+        "xpToNext": 162024
+      },
+      {
+        "level": 80,
+        "xpTotal": 4572530,
+        "xpToNext": 165839
+      },
+      {
+        "level": 81,
+        "xpTotal": 4738369,
+        "xpToNext": 169694
+      },
+      {
+        "level": 82,
+        "xpTotal": 4908063,
+        "xpToNext": 173590
+      },
+      {
+        "level": 83,
+        "xpTotal": 5081653,
+        "xpToNext": 177527
+      },
+      {
+        "level": 84,
+        "xpTotal": 5259180,
+        "xpToNext": 181504
+      },
+      {
+        "level": 85,
+        "xpTotal": 5440684,
+        "xpToNext": 185522
+      },
+      {
+        "level": 86,
+        "xpTotal": 5626206,
+        "xpToNext": 189580
+      },
+      {
+        "level": 87,
+        "xpTotal": 5815786,
+        "xpToNext": 193678
+      },
+      {
+        "level": 88,
+        "xpTotal": 6009464,
+        "xpToNext": 197817
+      },
+      {
+        "level": 89,
+        "xpTotal": 6207281,
+        "xpToNext": 201995
+      },
+      {
+        "level": 90,
+        "xpTotal": 6409276,
+        "xpToNext": 206214
+      },
+      {
+        "level": 91,
+        "xpTotal": 6615490,
+        "xpToNext": 210473
+      },
+      {
+        "level": 92,
+        "xpTotal": 6825963,
+        "xpToNext": 214772
+      },
+      {
+        "level": 93,
+        "xpTotal": 7040735,
+        "xpToNext": 219111
+      },
+      {
+        "level": 94,
+        "xpTotal": 7259846,
+        "xpToNext": 223489
+      },
+      {
+        "level": 95,
+        "xpTotal": 7483335,
+        "xpToNext": 227908
+      },
+      {
+        "level": 96,
+        "xpTotal": 7711243,
+        "xpToNext": 232366
+      },
+      {
+        "level": 97,
+        "xpTotal": 7943609,
+        "xpToNext": 236863
+      },
+      {
+        "level": 98,
+        "xpTotal": 8180472,
+        "xpToNext": 241401
+      },
+      {
+        "level": 99,
+        "xpTotal": 8421873,
+        "xpToNext": 245977
+      },
+      {
+        "level": 100,
+        "xpTotal": 8667850,
+        "xpToNext": 0
+      }
+    ]
+  },
+  "attributes": {
+    "fightingStrength": {
+      "id": "fightingStrength",
+      "name": {
+        "en": "Fighting Strength"
+      },
+      "description": {
+        "en": "Adds to hero personal attack and defense in combat."
+      },
+      "effect": {
+        "type": "heroCombat",
+        "perPoint": {
+          "attack": 1,
+          "defenseInfantry": 1,
+          "defenseCavalry": 1
+        }
+      },
+      "tribeScaling": true
+    },
+    "offBonus": {
+      "id": "offBonus",
+      "name": {
+        "en": "Off Bonus"
+      },
+      "description": {
+        "en": "Increases attack of all troops in armies led by the hero."
+      },
+      "effect": {
+        "type": "armyAttackPercent",
+        "perPoint": 0.2,
+        "maxPercent": 20
+      }
+    },
+    "defBonus": {
+      "id": "defBonus",
+      "name": {
+        "en": "Def Bonus"
+      },
+      "description": {
+        "en": "Increases defense of all own troops in armies with the hero."
+      },
+      "effect": {
+        "type": "armyDefensePercent",
+        "perPoint": 0.2,
+        "maxPercent": 20
+      }
+    },
+    "resources": {
+      "id": "resources",
+      "name": {
+        "en": "Resources"
+      },
+      "description": {
+        "en": "Boosts resource production in the hero home village."
+      },
+      "effect": {
+        "type": "homeVillageProductionPercent",
+        "perPoint": 0.5,
+        "maxPercent": 25
+      }
+    }
+  },
+  "tribeModifiers": {
+    "roman": {
+      "fightingStrengthPerPoint": 100,
+      "resourceProductionBonusPercent": 0
+    },
+    "teuton": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0
+    },
+    "gaul": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0
+    },
+    "egyptian": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 25
+    },
+    "hun": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0
+    },
+    "spartan": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0
+    },
+    "natar": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0,
+      "playable": false
+    },
+    "nature": {
+      "fightingStrengthPerPoint": 0,
+      "resourceProductionBonusPercent": 0,
+      "playable": false
+    }
+  },
+  "xpSources": {
+    "combat": {
+      "enabled": true,
+      "description": {
+        "en": "1 XP per 1 crop upkeep of enemy units killed (attacker always; defender split by army weight)."
+      },
+      "rules": {
+        "xpPerEnemyCropUpkeep": 1,
+        "attackerReceivesOnLoss": true,
+        "defenderSplitByArmyCropConsumption": true
+      }
+    },
+    "adventure": {
+      "enabled": true,
+      "description": {
+        "en": "XP from clearing oases / adventures based on nature troop crop upkeep."
+      },
+      "rules": {
+        "xpPerNatureUnitCropUpkeep": 1
+      }
+    },
+    "quests": {
+      "enabled": true,
+      "description": {
+        "en": "Flat XP rewards from daily quests and village tasks."
+      },
+      "rules": {
+        "rewardTable": "quests.json"
+      }
+    },
+    "items": {
+      "enabled": true,
+      "description": {
+        "en": "Consumables and equipment XP multipliers."
+      },
+      "examples": [
+        {
+          "id": "scroll_of_knowledge",
+          "xpGrant": 10
+        },
+        {
+          "id": "helmet_of_awareness",
+          "xpMultiplier": 1.25
+        }
+      ]
+    }
+  },
+  "health": {
+    "baseHealth": 100,
+    "healthPerLevel": 10,
+    "regenerationPerHour": 10,
+    "regenerationMultiplierWithRegenItem": 2
+  },
+  "death": {
+    "canDie": true,
+    "reviveAtLevelPercent": 0,
+    "reviveCostsByLevelBracket": [
+      {
+        "maxLevel": 10,
+        "cost": {
+          "crop": 100
+        }
+      },
+      {
+        "maxLevel": 25,
+        "cost": {
+          "crop": 500
+        }
+      },
+      {
+        "maxLevel": 50,
+        "cost": {
+          "crop": 2000
+        }
+      },
+      {
+        "maxLevel": 100,
+        "cost": {
+          "crop": 8000
+        }
+      }
+    ]
+  }
+}

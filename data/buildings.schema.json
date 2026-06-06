@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tevel.local/schemas/buildings.schema.json",
+  "title": "Tevel buildings",
+  "definitions": {
+    "recolorSlots": {
+      "type": "object",
+      "description": "Maps grayscale mask channel names in art to palette keys (primary | secondary).",
+      "properties": {
+        "maskPrimary": { "const": "primary" },
+        "maskSecondary": { "const": "secondary" }
+      },
+      "additionalProperties": false
+    },
+    "buildingGraphics": {
+      "type": "object",
+      "properties": {
+        "sprite": { "type": "string" },
+        "icon": { "type": "string" },
+        "mask": { "type": "string", "description": "Grayscale mask: white=primary, light gray=secondary" },
+        "recolor": { "$ref": "#/definitions/recolorSlots" }
+      },
+      "additionalProperties": false
+    },
+    "building": {
+      "type": "object",
+      "required": ["id", "category", "name", "graphics"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "category": {
+          "type": "string",
+          "enum": ["core", "resource", "military", "civic", "defense", "special"]
+        },
+        "name": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "type": "string" }
+        },
+        "graphics": { "$ref": "#/definitions/buildingGraphics" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "tribeBuildings": {
+      "type": "object",
+      "required": ["usePalette"],
+      "properties": {
+        "usePalette": {
+          "type": "boolean",
+          "const": true,
+          "description": "When true, render pipeline tints base masks with tribe.palette"
+        },
+        "spriteRoot": {
+          "type": "string",
+          "description": "Override output folder; default tribes/{tribeId}/buildings"
+        },
+        "overrides": {
+          "type": "object",
+          "description": "Per-building graphics overrides (optional unique sprites)",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "graphics": { "$ref": "#/definitions/buildingGraphics" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "title": "Base building catalog",
+      "type": "object",
+      "required": ["version", "game", "buildings"],
+      "properties": {
+        "version": { "type": "integer", "minimum": 1 },
+        "game": { "const": "Tevel" },
+        "buildings": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/definitions/building" }
+        }
+      }
+    }
+  ]
+}

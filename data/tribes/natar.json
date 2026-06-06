@@ -1,0 +1,141 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "natar",
+    "name": { "en": "Natars" },
+    "theme": "NPC endgame tribe — guards artefacts and Wonder plans",
+    "graphics": {
+      "banner": "tribes/natar/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#2B2B2B",
+    "secondary": "#6B0000"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/natar/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": { "en": "Pikeman" },
+        "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 10 },
+        "cost": { "wood": 100, "clay": 120, "iron": 80, "crop": 40 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": { "en": "Thorned Warrior" },
+        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 7, "carry": 10 },
+        "cost": { "wood": 140, "clay": 150, "iron": 100, "crop": 50 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": { "en": "Guardsman" },
+        "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 75, "speed": 6, "carry": 10 },
+        "cost": { "wood": 200, "clay": 200, "iron": 180, "crop": 80 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": { "en": "Birds of Prey" },
+        "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 10, "speed": 25, "carry": 10 },
+        "cost": { "wood": 160, "clay": 150, "iron": 50, "crop": 50 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": { "en": "Axerider" },
+        "stats": { "attack": 155, "defenseInfantry": 80, "defenseCavalry": 50, "speed": 14, "carry": 10 },
+        "cost": { "wood": 450, "clay": 400, "iron": 350, "crop": 90 },
+        "cropUpkeep": 2
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": { "en": "Natarian Knight" },
+        "stats": { "attack": 170, "defenseInfantry": 140, "defenseCavalry": 80, "speed": 12, "carry": 10 },
+        "cost": { "wood": 500, "clay": 550, "iron": 480, "crop": 100 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": { "en": "Natarian Lancer" },
+        "description": { "en": "Tevel slot 7 — Travian Natars have two cavalry types." },
+        "stats": { "attack": 160, "defenseInfantry": 110, "defenseCavalry": 65, "speed": 13, "carry": 10 },
+        "cost": { "wood": 480, "clay": 500, "iron": 460, "crop": 95 },
+        "cropUpkeep": 3
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": { "en": "War Elephant" },
+        "stats": { "attack": 250, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 5, "carry": 10 },
+        "cost": { "wood": 1200, "clay": 800, "iron": 900, "crop": 120 },
+        "cropUpkeep": 4
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": { "en": "Ballista" },
+        "stats": { "attack": 60, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 10 },
+        "cost": { "wood": 900, "clay": 1100, "iron": 400, "crop": 90 },
+        "cropUpkeep": 5
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": { "en": "Natarian Emperor" },
+        "stats": { "attack": 80, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 10 },
+        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "cropUpkeep": 1
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": { "en": "Settler" },
+        "stats": { "attack": 30, "defenseInfantry": 40, "defenseCavalry": 40, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3500, "clay": 4500, "iron": 2300, "crop": 4200 },
+        "cropUpkeep": 1
+      }
+    }
+  ],
+  "hero": {
+    "id": "natar_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": { "en": "Natarian Warlord" },
+    "description": { "en": "NPC hero for Natar villages and WW defenses." },
+    "isBase": false,
+    "stats": { "attack": 200, "defenseInfantry": 160, "defenseCavalry": 120, "speed": 10, "carry": 50 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
+    "cropUpkeep": 6,
+    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "graphics": {
+      "sprite": "tribes/natar/hero/hero.png",
+      "icon": "tribes/natar/hero/hero_icon.png",
+      "portrait": "tribes/natar/hero/hero_portrait.png"
+    }
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "$schema": "./units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "roster": "roster.json",
+  "theming": "Use tribe palette from tribes/<id>.json to recolor unit masks (see THEMING.md).",
+  "units": {
+    "inf_t1": {
+      "id": "inf_t1",
+      "slot": 1,
+      "role": "infantry",
+      "tier": 1,
+      "category": "infantry",
+      "name": { "en": "Infantry I" },
+      "description": { "en": "Tier-1 infantry template; rename per tribe." },
+      "isBase": true,
+      "stats": {
+        "attack": 30,
+        "defenseInfantry": 35,
+        "defenseCavalry": 15,
+        "speed": 12,
+        "carry": 40
+      },
+      "cost": { "wood": 95, "clay": 75, "iron": 40, "crop": 40 },
+      "cropUpkeep": 1,
+      "training": {
+        "building": "barracks",
+        "timeSeconds": 900,
+        "requirements": [{ "type": "building", "id": "barracks", "level": 1 }]
+      },
+      "graphics": {
+        "sprite": "units/base/inf_t1.png",
+        "icon": "units/base/inf_t1_icon.png",
+        "notes": "Neutral tier-1 infantry; tribe recolor"
+      }
+    },
+    "inf_t2": {
+      "id": "inf_t2",
+      "slot": 2,
+      "role": "infantry",
+      "tier": 2,
+      "category": "infantry",
+      "name": { "en": "Infantry II" },
+      "isBase": true,
+      "stats": {
+        "attack": 10,
+        "defenseInfantry": 60,
+        "defenseCavalry": 35,
+        "speed": 14,
+        "carry": 50
+      },
+      "cost": { "wood": 145, "clay": 70, "iron": 85, "crop": 40 },
+      "cropUpkeep": 1,
+      "training": {
+        "building": "barracks",
+        "timeSeconds": 1200,
+        "requirements": [{ "type": "building", "id": "barracks", "level": 1 }]
+      },
+      "graphics": {
+        "sprite": "units/base/inf_t2.png",
+        "icon": "units/base/inf_t2_icon.png"
+      }
+    },
+    "inf_t3": {
+      "id": "inf_t3",
+      "slot": 3,
+      "role": "infantry",
+      "tier": 3,
+      "category": "infantry",
+      "name": { "en": "Infantry III" },
+      "isBase": true,
+      "stats": {
+        "attack": 65,
+        "defenseInfantry": 35,
+        "defenseCavalry": 20,
+        "speed": 13,
+        "carry": 50
+      },
+      "cost": { "wood": 130, "clay": 100, "iron": 150, "crop": 60 },
+      "cropUpkeep": 1,
+      "training": {
+        "building": "barracks",
+        "timeSeconds": 1500,
+        "requirements": [{ "type": "building", "id": "barracks", "level": 3 }]
+      },
+      "graphics": {
+        "sprite": "units/base/inf_t3.png",
+        "icon": "units/base/inf_t3_icon.png"
+      }
+    },
+    "scout": {
+      "id": "scout",
+      "slot": 4,
+      "role": "scout",
+      "category": "scout",
+      "name": { "en": "Scout" },
+      "isBase": true,
+      "stats": {
+        "attack": 0,
+        "defenseInfantry": 10,
+        "defenseCavalry": 5,
+        "speed": 24,
+        "carry": 0
+      },
+      "cost": { "wood": 160, "clay": 100, "iron": 50, "crop": 50 },
+      "cropUpkeep": 1,
+      "training": {
+        "building": "stable",
+        "timeSeconds": 1000,
+        "requirements": [{ "type": "building", "id": "stable", "level": 1 }]
+      },
+      "graphics": {
+        "sprite": "units/base/scout.png",
+        "icon": "units/base/scout_icon.png"
+      }
+    },
+    "cav_t1": {
+      "id": "cav_t1",
+      "slot": 5,
+      "role": "cavalry",
+      "tier": 1,
+      "category": "cavalry",
+      "name": { "en": "Cavalry I" },
+      "isBase": true,
+      "stats": {
+        "attack": 55,
+        "defenseInfantry": 100,
+        "defenseCavalry": 40,
+        "speed": 18,
+        "carry": 100
+      },
+      "cost": { "wood": 370, "clay": 270, "iron": 290, "crop": 75 },
+      "cropUpkeep": 2,
+      "training": {
+        "building": "stable",
+        "timeSeconds": 1800,
+        "requirements": [{ "type": "building", "id": "stable", "level": 3 }]
+      },
+      "graphics": {
+        "sprite": "units/base/cav_t1.png",
+        "icon": "units/base/cav_t1_icon.png"
+      }
+    },
+    "cav_t2": {
+      "id": "cav_t2",
+      "slot": 6,
+      "role": "cavalry",
+      "tier": 2,
+      "category": "cavalry",
+      "name": { "en": "Cavalry II" },
+      "isBase": true,
+      "stats": {
+        "attack": 120,
+        "defenseInfantry": 65,
+        "defenseCavalry": 80,
+        "speed": 16,
+        "carry": 80
+      },
+      "cost": { "wood": 450, "clay": 515, "iron": 480, "crop": 80 },
+      "cropUpkeep": 3,
+      "training": {
+        "building": "stable",
+        "timeSeconds": 2100,
+        "requirements": [{ "type": "building", "id": "stable", "level": 5 }]
+      },
+      "graphics": {
+        "sprite": "units/base/cav_t2.png",
+        "icon": "units/base/cav_t2_icon.png"
+      }
+    },
+    "cav_t3": {
+      "id": "cav_t3",
+      "slot": 7,
+      "role": "cavalry",
+      "tier": 3,
+      "category": "cavalry",
+      "name": { "en": "Cavalry III" },
+      "isBase": true,
+      "stats": {
+        "attack": 150,
+        "defenseInfantry": 50,
+        "defenseCavalry": 150,
+        "speed": 14,
+        "carry": 70
+      },
+      "cost": { "wood": 500, "clay": 620, "iron": 520, "crop": 90 },
+      "cropUpkeep": 4,
+      "training": {
+        "building": "stable",
+        "timeSeconds": 2400,
+        "requirements": [{ "type": "building", "id": "stable", "level": 10 }]
+      },
+      "graphics": {
+        "sprite": "units/base/cav_t3.png",
+        "icon": "units/base/cav_t3_icon.png"
+      }
+    },
+    "ram": {
+      "id": "ram",
+      "slot": 8,
+      "role": "siege",
+      "siegeType": "wall",
+      "category": "siege",
+      "name": { "en": "Ram" },
+      "isBase": true,
+      "stats": {
+        "attack": 50,
+        "defenseInfantry": 30,
+        "defenseCavalry": 80,
+        "speed": 6,
+        "carry": 0
+      },
+      "cost": { "wood": 1000, "clay": 300, "iron": 350, "crop": 70 },
+      "cropUpkeep": 3,
+      "training": {
+        "building": "workshop",
+        "timeSeconds": 3600,
+        "requirements": [{ "type": "building", "id": "workshop", "level": 1 }]
+      },
+      "graphics": {
+        "sprite": "units/base/ram.png",
+        "icon": "units/base/ram_icon.png"
+      }
+    },
+    "catapult": {
+      "id": "catapult",
+      "slot": 9,
+      "role": "siege",
+      "siegeType": "building",
+      "category": "siege",
+      "name": { "en": "Catapult" },
+      "isBase": true,
+      "stats": {
+        "attack": 75,
+        "defenseInfantry": 60,
+        "defenseCavalry": 10,
+        "speed": 4,
+        "carry": 0
+      },
+      "cost": { "wood": 640, "clay": 800, "iron": 180, "crop": 60 },
+      "cropUpkeep": 6,
+      "training": {
+        "building": "workshop",
+        "timeSeconds": 4500,
+        "requirements": [{ "type": "building", "id": "workshop", "level": 5 }]
+      },
+      "graphics": {
+        "sprite": "units/base/catapult.png",
+        "icon": "units/base/catapult_icon.png"
+      }
+    },
+    "chief": {
+      "id": "chief",
+      "slot": 10,
+      "role": "chief",
+      "category": "chief",
+      "name": { "en": "Chieftain" },
+      "description": { "en": "Conquers villages / oases depending on your rules." },
+      "isBase": true,
+      "stats": {
+        "attack": 40,
+        "defenseInfantry": 60,
+        "defenseCavalry": 40,
+        "speed": 10,
+        "carry": 0
+      },
+      "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+      "cropUpkeep": 5,
+      "training": {
+        "building": "residence",
+        "timeSeconds": 90720,
+        "requirements": [
+          { "type": "building", "id": "residence", "level": 10 },
+          { "type": "building", "id": "rally_point", "level": 1 }
+        ]
+      },
+      "graphics": {
+        "sprite": "units/base/chief.png",
+        "icon": "units/base/chief_icon.png"
+      }
+    },
+    "settler": {
+      "id": "settler",
+      "slot": 11,
+      "role": "settler",
+      "category": "settler",
+      "name": { "en": "Settler" },
+      "isBase": true,
+      "stats": {
+        "attack": 0,
+        "defenseInfantry": 80,
+        "defenseCavalry": 80,
+        "speed": 5,
+        "carry": 3000
+      },
+      "cost": { "wood": 3500, "clay": 4500, "iron": 2300, "crop": 4200 },
+      "cropUpkeep": 1,
+      "training": {
+        "building": "residence",
+        "timeSeconds": 7200,
+        "requirements": [{ "type": "building", "id": "residence", "level": 10 }]
+      },
+      "graphics": {
+        "sprite": "units/base/settler.png",
+        "icon": "units/base/settler_icon.png"
+      }
+    }
+  }
+}

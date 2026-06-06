@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "game": "Tevel",
+  "description": "Canonical two-color palette per faction. Used for units, buildings, and UI.",
+  "palettes": {
+    "roman": {
+      "primary": "#8B1A1A",
+      "secondary": "#D4AF37",
+      "notes": "Crimson legion red + gold trim"
+    },
+    "teuton": {
+      "primary": "#4A3728",
+      "secondary": "#B8860B",
+      "notes": "Dark wood/leather + bronze accent"
+    },
+    "gaul": {
+      "primary": "#2D5A27",
+      "secondary": "#C0C0C0",
+      "notes": "Forest green + silver"
+    },
+    "egyptian": {
+      "primary": "#C9A227",
+      "secondary": "#1A4A6E",
+      "notes": "Desert gold + lapis blue"
+    },
+    "hun": {
+      "primary": "#5C4033",
+      "secondary": "#A52A2A",
+      "notes": "Steppe brown + rust red"
+    },
+    "spartan": {
+      "primary": "#8B0000",
+      "secondary": "#FFD700",
+      "notes": "Deep red + gold"
+    },
+    "natar": {
+      "primary": "#2B2B2B",
+      "secondary": "#6B0000",
+      "notes": "Obsidian + blood accent"
+    },
+    "nature": {
+      "primary": "#3D6B35",
+      "secondary": "#8B6914",
+      "notes": "Moss green + earth ochre"
+    }
+  }
+}

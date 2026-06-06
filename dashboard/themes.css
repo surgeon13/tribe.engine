@@ -1,0 +1,141 @@
+/**
+ * UI appearance — 5 themes. Graph colors are in graph-palettes.css.
+ * Set via document.documentElement.dataset.uiTheme
+ */
+
+:root,
+[data-ui-theme="dark"] {
+  color-scheme: dark;
+  --surface: var(--bg-elevated);
+  --bg: #0f1114;
+  --bg-elevated: #181b21;
+  --bg-hover: #22262e;
+  --border: #3a424d;
+  --text: #e8eaed;
+  --text-muted: #9aa3ad;
+  --positive: #4caf7a;
+  --negative: #e07070;
+  --accent-text: #111;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --radar-bg: #12151a;
+  --radar-grid: rgba(255, 255, 255, 0.22);
+  --radar-axis: rgba(255, 255, 255, 0.32);
+  --radar-label: #f0f4f8;
+  --radar-ovr-bg: rgba(0, 0, 0, 0.65);
+  --radar-ovr-text: #ffffff;
+  --radar-title: rgba(255, 255, 255, 0.9);
+  --card-bg-start: #1e232c;
+  --card-bg-end: #14181f;
+  --panel-radar-start: #161a22;
+  --radar-feature-glow: rgba(255, 255, 255, 0.05);
+  --tribe-dot-ring: rgba(255, 255, 255, 0.22);
+  --chart-grid: rgba(255, 255, 255, 0.1);
+}
+
+[data-ui-theme="light"] {
+  color-scheme: light;
+  --bg: #e8ebf0;
+  --bg-elevated: #ffffff;
+  --bg-hover: #dce1e8;
+  --border: #b8c0cc;
+  --text: #1a1d21;
+  --text-muted: #4d5661;
+  --positive: #2d7a52;
+  --negative: #b83c3c;
+  --accent-text: #1a1d21;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --radar-bg: #dfe3e8;
+  --radar-grid: rgba(0, 0, 0, 0.16);
+  --radar-axis: rgba(0, 0, 0, 0.22);
+  --radar-label: #1a1d21;
+  --radar-ovr-bg: rgba(255, 255, 255, 0.95);
+  --radar-ovr-text: #1a1d21;
+  --radar-title: rgba(0, 0, 0, 0.8);
+  --card-bg-start: #ffffff;
+  --card-bg-end: #eef1f5;
+  --panel-radar-start: #f4f6f9;
+  --radar-feature-glow: rgba(0, 0, 0, 0.04);
+  --tribe-dot-ring: rgba(0, 0, 0, 0.1);
+  --chart-grid: rgba(0, 0, 0, 0.08);
+}
+
+[data-ui-theme="sand"] {
+  color-scheme: light;
+  --bg: #f0e9df;
+  --bg-elevated: #fffdf9;
+  --bg-hover: #e5dcd0;
+  --border: #c4b5a3;
+  --text: #2c261c;
+  --text-muted: #5c5246;
+  --positive: #3d8a52;
+  --negative: #a85a42;
+  --accent-text: #2c261c;
+  --shadow: rgba(60, 40, 20, 0.12);
+  --radar-bg: #e6dfd4;
+  --radar-grid: rgba(80, 55, 30, 0.12);
+  --radar-axis: rgba(80, 55, 30, 0.16);
+  --radar-label: rgba(44, 38, 28, 0.72);
+  --radar-ovr-bg: rgba(255, 252, 245, 0.96);
+  --radar-ovr-text: #2c261c;
+  --radar-title: rgba(44, 38, 28, 0.85);
+  --card-bg-start: #fffdf9;
+  --card-bg-end: #ebe4d8;
+  --panel-radar-start: #f7f2ea;
+  --radar-feature-glow: rgba(120, 80, 40, 0.06);
+  --tribe-dot-ring: rgba(80, 60, 30, 0.14);
+  --chart-grid: rgba(80, 55, 30, 0.1);
+}
+
+[data-ui-theme="slate"] {
+  color-scheme: dark;
+  --bg: #141820;
+  --bg-elevated: #1c2430;
+  --bg-hover: #263040;
+  --border: #3d4d63;
+  --text: #e4eaf2;
+  --text-muted: #94a3b8;
+  --positive: #52b788;
+  --negative: #e07a7a;
+  --accent-text: #0f141a;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --radar-bg: #101620;
+  --radar-grid: rgba(140, 170, 210, 0.12);
+  --radar-axis: rgba(140, 170, 210, 0.2);
+  --radar-label: rgba(200, 215, 235, 0.78);
+  --radar-ovr-bg: rgba(16, 22, 32, 0.9);
+  --radar-ovr-text: #e8f0ff;
+  --radar-title: rgba(220, 230, 250, 0.92);
+  --card-bg-start: #243040;
+  --card-bg-end: #182028;
+  --panel-radar-start: #161e2a;
+  --radar-feature-glow: rgba(100, 150, 220, 0.08);
+  --tribe-dot-ring: rgba(160, 190, 230, 0.22);
+  --chart-grid: rgba(140, 170, 210, 0.12);
+}
+
+[data-ui-theme="dusk"] {
+  color-scheme: dark;
+  --bg: #1a1520;
+  --bg-elevated: #241e2c;
+  --bg-hover: #302838;
+  --border: #4a4058;
+  --text: #ede8f2;
+  --text-muted: #a89bb0;
+  --positive: #6bc49a;
+  --negative: #e08888;
+  --accent-text: #1a1520;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --radar-bg: #16121c;
+  --radar-grid: rgba(200, 160, 220, 0.1);
+  --radar-axis: rgba(200, 160, 220, 0.16);
+  --radar-label: rgba(230, 210, 240, 0.75);
+  --radar-ovr-bg: rgba(26, 20, 32, 0.88);
+  --radar-ovr-text: #f5eef8;
+  --radar-title: rgba(240, 225, 248, 0.9);
+  --card-bg-start: #2c2434;
+  --card-bg-end: #1e1826;
+  --panel-radar-start: #1c1624;
+  --radar-feature-glow: rgba(180, 120, 200, 0.07);
+  --tribe-dot-ring: rgba(200, 160, 220, 0.2);
+  --chart-grid: rgba(200, 160, 220, 0.1);
+}

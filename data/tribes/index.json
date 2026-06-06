@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "game": "Tevel",
+  "description": "Playable and NPC factions. Stats sourced from Travian Legends (T4.6) where applicable.",
+  "tribes": [
+    {
+      "id": "roman",
+      "file": "roman.json",
+      "type": "playable",
+      "name": { "en": "Romans" }
+    },
+    {
+      "id": "teuton",
+      "file": "teuton.json",
+      "type": "playable",
+      "name": { "en": "Teutons" }
+    },
+    {
+      "id": "gaul",
+      "file": "gaul.json",
+      "type": "playable",
+      "name": { "en": "Gauls" }
+    },
+    {
+      "id": "egyptian",
+      "file": "egyptian.json",
+      "type": "playable",
+      "name": { "en": "Egyptians" }
+    },
+    {
+      "id": "hun",
+      "file": "hun.json",
+      "type": "playable",
+      "name": { "en": "Huns" }
+    },
+    {
+      "id": "spartan",
+      "file": "spartan.json",
+      "type": "playable",
+      "name": { "en": "Spartans" }
+    },
+    {
+      "id": "natar",
+      "file": "natar.json",
+      "type": "npc",
+      "name": { "en": "Natars" }
+    },
+    {
+      "id": "nature",
+      "file": "nature.json",
+      "type": "npc",
+      "name": { "en": "Nature" }
+    }
+  ]
+}
