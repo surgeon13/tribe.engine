@@ -54,7 +54,16 @@ function runBuild() {
   });
 }
 
+function shouldOpenBrowser() {
+  if (process.env.TEVEL_OPEN_BROWSER === "0") return false;
+  if (process.env.TEVEL_OPEN_BROWSER === "1") return true;
+  if (process.env.CURSOR_AGENT === "1" || process.env.CI === "true") return false;
+  if (process.platform === "linux" && !process.env.DISPLAY) return false;
+  return true;
+}
+
 async function openApp(url) {
+  if (!shouldOpenBrowser()) return;
   const platform = process.platform;
   if (platform === "win32") {
     try {
@@ -81,14 +90,24 @@ async function main() {
   await runBuild();
   const { url, port, reused } = await ensureServer();
   if (reused) {
-    log(`Tevel already running on ${url} — opening dashboard`);
+    log(`Tevel already running on ${url}`);
   } else {
     log(`Started server on ${url}`);
   }
-  log("Opening dashboard…");
-  await openApp(url);
+
+  log(`Dashboard URL: ${url}`);
+  if (process.env.CURSOR_AGENT === "1") {
+    log("In Cursor Cloud Agent: open the Ports panel and click port " + port + " → Open in Browser.");
+  }
+
+  if (shouldOpenBrowser()) {
+    log("Opening dashboard…");
+    await openApp(url);
+  }
+
   if (!reused) {
     log(`Press Ctrl+C to stop the server (port ${port}).`);
+    await new Promise(() => {});
   }
 }
 

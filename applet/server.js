@@ -14,8 +14,11 @@ const MIME = {
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
   ".png": "image/png",
+  ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
 };
+
+const HOST = process.env.HOST || "127.0.0.1";
 
 function runScript(scriptPath) {
   return new Promise((resolve, reject) => {
@@ -120,7 +123,27 @@ export function startServer(port = 3456) {
         return;
       }
 
-      if (req.method === "GET") {
+      if (req.method === "GET" || req.method === "HEAD") {
+        if (req.method === "HEAD") {
+          let rel = url.pathname === "/" ? "index.html" : url.pathname.replace(/^\//, "");
+          rel = path.normalize(rel).replace(/^(\.\.[/\\])+/, "");
+          let filePath = path.join(dashboardDir, rel);
+          try {
+            const stat = await fs.stat(filePath);
+            if (stat.isDirectory()) filePath = path.join(filePath, "index.html");
+            const ext = path.extname(filePath).toLowerCase();
+            const headers = { "Content-Type": MIME[ext] || "application/octet-stream" };
+            if (ext === ".json" || filePath.endsWith("generated-data.js")) {
+              headers["Cache-Control"] = "no-store";
+            }
+            res.writeHead(200, headers);
+            res.end();
+          } catch {
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end();
+          }
+          return;
+        }
         await serveStatic(url.pathname, res);
         return;
       }
@@ -133,6 +156,19 @@ export function startServer(port = 3456) {
 
   return new Promise((resolve, reject) => {
     server.on("error", reject);
-    server.listen(port, "127.0.0.1", () => resolve(server));
+    server.listen(port, HOST, () => resolve(server));
   });
+}
+
+const isMain = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+if (isMain) {
+  const port = Number(process.env.PORT) || 3456;
+  startServer(port)
+    .then(() => {
+      console.log(`[Tevel] Server listening on http://${HOST}:${port}`);
+    })
+    .catch((e) => {
+      console.error("[Tevel] Server error:", e.message);
+      process.exit(1);
+    });
 }
