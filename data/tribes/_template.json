@@ -25,7 +25,8 @@
         "name": { "en": "Infantry I" },
         "graphics": {
           "sprite": "tribes/TRIBE_ID/units/01_infantry.png",
-          "icon": "tribes/TRIBE_ID/units/01_infantry_icon.png"
+          "icon": "tribes/TRIBE_ID/units/01_infantry_icon.png",
+          "logo": "infantry/gladius.svg"
         }
       }
     },

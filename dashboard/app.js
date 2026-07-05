@@ -25,7 +25,7 @@ import {
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
-import { renderTribeBanner, renderUnitCard } from "./graphics.js";
+import { renderTribeBanner, renderUnitCard, mountTroopLogoCell } from "./graphics.js";
 import {
   getCompareSeriesColors,
   initUiTheme,
@@ -228,6 +228,7 @@ function renderTroops(tribe) {
       const m = t.metrics;
       const idx = tribe.troops.indexOf(t);
       return `<tr data-troop-index="${idx}" class="troop-row">
+        <td class="troop-logo-col" data-logo-slot="${idx}"></td>
         <td>${t.slot}</td>
         <td><strong>${t.name}</strong></td>
         <td><span class="role-badge">${t.role}</span></td>
@@ -248,6 +249,11 @@ function renderTroops(tribe) {
       </tr>`;
     })
     .join("");
+
+  rows.forEach((t, i) => {
+    const cell = tbody.querySelector(`[data-logo-slot="${i}"]`);
+    if (cell) mountTroopLogoCell(cell, t, tribe.palette);
+  });
 
   tbody.querySelectorAll(".troop-row").forEach((row) => {
     row.addEventListener("click", () => {

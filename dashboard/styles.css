@@ -1492,9 +1492,21 @@ body {
 
 .unit-stat-card-head {
   display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.unit-stat-logo {
+  flex-shrink: 0;
+}
+
+.unit-stat-card-title {
+  display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 6px 8px;
+  min-width: 0;
+  flex: 1;
 }
 
 .unit-stat-slot {
@@ -1866,6 +1878,46 @@ body {
   position: relative;
   background: linear-gradient(145deg, var(--portrait-a), var(--portrait-b));
   border: 2px solid color-mix(in srgb, var(--portrait-a) 60%, transparent);
+}
+
+.unit-portrait--sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border-width: 1px;
+}
+
+.unit-portrait--sm .unit-portrait-fallback {
+  font-size: 11px;
+}
+
+.troop-logo-col,
+.troop-logo-cell {
+  width: 48px;
+  padding: 4px 6px !important;
+  vertical-align: middle;
+}
+
+.troop-logo-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.troop-logo-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.troop-logo-bg {
+  fill: var(--logo-bg, #333);
+}
+
+.troop-logo-fg {
+  fill: var(--logo-fg, #fff);
 }
 
 .unit-portrait img {

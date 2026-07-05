@@ -31,6 +31,7 @@
       "graphics": {
         "sprite": "units/base/inf_t1.png",
         "icon": "units/base/inf_t1_icon.png",
+        "logo": "infantry/gladius.svg",
         "notes": "Neutral tier-1 infantry; tribe recolor"
       }
     },
@@ -58,7 +59,8 @@
       },
       "graphics": {
         "sprite": "units/base/inf_t2.png",
-        "icon": "units/base/inf_t2_icon.png"
+        "icon": "units/base/inf_t2_icon.png",
+        "logo": "infantry/battle-axe.svg"
       }
     },
     "inf_t3": {
@@ -85,7 +87,8 @@
       },
       "graphics": {
         "sprite": "units/base/inf_t3.png",
-        "icon": "units/base/inf_t3_icon.png"
+        "icon": "units/base/inf_t3_icon.png",
+        "logo": "infantry/warhammer.svg"
       }
     },
     "scout": {
@@ -111,7 +114,8 @@
       },
       "graphics": {
         "sprite": "units/base/scout.png",
-        "icon": "units/base/scout_icon.png"
+        "icon": "units/base/scout_icon.png",
+        "logo": "infantry/heavy-arrow.svg"
       }
     },
     "cav_t1": {
@@ -138,7 +142,8 @@
       },
       "graphics": {
         "sprite": "units/base/cav_t1.png",
-        "icon": "units/base/cav_t1_icon.png"
+        "icon": "units/base/cav_t1_icon.png",
+        "logo": "cavalry/horse-head.svg"
       }
     },
     "cav_t2": {
@@ -165,7 +170,8 @@
       },
       "graphics": {
         "sprite": "units/base/cav_t2.png",
-        "icon": "units/base/cav_t2_icon.png"
+        "icon": "units/base/cav_t2_icon.png",
+        "logo": "cavalry/chess-knight.svg"
       }
     },
     "cav_t3": {
@@ -192,7 +198,8 @@
       },
       "graphics": {
         "sprite": "units/base/cav_t3.png",
-        "icon": "units/base/cav_t3_icon.png"
+        "icon": "units/base/cav_t3_icon.png",
+        "logo": "cavalry/elephant.svg"
       }
     },
     "ram": {
@@ -219,7 +226,8 @@
       },
       "graphics": {
         "sprite": "units/base/ram.png",
-        "icon": "units/base/ram_icon.png"
+        "icon": "units/base/ram_icon.png",
+        "logo": "infantry/crowbar.svg"
       }
     },
     "catapult": {
@@ -246,7 +254,8 @@
       },
       "graphics": {
         "sprite": "units/base/catapult.png",
-        "icon": "units/base/catapult_icon.png"
+        "icon": "units/base/catapult_icon.png",
+        "logo": "powder.svg"
       }
     },
     "chief": {
@@ -276,7 +285,8 @@
       },
       "graphics": {
         "sprite": "units/base/chief.png",
-        "icon": "units/base/chief_icon.png"
+        "icon": "units/base/chief_icon.png",
+        "logo": "infantry/baton.svg"
       }
     },
     "settler": {
@@ -302,7 +312,8 @@
       },
       "graphics": {
         "sprite": "units/base/settler.png",
-        "icon": "units/base/settler_icon.png"
+        "icon": "units/base/settler_icon.png",
+        "logo": "resources/brick-pile.svg"
       }
     }
   }
