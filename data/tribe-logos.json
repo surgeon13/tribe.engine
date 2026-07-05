@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "description": "Per-tribe troop logo assignments (one unique SVG per roster slot). Override in tribe JSON via troops[].overrides.graphics.logo.",
+  "tribes": {
+    "roman": {
+      "inf_t1": "infantry/gladius.svg",
+      "inf_t2": "infantry/stone-spear.svg",
+      "inf_t3": "infantry/battle-axe.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/elephant.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/brick-pile.svg"
+    },
+    "teuton": {
+      "inf_t1": "infantry/wood-club.svg",
+      "inf_t2": "infantry/spiked-mace.svg",
+      "inf_t3": "infantry/war-axe.svg",
+      "scout": "infantry/crossbow.svg",
+      "cav_t1": "cavalry/donkey.svg",
+      "cav_t2": "cavalry/horse-head.svg",
+      "cav_t3": "cavalry/camel-head.svg",
+      "ram": "infantry/war-pick.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/thor-hammer.svg",
+      "settler": "resources/wood-pile.svg"
+    },
+    "gaul": {
+      "inf_t1": "infantry/machete.svg",
+      "inf_t2": "infantry/stone-spear.svg",
+      "inf_t3": "infantry/battle-axe.svg",
+      "scout": "infantry/boomerang.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "animals/ram.svg",
+      "ram": "infantry/wood-club.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/crescent-staff.svg",
+      "settler": "resources/wheat-pile.svg"
+    },
+    "egyptian": {
+      "inf_t1": "infantry/sacrificial-dagger.svg",
+      "inf_t2": "infantry/mace-head.svg",
+      "inf_t3": "infantry/scythe.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/camel-head.svg",
+      "cav_t2": "cavalry/elephant.svg",
+      "cav_t3": "cavalry/horse-head.svg",
+      "ram": "infantry/pincers.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/orb-wand.svg",
+      "settler": "resources/grain.svg"
+    },
+    "hun": {
+      "inf_t1": "infantry/arrowhead.svg",
+      "inf_t2": "infantry/double-shot.svg",
+      "inf_t3": "infantry/crossbow.svg",
+      "scout": "infantry/flying-shuriken.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "animals/pegasus.svg",
+      "ram": "infantry/battered-axe.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/rolled-paper.svg"
+    },
+    "spartan": {
+      "inf_t1": "infantry/gladius.svg",
+      "inf_t2": "infantry/stone-spear.svg",
+      "inf_t3": "infantry/trident.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "animals/ram.svg",
+      "cav_t3": "cavalry/chess-knight.svg",
+      "ram": "infantry/spiked-ball.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/stone-pile.svg"
+    },
+    "natar": {
+      "inf_t1": "infantry/flanged-mace.svg",
+      "inf_t2": "infantry/warhammer.svg",
+      "inf_t3": "infantry/sharp-axe.svg",
+      "scout": "infantry/crossbow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/elephant.svg",
+      "cav_t3": "cavalry/chess-knight.svg",
+      "ram": "infantry/war-pick.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/brass-knuckles.svg",
+      "settler": "resources/cash-pile.svg"
+    },
+    "nature": {
+      "inf_t1": "animals/feline.svg",
+      "inf_t2": "animals/tiger.svg",
+      "inf_t3": "animals/gorilla.svg",
+      "scout": "animals/duck.svg",
+      "cav_t1": "animals/cow.svg",
+      "cav_t2": "animals/rhinoceros-horn.svg",
+      "cav_t3": "animals/pegasus.svg",
+      "ram": "animals/ram.svg",
+      "catapult": "animals/goose.svg",
+      "chief": "animals/rooster.svg",
+      "settler": "animals/chicken.svg"
+    }
+  }
+}
