@@ -96,7 +96,7 @@ node scripts/generate-hero-xp.js
 
 ## Applet (recommended)
 
-Double-click **`start-tevel.bat`** (Windows) or run:
+Double-click **`start-tevel.bat`** (Windows), run **`bash start-tevel.sh`** (Linux / macOS / Android), or:
 
 ```bash
 npm start
@@ -105,6 +105,46 @@ npm start
 This builds tribe data, starts a small local server, and opens the dashboard in your browser (app window on Edge if available). Use **Rebuild data** in the sidebar to refresh after editing JSON.
 
 **Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
+
+## Android (Termux)
+
+Install from GitHub in one command on your phone terminal:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/surgeon13/tribe.engine/master/scripts/install-android.sh | bash
+```
+
+Or clone and install manually:
+
+```bash
+pkg update && pkg install -y git nodejs
+git clone https://github.com/surgeon13/tribe.engine.git ~/tribe.engine
+cd ~/tribe.engine
+bash scripts/install-android.sh
+```
+
+Start the dashboard:
+
+```bash
+tevel
+# or
+cd ~/tribe.engine && npm start
+```
+
+Open **http://127.0.0.1:3456** in Chrome on the same phone. In Termux you can also run:
+
+```bash
+termux-open-url http://127.0.0.1:3456
+```
+
+Leave the Termux session running while you use the dashboard.
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/install-android.sh` | Download from GitHub, install deps, build data, create `~/bin/tevel` launcher |
+| `start-tevel.sh` | Quick start from a cloned repo |
+
+Optional env vars for the installer: `TEVEL_INSTALL_DIR`, `TEVEL_BRANCH`, `PORT`.
 
 ## Dashboard
 
