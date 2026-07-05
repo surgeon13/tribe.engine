@@ -144,7 +144,31 @@ Leave the Termux session running while you use the dashboard.
 | `scripts/install-android.sh` | Download from GitHub, install deps, build data, create `~/bin/tevel` launcher |
 | `start-tevel.sh` | Quick start from a cloned repo |
 
-Optional env vars for the installer: `TEVEL_INSTALL_DIR`, `TEVEL_BRANCH`, `PORT`.
+Optional env vars for the installer: `TEVEL_INSTALL_DIR`, `TEVEL_BRANCH`, `PORT`, `TEVEL_FORCE_REINSTALL`.
+
+### Troubleshooting
+
+**`rm: cannot remove 'tribe.engine': Is a directory`**
+
+Use recursive remove for folders:
+
+```bash
+rm -rf ~/tribe.engine
+```
+
+**`destination path already exists and is not an empty directory`**
+
+Either remove the old folder (above) or force reinstall:
+
+```bash
+TEVEL_FORCE_REINSTALL=1 bash scripts/install-android.sh
+```
+
+**Uninstall**
+
+```bash
+bash scripts/uninstall-android.sh
+```
 
 ## Dashboard
 

@@ -10,6 +10,7 @@
     "build:data": "node scripts/build-dashboard-data.js",
     "dashboard": "npm run start",
     "hero:xp": "node scripts/generate-hero-xp.js",
-    "install:android": "bash scripts/install-android.sh"
+    "install:android": "bash scripts/install-android.sh",
+    "uninstall:android": "bash scripts/uninstall-android.sh"
   }
 }

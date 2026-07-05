@@ -43,10 +43,22 @@ clone_or_update() {
     git -C "$INSTALL_DIR" fetch origin "$BRANCH"
     git -C "$INSTALL_DIR" checkout "$BRANCH"
     git -C "$INSTALL_DIR" pull --ff-only origin "$BRANCH"
-  else
-    info "Cloning $REPO_URL → $INSTALL_DIR"
-    git clone --branch "$BRANCH" --depth 1 "$REPO_URL" "$INSTALL_DIR"
+    return
   fi
+
+  if [[ -e "$INSTALL_DIR" ]]; then
+    if [[ "${TEVEL_FORCE_REINSTALL:-}" == "1" ]]; then
+      info "Removing existing folder: $INSTALL_DIR"
+      rm -rf "$INSTALL_DIR"
+    else
+      die "Install folder already exists: $INSTALL_DIR
+Remove it with: rm -rf \"$INSTALL_DIR\"
+Or reinstall over it: TEVEL_FORCE_REINSTALL=1 bash scripts/install-android.sh"
+    fi
+  fi
+
+  info "Cloning $REPO_URL → $INSTALL_DIR"
+  git clone --branch "$BRANCH" --depth 1 "$REPO_URL" "$INSTALL_DIR"
 }
 
 write_launcher() {
