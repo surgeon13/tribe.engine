@@ -54,16 +54,30 @@ function runBuild() {
   });
 }
 
+function isTermux() {
+  return Boolean(process.env.TERMUX_VERSION) || (process.env.PREFIX || "").includes("com.termux");
+}
+
 function shouldOpenBrowser() {
   if (process.env.TEVEL_OPEN_BROWSER === "0") return false;
   if (process.env.TEVEL_OPEN_BROWSER === "1") return true;
   if (process.env.CURSOR_AGENT === "1" || process.env.CI === "true") return false;
+  if (isTermux()) return true;
   if (process.platform === "linux" && !process.env.DISPLAY) return false;
   return true;
 }
 
 async function openApp(url) {
   if (!shouldOpenBrowser()) return;
+  if (isTermux()) {
+    try {
+      await execAsync(`termux-open-url "${url}"`);
+      return;
+    } catch {
+      log(`Open in your phone browser: ${url}`);
+      return;
+    }
+  }
   const platform = process.platform;
   if (platform === "win32") {
     try {
@@ -98,6 +112,9 @@ async function main() {
   log(`Dashboard URL: ${url}`);
   if (process.env.CURSOR_AGENT === "1") {
     log("In Cursor Cloud Agent: open the Ports panel and click port " + port + " → Open in Browser.");
+  } else if (isTermux()) {
+    log("On Android: keep this terminal open, then open " + url + " in Chrome.");
+    log("Or run: termux-open-url " + url);
   }
 
   if (shouldOpenBrowser()) {
