@@ -1,0 +1,171 @@
+{
+  "patcher": {
+    "fileversion": 1,
+    "appversion": {
+      "major": 8,
+      "minor": 6,
+      "revision": 2,
+      "architecture": "x64",
+      "modernui": 1
+    },
+    "classnamespace": "dsp-gen",
+    "rect": [
+      0,
+      0,
+      800,
+      500
+    ],
+    "boxes": [
+      {
+        "box": {
+          "id": "obj-in1",
+          "maxclass": "in",
+          "comment": "pitch_hz",
+          "index": 1,
+          "patching_rect": [
+            40,
+            40,
+            15,
+            15
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-in2",
+          "maxclass": "in",
+          "comment": "gate",
+          "index": 2,
+          "patching_rect": [
+            40,
+            70,
+            15,
+            15
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-in3",
+          "maxclass": "in",
+          "comment": "accent",
+          "index": 3,
+          "patching_rect": [
+            40,
+            100,
+            15,
+            15
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-in4",
+          "maxclass": "in",
+          "comment": "waveform",
+          "index": 4,
+          "patching_rect": [
+            40,
+            130,
+            15,
+            15
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-code",
+          "maxclass": "codebox",
+          "numinlets": 4,
+          "numoutlets": 1,
+          "outlettype": [
+            "signal"
+          ],
+          "code": "// TB-303 acid voice for gen~ (Max/MSP / Max for Live)\n//\n// Inlets (signal or per-sample):\n//   in1  pitch_hz   target frequency\n//   in2  gate       0..1 note gate\n//   in3  accent     0..1 accent flag\n//   in4  waveform   0 = saw, 1 = square\n//\n// Params (expose with @param or live.dial):\n//   cutoff, resonance, envmod, decay, slide, drive, tune\n\nParam cutoff(0.55, min=0, max=1);\nParam resonance(0.62, min=0, max=1);\nParam envmod(0.75, min=0, max=1);\nParam decay(0.45, min=0, max=1);\nParam slide(0.055, min=0.005, max=0.35);\nParam drive(1.35, min=0.8, max=2.5);\nParam tune(0, min=-12, max=12);\n\nHistory phase(0);\nHistory current_hz(110);\nHistory env(0);\nHistory prev_gate(0);\nHistory y1(0);\nHistory y2(0);\nHistory y3(0);\nHistory y4(0);\n\npitch = in1;\ngate = in2;\naccent = in3;\nwave = in4;\n\n// Fine tune (semitones)\ntarget_hz = pitch * pow(2, tune / 12);\n\n// 303-style slide (~55 ms default)\nslide_coeff = exp(-1 / (slide * samplerate));\ncurrent_hz = current_hz * slide_coeff + target_hz * (1 - slide_coeff);\n\n// Gate edge\ngate_hi = gate > 0.5;\ngate_on = gate_hi && prev_gate <= 0;\nprev_gate = gate_hi;\n\n// Decay envelope (instant attack, exponential decay)\ndecay_s = 0.08 + decay * decay * 1.8;\ndecay_k = exp(-1 / (decay_s * samplerate));\n\nif (gate_on) {\n    env = accent > 0.5 ? 1.35 : 1.0;\n}\n\nif (gate_hi) {\n    env = max(env * decay_k, 0.18);\n} else {\n    env = env * decay_k;\n}\n\nenv = env < 0.0005 ? 0 : env;\n\n// Oscillator\nphase = phase + (current_hz / samplerate);\nphase = phase - floor(phase);\n\nsaw = 2 * phase - 1;\nsquare = phase < 0.48 ? 0.92 : -0.88;\nosc = wave < 0.5 ? saw : square;\nosc = tanh(osc * drive);\n\n// Cutoff mapping (200 Hz .. ~8.2 kHz)\ncut_base = 180 + pow(cutoff, 2.4) * 8000;\naccent_boost = accent > 0.5 ? 1.55 : 1.0;\ncut_mod = cut_base * (1 + env * envmod * accent_boost * 3.2);\ncut_mod = clip(cut_mod, 80, samplerate * 0.45);\n\n// Diode-ladder-style 4-pole lowpass (nonlinear feedback)\nfc = cut_mod / samplerate;\nfc = clip(fc, 0.00001, 0.45);\ng = tan(pi * fc);\nk = 3.2 * resonance;\n\nx = osc;\ny1n = y1 + g * tanh(x - k * y4);\ny2n = y2 + g * tanh(y1n);\ny3n = y3 + g * tanh(y2n);\ny4n = y4 + g * tanh(y3n);\n\ny1 = y1n;\ny2 = y2n;\ny3 = y3n;\ny4 = y4n;\n\nfiltered = tanh(y4n * (1 + resonance * 0.35));\n\nout1 = filtered * env * 0.62;\n",
+          "patching_rect": [
+            120,
+            60,
+            420,
+            180
+          ]
+        }
+      },
+      {
+        "box": {
+          "id": "obj-out1",
+          "maxclass": "out",
+          "comment": "audio",
+          "index": 1,
+          "patching_rect": [
+            620,
+            90,
+            15,
+            15
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "patchline": {
+          "source": [
+            "obj-in1",
+            0
+          ],
+          "destination": [
+            "obj-code",
+            0
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-in2",
+            0
+          ],
+          "destination": [
+            "obj-code",
+            1
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-in3",
+            0
+          ],
+          "destination": [
+            "obj-code",
+            2
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-in4",
+            0
+          ],
+          "destination": [
+            "obj-code",
+            3
+          ]
+        }
+      },
+      {
+        "patchline": {
+          "source": [
+            "obj-code",
+            0
+          ],
+          "destination": [
+            "obj-out1",
+            0
+          ]
+        }
+      }
+    ]
+  }
+}
