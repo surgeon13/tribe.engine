@@ -40,6 +40,7 @@
         <div id="graph-palette-picker" class="sidebar-theme sidebar-graph-palette"></div>
         <footer class="sidebar-foot">
           <button type="button" id="btn-compare" class="btn ghost">Compare tribes</button>
+          <button type="button" id="btn-monitor" class="btn ghost">Leader monitor</button>
           <button type="button" id="btn-refresh" class="btn primary">Rebuild data</button>
           <button type="button" id="btn-hero-xp" class="btn ghost">Regen hero XP</button>
           <p id="server-status" class="server-status">Connecting…</p>
@@ -206,6 +207,36 @@
               </div>
               <p id="compare-radar-hint" class="muted compare-radar-note"></p>
               <div id="compare-radar-slots" class="compare-radar-slots compare-radar-slots-scroll"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="view-monitor" class="hidden">
+          <div class="panel monitor-panel">
+            <div class="panel-head panel-head-split">
+              <div>
+                <h3>Leader monitor</h3>
+                <p class="muted monitor-intro">
+                  Aggregate polling of the top 10 leaders — points and resources per hour, raid activity windows, and trend graphs.
+                  Toggle polling in terminal mode (<code>npm run terminal</code>) or use the button below.
+                </p>
+              </div>
+              <div class="monitor-toolbar">
+                <span id="monitor-status-pill" class="monitor-pill monitor-pill--off">—</span>
+                <button type="button" id="monitor-toggle" class="btn ghost">Enable polling</button>
+                <button type="button" id="monitor-poll-now" class="btn primary">Poll now</button>
+              </div>
+            </div>
+            <div id="monitor-meta" class="monitor-meta muted"></div>
+            <div id="monitor-aggregate" class="monitor-aggregate"></div>
+            <div id="monitor-rates" class="monitor-section"></div>
+            <div class="monitor-charts">
+              <div class="chart-panel"><svg id="monitor-chart-points" class="monitor-chart"></svg></div>
+              <div class="chart-panel"><svg id="monitor-chart-resources" class="monitor-chart"></svg></div>
+            </div>
+            <div class="monitor-section">
+              <h4>Raid activity</h4>
+              <div id="monitor-raids"></div>
             </div>
           </div>
         </section>

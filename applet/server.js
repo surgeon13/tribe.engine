@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { spawn } from "child_process";
+import { getLeaderMonitor } from "../lib/leader-monitor/poll.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -19,6 +20,20 @@ const MIME = {
 };
 
 const HOST = process.env.HOST || "127.0.0.1";
+
+const monitor = getLeaderMonitor({
+  onTerminal: (line) => console.log(`[Monitor] ${line}`),
+});
+
+async function readJsonBody(req) {
+  const raw = await readBody(req);
+  if (!raw) return {};
+  try {
+    return JSON.parse(raw);
+  } catch {
+    throw new Error("Invalid JSON body");
+  }
+}
 
 function runScript(scriptPath) {
   return new Promise((resolve, reject) => {
@@ -107,6 +122,56 @@ export function startServer(port = 3456) {
         return;
       }
 
+      if (url.pathname === "/api/monitor/config") {
+        if (req.method === "GET") {
+          const config = await monitor.getConfig();
+          json(res, 200, { ok: true, config, running: monitor.isRunning });
+          return;
+        }
+        if (req.method === "POST") {
+          const patch = await readJsonBody(req);
+          const config = await monitor.updateConfig(patch);
+          json(res, 200, { ok: true, config, running: monitor.isRunning });
+          return;
+        }
+      }
+
+      if (url.pathname === "/api/monitor/status" && req.method === "GET") {
+        const config = await monitor.getConfig();
+        const analytics = await monitor.getAnalytics();
+        json(res, 200, {
+          ok: true,
+          running: monitor.isRunning,
+          config,
+          analytics,
+        });
+        return;
+      }
+
+      if (url.pathname === "/api/monitor/poll" && req.method === "POST") {
+        const snapshot = await monitor.pollOnce();
+        const analytics = await monitor.getAnalytics();
+        json(res, 200, { ok: true, snapshot, analytics });
+        return;
+      }
+
+      if (url.pathname === "/api/monitor/snapshots" && req.method === "GET") {
+        const limit = Math.min(500, Math.max(1, Number(url.searchParams.get("limit")) || 200));
+        const snapshots = await monitor.getSnapshots();
+        json(res, 200, {
+          ok: true,
+          count: snapshots.length,
+          snapshots: snapshots.slice(-limit),
+        });
+        return;
+      }
+
+      if (url.pathname === "/api/monitor/analytics" && req.method === "GET") {
+        const analytics = await monitor.getAnalytics();
+        json(res, 200, { ok: true, analytics });
+        return;
+      }
+
       if (req.method === "GET" && url.pathname.startsWith("/assets/")) {
         const rel = decodeURIComponent(url.pathname.slice("/assets/".length));
         const safe = path.normalize(rel).replace(/^(\.\.[/\\])+/, "");
@@ -156,7 +221,15 @@ export function startServer(port = 3456) {
 
   return new Promise((resolve, reject) => {
     server.on("error", reject);
-    server.listen(port, HOST, () => resolve(server));
+    server.listen(port, HOST, async () => {
+      try {
+        const config = await monitor.getConfig();
+        if (config.enabled) await monitor.start();
+      } catch (e) {
+        console.error("[Monitor] Failed to start:", e.message);
+      }
+      resolve(server);
+    });
   });
 }
 
