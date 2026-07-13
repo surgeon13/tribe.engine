@@ -106,6 +106,19 @@ This builds tribe data, starts a small local server, and opens the dashboard in 
 
 **Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
 
+## Leader monitor (top 10 aggregate polling)
+
+Track how much **points** and **resources** the server top 10 generate over time, detect **raid activity windows**, and view trend graphs in the dashboard.
+
+| Command | Purpose |
+|---------|---------|
+| `npm run terminal` | Terminal mode — toggle polling, set interval, view rates/raids |
+| Sidebar → **Leader monitor** | Dashboard graphs and raid timeline |
+
+**Terminal commands:** `toggle` (enable/disable polling), `rates` (per hour / 2h / day), `raids`, `poll`, `status`, `interval <ms>`, `adapter mock|travian`, `url <statistics-url>`.
+
+Config file: `data/leader-monitor.config.json`. Snapshots are stored locally in `data/leader-monitor/snapshots.json` (gitignored). Use `adapter: "mock"` for demo data, or `travian` with a JSON statistics endpoint URL for live servers.
+
 ## Dashboard
 
 View attack, defense, speed, carry, upkeep, **training resources** (wood/clay/iron/crop), **training time**, and building for every tribe at http://127.0.0.1:3456 — tribe sidebar, summary cards, sortable troop table, hero panel, and **Compare tribes** mode (table, **graphics**, **charts**, stat graphs).
