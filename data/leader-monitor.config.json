@@ -1,0 +1,12 @@
+{
+  "enabled": false,
+  "pollIntervalMs": 300000,
+  "topCount": 10,
+  "adapter": "mock",
+  "serverUrl": null,
+  "terminalOutput": true,
+  "storeSnapshots": true,
+  "maxSnapshots": 2000,
+  "raidActivityThreshold": 5000,
+  "raidIdlePolls": 2
+}

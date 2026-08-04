@@ -25,7 +25,7 @@ import {
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
-import { renderTribeBanner, renderUnitCard } from "./graphics.js";
+import { renderTribeBanner, renderUnitCard, mountTroopLogoCell } from "./graphics.js";
 import {
   getCompareSeriesColors,
   initUiTheme,
@@ -33,6 +33,12 @@ import {
   mountThemePicker,
   resolveBarColors,
 } from "./themes.js";
+import {
+  initMonitorView,
+  refreshMonitorView,
+  startMonitorPolling,
+  stopMonitorPolling,
+} from "./monitor.js";
 
 let data = null;
 let globalScales = null;
@@ -40,6 +46,7 @@ let activeTribeId = null;
 let sortKey = "slot";
 let sortDir = 1;
 let compareMode = false;
+let monitorMode = false;
 let activeView = "table";
 let compareViewMode = "table";
 let compareChartMetric = "offense";
@@ -50,6 +57,7 @@ let compareTribeIds = [];
 let selectedTroopIndex = 0;
 let compareChartMetricBound = false;
 let compareChartLayoutBound = false;
+let serverHasApi = false;
 
 function recomputeGlobalScales() {
   if (!data?.tribes) return;
@@ -294,6 +302,7 @@ function renderTroops(tribe) {
       const m = t.metrics;
       const idx = tribe.troops.indexOf(t);
       return `<tr data-troop-index="${idx}" class="troop-row">
+        <td class="troop-logo-col" data-logo-slot="${idx}"></td>
         <td>${t.slot}</td>
         <td><strong>${t.name}</strong></td>
         <td><span class="role-badge">${t.role}</span></td>
@@ -314,6 +323,11 @@ function renderTroops(tribe) {
       </tr>`;
     })
     .join("");
+
+  rows.forEach((t, i) => {
+    const cell = tbody.querySelector(`[data-logo-slot="${i}"]`);
+    if (cell) mountTroopLogoCell(cell, t, tribe.palette);
+  });
 
   tbody.querySelectorAll(".troop-row").forEach((row) => {
     row.addEventListener("click", () => {
@@ -476,11 +490,7 @@ function renderHero(tribe) {
 function selectTribe(id) {
   activeTribeId = id;
   selectedTroopIndex = 0;
-  compareMode = false;
-  $("#view-single").classList.remove("hidden");
-  $("#view-compare").classList.add("hidden");
-  $("#btn-compare").textContent = "Compare tribes";
-  $("#topbar .view-tabs")?.classList.remove("hidden");
+  hideAuxViews();
 
   const tribe = tribeById(id);
   if (!tribe) return;
@@ -1056,10 +1066,14 @@ function renderCompare() {
 }
 
 function showCompare() {
+  monitorMode = false;
+  stopMonitorPolling();
   compareMode = true;
   $("#view-single").classList.add("hidden");
   $("#view-compare").classList.remove("hidden");
+  $("#view-monitor").classList.add("hidden");
   $("#btn-compare").textContent = "Back to tribe";
+  $("#btn-monitor").textContent = "Leader monitor";
   $("#topbar .view-tabs")?.classList.add("hidden");
 
   compareTribeIds = loadPersistedCompareSelection() || defaultCompareSelection();
@@ -1070,6 +1084,33 @@ function showCompare() {
   setCompareMode(compareViewMode);
   renderCompare();
   renderNav();
+}
+
+function hideAuxViews() {
+  compareMode = false;
+  monitorMode = false;
+  $("#view-single").classList.remove("hidden");
+  $("#view-compare").classList.add("hidden");
+  $("#view-monitor").classList.add("hidden");
+  $("#btn-compare").textContent = "Compare tribes";
+  $("#btn-monitor").textContent = "Leader monitor";
+  $("#topbar .view-tabs")?.classList.remove("hidden");
+  stopMonitorPolling();
+}
+
+async function showMonitor() {
+  hideAuxViews();
+  monitorMode = true;
+  $("#view-single").classList.add("hidden");
+  $("#view-monitor").classList.remove("hidden");
+  $("#btn-monitor").textContent = "Back to tribe";
+  $("#btn-compare").textContent = "Compare tribes";
+  $("#topbar .view-tabs")?.classList.add("hidden");
+  $("#tribe-name").textContent = "Leader monitor";
+  $("#tribe-theme").textContent = "Top 10 aggregate polling — points, resources, raids";
+  renderNav();
+  await refreshMonitorView(toast);
+  startMonitorPolling(toast);
 }
 
 function bindSort() {
@@ -1111,6 +1152,11 @@ function bindUi() {
     if (!data?.tribes?.length) return;
     if (compareMode) selectTribe(activeTribeId || data.tribes[0].id);
     else showCompare();
+  });
+
+  $("#btn-monitor")?.addEventListener("click", async () => {
+    if (monitorMode) selectTribe(activeTribeId || data.tribes[0].id);
+    else showMonitor();
   });
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
@@ -1211,10 +1257,11 @@ async function init() {
   bindUi();
   initUiTheme();
 
-  const hasApi = await setServerStatus();
-  showInstallHint(hasApi);
+  serverHasApi = await setServerStatus();
+  showInstallHint(serverHasApi);
+  initMonitorView(serverHasApi, toast);
 
-  if (!hasApi) {
+  if (!serverHasApi) {
     const refresh = $("#btn-refresh");
     const heroXp = $("#btn-hero-xp");
     if (refresh) {
@@ -1241,7 +1288,7 @@ async function init() {
       toast("Loaded from disk — use npm start or the installed PWA for full features.");
     }
   } catch (e) {
-    showLoadError(e, hasApi);
+    showLoadError(e, serverHasApi);
   }
 }
 

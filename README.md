@@ -17,6 +17,22 @@ Semi-automatic tooling to define tribes, troop statistics, and graphics for **Te
 
 Slot layout is defined in `data/roster.json`. Base unit ids (`inf_t1`, `cav_t3`, …) map 1:1 to those slots.
 
+## Tribe colors (units + buildings)
+
+Each tribe defines a **two-color palette** (`primary` + `secondary`). The same pair tints **troops**, **buildings**, and **UI** (banners, buttons).
+
+## Troop SVG logos
+
+Each troop can have a unique **SVG logo** tinted with the tribe palette (glyph = primary, tile = secondary).
+
+| File | Role |
+|------|------|
+| `logo-groups.json` | Icon groups (`infantry`, `cavalry`, …) + default logo per roster ref |
+| `tribe-logos.json` | One unique logo per troop slot for each faction |
+| `troops[].overrides.graphics.logo` | Per-troop override in tribe JSON |
+
+SVG assets live under `assets/infantry/`, `assets/cavalry/`, etc. See `assets/README.md`.
+
 ## Data layout
 
 | File | Purpose |
@@ -122,6 +138,19 @@ GitHub Pages deploys automatically from `master` via `.github/workflows/pages.ym
 
 Rebuild/regen buttons need the local applet (`npm start`); the installed app is for browsing and comparing tribes.
 
+## Leader monitor (top 10 aggregate polling)
+
+Track how much **points** and **resources** the server top 10 generate over time, detect **raid activity windows**, and view trend graphs in the dashboard.
+
+| Command | Purpose |
+|---------|---------|
+| `npm run terminal` | Terminal mode — toggle polling, set interval, view rates/raids |
+| Sidebar → **Leader monitor** | Dashboard graphs and raid timeline |
+
+**Terminal commands:** `toggle` (enable/disable polling), `rates` (per hour / 2h / day), `raids`, `poll`, `status`, `interval <ms>`, `adapter mock|travian`, `url <statistics-url>`.
+
+Config file: `data/leader-monitor.config.json`. Snapshots are stored locally in `data/leader-monitor/snapshots.json` (gitignored). Use `adapter: "mock"` for demo data, or `travian` with a JSON statistics endpoint URL for live servers.
+
 ## Dashboard
 
 View attack, defense, speed, carry, upkeep, **training resources** (wood/clay/iron/crop), **training time**, and building for every tribe at http://127.0.0.1:3456 — tribe sidebar, summary cards, sortable troop table, hero panel, and **Compare tribes** mode (table, **graphics**, **charts**, stat graphs).
@@ -129,6 +158,7 @@ View attack, defense, speed, carry, upkeep, **training resources** (wood/clay/ir
 | Path | Role |
 |------|------|
 | `lib/merge.js` | Merge engine + computed metrics |
+| `lib/leader-monitor/` | Top-10 aggregate polling, rates, raid detection |
 | `scripts/build-dashboard-data.js` | Writes `dashboard/data.json` |
 | `dashboard/` | Static UI + PWA (`manifest.webmanifest`, `sw.js`) |
 | `.github/workflows/pages.yml` | Publishes the PWA to GitHub Pages |
