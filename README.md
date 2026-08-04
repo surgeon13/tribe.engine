@@ -17,6 +17,22 @@ Semi-automatic tooling to define tribes, troop statistics, and graphics for **Te
 
 Slot layout is defined in `data/roster.json`. Base unit ids (`inf_t1`, `cav_t3`, …) map 1:1 to those slots.
 
+## Tribe colors (units + buildings)
+
+Each tribe defines a **two-color palette** (`primary` + `secondary`). The same pair tints **troops**, **buildings**, and **UI** (banners, buttons).
+
+## Troop SVG logos
+
+Each troop can have a unique **SVG logo** tinted with the tribe palette (glyph = primary, tile = secondary).
+
+| File | Role |
+|------|------|
+| `logo-groups.json` | Icon groups (`infantry`, `cavalry`, …) + default logo per roster ref |
+| `tribe-logos.json` | One unique logo per troop slot for each faction |
+| `troops[].overrides.graphics.logo` | Per-troop override in tribe JSON |
+
+SVG assets live under `assets/infantry/`, `assets/cavalry/`, etc. See `assets/README.md`.
+
 ## Data layout
 
 | File | Purpose |

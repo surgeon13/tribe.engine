@@ -40,6 +40,10 @@
       "properties": {
         "sprite": { "type": "string" },
         "icon": { "type": "string" },
+        "logo": {
+          "type": "string",
+          "description": "SVG troop logo path under assets/ (tinted with tribe palette in UI)"
+        },
         "portrait": { "type": "string" },
         "mask": { "type": "string", "description": "Recolor mask; tints with tribe palette when present" },
         "sheet": { "type": "string" },

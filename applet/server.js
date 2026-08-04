@@ -16,6 +16,7 @@ const MIME = {
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
+  ".svg": "image/svg+xml",
 };
 
 const HOST = process.env.HOST || "127.0.0.1";

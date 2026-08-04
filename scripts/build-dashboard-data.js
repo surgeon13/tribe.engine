@@ -17,11 +17,17 @@ const index = readJson("tribes/index.json");
 const heroSystem = readJson("hero.system.json");
 const palettes = readJson("tribes/palettes.json");
 const tribeTraining = readJson("tribe-training.json");
+const logoGroups = readJson("logo-groups.json");
+const tribeLogos = readJson("tribe-logos.json");
+const logoData = {
+  defaults: logoGroups.defaults,
+  tribes: tribeLogos.tribes,
+};
 
 const tribes = index.tribes.map((entry) => {
   const raw = readJson(`tribes/${entry.file}`);
   const resolved = attachAssetUrls(
-    resolveTribe(raw, base.units, roster, tribeTraining)
+    resolveTribe(raw, base.units, roster, tribeTraining, logoData)
   );
   return {
     ...resolved,
@@ -36,6 +42,7 @@ const payload = {
   assetBase: "/assets",
   generatedAt: new Date().toISOString(),
   roster: roster.slots,
+  logoGroups: logoGroups.groups,
   heroSystem: {
     maxLevel: heroSystem.leveling.maxLevel,
     attributePointsPerLevel: heroSystem.leveling.attributePointsPerLevel,

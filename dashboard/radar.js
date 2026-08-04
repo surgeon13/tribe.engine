@@ -7,6 +7,7 @@ import {
   RAW_PROFILE_AXES,
 } from "./metrics-normalize.js";
 import { getRadarChromeColors, resolveBarColors } from "./themes.js";
+import { mountPortrait } from "./graphics.js";
 
 /** Dashboard profile: combat + training + cost (raw mode). */
 export const PROFILE_AXES = RAW_PROFILE_AXES;
@@ -679,11 +680,25 @@ export function mountRadarCard(container, entity, scales, palette, opts = {}) {
 
   const head = document.createElement("div");
   head.className = "unit-stat-card-head";
-  head.innerHTML = `
+  const logoSlot = document.createElement("div");
+  logoSlot.className = "unit-stat-logo";
+  mountPortrait(logoSlot, {
+    logoUrl: entity.graphicsUrls?.logo,
+    iconUrl: entity.graphicsUrls?.icon || entity.graphicsUrls?.sprite,
+    primary: palette?.primary,
+    secondary: palette?.secondary,
+    label: entity.name,
+    alt: entity.name,
+    size: "sm",
+  });
+  const title = document.createElement("div");
+  title.className = "unit-stat-card-title";
+  title.innerHTML = `
     <span class="unit-stat-slot">${entity.slot ?? "★"}</span>
     <h4 class="unit-stat-name">${entity.name}</h4>
     <span class="role-badge">${entity.role || "hero"}</span>
   `;
+  head.append(logoSlot, title);
   card.append(head);
 
   const m = entity.metrics;
