@@ -61,13 +61,79 @@ const COMPARE_STORAGE_KEY = "tevel-compare-tribes";
 
 const $ = (sel) => document.querySelector(sel);
 
+function isStandaloneDisplay() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
+/** Turn legacy absolute `/assets/...` URLs into relative ones for PWA / Pages. */
+function relativizeUrl(url) {
+  if (!url || typeof url !== "string") return url;
+  if (url.startsWith("/assets/")) return url.slice(1);
+  return url;
+}
+
+function relativizeTribeAssets(tribe) {
+  if (tribe.graphicsUrls) {
+    for (const k of Object.keys(tribe.graphicsUrls)) {
+      tribe.graphicsUrls[k] = relativizeUrl(tribe.graphicsUrls[k]);
+    }
+  }
+  for (const troop of tribe.troops || []) {
+    if (!troop.graphicsUrls) continue;
+    for (const k of Object.keys(troop.graphicsUrls)) {
+      troop.graphicsUrls[k] = relativizeUrl(troop.graphicsUrls[k]);
+    }
+  }
+  if (tribe.hero?.graphicsUrls) {
+    for (const k of Object.keys(tribe.hero.graphicsUrls)) {
+      tribe.hero.graphicsUrls[k] = relativizeUrl(tribe.hero.graphicsUrls[k]);
+    }
+  }
+}
+
+function preparePayload(payload) {
+  if (!payload) return payload;
+  if (payload.assetBase === "/assets") payload.assetBase = "assets";
+  for (const tribe of payload.tribes || []) relativizeTribeAssets(tribe);
+  return payload;
+}
+
+function registerServiceWorker() {
+  if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
+  navigator.serviceWorker.register("./sw.js").catch((err) => {
+    console.warn("[Tevel] Service worker registration failed:", err);
+  });
+}
+
+function showInstallHint(hasApi) {
+  const el = $("#install-hint");
+  if (!el || hasApi || isStandaloneDisplay()) return;
+
+  const isIos =
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const isSecure =
+    location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+  if (!isSecure) return;
+
+  el.hidden = false;
+  el.classList.remove("hidden");
+  el.textContent = isIos
+    ? "Install: Safari Share → Add to Home Screen"
+    : "Install: use your browser’s Install app / Add to Home Screen";
+}
+
 async function loadData() {
   const errors = [];
 
   try {
     const res = await fetch(`data.json?ts=${Date.now()}`, { cache: "no-store" });
     if (res.ok) {
-      data = await res.json();
+      data = preparePayload(await res.json());
     } else {
       errors.push(`fetch data.json → HTTP ${res.status}`);
     }
@@ -78,7 +144,7 @@ async function loadData() {
   if (!data?.tribes?.length) {
     try {
       const mod = await import("./generated-data.js");
-      data = mod.default;
+      data = preparePayload(mod.default);
     } catch (e) {
       errors.push(`import generated-data.js → ${e.message}`);
     }
@@ -1072,17 +1138,23 @@ async function apiPost(path) {
 
 async function setServerStatus() {
   const el = $("#server-status");
-  try {
-    const res = await fetch("/api/status");
-    if (res.ok) {
-      el.textContent = "Applet connected";
-      el.className = "server-status ok";
-      return true;
+  for (const path of ["/api/status", "api/status"]) {
+    try {
+      const res = await fetch(path, { cache: "no-store" });
+      if (!res.ok) continue;
+      const body = await res.json();
+      if (body?.game === "Tevel") {
+        el.textContent = "Applet connected";
+        el.className = "server-status ok";
+        return true;
+      }
+    } catch {
+      /* try next */
     }
-  } catch {
-    /* static file mode */
   }
-  el.textContent = "Static mode — use npm start for rebuild";
+  el.textContent = isStandaloneDisplay()
+    ? "Installed app — offline OK"
+    : "PWA / static mode — viewing cached data";
   el.className = "server-status";
   return false;
 }
@@ -1135,10 +1207,28 @@ function showLoadError(e, hasApi) {
 }
 
 async function init() {
+  registerServiceWorker();
   bindUi();
   initUiTheme();
 
   const hasApi = await setServerStatus();
+  showInstallHint(hasApi);
+
+  if (!hasApi) {
+    const refresh = $("#btn-refresh");
+    const heroXp = $("#btn-hero-xp");
+    if (refresh) {
+      refresh.disabled = true;
+      refresh.title = "Needs the local applet (npm start) to rebuild JSON";
+      refresh.textContent = "Rebuild (applet only)";
+    }
+    if (heroXp) {
+      heroXp.disabled = true;
+      heroXp.title = "Needs the local applet (npm start)";
+      heroXp.classList.add("hidden");
+    }
+  }
+
   try {
     await loadData();
     recomputeGlobalScales();
@@ -1147,11 +1237,8 @@ async function init() {
     mountThemePicker($("#theme-picker"), onUiThemeChange);
     mountGraphPalettePicker($("#graph-palette-picker"), onGraphPaletteChange);
     selectTribe(data.tribes[0].id);
-    if (!hasApi) {
-      $("#btn-refresh").textContent = "Rebuild (needs applet)";
-    }
     if (location.protocol === "file:") {
-      toast("Loaded from disk — use npm start for full applet features.");
+      toast("Loaded from disk — use npm start or the installed PWA for full features.");
     }
   } catch (e) {
     showLoadError(e, hasApi);

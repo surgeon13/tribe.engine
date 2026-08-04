@@ -23,6 +23,11 @@ body {
   background: var(--bg);
 }
 
+body {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -189,6 +194,13 @@ body {
 
 .server-status.err {
   color: var(--negative);
+}
+
+.install-hint {
+  margin: 4px 0 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--text-muted);
 }
 
 /* Main */

@@ -1,8 +1,8 @@
 {
   "version": 1,
   "game": "Tevel",
-  "assetBase": "/assets",
-  "generatedAt": "2026-06-06T12:33:15.278Z",
+  "assetBase": "assets",
+  "generatedAt": "2026-08-04T06:32:20.731Z",
   "roster": [
     {
       "slot": 1,
@@ -257,10 +257,10 @@
             "resourceCost": 400
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/roman/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/roman/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/roman/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -320,10 +320,10 @@
             "resourceCost": 460
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/roman/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/roman/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/roman/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -383,10 +383,10 @@
             "resourceCost": 600
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/roman/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/roman/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/roman/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -446,10 +446,10 @@
             "resourceCost": 360
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/roman/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/roman/units/04_scout_icon.png",
+            "sprite": "assets/tribes/roman/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -509,10 +509,10 @@
             "resourceCost": 1410
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/roman/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/roman/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/roman/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -572,10 +572,10 @@
             "resourceCost": 2170
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/roman/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/roman/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/roman/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -635,10 +635,10 @@
             "resourceCost": 1760
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/roman/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/roman/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/roman/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -698,10 +698,10 @@
             "resourceCost": 1830
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/roman/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/roman/units/08_ram_icon.png",
+            "sprite": "assets/tribes/roman/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -761,10 +761,10 @@
             "resourceCost": 2990
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/roman/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/roman/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/roman/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -829,10 +829,10 @@
             "resourceCost": 140450
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/roman/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/roman/units/10_chief_icon.png",
+            "sprite": "assets/tribes/roman/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -892,10 +892,10 @@
             "resourceCost": 23800
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/roman/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/roman/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/roman/units/11_settler_icon.png",
+            "sprite": "assets/tribes/roman/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -952,13 +952,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/roman/hero/hero_icon.png",
-          "sprite": "/assets/tribes/roman/hero/hero.png",
-          "portrait": "/assets/tribes/roman/hero/hero_portrait.png"
+          "icon": "assets/tribes/roman/hero/hero_icon.png",
+          "sprite": "assets/tribes/roman/hero/hero.png",
+          "portrait": "assets/tribes/roman/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/roman/banner.png"
+        "banner": "assets/tribes/roman/banner.png"
       }
     },
     {
@@ -1042,10 +1042,10 @@
             "resourceCost": 250
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/teuton/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/teuton/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/teuton/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -1105,10 +1105,10 @@
             "resourceCost": 340
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/teuton/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/teuton/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/teuton/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -1168,10 +1168,10 @@
             "resourceCost": 440
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/teuton/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/teuton/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/teuton/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -1231,10 +1231,10 @@
             "resourceCost": 360
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/teuton/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/teuton/units/04_scout_icon.png",
+            "sprite": "assets/tribes/teuton/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -1294,10 +1294,10 @@
             "resourceCost": 1005
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/teuton/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/teuton/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/teuton/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -1357,10 +1357,10 @@
             "resourceCost": 1525
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/teuton/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/teuton/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/teuton/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -1420,10 +1420,10 @@
             "resourceCost": 1275
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/teuton/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/teuton/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/teuton/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -1483,10 +1483,10 @@
             "resourceCost": 1720
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/teuton/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/teuton/units/08_ram_icon.png",
+            "sprite": "assets/tribes/teuton/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -1546,10 +1546,10 @@
             "resourceCost": 1680
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/teuton/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/teuton/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/teuton/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -1614,10 +1614,10 @@
             "resourceCost": 140450
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/teuton/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/teuton/units/10_chief_icon.png",
+            "sprite": "assets/tribes/teuton/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -1677,10 +1677,10 @@
             "resourceCost": 14500
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/teuton/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/teuton/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/teuton/units/11_settler_icon.png",
+            "sprite": "assets/tribes/teuton/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -1734,13 +1734,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/teuton/hero/hero_icon.png",
-          "sprite": "/assets/tribes/teuton/hero/hero.png",
-          "portrait": "/assets/tribes/teuton/hero/hero_portrait.png"
+          "icon": "assets/tribes/teuton/hero/hero_icon.png",
+          "sprite": "assets/tribes/teuton/hero/hero.png",
+          "portrait": "assets/tribes/teuton/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/teuton/banner.png"
+        "banner": "assets/tribes/teuton/banner.png"
       }
     },
     {
@@ -1824,10 +1824,10 @@
             "resourceCost": 315
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/gaul/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/gaul/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/gaul/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -1887,10 +1887,10 @@
             "resourceCost": 535
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/gaul/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/gaul/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/gaul/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -1950,10 +1950,10 @@
             "resourceCost": 425
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/gaul/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/gaul/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/gaul/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -2013,10 +2013,10 @@
             "resourceCost": 410
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/gaul/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/gaul/units/04_scout_icon.png",
+            "sprite": "assets/tribes/gaul/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -2076,10 +2076,10 @@
             "resourceCost": 1090
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/gaul/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/gaul/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/gaul/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -2139,10 +2139,10 @@
             "resourceCost": 1090
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/gaul/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/gaul/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/gaul/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -2202,10 +2202,10 @@
             "resourceCost": 1730
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/gaul/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/gaul/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/gaul/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -2265,10 +2265,10 @@
             "resourceCost": 1910
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/gaul/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/gaul/units/08_ram_icon.png",
+            "sprite": "assets/tribes/gaul/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -2328,10 +2328,10 @@
             "resourceCost": 3130
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/gaul/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/gaul/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/gaul/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -2396,10 +2396,10 @@
             "resourceCost": 140450
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/gaul/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/gaul/units/10_chief_icon.png",
+            "sprite": "assets/tribes/gaul/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -2459,10 +2459,10 @@
             "resourceCost": 14500
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/gaul/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/gaul/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/gaul/units/11_settler_icon.png",
+            "sprite": "assets/tribes/gaul/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -2516,13 +2516,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/gaul/hero/hero_icon.png",
-          "sprite": "/assets/tribes/gaul/hero/hero.png",
-          "portrait": "/assets/tribes/gaul/hero/hero_portrait.png"
+          "icon": "assets/tribes/gaul/hero/hero_icon.png",
+          "sprite": "assets/tribes/gaul/hero/hero.png",
+          "portrait": "assets/tribes/gaul/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/gaul/banner.png"
+        "banner": "assets/tribes/gaul/banner.png"
       }
     },
     {
@@ -2606,10 +2606,10 @@
             "resourceCost": 150
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/egyptian/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/egyptian/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -2669,10 +2669,10 @@
             "resourceCost": 420
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/egyptian/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/egyptian/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -2732,10 +2732,10 @@
             "resourceCost": 650
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/egyptian/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/egyptian/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -2795,10 +2795,10 @@
             "resourceCost": 380
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/egyptian/units/04_scout_icon.png",
+            "sprite": "assets/tribes/egyptian/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -2858,10 +2858,10 @@
             "resourceCost": 1090
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/egyptian/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/egyptian/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -2921,10 +2921,10 @@
             "resourceCost": 1800
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/egyptian/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/egyptian/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -2984,10 +2984,10 @@
             "resourceCost": 1620
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/egyptian/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/egyptian/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -3047,10 +3047,10 @@
             "resourceCost": 1990
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/egyptian/units/08_ram_icon.png",
+            "sprite": "assets/tribes/egyptian/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -3110,10 +3110,10 @@
             "resourceCost": 3250
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/egyptian/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/egyptian/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -3178,10 +3178,10 @@
             "resourceCost": 160000
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/egyptian/units/10_chief_icon.png",
+            "sprite": "assets/tribes/egyptian/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -3241,10 +3241,10 @@
             "resourceCost": 21000
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/egyptian/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/egyptian/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/egyptian/units/11_settler_icon.png",
+            "sprite": "assets/tribes/egyptian/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -3301,13 +3301,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/egyptian/hero/hero_icon.png",
-          "sprite": "/assets/tribes/egyptian/hero/hero.png",
-          "portrait": "/assets/tribes/egyptian/hero/hero_portrait.png"
+          "icon": "assets/tribes/egyptian/hero/hero_icon.png",
+          "sprite": "assets/tribes/egyptian/hero/hero.png",
+          "portrait": "assets/tribes/egyptian/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/egyptian/banner.png"
+        "banner": "assets/tribes/egyptian/banner.png"
       }
     },
     {
@@ -3391,10 +3391,10 @@
             "resourceCost": 350
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/hun/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/hun/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/hun/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -3454,10 +3454,10 @@
             "resourceCost": 440
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/hun/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/hun/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/hun/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -3517,10 +3517,10 @@
             "resourceCost": 415
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/hun/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/hun/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/hun/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -3580,10 +3580,10 @@
             "resourceCost": 410
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/hun/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/hun/units/04_scout_icon.png",
+            "sprite": "assets/tribes/hun/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -3643,10 +3643,10 @@
             "resourceCost": 990
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/hun/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/hun/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/hun/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -3706,10 +3706,10 @@
             "resourceCost": 1290
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/hun/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/hun/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/hun/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -3769,10 +3769,10 @@
             "resourceCost": 1700
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/hun/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/hun/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/hun/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -3832,10 +3832,10 @@
             "resourceCost": 1720
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/hun/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/hun/units/08_ram_icon.png",
+            "sprite": "assets/tribes/hun/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -3895,10 +3895,10 @@
             "resourceCost": 2380
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/hun/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/hun/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/hun/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -3963,10 +3963,10 @@
             "resourceCost": 140450
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/hun/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/hun/units/10_chief_icon.png",
+            "sprite": "assets/tribes/hun/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -4026,10 +4026,10 @@
             "resourceCost": 14500
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/hun/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/hun/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/hun/units/11_settler_icon.png",
+            "sprite": "assets/tribes/hun/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -4086,13 +4086,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/hun/hero/hero_icon.png",
-          "sprite": "/assets/tribes/hun/hero/hero.png",
-          "portrait": "/assets/tribes/hun/hero/hero_portrait.png"
+          "icon": "assets/tribes/hun/hero/hero_icon.png",
+          "sprite": "assets/tribes/hun/hero/hero.png",
+          "portrait": "assets/tribes/hun/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/hun/banner.png"
+        "banner": "assets/tribes/hun/banner.png"
       }
     },
     {
@@ -4176,10 +4176,10 @@
             "resourceCost": 400
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/spartan/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/spartan/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/spartan/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -4239,10 +4239,10 @@
             "resourceCost": 530
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/spartan/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/spartan/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/spartan/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -4302,10 +4302,10 @@
             "resourceCost": 720
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/spartan/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/spartan/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/spartan/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -4365,10 +4365,10 @@
             "resourceCost": 420
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/spartan/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/spartan/units/04_scout_icon.png",
+            "sprite": "assets/tribes/spartan/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -4428,10 +4428,10 @@
             "resourceCost": 1370
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/spartan/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/spartan/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/spartan/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -4491,10 +4491,10 @@
             "resourceCost": 1980
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/spartan/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/spartan/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/spartan/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -4554,10 +4554,10 @@
             "resourceCost": 1590
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/spartan/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/spartan/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/spartan/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -4617,10 +4617,10 @@
             "resourceCost": 1830
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/spartan/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/spartan/units/08_ram_icon.png",
+            "sprite": "assets/tribes/spartan/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -4680,10 +4680,10 @@
             "resourceCost": 3130
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/spartan/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/spartan/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/spartan/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -4748,10 +4748,10 @@
             "resourceCost": 140450
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/spartan/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/spartan/units/10_chief_icon.png",
+            "sprite": "assets/tribes/spartan/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -4811,10 +4811,10 @@
             "resourceCost": 14500
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/spartan/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/spartan/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/spartan/units/11_settler_icon.png",
+            "sprite": "assets/tribes/spartan/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -4868,13 +4868,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/spartan/hero/hero_icon.png",
-          "sprite": "/assets/tribes/spartan/hero/hero.png",
-          "portrait": "/assets/tribes/spartan/hero/hero_portrait.png"
+          "icon": "assets/tribes/spartan/hero/hero_icon.png",
+          "sprite": "assets/tribes/spartan/hero/hero.png",
+          "portrait": "assets/tribes/spartan/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/spartan/banner.png"
+        "banner": "assets/tribes/spartan/banner.png"
       }
     },
     {
@@ -4958,10 +4958,10 @@
             "resourceCost": 340
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/natar/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/natar/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/natar/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -5021,10 +5021,10 @@
             "resourceCost": 440
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/natar/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/natar/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/natar/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -5084,10 +5084,10 @@
             "resourceCost": 660
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/natar/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/natar/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/natar/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -5147,10 +5147,10 @@
             "resourceCost": 410
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/natar/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/natar/units/04_scout_icon.png",
+            "sprite": "assets/tribes/natar/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -5210,10 +5210,10 @@
             "resourceCost": 1290
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/natar/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/natar/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/natar/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -5273,10 +5273,10 @@
             "resourceCost": 1630
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/natar/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/natar/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/natar/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -5336,10 +5336,10 @@
             "resourceCost": 1535
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/natar/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/natar/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/natar/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -5399,10 +5399,10 @@
             "resourceCost": 3020
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/natar/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/natar/units/08_ram_icon.png",
+            "sprite": "assets/tribes/natar/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -5462,10 +5462,10 @@
             "resourceCost": 2490
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/natar/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/natar/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/natar/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -5530,10 +5530,10 @@
             "resourceCost": 140450
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/natar/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/natar/units/10_chief_icon.png",
+            "sprite": "assets/tribes/natar/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -5593,10 +5593,10 @@
             "resourceCost": 14500
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/natar/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/natar/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/natar/units/11_settler_icon.png",
+            "sprite": "assets/tribes/natar/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -5653,13 +5653,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/natar/hero/hero_icon.png",
-          "sprite": "/assets/tribes/natar/hero/hero.png",
-          "portrait": "/assets/tribes/natar/hero/hero_portrait.png"
+          "icon": "assets/tribes/natar/hero/hero_icon.png",
+          "sprite": "assets/tribes/natar/hero/hero.png",
+          "portrait": "assets/tribes/natar/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/natar/banner.png"
+        "banner": "assets/tribes/natar/banner.png"
       }
     },
     {
@@ -5743,10 +5743,10 @@
             "resourceCost": 305
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/01_infantry_icon.png",
-            "sprite": "/assets/tribes/nature/units/01_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t1_icon.png",
-            "baseSprite": "/assets/units/base/inf_t1.png"
+            "icon": "assets/tribes/nature/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/nature/units/01_infantry.png",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png"
           }
         },
         {
@@ -5806,10 +5806,10 @@
             "resourceCost": 355
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/02_infantry_icon.png",
-            "sprite": "/assets/tribes/nature/units/02_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t2_icon.png",
-            "baseSprite": "/assets/units/base/inf_t2.png"
+            "icon": "assets/tribes/nature/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/nature/units/02_infantry.png",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png"
           }
         },
         {
@@ -5869,10 +5869,10 @@
             "resourceCost": 390
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/03_infantry_icon.png",
-            "sprite": "/assets/tribes/nature/units/03_infantry.png",
-            "baseIcon": "/assets/units/base/inf_t3_icon.png",
-            "baseSprite": "/assets/units/base/inf_t3.png"
+            "icon": "assets/tribes/nature/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/nature/units/03_infantry.png",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png"
           }
         },
         {
@@ -5932,10 +5932,10 @@
             "resourceCost": 305
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/04_scout_icon.png",
-            "sprite": "/assets/tribes/nature/units/04_scout.png",
-            "baseIcon": "/assets/units/base/scout_icon.png",
-            "baseSprite": "/assets/units/base/scout.png"
+            "icon": "assets/tribes/nature/units/04_scout_icon.png",
+            "sprite": "assets/tribes/nature/units/04_scout.png",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png"
           }
         },
         {
@@ -5995,10 +5995,10 @@
             "resourceCost": 620
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/05_cavalry_icon.png",
-            "sprite": "/assets/tribes/nature/units/05_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t1_icon.png",
-            "baseSprite": "/assets/units/base/cav_t1.png"
+            "icon": "assets/tribes/nature/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/nature/units/05_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png"
           }
         },
         {
@@ -6058,10 +6058,10 @@
             "resourceCost": 775
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/06_cavalry_icon.png",
-            "sprite": "/assets/tribes/nature/units/06_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t2_icon.png",
-            "baseSprite": "/assets/units/base/cav_t2.png"
+            "icon": "assets/tribes/nature/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/nature/units/06_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png"
           }
         },
         {
@@ -6121,10 +6121,10 @@
             "resourceCost": 655
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/07_cavalry_icon.png",
-            "sprite": "/assets/tribes/nature/units/07_cavalry.png",
-            "baseIcon": "/assets/units/base/cav_t3_icon.png",
-            "baseSprite": "/assets/units/base/cav_t3.png"
+            "icon": "assets/tribes/nature/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/nature/units/07_cavalry.png",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png"
           }
         },
         {
@@ -6184,10 +6184,10 @@
             "resourceCost": 740
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/08_ram_icon.png",
-            "sprite": "/assets/tribes/nature/units/08_ram.png",
-            "baseIcon": "/assets/units/base/ram_icon.png",
-            "baseSprite": "/assets/units/base/ram.png"
+            "icon": "assets/tribes/nature/units/08_ram_icon.png",
+            "sprite": "assets/tribes/nature/units/08_ram.png",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png"
           }
         },
         {
@@ -6247,10 +6247,10 @@
             "resourceCost": 905
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/09_catapult_icon.png",
-            "sprite": "/assets/tribes/nature/units/09_catapult.png",
-            "baseIcon": "/assets/units/base/catapult_icon.png",
-            "baseSprite": "/assets/units/base/catapult.png"
+            "icon": "assets/tribes/nature/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/nature/units/09_catapult.png",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png"
           }
         },
         {
@@ -6315,10 +6315,10 @@
             "resourceCost": 835
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/10_chief_icon.png",
-            "sprite": "/assets/tribes/nature/units/10_chief.png",
-            "baseIcon": "/assets/units/base/chief_icon.png",
-            "baseSprite": "/assets/units/base/chief.png"
+            "icon": "assets/tribes/nature/units/10_chief_icon.png",
+            "sprite": "assets/tribes/nature/units/10_chief.png",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png"
           }
         },
         {
@@ -6378,10 +6378,10 @@
             "resourceCost": 0
           },
           "graphicsUrls": {
-            "icon": "/assets/tribes/nature/units/11_settler_icon.png",
-            "sprite": "/assets/tribes/nature/units/11_settler.png",
-            "baseIcon": "/assets/units/base/settler_icon.png",
-            "baseSprite": "/assets/units/base/settler.png"
+            "icon": "assets/tribes/nature/units/11_settler_icon.png",
+            "sprite": "assets/tribes/nature/units/11_settler.png",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png"
           }
         }
       ],
@@ -6438,13 +6438,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "/assets/tribes/nature/hero/hero_icon.png",
-          "sprite": "/assets/tribes/nature/hero/hero.png",
-          "portrait": "/assets/tribes/nature/hero/hero_portrait.png"
+          "icon": "assets/tribes/nature/hero/hero_icon.png",
+          "sprite": "assets/tribes/nature/hero/hero.png",
+          "portrait": "assets/tribes/nature/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "/assets/tribes/nature/banner.png"
+        "banner": "assets/tribes/nature/banner.png"
       }
     }
   ]
