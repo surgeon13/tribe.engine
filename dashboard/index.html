@@ -41,7 +41,8 @@
         <footer class="sidebar-foot">
           <button type="button" id="btn-compare" class="btn ghost">Compare tribes</button>
           <button type="button" id="btn-monitor" class="btn ghost">Leader monitor</button>
-          <button type="button" id="btn-refresh" class="btn primary">Rebuild data</button>
+          <button type="button" id="btn-add-tribe" class="btn primary">Add tribe</button>
+          <button type="button" id="btn-refresh" class="btn ghost">Rebuild data</button>
           <button type="button" id="btn-hero-xp" class="btn ghost">Regen hero XP</button>
           <p id="server-status" class="server-status">Connecting…</p>
         </footer>
@@ -245,6 +246,54 @@
     </div>
 
     <div id="toast" class="toast hidden" role="status"></div>
+
+    <div id="add-tribe-overlay" class="modal-overlay hidden" aria-hidden="true">
+      <div
+        class="modal-panel add-tribe-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="add-tribe-title"
+      >
+        <header class="modal-head">
+          <h3 id="add-tribe-title">Add tribe</h3>
+          <p class="muted">
+            Generate a full 11-troop roster + hero from historical culture — included in tables,
+            compare, graphics, and normalized stats.
+          </p>
+        </header>
+        <div class="add-tribe-form">
+          <label>
+            <span>Historical culture</span>
+            <select id="add-tribe-culture" aria-label="Historical culture"></select>
+          </label>
+          <label>
+            <span>Display name</span>
+            <input id="add-tribe-name" type="text" placeholder="e.g. Carthaginians" autocomplete="off" />
+          </label>
+          <label>
+            <span>Type</span>
+            <select id="add-tribe-type" aria-label="Tribe type">
+              <option value="playable">Playable</option>
+              <option value="npc">NPC</option>
+            </select>
+          </label>
+          <label class="add-tribe-context-field">
+            <span>Historical context</span>
+            <textarea
+              id="add-tribe-context"
+              rows="3"
+              placeholder="Optional — paste era notes or keywords (Hannibal, Immortals, Sengoku…)"
+            ></textarea>
+          </label>
+          <div id="add-tribe-preview" class="add-tribe-preview"></div>
+        </div>
+        <footer class="modal-actions">
+          <button type="button" id="add-tribe-cancel" class="btn ghost">Cancel</button>
+          <button type="button" id="add-tribe-submit" class="btn primary">Add tribe</button>
+        </footer>
+      </div>
+    </div>
+
     <script type="module" src="app.js"></script>
   </body>
 </html>

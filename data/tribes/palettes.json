@@ -42,6 +42,26 @@
       "primary": "#3D6B35",
       "secondary": "#8B6914",
       "notes": "Moss green + earth ochre"
+    },
+    "carthaginian": {
+      "primary": "#1B4F72",
+      "secondary": "#C9A227",
+      "notes": "Tyrian sea-blue + trade gold"
+    },
+    "japanese": {
+      "primary": "#8B1A1A",
+      "secondary": "#F5F0E6",
+      "notes": "Lacquer red + rice-paper cream"
+    },
+    "norse": {
+      "primary": "#1A3A5C",
+      "secondary": "#A8B4C0",
+      "notes": "Fjord blue + iron silver"
+    },
+    "byzantine": {
+      "primary": "#2C3E6B",
+      "secondary": "#D4AF37",
+      "notes": "Imperial blue + mosaic gold"
     }
   }
 }

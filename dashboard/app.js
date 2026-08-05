@@ -39,6 +39,7 @@ import {
   startMonitorPolling,
   stopMonitorPolling,
 } from "./monitor.js";
+import { initAddTribeUi, setAddTribeEnabled } from "./tribe-create.js";
 
 let data = null;
 let globalScales = null;
@@ -1186,6 +1187,12 @@ async function init() {
 
   serverHasApi = await setServerStatus();
   initMonitorView(serverHasApi, toast);
+  setAddTribeEnabled(serverHasApi);
+  initAddTribeUi(toast, async (tribeId) => {
+    await loadData();
+    recomputeGlobalScales();
+    selectTribe(tribeId);
+  });
   try {
     await loadData();
     recomputeGlobalScales();

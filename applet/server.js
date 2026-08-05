@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { spawn } from "child_process";
 import { getLeaderMonitor } from "../lib/leader-monitor/poll.js";
+import { createTribe, listProfileSummaries, matchProfile } from "../lib/tribe-generator/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -120,6 +121,50 @@ export function startServer(port = 3456) {
       if (url.pathname === "/api/hero-xp" && req.method === "POST") {
         const out = await runScript(path.join(root, "scripts", "generate-hero-xp.js"));
         json(res, 200, { ok: true, message: out || "Hero XP table regenerated" });
+        return;
+      }
+
+      if (url.pathname === "/api/tribes/profiles" && req.method === "GET") {
+        json(res, 200, { ok: true, profiles: listProfileSummaries() });
+        return;
+      }
+
+      if (url.pathname === "/api/tribes/match" && req.method === "GET") {
+        const q = url.searchParams.get("q") || "";
+        const matched = matchProfile(q);
+        json(res, 200, {
+          ok: true,
+          query: q,
+          match: matched
+            ? {
+                id: matched.id,
+                name: matched.name,
+                era: matched.era,
+                region: matched.region,
+                theme: matched.theme,
+                historicalContext: matched.historicalContext,
+                archetype: matched.archetype,
+                palette: matched.palette,
+              }
+            : null,
+        });
+        return;
+      }
+
+      if (url.pathname === "/api/tribes" && req.method === "POST") {
+        const body = await readJsonBody(req);
+        const result = await createTribe({
+          cultureId: body.cultureId,
+          historicalContext: body.historicalContext || body.context,
+          name: body.name,
+          id: body.id,
+          type: body.type === "npc" ? "npc" : "playable",
+          palette: body.palette,
+          theme: body.theme,
+          heroName: body.heroName,
+          rebuild: body.rebuild !== false,
+        });
+        json(res, 201, { ok: true, tribe: result, message: `Created ${result.name}` });
         return;
       }
 

@@ -618,6 +618,22 @@
       "fightingStrengthPerPoint": 0,
       "resourceProductionBonusPercent": 0,
       "playable": false
+    },
+    "carthaginian": {
+      "fightingStrengthPerPoint": 90,
+      "resourceProductionBonusPercent": 10
+    },
+    "japanese": {
+      "fightingStrengthPerPoint": 90,
+      "resourceProductionBonusPercent": 0
+    },
+    "norse": {
+      "fightingStrengthPerPoint": 85,
+      "resourceProductionBonusPercent": 0
+    },
+    "byzantine": {
+      "fightingStrengthPerPoint": 95,
+      "resourceProductionBonusPercent": 0
     }
   },
   "xpSources": {

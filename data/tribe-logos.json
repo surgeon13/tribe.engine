@@ -105,6 +105,58 @@
       "catapult": "animals/goose.svg",
       "chief": "animals/rooster.svg",
       "settler": "animals/chicken.svg"
+    },
+    "carthaginian": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/boomerang.svg",
+      "inf_t3": "infantry/battle-axe.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/elephant.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/orb-wand.svg",
+      "settler": "resources/cash-pile.svg"
+    },
+    "japanese": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/kusarigama.svg",
+      "inf_t3": "infantry/machete.svg",
+      "scout": "infantry/shuriken.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/donkey.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/wheat-pile.svg"
+    },
+    "norse": {
+      "inf_t1": "infantry/wood-club.svg",
+      "inf_t2": "infantry/battle-axe.svg",
+      "inf_t3": "infantry/war-axe.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/donkey.svg",
+      "cav_t2": "cavalry/horse-head.svg",
+      "cav_t3": "cavalry/chess-knight.svg",
+      "ram": "infantry/battered-axe.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/thor-hammer.svg",
+      "settler": "resources/wood-pile.svg"
+    },
+    "byzantine": {
+      "inf_t1": "infantry/gladius.svg",
+      "inf_t2": "infantry/stone-spear.svg",
+      "inf_t3": "infantry/crossbow.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/elephant.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/brick-pile.svg"
     }
   }
 }
