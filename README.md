@@ -122,11 +122,15 @@ This builds tribe data, starts a small local server, and opens the dashboard in 
 
 **Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
 
-**Add tribe** (sidebar): create a new playable/NPC faction from a historical culture profile (Carthaginian, Persian, Viking, Byzantine, Mongol, Japanese, Israelite, Axum, Greek, Slav, Balt, Dacian). Generates full troop names, stats, costs, training, logos, palette, and hero — then rebuilds so the tribe appears in table, compare, graphics, and normalized graphs.
+**Add tribe** (sidebar): create a new playable/NPC faction from a historical culture profile (Carthaginian, Persian, Viking, Byzantine, Mongol, Japanese, Israelite, Axum, Greek, Slav, Balt, Dacian). Generates full troop names, stats, costs, training, logos, palette, and hero — then **writes them under `data/`** so they survive restarts and rebuilds.
+
+**Delete tribe**: non-core factions show an **×** in the sidebar (or `npm run tribe:delete -- <id>`). Core Travian defaults (Romans–Nature) are protected and cannot be removed.
 
 ```bash
 npm run tribe:list
+npm run tribe:list-registered
 npm run tribe:add -- --culture viking --name "Norse"
+npm run tribe:delete -- norse
 ```
 
 ## Leader monitor (top 10 aggregate polling)

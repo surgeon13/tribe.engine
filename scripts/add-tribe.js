@@ -1,23 +1,38 @@
 #!/usr/bin/env node
 /**
- * Add a historically flavored tribe on the fly.
+ * Add or remove historically flavored tribes.
  *
  * Usage:
  *   node scripts/add-tribe.js --culture carthaginian
  *   node scripts/add-tribe.js --culture viking --name "Norse Raiders"
  *   node scripts/add-tribe.js --context "Achaemenid Persian Immortals"
  *   node scripts/add-tribe.js --list
+ *   node scripts/add-tribe.js --list-tribes
+ *   node scripts/add-tribe.js --delete slav
  */
-import { createTribe, listProfileSummaries, matchProfile } from "../lib/tribe-generator/index.js";
+import {
+  createTribe,
+  deleteTribe,
+  listTribes,
+  listProfileSummaries,
+  matchProfile,
+  CORE_TRIBE_IDS,
+} from "../lib/tribe-generator/index.js";
 
 function parseArgs(argv) {
   /** @type {Record<string, string | boolean>} */
   const out = {};
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
-    if (a === "--list" || a === "--npc" || a === "--help" || a === "-h") {
+    if (
+      a === "--list" ||
+      a === "--list-tribes" ||
+      a === "--npc" ||
+      a === "--help" ||
+      a === "-h"
+    ) {
       const key = a === "-h" ? "help" : a.slice(2);
-      out[key] = true;
+      out[key === "list-tribes" ? "listTribes" : key] = true;
       continue;
     }
     const val = argv[++i];
@@ -27,6 +42,7 @@ function parseArgs(argv) {
     else if (a === "--context") out.historicalContext = val;
     else if (a === "--primary") out.primary = val;
     else if (a === "--secondary") out.secondary = val;
+    else if (a === "--delete" || a === "--remove") out.deleteId = val;
   }
   return out;
 }
@@ -35,17 +51,21 @@ function printHelp() {
   const cultures = listProfileSummaries()
     .map((p) => `  ${p.id.padEnd(14)} ${p.name} — ${p.era}`)
     .join("\n");
-  console.log(`Add a Tevel tribe from a historical culture profile.
+  console.log(`Add or remove Tevel tribes (persisted under data/).
 
 Options:
-  --list                 List culture profiles
-  --culture <id>         Profile id (carthaginian, persian, viking, …)
+  --list                 List culture profiles (templates)
+  --list-tribes          List registered tribes (core vs removable)
+  --culture <id>         Profile id to generate from
   --context <text>       Free-text historical hint (fuzzy match)
   --name <display name>  Override display name
   --id <slug>            Override tribe id
   --npc                  Register as NPC
+  --delete <id>          Remove a non-core tribe (persistent)
   --primary #RRGGBB      Override primary palette
   --secondary #RRGGBB    Override secondary palette
+
+Core tribes (cannot delete): ${CORE_TRIBE_IDS.join(", ")}
 
 Cultures:
 ${cultures}
@@ -63,6 +83,23 @@ async function main() {
       console.log(`${p.id}\t${p.name}\t${p.era}\t${p.region}`);
       console.log(`  ${p.historicalContext}`);
     }
+    return;
+  }
+  if (args.listTribes) {
+    const tribes = await listTribes();
+    for (const t of tribes) {
+      const flags = [t.type, t.core ? "core" : "removable", t.generated ? "generated" : "authored"]
+        .filter(Boolean)
+        .join(", ");
+      console.log(`${t.id}\t${t.name}\t(${flags})`);
+    }
+    return;
+  }
+  if (args.deleteId) {
+    const result = await deleteTribe(String(args.deleteId));
+    console.log(`[Tevel] Deleted tribe "${result.name}" (${result.id})`);
+    console.log(`[Tevel] Removed ${result.removedFile}`);
+    if (result.buildMessage) console.log(`[Tevel] ${result.buildMessage}`);
     return;
   }
 
@@ -94,7 +131,7 @@ async function main() {
   });
 
   console.log(`[Tevel] Created tribe "${result.name}" (${result.id}) from ${result.cultureId}`);
-  console.log(`[Tevel] File: ${result.file}`);
+  console.log(`[Tevel] Persisted: ${result.file} (+ index, palette, training, logos, hero modifiers)`);
   if (result.buildMessage) console.log(`[Tevel] ${result.buildMessage}`);
 }
 

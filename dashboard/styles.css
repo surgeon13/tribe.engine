@@ -90,6 +90,13 @@ body {
   padding: 8px;
 }
 
+.tribe-nav-row {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
 .sidebar-theme {
   padding: 8px 12px 4px;
   border-top: 1px solid var(--border);
@@ -101,7 +108,7 @@ body {
   gap: 10px;
   width: 100%;
   padding: 10px 12px;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   border: none;
   border-radius: 8px;
   background: transparent;
@@ -135,6 +142,24 @@ body {
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.04em;
+}
+
+.tribe-delete-btn {
+  flex: 0 0 auto;
+  width: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tribe-delete-btn:hover {
+  color: var(--negative, #c44);
+  border-color: color-mix(in srgb, var(--negative, #c44) 40%, var(--border));
+  background: color-mix(in srgb, var(--negative, #c44) 10%, transparent);
 }
 
 .sidebar-foot {

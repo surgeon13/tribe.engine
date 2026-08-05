@@ -4,7 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { spawn } from "child_process";
 import { getLeaderMonitor } from "../lib/leader-monitor/poll.js";
-import { createTribe, listProfileSummaries, matchProfile } from "../lib/tribe-generator/index.js";
+import { createTribe, deleteTribe, listTribes, listProfileSummaries, matchProfile, CORE_TRIBE_IDS } from "../lib/tribe-generator/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -100,7 +100,7 @@ export function startServer(port = 3456) {
     try {
       if (req.method === "OPTIONS") {
         res.writeHead(204, {
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type",
         });
         res.end();
@@ -126,6 +126,12 @@ export function startServer(port = 3456) {
 
       if (url.pathname === "/api/tribes/profiles" && req.method === "GET") {
         json(res, 200, { ok: true, profiles: listProfileSummaries() });
+        return;
+      }
+
+      if (url.pathname === "/api/tribes" && req.method === "GET") {
+        const tribes = await listTribes();
+        json(res, 200, { ok: true, tribes, coreTribeIds: CORE_TRIBE_IDS });
         return;
       }
 
@@ -166,6 +172,16 @@ export function startServer(port = 3456) {
         });
         json(res, 201, { ok: true, tribe: result, message: `Created ${result.name}` });
         return;
+      }
+
+      {
+        const delMatch = url.pathname.match(/^\/api\/tribes\/([^/]+)$/);
+        if (delMatch && req.method === "DELETE") {
+          const id = decodeURIComponent(delMatch[1]);
+          const result = await deleteTribe(id);
+          json(res, 200, { ok: true, tribe: result, message: `Deleted ${result.name}` });
+          return;
+        }
       }
 
       if (url.pathname === "/api/monitor/config") {

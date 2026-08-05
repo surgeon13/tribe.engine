@@ -39,7 +39,7 @@ import {
   startMonitorPolling,
   stopMonitorPolling,
 } from "./monitor.js";
-import { initAddTribeUi, setAddTribeEnabled } from "./tribe-create.js";
+import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
 
 let data = null;
 let globalScales = null;
@@ -123,6 +123,9 @@ function renderNav() {
   if (!nav || !data?.tribes) return;
   nav.innerHTML = "";
   for (const tribe of data.tribes) {
+    const row = document.createElement("div");
+    row.className = "tribe-nav-row";
+
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "tribe-btn" + (tribe.id === activeTribeId ? " active" : "");
@@ -137,7 +140,27 @@ function renderNav() {
       btn.append(tag);
     }
     btn.addEventListener("click", () => selectTribe(tribe.id));
-    nav.append(btn);
+    row.append(btn);
+
+    if (serverHasApi && isRemovableTribe(tribe.id)) {
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "tribe-delete-btn";
+      del.title = `Delete ${tribe.name}`;
+      del.setAttribute("aria-label", `Delete ${tribe.name}`);
+      del.textContent = "×";
+      del.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        try {
+          await requestDeleteTribe(tribe.id, tribe.name);
+        } catch (err) {
+          toast(err.message || String(err));
+        }
+      });
+      row.append(del);
+    }
+
+    nav.append(row);
   }
 }
 
@@ -1188,11 +1211,22 @@ async function init() {
   serverHasApi = await setServerStatus();
   initMonitorView(serverHasApi, toast);
   setAddTribeEnabled(serverHasApi);
-  initAddTribeUi(toast, async (tribeId) => {
-    await loadData();
-    recomputeGlobalScales();
-    selectTribe(tribeId);
-  });
+  initAddTribeUi(
+    toast,
+    async (tribeId) => {
+      await loadData();
+      recomputeGlobalScales();
+      selectTribe(tribeId);
+    },
+    async () => {
+      await loadData();
+      recomputeGlobalScales();
+      const fallback = data?.tribes?.[0]?.id;
+      if (fallback) selectTribe(fallback);
+      else renderNav();
+    }
+  );
+  if (serverHasApi) await refreshRemovableTribes();
   try {
     await loadData();
     recomputeGlobalScales();
