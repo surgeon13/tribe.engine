@@ -257,18 +257,25 @@
         <header class="modal-head">
           <h3 id="add-tribe-title">Add tribe</h3>
           <p class="muted">
-            Generate a full 11-troop roster + hero from historical culture — included in tables,
-            compare, graphics, and normalized stats.
+            Create from a historical preset <em>or</em> build a fully custom faction with your own
+            names, colors, lore, and balance — full 11-troop + hero roster.
           </p>
         </header>
         <div class="add-tribe-form">
           <label>
+            <span>Mode</span>
+            <select id="add-tribe-mode" aria-label="Creation mode">
+              <option value="custom">Custom (no preset)</option>
+              <option value="preset">Historical preset</option>
+            </select>
+          </label>
+          <label id="add-tribe-culture-wrap" class="hidden">
             <span>Historical culture</span>
             <select id="add-tribe-culture" aria-label="Historical culture"></select>
           </label>
           <label>
             <span>Display name</span>
-            <input id="add-tribe-name" type="text" placeholder="e.g. Carthaginians" autocomplete="off" />
+            <input id="add-tribe-name" type="text" placeholder="e.g. Moors, Scythians, House Atreides" autocomplete="off" />
           </label>
           <label>
             <span>Type</span>
@@ -277,14 +284,46 @@
               <option value="npc">NPC</option>
             </select>
           </label>
+          <div id="add-tribe-custom-fields" class="add-tribe-custom-fields">
+            <label>
+              <span>Balance archetype</span>
+              <select id="add-tribe-archetype" aria-label="Balance archetype"></select>
+            </label>
+            <div class="add-tribe-palette-row">
+              <label>
+                <span>Primary color</span>
+                <input id="add-tribe-primary" type="color" value="#3D5A80" />
+              </label>
+              <label>
+                <span>Secondary color</span>
+                <input id="add-tribe-secondary" type="color" value="#E09F3E" />
+              </label>
+            </div>
+            <label>
+              <span>Theme / short design note</span>
+              <input id="add-tribe-theme" type="text" placeholder="e.g. Desert raiders with camel cavalry" />
+            </label>
+            <label>
+              <span>Era</span>
+              <input id="add-tribe-era" type="text" placeholder="e.g. 12th c. CE / fictional timeline" />
+            </label>
+            <label>
+              <span>Region</span>
+              <input id="add-tribe-region" type="text" placeholder="e.g. Maghreb / steppe / invented realm" />
+            </label>
+          </div>
           <label class="add-tribe-context-field">
-            <span>Historical context</span>
+            <span>Lore / historical context</span>
             <textarea
               id="add-tribe-context"
               rows="3"
-              placeholder="Optional — paste era notes or keywords (Hannibal, Immortals, Sengoku…)"
+              placeholder="Free-form notes — not limited to existing cultures"
             ></textarea>
           </label>
+          <details id="add-tribe-names-details" class="add-tribe-names" open>
+            <summary>Troop &amp; hero names (customize)</summary>
+            <div id="add-tribe-troop-names" class="add-tribe-troop-grid"></div>
+          </details>
           <div id="add-tribe-preview" class="add-tribe-preview"></div>
         </div>
         <footer class="modal-actions">

@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "/assets",
-  "generatedAt": "2026-08-05T11:17:54.364Z",
+  "generatedAt": "2026-08-05T12:03:44.438Z",
   "roster": [
     {
       "slot": 1,
@@ -294,6 +294,10 @@
       "israelite": {
         "fightingStrengthPerPoint": 90,
         "resourceProductionBonusPercent": 5
+      },
+      "moors": {
+        "fightingStrengthPerPoint": 88,
+        "resourceProductionBonusPercent": 0
       }
     }
   },
@@ -11064,6 +11068,835 @@
       },
       "graphicsUrls": {
         "banner": "/assets/tribes/israelite/banner.png"
+      }
+    },
+    {
+      "id": "moors",
+      "name": "Moors",
+      "type": "playable",
+      "theme": "Andalusian cavalry and desert skirmishers",
+      "palette": {
+        "primary": "#1B4332",
+        "secondary": "#D4A017"
+      },
+      "graphics": {
+        "banner": "tribes/moors/banner.png"
+      },
+      "summary": {
+        "unitCount": 11,
+        "maxAttack": 185,
+        "maxDefenseInfantry": 81,
+        "maxDefenseCavalry": 103,
+        "maxSpeed": 17,
+        "maxCarry": 95,
+        "avgAttack": 84,
+        "avgDefenseCombined": 49,
+        "totalCropUpkeep": 31
+      },
+      "troops": [
+        {
+          "slot": 1,
+          "role": "infantry",
+          "ref": "inf_t1",
+          "id": "inf_t1",
+          "name": "Moors Spearman",
+          "category": "infantry",
+          "stats": {
+            "attack": 32,
+            "defenseInfantry": 37,
+            "defenseCavalry": 37,
+            "speed": 6,
+            "carry": 45
+          },
+          "cost": {
+            "wood": 119,
+            "clay": 103,
+            "iron": 130,
+            "crop": 38
+          },
+          "cropUpkeep": 1,
+          "totalCost": 390,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1200,
+            "timeFormatted": "20:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/01_infantry.png",
+            "icon": "tribes/moors/units/01_infantry_icon.png",
+            "logo": "infantry/stone-spear.svg",
+            "baseSprite": "units/base/inf_t1.png",
+            "baseIcon": "units/base/inf_t1_icon.png",
+            "baseLogo": "infantry/gladius.svg"
+          },
+          "metrics": {
+            "offense": 32,
+            "defenseInfantry": 37,
+            "defenseCavalry": 37,
+            "defenseCombined": 37,
+            "defenseTotal": 74,
+            "speed": 6,
+            "carry": 45,
+            "cropUpkeep": 1,
+            "attackPerCrop": 32,
+            "defensePerCrop": 74,
+            "trainTimeSeconds": 1200,
+            "trainTimeFormatted": "20:00",
+            "resourceCost": 390
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/01_infantry_icon.png",
+            "sprite": "/assets/tribes/moors/units/01_infantry.png",
+            "logo": "/assets/infantry/stone-spear.svg",
+            "baseIcon": "/assets/units/base/inf_t1_icon.png",
+            "baseSprite": "/assets/units/base/inf_t1.png",
+            "baseLogo": "/assets/infantry/gladius.svg"
+          }
+        },
+        {
+          "slot": 2,
+          "role": "infantry",
+          "ref": "inf_t2",
+          "id": "inf_t2",
+          "name": "Moors Skirmisher",
+          "category": "infantry",
+          "stats": {
+            "attack": 41,
+            "defenseInfantry": 41,
+            "defenseCavalry": 28,
+            "speed": 6,
+            "carry": 35
+          },
+          "cost": {
+            "wood": 135,
+            "clay": 119,
+            "iron": 151,
+            "crop": 59
+          },
+          "cropUpkeep": 1,
+          "totalCost": 464,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1400,
+            "timeFormatted": "23:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/02_infantry.png",
+            "icon": "tribes/moors/units/02_infantry_icon.png",
+            "logo": "infantry/battle-axe.svg",
+            "baseSprite": "units/base/inf_t2.png",
+            "baseIcon": "units/base/inf_t2_icon.png",
+            "baseLogo": "infantry/battle-axe.svg"
+          },
+          "metrics": {
+            "offense": 41,
+            "defenseInfantry": 41,
+            "defenseCavalry": 28,
+            "defenseCombined": 35,
+            "defenseTotal": 69,
+            "speed": 6,
+            "carry": 35,
+            "cropUpkeep": 1,
+            "attackPerCrop": 41,
+            "defensePerCrop": 69,
+            "trainTimeSeconds": 1400,
+            "trainTimeFormatted": "23:20",
+            "resourceCost": 464
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/02_infantry_icon.png",
+            "sprite": "/assets/tribes/moors/units/02_infantry.png",
+            "logo": "/assets/infantry/battle-axe.svg",
+            "baseIcon": "/assets/units/base/inf_t2_icon.png",
+            "baseSprite": "/assets/units/base/inf_t2.png",
+            "baseLogo": "/assets/infantry/battle-axe.svg"
+          }
+        },
+        {
+          "slot": 3,
+          "role": "infantry",
+          "ref": "inf_t3",
+          "id": "inf_t3",
+          "name": "Moors Elite Infantry",
+          "category": "infantry",
+          "stats": {
+            "attack": 63,
+            "defenseInfantry": 41,
+            "defenseCavalry": 32,
+            "speed": 7,
+            "carry": 45
+          },
+          "cost": {
+            "wood": 173,
+            "clay": 162,
+            "iron": 227,
+            "crop": 92
+          },
+          "cropUpkeep": 1,
+          "totalCost": 654,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1600,
+            "timeFormatted": "26:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/03_infantry.png",
+            "icon": "tribes/moors/units/03_infantry_icon.png",
+            "logo": "infantry/gladius.svg",
+            "baseSprite": "units/base/inf_t3.png",
+            "baseIcon": "units/base/inf_t3_icon.png",
+            "baseLogo": "infantry/warhammer.svg"
+          },
+          "metrics": {
+            "offense": 63,
+            "defenseInfantry": 41,
+            "defenseCavalry": 32,
+            "defenseCombined": 37,
+            "defenseTotal": 73,
+            "speed": 7,
+            "carry": 45,
+            "cropUpkeep": 1,
+            "attackPerCrop": 63,
+            "defensePerCrop": 73,
+            "trainTimeSeconds": 1600,
+            "trainTimeFormatted": "26:40",
+            "resourceCost": 654
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/03_infantry_icon.png",
+            "sprite": "/assets/tribes/moors/units/03_infantry.png",
+            "logo": "/assets/infantry/gladius.svg",
+            "baseIcon": "/assets/units/base/inf_t3_icon.png",
+            "baseSprite": "/assets/units/base/inf_t3.png",
+            "baseLogo": "/assets/infantry/warhammer.svg"
+          }
+        },
+        {
+          "slot": 4,
+          "role": "scout",
+          "ref": "scout",
+          "id": "scout",
+          "name": "Moors Scout",
+          "category": "scout",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 18,
+            "defenseCavalry": 9,
+            "speed": 17,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 146,
+            "clay": 162,
+            "iron": 27,
+            "crop": 43
+          },
+          "cropUpkeep": 2,
+          "totalCost": 378,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1280,
+            "timeFormatted": "21:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/04_scout.png",
+            "icon": "tribes/moors/units/04_scout_icon.png",
+            "logo": "infantry/heavy-arrow.svg",
+            "baseSprite": "units/base/scout.png",
+            "baseIcon": "units/base/scout_icon.png",
+            "baseLogo": "infantry/heavy-arrow.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 18,
+            "defenseCavalry": 9,
+            "defenseCombined": 14,
+            "defenseTotal": 27,
+            "speed": 17,
+            "carry": 0,
+            "cropUpkeep": 2,
+            "attackPerCrop": 0,
+            "defensePerCrop": 13.5,
+            "trainTimeSeconds": 1280,
+            "trainTimeFormatted": "21:20",
+            "resourceCost": 378
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/04_scout_icon.png",
+            "sprite": "/assets/tribes/moors/units/04_scout.png",
+            "logo": "/assets/infantry/heavy-arrow.svg",
+            "baseIcon": "/assets/units/base/scout_icon.png",
+            "baseSprite": "/assets/units/base/scout.png",
+            "baseLogo": "/assets/infantry/heavy-arrow.svg"
+          }
+        },
+        {
+          "slot": 5,
+          "role": "cavalry",
+          "ref": "cav_t1",
+          "id": "cav_t1",
+          "name": "Moors Light Cavalry",
+          "category": "cavalry",
+          "stats": {
+            "attack": 129,
+            "defenseInfantry": 59,
+            "defenseCavalry": 54,
+            "speed": 15,
+            "carry": 95
+          },
+          "cost": {
+            "wood": 540,
+            "clay": 443,
+            "iron": 335,
+            "crop": 108
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1426,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 1800,
+            "timeFormatted": "30:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/05_cavalry.png",
+            "icon": "tribes/moors/units/05_cavalry_icon.png",
+            "logo": "cavalry/horse-head.svg",
+            "baseSprite": "units/base/cav_t1.png",
+            "baseIcon": "units/base/cav_t1_icon.png",
+            "baseLogo": "cavalry/horse-head.svg"
+          },
+          "metrics": {
+            "offense": 129,
+            "defenseInfantry": 59,
+            "defenseCavalry": 54,
+            "defenseCombined": 57,
+            "defenseTotal": 113,
+            "speed": 15,
+            "carry": 95,
+            "cropUpkeep": 3,
+            "attackPerCrop": 43,
+            "defensePerCrop": 37.7,
+            "trainTimeSeconds": 1800,
+            "trainTimeFormatted": "30:00",
+            "resourceCost": 1426
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/05_cavalry_icon.png",
+            "sprite": "/assets/tribes/moors/units/05_cavalry.png",
+            "logo": "/assets/cavalry/horse-head.svg",
+            "baseIcon": "/assets/units/base/cav_t1_icon.png",
+            "baseSprite": "/assets/units/base/cav_t1.png",
+            "baseLogo": "/assets/cavalry/horse-head.svg"
+          }
+        },
+        {
+          "slot": 6,
+          "role": "cavalry",
+          "ref": "cav_t2",
+          "id": "cav_t2",
+          "name": "Moors Heavy Cavalry",
+          "category": "cavalry",
+          "stats": {
+            "attack": 185,
+            "defenseInfantry": 81,
+            "defenseCavalry": 103,
+            "speed": 12,
+            "carry": 70
+          },
+          "cost": {
+            "wood": 594,
+            "clay": 670,
+            "iron": 821,
+            "crop": 189
+          },
+          "cropUpkeep": 4,
+          "totalCost": 2274,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2400,
+            "timeFormatted": "40:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/06_cavalry.png",
+            "icon": "tribes/moors/units/06_cavalry_icon.png",
+            "logo": "cavalry/chess-knight.svg",
+            "baseSprite": "units/base/cav_t2.png",
+            "baseIcon": "units/base/cav_t2_icon.png",
+            "baseLogo": "cavalry/chess-knight.svg"
+          },
+          "metrics": {
+            "offense": 185,
+            "defenseInfantry": 81,
+            "defenseCavalry": 103,
+            "defenseCombined": 92,
+            "defenseTotal": 184,
+            "speed": 12,
+            "carry": 70,
+            "cropUpkeep": 4,
+            "attackPerCrop": 46.3,
+            "defensePerCrop": 46,
+            "trainTimeSeconds": 2400,
+            "trainTimeFormatted": "40:00",
+            "resourceCost": 2274
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/06_cavalry_icon.png",
+            "sprite": "/assets/tribes/moors/units/06_cavalry.png",
+            "logo": "/assets/cavalry/chess-knight.svg",
+            "baseIcon": "/assets/units/base/cav_t2_icon.png",
+            "baseSprite": "/assets/units/base/cav_t2.png",
+            "baseLogo": "/assets/cavalry/chess-knight.svg"
+          }
+        },
+        {
+          "slot": 7,
+          "role": "cavalry",
+          "ref": "cav_t3",
+          "id": "cav_t3",
+          "name": "Moors Guard Cavalry",
+          "category": "cavalry",
+          "stats": {
+            "attack": 168,
+            "defenseInfantry": 76,
+            "defenseCavalry": 86,
+            "speed": 13,
+            "carry": 80
+          },
+          "cost": {
+            "wood": 572,
+            "clay": 594,
+            "iron": 702,
+            "crop": 162
+          },
+          "cropUpkeep": 4,
+          "totalCost": 2030,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2500,
+            "timeFormatted": "41:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/07_cavalry.png",
+            "icon": "tribes/moors/units/07_cavalry_icon.png",
+            "logo": "cavalry/donkey.svg",
+            "baseSprite": "units/base/cav_t3.png",
+            "baseIcon": "units/base/cav_t3_icon.png",
+            "baseLogo": "cavalry/elephant.svg"
+          },
+          "metrics": {
+            "offense": 168,
+            "defenseInfantry": 76,
+            "defenseCavalry": 86,
+            "defenseCombined": 81,
+            "defenseTotal": 162,
+            "speed": 13,
+            "carry": 80,
+            "cropUpkeep": 4,
+            "attackPerCrop": 42,
+            "defensePerCrop": 40.5,
+            "trainTimeSeconds": 2500,
+            "trainTimeFormatted": "41:40",
+            "resourceCost": 2030
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/07_cavalry_icon.png",
+            "sprite": "/assets/tribes/moors/units/07_cavalry.png",
+            "logo": "/assets/cavalry/donkey.svg",
+            "baseIcon": "/assets/units/base/cav_t3_icon.png",
+            "baseSprite": "/assets/units/base/cav_t3.png",
+            "baseLogo": "/assets/cavalry/elephant.svg"
+          }
+        },
+        {
+          "slot": 8,
+          "role": "siege",
+          "ref": "ram",
+          "id": "ram",
+          "name": "Battering Ram",
+          "category": "siege",
+          "stats": {
+            "attack": 60,
+            "defenseInfantry": 30,
+            "defenseCavalry": 75,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 972,
+            "clay": 389,
+            "iron": 540,
+            "crop": 76
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1977,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 4600,
+            "timeFormatted": "1:16:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/08_ram.png",
+            "icon": "tribes/moors/units/08_ram_icon.png",
+            "logo": "infantry/crowbar.svg",
+            "baseSprite": "units/base/ram.png",
+            "baseIcon": "units/base/ram_icon.png",
+            "baseLogo": "infantry/crowbar.svg"
+          },
+          "metrics": {
+            "offense": 60,
+            "defenseInfantry": 30,
+            "defenseCavalry": 75,
+            "defenseCombined": 53,
+            "defenseTotal": 105,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 3,
+            "attackPerCrop": 20,
+            "defensePerCrop": 35,
+            "trainTimeSeconds": 4600,
+            "trainTimeFormatted": "1:16:40",
+            "resourceCost": 1977
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/08_ram_icon.png",
+            "sprite": "/assets/tribes/moors/units/08_ram.png",
+            "logo": "/assets/infantry/crowbar.svg",
+            "baseIcon": "/assets/units/base/ram_icon.png",
+            "baseSprite": "/assets/units/base/ram.png",
+            "baseLogo": "/assets/infantry/crowbar.svg"
+          }
+        },
+        {
+          "slot": 9,
+          "role": "siege",
+          "ref": "catapult",
+          "id": "catapult",
+          "name": "Catapult",
+          "category": "siege",
+          "stats": {
+            "attack": 75,
+            "defenseInfantry": 60,
+            "defenseCavalry": 10,
+            "speed": 3,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 1026,
+            "clay": 1458,
+            "iron": 648,
+            "crop": 97
+          },
+          "cropUpkeep": 6,
+          "totalCost": 3229,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/09_catapult.png",
+            "icon": "tribes/moors/units/09_catapult_icon.png",
+            "logo": "powder.svg",
+            "baseSprite": "units/base/catapult.png",
+            "baseIcon": "units/base/catapult_icon.png",
+            "baseLogo": "powder.svg"
+          },
+          "metrics": {
+            "offense": 75,
+            "defenseInfantry": 60,
+            "defenseCavalry": 10,
+            "defenseCombined": 35,
+            "defenseTotal": 70,
+            "speed": 3,
+            "carry": 0,
+            "cropUpkeep": 6,
+            "attackPerCrop": 12.5,
+            "defensePerCrop": 11.7,
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 3229
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/09_catapult_icon.png",
+            "sprite": "/assets/tribes/moors/units/09_catapult.png",
+            "logo": "/assets/powder.svg",
+            "baseIcon": "/assets/units/base/catapult_icon.png",
+            "baseSprite": "/assets/units/base/catapult.png",
+            "baseLogo": "/assets/powder.svg"
+          }
+        },
+        {
+          "slot": 10,
+          "role": "chief",
+          "ref": "chief",
+          "id": "chief",
+          "name": "Moors Chief",
+          "category": "chief",
+          "stats": {
+            "attack": 50,
+            "defenseInfantry": 40,
+            "defenseCavalry": 30,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 32400,
+            "clay": 29160,
+            "iron": 47520,
+            "crop": 38880
+          },
+          "cropUpkeep": 5,
+          "totalCost": 147960,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 90720,
+            "timeFormatted": "25:12:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              },
+              {
+                "type": "building",
+                "id": "rally_point",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/10_chief.png",
+            "icon": "tribes/moors/units/10_chief_icon.png",
+            "logo": "infantry/baton.svg",
+            "baseSprite": "units/base/chief.png",
+            "baseIcon": "units/base/chief_icon.png",
+            "baseLogo": "infantry/baton.svg"
+          },
+          "metrics": {
+            "offense": 50,
+            "defenseInfantry": 40,
+            "defenseCavalry": 30,
+            "defenseCombined": 35,
+            "defenseTotal": 70,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 5,
+            "attackPerCrop": 10,
+            "defensePerCrop": 14,
+            "trainTimeSeconds": 90720,
+            "trainTimeFormatted": "25:12:00",
+            "resourceCost": 147960
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/10_chief_icon.png",
+            "sprite": "/assets/tribes/moors/units/10_chief.png",
+            "logo": "/assets/infantry/baton.svg",
+            "baseIcon": "/assets/units/base/chief_icon.png",
+            "baseSprite": "/assets/units/base/chief.png",
+            "baseLogo": "/assets/infantry/baton.svg"
+          }
+        },
+        {
+          "slot": 11,
+          "role": "settler",
+          "ref": "settler",
+          "id": "settler",
+          "name": "Settler",
+          "category": "settler",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 80,
+            "defenseCavalry": 80,
+            "speed": 5,
+            "carry": 3000
+          },
+          "cost": {
+            "wood": 6264,
+            "clay": 5724,
+            "iron": 7776,
+            "crop": 5940
+          },
+          "cropUpkeep": 1,
+          "totalCost": 25704,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 26920,
+            "timeFormatted": "7:28:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/moors/units/11_settler.png",
+            "icon": "tribes/moors/units/11_settler_icon.png",
+            "logo": "resources/brick-pile.svg",
+            "baseSprite": "units/base/settler.png",
+            "baseIcon": "units/base/settler_icon.png",
+            "baseLogo": "resources/brick-pile.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 80,
+            "defenseCavalry": 80,
+            "defenseCombined": 80,
+            "defenseTotal": 160,
+            "speed": 5,
+            "carry": 3000,
+            "cropUpkeep": 1,
+            "attackPerCrop": 0,
+            "defensePerCrop": 160,
+            "trainTimeSeconds": 26920,
+            "trainTimeFormatted": "7:28:40",
+            "resourceCost": 25704
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/moors/units/11_settler_icon.png",
+            "sprite": "/assets/tribes/moors/units/11_settler.png",
+            "logo": "/assets/resources/brick-pile.svg",
+            "baseIcon": "/assets/units/base/settler_icon.png",
+            "baseSprite": "/assets/units/base/settler.png",
+            "baseLogo": "/assets/resources/brick-pile.svg"
+          }
+        }
+      ],
+      "hero": {
+        "id": "moors_hero",
+        "progression": "hero.system.json",
+        "role": "hero",
+        "category": "hero",
+        "name": "Moors Hero",
+        "description": {
+          "en": "Custom hero for Moors — cavalry-focused doctrine."
+        },
+        "isBase": false,
+        "stats": {
+          "attack": 101,
+          "defenseInfantry": 101,
+          "defenseCavalry": 108,
+          "speed": 8,
+          "carry": 100
+        },
+        "cost": {
+          "wood": 0,
+          "clay": 0,
+          "iron": 0,
+          "crop": 0
+        },
+        "cropUpkeep": 6,
+        "training": {
+          "building": "hero_mansion",
+          "buildingLabel": "Hero's Mansion",
+          "timeSeconds": 0,
+          "timeFormatted": null,
+          "requirements": []
+        },
+        "graphics": {
+          "sprite": "tribes/moors/hero/hero.png",
+          "icon": "tribes/moors/hero/hero_icon.png",
+          "portrait": "tribes/moors/hero/hero_portrait.png"
+        },
+        "metrics": {
+          "offense": 101,
+          "defenseInfantry": 101,
+          "defenseCavalry": 108,
+          "defenseCombined": 105,
+          "defenseTotal": 209,
+          "speed": 8,
+          "carry": 100,
+          "cropUpkeep": 6,
+          "attackPerCrop": 16.8,
+          "defensePerCrop": 34.8,
+          "trainTimeSeconds": 0,
+          "trainTimeFormatted": null,
+          "resourceCost": 0
+        },
+        "totalCost": 0,
+        "graphicsUrls": {
+          "icon": "/assets/tribes/moors/hero/hero_icon.png",
+          "sprite": "/assets/tribes/moors/hero/hero.png",
+          "portrait": "/assets/tribes/moors/hero/hero_portrait.png"
+        }
+      },
+      "graphicsUrls": {
+        "banner": "/assets/tribes/moors/banner.png"
       }
     }
   ]

@@ -638,6 +638,10 @@
     "israelite": {
       "fightingStrengthPerPoint": 90,
       "resourceProductionBonusPercent": 5
+    },
+    "moors": {
+      "fightingStrengthPerPoint": 88,
+      "resourceProductionBonusPercent": 0
     }
   },
   "xpSources": {

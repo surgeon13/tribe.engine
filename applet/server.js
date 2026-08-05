@@ -4,7 +4,17 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { spawn } from "child_process";
 import { getLeaderMonitor } from "../lib/leader-monitor/poll.js";
-import { createTribe, deleteTribe, listTribes, listProfileSummaries, matchProfile, CORE_TRIBE_IDS } from "../lib/tribe-generator/index.js";
+import {
+  createTribe,
+  deleteTribe,
+  listTribes,
+  listProfileSummaries,
+  listArchetypes,
+  defaultSlotLabels,
+  defaultTroopNames,
+  matchProfile,
+  CORE_TRIBE_IDS,
+} from "../lib/tribe-generator/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -125,7 +135,23 @@ export function startServer(port = 3456) {
       }
 
       if (url.pathname === "/api/tribes/profiles" && req.method === "GET") {
-        json(res, 200, { ok: true, profiles: listProfileSummaries() });
+        json(res, 200, {
+          ok: true,
+          profiles: listProfileSummaries(),
+          archetypes: listArchetypes(),
+          slotLabels: defaultSlotLabels(),
+        });
+        return;
+      }
+
+      if (url.pathname === "/api/tribes/defaults" && req.method === "GET") {
+        const name = url.searchParams.get("name") || "Custom";
+        json(res, 200, {
+          ok: true,
+          troopNames: defaultTroopNames(name),
+          slotLabels: defaultSlotLabels(),
+          archetypes: listArchetypes(),
+        });
         return;
       }
 
@@ -160,6 +186,7 @@ export function startServer(port = 3456) {
       if (url.pathname === "/api/tribes" && req.method === "POST") {
         const body = await readJsonBody(req);
         const result = await createTribe({
+          custom: body.custom === true || body.mode === "custom" || body.cultureId === "custom",
           cultureId: body.cultureId,
           historicalContext: body.historicalContext || body.context,
           name: body.name,
@@ -167,7 +194,15 @@ export function startServer(port = 3456) {
           type: body.type === "npc" ? "npc" : "playable",
           palette: body.palette,
           theme: body.theme,
+          era: body.era,
+          region: body.region,
+          archetype: body.archetype,
+          troopNames: body.troopNames,
+          troopOverrides: body.troopOverrides,
+          hero: body.hero,
           heroName: body.heroName,
+          logos: body.logos,
+          training: body.training,
           rebuild: body.rebuild !== false,
         });
         json(res, 201, { ok: true, tribe: result, message: `Created ${result.name}` });

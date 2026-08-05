@@ -1,20 +1,19 @@
 #!/usr/bin/env node
 /**
- * Add or remove historically flavored tribes.
+ * Add or remove tribes — historical presets or fully custom.
  *
  * Usage:
+ *   node scripts/add-tribe.js --custom --name "Moors" --archetype cavalry
  *   node scripts/add-tribe.js --culture carthaginian
- *   node scripts/add-tribe.js --culture viking --name "Norse Raiders"
- *   node scripts/add-tribe.js --context "Achaemenid Persian Immortals"
  *   node scripts/add-tribe.js --list
- *   node scripts/add-tribe.js --list-tribes
- *   node scripts/add-tribe.js --delete slav
+ *   node scripts/add-tribe.js --delete moors
  */
 import {
   createTribe,
   deleteTribe,
   listTribes,
   listProfileSummaries,
+  listArchetypes,
   matchProfile,
   CORE_TRIBE_IDS,
 } from "../lib/tribe-generator/index.js";
@@ -28,6 +27,7 @@ function parseArgs(argv) {
       a === "--list" ||
       a === "--list-tribes" ||
       a === "--npc" ||
+      a === "--custom" ||
       a === "--help" ||
       a === "-h"
     ) {
@@ -40,6 +40,10 @@ function parseArgs(argv) {
     else if (a === "--name") out.name = val;
     else if (a === "--id") out.id = val;
     else if (a === "--context") out.historicalContext = val;
+    else if (a === "--theme") out.theme = val;
+    else if (a === "--era") out.era = val;
+    else if (a === "--region") out.region = val;
+    else if (a === "--archetype") out.archetype = val;
     else if (a === "--primary") out.primary = val;
     else if (a === "--secondary") out.secondary = val;
     else if (a === "--delete" || a === "--remove") out.deleteId = val;
@@ -51,23 +55,34 @@ function printHelp() {
   const cultures = listProfileSummaries()
     .map((p) => `  ${p.id.padEnd(14)} ${p.name} — ${p.era}`)
     .join("\n");
+  const arches = listArchetypes()
+    .map((a) => `  ${a.id.padEnd(12)} ${a.label}`)
+    .join("\n");
   console.log(`Add or remove Tevel tribes (persisted under data/).
 
 Options:
-  --list                 List culture profiles (templates)
+  --list                 List culture profiles (optional presets)
   --list-tribes          List registered tribes (core vs removable)
-  --culture <id>         Profile id to generate from
-  --context <text>       Free-text historical hint (fuzzy match)
-  --name <display name>  Override display name
+  --custom               Fully custom tribe (no preset; requires --name)
+  --culture <id>         Optional historical preset
+  --name <display name>  Display name (alone = custom tribe; required for --custom)
   --id <slug>            Override tribe id
+  --theme <text>         Short design theme
+  --era <text>           Era label
+  --region <text>        Region label
+  --context <text>       Free-form lore
+  --archetype <id>       Balance archetype (custom mode)
   --npc                  Register as NPC
-  --delete <id>          Remove a non-core tribe (persistent)
-  --primary #RRGGBB      Override primary palette
-  --secondary #RRGGBB    Override secondary palette
+  --delete <id>          Remove a non-core tribe
+  --primary #RRGGBB      Primary palette
+  --secondary #RRGGBB    Secondary palette
 
 Core tribes (cannot delete): ${CORE_TRIBE_IDS.join(", ")}
 
-Cultures:
+Archetypes:
+${arches}
+
+Optional presets:
 ${cultures}
 `);
 }
@@ -103,35 +118,61 @@ async function main() {
     return;
   }
 
-  if (!args.cultureId && args.historicalContext) {
-    const matched = matchProfile(String(args.historicalContext));
-    if (!matched) {
-      console.error("No culture matched that historical context. Try --list.");
-      process.exit(1);
-    }
-    args.cultureId = matched.id;
-    console.log(`[Tevel] Matched culture: ${matched.id} (${matched.name})`);
+  let custom = Boolean(args.custom) || args.cultureId === "custom";
+
+  // Name alone (no culture) → fully custom, no preset required
+  if (!custom && !args.cultureId && args.name && !args.historicalContext) {
+    custom = true;
+    args.custom = true;
   }
 
-  if (!args.cultureId && !args.historicalContext) {
+  if (!custom && !args.cultureId && args.historicalContext) {
+    const matched = matchProfile(String(args.historicalContext));
+    if (matched) {
+      args.cultureId = matched.id;
+      console.log(`[Tevel] Matched culture: ${matched.id} (${matched.name})`);
+    } else if (args.name) {
+      custom = true;
+      args.custom = true;
+      console.log(`[Tevel] No preset match — creating as custom tribe`);
+    } else {
+      console.error("No culture matched. Use --custom --name … or --list.");
+      process.exit(1);
+    }
+  }
+
+  if (!custom && !args.custom && !args.cultureId && !args.historicalContext && !args.name) {
     printHelp();
     process.exit(1);
   }
 
+  if ((custom || args.custom) && !args.name) {
+    console.error("Custom tribes require --name");
+    process.exit(1);
+  }
+
   const result = await createTribe({
+    custom: Boolean(custom || args.custom),
     cultureId: args.cultureId ? String(args.cultureId) : undefined,
     historicalContext: args.historicalContext ? String(args.historicalContext) : undefined,
     name: args.name ? String(args.name) : undefined,
     id: args.id ? String(args.id) : undefined,
-    type: args.type === "npc" ? "npc" : "playable",
+    theme: args.theme ? String(args.theme) : undefined,
+    era: args.era ? String(args.era) : undefined,
+    region: args.region ? String(args.region) : undefined,
+    archetype: args.archetype ? String(args.archetype) : undefined,
+    type: args.npc ? "npc" : "playable",
     palette: {
       primary: args.primary ? String(args.primary) : undefined,
       secondary: args.secondary ? String(args.secondary) : undefined,
     },
   });
 
-  console.log(`[Tevel] Created tribe "${result.name}" (${result.id}) from ${result.cultureId}`);
-  console.log(`[Tevel] Persisted: ${result.file} (+ index, palette, training, logos, hero modifiers)`);
+  console.log(
+    `[Tevel] Created tribe "${result.name}" (${result.id})` +
+      (result.custom ? " [custom]" : ` from ${result.cultureId}`)
+  );
+  console.log(`[Tevel] Persisted: ${result.file}`);
   if (result.buildMessage) console.log(`[Tevel] ${result.buildMessage}`);
 }
 

@@ -106,6 +106,14 @@
       "name": {
         "en": "Israelites"
       }
+    },
+    {
+      "id": "moors",
+      "file": "moors.json",
+      "type": "playable",
+      "name": {
+        "en": "Moors"
+      }
     }
   ]
 }

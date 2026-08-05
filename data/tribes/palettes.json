@@ -67,6 +67,11 @@
       "primary": "#1A3C6E",
       "secondary": "#C9A227",
       "notes": "Deep indigo + temple gold"
+    },
+    "moors": {
+      "primary": "#1B4332",
+      "secondary": "#D4A017",
+      "notes": "Moors custom palette"
     }
   }
 }

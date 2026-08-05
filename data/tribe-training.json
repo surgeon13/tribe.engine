@@ -601,6 +601,52 @@
         "building": "residence",
         "timeSeconds": 26920
       }
+    },
+    "moors": {
+      "inf_t1": {
+        "building": "barracks",
+        "timeSeconds": 1200
+      },
+      "inf_t2": {
+        "building": "barracks",
+        "timeSeconds": 1400
+      },
+      "inf_t3": {
+        "building": "barracks",
+        "timeSeconds": 1600
+      },
+      "scout": {
+        "building": "barracks",
+        "timeSeconds": 1280
+      },
+      "cav_t1": {
+        "building": "stable",
+        "timeSeconds": 1800
+      },
+      "cav_t2": {
+        "building": "stable",
+        "timeSeconds": 2400
+      },
+      "cav_t3": {
+        "building": "stable",
+        "timeSeconds": 2500
+      },
+      "ram": {
+        "building": "workshop",
+        "timeSeconds": 4600
+      },
+      "catapult": {
+        "building": "workshop",
+        "timeSeconds": 9000
+      },
+      "chief": {
+        "building": "residence",
+        "timeSeconds": 90720
+      },
+      "settler": {
+        "building": "residence",
+        "timeSeconds": 26920
+      }
     }
   }
 }
