@@ -11,7 +11,7 @@ import {
   listProfileSummaries,
   listArchetypes,
   defaultSlotLabels,
-  defaultTroopNames,
+  deriveFromUserInput,
   matchProfile,
   CORE_TRIBE_IDS,
 } from "../lib/tribe-generator/index.js";
@@ -146,9 +146,14 @@ export function startServer(port = 3456) {
 
       if (url.pathname === "/api/tribes/defaults" && req.method === "GET") {
         const name = url.searchParams.get("name") || "Custom";
+        const theme = url.searchParams.get("theme") || "";
+        const historicalContext =
+          url.searchParams.get("context") || url.searchParams.get("historicalContext") || "";
+        const derived = deriveFromUserInput({ name, theme, historicalContext });
         json(res, 200, {
           ok: true,
-          troopNames: defaultTroopNames(name),
+          ...derived,
+          troopNames: derived.troopNames,
           slotLabels: defaultSlotLabels(),
           archetypes: listArchetypes(),
         });

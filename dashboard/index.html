@@ -257,25 +257,27 @@
         <header class="modal-head">
           <h3 id="add-tribe-title">Add tribe</h3>
           <p class="muted">
-            Create a fully custom faction, or pick a culture preset (historical or fantasy like
-            Undead) — full 11-troop + hero roster.
+            Custom by default — describe your faction and we build the roster from your input.
+            Optional culture presets are available if you want a shortcut.
           </p>
         </header>
         <div class="add-tribe-form">
           <label>
-            <span>Mode</span>
-            <select id="add-tribe-mode" aria-label="Creation mode">
-              <option value="custom">Custom (no preset)</option>
-              <option value="preset">Culture preset (historical / fantasy)</option>
-            </select>
+            <span>Display name <em class="req">required</em></span>
+            <input
+              id="add-tribe-name"
+              type="text"
+              placeholder="e.g. Undead, Moors, House Atreides"
+              autocomplete="off"
+            />
           </label>
-          <label id="add-tribe-culture-wrap" class="hidden">
-            <span>Culture preset</span>
-            <select id="add-tribe-culture" aria-label="Culture preset"></select>
-          </label>
-          <label>
-            <span>Display name</span>
-            <input id="add-tribe-name" type="text" placeholder="e.g. Moors, Scythians, House Atreides" autocomplete="off" />
+          <label class="add-tribe-context-field">
+            <span>Describe your culture <em class="req">primary input</em></span>
+            <textarea
+              id="add-tribe-context"
+              rows="4"
+              placeholder="Free-form lore — doctrine, homeland, how they fight (e.g. desert camel cavalry raiders, undead necromantic swarm…)"
+            ></textarea>
           </label>
           <label>
             <span>Type</span>
@@ -284,46 +286,62 @@
               <option value="npc">NPC</option>
             </select>
           </label>
-          <div id="add-tribe-custom-fields" class="add-tribe-custom-fields">
-            <label>
-              <span>Balance archetype</span>
-              <select id="add-tribe-archetype" aria-label="Balance archetype"></select>
-            </label>
-            <div class="add-tribe-palette-row">
-              <label>
-                <span>Primary color</span>
-                <input id="add-tribe-primary" type="color" value="#3D5A80" />
-              </label>
-              <label>
-                <span>Secondary color</span>
-                <input id="add-tribe-secondary" type="color" value="#E09F3E" />
-              </label>
-            </div>
-            <label>
-              <span>Theme / short design note</span>
-              <input id="add-tribe-theme" type="text" placeholder="e.g. Desert raiders with camel cavalry" />
-            </label>
-            <label>
-              <span>Era</span>
-              <input id="add-tribe-era" type="text" placeholder="e.g. 12th c. CE / fictional timeline" />
-            </label>
-            <label>
-              <span>Region</span>
-              <input id="add-tribe-region" type="text" placeholder="e.g. Maghreb / steppe / invented realm" />
-            </label>
-          </div>
-          <label class="add-tribe-context-field">
-            <span>Lore / historical context</span>
-            <textarea
-              id="add-tribe-context"
-              rows="3"
-              placeholder="Free-form notes — not limited to existing cultures"
-            ></textarea>
+          <label>
+            <span>Source</span>
+            <select id="add-tribe-mode" aria-label="Creation mode">
+              <option value="custom">Custom — from your description</option>
+              <option value="preset">Optional culture preset</option>
+            </select>
           </label>
-          <details id="add-tribe-names-details" class="add-tribe-names" open>
-            <summary>Troop &amp; hero names (customize)</summary>
-            <div id="add-tribe-troop-names" class="add-tribe-troop-grid"></div>
-          </details>
+          <label id="add-tribe-culture-wrap" class="hidden">
+            <span>Culture preset</span>
+            <select id="add-tribe-culture" aria-label="Culture preset"></select>
+          </label>
+          <div id="add-tribe-custom-fields" class="add-tribe-custom-fields">
+            <details id="add-tribe-advanced" class="add-tribe-advanced">
+              <summary>Advanced overrides (optional)</summary>
+              <p class="muted add-tribe-advanced-hint">
+                Leave these alone to auto-fill from your description. Only change what you want to
+                force.
+              </p>
+              <label>
+                <span>Balance archetype</span>
+                <select id="add-tribe-archetype" aria-label="Balance archetype">
+                  <option value="">Auto (from your description)</option>
+                </select>
+              </label>
+              <div class="add-tribe-palette-row">
+                <label>
+                  <span>Primary color</span>
+                  <input id="add-tribe-primary" type="color" value="#3D5A80" data-auto="1" />
+                </label>
+                <label>
+                  <span>Secondary color</span>
+                  <input id="add-tribe-secondary" type="color" value="#E09F3E" data-auto="1" />
+                </label>
+              </div>
+              <label>
+                <span>Theme / short design note</span>
+                <input
+                  id="add-tribe-theme"
+                  type="text"
+                  placeholder="Optional — otherwise taken from your description"
+                />
+              </label>
+              <label>
+                <span>Era</span>
+                <input id="add-tribe-era" type="text" placeholder="Auto from description" />
+              </label>
+              <label>
+                <span>Region</span>
+                <input id="add-tribe-region" type="text" placeholder="Auto from description" />
+              </label>
+              <details id="add-tribe-names-details" class="add-tribe-names">
+                <summary>Troop &amp; hero names</summary>
+                <div id="add-tribe-troop-names" class="add-tribe-troop-grid"></div>
+              </details>
+            </details>
+          </div>
           <div id="add-tribe-preview" class="add-tribe-preview"></div>
         </div>
         <footer class="modal-actions">

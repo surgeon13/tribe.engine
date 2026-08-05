@@ -2384,6 +2384,36 @@ body {
   gap: 12px;
 }
 
+.add-tribe-advanced {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px 10px;
+}
+
+.add-tribe-advanced > summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.add-tribe-advanced-hint {
+  margin: 8px 0 10px;
+  font-size: 0.8rem;
+}
+
+.add-tribe-advanced .add-tribe-palette-row,
+.add-tribe-advanced label {
+  margin-top: 10px;
+}
+
+.add-tribe-form .req {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
 .add-tribe-palette-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

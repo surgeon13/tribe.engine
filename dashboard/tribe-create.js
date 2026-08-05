@@ -1,5 +1,5 @@
 /**
- * Add / delete tribe UI — custom or culture-preset factions, persisted under data/.
+ * Add / delete tribe UI — custom (from user input) or optional culture presets.
  */
 
 /** @type {(tribeId: string, tribeName: string) => Promise<void>} */
@@ -58,6 +58,16 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
   let archetypes = [];
   /** @type {Record<string, string>} */
   let slotLabels = {};
+  /** @type {object | null} */
+  let lastDerived = null;
+  let deriveTimer = 0;
+  let paletteDirty = false;
+  let archetypeDirty = false;
+  let eraDirty = false;
+  let regionDirty = false;
+  let themeDirty = false;
+  /** @type {Set<string>} */
+  let troopDirty = new Set();
 
   function isCustomMode() {
     return modeSelect?.value !== "preset";
@@ -73,10 +83,9 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     cultureSelect.innerHTML =
       `<option value="">— Select culture preset —</option>` +
       profiles.map((p) => `<option value="${p.id}">${p.name} · ${p.era}</option>`).join("");
-    archetypeSelect.innerHTML = archetypes
-      .map((a) => `<option value="${a.id}">${a.label}</option>`)
-      .join("");
-    if (!archetypeSelect.value) archetypeSelect.value = "balanced";
+    archetypeSelect.innerHTML =
+      `<option value="">Auto (from your description)</option>` +
+      archetypes.map((a) => `<option value="${a.id}">${a.label}</option>`).join("");
     mountTroopNameInputs();
   }
 
@@ -95,6 +104,12 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
       </label>`
       )
       .join("");
+    troopNamesWrap.querySelectorAll("input[data-troop-key]").forEach((el) => {
+      el.addEventListener("input", () => {
+        const key = /** @type {HTMLInputElement} */ (el).dataset.troopKey;
+        if (key) troopDirty.add(key);
+      });
+    });
   }
 
   function collectTroopNames() {
@@ -109,22 +124,69 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     return out;
   }
 
-  async function fillDefaultTroopNames(name) {
-    if (!name?.trim()) return;
-    try {
-      const res = await fetch(`/api/tribes/defaults?name=${encodeURIComponent(name.trim())}`);
-      const body = await res.json();
-      if (!body.ok || !body.troopNames) return;
+  function applyDerivedToForm(derived, { force = false } = {}) {
+    if (!derived) return;
+    lastDerived = derived;
+    if ((!archetypeDirty || force) && !archetypeSelect.value) {
+      // keep Auto selected; preview shows inferred id
+    }
+    if ((!paletteDirty || force) && derived.palette) {
+      if (primaryInput.dataset.auto !== "0") primaryInput.value = derived.palette.primary;
+      if (secondaryInput.dataset.auto !== "0") secondaryInput.value = derived.palette.secondary;
+    }
+    if ((!eraDirty || force) && !eraInput.value.trim() && derived.era) {
+      eraInput.placeholder = derived.era;
+    }
+    if ((!regionDirty || force) && !regionInput.value.trim() && derived.region) {
+      regionInput.placeholder = derived.region;
+    }
+    if ((!themeDirty || force) && !themeInput.value.trim() && derived.theme) {
+      themeInput.placeholder = derived.theme;
+    }
+    if (derived.troopNames) {
       troopNamesWrap?.querySelectorAll("input[data-troop-key]").forEach((el) => {
         const input = /** @type {HTMLInputElement} */ (el);
         const key = input.dataset.troopKey;
-        if (key && body.troopNames[key] && !input.value.trim()) {
-          input.value = body.troopNames[key];
+        if (!key || !derived.troopNames[key]) return;
+        if (force || !troopDirty.has(key)) {
+          input.value = derived.troopNames[key];
         }
       });
+    }
+  }
+
+  async function refreshDerived() {
+    if (!isCustomMode()) {
+      renderPreview();
+      return;
+    }
+    const name = nameInput.value.trim();
+    if (!name) {
+      lastDerived = null;
+      renderPreview();
+      return;
+    }
+    const params = new URLSearchParams({
+      name,
+      theme: themeInput.value.trim(),
+      context: contextInput.value.trim(),
+    });
+    try {
+      const res = await fetch(`/api/tribes/defaults?${params}`);
+      const body = await res.json();
+      if (!body.ok) return;
+      applyDerivedToForm(body);
+      renderPreview();
     } catch {
       /* ignore */
     }
+  }
+
+  function scheduleDerive() {
+    window.clearTimeout(deriveTimer);
+    deriveTimer = window.setTimeout(() => {
+      refreshDerived();
+    }, 280);
   }
 
   function selectedProfile() {
@@ -132,36 +194,55 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
   }
 
   function selectedArchetype() {
-    return archetypes.find((a) => a.id === archetypeSelect.value) || null;
+    const id = archetypeSelect.value || lastDerived?.archetype;
+    return archetypes.find((a) => a.id === id) || null;
   }
 
   function syncModeUi() {
     const custom = isCustomMode();
     cultureWrap?.classList.toggle("hidden", custom);
     customFields?.classList.toggle("hidden", !custom);
-    renderPreview();
+    if (custom) scheduleDerive();
+    else renderPreview();
+  }
+
+  function escapeHtml(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
   function renderPreview() {
     if (!preview) return;
     if (isCustomMode()) {
-      const name = nameInput.value.trim() || "Custom tribe";
+      const name = nameInput.value.trim() || "Your tribe";
       const arch = selectedArchetype();
+      const lore = contextInput.value.trim();
+      const primary = primaryInput.value;
+      const secondary = secondaryInput.value;
+      const flavor = lastDerived?.flavorId ? ` · ${lastDerived.flavorId} flavor` : "";
+      const sampleNames = lastDerived?.troopNames
+        ? [lastDerived.troopNames.inf_t1, lastDerived.troopNames.cav_t1, lastDerived.troopNames.hero]
+            .filter(Boolean)
+            .join(" · ")
+        : "";
       preview.innerHTML = `
         <div class="add-tribe-swatches">
-          <span style="background:${primaryInput.value}" title="${primaryInput.value}"></span>
-          <span style="background:${secondaryInput.value}" title="${secondaryInput.value}"></span>
+          <span style="background:${primary}" title="${primary}"></span>
+          <span style="background:${secondary}" title="${secondary}"></span>
         </div>
-        <p><strong>${name}</strong> · custom · ${arch?.label || "Balanced"}</p>
-        <p class="muted">${arch?.description || ""}</p>
-        <p>${contextInput.value.trim() || themeInput.value.trim() || "Your own lore — not tied to a preset culture."}</p>
-        <p class="muted">Troop names editable above. Stats generated from archetype (editable later in JSON).</p>
+        <p><strong>${escapeHtml(name)}</strong> · from your input · ${escapeHtml(arch?.label || lastDerived?.archetype || "Balanced")}${escapeHtml(flavor)}</p>
+        <p class="muted">${escapeHtml(arch?.description || "Balance inferred from your description")}</p>
+        <p>${escapeHtml(lore || themeInput.value.trim() || lastDerived?.theme || "Write a description above — roster, colors, and names follow your words.")}</p>
+        ${sampleNames ? `<p class="muted">Units: ${escapeHtml(sampleNames)}</p>` : ""}
       `;
       return;
     }
     const profile = selectedProfile();
     if (!profile) {
-      preview.innerHTML = `<p class="muted">Pick a culture preset, or switch Mode to Custom.</p>`;
+      preview.innerHTML = `<p class="muted">Pick a culture preset, or switch Source back to Custom.</p>`;
       return;
     }
     preview.innerHTML = `
@@ -169,10 +250,10 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
         <span style="background:${profile.palette.primary}" title="${profile.palette.primary}"></span>
         <span style="background:${profile.palette.secondary}" title="${profile.palette.secondary}"></span>
       </div>
-      <p><strong>${profile.name}</strong> · ${profile.archetype} archetype</p>
-      <p class="muted">${profile.region}</p>
-      <p>${profile.historicalContext}</p>
-      <p class="muted">${profile.theme}</p>
+      <p><strong>${escapeHtml(profile.name)}</strong> · ${escapeHtml(profile.archetype)} archetype</p>
+      <p class="muted">${escapeHtml(profile.region)}</p>
+      <p>${escapeHtml(profile.historicalContext)}</p>
+      <p class="muted">${escapeHtml(profile.theme)}</p>
     `;
   }
 
@@ -196,9 +277,18 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     regionInput.value = "";
     cultureSelect.value = "";
     modeSelect.value = "custom";
-    archetypeSelect.value = "balanced";
+    archetypeSelect.value = "";
     primaryInput.value = "#3D5A80";
     secondaryInput.value = "#E09F3E";
+    primaryInput.dataset.auto = "1";
+    secondaryInput.dataset.auto = "1";
+    paletteDirty = false;
+    archetypeDirty = false;
+    eraDirty = false;
+    regionDirty = false;
+    themeDirty = false;
+    troopDirty = new Set();
+    lastDerived = null;
     troopNamesWrap?.querySelectorAll("input").forEach((el) => {
       /** @type {HTMLInputElement} */ (el).value = "";
     });
@@ -227,19 +317,32 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     }
   });
 
-  nameInput.addEventListener("change", () => {
-    if (isCustomMode()) fillDefaultTroopNames(nameInput.value);
+  nameInput.addEventListener("input", scheduleDerive);
+  contextInput.addEventListener("input", scheduleDerive);
+  themeInput.addEventListener("input", () => {
+    themeDirty = Boolean(themeInput.value.trim());
+    scheduleDerive();
+  });
+  eraInput.addEventListener("input", () => {
+    eraDirty = Boolean(eraInput.value.trim());
+  });
+  regionInput.addEventListener("input", () => {
+    regionDirty = Boolean(regionInput.value.trim());
+  });
+  archetypeSelect?.addEventListener("change", () => {
+    archetypeDirty = Boolean(archetypeSelect.value);
     renderPreview();
   });
-  nameInput.addEventListener("blur", () => {
-    if (isCustomMode()) fillDefaultTroopNames(nameInput.value);
+  primaryInput?.addEventListener("input", () => {
+    paletteDirty = true;
+    primaryInput.dataset.auto = "0";
+    renderPreview();
   });
-
-  archetypeSelect?.addEventListener("change", renderPreview);
-  primaryInput?.addEventListener("input", renderPreview);
-  secondaryInput?.addEventListener("input", renderPreview);
-  themeInput?.addEventListener("input", renderPreview);
-  contextInput.addEventListener("input", renderPreview);
+  secondaryInput?.addEventListener("input", () => {
+    paletteDirty = true;
+    secondaryInput.dataset.auto = "0";
+    renderPreview();
+  });
 
   cancel?.addEventListener("click", close);
   overlay.addEventListener("click", (e) => {
@@ -250,11 +353,15 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     const custom = isCustomMode();
     const name = nameInput.value.trim();
     if (custom && !name) {
-      toast("Enter a display name for your custom tribe");
+      toast("Enter a display name — culture is built from your input");
+      return;
+    }
+    if (custom && !contextInput.value.trim() && !themeInput.value.trim()) {
+      toast("Describe your culture (lore / how they fight) — generation is based on that");
       return;
     }
     if (!custom && !cultureSelect.value) {
-      toast("Select a culture preset, or switch to Custom mode");
+      toast("Select a culture preset, or switch Source to Custom");
       return;
     }
 
@@ -268,17 +375,25 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
         name: name || undefined,
         historicalContext: contextInput.value.trim() || undefined,
         type: typeSelect.value === "npc" ? "npc" : "playable",
-        troopNames: collectTroopNames(),
       };
+
       if (custom) {
-        payload.archetype = archetypeSelect.value || "balanced";
-        payload.theme = themeInput.value.trim() || undefined;
-        payload.era = eraInput.value.trim() || undefined;
-        payload.region = regionInput.value.trim() || undefined;
-        payload.palette = {
-          primary: primaryInput.value,
-          secondary: secondaryInput.value,
-        };
+        // Only send overrides the user actually set; server derives the rest from name+lore
+        if (archetypeSelect.value) payload.archetype = archetypeSelect.value;
+        if (themeInput.value.trim()) payload.theme = themeInput.value.trim();
+        if (eraInput.value.trim()) payload.era = eraInput.value.trim();
+        if (regionInput.value.trim()) payload.region = regionInput.value.trim();
+        if (paletteDirty || primaryInput.dataset.auto === "0" || secondaryInput.dataset.auto === "0") {
+          payload.palette = {
+            primary: primaryInput.value,
+            secondary: secondaryInput.value,
+          };
+        }
+        const troopNames = collectTroopNames();
+        if (Object.keys(troopNames).length) payload.troopNames = troopNames;
+      } else {
+        const troopNames = collectTroopNames();
+        if (Object.keys(troopNames).length) payload.troopNames = troopNames;
       }
 
       const res = await fetch("/api/tribes", {
@@ -324,7 +439,7 @@ export function setAddTribeEnabled(enabled) {
   if (!btn) return;
   btn.disabled = !enabled;
   btn.title = enabled
-    ? "Create a custom or preset tribe (saved under data/)"
+    ? "Create a tribe from your description (saved under data/)"
     : "Needs the local applet (npm start)";
 }
 

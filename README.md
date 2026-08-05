@@ -122,7 +122,7 @@ This builds tribe data, starts a small local server, and opens the dashboard in 
 
 **Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
 
-**Add tribe** (sidebar): create a faction in **Custom** mode (your own name, colors, lore, troop names, balance archetype) or from an optional culture preset (historical or fantasy, e.g. Undead). Full 11-troop + hero roster is written under `data/` so it survives restarts.
+**Add tribe** (sidebar): **custom by default** — enter a name and describe the culture; archetype, colors, troop names, and lore flavor are derived from your words. Optional culture presets remain as a shortcut. Full 11-troop + hero roster is written under `data/` so it survives restarts.
 
 **Delete tribe**: non-core factions show an **×** in the sidebar (or `npm run tribe:delete -- <id>`). Core Travian defaults (Romans–Nature) are protected and cannot be removed.
 
