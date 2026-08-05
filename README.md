@@ -122,7 +122,7 @@ This builds tribe data, starts a small local server, and opens the dashboard in 
 
 **Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
 
-**Add tribe** (sidebar): create a new playable/NPC faction from a historical culture profile (Carthaginian, Persian, Viking, Byzantine, Mongol, Japanese). Generates full troop names, stats, costs, training, logos, palette, and hero — then rebuilds so the tribe appears in table, compare, graphics, and normalized graphs.
+**Add tribe** (sidebar): create a new playable/NPC faction from a historical culture profile (Carthaginian, Persian, Viking, Byzantine, Mongol, Japanese, Israelite, Axum, Greek). Generates full troop names, stats, costs, training, logos, palette, and hero — then rebuilds so the tribe appears in table, compare, graphics, and normalized graphs.
 
 ```bash
 npm run tribe:list
