@@ -634,6 +634,26 @@
     "byzantine": {
       "fightingStrengthPerPoint": 95,
       "resourceProductionBonusPercent": 0
+    },
+    "israelite": {
+      "fightingStrengthPerPoint": 90,
+      "resourceProductionBonusPercent": 5
+    },
+    "persian": {
+      "fightingStrengthPerPoint": 85,
+      "resourceProductionBonusPercent": 15
+    },
+    "mongol": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0
+    },
+    "axum": {
+      "fightingStrengthPerPoint": 88,
+      "resourceProductionBonusPercent": 12
+    },
+    "greek": {
+      "fightingStrengthPerPoint": 92,
+      "resourceProductionBonusPercent": 0
     }
   },
   "xpSources": {

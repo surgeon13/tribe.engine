@@ -98,6 +98,46 @@
       "name": {
         "en": "Byzantines"
       }
+    },
+    {
+      "id": "israelite",
+      "file": "israelite.json",
+      "type": "playable",
+      "name": {
+        "en": "Israelites"
+      }
+    },
+    {
+      "id": "persian",
+      "file": "persian.json",
+      "type": "playable",
+      "name": {
+        "en": "Persians"
+      }
+    },
+    {
+      "id": "mongol",
+      "file": "mongol.json",
+      "type": "playable",
+      "name": {
+        "en": "Mongols"
+      }
+    },
+    {
+      "id": "axum",
+      "file": "axum.json",
+      "type": "playable",
+      "name": {
+        "en": "Axum"
+      }
+    },
+    {
+      "id": "greek",
+      "file": "greek.json",
+      "type": "playable",
+      "name": {
+        "en": "Greeks"
+      }
     }
   ]
 }

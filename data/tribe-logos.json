@@ -157,6 +157,71 @@
       "catapult": "powder.svg",
       "chief": "infantry/baton.svg",
       "settler": "resources/brick-pile.svg"
+    },
+    "israelite": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/boomerang.svg",
+      "inf_t3": "infantry/gladius.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/donkey.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/crescent-staff.svg",
+      "settler": "resources/wheat-pile.svg"
+    },
+    "persian": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/heavy-arrow.svg",
+      "inf_t3": "infantry/flanged-mace.svg",
+      "scout": "infantry/arrowhead.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/camel-head.svg",
+      "ram": "infantry/war-pick.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/crescent-staff.svg",
+      "settler": "resources/grain.svg"
+    },
+    "mongol": {
+      "inf_t1": "infantry/arrowhead.svg",
+      "inf_t2": "infantry/double-shot.svg",
+      "inf_t3": "infantry/tomahawk.svg",
+      "scout": "infantry/flying-shuriken.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "animals/pegasus.svg",
+      "ram": "infantry/war-pick.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/rolled-paper.svg"
+    },
+    "axum": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/barbed-spear.svg",
+      "inf_t3": "infantry/battle-axe.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/donkey.svg",
+      "cav_t2": "cavalry/horse-head.svg",
+      "cav_t3": "cavalry/camel-head.svg",
+      "ram": "infantry/war-pick.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/orb-wand.svg",
+      "settler": "resources/grain.svg"
+    },
+    "greek": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/boomerang.svg",
+      "inf_t3": "infantry/trident.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "animals/ram.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/wheat-pile.svg"
     }
   }
 }

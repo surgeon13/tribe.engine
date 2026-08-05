@@ -62,6 +62,31 @@
       "primary": "#2C3E6B",
       "secondary": "#D4AF37",
       "notes": "Imperial blue + mosaic gold"
+    },
+    "israelite": {
+      "primary": "#1A3C6E",
+      "secondary": "#C9A227",
+      "notes": "Deep indigo + temple gold"
+    },
+    "persian": {
+      "primary": "#6B2D5C",
+      "secondary": "#E8C547",
+      "notes": "Royal purple + sun gold"
+    },
+    "mongol": {
+      "primary": "#3E2723",
+      "secondary": "#C62828",
+      "notes": "Steppe leather + blood red"
+    },
+    "axum": {
+      "primary": "#6B2D1A",
+      "secondary": "#E8B84A",
+      "notes": "Laterite earth + trade gold"
+    },
+    "greek": {
+      "primary": "#1F4E79",
+      "secondary": "#F2F0E6",
+      "notes": "Aegean blue + marble white"
     }
   }
 }
