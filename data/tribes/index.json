@@ -106,62 +106,6 @@
       "name": {
         "en": "Israelites"
       }
-    },
-    {
-      "id": "persian",
-      "file": "persian.json",
-      "type": "playable",
-      "name": {
-        "en": "Persians"
-      }
-    },
-    {
-      "id": "mongol",
-      "file": "mongol.json",
-      "type": "playable",
-      "name": {
-        "en": "Mongols"
-      }
-    },
-    {
-      "id": "axum",
-      "file": "axum.json",
-      "type": "playable",
-      "name": {
-        "en": "Axum"
-      }
-    },
-    {
-      "id": "greek",
-      "file": "greek.json",
-      "type": "playable",
-      "name": {
-        "en": "Greeks"
-      }
-    },
-    {
-      "id": "slav",
-      "file": "slav.json",
-      "type": "playable",
-      "name": {
-        "en": "Slavs"
-      }
-    },
-    {
-      "id": "balt",
-      "file": "balt.json",
-      "type": "playable",
-      "name": {
-        "en": "Balts"
-      }
-    },
-    {
-      "id": "dacian",
-      "file": "dacian.json",
-      "type": "playable",
-      "name": {
-        "en": "Dacians"
-      }
     }
   ]
 }
