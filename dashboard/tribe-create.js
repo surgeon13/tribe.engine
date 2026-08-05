@@ -1,5 +1,5 @@
 /**
- * Add / delete tribe UI — custom or historical preset factions, persisted under data/.
+ * Add / delete tribe UI — custom or culture-preset factions, persisted under data/.
  */
 
 /** @type {(tribeId: string, tribeName: string) => Promise<void>} */
@@ -161,7 +161,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     }
     const profile = selectedProfile();
     if (!profile) {
-      preview.innerHTML = `<p class="muted">Pick a historical culture, or switch Mode to Custom.</p>`;
+      preview.innerHTML = `<p class="muted">Pick a culture preset, or switch Mode to Custom.</p>`;
       return;
     }
     preview.innerHTML = `
@@ -254,7 +254,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
       return;
     }
     if (!custom && !cultureSelect.value) {
-      toast("Select a historical culture, or switch to Custom mode");
+      toast("Select a culture preset, or switch to Custom mode");
       return;
     }
 
@@ -324,7 +324,7 @@ export function setAddTribeEnabled(enabled) {
   if (!btn) return;
   btn.disabled = !enabled;
   btn.title = enabled
-    ? "Create a custom or historical tribe (saved under data/)"
+    ? "Create a custom or preset tribe (saved under data/)"
     : "Needs the local applet (npm start)";
 }
 
