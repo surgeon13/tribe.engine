@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "/assets",
-  "generatedAt": "2026-08-05T12:03:44.438Z",
+  "generatedAt": "2026-08-05T12:05:55.298Z",
   "roster": [
     {
       "slot": 1,
@@ -297,6 +297,10 @@
       },
       "moors": {
         "fightingStrengthPerPoint": 88,
+        "resourceProductionBonusPercent": 0
+      },
+      "undead": {
+        "fightingStrengthPerPoint": 80,
         "resourceProductionBonusPercent": 0
       }
     }
@@ -11897,6 +11901,835 @@
       },
       "graphicsUrls": {
         "banner": "/assets/tribes/moors/banner.png"
+      }
+    },
+    {
+      "id": "undead",
+      "name": "Undead",
+      "type": "playable",
+      "theme": "Cheap shambling masses, spectral scouts, and bone cavalry — high pressure, fragile line (Fantasy / necromantic, Grave-realms / cursed marches)",
+      "palette": {
+        "primary": "#1A1A2E",
+        "secondary": "#6BCB77"
+      },
+      "graphics": {
+        "banner": "tribes/undead/banner.png"
+      },
+      "summary": {
+        "unitCount": 11,
+        "maxAttack": 175,
+        "maxDefenseInfantry": 70,
+        "maxDefenseCavalry": 90,
+        "maxSpeed": 18,
+        "maxCarry": 90,
+        "avgAttack": 81,
+        "avgDefenseCombined": 42,
+        "totalCropUpkeep": 31
+      },
+      "troops": [
+        {
+          "slot": 1,
+          "role": "infantry",
+          "ref": "inf_t1",
+          "id": "inf_t1",
+          "name": "Skeleton Levy",
+          "category": "infantry",
+          "stats": {
+            "attack": 30,
+            "defenseInfantry": 28,
+            "defenseCavalry": 25,
+            "speed": 6,
+            "carry": 40
+          },
+          "cost": {
+            "wood": 85,
+            "clay": 70,
+            "iron": 95,
+            "crop": 25
+          },
+          "cropUpkeep": 1,
+          "totalCost": 275,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 900,
+            "timeFormatted": "15:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/01_infantry.png",
+            "icon": "tribes/undead/units/01_infantry_icon.png",
+            "logo": "infantry/bone-mace.svg",
+            "baseSprite": "units/base/inf_t1.png",
+            "baseIcon": "units/base/inf_t1_icon.png",
+            "baseLogo": "infantry/gladius.svg"
+          },
+          "metrics": {
+            "offense": 30,
+            "defenseInfantry": 28,
+            "defenseCavalry": 25,
+            "defenseCombined": 27,
+            "defenseTotal": 53,
+            "speed": 6,
+            "carry": 40,
+            "cropUpkeep": 1,
+            "attackPerCrop": 30,
+            "defensePerCrop": 53,
+            "trainTimeSeconds": 900,
+            "trainTimeFormatted": "15:00",
+            "resourceCost": 275
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/01_infantry_icon.png",
+            "sprite": "/assets/tribes/undead/units/01_infantry.png",
+            "logo": "/assets/infantry/bone-mace.svg",
+            "baseIcon": "/assets/units/base/inf_t1_icon.png",
+            "baseSprite": "/assets/units/base/inf_t1.png",
+            "baseLogo": "/assets/infantry/gladius.svg"
+          }
+        },
+        {
+          "slot": 2,
+          "role": "infantry",
+          "ref": "inf_t2",
+          "id": "inf_t2",
+          "name": "Ghoul",
+          "category": "infantry",
+          "stats": {
+            "attack": 55,
+            "defenseInfantry": 28,
+            "defenseCavalry": 22,
+            "speed": 8,
+            "carry": 35
+          },
+          "cost": {
+            "wood": 115,
+            "clay": 95,
+            "iron": 130,
+            "crop": 45
+          },
+          "cropUpkeep": 1,
+          "totalCost": 385,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1100,
+            "timeFormatted": "18:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/02_infantry.png",
+            "icon": "tribes/undead/units/02_infantry_icon.png",
+            "logo": "infantry/sacrificial-dagger.svg",
+            "baseSprite": "units/base/inf_t2.png",
+            "baseIcon": "units/base/inf_t2_icon.png",
+            "baseLogo": "infantry/battle-axe.svg"
+          },
+          "metrics": {
+            "offense": 55,
+            "defenseInfantry": 28,
+            "defenseCavalry": 22,
+            "defenseCombined": 25,
+            "defenseTotal": 50,
+            "speed": 8,
+            "carry": 35,
+            "cropUpkeep": 1,
+            "attackPerCrop": 55,
+            "defensePerCrop": 50,
+            "trainTimeSeconds": 1100,
+            "trainTimeFormatted": "18:20",
+            "resourceCost": 385
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/02_infantry_icon.png",
+            "sprite": "/assets/tribes/undead/units/02_infantry.png",
+            "logo": "/assets/infantry/sacrificial-dagger.svg",
+            "baseIcon": "/assets/units/base/inf_t2_icon.png",
+            "baseSprite": "/assets/units/base/inf_t2.png",
+            "baseLogo": "/assets/infantry/battle-axe.svg"
+          }
+        },
+        {
+          "slot": 3,
+          "role": "infantry",
+          "ref": "inf_t3",
+          "id": "inf_t3",
+          "name": "Wight",
+          "category": "infantry",
+          "stats": {
+            "attack": 80,
+            "defenseInfantry": 40,
+            "defenseCavalry": 30,
+            "speed": 7,
+            "carry": 40
+          },
+          "cost": {
+            "wood": 150,
+            "clay": 135,
+            "iron": 200,
+            "crop": 75
+          },
+          "cropUpkeep": 1,
+          "totalCost": 560,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1500,
+            "timeFormatted": "25:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/03_infantry.png",
+            "icon": "tribes/undead/units/03_infantry_icon.png",
+            "logo": "infantry/scythe.svg",
+            "baseSprite": "units/base/inf_t3.png",
+            "baseIcon": "units/base/inf_t3_icon.png",
+            "baseLogo": "infantry/warhammer.svg"
+          },
+          "metrics": {
+            "offense": 80,
+            "defenseInfantry": 40,
+            "defenseCavalry": 30,
+            "defenseCombined": 35,
+            "defenseTotal": 70,
+            "speed": 7,
+            "carry": 40,
+            "cropUpkeep": 1,
+            "attackPerCrop": 80,
+            "defensePerCrop": 70,
+            "trainTimeSeconds": 1500,
+            "trainTimeFormatted": "25:00",
+            "resourceCost": 560
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/03_infantry_icon.png",
+            "sprite": "/assets/tribes/undead/units/03_infantry.png",
+            "logo": "/assets/infantry/scythe.svg",
+            "baseIcon": "/assets/units/base/inf_t3_icon.png",
+            "baseSprite": "/assets/units/base/inf_t3.png",
+            "baseLogo": "/assets/infantry/warhammer.svg"
+          }
+        },
+        {
+          "slot": 4,
+          "role": "scout",
+          "ref": "scout",
+          "id": "scout",
+          "name": "Shade",
+          "category": "scout",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 18,
+            "defenseCavalry": 10,
+            "speed": 18,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 120,
+            "clay": 140,
+            "iron": 20,
+            "crop": 35
+          },
+          "cropUpkeep": 2,
+          "totalCost": 315,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1150,
+            "timeFormatted": "19:10",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/04_scout.png",
+            "icon": "tribes/undead/units/04_scout_icon.png",
+            "logo": "infantry/heavy-arrow.svg",
+            "baseSprite": "units/base/scout.png",
+            "baseIcon": "units/base/scout_icon.png",
+            "baseLogo": "infantry/heavy-arrow.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 18,
+            "defenseCavalry": 10,
+            "defenseCombined": 14,
+            "defenseTotal": 28,
+            "speed": 18,
+            "carry": 0,
+            "cropUpkeep": 2,
+            "attackPerCrop": 0,
+            "defensePerCrop": 14,
+            "trainTimeSeconds": 1150,
+            "trainTimeFormatted": "19:10",
+            "resourceCost": 315
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/04_scout_icon.png",
+            "sprite": "/assets/tribes/undead/units/04_scout.png",
+            "logo": "/assets/infantry/heavy-arrow.svg",
+            "baseIcon": "/assets/units/base/scout_icon.png",
+            "baseSprite": "/assets/units/base/scout.png",
+            "baseLogo": "/assets/infantry/heavy-arrow.svg"
+          }
+        },
+        {
+          "slot": 5,
+          "role": "cavalry",
+          "ref": "cav_t1",
+          "id": "cav_t1",
+          "name": "Bone Rider",
+          "category": "cavalry",
+          "stats": {
+            "attack": 105,
+            "defenseInfantry": 45,
+            "defenseCavalry": 40,
+            "speed": 15,
+            "carry": 90
+          },
+          "cost": {
+            "wood": 430,
+            "clay": 360,
+            "iron": 280,
+            "crop": 85
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1155,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 1700,
+            "timeFormatted": "28:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/05_cavalry.png",
+            "icon": "tribes/undead/units/05_cavalry_icon.png",
+            "logo": "cavalry/horse-head.svg",
+            "baseSprite": "units/base/cav_t1.png",
+            "baseIcon": "units/base/cav_t1_icon.png",
+            "baseLogo": "cavalry/horse-head.svg"
+          },
+          "metrics": {
+            "offense": 105,
+            "defenseInfantry": 45,
+            "defenseCavalry": 40,
+            "defenseCombined": 43,
+            "defenseTotal": 85,
+            "speed": 15,
+            "carry": 90,
+            "cropUpkeep": 3,
+            "attackPerCrop": 35,
+            "defensePerCrop": 28.3,
+            "trainTimeSeconds": 1700,
+            "trainTimeFormatted": "28:20",
+            "resourceCost": 1155
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/05_cavalry_icon.png",
+            "sprite": "/assets/tribes/undead/units/05_cavalry.png",
+            "logo": "/assets/cavalry/horse-head.svg",
+            "baseIcon": "/assets/units/base/cav_t1_icon.png",
+            "baseSprite": "/assets/units/base/cav_t1.png",
+            "baseLogo": "/assets/cavalry/horse-head.svg"
+          }
+        },
+        {
+          "slot": 6,
+          "role": "cavalry",
+          "ref": "cav_t2",
+          "id": "cav_t2",
+          "name": "Death Knight",
+          "category": "cavalry",
+          "stats": {
+            "attack": 175,
+            "defenseInfantry": 70,
+            "defenseCavalry": 90,
+            "speed": 11,
+            "carry": 65
+          },
+          "cost": {
+            "wood": 520,
+            "clay": 590,
+            "iron": 740,
+            "crop": 170
+          },
+          "cropUpkeep": 4,
+          "totalCost": 2020,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2300,
+            "timeFormatted": "38:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/06_cavalry.png",
+            "icon": "tribes/undead/units/06_cavalry_icon.png",
+            "logo": "animals/ram.svg",
+            "baseSprite": "units/base/cav_t2.png",
+            "baseIcon": "units/base/cav_t2_icon.png",
+            "baseLogo": "cavalry/chess-knight.svg"
+          },
+          "metrics": {
+            "offense": 175,
+            "defenseInfantry": 70,
+            "defenseCavalry": 90,
+            "defenseCombined": 80,
+            "defenseTotal": 160,
+            "speed": 11,
+            "carry": 65,
+            "cropUpkeep": 4,
+            "attackPerCrop": 43.8,
+            "defensePerCrop": 40,
+            "trainTimeSeconds": 2300,
+            "trainTimeFormatted": "38:20",
+            "resourceCost": 2020
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/06_cavalry_icon.png",
+            "sprite": "/assets/tribes/undead/units/06_cavalry.png",
+            "logo": "/assets/animals/ram.svg",
+            "baseIcon": "/assets/units/base/cav_t2_icon.png",
+            "baseSprite": "/assets/units/base/cav_t2.png",
+            "baseLogo": "/assets/cavalry/chess-knight.svg"
+          }
+        },
+        {
+          "slot": 7,
+          "role": "cavalry",
+          "ref": "cav_t3",
+          "id": "cav_t3",
+          "name": "Black Steed",
+          "category": "cavalry",
+          "stats": {
+            "attack": 145,
+            "defenseInfantry": 65,
+            "defenseCavalry": 75,
+            "speed": 13,
+            "carry": 75
+          },
+          "cost": {
+            "wood": 500,
+            "clay": 520,
+            "iron": 640,
+            "crop": 145
+          },
+          "cropUpkeep": 4,
+          "totalCost": 1805,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2550,
+            "timeFormatted": "42:30",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/07_cavalry.png",
+            "icon": "tribes/undead/units/07_cavalry_icon.png",
+            "logo": "cavalry/donkey.svg",
+            "baseSprite": "units/base/cav_t3.png",
+            "baseIcon": "units/base/cav_t3_icon.png",
+            "baseLogo": "cavalry/elephant.svg"
+          },
+          "metrics": {
+            "offense": 145,
+            "defenseInfantry": 65,
+            "defenseCavalry": 75,
+            "defenseCombined": 70,
+            "defenseTotal": 140,
+            "speed": 13,
+            "carry": 75,
+            "cropUpkeep": 4,
+            "attackPerCrop": 36.3,
+            "defensePerCrop": 35,
+            "trainTimeSeconds": 2550,
+            "trainTimeFormatted": "42:30",
+            "resourceCost": 1805
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/07_cavalry_icon.png",
+            "sprite": "/assets/tribes/undead/units/07_cavalry.png",
+            "logo": "/assets/cavalry/donkey.svg",
+            "baseIcon": "/assets/units/base/cav_t3_icon.png",
+            "baseSprite": "/assets/units/base/cav_t3.png",
+            "baseLogo": "/assets/cavalry/elephant.svg"
+          }
+        },
+        {
+          "slot": 8,
+          "role": "siege",
+          "ref": "ram",
+          "id": "ram",
+          "name": "Bone Ram",
+          "category": "siege",
+          "stats": {
+            "attack": 65,
+            "defenseInfantry": 28,
+            "defenseCavalry": 70,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 850,
+            "clay": 340,
+            "iron": 480,
+            "crop": 65
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1735,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 4400,
+            "timeFormatted": "1:13:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/08_ram.png",
+            "icon": "tribes/undead/units/08_ram_icon.png",
+            "logo": "infantry/crowbar.svg",
+            "baseSprite": "units/base/ram.png",
+            "baseIcon": "units/base/ram_icon.png",
+            "baseLogo": "infantry/crowbar.svg"
+          },
+          "metrics": {
+            "offense": 65,
+            "defenseInfantry": 28,
+            "defenseCavalry": 70,
+            "defenseCombined": 49,
+            "defenseTotal": 98,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 3,
+            "attackPerCrop": 21.7,
+            "defensePerCrop": 32.7,
+            "trainTimeSeconds": 4400,
+            "trainTimeFormatted": "1:13:20",
+            "resourceCost": 1735
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/08_ram_icon.png",
+            "sprite": "/assets/tribes/undead/units/08_ram.png",
+            "logo": "/assets/infantry/crowbar.svg",
+            "baseIcon": "/assets/units/base/ram_icon.png",
+            "baseSprite": "/assets/units/base/ram.png",
+            "baseLogo": "/assets/infantry/crowbar.svg"
+          }
+        },
+        {
+          "slot": 9,
+          "role": "siege",
+          "ref": "catapult",
+          "id": "catapult",
+          "name": "Tomb Catapult",
+          "category": "siege",
+          "stats": {
+            "attack": 78,
+            "defenseInfantry": 55,
+            "defenseCavalry": 10,
+            "speed": 3,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 920,
+            "clay": 1300,
+            "iron": 580,
+            "crop": 85
+          },
+          "cropUpkeep": 6,
+          "totalCost": 2885,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 8800,
+            "timeFormatted": "2:26:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/09_catapult.png",
+            "icon": "tribes/undead/units/09_catapult_icon.png",
+            "logo": "powder.svg",
+            "baseSprite": "units/base/catapult.png",
+            "baseIcon": "units/base/catapult_icon.png",
+            "baseLogo": "powder.svg"
+          },
+          "metrics": {
+            "offense": 78,
+            "defenseInfantry": 55,
+            "defenseCavalry": 10,
+            "defenseCombined": 33,
+            "defenseTotal": 65,
+            "speed": 3,
+            "carry": 0,
+            "cropUpkeep": 6,
+            "attackPerCrop": 13,
+            "defensePerCrop": 10.8,
+            "trainTimeSeconds": 8800,
+            "trainTimeFormatted": "2:26:40",
+            "resourceCost": 2885
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/09_catapult_icon.png",
+            "sprite": "/assets/tribes/undead/units/09_catapult.png",
+            "logo": "/assets/powder.svg",
+            "baseIcon": "/assets/units/base/catapult_icon.png",
+            "baseSprite": "/assets/units/base/catapult.png",
+            "baseLogo": "/assets/powder.svg"
+          }
+        },
+        {
+          "slot": 10,
+          "role": "chief",
+          "ref": "chief",
+          "id": "chief",
+          "name": "Lich",
+          "category": "chief",
+          "stats": {
+            "attack": 45,
+            "defenseInfantry": 35,
+            "defenseCavalry": 28,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 29500,
+            "clay": 26500,
+            "iron": 43000,
+            "crop": 35000
+          },
+          "cropUpkeep": 5,
+          "totalCost": 134000,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 90720,
+            "timeFormatted": "25:12:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              },
+              {
+                "type": "building",
+                "id": "rally_point",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/10_chief.png",
+            "icon": "tribes/undead/units/10_chief_icon.png",
+            "logo": "infantry/orb-wand.svg",
+            "baseSprite": "units/base/chief.png",
+            "baseIcon": "units/base/chief_icon.png",
+            "baseLogo": "infantry/baton.svg"
+          },
+          "metrics": {
+            "offense": 45,
+            "defenseInfantry": 35,
+            "defenseCavalry": 28,
+            "defenseCombined": 32,
+            "defenseTotal": 63,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 5,
+            "attackPerCrop": 9,
+            "defensePerCrop": 12.6,
+            "trainTimeSeconds": 90720,
+            "trainTimeFormatted": "25:12:00",
+            "resourceCost": 134000
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/10_chief_icon.png",
+            "sprite": "/assets/tribes/undead/units/10_chief.png",
+            "logo": "/assets/infantry/orb-wand.svg",
+            "baseIcon": "/assets/units/base/chief_icon.png",
+            "baseSprite": "/assets/units/base/chief.png",
+            "baseLogo": "/assets/infantry/baton.svg"
+          }
+        },
+        {
+          "slot": 11,
+          "role": "settler",
+          "ref": "settler",
+          "id": "settler",
+          "name": "Necropolis Settler",
+          "category": "settler",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 75,
+            "defenseCavalry": 75,
+            "speed": 5,
+            "carry": 3000
+          },
+          "cost": {
+            "wood": 5600,
+            "clay": 5100,
+            "iron": 7000,
+            "crop": 5300
+          },
+          "cropUpkeep": 1,
+          "totalCost": 23000,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 26920,
+            "timeFormatted": "7:28:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/undead/units/11_settler.png",
+            "icon": "tribes/undead/units/11_settler_icon.png",
+            "logo": "resources/stone-pile.svg",
+            "baseSprite": "units/base/settler.png",
+            "baseIcon": "units/base/settler_icon.png",
+            "baseLogo": "resources/brick-pile.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 75,
+            "defenseCavalry": 75,
+            "defenseCombined": 75,
+            "defenseTotal": 150,
+            "speed": 5,
+            "carry": 3000,
+            "cropUpkeep": 1,
+            "attackPerCrop": 0,
+            "defensePerCrop": 150,
+            "trainTimeSeconds": 26920,
+            "trainTimeFormatted": "7:28:40",
+            "resourceCost": 23000
+          },
+          "graphicsUrls": {
+            "icon": "/assets/tribes/undead/units/11_settler_icon.png",
+            "sprite": "/assets/tribes/undead/units/11_settler.png",
+            "logo": "/assets/resources/stone-pile.svg",
+            "baseIcon": "/assets/units/base/settler_icon.png",
+            "baseSprite": "/assets/units/base/settler.png",
+            "baseLogo": "/assets/resources/brick-pile.svg"
+          }
+        }
+      ],
+      "hero": {
+        "id": "undead_hero",
+        "progression": "hero.system.json",
+        "role": "hero",
+        "category": "hero",
+        "name": "Death Knight Hero",
+        "description": {
+          "en": "Champion of the grave — leads the undead host."
+        },
+        "isBase": false,
+        "stats": {
+          "attack": 125,
+          "defenseInfantry": 95,
+          "defenseCavalry": 90,
+          "speed": 9,
+          "carry": 100
+        },
+        "cost": {
+          "wood": 0,
+          "clay": 0,
+          "iron": 0,
+          "crop": 0
+        },
+        "cropUpkeep": 6,
+        "training": {
+          "building": "hero_mansion",
+          "buildingLabel": "Hero's Mansion",
+          "timeSeconds": 0,
+          "timeFormatted": null,
+          "requirements": []
+        },
+        "graphics": {
+          "sprite": "tribes/undead/hero/hero.png",
+          "icon": "tribes/undead/hero/hero_icon.png",
+          "portrait": "tribes/undead/hero/hero_portrait.png"
+        },
+        "metrics": {
+          "offense": 125,
+          "defenseInfantry": 95,
+          "defenseCavalry": 90,
+          "defenseCombined": 93,
+          "defenseTotal": 185,
+          "speed": 9,
+          "carry": 100,
+          "cropUpkeep": 6,
+          "attackPerCrop": 20.8,
+          "defensePerCrop": 30.8,
+          "trainTimeSeconds": 0,
+          "trainTimeFormatted": null,
+          "resourceCost": 0
+        },
+        "totalCost": 0,
+        "graphicsUrls": {
+          "icon": "/assets/tribes/undead/hero/hero_icon.png",
+          "sprite": "/assets/tribes/undead/hero/hero.png",
+          "portrait": "/assets/tribes/undead/hero/hero_portrait.png"
+        }
+      },
+      "graphicsUrls": {
+        "banner": "/assets/tribes/undead/banner.png"
       }
     }
   ]

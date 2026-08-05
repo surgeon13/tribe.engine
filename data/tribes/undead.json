@@ -1,0 +1,380 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "undead",
+    "name": {
+      "en": "Undead"
+    },
+    "theme": "Cheap shambling masses, spectral scouts, and bone cavalry — high pressure, fragile line (Fantasy / necromantic, Grave-realms / cursed marches)",
+    "graphics": {
+      "banner": "tribes/undead/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#1A1A2E",
+    "secondary": "#6BCB77"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/undead/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": {
+          "en": "Skeleton Levy"
+        },
+        "stats": {
+          "attack": 30,
+          "defenseInfantry": 28,
+          "defenseCavalry": 25,
+          "speed": 6,
+          "carry": 40
+        },
+        "cost": {
+          "wood": 85,
+          "clay": 70,
+          "iron": 95,
+          "crop": 25
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/bone-mace.svg"
+        },
+        "description": {
+          "en": "Rattling bone levy — cheap, numerous, and brittle."
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": {
+          "en": "Ghoul"
+        },
+        "stats": {
+          "attack": 55,
+          "defenseInfantry": 28,
+          "defenseCavalry": 22,
+          "speed": 8,
+          "carry": 35
+        },
+        "cost": {
+          "wood": 115,
+          "clay": 95,
+          "iron": 130,
+          "crop": 45
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/sacrificial-dagger.svg"
+        },
+        "description": {
+          "en": "Flesh-hungry raiders — fast aggression, thin armor."
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": {
+          "en": "Wight"
+        },
+        "stats": {
+          "attack": 80,
+          "defenseInfantry": 40,
+          "defenseCavalry": 30,
+          "speed": 7,
+          "carry": 40
+        },
+        "cost": {
+          "wood": 150,
+          "clay": 135,
+          "iron": 200,
+          "crop": 75
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/scythe.svg"
+        },
+        "description": {
+          "en": "Grave-bound elites with chill blades — strong punch, still fragile."
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": {
+          "en": "Shade"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 18,
+          "defenseCavalry": 10,
+          "speed": 18,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 120,
+          "clay": 140,
+          "iron": 20,
+          "crop": 35
+        },
+        "cropUpkeep": 2,
+        "graphics": {
+          "logo": "infantry/heavy-arrow.svg"
+        },
+        "description": {
+          "en": "Spectral scout — nearly unseen on the march."
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": {
+          "en": "Bone Rider"
+        },
+        "stats": {
+          "attack": 105,
+          "defenseInfantry": 45,
+          "defenseCavalry": 40,
+          "speed": 15,
+          "carry": 90
+        },
+        "cost": {
+          "wood": 430,
+          "clay": 360,
+          "iron": 280,
+          "crop": 85
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "cavalry/horse-head.svg"
+        },
+        "description": {
+          "en": "Skeletal light horse — cheap mounted pressure."
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": {
+          "en": "Death Knight"
+        },
+        "stats": {
+          "attack": 175,
+          "defenseInfantry": 70,
+          "defenseCavalry": 90,
+          "speed": 11,
+          "carry": 65
+        },
+        "cost": {
+          "wood": 520,
+          "clay": 590,
+          "iron": 740,
+          "crop": 170
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "animals/ram.svg"
+        },
+        "description": {
+          "en": "Cursed heavy cavalry — dread charge."
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": {
+          "en": "Black Steed"
+        },
+        "stats": {
+          "attack": 145,
+          "defenseInfantry": 65,
+          "defenseCavalry": 75,
+          "speed": 13,
+          "carry": 75
+        },
+        "cost": {
+          "wood": 500,
+          "clay": 520,
+          "iron": 640,
+          "crop": 145
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/donkey.svg"
+        },
+        "description": {
+          "en": "Night-mares of the necropolis — balanced undead horse."
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": {
+          "en": "Bone Ram"
+        },
+        "stats": {
+          "attack": 65,
+          "defenseInfantry": 28,
+          "defenseCavalry": 70,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 850,
+          "clay": 340,
+          "iron": 480,
+          "crop": 65
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "infantry/crowbar.svg"
+        },
+        "description": {
+          "en": "Siege engine lashed from ossuary timber and bone."
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": {
+          "en": "Tomb Catapult"
+        },
+        "stats": {
+          "attack": 78,
+          "defenseInfantry": 55,
+          "defenseCavalry": 10,
+          "speed": 3,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 920,
+          "clay": 1300,
+          "iron": 580,
+          "crop": 85
+        },
+        "cropUpkeep": 6,
+        "graphics": {
+          "logo": "powder.svg"
+        },
+        "description": {
+          "en": "Hurls crypt-stone and grave rubble."
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": {
+          "en": "Lich"
+        },
+        "stats": {
+          "attack": 45,
+          "defenseInfantry": 35,
+          "defenseCavalry": 28,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 29500,
+          "clay": 26500,
+          "iron": 43000,
+          "crop": 35000
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "infantry/orb-wand.svg"
+        },
+        "description": {
+          "en": "Undying warlock who binds settlements to the grave-realm."
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": {
+          "en": "Necropolis Settler"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 75,
+          "defenseCavalry": 75,
+          "speed": 5,
+          "carry": 3000
+        },
+        "cost": {
+          "wood": 5600,
+          "clay": 5100,
+          "iron": 7000,
+          "crop": 5300
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "resources/stone-pile.svg"
+        },
+        "description": {
+          "en": "Raise a new crypt-colony from barren ground."
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "undead_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": {
+      "en": "Death Knight Hero"
+    },
+    "description": {
+      "en": "Champion of the grave — leads the undead host."
+    },
+    "isBase": false,
+    "stats": {
+      "attack": 125,
+      "defenseInfantry": 95,
+      "defenseCavalry": 90,
+      "speed": 9,
+      "carry": 100
+    },
+    "cost": {
+      "wood": 0,
+      "clay": 0,
+      "iron": 0,
+      "crop": 0
+    },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
+    "graphics": {
+      "sprite": "tribes/undead/hero/hero.png",
+      "icon": "tribes/undead/hero/hero_icon.png",
+      "portrait": "tribes/undead/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "generated": true,
+    "custom": false,
+    "cultureId": "undead",
+    "archetype": "raider",
+    "era": "Fantasy / necromantic",
+    "region": "Grave-realms / cursed marches",
+    "historicalContext": "A necromantic host of raised dead, wights, and cursed riders. Fantasy faction (not historical): expendable infantry waves supported by dread cavalry and siege engines hauled by the damned.",
+    "createdAt": "2026-08-05T12:05:42.173Z"
+  }
+}

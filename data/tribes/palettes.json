@@ -72,6 +72,11 @@
       "primary": "#1B4332",
       "secondary": "#D4A017",
       "notes": "Moors custom palette"
+    },
+    "undead": {
+      "primary": "#1A1A2E",
+      "secondary": "#6BCB77",
+      "notes": "Midnight crypt + corpse-glow green"
     }
   }
 }

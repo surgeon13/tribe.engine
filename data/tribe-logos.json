@@ -183,6 +183,19 @@
       "catapult": "powder.svg",
       "chief": "infantry/baton.svg",
       "settler": "resources/brick-pile.svg"
+    },
+    "undead": {
+      "inf_t1": "infantry/bone-mace.svg",
+      "inf_t2": "infantry/sacrificial-dagger.svg",
+      "inf_t3": "infantry/scythe.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "animals/ram.svg",
+      "cav_t3": "cavalry/donkey.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/orb-wand.svg",
+      "settler": "resources/stone-pile.svg"
     }
   }
 }

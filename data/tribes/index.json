@@ -114,6 +114,14 @@
       "name": {
         "en": "Moors"
       }
+    },
+    {
+      "id": "undead",
+      "file": "undead.json",
+      "type": "playable",
+      "name": {
+        "en": "Undead"
+      }
     }
   ]
 }

@@ -71,7 +71,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     archetypes = body.archetypes || [];
     slotLabels = body.slotLabels || {};
     cultureSelect.innerHTML =
-      `<option value="">— Select historical culture —</option>` +
+      `<option value="">— Select culture preset —</option>` +
       profiles.map((p) => `<option value="${p.id}">${p.name} · ${p.era}</option>`).join("");
     archetypeSelect.innerHTML = archetypes
       .map((a) => `<option value="${a.id}">${a.label}</option>`)
