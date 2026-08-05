@@ -12,7 +12,7 @@ Base combat values match **Travian Legends (T4.6)** unless noted.
 | Spartans | Travian Legends support tables | Siege/chief aligned with Roman-tier NPC |
 | Natars | [Wiki Travian Natars](http://wikitravian.free.fr/voir.php?page=Troop-statistics-tables) | Slot 7 cavalry extended |
 | Nature | [Fandom Nature](https://travian.fandom.com/wiki/Nature) | Oasis animals mapped to 11 slots; 0 crop upkeep |
-| Generated cultures | `lib/tribe-generator/profiles.js` | Historically flavored Tevel balances (Carthaginian, Persian, Viking, Byzantine, Mongol, Japanese, Israelite, Axum, Greek) via **Add tribe** |
+| Generated cultures | `lib/tribe-generator/profiles.js` | Historically flavored Tevel balances (Carthaginian, Persian, Viking, Byzantine, Mongol, Japanese, Israelite, Axum, Greek, Slav, Balt, Dacian) via **Add tribe** |
 
 Hero stats are **Tevel placeholders** (Travian heroes use a separate progression system).
 

@@ -1,0 +1,366 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "slav",
+    "name": {
+      "en": "Slavs"
+    },
+    "theme": "Forest infantry, shield-wall levies, and light horse on the open fringe (Early medieval Slavs (6th–10th c. CE), Eastern Europe / forest-steppe)",
+    "graphics": {
+      "banner": "tribes/slav/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#2E5A3C",
+    "secondary": "#C4A35A"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/slav/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": {
+          "en": "Spear Levy"
+        },
+        "stats": {
+          "attack": 35,
+          "defenseInfantry": 40,
+          "defenseCavalry": 35,
+          "speed": 7,
+          "carry": 45
+        },
+        "cost": {
+          "wood": 95,
+          "clay": 80,
+          "iron": 70,
+          "crop": 35
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/stone-spear.svg"
+        },
+        "description": {
+          "en": "Village muster with spear and round shield."
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": {
+          "en": "Axeman"
+        },
+        "stats": {
+          "attack": 55,
+          "defenseInfantry": 35,
+          "defenseCavalry": 25,
+          "speed": 7,
+          "carry": 40
+        },
+        "cost": {
+          "wood": 115,
+          "clay": 95,
+          "iron": 130,
+          "crop": 50
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/wood-club.svg"
+        },
+        "description": {
+          "en": "Forest fighters with axe and light armor."
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": {
+          "en": "Druzhina Foot"
+        },
+        "stats": {
+          "attack": 70,
+          "defenseInfantry": 50,
+          "defenseCavalry": 35,
+          "speed": 6,
+          "carry": 45
+        },
+        "cost": {
+          "wood": 150,
+          "clay": 140,
+          "iron": 195,
+          "crop": 80
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/war-axe.svg"
+        },
+        "description": {
+          "en": "Princely retinue infantry — better armed household troops."
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": {
+          "en": "Forest Scout"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 18,
+          "defenseCavalry": 10,
+          "speed": 15,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 120,
+          "clay": 130,
+          "iron": 20,
+          "crop": 35
+        },
+        "cropUpkeep": 2,
+        "graphics": {
+          "logo": "infantry/heavy-arrow.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": {
+          "en": "Light Horse"
+        },
+        "stats": {
+          "attack": 105,
+          "defenseInfantry": 45,
+          "defenseCavalry": 40,
+          "speed": 15,
+          "carry": 100
+        },
+        "cost": {
+          "wood": 440,
+          "clay": 360,
+          "iron": 270,
+          "crop": 90
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "cavalry/horse-head.svg"
+        },
+        "description": {
+          "en": "Raiding cavalry on the forest-steppe fringe."
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": {
+          "en": "Druzhina Horse"
+        },
+        "stats": {
+          "attack": 150,
+          "defenseInfantry": 65,
+          "defenseCavalry": 80,
+          "speed": 12,
+          "carry": 75
+        },
+        "cost": {
+          "wood": 510,
+          "clay": 530,
+          "iron": 660,
+          "crop": 155
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/donkey.svg"
+        },
+        "description": {
+          "en": "Mounted retainers of the knyaz."
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": {
+          "en": "Boyar Cavalry"
+        },
+        "stats": {
+          "attack": 160,
+          "defenseInfantry": 72,
+          "defenseCavalry": 90,
+          "speed": 11,
+          "carry": 70
+        },
+        "cost": {
+          "wood": 530,
+          "clay": 560,
+          "iron": 700,
+          "crop": 165
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/chess-knight.svg"
+        },
+        "description": {
+          "en": "Noble heavy horse — costly shock arm."
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": {
+          "en": "Ram"
+        },
+        "stats": {
+          "attack": 58,
+          "defenseInfantry": 28,
+          "defenseCavalry": 70,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 860,
+          "clay": 340,
+          "iron": 475,
+          "crop": 65
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "infantry/battered-axe.svg"
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": {
+          "en": "Catapult"
+        },
+        "stats": {
+          "attack": 70,
+          "defenseInfantry": 52,
+          "defenseCavalry": 10,
+          "speed": 3,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 910,
+          "clay": 1260,
+          "iron": 570,
+          "crop": 85
+        },
+        "cropUpkeep": 6,
+        "graphics": {
+          "logo": "powder.svg"
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": {
+          "en": "Knyaz"
+        },
+        "stats": {
+          "attack": 52,
+          "defenseInfantry": 38,
+          "defenseCavalry": 28,
+          "speed": 5,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 28500,
+          "clay": 25500,
+          "iron": 41000,
+          "crop": 34500
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "infantry/baton.svg"
+        },
+        "description": {
+          "en": "Slavic prince empowered to receive settlements."
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": {
+          "en": "Settler"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 80,
+          "defenseCavalry": 80,
+          "speed": 5,
+          "carry": 3000
+        },
+        "cost": {
+          "wood": 5550,
+          "clay": 5050,
+          "iron": 6900,
+          "crop": 5250
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "resources/wood-pile.svg"
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "slav_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": {
+      "en": "Slavic Hero"
+    },
+    "description": {
+      "en": "Early medieval knyaz — forest infantry and retinue cavalry."
+    },
+    "isBase": false,
+    "stats": {
+      "attack": 112,
+      "defenseInfantry": 105,
+      "defenseCavalry": 90,
+      "speed": 9,
+      "carry": 110
+    },
+    "cost": {
+      "wood": 0,
+      "clay": 0,
+      "iron": 0,
+      "crop": 0
+    },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
+    "graphics": {
+      "sprite": "tribes/slav/hero/hero.png",
+      "icon": "tribes/slav/hero/hero_icon.png",
+      "portrait": "tribes/slav/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "generated": true,
+    "cultureId": "slav",
+    "era": "Early medieval Slavs (6th–10th c. CE)",
+    "region": "Eastern Europe / forest-steppe",
+    "historicalContext": "Early Slavic warbands fought mainly on foot with spears, axes, and bows from forest settlements, using ambush and raid tactics; cavalry grew as contact with steppe and Byzantine neighbors increased.",
+    "createdAt": "2026-08-05T10:53:05.966Z"
+  }
+}

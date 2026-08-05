@@ -138,6 +138,30 @@
       "name": {
         "en": "Greeks"
       }
+    },
+    {
+      "id": "slav",
+      "file": "slav.json",
+      "type": "playable",
+      "name": {
+        "en": "Slavs"
+      }
+    },
+    {
+      "id": "balt",
+      "file": "balt.json",
+      "type": "playable",
+      "name": {
+        "en": "Balts"
+      }
+    },
+    {
+      "id": "dacian",
+      "file": "dacian.json",
+      "type": "playable",
+      "name": {
+        "en": "Dacians"
+      }
     }
   ]
 }

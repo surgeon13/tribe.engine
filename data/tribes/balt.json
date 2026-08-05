@@ -1,0 +1,363 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "balt",
+    "name": {
+      "en": "Balts"
+    },
+    "theme": "Dense-forest infantry, ambush warfare, and stubborn defensive levies (Baltic tribes (early medieval–13th c. CE), Eastern Baltic / amber coast)",
+    "graphics": {
+      "banner": "tribes/balt/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#1B4332",
+    "secondary": "#D4A017"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/balt/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": {
+          "en": "Spearman"
+        },
+        "stats": {
+          "attack": 34,
+          "defenseInfantry": 45,
+          "defenseCavalry": 40,
+          "speed": 6,
+          "carry": 40
+        },
+        "cost": {
+          "wood": 100,
+          "clay": 85,
+          "iron": 75,
+          "crop": 35
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/stone-spear.svg"
+        },
+        "description": {
+          "en": "Tribal levy for forest defense."
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": {
+          "en": "Axeman"
+        },
+        "stats": {
+          "attack": 58,
+          "defenseInfantry": 38,
+          "defenseCavalry": 28,
+          "speed": 7,
+          "carry": 38
+        },
+        "cost": {
+          "wood": 120,
+          "clay": 100,
+          "iron": 140,
+          "crop": 52
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/battle-axe.svg"
+        },
+        "description": {
+          "en": "Close-combat infantry favored in wooded fighting."
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": {
+          "en": "Chosen Warrior"
+        },
+        "stats": {
+          "attack": 78,
+          "defenseInfantry": 48,
+          "defenseCavalry": 32,
+          "speed": 7,
+          "carry": 42
+        },
+        "cost": {
+          "wood": 155,
+          "clay": 145,
+          "iron": 205,
+          "crop": 85
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/sharp-axe.svg"
+        },
+        "description": {
+          "en": "Elite household fighters — high attack in ambush and melee."
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": {
+          "en": "Tracker"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 20,
+          "defenseCavalry": 10,
+          "speed": 15,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 125,
+          "clay": 135,
+          "iron": 22,
+          "crop": 38
+        },
+        "cropUpkeep": 2,
+        "graphics": {
+          "logo": "infantry/boomerang.svg"
+        },
+        "description": {
+          "en": "Forest pathfinders and border watchers."
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": {
+          "en": "Light Rider"
+        },
+        "stats": {
+          "attack": 100,
+          "defenseInfantry": 48,
+          "defenseCavalry": 42,
+          "speed": 14,
+          "carry": 95
+        },
+        "cost": {
+          "wood": 450,
+          "clay": 370,
+          "iron": 280,
+          "crop": 92
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "cavalry/donkey.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": {
+          "en": "Noble Horse"
+        },
+        "stats": {
+          "attack": 148,
+          "defenseInfantry": 68,
+          "defenseCavalry": 85,
+          "speed": 12,
+          "carry": 72
+        },
+        "cost": {
+          "wood": 515,
+          "clay": 540,
+          "iron": 670,
+          "crop": 158
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/horse-head.svg"
+        },
+        "description": {
+          "en": "Emerging Baltic cavalry tradition."
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": {
+          "en": "Raid Cavalry"
+        },
+        "stats": {
+          "attack": 155,
+          "defenseInfantry": 62,
+          "defenseCavalry": 78,
+          "speed": 13,
+          "carry": 88
+        },
+        "cost": {
+          "wood": 525,
+          "clay": 520,
+          "iron": 640,
+          "crop": 150
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/chess-knight.svg"
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": {
+          "en": "Ram"
+        },
+        "stats": {
+          "attack": 60,
+          "defenseInfantry": 28,
+          "defenseCavalry": 72,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 870,
+          "clay": 345,
+          "iron": 480,
+          "crop": 68
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "infantry/war-pick.svg"
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": {
+          "en": "Catapult"
+        },
+        "stats": {
+          "attack": 72,
+          "defenseInfantry": 55,
+          "defenseCavalry": 10,
+          "speed": 3,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 920,
+          "clay": 1280,
+          "iron": 575,
+          "crop": 88
+        },
+        "cropUpkeep": 6,
+        "graphics": {
+          "logo": "powder.svg"
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": {
+          "en": "Kunigas"
+        },
+        "stats": {
+          "attack": 50,
+          "defenseInfantry": 40,
+          "defenseCavalry": 28,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 29000,
+          "clay": 26000,
+          "iron": 42000,
+          "crop": 35000
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "infantry/thor-hammer.svg"
+        },
+        "description": {
+          "en": "Baltic chieftain or duke."
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": {
+          "en": "Settler"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 80,
+          "defenseCavalry": 80,
+          "speed": 5,
+          "carry": 3000
+        },
+        "cost": {
+          "wood": 5600,
+          "clay": 5100,
+          "iron": 6950,
+          "crop": 5300
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "resources/honeycomb.svg"
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "balt_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": {
+      "en": "Baltic Hero"
+    },
+    "description": {
+      "en": "Forest war-leader — ambush infantry and stubborn defense."
+    },
+    "isBase": false,
+    "stats": {
+      "attack": 115,
+      "defenseInfantry": 110,
+      "defenseCavalry": 88,
+      "speed": 8,
+      "carry": 100
+    },
+    "cost": {
+      "wood": 0,
+      "clay": 0,
+      "iron": 0,
+      "crop": 0
+    },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
+    "graphics": {
+      "sprite": "tribes/balt/hero/hero.png",
+      "icon": "tribes/balt/hero/hero_icon.png",
+      "portrait": "tribes/balt/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "generated": true,
+    "cultureId": "balt",
+    "era": "Baltic tribes (early medieval–13th c. CE)",
+    "region": "Eastern Baltic / amber coast",
+    "historicalContext": "Baltic peoples (Prussians, Lithuanians, Latgalians, and kin) fought in wooded terrain with spears, axes, and bows; cavalry remained secondary until the rise of Lithuanian horse in the later Middle Ages.",
+    "createdAt": "2026-08-05T10:53:06.046Z"
+  }
+}

@@ -654,6 +654,18 @@
     "greek": {
       "fightingStrengthPerPoint": 92,
       "resourceProductionBonusPercent": 0
+    },
+    "slav": {
+      "fightingStrengthPerPoint": 85,
+      "resourceProductionBonusPercent": 8
+    },
+    "balt": {
+      "fightingStrengthPerPoint": 88,
+      "resourceProductionBonusPercent": 0
+    },
+    "dacian": {
+      "fightingStrengthPerPoint": 90,
+      "resourceProductionBonusPercent": 0
     }
   },
   "xpSources": {

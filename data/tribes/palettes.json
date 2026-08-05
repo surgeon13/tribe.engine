@@ -87,6 +87,21 @@
       "primary": "#1F4E79",
       "secondary": "#F2F0E6",
       "notes": "Aegean blue + marble white"
+    },
+    "slav": {
+      "primary": "#2E5A3C",
+      "secondary": "#C4A35A",
+      "notes": "Forest green + amber"
+    },
+    "balt": {
+      "primary": "#1B4332",
+      "secondary": "#D4A017",
+      "notes": "Pine green + amber gold"
+    },
+    "dacian": {
+      "primary": "#5C1A1A",
+      "secondary": "#D4AF37",
+      "notes": "Carpathian crimson + gold"
     }
   }
 }
