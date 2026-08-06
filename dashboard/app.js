@@ -33,12 +33,6 @@ import {
   mountThemePicker,
   resolveBarColors,
 } from "./themes.js";
-import {
-  initMonitorView,
-  refreshMonitorView,
-  startMonitorPolling,
-  stopMonitorPolling,
-} from "./monitor.js";
 import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
 
 let data = null;
@@ -47,7 +41,6 @@ let activeTribeId = null;
 let sortKey = "slot";
 let sortDir = 1;
 let compareMode = false;
-let monitorMode = false;
 let activeView = "table";
 let compareViewMode = "table";
 let compareChartMetric = "offense";
@@ -1024,14 +1017,10 @@ function renderCompare() {
 }
 
 function showCompare() {
-  monitorMode = false;
-  stopMonitorPolling();
   compareMode = true;
   $("#view-single").classList.add("hidden");
   $("#view-compare").classList.remove("hidden");
-  $("#view-monitor").classList.add("hidden");
   $("#btn-compare").textContent = "Back to tribe";
-  $("#btn-monitor").textContent = "Leader monitor";
   $("#topbar .view-tabs")?.classList.add("hidden");
 
   compareTribeIds = loadPersistedCompareSelection() || defaultCompareSelection();
@@ -1046,29 +1035,10 @@ function showCompare() {
 
 function hideAuxViews() {
   compareMode = false;
-  monitorMode = false;
   $("#view-single").classList.remove("hidden");
   $("#view-compare").classList.add("hidden");
-  $("#view-monitor").classList.add("hidden");
   $("#btn-compare").textContent = "Compare tribes";
-  $("#btn-monitor").textContent = "Leader monitor";
   $("#topbar .view-tabs")?.classList.remove("hidden");
-  stopMonitorPolling();
-}
-
-async function showMonitor() {
-  hideAuxViews();
-  monitorMode = true;
-  $("#view-single").classList.add("hidden");
-  $("#view-monitor").classList.remove("hidden");
-  $("#btn-monitor").textContent = "Back to tribe";
-  $("#btn-compare").textContent = "Compare tribes";
-  $("#topbar .view-tabs")?.classList.add("hidden");
-  $("#tribe-name").textContent = "Leader monitor";
-  $("#tribe-theme").textContent = "Top 10 aggregate polling — points, resources, raids";
-  renderNav();
-  await refreshMonitorView(toast);
-  startMonitorPolling(toast);
 }
 
 function bindSort() {
@@ -1110,11 +1080,6 @@ function bindUi() {
     if (!data?.tribes?.length) return;
     if (compareMode) selectTribe(activeTribeId || data.tribes[0].id);
     else showCompare();
-  });
-
-  $("#btn-monitor")?.addEventListener("click", async () => {
-    if (monitorMode) selectTribe(activeTribeId || data.tribes[0].id);
-    else showMonitor();
   });
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
@@ -1196,7 +1161,6 @@ async function init() {
   initUiTheme();
 
   serverHasApi = await setServerStatus();
-  initMonitorView(serverHasApi, toast);
   setAddTribeEnabled(serverHasApi);
   initAddTribeUi(
     toast,
