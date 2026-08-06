@@ -693,6 +693,52 @@
         "building": "residence",
         "timeSeconds": 26920
       }
+    },
+    "median": {
+      "inf_t1": {
+        "building": "barracks",
+        "timeSeconds": 925
+      },
+      "inf_t2": {
+        "building": "barracks",
+        "timeSeconds": 1320
+      },
+      "inf_t3": {
+        "building": "barracks",
+        "timeSeconds": 1250
+      },
+      "scout": {
+        "building": "barracks",
+        "timeSeconds": 1360
+      },
+      "cav_t1": {
+        "building": "stable",
+        "timeSeconds": 1680
+      },
+      "cav_t2": {
+        "building": "stable",
+        "timeSeconds": 2100
+      },
+      "cav_t3": {
+        "building": "stable",
+        "timeSeconds": 2110
+      },
+      "ram": {
+        "building": "workshop",
+        "timeSeconds": 4600
+      },
+      "catapult": {
+        "building": "workshop",
+        "timeSeconds": 9000
+      },
+      "chief": {
+        "building": "residence",
+        "timeSeconds": 90720
+      },
+      "settler": {
+        "building": "residence",
+        "timeSeconds": 26920
+      }
     }
   }
 }

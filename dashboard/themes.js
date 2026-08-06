@@ -4,7 +4,6 @@ export const UI_THEMES = {
   dark: { name: "Dark", description: "Default dark workspace" },
   light: { name: "Light", description: "Bright, high-contrast light" },
   sand: { name: "Sand", description: "Warm parchment (recommended)" },
-  slate: { name: "Slate", description: "Cool blue-grey dark" },
   dusk: { name: "Dusk", description: "Soft purple twilight dark" },
 };
 
@@ -25,7 +24,12 @@ const DEFAULT_GRAPH = "classic";
  * @returns {keyof typeof UI_THEMES}
  */
 export function getStoredTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
+  let saved = localStorage.getItem(THEME_KEY);
+  // Slate was removed as redundant with Dusk
+  if (saved === "slate") {
+    saved = "dusk";
+    localStorage.setItem(THEME_KEY, saved);
+  }
   if (saved && saved in UI_THEMES) return saved;
   if (window.matchMedia?.("(prefers-color-scheme: light)").matches) return "light";
   return DEFAULT_THEME;

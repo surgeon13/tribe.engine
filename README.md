@@ -114,7 +114,7 @@ npm start
 
 This builds tribe data, starts a small local server, and opens the dashboard in your browser (app window on Edge if available). Use **Rebuild data** in the sidebar to refresh after editing JSON.
 
-**Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
+**Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Sand, Dusk. Your choice is saved in the browser.
 
 **Add tribe** (sidebar): **custom by default** — enter a name and describe the culture; archetype, colors, troop names, and lore flavor are derived from your words. Optional culture presets remain as a shortcut. Full 11-troop + hero roster is written under `data/` so it survives restarts.
 
@@ -126,6 +126,22 @@ npm run tribe:list-registered
 npm run tribe:add -- --culture viking --name "Norse"
 npm run tribe:delete -- norse
 ```
+
+## Median baseline (balance origin)
+
+The six original playable tribes (Romans–Spartans) define a **Median** reference tribe — per-slot statistical median of resolved combat stats, costs, and training times.
+
+```bash
+npm run balance:median
+```
+
+| Path | Role |
+|------|------|
+| `data/tribes/median.json` | Integer median tribe in the dashboard |
+| `data/balance/median-baseline.json` | Precise median/mean/ranges + tribe power diagnostics |
+| `data/balance/BALANCE.md` | Point-buy budgets, Pareto, share models, PCA notes |
+
+Natars/Nature are excluded. Use Median as the origin when giving tribes unique numerical identities (buffs paid for by nerfs).
 
 ## Dashboard
 

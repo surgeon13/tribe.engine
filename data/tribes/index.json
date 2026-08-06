@@ -122,6 +122,14 @@
       "name": {
         "en": "Undead"
       }
+    },
+    {
+      "id": "median",
+      "file": "median.json",
+      "type": "playable",
+      "name": {
+        "en": "Median"
+      }
     }
   ]
 }
