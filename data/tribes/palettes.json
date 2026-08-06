@@ -77,6 +77,11 @@
       "primary": "#1A1A2E",
       "secondary": "#6BCB77",
       "notes": "Midnight crypt + corpse-glow green"
+    },
+    "median": {
+      "primary": "#4A5568",
+      "secondary": "#A0AEC0",
+      "notes": "Neutral baseline — slate"
     }
   }
 }

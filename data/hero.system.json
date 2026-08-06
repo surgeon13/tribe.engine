@@ -646,6 +646,10 @@
     "undead": {
       "fightingStrengthPerPoint": 80,
       "resourceProductionBonusPercent": 0
+    },
+    "median": {
+      "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0
     }
   },
   "xpSources": {

@@ -196,6 +196,19 @@
       "catapult": "powder.svg",
       "chief": "infantry/orb-wand.svg",
       "settler": "resources/stone-pile.svg"
+    },
+    "median": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/battle-axe.svg",
+      "inf_t3": "infantry/gladius.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/donkey.svg",
+      "ram": "infantry/crowbar.svg",
+      "catapult": "powder.svg",
+      "chief": "infantry/baton.svg",
+      "settler": "resources/brick-pile.svg"
     }
   }
 }

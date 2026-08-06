@@ -127,6 +127,22 @@ npm run tribe:add -- --culture viking --name "Norse"
 npm run tribe:delete -- norse
 ```
 
+## Median baseline (balance origin)
+
+The six original playable tribes (Romans–Spartans) define a **Median** reference tribe — per-slot statistical median of resolved combat stats, costs, and training times.
+
+```bash
+npm run balance:median
+```
+
+| Path | Role |
+|------|------|
+| `data/tribes/median.json` | Integer median tribe in the dashboard |
+| `data/balance/median-baseline.json` | Precise median/mean/ranges + tribe power diagnostics |
+| `data/balance/BALANCE.md` | Point-buy budgets, Pareto, share models, PCA notes |
+
+Natars/Nature are excluded. Use Median as the origin when giving tribes unique numerical identities (buffs paid for by nerfs).
+
 ## Dashboard
 
 View attack, defense, speed, carry, upkeep, **training resources** (wood/clay/iron/crop), **training time**, and building for every tribe at http://127.0.0.1:3456 — tribe sidebar, summary cards, sortable troop table, hero panel, and **Compare tribes** mode (table, **graphics**, **charts**, stat graphs).
