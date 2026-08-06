@@ -31,3 +31,7 @@ Secondary summaries and reference pages used while compiling the dictionary (not
 - Common military-history unit terminology for Chinese crossbow infantry, Japanese ashigaru/samurai, Indian elephant corps, Norse huscarls/berserkers, medieval European billmen/longbowmen/knights
 
 Expand pools in `troop-lexicon.js` when adding cultures; keep Travian slot count unchanged.
+
+## Hero naming
+
+Heroes are **not** culture-flavored. The unit type is simply **Hero**. Default display name is the player's **account / in-game name** (passed as `accountName` / `playerName` / `heroName` when creating a tribe); otherwise the placeholder is `Hero`. Players can rename later in-game.
