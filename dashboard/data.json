@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "/assets",
-  "generatedAt": "2026-08-06T15:04:16.684Z",
+  "generatedAt": "2026-08-06T15:21:35.404Z",
   "roster": [
     {
       "slot": 1,
@@ -11936,7 +11936,7 @@
           "role": "infantry",
           "ref": "inf_t1",
           "id": "inf_t1",
-          "name": "Skeleton Levy",
+          "name": "Skeleton Warrior",
           "category": "infantry",
           "stats": {
             "attack": 45,
