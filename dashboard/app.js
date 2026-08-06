@@ -1118,19 +1118,6 @@ function bindUi() {
   });
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
-
-  $("#btn-hero-xp")?.addEventListener("click", async () => {
-    const btn = $("#btn-hero-xp");
-    btn.disabled = true;
-    try {
-      await apiPost("/api/hero-xp");
-      toast("Hero XP table regenerated");
-    } catch (e) {
-      toast(e.message);
-    } finally {
-      btn.disabled = false;
-    }
-  });
 }
 
 async function apiPost(path) {

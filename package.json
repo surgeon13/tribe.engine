@@ -13,7 +13,6 @@
     "tribe:list": "node scripts/add-tribe.js --list",
     "tribe:list-registered": "node scripts/add-tribe.js --list-tribes",
     "tribe:delete": "node scripts/add-tribe.js --delete",
-    "dashboard": "npm run start",
-    "hero:xp": "node scripts/generate-hero-xp.js"
+    "dashboard": "npm run start"
   }
 }

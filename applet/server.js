@@ -128,12 +128,6 @@ export function startServer(port = 3456) {
         return;
       }
 
-      if (url.pathname === "/api/hero-xp" && req.method === "POST") {
-        const out = await runScript(path.join(root, "scripts", "generate-hero-xp.js"));
-        json(res, 200, { ok: true, message: out || "Hero XP table regenerated" });
-        return;
-      }
-
       if (url.pathname === "/api/tribes/profiles" && req.method === "GET") {
         json(res, 200, {
           ok: true,

@@ -82,12 +82,6 @@ Each tribe defines a **two-color palette** (`primary` + `secondary`). The same c
 
 All tribes share `data/hero.system.json` — level cap, XP table, four attributes, combat XP rules. Each tribe hero links via `"progression": "hero.system.json"`. See `data/HERO.md`.
 
-Regenerate the level table after curve changes:
-
-```bash
-node scripts/generate-hero-xp.js
-```
-
 | Faction | File | Type |
 |---------|------|------|
 | Romans | `roman.json` | playable |
