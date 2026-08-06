@@ -8,9 +8,18 @@
     "start": "node applet/launch.js",
     "applet": "node applet/launch.js",
     "build:data": "node scripts/build-dashboard-data.js",
+<<<<<<< HEAD
     "dashboard": "npm run start",
     "hero:xp": "node scripts/generate-hero-xp.js",
     "install:android": "bash scripts/install-android.sh",
     "uninstall:android": "bash scripts/uninstall-android.sh"
+=======
+    "balance:median": "node scripts/compute-median-tribe.js && node scripts/build-dashboard-data.js",
+    "tribe:add": "node scripts/add-tribe.js",
+    "tribe:list": "node scripts/add-tribe.js --list",
+    "tribe:list-registered": "node scripts/add-tribe.js --list-tribes",
+    "tribe:delete": "node scripts/add-tribe.js --delete",
+    "dashboard": "npm run start"
+>>>>>>> origin/master
   }
 }

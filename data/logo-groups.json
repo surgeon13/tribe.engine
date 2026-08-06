@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "description": "SVG troop logo groups. Icons are tinted with tribe palette.primary (glyph) and palette.secondary (background) in the dashboard.",
+  "groups": {
+    "infantry": {
+      "label": "Infantry & melee weapons",
+      "icons": [
+        "infantry/arrowhead.svg",
+        "infantry/barbed-spear.svg",
+        "infantry/baton.svg",
+        "infantry/battered-axe.svg",
+        "infantry/battle-axe.svg",
+        "infantry/bo.svg",
+        "infantry/bone-mace.svg",
+        "infantry/boomerang.svg",
+        "infantry/brass-knuckles.svg",
+        "infantry/crescent-staff.svg",
+        "infantry/crossbow.svg",
+        "infantry/crowbar.svg",
+        "infantry/crystal-wand.svg",
+        "infantry/double-shot.svg",
+        "infantry/fairy-wand.svg",
+        "infantry/flail.svg",
+        "infantry/flanged-mace.svg",
+        "infantry/flying-shuriken.svg",
+        "infantry/gladius.svg",
+        "infantry/harpoon-chain.svg",
+        "infantry/heavy-arrow.svg",
+        "infantry/kusarigama.svg",
+        "infantry/lunar-wand.svg",
+        "infantry/mace-head.svg",
+        "infantry/machete.svg",
+        "infantry/orb-wand.svg",
+        "infantry/pincers.svg",
+        "infantry/sacrificial-dagger.svg",
+        "infantry/scythe.svg",
+        "infantry/sharp-axe.svg",
+        "infantry/shuriken.svg",
+        "infantry/spiked-ball.svg",
+        "infantry/spiked-bat.svg",
+        "infantry/spiked-mace.svg",
+        "infantry/star-shuriken.svg",
+        "infantry/stiletto.svg",
+        "infantry/stone-spear.svg",
+        "infantry/thor-hammer.svg",
+        "infantry/tomahawk.svg",
+        "infantry/trefoil-shuriken.svg",
+        "infantry/trident.svg",
+        "infantry/war-axe.svg",
+        "infantry/war-pick.svg",
+        "infantry/warhammer.svg",
+        "infantry/whirlpool-shuriken.svg",
+        "infantry/wood-club.svg"
+      ]
+    },
+    "cavalry": {
+      "label": "Cavalry mounts",
+      "icons": [
+        "cavalry/camel-head.svg",
+        "cavalry/chess-knight.svg",
+        "cavalry/donkey.svg",
+        "cavalry/elephant.svg",
+        "cavalry/horse-head.svg"
+      ]
+    },
+    "animals": {
+      "label": "Animals (nature / scouts)",
+      "icons": [
+        "animals/chicken.svg",
+        "animals/cow.svg",
+        "animals/duck.svg",
+        "animals/feline.svg",
+        "animals/goose.svg",
+        "animals/gorilla.svg",
+        "animals/pegasus.svg",
+        "animals/ram.svg",
+        "animals/rhinoceros-horn.svg",
+        "animals/rooster.svg",
+        "animals/tiger.svg"
+      ]
+    },
+    "resources": {
+      "label": "Resources & settlers",
+      "icons": [
+        "resources/brick-pile.svg",
+        "resources/cash-pile.svg",
+        "resources/folded-paper.svg",
+        "resources/grain.svg",
+        "resources/honeycomb.svg",
+        "resources/rolled-paper.svg",
+        "resources/stone-pile.svg",
+        "resources/wheat-pile.svg",
+        "resources/wood-pile.svg"
+      ]
+    },
+    "siege": {
+      "label": "Siege",
+      "icons": ["powder.svg", "infantry/crowbar.svg", "infantry/war-pick.svg", "infantry/spiked-ball.svg"]
+    }
+  },
+  "defaults": {
+    "inf_t1": "infantry/gladius.svg",
+    "inf_t2": "infantry/battle-axe.svg",
+    "inf_t3": "infantry/warhammer.svg",
+    "scout": "infantry/heavy-arrow.svg",
+    "cav_t1": "cavalry/horse-head.svg",
+    "cav_t2": "cavalry/chess-knight.svg",
+    "cav_t3": "cavalry/elephant.svg",
+    "ram": "infantry/crowbar.svg",
+    "catapult": "powder.svg",
+    "chief": "infantry/baton.svg",
+    "settler": "resources/brick-pile.svg"
+  }
+}

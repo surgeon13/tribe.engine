@@ -25,7 +25,7 @@ import {
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
-import { renderTribeBanner, renderUnitCard } from "./graphics.js";
+import { renderTribeBanner, renderUnitCard, mountTroopLogoCell } from "./graphics.js";
 import {
   getCompareSeriesColors,
   initUiTheme,
@@ -33,6 +33,7 @@ import {
   mountThemePicker,
   resolveBarColors,
 } from "./themes.js";
+import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
 
 let data = null;
 let globalScales = null;
@@ -50,6 +51,7 @@ let compareTribeIds = [];
 let selectedTroopIndex = 0;
 let compareChartMetricBound = false;
 let compareChartLayoutBound = false;
+let serverHasApi = false;
 
 function recomputeGlobalScales() {
   if (!data?.tribes) return;
@@ -114,6 +116,9 @@ function renderNav() {
   if (!nav || !data?.tribes) return;
   nav.innerHTML = "";
   for (const tribe of data.tribes) {
+    const row = document.createElement("div");
+    row.className = "tribe-nav-row";
+
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "tribe-btn" + (tribe.id === activeTribeId ? " active" : "");
@@ -128,7 +133,27 @@ function renderNav() {
       btn.append(tag);
     }
     btn.addEventListener("click", () => selectTribe(tribe.id));
-    nav.append(btn);
+    row.append(btn);
+
+    if (serverHasApi && isRemovableTribe(tribe.id)) {
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "tribe-delete-btn";
+      del.title = `Delete ${tribe.name}`;
+      del.setAttribute("aria-label", `Delete ${tribe.name}`);
+      del.textContent = "×";
+      del.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        try {
+          await requestDeleteTribe(tribe.id, tribe.name);
+        } catch (err) {
+          toast(err.message || String(err));
+        }
+      });
+      row.append(del);
+    }
+
+    nav.append(row);
   }
 }
 
@@ -228,6 +253,7 @@ function renderTroops(tribe) {
       const m = t.metrics;
       const idx = tribe.troops.indexOf(t);
       return `<tr data-troop-index="${idx}" class="troop-row">
+        <td class="troop-logo-col" data-logo-slot="${idx}"></td>
         <td>${t.slot}</td>
         <td><strong>${t.name}</strong></td>
         <td><span class="role-badge">${t.role}</span></td>
@@ -248,6 +274,11 @@ function renderTroops(tribe) {
       </tr>`;
     })
     .join("");
+
+  rows.forEach((t, i) => {
+    const cell = tbody.querySelector(`[data-logo-slot="${i}"]`);
+    if (cell) mountTroopLogoCell(cell, t, tribe.palette);
+  });
 
   tbody.querySelectorAll(".troop-row").forEach((row) => {
     row.addEventListener("click", () => {
@@ -410,11 +441,7 @@ function renderHero(tribe) {
 function selectTribe(id) {
   activeTribeId = id;
   selectedTroopIndex = 0;
-  compareMode = false;
-  $("#view-single").classList.remove("hidden");
-  $("#view-compare").classList.add("hidden");
-  $("#btn-compare").textContent = "Compare tribes";
-  $("#topbar .view-tabs")?.classList.remove("hidden");
+  hideAuxViews();
 
   const tribe = tribeById(id);
   if (!tribe) return;
@@ -1006,6 +1033,14 @@ function showCompare() {
   renderNav();
 }
 
+function hideAuxViews() {
+  compareMode = false;
+  $("#view-single").classList.remove("hidden");
+  $("#view-compare").classList.add("hidden");
+  $("#btn-compare").textContent = "Compare tribes";
+  $("#topbar .view-tabs")?.classList.remove("hidden");
+}
+
 function bindSort() {
   document.querySelectorAll("#troop-table th[data-sort]").forEach((th) => {
     th.addEventListener("click", () => {
@@ -1048,19 +1083,6 @@ function bindUi() {
   });
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
-
-  $("#btn-hero-xp")?.addEventListener("click", async () => {
-    const btn = $("#btn-hero-xp");
-    btn.disabled = true;
-    try {
-      await apiPost("/api/hero-xp");
-      toast("Hero XP table regenerated");
-    } catch (e) {
-      toast(e.message);
-    } finally {
-      btn.disabled = false;
-    }
-  });
 }
 
 async function apiPost(path) {
@@ -1138,7 +1160,24 @@ async function init() {
   bindUi();
   initUiTheme();
 
-  const hasApi = await setServerStatus();
+  serverHasApi = await setServerStatus();
+  setAddTribeEnabled(serverHasApi);
+  initAddTribeUi(
+    toast,
+    async (tribeId) => {
+      await loadData();
+      recomputeGlobalScales();
+      selectTribe(tribeId);
+    },
+    async () => {
+      await loadData();
+      recomputeGlobalScales();
+      const fallback = data?.tribes?.[0]?.id;
+      if (fallback) selectTribe(fallback);
+      else renderNav();
+    }
+  );
+  if (serverHasApi) await refreshRemovableTribes();
   try {
     await loadData();
     recomputeGlobalScales();
@@ -1147,14 +1186,14 @@ async function init() {
     mountThemePicker($("#theme-picker"), onUiThemeChange);
     mountGraphPalettePicker($("#graph-palette-picker"), onGraphPaletteChange);
     selectTribe(data.tribes[0].id);
-    if (!hasApi) {
+    if (!serverHasApi) {
       $("#btn-refresh").textContent = "Rebuild (needs applet)";
     }
     if (location.protocol === "file:") {
       toast("Loaded from disk — use npm start for full applet features.");
     }
   } catch (e) {
-    showLoadError(e, hasApi);
+    showLoadError(e, serverHasApi);
   }
 }
 

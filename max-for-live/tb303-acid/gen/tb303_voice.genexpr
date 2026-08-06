@@ -1,0 +1,96 @@
+// TB-303 acid voice for gen~ (Max/MSP / Max for Live)
+//
+// Inlets (signal or per-sample):
+//   in1  pitch_hz   target frequency
+//   in2  gate       0..1 note gate
+//   in3  accent     0..1 accent flag
+//   in4  waveform   0 = saw, 1 = square
+//
+// Params (expose with @param or live.dial):
+//   cutoff, resonance, envmod, decay, slide, drive, tune
+
+Param cutoff(0.55, min=0, max=1);
+Param resonance(0.62, min=0, max=1);
+Param envmod(0.75, min=0, max=1);
+Param decay(0.45, min=0, max=1);
+Param slide(0.055, min=0.005, max=0.35);
+Param drive(1.35, min=0.8, max=2.5);
+Param tune(0, min=-12, max=12);
+
+History phase(0);
+History current_hz(110);
+History env(0);
+History prev_gate(0);
+History y1(0);
+History y2(0);
+History y3(0);
+History y4(0);
+
+pitch = in1;
+gate = in2;
+accent = in3;
+wave = in4;
+
+// Fine tune (semitones)
+target_hz = pitch * pow(2, tune / 12);
+
+// 303-style slide (~55 ms default)
+slide_coeff = exp(-1 / (slide * samplerate));
+current_hz = current_hz * slide_coeff + target_hz * (1 - slide_coeff);
+
+// Gate edge
+gate_hi = gate > 0.5;
+gate_on = gate_hi && prev_gate <= 0;
+prev_gate = gate_hi;
+
+// Decay envelope (instant attack, exponential decay)
+decay_s = 0.08 + decay * decay * 1.8;
+decay_k = exp(-1 / (decay_s * samplerate));
+
+if (gate_on) {
+    env = accent > 0.5 ? 1.35 : 1.0;
+}
+
+if (gate_hi) {
+    env = max(env * decay_k, 0.18);
+} else {
+    env = env * decay_k;
+}
+
+env = env < 0.0005 ? 0 : env;
+
+// Oscillator
+phase = phase + (current_hz / samplerate);
+phase = phase - floor(phase);
+
+saw = 2 * phase - 1;
+square = phase < 0.48 ? 0.92 : -0.88;
+osc = wave < 0.5 ? saw : square;
+osc = tanh(osc * drive);
+
+// Cutoff mapping (200 Hz .. ~8.2 kHz)
+cut_base = 180 + pow(cutoff, 2.4) * 8000;
+accent_boost = accent > 0.5 ? 1.55 : 1.0;
+cut_mod = cut_base * (1 + env * envmod * accent_boost * 3.2);
+cut_mod = clip(cut_mod, 80, samplerate * 0.45);
+
+// Diode-ladder-style 4-pole lowpass (nonlinear feedback)
+fc = cut_mod / samplerate;
+fc = clip(fc, 0.00001, 0.45);
+g = tan(pi * fc);
+k = 3.2 * resonance;
+
+x = osc;
+y1n = y1 + g * tanh(x - k * y4);
+y2n = y2 + g * tanh(y1n);
+y3n = y3 + g * tanh(y2n);
+y4n = y4 + g * tanh(y3n);
+
+y1 = y1n;
+y2 = y2n;
+y3 = y3n;
+y4 = y4n;
+
+filtered = tanh(y4n * (1 + resonance * 0.35));
+
+out1 = filtered * env * 0.62;

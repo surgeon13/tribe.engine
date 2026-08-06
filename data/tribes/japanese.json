@@ -1,0 +1,354 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "japanese",
+    "name": {
+      "en": "Japanese"
+    },
+    "theme": "Ashigaru masses, samurai quality, weak native cavalry tradition (Sengoku / late medieval Japan (15th–16th c. CE), Japanese archipelago)",
+    "graphics": {
+      "banner": "tribes/japanese/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#8B1A1A",
+    "secondary": "#F5F0E6"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/japanese/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": {
+          "en": "Ashigaru Yari"
+        },
+        "stats": {
+          "attack": 35,
+          "defenseInfantry": 45,
+          "defenseCavalry": 55,
+          "speed": 6,
+          "carry": 40
+        },
+        "cost": {
+          "wood": 100,
+          "clay": 85,
+          "iron": 100,
+          "crop": 35
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/stone-spear.svg"
+        },
+        "description": {
+          "en": "Pike ashigaru — backbone of Sengoku armies."
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": {
+          "en": "Ashigaru Yumi"
+        },
+        "stats": {
+          "attack": 50,
+          "defenseInfantry": 30,
+          "defenseCavalry": 25,
+          "speed": 7,
+          "carry": 30
+        },
+        "cost": {
+          "wood": 130,
+          "clay": 90,
+          "iron": 70,
+          "crop": 45
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/kusarigama.svg"
+        },
+        "description": {
+          "en": "Bow ashigaru supporting the spear line."
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": {
+          "en": "Samurai"
+        },
+        "stats": {
+          "attack": 80,
+          "defenseInfantry": 55,
+          "defenseCavalry": 40,
+          "speed": 7,
+          "carry": 45
+        },
+        "cost": {
+          "wood": 170,
+          "clay": 160,
+          "iron": 230,
+          "crop": 100
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/machete.svg"
+        },
+        "description": {
+          "en": "Elite retainers — costly, versatile melee."
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": {
+          "en": "Shinobi Scout"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 20,
+          "defenseCavalry": 10,
+          "speed": 16,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 130,
+          "clay": 145,
+          "iron": 30,
+          "crop": 40
+        },
+        "cropUpkeep": 2,
+        "graphics": {
+          "logo": "infantry/shuriken.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": {
+          "en": "Ki Cavalry"
+        },
+        "stats": {
+          "attack": 110,
+          "defenseInfantry": 55,
+          "defenseCavalry": 50,
+          "speed": 14,
+          "carry": 90
+        },
+        "cost": {
+          "wood": 520,
+          "clay": 420,
+          "iron": 340,
+          "crop": 100
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "cavalry/horse-head.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": {
+          "en": "Samurai Cavalry"
+        },
+        "stats": {
+          "attack": 160,
+          "defenseInfantry": 75,
+          "defenseCavalry": 95,
+          "speed": 11,
+          "carry": 70
+        },
+        "cost": {
+          "wood": 560,
+          "clay": 620,
+          "iron": 760,
+          "crop": 175
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/chess-knight.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": {
+          "en": "Hatamoto Horse"
+        },
+        "stats": {
+          "attack": 150,
+          "defenseInfantry": 70,
+          "defenseCavalry": 85,
+          "speed": 12,
+          "carry": 75
+        },
+        "cost": {
+          "wood": 540,
+          "clay": 580,
+          "iron": 700,
+          "crop": 160
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/donkey.svg"
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": {
+          "en": "Ram"
+        },
+        "stats": {
+          "attack": 60,
+          "defenseInfantry": 30,
+          "defenseCavalry": 75,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 900,
+          "clay": 360,
+          "iron": 500,
+          "crop": 70
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "infantry/crowbar.svg"
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": {
+          "en": "Hōsha"
+        },
+        "stats": {
+          "attack": 75,
+          "defenseInfantry": 60,
+          "defenseCavalry": 10,
+          "speed": 3,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 950,
+          "clay": 1350,
+          "iron": 600,
+          "crop": 90
+        },
+        "cropUpkeep": 6,
+        "graphics": {
+          "logo": "powder.svg"
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": {
+          "en": "Daimyō"
+        },
+        "stats": {
+          "attack": 50,
+          "defenseInfantry": 40,
+          "defenseCavalry": 30,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 30500,
+          "clay": 27000,
+          "iron": 44500,
+          "crop": 37000
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "infantry/baton.svg"
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": {
+          "en": "Settler"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 80,
+          "defenseCavalry": 80,
+          "speed": 5,
+          "carry": 3000
+        },
+        "cost": {
+          "wood": 5800,
+          "clay": 5300,
+          "iron": 7200,
+          "crop": 5500
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "resources/wheat-pile.svg"
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "japanese_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": {
+      "en": "Japanese Hero"
+    },
+    "description": {
+      "en": "Sengoku warlord — infantry discipline and retainer quality."
+    },
+    "isBase": false,
+    "stats": {
+      "attack": 110,
+      "defenseInfantry": 120,
+      "defenseCavalry": 95,
+      "speed": 8,
+      "carry": 100
+    },
+    "cost": {
+      "wood": 0,
+      "clay": 0,
+      "iron": 0,
+      "crop": 0
+    },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
+    "graphics": {
+      "sprite": "tribes/japanese/hero/hero.png",
+      "icon": "tribes/japanese/hero/hero_icon.png",
+      "portrait": "tribes/japanese/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "generated": true,
+    "cultureId": "japanese",
+    "era": "Sengoku / late medieval Japan (15th–16th c. CE)",
+    "region": "Japanese archipelago",
+    "historicalContext": "Sengoku armies mixed ashigaru pike and arquebus lines with samurai retainers; cavalry existed but infantry decided most battles.",
+    "createdAt": "2026-08-05T10:20:38.804Z"
+  }
+}
