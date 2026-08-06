@@ -13,6 +13,7 @@
     <script>
       (function () {
         var t = localStorage.getItem("tevel-ui-theme");
+        if (t === "slate") t = "dusk";
         if (t) document.documentElement.dataset.uiTheme = t;
         else if (window.matchMedia("(prefers-color-scheme: light)").matches)
           document.documentElement.dataset.uiTheme = "light";

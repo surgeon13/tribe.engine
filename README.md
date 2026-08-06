@@ -114,7 +114,7 @@ npm start
 
 This builds tribe data, starts a small local server, and opens the dashboard in your browser (app window on Edge if available). Use **Rebuild data** in the sidebar to refresh after editing JSON.
 
-**Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
+**Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Sand, Dusk. Your choice is saved in the browser.
 
 **Add tribe** (sidebar): **custom by default** — enter a name and describe the culture; archetype, colors, troop names, and lore flavor are derived from your words. Optional culture presets remain as a shortcut. Full 11-troop + hero roster is written under `data/` so it survives restarts.
 
