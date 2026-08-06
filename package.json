@@ -8,6 +8,8 @@
     "start": "node applet/launch.js",
     "applet": "node applet/launch.js",
     "build:data": "node scripts/build-dashboard-data.js",
+    "balance:roles": "node scripts/audit-troop-roles.js",
+    "balance:roles:demo": "node scripts/audit-troop-roles.js --demo-archetypes",
     "tribe:add": "node scripts/add-tribe.js",
     "tribe:list": "node scripts/add-tribe.js --list",
     "tribe:list-registered": "node scripts/add-tribe.js --list-tribes",
