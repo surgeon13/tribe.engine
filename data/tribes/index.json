@@ -7,49 +7,129 @@
       "id": "roman",
       "file": "roman.json",
       "type": "playable",
-      "name": { "en": "Romans" }
+      "name": {
+        "en": "Romans"
+      }
     },
     {
       "id": "teuton",
       "file": "teuton.json",
       "type": "playable",
-      "name": { "en": "Teutons" }
+      "name": {
+        "en": "Teutons"
+      }
     },
     {
       "id": "gaul",
       "file": "gaul.json",
       "type": "playable",
-      "name": { "en": "Gauls" }
+      "name": {
+        "en": "Gauls"
+      }
     },
     {
       "id": "egyptian",
       "file": "egyptian.json",
       "type": "playable",
-      "name": { "en": "Egyptians" }
+      "name": {
+        "en": "Egyptians"
+      }
     },
     {
       "id": "hun",
       "file": "hun.json",
       "type": "playable",
-      "name": { "en": "Huns" }
+      "name": {
+        "en": "Huns"
+      }
     },
     {
       "id": "spartan",
       "file": "spartan.json",
       "type": "playable",
-      "name": { "en": "Spartans" }
+      "name": {
+        "en": "Spartans"
+      }
     },
     {
       "id": "natar",
       "file": "natar.json",
       "type": "npc",
-      "name": { "en": "Natars" }
+      "name": {
+        "en": "Natars"
+      }
     },
     {
       "id": "nature",
       "file": "nature.json",
       "type": "npc",
-      "name": { "en": "Nature" }
+      "name": {
+        "en": "Nature"
+      }
+    },
+    {
+      "id": "carthaginian",
+      "file": "carthaginian.json",
+      "type": "playable",
+      "name": {
+        "en": "Carthaginians"
+      }
+    },
+    {
+      "id": "japanese",
+      "file": "japanese.json",
+      "type": "playable",
+      "name": {
+        "en": "Japanese"
+      }
+    },
+    {
+      "id": "norse",
+      "file": "norse.json",
+      "type": "playable",
+      "name": {
+        "en": "Norse"
+      }
+    },
+    {
+      "id": "byzantine",
+      "file": "byzantine.json",
+      "type": "playable",
+      "name": {
+        "en": "Byzantines"
+      }
+    },
+    {
+      "id": "israelite",
+      "file": "israelite.json",
+      "type": "playable",
+      "name": {
+        "en": "Israelites"
+      }
+    },
+    {
+      "id": "moors",
+      "file": "moors.json",
+      "type": "playable",
+      "name": {
+        "en": "Moors"
+      }
+    },
+    {
+      "id": "undead",
+      "file": "undead.json",
+      "type": "playable",
+      "name": {
+        "en": "Undead"
+      }
+    },
+    {
+      "id": "median",
+      "file": "median.json",
+      "type": "playable",
+      "name": {
+        "en": "Median"
+      }
     }
   ]
 }

@@ -13,6 +13,7 @@
     <script>
       (function () {
         var t = localStorage.getItem("tevel-ui-theme");
+        if (t === "slate") t = "dusk";
         if (t) document.documentElement.dataset.uiTheme = t;
         else if (window.matchMedia("(prefers-color-scheme: light)").matches)
           document.documentElement.dataset.uiTheme = "light";
@@ -40,7 +41,8 @@
         <div id="graph-palette-picker" class="sidebar-theme sidebar-graph-palette"></div>
         <footer class="sidebar-foot">
           <button type="button" id="btn-compare" class="btn ghost">Compare tribes</button>
-          <button type="button" id="btn-refresh" class="btn primary">Rebuild data</button>
+          <button type="button" id="btn-add-tribe" class="btn primary">Add tribe</button>
+          <button type="button" id="btn-refresh" class="btn ghost">Rebuild data</button>
           <p id="server-status" class="server-status">Connecting…</p>
         </footer>
       </aside>
@@ -213,6 +215,111 @@
     </div>
 
     <div id="toast" class="toast hidden" role="status"></div>
+
+    <div id="add-tribe-overlay" class="modal-overlay hidden" aria-hidden="true">
+      <div
+        class="modal-panel add-tribe-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="add-tribe-title"
+      >
+        <header class="modal-head">
+          <h3 id="add-tribe-title">Add tribe</h3>
+          <p class="muted">
+            Custom by default — describe your faction and we build the roster from your input.
+            Optional culture presets are available if you want a shortcut.
+          </p>
+        </header>
+        <div class="add-tribe-form">
+          <label>
+            <span>Display name <em class="req">required</em></span>
+            <input
+              id="add-tribe-name"
+              type="text"
+              placeholder="e.g. Undead, Moors, House Atreides"
+              autocomplete="off"
+            />
+          </label>
+          <label class="add-tribe-context-field">
+            <span>Describe your culture <em class="req">primary input</em></span>
+            <textarea
+              id="add-tribe-context"
+              rows="4"
+              placeholder="Free-form lore — doctrine, homeland, how they fight (e.g. desert camel cavalry raiders, undead necromantic swarm…)"
+            ></textarea>
+          </label>
+          <label>
+            <span>Type</span>
+            <select id="add-tribe-type" aria-label="Tribe type">
+              <option value="playable">Playable</option>
+              <option value="npc">NPC</option>
+            </select>
+          </label>
+          <label>
+            <span>Source</span>
+            <select id="add-tribe-mode" aria-label="Creation mode">
+              <option value="custom">Custom — from your description</option>
+              <option value="preset">Optional culture preset</option>
+            </select>
+          </label>
+          <label id="add-tribe-culture-wrap" class="hidden">
+            <span>Culture preset</span>
+            <select id="add-tribe-culture" aria-label="Culture preset"></select>
+          </label>
+          <div id="add-tribe-custom-fields" class="add-tribe-custom-fields">
+            <details id="add-tribe-advanced" class="add-tribe-advanced">
+              <summary>Advanced overrides (optional)</summary>
+              <p class="muted add-tribe-advanced-hint">
+                Leave these alone to auto-fill from your description. Only change what you want to
+                force.
+              </p>
+              <label>
+                <span>Balance archetype</span>
+                <select id="add-tribe-archetype" aria-label="Balance archetype">
+                  <option value="">Auto (from your description)</option>
+                </select>
+              </label>
+              <div class="add-tribe-palette-row">
+                <label>
+                  <span>Primary color</span>
+                  <input id="add-tribe-primary" type="color" value="#3D5A80" data-auto="1" />
+                </label>
+                <label>
+                  <span>Secondary color</span>
+                  <input id="add-tribe-secondary" type="color" value="#E09F3E" data-auto="1" />
+                </label>
+              </div>
+              <label>
+                <span>Theme / short design note</span>
+                <input
+                  id="add-tribe-theme"
+                  type="text"
+                  placeholder="Optional — otherwise taken from your description"
+                />
+              </label>
+              <label>
+                <span>Era</span>
+                <input id="add-tribe-era" type="text" placeholder="Auto from description" />
+              </label>
+              <label>
+                <span>Region</span>
+                <input id="add-tribe-region" type="text" placeholder="Auto from description" />
+              </label>
+              <details id="add-tribe-names-details" class="add-tribe-names">
+                <summary>Troop &amp; hero names</summary>
+                <div id="add-tribe-troop-names" class="add-tribe-troop-grid"></div>
+              </details>
+            </details>
+          </div>
+          <div id="add-tribe-preview" class="add-tribe-preview"></div>
+        </div>
+        <footer class="modal-actions">
+          <button type="button" id="add-tribe-cancel" class="btn ghost">Cancel</button>
+          <button type="button" id="add-tribe-submit" class="btn primary">Add tribe</button>
+        </footer>
+      </div>
+    </div>
+
     <script type="module" src="app.js"></script>
   </body>
 </html>
