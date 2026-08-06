@@ -644,7 +644,7 @@
       "resourceProductionBonusPercent": 0
     },
     "undead": {
-      "fightingStrengthPerPoint": 80,
+      "fightingStrengthPerPoint": 110,
       "resourceProductionBonusPercent": 0
     }
   },
