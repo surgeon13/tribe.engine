@@ -33,12 +33,7 @@ import {
   mountThemePicker,
   resolveBarColors,
 } from "./themes.js";
-import {
-  initMonitorView,
-  refreshMonitorView,
-  startMonitorPolling,
-  stopMonitorPolling,
-} from "./monitor.js";
+import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
 
 let data = null;
 let globalScales = null;
@@ -46,7 +41,6 @@ let activeTribeId = null;
 let sortKey = "slot";
 let sortDir = 1;
 let compareMode = false;
-let monitorMode = false;
 let activeView = "table";
 let compareViewMode = "table";
 let compareChartMetric = "offense";
@@ -122,6 +116,9 @@ function renderNav() {
   if (!nav || !data?.tribes) return;
   nav.innerHTML = "";
   for (const tribe of data.tribes) {
+    const row = document.createElement("div");
+    row.className = "tribe-nav-row";
+
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "tribe-btn" + (tribe.id === activeTribeId ? " active" : "");
@@ -136,7 +133,27 @@ function renderNav() {
       btn.append(tag);
     }
     btn.addEventListener("click", () => selectTribe(tribe.id));
-    nav.append(btn);
+    row.append(btn);
+
+    if (serverHasApi && isRemovableTribe(tribe.id)) {
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "tribe-delete-btn";
+      del.title = `Delete ${tribe.name}`;
+      del.setAttribute("aria-label", `Delete ${tribe.name}`);
+      del.textContent = "×";
+      del.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        try {
+          await requestDeleteTribe(tribe.id, tribe.name);
+        } catch (err) {
+          toast(err.message || String(err));
+        }
+      });
+      row.append(del);
+    }
+
+    nav.append(row);
   }
 }
 
@@ -1000,14 +1017,10 @@ function renderCompare() {
 }
 
 function showCompare() {
-  monitorMode = false;
-  stopMonitorPolling();
   compareMode = true;
   $("#view-single").classList.add("hidden");
   $("#view-compare").classList.remove("hidden");
-  $("#view-monitor").classList.add("hidden");
   $("#btn-compare").textContent = "Back to tribe";
-  $("#btn-monitor").textContent = "Leader monitor";
   $("#topbar .view-tabs")?.classList.add("hidden");
 
   compareTribeIds = loadPersistedCompareSelection() || defaultCompareSelection();
@@ -1022,29 +1035,10 @@ function showCompare() {
 
 function hideAuxViews() {
   compareMode = false;
-  monitorMode = false;
   $("#view-single").classList.remove("hidden");
   $("#view-compare").classList.add("hidden");
-  $("#view-monitor").classList.add("hidden");
   $("#btn-compare").textContent = "Compare tribes";
-  $("#btn-monitor").textContent = "Leader monitor";
   $("#topbar .view-tabs")?.classList.remove("hidden");
-  stopMonitorPolling();
-}
-
-async function showMonitor() {
-  hideAuxViews();
-  monitorMode = true;
-  $("#view-single").classList.add("hidden");
-  $("#view-monitor").classList.remove("hidden");
-  $("#btn-monitor").textContent = "Back to tribe";
-  $("#btn-compare").textContent = "Compare tribes";
-  $("#topbar .view-tabs")?.classList.add("hidden");
-  $("#tribe-name").textContent = "Leader monitor";
-  $("#tribe-theme").textContent = "Top 10 aggregate polling — points, resources, raids";
-  renderNav();
-  await refreshMonitorView(toast);
-  startMonitorPolling(toast);
 }
 
 function bindSort() {
@@ -1088,25 +1082,7 @@ function bindUi() {
     else showCompare();
   });
 
-  $("#btn-monitor")?.addEventListener("click", async () => {
-    if (monitorMode) selectTribe(activeTribeId || data.tribes[0].id);
-    else showMonitor();
-  });
-
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
-
-  $("#btn-hero-xp")?.addEventListener("click", async () => {
-    const btn = $("#btn-hero-xp");
-    btn.disabled = true;
-    try {
-      await apiPost("/api/hero-xp");
-      toast("Hero XP table regenerated");
-    } catch (e) {
-      toast(e.message);
-    } finally {
-      btn.disabled = false;
-    }
-  });
 }
 
 async function apiPost(path) {
@@ -1185,7 +1161,23 @@ async function init() {
   initUiTheme();
 
   serverHasApi = await setServerStatus();
-  initMonitorView(serverHasApi, toast);
+  setAddTribeEnabled(serverHasApi);
+  initAddTribeUi(
+    toast,
+    async (tribeId) => {
+      await loadData();
+      recomputeGlobalScales();
+      selectTribe(tribeId);
+    },
+    async () => {
+      await loadData();
+      recomputeGlobalScales();
+      const fallback = data?.tribes?.[0]?.id;
+      if (fallback) selectTribe(fallback);
+      else renderNav();
+    }
+  );
+  if (serverHasApi) await refreshRemovableTribes();
   try {
     await loadData();
     recomputeGlobalScales();

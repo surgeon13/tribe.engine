@@ -1,0 +1,363 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "byzantine",
+    "name": {
+      "en": "Byzantines"
+    },
+    "theme": "Cataphracts, disciplined themes, and combined-arms doctrine (Eastern Roman Empire (6th–11th c. CE), Anatolia / Balkans / eastern Mediterranean)",
+    "graphics": {
+      "banner": "tribes/byzantine/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#2C3E6B",
+    "secondary": "#D4AF37"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/byzantine/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": {
+          "en": "Skutatos"
+        },
+        "stats": {
+          "attack": 38,
+          "defenseInfantry": 50,
+          "defenseCavalry": 55,
+          "speed": 5,
+          "carry": 45
+        },
+        "cost": {
+          "wood": 125,
+          "clay": 110,
+          "iron": 155,
+          "crop": 40
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/gladius.svg"
+        },
+        "description": {
+          "en": "Thematic heavy infantry with spear and large shield."
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": {
+          "en": "Akontistes"
+        },
+        "stats": {
+          "attack": 40,
+          "defenseInfantry": 35,
+          "defenseCavalry": 30,
+          "speed": 8,
+          "carry": 35
+        },
+        "cost": {
+          "wood": 115,
+          "clay": 95,
+          "iron": 90,
+          "crop": 45
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/stone-spear.svg"
+        },
+        "description": {
+          "en": "Javelin light infantry screening the line."
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": {
+          "en": "Toxotes"
+        },
+        "stats": {
+          "attack": 60,
+          "defenseInfantry": 35,
+          "defenseCavalry": 25,
+          "speed": 7,
+          "carry": 40
+        },
+        "cost": {
+          "wood": 155,
+          "clay": 140,
+          "iron": 120,
+          "crop": 70
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/crossbow.svg"
+        },
+        "description": {
+          "en": "Professional archers of the tagmata / themes."
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": {
+          "en": "Prokoursator"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 22,
+          "defenseCavalry": 12,
+          "speed": 16,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 145,
+          "clay": 160,
+          "iron": 25,
+          "crop": 45
+        },
+        "cropUpkeep": 2,
+        "graphics": {
+          "logo": "infantry/heavy-arrow.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": {
+          "en": "Trapezites"
+        },
+        "stats": {
+          "attack": 125,
+          "defenseInfantry": 60,
+          "defenseCavalry": 55,
+          "speed": 15,
+          "carry": 95
+        },
+        "cost": {
+          "wood": 540,
+          "clay": 430,
+          "iron": 330,
+          "crop": 105
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "cavalry/horse-head.svg"
+        },
+        "description": {
+          "en": "Light cavalry for pursuit and screening."
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": {
+          "en": "Cataphract"
+        },
+        "stats": {
+          "attack": 190,
+          "defenseInfantry": 90,
+          "defenseCavalry": 110,
+          "speed": 9,
+          "carry": 60
+        },
+        "cost": {
+          "wood": 580,
+          "clay": 680,
+          "iron": 850,
+          "crop": 200
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "cavalry/chess-knight.svg"
+        },
+        "description": {
+          "en": "Fully armored shock cavalry — Byzantine signature."
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": {
+          "en": "Klibanophoros"
+        },
+        "stats": {
+          "attack": 175,
+          "defenseInfantry": 95,
+          "defenseCavalry": 115,
+          "speed": 8,
+          "carry": 55
+        },
+        "cost": {
+          "wood": 600,
+          "clay": 700,
+          "iron": 900,
+          "crop": 210
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "cavalry/elephant.svg"
+        },
+        "description": {
+          "en": "Super-heavy household cavalry."
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": {
+          "en": "Battering Ram"
+        },
+        "stats": {
+          "attack": 60,
+          "defenseInfantry": 35,
+          "defenseCavalry": 75,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 920,
+          "clay": 370,
+          "iron": 510,
+          "crop": 75
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "infantry/crowbar.svg"
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": {
+          "en": "Petrobolos"
+        },
+        "stats": {
+          "attack": 80,
+          "defenseInfantry": 65,
+          "defenseCavalry": 10,
+          "speed": 3,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 980,
+          "clay": 1400,
+          "iron": 620,
+          "crop": 95
+        },
+        "cropUpkeep": 6,
+        "graphics": {
+          "logo": "powder.svg"
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": {
+          "en": "Strategos"
+        },
+        "stats": {
+          "attack": 50,
+          "defenseInfantry": 45,
+          "defenseCavalry": 35,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 32000,
+          "clay": 28000,
+          "iron": 46000,
+          "crop": 38000
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "infantry/baton.svg"
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": {
+          "en": "Settler"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 80,
+          "defenseCavalry": 80,
+          "speed": 5,
+          "carry": 3000
+        },
+        "cost": {
+          "wood": 5900,
+          "clay": 5400,
+          "iron": 7300,
+          "crop": 5600
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "resources/brick-pile.svg"
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "byzantine_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": {
+      "en": "Byzantine Hero"
+    },
+    "description": {
+      "en": "Theme commander schooled in combined arms and siege."
+    },
+    "isBase": false,
+    "stats": {
+      "attack": 110,
+      "defenseInfantry": 125,
+      "defenseCavalry": 115,
+      "speed": 8,
+      "carry": 100
+    },
+    "cost": {
+      "wood": 0,
+      "clay": 0,
+      "iron": 0,
+      "crop": 0
+    },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
+    "graphics": {
+      "sprite": "tribes/byzantine/hero/hero.png",
+      "icon": "tribes/byzantine/hero/hero_icon.png",
+      "portrait": "tribes/byzantine/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "generated": true,
+    "cultureId": "byzantine",
+    "era": "Eastern Roman Empire (6th–11th c. CE)",
+    "region": "Anatolia / Balkans / eastern Mediterranean",
+    "historicalContext": "Byzantine armies emphasized professional cavalry (cataphracts), thematic infantry, and engineered siegecraft inherited from Rome.",
+    "createdAt": "2026-08-05T10:47:07.061Z"
+  }
+}

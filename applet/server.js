@@ -3,7 +3,17 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { spawn } from "child_process";
-import { getLeaderMonitor } from "../lib/leader-monitor/poll.js";
+import {
+  createTribe,
+  deleteTribe,
+  listTribes,
+  listProfileSummaries,
+  listArchetypes,
+  defaultSlotLabels,
+  deriveFromUserInput,
+  matchProfile,
+  CORE_TRIBE_IDS,
+} from "../lib/tribe-generator/index.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -17,14 +27,9 @@ const MIME = {
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
-  ".svg": "image/svg+xml",
 };
 
 const HOST = process.env.HOST || "127.0.0.1";
-
-const monitor = getLeaderMonitor({
-  onTerminal: (line) => console.log(`[Monitor] ${line}`),
-});
 
 async function readJsonBody(req) {
   const raw = await readBody(req);
@@ -99,7 +104,7 @@ export function startServer(port = 3456) {
     try {
       if (req.method === "OPTIONS") {
         res.writeHead(204, {
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type",
         });
         res.end();
@@ -117,60 +122,94 @@ export function startServer(port = 3456) {
         return;
       }
 
-      if (url.pathname === "/api/hero-xp" && req.method === "POST") {
-        const out = await runScript(path.join(root, "scripts", "generate-hero-xp.js"));
-        json(res, 200, { ok: true, message: out || "Hero XP table regenerated" });
-        return;
-      }
-
-      if (url.pathname === "/api/monitor/config") {
-        if (req.method === "GET") {
-          const config = await monitor.getConfig();
-          json(res, 200, { ok: true, config, running: monitor.isRunning });
-          return;
-        }
-        if (req.method === "POST") {
-          const patch = await readJsonBody(req);
-          const config = await monitor.updateConfig(patch);
-          json(res, 200, { ok: true, config, running: monitor.isRunning });
-          return;
-        }
-      }
-
-      if (url.pathname === "/api/monitor/status" && req.method === "GET") {
-        const config = await monitor.getConfig();
-        const analytics = await monitor.getAnalytics();
+      if (url.pathname === "/api/tribes/profiles" && req.method === "GET") {
         json(res, 200, {
           ok: true,
-          running: monitor.isRunning,
-          config,
-          analytics,
+          profiles: listProfileSummaries(),
+          archetypes: listArchetypes(),
+          slotLabels: defaultSlotLabels(),
         });
         return;
       }
 
-      if (url.pathname === "/api/monitor/poll" && req.method === "POST") {
-        const snapshot = await monitor.pollOnce();
-        const analytics = await monitor.getAnalytics();
-        json(res, 200, { ok: true, snapshot, analytics });
-        return;
-      }
-
-      if (url.pathname === "/api/monitor/snapshots" && req.method === "GET") {
-        const limit = Math.min(500, Math.max(1, Number(url.searchParams.get("limit")) || 200));
-        const snapshots = await monitor.getSnapshots();
+      if (url.pathname === "/api/tribes/defaults" && req.method === "GET") {
+        const name = url.searchParams.get("name") || "Custom";
+        const theme = url.searchParams.get("theme") || "";
+        const historicalContext =
+          url.searchParams.get("context") || url.searchParams.get("historicalContext") || "";
+        const derived = deriveFromUserInput({ name, theme, historicalContext });
         json(res, 200, {
           ok: true,
-          count: snapshots.length,
-          snapshots: snapshots.slice(-limit),
+          ...derived,
+          troopNames: derived.troopNames,
+          slotLabels: defaultSlotLabels(),
+          archetypes: listArchetypes(),
         });
         return;
       }
 
-      if (url.pathname === "/api/monitor/analytics" && req.method === "GET") {
-        const analytics = await monitor.getAnalytics();
-        json(res, 200, { ok: true, analytics });
+      if (url.pathname === "/api/tribes" && req.method === "GET") {
+        const tribes = await listTribes();
+        json(res, 200, { ok: true, tribes, coreTribeIds: CORE_TRIBE_IDS });
         return;
+      }
+
+      if (url.pathname === "/api/tribes/match" && req.method === "GET") {
+        const q = url.searchParams.get("q") || "";
+        const matched = matchProfile(q);
+        json(res, 200, {
+          ok: true,
+          query: q,
+          match: matched
+            ? {
+                id: matched.id,
+                name: matched.name,
+                era: matched.era,
+                region: matched.region,
+                theme: matched.theme,
+                historicalContext: matched.historicalContext,
+                archetype: matched.archetype,
+                palette: matched.palette,
+              }
+            : null,
+        });
+        return;
+      }
+
+      if (url.pathname === "/api/tribes" && req.method === "POST") {
+        const body = await readJsonBody(req);
+        const result = await createTribe({
+          custom: body.custom === true || body.mode === "custom" || body.cultureId === "custom",
+          cultureId: body.cultureId,
+          historicalContext: body.historicalContext || body.context,
+          name: body.name,
+          id: body.id,
+          type: body.type === "npc" ? "npc" : "playable",
+          palette: body.palette,
+          theme: body.theme,
+          era: body.era,
+          region: body.region,
+          archetype: body.archetype,
+          troopNames: body.troopNames,
+          troopOverrides: body.troopOverrides,
+          hero: body.hero,
+          heroName: body.heroName,
+          logos: body.logos,
+          training: body.training,
+          rebuild: body.rebuild !== false,
+        });
+        json(res, 201, { ok: true, tribe: result, message: `Created ${result.name}` });
+        return;
+      }
+
+      {
+        const delMatch = url.pathname.match(/^\/api\/tribes\/([^/]+)$/);
+        if (delMatch && req.method === "DELETE") {
+          const id = decodeURIComponent(delMatch[1]);
+          const result = await deleteTribe(id);
+          json(res, 200, { ok: true, tribe: result, message: `Deleted ${result.name}` });
+          return;
+        }
       }
 
       if (req.method === "GET" && url.pathname.startsWith("/assets/")) {
@@ -222,15 +261,7 @@ export function startServer(port = 3456) {
 
   return new Promise((resolve, reject) => {
     server.on("error", reject);
-    server.listen(port, HOST, async () => {
-      try {
-        const config = await monitor.getConfig();
-        if (config.enabled) await monitor.start();
-      } catch (e) {
-        console.error("[Monitor] Failed to start:", e.message);
-      }
-      resolve(server);
-    });
+    server.listen(port, HOST, () => resolve(server));
   });
 }
 

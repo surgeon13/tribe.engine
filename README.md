@@ -82,12 +82,6 @@ Each tribe defines a **two-color palette** (`primary` + `secondary`). The same c
 
 All tribes share `data/hero.system.json` — level cap, XP table, four attributes, combat XP rules. Each tribe hero links via `"progression": "hero.system.json"`. See `data/HERO.md`.
 
-Regenerate the level table after curve changes:
-
-```bash
-node scripts/generate-hero-xp.js
-```
-
 | Faction | File | Type |
 |---------|------|------|
 | Romans | `roman.json` | playable |
@@ -120,20 +114,34 @@ npm start
 
 This builds tribe data, starts a small local server, and opens the dashboard in your browser (app window on Edge if available). Use **Rebuild data** in the sidebar to refresh after editing JSON.
 
-**Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Midnight, Forest, Sand, Contrast. Your choice is saved in the browser.
+**Appearance** dropdown (sidebar): switch UI themes — Dark, Light, Sand, Dusk. Your choice is saved in the browser.
 
-## Leader monitor (top 10 aggregate polling)
+**Add tribe** (sidebar): **custom by default** — enter a name and describe the culture; archetype, colors, troop names, and lore flavor are derived from your words. Optional culture presets remain as a shortcut. Full 11-troop + hero roster is written under `data/` so it survives restarts.
 
-Track how much **points** and **resources** the server top 10 generate over time, detect **raid activity windows**, and view trend graphs in the dashboard.
+**Delete tribe**: non-core factions show an **×** in the sidebar (or `npm run tribe:delete -- <id>`). Core Travian defaults (Romans–Nature) are protected and cannot be removed.
 
-| Command | Purpose |
-|---------|---------|
-| `npm run terminal` | Terminal mode — toggle polling, set interval, view rates/raids |
-| Sidebar → **Leader monitor** | Dashboard graphs and raid timeline |
+```bash
+npm run tribe:list
+npm run tribe:list-registered
+npm run tribe:add -- --culture viking --name "Norse"
+npm run tribe:delete -- norse
+```
 
-**Terminal commands:** `toggle` (enable/disable polling), `rates` (per hour / 2h / day), `raids`, `poll`, `status`, `interval <ms>`, `adapter mock|travian`, `url <statistics-url>`.
+## Median baseline (balance origin)
 
-Config file: `data/leader-monitor.config.json`. Snapshots are stored locally in `data/leader-monitor/snapshots.json` (gitignored). Use `adapter: "mock"` for demo data, or `travian` with a JSON statistics endpoint URL for live servers.
+The six original playable tribes (Romans–Spartans) define a **Median** reference tribe — per-slot statistical median of resolved combat stats, costs, and training times.
+
+```bash
+npm run balance:median
+```
+
+| Path | Role |
+|------|------|
+| `data/tribes/median.json` | Integer median tribe in the dashboard |
+| `data/balance/median-baseline.json` | Precise median/mean/ranges + tribe power diagnostics |
+| `data/balance/BALANCE.md` | Point-buy budgets, Pareto, share models, PCA notes |
+
+Natars/Nature are excluded. Use Median as the origin when giving tribes unique numerical identities (buffs paid for by nerfs).
 
 ## Dashboard
 
