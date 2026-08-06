@@ -93,14 +93,18 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     if (!troopNamesWrap) return;
     const rows = [
       ...SLOT_ORDER.map((ref) => ({ key: ref, label: slotLabels[ref] || ref })),
-      { key: "hero", label: "Hero" },
+      { key: "hero", label: "Hero (account name)" },
     ];
     troopNamesWrap.innerHTML = rows
       .map(
         (r) => `
       <label class="troop-name-field">
         <span>${r.label}</span>
-        <input type="text" data-troop-key="${r.key}" autocomplete="off" />
+        <input type="text" data-troop-key="${r.key}" autocomplete="off" ${
+          r.key === "hero"
+            ? 'placeholder="Defaults to your in-game account name"'
+            : ""
+        } />
       </label>`
       )
       .join("");
@@ -149,7 +153,8 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
         const key = input.dataset.troopKey;
         if (!key || !derived.troopNames[key]) return;
         if (force || !troopDirty.has(key)) {
-          input.value = derived.troopNames[key];
+          // Hero stays "Hero" — runtime default is the player's account name.
+          input.value = key === "hero" ? "Hero" : derived.troopNames[key];
         }
       });
     }
@@ -224,7 +229,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
       const secondary = secondaryInput.value;
       const flavor = lastDerived?.flavorId ? ` · ${lastDerived.flavorId} flavor` : "";
       const sampleNames = lastDerived?.troopNames
-        ? [lastDerived.troopNames.inf_t1, lastDerived.troopNames.cav_t1, lastDerived.troopNames.hero]
+        ? [lastDerived.troopNames.inf_t1, lastDerived.troopNames.cav_t1]
             .filter(Boolean)
             .join(" · ")
         : "";
@@ -236,7 +241,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
         <p><strong>${escapeHtml(name)}</strong> · from your input · ${escapeHtml(arch?.label || lastDerived?.archetype || "Balanced")}${escapeHtml(flavor)}</p>
         <p class="muted">${escapeHtml(arch?.description || "Balance inferred from your description")}</p>
         <p>${escapeHtml(lore || themeInput.value.trim() || lastDerived?.theme || "Write a description above — roster, colors, and names follow your words.")}</p>
-        ${sampleNames ? `<p class="muted">Units: ${escapeHtml(sampleNames)}</p>` : ""}
+        ${sampleNames ? `<p class="muted">Units: ${escapeHtml(sampleNames)} · Hero = account name</p>` : `<p class="muted">Hero defaults to the player's in-game account name</p>`}
       `;
       return;
     }

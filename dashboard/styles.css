@@ -2157,6 +2157,206 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Phone-friendly compare: no forced min-widths / sideways scroll for graphs */
+.compare-intro-mobile {
+  display: none;
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+html[data-compare-compact="1"] .compare-intro-mobile {
+  display: block;
+}
+
+html[data-compare-compact="1"] .compare-radar-slots-scroll,
+html[data-compare-compact="1"] .compare-graphics-wrap {
+  overflow-x: visible;
+  padding-bottom: 0;
+}
+
+html[data-compare-compact="1"] .compare-radar-slots-scroll .compare-radar-row,
+html[data-compare-compact="1"] .compare-graphics-row {
+  min-width: 0;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+html[data-compare-compact="1"] .compare-grid-header {
+  display: none;
+}
+
+html[data-compare-compact="1"] .compare-banners {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+html[data-compare-compact="1"] .compare-slot-label {
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+html[data-compare-compact="1"] .compare-tribe-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--tribe-col, var(--border)) 35%, var(--border));
+  background: color-mix(in srgb, var(--tribe-col, transparent) 6%, var(--surface));
+}
+
+html[data-compare-compact="1"] .compare-tribe-tag {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+html[data-compare-compact="1"] .chart-toolbar {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+html[data-compare-compact="1"] .chart-toolbar label,
+html[data-compare-compact="1"] .stat-toolbar-field {
+  min-width: 0;
+  width: 100%;
+}
+
+html[data-compare-compact="1"] .chart-toolbar select,
+html[data-compare-compact="1"] .stat-toolbar-field select {
+  min-width: 0;
+  width: 100%;
+}
+
+html[data-compare-compact="1"] .chart-panel {
+  padding: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+html[data-compare-compact="1"] .chart-svg {
+  width: 100%;
+  max-width: 100%;
+}
+
+html[data-compare-compact="1"] .compare-modes {
+  width: 100%;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+html[data-compare-compact="1"] .compare-modes .view-tab {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+html[data-compare-compact="1"] .compare-summary {
+  grid-template-columns: 1fr;
+}
+
+html[data-compare-compact="1"] #compare-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-cost-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.compare-cost-mobile-card {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.compare-cost-mobile-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.compare-cost-mobile-head strong {
+  font-size: 13px;
+}
+
+.compare-cost-mobile-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.compare-cost-mobile-row {
+  display: grid;
+  grid-template-columns: minmax(72px, 28%) 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.compare-cost-mobile-name {
+  font-size: 12px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compare-cost-mobile-track {
+  height: 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--border) 70%, transparent);
+  overflow: hidden;
+}
+
+.compare-cost-mobile-fill {
+  height: 100%;
+  border-radius: inherit;
+  min-width: 2px;
+}
+
+.compare-cost-mobile-val {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .compare-panel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .compare-panel > .panel-head,
+  .compare-toolbar,
+  .compare-legend,
+  .compare-summary,
+  .compare-content {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .unit-stat-keyline {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .stat-bar-name {
+    font-size: 12px;
+  }
+
+  .stat-bar-value {
+    font-size: 12px;
+  }
+}
 /* Add tribe modal */
 .modal-overlay {
   position: fixed;

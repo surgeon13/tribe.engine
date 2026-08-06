@@ -22,6 +22,7 @@ import {
   CHART_LAYOUTS,
   CHART_METRICS,
   computeChartWidth,
+  computeReadableChartWidth,
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
@@ -45,6 +46,7 @@ let activeView = "table";
 let compareViewMode = "table";
 let compareChartMetric = "offense";
 let compareChartLayout = "bars";
+let compareChartLayoutUserPicked = false;
 let statDisplayMode = "bars";
 let statNormalizeMode = "crop";
 let compareTribeIds = [];
@@ -52,6 +54,34 @@ let selectedTroopIndex = 0;
 let compareChartMetricBound = false;
 let compareChartLayoutBound = false;
 let serverHasApi = false;
+let compareCompactMq = null;
+
+const COMPARE_COMPACT_MQ = "(max-width: 720px)";
+
+function isCompareCompact() {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia?.(COMPARE_COMPACT_MQ).matches) return true;
+  // Fallback when device emulation changes layout viewport without firing matchMedia.
+  return Number(window.innerWidth) > 0 && Number(window.innerWidth) <= 720;
+}
+
+function syncCompareCompactAttr() {
+  const compact = isCompareCompact();
+  document.documentElement.dataset.compareCompact = compact ? "1" : "0";
+  return compact;
+}
+
+function applyCompactChartLayoutDefault() {
+  if (compareChartLayoutUserPicked) return compareChartLayout;
+  compareChartLayout = isCompareCompact() ? "horizontal" : "bars";
+  return compareChartLayout;
+}
+
+function effectiveCompareChartLayout() {
+  if (compareChartLayoutUserPicked) return compareChartLayout;
+  if (isCompareCompact()) return "horizontal";
+  return compareChartLayout;
+}
 
 function recomputeGlobalScales() {
   if (!data?.tribes) return;
@@ -469,8 +499,17 @@ function getCompareTribes() {
 function setCompareColumnCount(n) {
   const cols = Math.max(n, 2);
   document.documentElement.style.setProperty("--compare-cols", String(cols));
-  const minCol = cols <= 3 ? 220 : cols <= 5 ? 180 : cols <= 6 ? 160 : 148;
-  document.documentElement.style.setProperty("--compare-col-min", `${minCol}px`);
+  const compact = isCompareCompact();
+  const minCol = compact
+    ? 0
+    : cols <= 3
+      ? 220
+      : cols <= 5
+        ? 180
+        : cols <= 6
+          ? 160
+          : 148;
+  document.documentElement.style.setProperty("--compare-col-min", compact ? "0px" : `${minCol}px`);
 }
 
 function formatSlotUnitNames(tribes, slotIndex) {
@@ -662,11 +701,15 @@ function renderCompareRadarSlots(tribes) {
   const grid = $("#compare-radar-slots");
   if (!grid || !globalScales) return;
   grid.innerHTML = "";
+  syncCompareCompactAttr();
   setCompareColumnCount(tribes.length);
 
   const hint = $("#compare-radar-hint");
   if (hint) {
-    hint.textContent = normalizeModeHint(statNormalizeMode);
+    const base = normalizeModeHint(statNormalizeMode);
+    hint.textContent = isCompareCompact()
+      ? `${base} On phones, each unit stacks tribes vertically for easier reading.`
+      : base;
   }
 
   const header = document.createElement("article");
@@ -696,21 +739,32 @@ function renderCompareRadarSlots(tribes) {
 
     tribes.forEach((tribe, ti) => {
       const col = document.createElement("div");
+      col.className = "compare-tribe-block";
+      col.style.setProperty("--tribe-col", tribe.palette?.primary || "var(--accent)");
       const troop = tribe.troops[i];
       if (!troop) {
-        col.className = "compare-radar-empty";
+        col.className = "compare-radar-empty compare-tribe-block";
         col.textContent = "—";
         row.append(col);
         return;
       }
+      if (isCompareCompact()) {
+        const tribeTag = document.createElement("div");
+        tribeTag.className = "compare-tribe-tag";
+        tribeTag.style.color = tribe.palette?.primary || "inherit";
+        tribeTag.textContent = tribe.name;
+        col.append(tribeTag);
+      }
       const compareMetrics =
         tribes.length === 2 ? tribes[1 - ti].troops[i]?.metrics : undefined;
-      mountRadarCard(col, troop, globalScales, tribe.palette, {
+      const cardHost = document.createElement("div");
+      mountRadarCard(cardHost, troop, globalScales, tribe.palette, {
         mini: true,
         size: tribes.length <= 2 ? 140 : 120,
         displayMode: statDisplayMode,
         compareMetrics,
       });
+      col.append(cardHost);
       row.append(col);
     });
 
@@ -722,6 +776,7 @@ function renderCompareGraphics() {
   const tribes = getCompareTribes();
   if (tribes.length < COMPARE_MIN_TRIBES) return;
 
+  syncCompareCompactAttr();
   const banners = $("#compare-banners");
   if (banners) {
     banners.innerHTML = "";
@@ -763,7 +818,17 @@ function renderCompareGraphics() {
     row.append(label);
     tribes.forEach((tribe) => {
       const col = document.createElement("div");
-      renderUnitCard(col, tribe.troops[i], tribe.palette, globalScales);
+      col.className = "compare-tribe-block";
+      if (isCompareCompact()) {
+        const tribeTag = document.createElement("div");
+        tribeTag.className = "compare-tribe-tag";
+        tribeTag.style.color = tribe.palette?.primary || "inherit";
+        tribeTag.textContent = tribe.name;
+        col.append(tribeTag);
+      }
+      const cardHost = document.createElement("div");
+      renderUnitCard(cardHost, tribe.troops[i], tribe.palette, globalScales);
+      col.append(cardHost);
       row.append(col);
     });
     grid.append(row);
@@ -774,13 +839,24 @@ function renderCompareCharts() {
   const tribes = getCompareTribes();
   if (tribes.length < COMPARE_MIN_TRIBES) return;
 
+  const compact = syncCompareCompactAttr();
+  const layoutId = effectiveCompareChartLayout();
+  const layoutSel = $("#compare-chart-layout");
+  if (layoutSel && layoutSel.value !== layoutId) {
+    layoutSel.value = layoutId;
+  }
+
   const metric =
     CHART_METRICS.find((m) => m.key === compareChartMetric) || CHART_METRICS[0];
   const metricLabel = chartMetricLabel(metric, statNormalizeMode);
   const slotLabels = compareSlotChartLabels(tribes);
   const troopLabels = slotLabels.map((l) => l.main);
-  const containerW = $("#compare-charts-wrap")?.clientWidth || 720;
-  const chartW = computeChartWidth(troopLabels, containerW);
+  const wrapEl = $("#compare-charts-wrap");
+  const containerW = Math.max(
+    280,
+    (wrapEl?.clientWidth || window.innerWidth || 360) - (compact ? 8 : 24)
+  );
+  const chartW = computeReadableChartWidth(containerW, layoutId, troopLabels);
   const colors = getCompareSeriesColors(tribes.length, tribes);
   const series = buildCompareChartSeries(tribes, metric, colors, statNormalizeMode);
   const names = formatCompareTribeList(tribes);
@@ -802,13 +878,20 @@ function renderCompareCharts() {
   main.innerHTML = "";
   const cap = document.createElement("p");
   cap.className = "chart-caption muted";
-  cap.textContent = `${metricLabel} by unit — ${names}. ${normalizeModeHint(statNormalizeMode)}`;
+  const layoutNote =
+    compact && layoutId === "horizontal" && !compareChartLayoutUserPicked
+      ? " Phone layout: horizontal bars (readable without pinch-zoom)."
+      : "";
+  cap.textContent = `${metricLabel} by unit — ${names}. ${normalizeModeHint(statNormalizeMode)}${layoutNote}`;
   main.append(cap);
 
-  const chartH = Math.min(560, 380 + Math.max(0, tribes.length - 2) * 20);
+  const chartH =
+    layoutId === "horizontal"
+      ? undefined
+      : Math.min(560, 380 + Math.max(0, tribes.length - 2) * 20);
 
   const svgMain = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  drawCompareMetricChart(svgMain, compareChartLayout, {
+  drawCompareMetricChart(svgMain, layoutId, {
     labels: troopLabels,
     series,
     title: metricLabel,
@@ -822,25 +905,76 @@ function renderCompareCharts() {
 
   const costWrap = $("#compare-chart-cost");
   costWrap.innerHTML = "";
+  if (compact) {
+    renderMobileCostCompare(costWrap, tribes, colors);
+  } else {
+    const capCost = document.createElement("p");
+    capCost.className = "chart-caption muted";
+    capCost.textContent =
+      "Training resources (wood / clay / iron / crop) — totals above each stack";
+    costWrap.append(capCost);
+
+    const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    drawMultiCostStackChart(svgCost, {
+      width: computeChartWidth(
+        tribes.map((_, i) => chartTroopName(tribes, i)),
+        containerW
+      ),
+      height: Math.min(480, 340 + tribes.length * 16),
+      title: "Training resources (W / C / I / Cr)",
+      series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
+      slots: data.roster.map((slot, i) => ({
+        label: chartTroopName(tribes, i),
+        costs: tribes.map((t) => t.troops[i].cost),
+        totals: tribes.map((t) => t.troops[i].totalCost),
+      })),
+    });
+    costWrap.append(svgCost);
+  }
+}
+
+/** Slot-by-slot cost bars — readable on narrow screens without shrinking SVG text. */
+function renderMobileCostCompare(container, tribes, colors) {
   const capCost = document.createElement("p");
   capCost.className = "chart-caption muted";
-  capCost.textContent =
-    "Training resources (wood / clay / iron / crop) — totals above each stack";
-  costWrap.append(capCost);
+  capCost.textContent = "Training cost by unit (total resources) — tap scroll to compare slots";
+  container.append(capCost);
 
-  const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  drawMultiCostStackChart(svgCost, {
-    width: chartW,
-    height: Math.min(480, 340 + tribes.length * 16),
-    title: "Training resources (W / C / I / Cr)",
-    series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
-    slots: data.roster.map((slot, i) => ({
-      label: chartTroopName(tribes, i),
-      costs: tribes.map((t) => t.troops[i].cost),
-      totals: tribes.map((t) => t.troops[i].totalCost),
-    })),
+  const list = document.createElement("div");
+  list.className = "compare-cost-mobile";
+
+  data.roster.forEach((slot, i) => {
+    const totals = tribes.map((t) => Number(t.troops[i]?.totalCost) || 0);
+    const maxCost = Math.max(1, ...totals);
+    const card = document.createElement("article");
+    card.className = "compare-cost-mobile-card";
+    const unitLabel = chartTroopName(tribes, i);
+    card.innerHTML = `
+      <header class="compare-cost-mobile-head">
+        <strong>Slot ${slot.slot}</strong>
+        <span class="role-badge">${slot.role}</span>
+        <span class="muted">${unitLabel}</span>
+      </header>
+      <div class="compare-cost-mobile-rows">
+        ${tribes
+          .map((t, ti) => {
+            const total = totals[ti];
+            const pct = Math.round((total / maxCost) * 100);
+            return `<div class="compare-cost-mobile-row">
+              <span class="compare-cost-mobile-name" style="color:${colors[ti]}">${t.name}</span>
+              <div class="compare-cost-mobile-track" role="presentation">
+                <div class="compare-cost-mobile-fill" style="width:${pct}%;background:${colors[ti]}"></div>
+              </div>
+              <strong class="compare-cost-mobile-val">${total.toLocaleString()}</strong>
+            </div>`;
+          })
+          .join("")}
+      </div>
+    `;
+    list.append(card);
   });
-  costWrap.append(svgCost);
+
+  container.append(list);
 }
 
 function renderCompareTable(tribes) {
@@ -968,13 +1102,15 @@ function bindCompareChartMetric() {
 function bindCompareChartLayout() {
   const sel = $("#compare-chart-layout");
   if (!sel) return;
+  const effective = effectiveCompareChartLayout();
   sel.innerHTML = CHART_LAYOUTS.map(
     (l) =>
-      `<option value="${l.id}"${l.id === compareChartLayout ? " selected" : ""}>${l.name}</option>`
+      `<option value="${l.id}"${l.id === effective ? " selected" : ""}>${l.name}</option>`
   ).join("");
   if (!compareChartLayoutBound) {
     sel.addEventListener("change", () => {
       compareChartLayout = sel.value;
+      compareChartLayoutUserPicked = true;
       if (compareMode && compareViewMode === "charts") renderCompareCharts();
     });
     compareChartLayoutBound = true;
@@ -1018,6 +1154,8 @@ function renderCompare() {
 
 function showCompare() {
   compareMode = true;
+  syncCompareCompactAttr();
+  if (!compareChartLayoutUserPicked) applyCompactChartLayoutDefault();
   $("#view-single").classList.add("hidden");
   $("#view-compare").classList.remove("hidden");
   $("#btn-compare").textContent = "Back to tribe";
@@ -1083,6 +1221,41 @@ function bindUi() {
   });
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
+
+  bindCompareCompactViewport();
+}
+
+function bindCompareCompactViewport() {
+  syncCompareCompactAttr();
+  applyCompactChartLayoutDefault();
+  if (!window.matchMedia) return;
+  compareCompactMq = window.matchMedia(COMPARE_COMPACT_MQ);
+  const onChange = () => {
+    const was = document.documentElement.dataset.compareCompact;
+    const now = syncCompareCompactAttr() ? "1" : "0";
+    if (!compareChartLayoutUserPicked) applyCompactChartLayoutDefault();
+    bindCompareChartLayout();
+    if (was === now && !compareMode) return;
+    if (compareMode) renderCompare();
+  };
+  if (compareCompactMq.addEventListener) compareCompactMq.addEventListener("change", onChange);
+  else compareCompactMq.addListener?.(onChange);
+
+  let resizeTimer = 0;
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      const was = document.documentElement.dataset.compareCompact;
+      const now = syncCompareCompactAttr() ? "1" : "0";
+      if (was !== now && !compareChartLayoutUserPicked) {
+        applyCompactChartLayoutDefault();
+        bindCompareChartLayout();
+        if (compareMode) renderCompare();
+        return;
+      }
+      if (compareMode && compareViewMode === "charts") renderCompareCharts();
+    }, 120);
+  });
 }
 
 async function apiPost(path) {

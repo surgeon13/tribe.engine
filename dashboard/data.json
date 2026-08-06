@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "/assets",
-  "generatedAt": "2026-08-06T08:43:55.001Z",
+  "generatedAt": "2026-08-06T15:21:35.404Z",
   "roster": [
     {
       "slot": 1,
@@ -300,7 +300,7 @@
         "resourceProductionBonusPercent": 0
       },
       "undead": {
-        "fightingStrengthPerPoint": 80,
+        "fightingStrengthPerPoint": 110,
         "resourceProductionBonusPercent": 0
       },
       "median": {
@@ -11911,7 +11911,7 @@
       "id": "undead",
       "name": "Undead",
       "type": "playable",
-      "theme": "Cheap shambling masses, spectral scouts, and bone cavalry — high pressure, fragile line (Fantasy / necromantic, Grave-realms / cursed marches)",
+      "theme": "Dread host stronger than Natars and oasis Nature — relentless bone waves, spectral scouts, and catastrophic cavalry (Fantasy / necromantic, Grave-realms / cursed marches)",
       "palette": {
         "primary": "#1A1A2E",
         "secondary": "#6BCB77"
@@ -11921,13 +11921,13 @@
       },
       "summary": {
         "unitCount": 11,
-        "maxAttack": 175,
-        "maxDefenseInfantry": 70,
-        "maxDefenseCavalry": 90,
-        "maxSpeed": 18,
-        "maxCarry": 90,
-        "avgAttack": 81,
-        "avgDefenseCombined": 42,
+        "maxAttack": 480,
+        "maxDefenseInfantry": 400,
+        "maxDefenseCavalry": 270,
+        "maxSpeed": 19,
+        "maxCarry": 95,
+        "avgAttack": 168,
+        "avgDefenseCombined": 120,
         "totalCropUpkeep": 31
       },
       "troops": [
@@ -11936,12 +11936,12 @@
           "role": "infantry",
           "ref": "inf_t1",
           "id": "inf_t1",
-          "name": "Skeleton Levy",
+          "name": "Skeleton Warrior",
           "category": "infantry",
           "stats": {
-            "attack": 30,
-            "defenseInfantry": 28,
-            "defenseCavalry": 25,
+            "attack": 45,
+            "defenseInfantry": 42,
+            "defenseCavalry": 38,
             "speed": 6,
             "carry": 40
           },
@@ -11975,16 +11975,16 @@
             "baseLogo": "infantry/gladius.svg"
           },
           "metrics": {
-            "offense": 30,
-            "defenseInfantry": 28,
-            "defenseCavalry": 25,
-            "defenseCombined": 27,
-            "defenseTotal": 53,
+            "offense": 45,
+            "defenseInfantry": 42,
+            "defenseCavalry": 38,
+            "defenseCombined": 40,
+            "defenseTotal": 80,
             "speed": 6,
             "carry": 40,
             "cropUpkeep": 1,
-            "attackPerCrop": 30,
-            "defensePerCrop": 53,
+            "attackPerCrop": 45,
+            "defensePerCrop": 80,
             "trainTimeSeconds": 900,
             "trainTimeFormatted": "15:00",
             "resourceCost": 275
@@ -12006,9 +12006,9 @@
           "name": "Ghoul",
           "category": "infantry",
           "stats": {
-            "attack": 55,
-            "defenseInfantry": 28,
-            "defenseCavalry": 22,
+            "attack": 80,
+            "defenseInfantry": 42,
+            "defenseCavalry": 35,
             "speed": 8,
             "carry": 35
           },
@@ -12042,16 +12042,16 @@
             "baseLogo": "infantry/battle-axe.svg"
           },
           "metrics": {
-            "offense": 55,
-            "defenseInfantry": 28,
-            "defenseCavalry": 22,
-            "defenseCombined": 25,
-            "defenseTotal": 50,
+            "offense": 80,
+            "defenseInfantry": 42,
+            "defenseCavalry": 35,
+            "defenseCombined": 39,
+            "defenseTotal": 77,
             "speed": 8,
             "carry": 35,
             "cropUpkeep": 1,
-            "attackPerCrop": 55,
-            "defensePerCrop": 50,
+            "attackPerCrop": 80,
+            "defensePerCrop": 77,
             "trainTimeSeconds": 1100,
             "trainTimeFormatted": "18:20",
             "resourceCost": 385
@@ -12073,11 +12073,11 @@
           "name": "Wight",
           "category": "infantry",
           "stats": {
-            "attack": 80,
-            "defenseInfantry": 40,
-            "defenseCavalry": 30,
+            "attack": 120,
+            "defenseInfantry": 100,
+            "defenseCavalry": 85,
             "speed": 7,
-            "carry": 40
+            "carry": 45
           },
           "cost": {
             "wood": 150,
@@ -12109,16 +12109,16 @@
             "baseLogo": "infantry/warhammer.svg"
           },
           "metrics": {
-            "offense": 80,
-            "defenseInfantry": 40,
-            "defenseCavalry": 30,
-            "defenseCombined": 35,
-            "defenseTotal": 70,
+            "offense": 120,
+            "defenseInfantry": 100,
+            "defenseCavalry": 85,
+            "defenseCombined": 93,
+            "defenseTotal": 185,
             "speed": 7,
-            "carry": 40,
+            "carry": 45,
             "cropUpkeep": 1,
-            "attackPerCrop": 80,
-            "defensePerCrop": 70,
+            "attackPerCrop": 120,
+            "defensePerCrop": 185,
             "trainTimeSeconds": 1500,
             "trainTimeFormatted": "25:00",
             "resourceCost": 560
@@ -12141,9 +12141,9 @@
           "category": "scout",
           "stats": {
             "attack": 0,
-            "defenseInfantry": 18,
-            "defenseCavalry": 10,
-            "speed": 18,
+            "defenseInfantry": 28,
+            "defenseCavalry": 22,
+            "speed": 19,
             "carry": 0
           },
           "cost": {
@@ -12177,15 +12177,15 @@
           },
           "metrics": {
             "offense": 0,
-            "defenseInfantry": 18,
-            "defenseCavalry": 10,
-            "defenseCombined": 14,
-            "defenseTotal": 28,
-            "speed": 18,
+            "defenseInfantry": 28,
+            "defenseCavalry": 22,
+            "defenseCombined": 25,
+            "defenseTotal": 50,
+            "speed": 19,
             "carry": 0,
             "cropUpkeep": 2,
             "attackPerCrop": 0,
-            "defensePerCrop": 14,
+            "defensePerCrop": 25,
             "trainTimeSeconds": 1150,
             "trainTimeFormatted": "19:10",
             "resourceCost": 315
@@ -12207,11 +12207,11 @@
           "name": "Bone Rider",
           "category": "cavalry",
           "stats": {
-            "attack": 105,
-            "defenseInfantry": 45,
-            "defenseCavalry": 40,
+            "attack": 175,
+            "defenseInfantry": 95,
+            "defenseCavalry": 65,
             "speed": 15,
-            "carry": 90
+            "carry": 95
           },
           "cost": {
             "wood": 430,
@@ -12243,16 +12243,16 @@
             "baseLogo": "cavalry/horse-head.svg"
           },
           "metrics": {
-            "offense": 105,
-            "defenseInfantry": 45,
-            "defenseCavalry": 40,
-            "defenseCombined": 43,
-            "defenseTotal": 85,
+            "offense": 175,
+            "defenseInfantry": 95,
+            "defenseCavalry": 65,
+            "defenseCombined": 80,
+            "defenseTotal": 160,
             "speed": 15,
-            "carry": 90,
+            "carry": 95,
             "cropUpkeep": 3,
-            "attackPerCrop": 35,
-            "defensePerCrop": 28.3,
+            "attackPerCrop": 58.3,
+            "defensePerCrop": 53.3,
             "trainTimeSeconds": 1700,
             "trainTimeFormatted": "28:20",
             "resourceCost": 1155
@@ -12274,11 +12274,11 @@
           "name": "Death Knight",
           "category": "cavalry",
           "stats": {
-            "attack": 175,
-            "defenseInfantry": 70,
-            "defenseCavalry": 90,
-            "speed": 11,
-            "carry": 65
+            "attack": 200,
+            "defenseInfantry": 155,
+            "defenseCavalry": 110,
+            "speed": 12,
+            "carry": 70
           },
           "cost": {
             "wood": 520,
@@ -12310,16 +12310,16 @@
             "baseLogo": "cavalry/chess-knight.svg"
           },
           "metrics": {
-            "offense": 175,
-            "defenseInfantry": 70,
-            "defenseCavalry": 90,
-            "defenseCombined": 80,
-            "defenseTotal": 160,
-            "speed": 11,
-            "carry": 65,
+            "offense": 200,
+            "defenseInfantry": 155,
+            "defenseCavalry": 110,
+            "defenseCombined": 133,
+            "defenseTotal": 265,
+            "speed": 12,
+            "carry": 70,
             "cropUpkeep": 4,
-            "attackPerCrop": 43.8,
-            "defensePerCrop": 40,
+            "attackPerCrop": 50,
+            "defensePerCrop": 66.3,
             "trainTimeSeconds": 2300,
             "trainTimeFormatted": "38:20",
             "resourceCost": 2020
@@ -12341,11 +12341,11 @@
           "name": "Black Steed",
           "category": "cavalry",
           "stats": {
-            "attack": 145,
-            "defenseInfantry": 65,
-            "defenseCavalry": 75,
+            "attack": 185,
+            "defenseInfantry": 125,
+            "defenseCavalry": 90,
             "speed": 13,
-            "carry": 75
+            "carry": 80
           },
           "cost": {
             "wood": 500,
@@ -12377,16 +12377,16 @@
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 145,
-            "defenseInfantry": 65,
-            "defenseCavalry": 75,
-            "defenseCombined": 70,
-            "defenseTotal": 140,
+            "offense": 185,
+            "defenseInfantry": 125,
+            "defenseCavalry": 90,
+            "defenseCombined": 108,
+            "defenseTotal": 215,
             "speed": 13,
-            "carry": 75,
+            "carry": 80,
             "cropUpkeep": 4,
-            "attackPerCrop": 36.3,
-            "defensePerCrop": 35,
+            "attackPerCrop": 46.3,
+            "defensePerCrop": 53.8,
             "trainTimeSeconds": 2550,
             "trainTimeFormatted": "42:30",
             "resourceCost": 1805
@@ -12408,9 +12408,9 @@
           "name": "Bone Ram",
           "category": "siege",
           "stats": {
-            "attack": 65,
-            "defenseInfantry": 28,
-            "defenseCavalry": 70,
+            "attack": 480,
+            "defenseInfantry": 400,
+            "defenseCavalry": 270,
             "speed": 4,
             "carry": 0
           },
@@ -12444,16 +12444,16 @@
             "baseLogo": "infantry/crowbar.svg"
           },
           "metrics": {
-            "offense": 65,
-            "defenseInfantry": 28,
-            "defenseCavalry": 70,
-            "defenseCombined": 49,
-            "defenseTotal": 98,
+            "offense": 480,
+            "defenseInfantry": 400,
+            "defenseCavalry": 270,
+            "defenseCombined": 335,
+            "defenseTotal": 670,
             "speed": 4,
             "carry": 0,
             "cropUpkeep": 3,
-            "attackPerCrop": 21.7,
-            "defensePerCrop": 32.7,
+            "attackPerCrop": 160,
+            "defensePerCrop": 223.3,
             "trainTimeSeconds": 4400,
             "trainTimeFormatted": "1:13:20",
             "resourceCost": 1735
@@ -12475,9 +12475,9 @@
           "name": "Tomb Catapult",
           "category": "siege",
           "stats": {
-            "attack": 78,
-            "defenseInfantry": 55,
-            "defenseCavalry": 10,
+            "attack": 230,
+            "defenseInfantry": 185,
+            "defenseCavalry": 270,
             "speed": 3,
             "carry": 0
           },
@@ -12511,16 +12511,16 @@
             "baseLogo": "powder.svg"
           },
           "metrics": {
-            "offense": 78,
-            "defenseInfantry": 55,
-            "defenseCavalry": 10,
-            "defenseCombined": 33,
-            "defenseTotal": 65,
+            "offense": 230,
+            "defenseInfantry": 185,
+            "defenseCavalry": 270,
+            "defenseCombined": 228,
+            "defenseTotal": 455,
             "speed": 3,
             "carry": 0,
             "cropUpkeep": 6,
-            "attackPerCrop": 13,
-            "defensePerCrop": 10.8,
+            "attackPerCrop": 38.3,
+            "defensePerCrop": 75.8,
             "trainTimeSeconds": 8800,
             "trainTimeFormatted": "2:26:40",
             "resourceCost": 2885
@@ -12542,9 +12542,9 @@
           "name": "Lich",
           "category": "chief",
           "stats": {
-            "attack": 45,
-            "defenseInfantry": 35,
-            "defenseCavalry": 28,
+            "attack": 650,
+            "defenseInfantry": 470,
+            "defenseCavalry": 550,
             "speed": 4,
             "carry": 0
           },
@@ -12583,16 +12583,16 @@
             "baseLogo": "infantry/baton.svg"
           },
           "metrics": {
-            "offense": 45,
-            "defenseInfantry": 35,
-            "defenseCavalry": 28,
-            "defenseCombined": 32,
-            "defenseTotal": 63,
+            "offense": 650,
+            "defenseInfantry": 470,
+            "defenseCavalry": 550,
+            "defenseCombined": 510,
+            "defenseTotal": 1020,
             "speed": 4,
             "carry": 0,
             "cropUpkeep": 5,
-            "attackPerCrop": 9,
-            "defensePerCrop": 12.6,
+            "attackPerCrop": 130,
+            "defensePerCrop": 204,
             "trainTimeSeconds": 90720,
             "trainTimeFormatted": "25:12:00",
             "resourceCost": 134000
@@ -12615,8 +12615,8 @@
           "category": "settler",
           "stats": {
             "attack": 0,
-            "defenseInfantry": 75,
-            "defenseCavalry": 75,
+            "defenseInfantry": 95,
+            "defenseCavalry": 95,
             "speed": 5,
             "carry": 3000
           },
@@ -12651,15 +12651,15 @@
           },
           "metrics": {
             "offense": 0,
-            "defenseInfantry": 75,
-            "defenseCavalry": 75,
-            "defenseCombined": 75,
-            "defenseTotal": 150,
+            "defenseInfantry": 95,
+            "defenseCavalry": 95,
+            "defenseCombined": 95,
+            "defenseTotal": 190,
             "speed": 5,
             "carry": 3000,
             "cropUpkeep": 1,
             "attackPerCrop": 0,
-            "defensePerCrop": 150,
+            "defensePerCrop": 190,
             "trainTimeSeconds": 26920,
             "trainTimeFormatted": "7:28:40",
             "resourceCost": 23000
@@ -12681,15 +12681,15 @@
         "category": "hero",
         "name": "Death Knight Hero",
         "description": {
-          "en": "Champion of the grave — leads the undead host."
+          "en": "Deathlord of the grave — stronger than Natarian warlords and primal oasis spirits."
         },
         "isBase": false,
         "stats": {
-          "attack": 125,
-          "defenseInfantry": 95,
-          "defenseCavalry": 90,
-          "speed": 9,
-          "carry": 100
+          "attack": 320,
+          "defenseInfantry": 270,
+          "defenseCavalry": 300,
+          "speed": 10,
+          "carry": 120
         },
         "cost": {
           "wood": 0,
@@ -12711,16 +12711,16 @@
           "portrait": "tribes/undead/hero/hero_portrait.png"
         },
         "metrics": {
-          "offense": 125,
-          "defenseInfantry": 95,
-          "defenseCavalry": 90,
-          "defenseCombined": 93,
-          "defenseTotal": 185,
-          "speed": 9,
-          "carry": 100,
+          "offense": 320,
+          "defenseInfantry": 270,
+          "defenseCavalry": 300,
+          "defenseCombined": 285,
+          "defenseTotal": 570,
+          "speed": 10,
+          "carry": 120,
           "cropUpkeep": 6,
-          "attackPerCrop": 20.8,
-          "defensePerCrop": 30.8,
+          "attackPerCrop": 53.3,
+          "defensePerCrop": 95,
           "trainTimeSeconds": 0,
           "trainTimeFormatted": null,
           "resourceCost": 0

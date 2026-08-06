@@ -194,6 +194,8 @@ export function startServer(port = 3456) {
           troopOverrides: body.troopOverrides,
           hero: body.hero,
           heroName: body.heroName,
+          accountName: body.accountName || body.playerName,
+          playerName: body.playerName,
           logos: body.logos,
           training: body.training,
           rebuild: body.rebuild !== false,

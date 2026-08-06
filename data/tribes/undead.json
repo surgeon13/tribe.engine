@@ -7,7 +7,7 @@
     "name": {
       "en": "Undead"
     },
-    "theme": "Cheap shambling masses, spectral scouts, and bone cavalry — high pressure, fragile line (Fantasy / necromantic, Grave-realms / cursed marches)",
+    "theme": "Dread host stronger than Natars and oasis Nature — relentless bone waves, spectral scouts, and catastrophic cavalry (Fantasy / necromantic, Grave-realms / cursed marches)",
     "graphics": {
       "banner": "tribes/undead/banner.png"
     }
@@ -25,12 +25,12 @@
       "ref": "inf_t1",
       "overrides": {
         "name": {
-          "en": "Skeleton Levy"
+          "en": "Skeleton Warrior"
         },
         "stats": {
-          "attack": 30,
-          "defenseInfantry": 28,
-          "defenseCavalry": 25,
+          "attack": 45,
+          "defenseInfantry": 42,
+          "defenseCavalry": 38,
           "speed": 6,
           "carry": 40
         },
@@ -45,7 +45,7 @@
           "logo": "infantry/bone-mace.svg"
         },
         "description": {
-          "en": "Rattling bone levy — cheap, numerous, and brittle."
+          "en": "Rattling bone warriors — cheap pressure that still hits harder than oasis vermin."
         }
       }
     },
@@ -56,9 +56,9 @@
           "en": "Ghoul"
         },
         "stats": {
-          "attack": 55,
-          "defenseInfantry": 28,
-          "defenseCavalry": 22,
+          "attack": 80,
+          "defenseInfantry": 42,
+          "defenseCavalry": 35,
           "speed": 8,
           "carry": 35
         },
@@ -73,7 +73,7 @@
           "logo": "infantry/sacrificial-dagger.svg"
         },
         "description": {
-          "en": "Flesh-hungry raiders — fast aggression, thin armor."
+          "en": "Flesh-hungry raiders — outpace Natarian thorns and tear lines open."
         }
       }
     },
@@ -84,11 +84,11 @@
           "en": "Wight"
         },
         "stats": {
-          "attack": 80,
-          "defenseInfantry": 40,
-          "defenseCavalry": 30,
+          "attack": 120,
+          "defenseInfantry": 100,
+          "defenseCavalry": 85,
           "speed": 7,
-          "carry": 40
+          "carry": 45
         },
         "cost": {
           "wood": 150,
@@ -101,7 +101,7 @@
           "logo": "infantry/scythe.svg"
         },
         "description": {
-          "en": "Grave-bound elites with chill blades — strong punch, still fragile."
+          "en": "Grave-bound elites — chill blades that outmatch Natarian guardsmen."
         }
       }
     },
@@ -113,9 +113,9 @@
         },
         "stats": {
           "attack": 0,
-          "defenseInfantry": 18,
-          "defenseCavalry": 10,
-          "speed": 18,
+          "defenseInfantry": 28,
+          "defenseCavalry": 22,
+          "speed": 19,
           "carry": 0
         },
         "cost": {
@@ -129,7 +129,7 @@
           "logo": "infantry/heavy-arrow.svg"
         },
         "description": {
-          "en": "Spectral scout — nearly unseen on the march."
+          "en": "Spectral scout — faster and harder to pin than living eyes."
         }
       }
     },
@@ -140,11 +140,11 @@
           "en": "Bone Rider"
         },
         "stats": {
-          "attack": 105,
-          "defenseInfantry": 45,
-          "defenseCavalry": 40,
+          "attack": 175,
+          "defenseInfantry": 95,
+          "defenseCavalry": 65,
           "speed": 15,
-          "carry": 90
+          "carry": 95
         },
         "cost": {
           "wood": 430,
@@ -157,7 +157,7 @@
           "logo": "cavalry/horse-head.svg"
         },
         "description": {
-          "en": "Skeletal light horse — cheap mounted pressure."
+          "en": "Skeletal light horse — mounted pressure above Natarian axeriders."
         }
       }
     },
@@ -168,11 +168,11 @@
           "en": "Death Knight"
         },
         "stats": {
-          "attack": 175,
-          "defenseInfantry": 70,
-          "defenseCavalry": 90,
-          "speed": 11,
-          "carry": 65
+          "attack": 200,
+          "defenseInfantry": 155,
+          "defenseCavalry": 110,
+          "speed": 12,
+          "carry": 70
         },
         "cost": {
           "wood": 520,
@@ -185,7 +185,7 @@
           "logo": "animals/ram.svg"
         },
         "description": {
-          "en": "Cursed heavy cavalry — dread charge."
+          "en": "Cursed heavy cavalry — dread charge that breaks Natarian knights."
         }
       }
     },
@@ -196,11 +196,11 @@
           "en": "Black Steed"
         },
         "stats": {
-          "attack": 145,
-          "defenseInfantry": 65,
-          "defenseCavalry": 75,
+          "attack": 185,
+          "defenseInfantry": 125,
+          "defenseCavalry": 90,
           "speed": 13,
-          "carry": 75
+          "carry": 80
         },
         "cost": {
           "wood": 500,
@@ -213,7 +213,7 @@
           "logo": "cavalry/donkey.svg"
         },
         "description": {
-          "en": "Night-mares of the necropolis — balanced undead horse."
+          "en": "Night-mares of the necropolis — stronger than Natarian lancers."
         }
       }
     },
@@ -224,9 +224,9 @@
           "en": "Bone Ram"
         },
         "stats": {
-          "attack": 65,
-          "defenseInfantry": 28,
-          "defenseCavalry": 70,
+          "attack": 480,
+          "defenseInfantry": 400,
+          "defenseCavalry": 270,
           "speed": 4,
           "carry": 0
         },
@@ -241,7 +241,7 @@
           "logo": "infantry/crowbar.svg"
         },
         "description": {
-          "en": "Siege engine lashed from ossuary timber and bone."
+          "en": "Ossuary colossus — bone siege that crushes walls harder than oasis crocodiles."
         }
       }
     },
@@ -252,9 +252,9 @@
           "en": "Tomb Catapult"
         },
         "stats": {
-          "attack": 78,
-          "defenseInfantry": 55,
-          "defenseCavalry": 10,
+          "attack": 230,
+          "defenseInfantry": 185,
+          "defenseCavalry": 270,
           "speed": 3,
           "carry": 0
         },
@@ -269,7 +269,7 @@
           "logo": "powder.svg"
         },
         "description": {
-          "en": "Hurls crypt-stone and grave rubble."
+          "en": "Hurls crypt-stone with force beyond oasis tigers."
         }
       }
     },
@@ -280,9 +280,9 @@
           "en": "Lich"
         },
         "stats": {
-          "attack": 45,
-          "defenseInfantry": 35,
-          "defenseCavalry": 28,
+          "attack": 650,
+          "defenseInfantry": 470,
+          "defenseCavalry": 550,
           "speed": 4,
           "carry": 0
         },
@@ -297,7 +297,7 @@
           "logo": "infantry/orb-wand.svg"
         },
         "description": {
-          "en": "Undying warlock who binds settlements to the grave-realm."
+          "en": "Arch-lich emperor — outpowers Nature elephants and binds villages to the grave."
         }
       }
     },
@@ -309,8 +309,8 @@
         },
         "stats": {
           "attack": 0,
-          "defenseInfantry": 75,
-          "defenseCavalry": 75,
+          "defenseInfantry": 95,
+          "defenseCavalry": 95,
           "speed": 5,
           "carry": 3000
         },
@@ -325,7 +325,7 @@
           "logo": "resources/stone-pile.svg"
         },
         "description": {
-          "en": "Raise a new crypt-colony from barren ground."
+          "en": "Raise a new crypt-colony from barren ground — fortified undead settlers."
         }
       }
     }
@@ -339,15 +339,15 @@
       "en": "Death Knight Hero"
     },
     "description": {
-      "en": "Champion of the grave — leads the undead host."
+      "en": "Deathlord of the grave — stronger than Natarian warlords and primal oasis spirits."
     },
     "isBase": false,
     "stats": {
-      "attack": 125,
-      "defenseInfantry": 95,
-      "defenseCavalry": 90,
-      "speed": 9,
-      "carry": 100
+      "attack": 320,
+      "defenseInfantry": 270,
+      "defenseCavalry": 300,
+      "speed": 10,
+      "carry": 120
     },
     "cost": {
       "wood": 0,
@@ -374,7 +374,7 @@
     "archetype": "raider",
     "era": "Fantasy / necromantic",
     "region": "Grave-realms / cursed marches",
-    "historicalContext": "A necromantic host of raised dead, wights, and cursed riders. Fantasy faction (not historical): expendable infantry waves supported by dread cavalry and siege engines hauled by the damned.",
+    "historicalContext": "A necromantic host of raised dead, wights, and cursed riders. Fantasy faction (not historical): infantry waves and dread cavalry that outmatch Natarian guards and oasis beasts, with siege and lich-lords scaled above Nature titans.",
     "createdAt": "2026-08-05T12:05:42.173Z"
   }
 }
