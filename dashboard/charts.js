@@ -121,6 +121,23 @@ export function computeChartWidth(labels, containerW = 720, padX = 78) {
   return Math.max(containerW, labels.length * minGroupW + padX);
 }
 
+/**
+ * Prefer a chart pixel width that matches the on-screen container so SVG text
+ * stays readable (wide viewBoxes shrink to unreadably small type on phones).
+ * @param {number} containerW
+ * @param {"bars"|"lines"|"horizontal"} layoutId
+ * @param {string[]} labels
+ */
+export function computeReadableChartWidth(containerW, layoutId, labels) {
+  const w = Math.max(280, Math.floor(containerW || 360));
+  if (layoutId === "horizontal") return w;
+  // Vertical/line charts still need slot columns — allow mild scroll, not 2× shrink.
+  const minGroupW = Math.min(72, minGroupWidthForLabels(labels, 64));
+  const needed = labels.length * minGroupW + 78;
+  if (w < 560) return Math.min(needed, Math.max(w, w * 1.15));
+  return Math.max(w, needed);
+}
+
 function drawYAxisTicks(svg, pad, innerW, innerH, maxVal, formatTick = (v) => String(Math.round(v))) {
   for (let tick = 0; tick <= 4; tick++) {
     const yVal = (maxVal * tick) / 4;
@@ -957,36 +974,43 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
   const series = resolveChartSeries(opts);
   const k = series.length;
   const labels = opts.labels;
-  const leftPad = Math.min(
-    280,
-    Math.max(160, ...labels.map((l) => String(l).length * CHAR_PX + 24))
+  const width = Math.max(280, opts.width ?? 720);
+  const narrow = width < 560;
+  const idealLeft = Math.min(
+    narrow ? 140 : 280,
+    Math.max(narrow ? 96 : 160, ...labels.map((l) => String(l).length * CHAR_PX + 24))
   );
-  const width = opts.width ?? 720;
-  const innerW = width - leftPad - 28;
+  // Keep room for bars + value labels on phones (wide left pads crush readability).
+  const leftPad = Math.min(idealLeft, Math.max(narrow ? 88 : 120, Math.floor(width * (narrow ? 0.3 : 0.38))));
+  const rightPad = narrow ? 44 : 28;
+  const innerW = Math.max(120, width - leftPad - rightPad);
   const legendH = measureLegendHeight(series, innerW);
-  const rowH = Math.max(40, 24 + k * 14);
+  const rowH = Math.max(narrow ? 48 : 40, (narrow ? 28 : 24) + k * (narrow ? 16 : 14));
   const height = Math.max(360, labels.length * rowH + 100) + legendH;
-  const pad = { top: 48, right: 28, bottom: 20 + legendH, left: leftPad };
+  const pad = { top: narrow ? 56 : 48, right: rightPad, bottom: 20 + legendH, left: leftPad };
   const innerH = height - pad.top - pad.bottom;
   const n = opts.labels.length;
   const allVals = series.flatMap((s) => s.values);
   const maxVal = Math.max(1, ...allVals);
   const gridRowH = innerH / Math.max(n, 1);
-  const barH = Math.min(14, gridRowH * 0.55 / Math.max(k, 1));
+  const barH = Math.min(narrow ? 16 : 14, (gridRowH * 0.6) / Math.max(k, 1));
   const fmt = opts.formatValue || ((v) => String(Math.round(v)));
+  const labelFont = narrow ? 11 : CHART_FONT.label;
+  const valueFont = narrow ? 12 : CHART_FONT.value;
 
   svg.innerHTML = "";
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
   svg.setAttribute("width", String(width));
   svg.setAttribute("height", String(height));
   svg.classList.add("chart-svg");
+  if (narrow) svg.classList.add("chart-svg--compact");
 
   if (opts.title) {
     const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    t.setAttribute("x", String(pad.left));
-    t.setAttribute("y", "24");
+    t.setAttribute("x", String(12));
+    t.setAttribute("y", "22");
     t.setAttribute("fill", "currentColor");
-    t.setAttribute("font-size", String(CHART_FONT.title));
+    t.setAttribute("font-size", String(narrow ? 14 : CHART_FONT.title));
     t.setAttribute("font-weight", "700");
     t.textContent = opts.title;
     svg.append(t);
@@ -998,16 +1022,27 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
     const blockH = barH * k + 2 * (k - 1);
     const yStart = yMid - blockH / 2;
 
+    const maxChars = Math.max(8, Math.floor((leftPad - 14) / CHAR_PX));
+    const lines = wrapLabelLines(label, maxChars, narrow ? 2 : 2);
+    const lineH = labelFont + 3;
+    const labelBlockH = lines.length * lineH;
+    const labelStartY = yMid - labelBlockH / 2 + labelFont;
+
     const nameLbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
     nameLbl.setAttribute("x", String(pad.left - 10));
-    nameLbl.setAttribute("y", String(yMid + 4));
     nameLbl.setAttribute("text-anchor", "end");
     nameLbl.setAttribute("fill", "currentColor");
-    nameLbl.setAttribute("font-size", String(CHART_FONT.label));
+    nameLbl.setAttribute("font-size", String(labelFont));
     nameLbl.setAttribute("font-weight", "600");
-    const { text: rowLabel, fontSize: rowFontSize } = fitLegendLabel(label, leftPad - 20);
-    nameLbl.setAttribute("font-size", String(rowFontSize));
-    nameLbl.textContent = rowLabel;
+    nameLbl.setAttribute("font-family", "DM Sans, system-ui, sans-serif");
+    lines.forEach((line, li) => {
+      const tsp = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      tsp.setAttribute("x", String(pad.left - 10));
+      if (li === 0) tsp.setAttribute("y", String(labelStartY));
+      else tsp.setAttribute("dy", String(lineH));
+      tsp.textContent = line;
+      nameLbl.append(tsp);
+    });
     svg.append(nameLbl);
 
     series.forEach((s, si) => {
@@ -1025,10 +1060,12 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
       bar.setAttribute("stroke-width", "1");
       svg.append(bar);
       const tb = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      tb.setAttribute("x", String(pad.left + w + 6));
-      tb.setAttribute("y", String(y + barH - 2));
-      tb.setAttribute("fill", s.color);
-      tb.setAttribute("font-size", String(CHART_FONT.value));
+      const valueOutside = w < innerW * 0.45;
+      tb.setAttribute("x", String(valueOutside ? pad.left + w + 6 : pad.left + w - 6));
+      tb.setAttribute("y", String(y + barH - Math.max(1, (barH - valueFont) / 2)));
+      tb.setAttribute("text-anchor", valueOutside ? "start" : "end");
+      tb.setAttribute("fill", valueOutside ? s.color : "var(--bg-elevated, #fff)");
+      tb.setAttribute("font-size", String(valueFont));
       tb.setAttribute("font-weight", "700");
       tb.textContent = fmt(val, i, si);
       svg.append(tb);
