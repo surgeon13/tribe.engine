@@ -4,34 +4,51 @@ Tevel keeps a **fixed Travian-style roster** (11 troops + hero). Richer names do
 
 ## What this is
 
-`lib/tribe-generator/troop-lexicon.js` holds culture packs and name pools surveyed from common military-history vocabulary across roughly **2000 BCE to 1500 CE**:
+`lib/tribe-generator/troop-lexicon.js` holds culture packs and name pools surveyed from common military-history vocabulary across roughly **2000 BCE to 1500 CE**.
 
-| Slot family | Example labels in the dictionary |
+Run a quick inventory:
+
+```bash
+node --input-type=module -e "import { lexiconStats } from './lib/tribe-generator/troop-lexicon.js'; console.log(lexiconStats())"
+```
+
+Current inventory (approx.): **33** culture packs, **~620** unique labels across slots.
+
+| Slot family | Example labels |
 | --- | --- |
-| Infantry | Hoplite, Hastatus, Sparabara, Medjay, Ashigaru, Skoutatos, Levy Spearman, Ghazi, Billman, Longbowman, Huscarl, Immortal, Gaesatae |
-| Cavalry | Faris, Mamluk, Cataphract, Klibanophoros, Companion Cavalry, Horse Archer, Knight, War Elephant, Camel Rider, Numidian Cavalry, Keshig |
-| Rams | Battering Ram, Covered Ram, Aries, Tortoise Ram, Ship Ram, Timber Ram |
-| Artillery | Ballista, Onager, Scorpio, Oxybeles, Lithobolos, Mangonel, Traction Trebuchet, Counterweight Trebuchet, Springald, Petrary |
+| Infantry | Hoplite, Hastatus, Sparabara, Medjay, Ashigaru, Skoutatos, Levy Spearman, Ghazi, Janissary, Falxman, Hwarang, Jaguar Warrior, Druzhina, Immortal |
+| Cavalry | Faris, Mamluk, Cataphract, Klibanophoros, Sipahi, Companion Cavalry, Horse Archer, Knight, War Elephant, Camel Rider, Keshig, Battle Chariot |
+| Rams | Battering Ram, Covered Ram, Aries, Tortoise Ram, Ship Ram, Helepolis Ram |
+| Artillery | Ballista, Onager, Scorpio, Oxybeles, Lithobolos, Mangonel, Trebuchet, Springald, Petrary, Polybolos, Humbaracı Mortar |
 
-Culture families currently covered: Egyptian/Nubian, Assyrian/Mesopotamian, Israelite/Levantine, Greek/Hellenistic, Roman, Persian/Iranian, Carthaginian, Celtic, Germanic, Norse, Byzantine, Arab/Islamic, desert/Maghreb, steppe, Indian, Chinese, Japanese, medieval European, plus biome packs (naval, forest, mountain, arctic, tribal, imperial) and Undead fantasy.
+## Culture packs
+
+**Peoples / states:** Egyptian/Nubian, Hittite/Anatolian, Assyrian/Mesopotamian, Israelite/Levantine, Greek/Hellenistic, Thracian, Dacian, Roman, Persian/Iranian, Carthaginian, Celtic, Germanic, Norse, Byzantine, Arab/Islamic, Early Ottoman, Slavic, Aksumite, Indian, Chinese, Japanese, Korean, medieval European, Mesoamerican (to c. 1500).
+
+**Biome / doctrine packs:** desert/Maghreb, steppe, naval, forest, mountain, arctic, tribal, imperial.
+
+**Fantasy:** Undead.
+
+**Levy:** reserved for Israelite-style muster language (not a global default). Generic / European / Dacian pools use Spearman, Militia, Muster Footman, Tribal Footman instead.
 
 ## How naming works
 
 1. Match tribe name + lore against culture `match` keywords (name hits weigh more).
-2. Pick a **stable** label from that culture’s slot pool (hash of tribe name + slot) so two Arab tribes can differ without randomness on rebuild.
-3. If nothing matches, use generic pools, nudged by weapon/mount cues in the lore.
+2. Prefer specific culture packs over biome packs on ties (`LEXICON_PRIORITY`).
+3. Pick a **stable** label from that culture’s slot pool (hash of tribe name + slot).
+4. If nothing matches, use generic pools, nudged by weapon/mount cues in the lore.
 
 ## Sources (survey)
 
-Secondary summaries and reference pages used while compiling the dictionary (not exhaustive primary research):
+Secondary summaries used while compiling / upgrading the dictionary (not exhaustive primary research):
 
-- Wikipedia: *List of siege engines*, *Psiloi*, *Cataphract*, *Clibanarii*, *Skoutatoi*, *Furusiyya*, *Gaesatae*, *Medjay*, torsion engines / Greek–Roman artillery
-- Britannica: phalanx, cataphract, trebuchet
+- Wikipedia: siege engines, Psiloi, Cataphract, Clibanarii, Skoutatoi, Furusiyya, Gaesatae, Medjay, Dacian warfare, Peltasts, Ottoman army (to 1500), Hwarang
+- Britannica: phalanx, cataphract, trebuchet, Ottoman military organization
 - Iranica: Immortals
-- Common military-history unit terminology for Chinese crossbow infantry, Japanese ashigaru/samurai, Indian elephant corps, Norse huscarls/berserkers, medieval European billmen/longbowmen/knights
+- Summaries of Hittite chariot armies, Aksumite sarwe, Chinese crossbow infantry, Japanese ashigaru/samurai, Indian elephant corps, Norse huscarls, Mesoamerican eagle/jaguar warrior societies
 
 Expand pools in `troop-lexicon.js` when adding cultures; keep Travian slot count unchanged.
 
 ## Hero naming
 
-Heroes are **not** culture-flavored. The unit type is simply **Hero**. Default display name is the player's **account / in-game name** (passed as `accountName` / `playerName` / `heroName` when creating a tribe); otherwise the placeholder is `Hero`. Players can rename later in-game.
+Heroes are **not** culture-flavored. The unit type is simply **Hero**. Default display name is the player's **account / in-game name**; otherwise the placeholder is `Hero`.
