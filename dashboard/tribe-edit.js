@@ -151,6 +151,7 @@ export async function saveTribeEdits(tribeId, payload) {
   });
   const body = await res.json().catch(() => ({}));
   if (!res.ok || !body.ok) throw new Error(body.error || res.statusText || "Save failed");
+  // Session upsert is a no-op on the writable applet; required on Netlify.
   if (body.dashboardTribe) {
     upsertSessionTribe(body.dashboardTribe);
   }

@@ -35,7 +35,13 @@ import {
   resolveBarColors,
 } from "./themes.js";
 import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
-import { mergeSessionTribes, removeSessionTribe, upsertSessionTribe } from "./session-tribes.js";
+import {
+  mergeSessionTribes,
+  mergeTribeIntoData,
+  removeSessionTribe,
+  setSessionStoreEnabled,
+  upsertSessionTribe,
+} from "./session-tribes.js";
 import {
   applyEditsToTribe,
   canEditTribe,
@@ -66,6 +72,8 @@ let selectedTroopIndex = 0;
 let compareChartMetricBound = false;
 let compareChartLayoutBound = false;
 let serverHasApi = false;
+/** @type {boolean} local applet can write data/; Netlify cannot */
+let apiWritable = false;
 let compareCompactMq = null;
 
 const COMPARE_COMPACT_MQ = "(max-width: 720px)";
@@ -137,6 +145,10 @@ async function loadData() {
   }
 
   data = mergeSessionTribes(data);
+  if (window.__tevelPendingTribe) {
+    data = mergeTribeIntoData(data, window.__tevelPendingTribe);
+    window.__tevelPendingTribe = null;
+  }
 }
 
 function setAccent(hex) {
@@ -655,25 +667,24 @@ async function commitEditMode() {
   try {
     const body = await saveTribeEdits(tribe.id, payload);
     const saved = body.dashboardTribe || next;
+    // Session upsert no-ops on writable applet; required on Netlify.
     upsertSessionTribe(saved);
-    if (data?.tribes) {
-      const idx = data.tribes.findIndex((t) => t.id === tribe.id);
-      if (idx >= 0) data.tribes[idx] = saved;
-      else data.tribes.push(saved);
-    }
+    window.__tevelPendingTribe = saved;
+    data = mergeTribeIntoData(data || { tribes: [] }, saved);
     editMode = false;
     editSnapshot = null;
-    await loadData();
+    try {
+      await loadData();
+    } catch {
+      data = mergeTribeIntoData(data || { tribes: [] }, saved);
+    }
     recomputeGlobalScales();
     selectTribe(saved.id);
     toast(body.message || `Saved ${saved.name}`);
   } catch (e) {
-    // Keep local draft in the table even if API fails (e.g. offline session tweak)
+    // Keep draft visible; session store only when enabled (Netlify).
     upsertSessionTribe(next);
-    if (data?.tribes) {
-      const idx = data.tribes.findIndex((t) => t.id === tribe.id);
-      if (idx >= 0) data.tribes[idx] = next;
-    }
+    data = mergeTribeIntoData(data || { tribes: [] }, next);
     toast(e.message || String(e));
     syncEditChrome(next);
     renderSummary(next);
@@ -1510,7 +1521,7 @@ async function setServerStatus() {
     const res = await fetch("/api/status");
     if (res.ok) {
       const body = await res.json().catch(() => ({}));
-      if (body.mode === "netlify") {
+      if (body.mode === "netlify" || body.writable === false) {
         el.textContent = "Netlify — Add tribe is session-only";
         el.className = "server-status ok";
         return { ok: true, mode: "netlify", writable: false };
@@ -1525,6 +1536,15 @@ async function setServerStatus() {
   el.textContent = "Static mode — use npm start for rebuild";
   el.className = "server-status";
   return { ok: false, mode: "static", writable: false };
+}
+
+/**
+ * Writable applet → disk. Netlify → browser session localStorage.
+ * @param {{ ok?: boolean, writable?: boolean, mode?: string }} apiStatus
+ */
+function configureTribeStorage(apiStatus) {
+  apiWritable = Boolean(apiStatus?.ok && apiStatus.writable);
+  setSessionStoreEnabled(Boolean(apiStatus?.ok) && !apiWritable);
 }
 
 async function rebuildData(btn) {
@@ -1580,13 +1600,28 @@ async function init() {
 
   const apiStatus = await setServerStatus();
   serverHasApi = Boolean(apiStatus.ok);
+  configureTribeStorage(apiStatus);
   setAddTribeEnabled(serverHasApi);
   initAddTribeUi(
     toast,
-    async (tribeId) => {
-      await loadData();
+    async (tribeId, dashboardTribe) => {
+      if (dashboardTribe) {
+        window.__tevelPendingTribe = dashboardTribe;
+        data = mergeTribeIntoData(data || { tribes: [] }, dashboardTribe);
+      }
+      try {
+        await loadData();
+      } catch (e) {
+        // Keep the just-created tribe visible even if data.json rebuild lagged.
+        if (dashboardTribe) {
+          data = mergeTribeIntoData(data || { tribes: [] }, dashboardTribe);
+        } else {
+          throw e;
+        }
+      }
       recomputeGlobalScales();
       selectTribe(tribeId);
+      await refreshRemovableTribes();
     },
     async (removedId) => {
       if (removedId) removeSessionTribe(removedId);
