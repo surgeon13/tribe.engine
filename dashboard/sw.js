@@ -1,5 +1,5 @@
 /* Tevel Tribe Engine — offline shell + data cache */
-const CACHE = "tevel-pwa-v2";
+const CACHE = "tevel-pwa-v3";
 
 const PRECACHE = [
   "./",
@@ -12,9 +12,11 @@ const PRECACHE = [
   "./charts.js",
   "./graphics.js",
   "./metrics-normalize.js",
-  "./monitor.js",
   "./radar.js",
   "./themes.js",
+  "./session-tribes.js",
+  "./tribe-create.js",
+  "./tribe-edit.js",
   "./data.json",
   "./generated-data.js",
   "./icons/icon-192.png",

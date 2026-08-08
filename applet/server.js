@@ -2,8 +2,7 @@ import http from "http";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { spawn } from "child_process";
-import { getLeaderMonitor } from "../lib/leader-monitor/poll.js";
+import { handleApiRequest } from "../lib/api/router.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -18,46 +17,20 @@ const MIME = {
   ".png": "image/png",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
-  ".svg": "image/svg+xml",
 };
 
 const HOST = process.env.HOST || "127.0.0.1";
 
-const monitor = getLeaderMonitor({
-  onTerminal: (line) => console.log(`[Monitor] ${line}`),
-});
-
 async function readJsonBody(req) {
-  const raw = await readBody(req);
+  const chunks = [];
+  for await (const chunk of req) chunks.push(chunk);
+  const raw = Buffer.concat(chunks).toString("utf8");
   if (!raw) return {};
   try {
     return JSON.parse(raw);
   } catch {
     throw new Error("Invalid JSON body");
   }
-}
-
-function runScript(scriptPath) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [scriptPath], {
-      cwd: root,
-      stdio: ["ignore", "pipe", "pipe"],
-    });
-    let out = "";
-    let err = "";
-    child.stdout.on("data", (d) => (out += d));
-    child.stderr.on("data", (d) => (err += d));
-    child.on("close", (code) => {
-      if (code === 0) resolve(out.trim());
-      else reject(new Error(err.trim() || out.trim() || `Exit code ${code}`));
-    });
-  });
-}
-
-async function readBody(req) {
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  return Buffer.concat(chunks).toString("utf8");
 }
 
 async function serveStatic(urlPath, res) {
@@ -83,9 +56,12 @@ async function serveStatic(urlPath, res) {
   res.end(body);
 }
 
-function json(res, status, body) {
-  res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" });
-  res.end(JSON.stringify(body));
+function json(res, status, body, extraHeaders = {}) {
+  res.writeHead(status, {
+    "Content-Type": "application/json; charset=utf-8",
+    ...extraHeaders,
+  });
+  res.end(status === 204 ? "" : JSON.stringify(body));
 }
 
 /**
@@ -98,79 +74,32 @@ export function startServer(port = 3456) {
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     try {
-      if (req.method === "OPTIONS") {
-        res.writeHead(204, {
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      if (url.pathname === "/api" || url.pathname.startsWith("/api/")) {
+        const body =
+          req.method === "GET" || req.method === "HEAD" || req.method === "DELETE"
+            ? undefined
+            : await readJsonBody(req);
+        const result = await handleApiRequest({
+          method: req.method || "GET",
+          pathname: url.pathname,
+          query: Object.fromEntries(url.searchParams.entries()),
+          body,
+          persist: true,
+        });
+        if (result.status === 204) {
+          res.writeHead(204, {
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+            ...(result.headers || {}),
+          });
+          res.end();
+          return;
+        }
+        json(res, result.status, result.body, {
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type",
+          ...(result.headers || {}),
         });
-        res.end();
-        return;
-      }
-
-      if (url.pathname === "/api/status" && req.method === "GET") {
-        json(res, 200, { ok: true, game: "Tevel", version: 1 });
-        return;
-      }
-
-      if (url.pathname === "/api/rebuild" && req.method === "POST") {
-        const out = await runScript(path.join(root, "scripts", "build-dashboard-data.js"));
-        json(res, 200, { ok: true, message: out || "Dashboard data rebuilt" });
-        return;
-      }
-
-      if (url.pathname === "/api/hero-xp" && req.method === "POST") {
-        const out = await runScript(path.join(root, "scripts", "generate-hero-xp.js"));
-        json(res, 200, { ok: true, message: out || "Hero XP table regenerated" });
-        return;
-      }
-
-      if (url.pathname === "/api/monitor/config") {
-        if (req.method === "GET") {
-          const config = await monitor.getConfig();
-          json(res, 200, { ok: true, config, running: monitor.isRunning });
-          return;
-        }
-        if (req.method === "POST") {
-          const patch = await readJsonBody(req);
-          const config = await monitor.updateConfig(patch);
-          json(res, 200, { ok: true, config, running: monitor.isRunning });
-          return;
-        }
-      }
-
-      if (url.pathname === "/api/monitor/status" && req.method === "GET") {
-        const config = await monitor.getConfig();
-        const analytics = await monitor.getAnalytics();
-        json(res, 200, {
-          ok: true,
-          running: monitor.isRunning,
-          config,
-          analytics,
-        });
-        return;
-      }
-
-      if (url.pathname === "/api/monitor/poll" && req.method === "POST") {
-        const snapshot = await monitor.pollOnce();
-        const analytics = await monitor.getAnalytics();
-        json(res, 200, { ok: true, snapshot, analytics });
-        return;
-      }
-
-      if (url.pathname === "/api/monitor/snapshots" && req.method === "GET") {
-        const limit = Math.min(500, Math.max(1, Number(url.searchParams.get("limit")) || 200));
-        const snapshots = await monitor.getSnapshots();
-        json(res, 200, {
-          ok: true,
-          count: snapshots.length,
-          snapshots: snapshots.slice(-limit),
-        });
-        return;
-      }
-
-      if (url.pathname === "/api/monitor/analytics" && req.method === "GET") {
-        const analytics = await monitor.getAnalytics();
-        json(res, 200, { ok: true, analytics });
         return;
       }
 
@@ -223,15 +152,7 @@ export function startServer(port = 3456) {
 
   return new Promise((resolve, reject) => {
     server.on("error", reject);
-    server.listen(port, HOST, async () => {
-      try {
-        const config = await monitor.getConfig();
-        if (config.enabled) await monitor.start();
-      } catch (e) {
-        console.error("[Monitor] Failed to start:", e.message);
-      }
-      resolve(server);
-    });
+    server.listen(port, HOST, () => resolve(server));
   });
 }
 

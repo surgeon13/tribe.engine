@@ -1,5 +1,5 @@
 /**
- * UI appearance — 5 themes. Graph colors are in graph-palettes.css.
+ * UI appearance — 4 themes. Graph colors are in graph-palettes.css.
  * Set via document.documentElement.dataset.uiTheme
  */
 
@@ -84,33 +84,6 @@
   --radar-feature-glow: rgba(120, 80, 40, 0.06);
   --tribe-dot-ring: rgba(80, 60, 30, 0.14);
   --chart-grid: rgba(80, 55, 30, 0.1);
-}
-
-[data-ui-theme="slate"] {
-  color-scheme: dark;
-  --bg: #141820;
-  --bg-elevated: #1c2430;
-  --bg-hover: #263040;
-  --border: #3d4d63;
-  --text: #e4eaf2;
-  --text-muted: #94a3b8;
-  --positive: #52b788;
-  --negative: #e07a7a;
-  --accent-text: #0f141a;
-  --shadow: rgba(0, 0, 0, 0.45);
-  --radar-bg: #101620;
-  --radar-grid: rgba(140, 170, 210, 0.12);
-  --radar-axis: rgba(140, 170, 210, 0.2);
-  --radar-label: rgba(200, 215, 235, 0.78);
-  --radar-ovr-bg: rgba(16, 22, 32, 0.9);
-  --radar-ovr-text: #e8f0ff;
-  --radar-title: rgba(220, 230, 250, 0.92);
-  --card-bg-start: #243040;
-  --card-bg-end: #182028;
-  --panel-radar-start: #161e2a;
-  --radar-feature-glow: rgba(100, 150, 220, 0.08);
-  --tribe-dot-ring: rgba(160, 190, 230, 0.22);
-  --chart-grid: rgba(140, 170, 210, 0.12);
 }
 
 [data-ui-theme="dusk"] {

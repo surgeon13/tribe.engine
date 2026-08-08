@@ -22,6 +22,7 @@
     <script>
       (function () {
         var t = localStorage.getItem("tevel-ui-theme");
+        if (t === "slate") t = "dusk";
         if (t) document.documentElement.dataset.uiTheme = t;
         else if (window.matchMedia("(prefers-color-scheme: light)").matches)
           document.documentElement.dataset.uiTheme = "light";
@@ -49,9 +50,13 @@
         <div id="graph-palette-picker" class="sidebar-theme sidebar-graph-palette"></div>
         <footer class="sidebar-foot">
           <button type="button" id="btn-compare" class="btn ghost">Compare tribes</button>
-          <button type="button" id="btn-monitor" class="btn ghost">Leader monitor</button>
-          <button type="button" id="btn-refresh" class="btn primary">Rebuild data</button>
-          <button type="button" id="btn-hero-xp" class="btn ghost">Regen hero XP</button>
+          <button type="button" id="btn-add-tribe" class="btn primary">Add tribe</button>
+          <button type="button" id="btn-edit-tribe-menu" class="btn ghost">Edit tribe</button>
+          <div id="sidebar-edit-actions" class="sidebar-edit-actions hidden">
+            <button type="button" id="btn-save-tribe-menu" class="btn primary">Save changes</button>
+            <button type="button" id="btn-cancel-edit-menu" class="btn ghost">Cancel edit</button>
+          </div>
+          <button type="button" id="btn-refresh" class="btn ghost">Rebuild data</button>
           <p id="install-hint" class="install-hint hidden" hidden></p>
           <p id="server-status" class="server-status">Connecting…</p>
         </footer>
@@ -68,22 +73,75 @@
               <button type="button" class="view-tab active" data-view="table" role="tab">Table</button>
               <button type="button" class="view-tab" data-view="radar" role="tab">Stat graphs</button>
             </div>
-            <div class="palette-swatch" id="palette-swatch"></div>
+            <div class="topbar-actions">
+              <div class="palette-swatch" id="palette-swatch"></div>
+            </div>
           </div>
         </header>
 
         <section id="view-single">
           <div class="summary-grid" id="summary-grid"></div>
 
-          <div id="panel-table" class="view-panel">
-            <section class="panel">
-              <div class="panel-head">
-                <h3>Troop roster</h3>
-                <label class="search">
-                  <span class="sr-only">Filter units</span>
-                  <input type="search" id="unit-filter" placeholder="Filter by name or role…" />
+          <section id="tribe-edit-panel" class="panel tribe-edit-panel hidden" aria-label="Edit tribe">
+            <div class="panel-head">
+              <h3>Editing tribe</h3>
+              <p class="muted edit-panel-hint">Change identity below, then edit cells in the troop table. Save from the sidebar or the table bar.</p>
+            </div>
+            <div id="tribe-edit-fields" class="tribe-edit-fields">
+              <label>
+                <span>Your name (for update history)</span>
+                <input id="edit-author" type="text" autocomplete="nickname" placeholder="e.g. surgeon13" />
+              </label>
+              <label>
+                <span>Tribe name</span>
+                <input id="edit-tribe-name" type="text" autocomplete="off" />
+              </label>
+              <label>
+                <span>Theme</span>
+                <input id="edit-tribe-theme" type="text" autocomplete="off" />
+              </label>
+              <label>
+                <span>Hero name</span>
+                <input id="edit-hero-name" type="text" autocomplete="off" placeholder="Hero" />
+              </label>
+              <div class="tribe-edit-palette-row">
+                <label>
+                  <span>Primary color</span>
+                  <input id="edit-tribe-primary" type="color" value="#3D5A80" />
+                </label>
+                <label>
+                  <span>Secondary color</span>
+                  <input id="edit-tribe-secondary" type="color" value="#E09F3E" />
                 </label>
               </div>
+              <label>
+                <span>Note for history (optional)</span>
+                <input id="edit-note" type="text" autocomplete="off" placeholder="Why these numbers?" />
+              </label>
+            </div>
+          </section>
+
+          <div id="panel-table" class="view-panel">
+            <section class="panel" id="roster-panel">
+              <div class="panel-head">
+                <div class="roster-head-title">
+                  <h3>Troop roster</h3>
+                  <span id="roster-edit-badge" class="roster-edit-badge hidden">Editing table</span>
+                </div>
+                <div class="roster-head-actions">
+                  <div id="table-edit-actions" class="table-edit-actions hidden">
+                    <button type="button" id="btn-save-tribe" class="btn primary">Save changes</button>
+                    <button type="button" id="btn-cancel-edit" class="btn ghost">Cancel</button>
+                  </div>
+                  <label class="search">
+                    <span class="sr-only">Filter units</span>
+                    <input type="search" id="unit-filter" placeholder="Filter by name or role…" />
+                  </label>
+                </div>
+              </div>
+              <p id="tribe-edit-banner" class="tribe-edit-banner hidden" role="status">
+                Table edit mode is on — click any Unit / Role / stat / cost / train / building cell to change it. Save writes to the backend (local applet) or this browser session (Netlify).
+              </p>
               <div class="table-wrap">
                 <table class="data-table" id="troop-table">
                   <thead>
@@ -110,6 +168,15 @@
                   </thead>
                   <tbody id="troop-tbody"></tbody>
                 </table>
+              </div>
+            </section>
+            <section class="panel" id="edit-history-panel">
+              <div class="panel-head">
+                <h3>Update history</h3>
+                <p class="muted edit-panel-hint">Prior contributor saves for this tribe — use them to normalize stats.</p>
+              </div>
+              <div id="edit-history-list" class="edit-history-list">
+                <p class="muted">No updates recorded yet.</p>
               </div>
             </section>
             <section class="panel" id="hero-panel">
@@ -159,6 +226,7 @@
               <div>
                 <h3>Multi-tribe comparison</h3>
                 <p class="muted compare-intro">Select tribes below, then switch tabs to compare stats, graphics, charts, or profile graphs.</p>
+                <p class="muted compare-intro-mobile">On phones: Charts use horizontal bars; Graphics and Stat graphs stack each unit’s tribes vertically so labels stay readable.</p>
               </div>
               <div class="compare-picks">
                 <div id="compare-tribe-picker" class="compare-tribe-picker" aria-label="Tribes to compare"></div>
@@ -221,40 +289,115 @@
             </div>
           </div>
         </section>
-
-        <section id="view-monitor" class="hidden">
-          <div class="panel monitor-panel">
-            <div class="panel-head panel-head-split">
-              <div>
-                <h3>Leader monitor</h3>
-                <p class="muted monitor-intro">
-                  Aggregate polling of the top 10 leaders — points and resources per hour, raid activity windows, and trend graphs.
-                  Toggle polling in terminal mode (<code>npm run terminal</code>) or use the button below.
-                </p>
-              </div>
-              <div class="monitor-toolbar">
-                <span id="monitor-status-pill" class="monitor-pill monitor-pill--off">—</span>
-                <button type="button" id="monitor-toggle" class="btn ghost">Enable polling</button>
-                <button type="button" id="monitor-poll-now" class="btn primary">Poll now</button>
-              </div>
-            </div>
-            <div id="monitor-meta" class="monitor-meta muted"></div>
-            <div id="monitor-aggregate" class="monitor-aggregate"></div>
-            <div id="monitor-rates" class="monitor-section"></div>
-            <div class="monitor-charts">
-              <div class="chart-panel"><svg id="monitor-chart-points" class="monitor-chart"></svg></div>
-              <div class="chart-panel"><svg id="monitor-chart-resources" class="monitor-chart"></svg></div>
-            </div>
-            <div class="monitor-section">
-              <h4>Raid activity</h4>
-              <div id="monitor-raids"></div>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
 
     <div id="toast" class="toast hidden" role="status"></div>
+
+    <div id="add-tribe-overlay" class="modal-overlay hidden" aria-hidden="true">
+      <div
+        class="modal-panel add-tribe-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="add-tribe-title"
+      >
+        <header class="modal-head">
+          <h3 id="add-tribe-title">Add tribe</h3>
+          <p class="muted">
+            Custom by default — describe your faction and we build the roster from your input.
+            Optional culture presets are available if you want a shortcut.
+          </p>
+        </header>
+        <div class="add-tribe-form">
+          <label>
+            <span>Display name <em class="req">required</em></span>
+            <input
+              id="add-tribe-name"
+              type="text"
+              placeholder="e.g. Undead, Moors, House Atreides"
+              autocomplete="off"
+            />
+          </label>
+          <label class="add-tribe-context-field">
+            <span>Describe your culture <em class="req">primary input</em></span>
+            <textarea
+              id="add-tribe-context"
+              rows="4"
+              placeholder="Free-form lore — doctrine, homeland, how they fight (e.g. desert camel cavalry raiders, undead necromantic swarm…)"
+            ></textarea>
+          </label>
+          <label>
+            <span>Type</span>
+            <select id="add-tribe-type" aria-label="Tribe type">
+              <option value="playable">Playable</option>
+              <option value="npc">NPC</option>
+            </select>
+          </label>
+          <label>
+            <span>Source</span>
+            <select id="add-tribe-mode" aria-label="Creation mode">
+              <option value="custom">Custom — from your description</option>
+              <option value="preset">Optional culture preset</option>
+            </select>
+          </label>
+          <label id="add-tribe-culture-wrap" class="hidden">
+            <span>Culture preset</span>
+            <select id="add-tribe-culture" aria-label="Culture preset"></select>
+          </label>
+          <div id="add-tribe-custom-fields" class="add-tribe-custom-fields">
+            <details id="add-tribe-advanced" class="add-tribe-advanced">
+              <summary>Advanced overrides (optional)</summary>
+              <p class="muted add-tribe-advanced-hint">
+                Leave these alone to auto-fill from your description. Only change what you want to
+                force.
+              </p>
+              <label>
+                <span>Balance archetype</span>
+                <select id="add-tribe-archetype" aria-label="Balance archetype">
+                  <option value="">Auto (from your description)</option>
+                </select>
+              </label>
+              <div class="add-tribe-palette-row">
+                <label>
+                  <span>Primary color</span>
+                  <input id="add-tribe-primary" type="color" value="#3D5A80" data-auto="1" />
+                </label>
+                <label>
+                  <span>Secondary color</span>
+                  <input id="add-tribe-secondary" type="color" value="#E09F3E" data-auto="1" />
+                </label>
+              </div>
+              <label>
+                <span>Theme / short design note</span>
+                <input
+                  id="add-tribe-theme"
+                  type="text"
+                  placeholder="Optional — otherwise taken from your description"
+                />
+              </label>
+              <label>
+                <span>Era</span>
+                <input id="add-tribe-era" type="text" placeholder="Auto from description" />
+              </label>
+              <label>
+                <span>Region</span>
+                <input id="add-tribe-region" type="text" placeholder="Auto from description" />
+              </label>
+              <details id="add-tribe-names-details" class="add-tribe-names">
+                <summary>Troop names (hero = account name)</summary>
+                <div id="add-tribe-troop-names" class="add-tribe-troop-grid"></div>
+              </details>
+            </details>
+          </div>
+          <div id="add-tribe-preview" class="add-tribe-preview"></div>
+        </div>
+        <footer class="modal-actions">
+          <button type="button" id="add-tribe-cancel" class="btn ghost">Cancel</button>
+          <button type="button" id="add-tribe-submit" class="btn primary">Add tribe</button>
+        </footer>
+      </div>
+    </div>
+
     <script type="module" src="app.js"></script>
   </body>
 </html>

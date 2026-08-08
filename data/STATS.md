@@ -12,8 +12,31 @@ Base combat values match **Travian Legends (T4.6)** unless noted.
 | Spartans | Travian Legends support tables | Siege/chief aligned with Roman-tier NPC |
 | Natars | [Wiki Travian Natars](http://wikitravian.free.fr/voir.php?page=Troop-statistics-tables) | Slot 7 cavalry extended |
 | Nature | [Fandom Nature](https://travian.fandom.com/wiki/Nature) | Oasis animals mapped to 11 slots; 0 crop upkeep |
+| Generated cultures | `lib/tribe-generator/profiles.js` | Historically flavored Tevel balances (Carthaginian, Persian, Viking, Byzantine, Mongol, Japanese, Israelite, Axum, Greek, Slav, Balt, Dacian) via **Add tribe** |
+
+## Troop role balance
+
+Custom / generated tribes follow Travian role doctrine: standing defense is infantry;
+cavalry is offense- **or** defense-oriented; Paladin-style def-cav keeps high carry;
+cheap spears for anti-cav spam. See:
+
+- **`data/balance/TROOP_ROLES.md`** — design doctrine
+- **`npm run balance:roles`** — audit registered tribes
+- **`npm run balance:roles:demo`** — print role-shaped stats per archetype
 
 Hero stats are **Tevel placeholders** (Travian heroes use a separate progression system).
+
+## Adding a tribe on the fly
+
+Use the applet sidebar **Add tribe**, or:
+
+```bash
+npm run tribe:list
+npm run tribe:add -- --culture carthaginian
+npm run tribe:add -- --context "Achaemenid Immortals" --name Persians
+```
+
+This writes `data/tribes/<id>.json`, registers the faction in `index.json`, palettes, training, logos, and hero modifiers, then rebuilds dashboard data so the tribe appears in every view.
 
 ## Training costs and time
 

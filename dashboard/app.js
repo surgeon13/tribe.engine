@@ -22,6 +22,7 @@ import {
   CHART_LAYOUTS,
   CHART_METRICS,
   computeChartWidth,
+  computeReadableChartWidth,
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
@@ -33,24 +34,45 @@ import {
   mountThemePicker,
   resolveBarColors,
 } from "./themes.js";
+import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
 import {
-  initMonitorView,
-  refreshMonitorView,
-  startMonitorPolling,
-  stopMonitorPolling,
-} from "./monitor.js";
+  appendSessionHistory,
+  listSessionHistory,
+  mergeSessionTribes,
+  mergeTribeIntoData,
+  removeSessionTribe,
+  setSessionStoreEnabled,
+  upsertSessionTribe,
+} from "./session-tribes.js";
+import {
+  applyEditsToTribe,
+  BUILDING_OPTIONS,
+  canEditTribe,
+  cellInputHtml,
+  cellSelectHtml,
+  formatTrainingTimeClient,
+  readEditsFromTable,
+  ROLE_OPTIONS,
+  saveTribeEdits,
+  snapshotTribeForHistory,
+  tribeToUpdatePayload,
+} from "./tribe-edit.js";
 
 let data = null;
 let globalScales = null;
 let activeTribeId = null;
+/** @type {boolean} */
+let editMode = false;
+/** @type {object | null} snapshot before edit */
+let editSnapshot = null;
 let sortKey = "slot";
 let sortDir = 1;
 let compareMode = false;
-let monitorMode = false;
 let activeView = "table";
 let compareViewMode = "table";
 let compareChartMetric = "offense";
 let compareChartLayout = "bars";
+let compareChartLayoutUserPicked = false;
 let statDisplayMode = "bars";
 let statNormalizeMode = "crop";
 let compareTribeIds = [];
@@ -58,6 +80,36 @@ let selectedTroopIndex = 0;
 let compareChartMetricBound = false;
 let compareChartLayoutBound = false;
 let serverHasApi = false;
+/** @type {boolean} local applet can write data/; Netlify cannot */
+let apiWritable = false;
+let compareCompactMq = null;
+
+const COMPARE_COMPACT_MQ = "(max-width: 720px)";
+
+function isCompareCompact() {
+  if (typeof window === "undefined") return false;
+  if (window.matchMedia?.(COMPARE_COMPACT_MQ).matches) return true;
+  // Fallback when device emulation changes layout viewport without firing matchMedia.
+  return Number(window.innerWidth) > 0 && Number(window.innerWidth) <= 720;
+}
+
+function syncCompareCompactAttr() {
+  const compact = isCompareCompact();
+  document.documentElement.dataset.compareCompact = compact ? "1" : "0";
+  return compact;
+}
+
+function applyCompactChartLayoutDefault() {
+  if (compareChartLayoutUserPicked) return compareChartLayout;
+  compareChartLayout = isCompareCompact() ? "horizontal" : "bars";
+  return compareChartLayout;
+}
+
+function effectiveCompareChartLayout() {
+  if (compareChartLayoutUserPicked) return compareChartLayout;
+  if (isCompareCompact()) return "horizontal";
+  return compareChartLayout;
+}
 
 function recomputeGlobalScales() {
   if (!data?.tribes) return;
@@ -165,6 +217,12 @@ async function loadData() {
         : "No tribes in dashboard data. Run: npm run build:data"
     );
   }
+
+  data = mergeSessionTribes(data);
+  if (window.__tevelPendingTribe) {
+    data = mergeTribeIntoData(data, window.__tevelPendingTribe);
+    window.__tevelPendingTribe = null;
+  }
 }
 
 function setAccent(hex) {
@@ -188,6 +246,9 @@ function renderNav() {
   if (!nav || !data?.tribes) return;
   nav.innerHTML = "";
   for (const tribe of data.tribes) {
+    const row = document.createElement("div");
+    row.className = "tribe-nav-row";
+
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "tribe-btn" + (tribe.id === activeTribeId ? " active" : "");
@@ -202,7 +263,28 @@ function renderNav() {
       btn.append(tag);
     }
     btn.addEventListener("click", () => selectTribe(tribe.id));
-    nav.append(btn);
+    row.append(btn);
+
+    if (serverHasApi && isRemovableTribe(tribe.id)) {
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "tribe-delete-btn";
+      del.title = `Delete ${tribe.name}`;
+      del.setAttribute("aria-label", `Delete ${tribe.name}`);
+      del.textContent = "×";
+      del.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        try {
+          if (editMode) exitEditMode(false);
+          await requestDeleteTribe(tribe.id, tribe.name);
+        } catch (err) {
+          toast(err.message || String(err));
+        }
+      });
+      row.append(del);
+    }
+
+    nav.append(row);
   }
 }
 
@@ -294,14 +376,38 @@ function getTroopRows(tribe) {
 }
 
 function renderTroops(tribe) {
-  const maxAtk = tribe.summary.maxAttack || 1;
+  const maxAtk = tribe.summary?.maxAttack || 1;
   const rows = getTroopRows(tribe);
   const tbody = $("#troop-tbody");
+  const editing = editMode && canEditTribe(tribe.id);
   tbody.innerHTML = rows
     .map((t) => {
       const m = t.metrics;
       const idx = tribe.troops.indexOf(t);
-      return `<tr data-troop-index="${idx}" class="troop-row">
+      if (editing) {
+        const trainSecs = t.training?.timeSeconds ?? 0;
+        return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row editing">
+        <td class="troop-logo-col" data-logo-slot="${idx}"></td>
+        <td>${t.slot}</td>
+        <td>${cellInputHtml("name", t.name, { name: true })}</td>
+        <td>${cellSelectHtml("role", t.role, ROLE_OPTIONS)}</td>
+        <td class="num">${cellInputHtml("attack", t.stats?.attack)}</td>
+        <td class="num">${cellInputHtml("defenseInfantry", t.stats?.defenseInfantry)}</td>
+        <td class="num">${cellInputHtml("defenseCavalry", t.stats?.defenseCavalry)}</td>
+        <td class="num" data-derived="defenseCombined">${m.defenseCombined}</td>
+        <td class="num">${cellInputHtml("speed", t.stats?.speed)}</td>
+        <td class="num">${cellInputHtml("carry", t.stats?.carry)}</td>
+        <td class="num">${cellInputHtml("cropUpkeep", t.cropUpkeep)}</td>
+        <td class="num">${cellInputHtml("wood", t.cost?.wood)}</td>
+        <td class="num">${cellInputHtml("clay", t.cost?.clay)}</td>
+        <td class="num">${cellInputHtml("iron", t.cost?.iron)}</td>
+        <td class="num">${cellInputHtml("crop", t.cost?.crop)}</td>
+        <td class="num" data-derived="totalCost">${t.totalCost.toLocaleString()}</td>
+        <td class="num" title="${formatTrainingTimeClient(trainSecs)}">${cellInputHtml("timeSeconds", trainSecs, { title: `Train time in seconds (${formatTrainingTimeClient(trainSecs)})` })}</td>
+        <td>${cellSelectHtml("building", t.training?.building || "barracks", BUILDING_OPTIONS)}</td>
+      </tr>`;
+      }
+      return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row">
         <td class="troop-logo-col" data-logo-slot="${idx}"></td>
         <td>${t.slot}</td>
         <td><strong>${t.name}</strong></td>
@@ -329,11 +435,28 @@ function renderTroops(tribe) {
     if (cell) mountTroopLogoCell(cell, t, tribe.palette);
   });
 
+  if (editing) {
+    tbody.querySelectorAll("input.cell-edit, select.cell-edit").forEach((el) => {
+      el.addEventListener("click", (e) => e.stopPropagation());
+      el.addEventListener("change", () => livePreviewEdits());
+      el.addEventListener("input", () => {
+        if (el instanceof HTMLInputElement && el.type === "number") livePreviewEdits();
+      });
+    });
+  }
+
   tbody.querySelectorAll(".troop-row").forEach((row) => {
-    row.addEventListener("click", () => {
+    row.addEventListener("click", (e) => {
+      if (
+        editing &&
+        e.target instanceof HTMLElement &&
+        e.target.closest("input, select")
+      ) {
+        return;
+      }
       selectedTroopIndex = Number(row.dataset.troopIndex);
-      if (activeView === "radar") renderRadarView(tribe);
-      else setView("radar");
+      if (activeView === "radar") renderRadarView(tribeById(activeTribeId) || tribe);
+      else if (!editing) setView("radar");
     });
   });
 }
@@ -487,7 +610,284 @@ function renderHero(tribe) {
   `;
 }
 
+function syncEditChrome(tribe) {
+  const editable = serverHasApi && tribe && canEditTribe(tribe.id);
+  const editing = Boolean(editMode && editable);
+  const btnEditMenu = /** @type {HTMLButtonElement | null} */ ($("#btn-edit-tribe-menu"));
+  const sidebarActions = $("#sidebar-edit-actions");
+  const tableActions = $("#table-edit-actions");
+  const editPanel = $("#tribe-edit-panel");
+  const banner = $("#tribe-edit-banner");
+  const badge = $("#roster-edit-badge");
+  const nameView = $("#tribe-name");
+  const themeView = $("#tribe-theme");
+
+  document.body.classList.toggle("tribe-editing", editing);
+  btnEditMenu?.classList.toggle("is-active", editing);
+  btnEditMenu?.classList.toggle("hidden", editing);
+  if (btnEditMenu) {
+    btnEditMenu.disabled = !serverHasApi || !tribe;
+    btnEditMenu.title = !serverHasApi
+      ? "Needs the applet or Netlify API"
+      : !tribe
+        ? "Select a tribe first"
+        : !editable
+          ? "Core Travian tribes are read-only — pick a created tribe"
+          : "Edit the selected tribe's roster and colors";
+  }
+  sidebarActions?.classList.toggle("hidden", !editing);
+  tableActions?.classList.toggle("hidden", !editing);
+  editPanel?.classList.toggle("hidden", !editing);
+  banner?.classList.toggle("hidden", !editing);
+  badge?.classList.toggle("hidden", !editing);
+
+  if (editing && tribe) {
+    const authorInput = /** @type {HTMLInputElement | null} */ ($("#edit-author"));
+    const nameInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-name"));
+    const themeInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-theme"));
+    const heroInput = /** @type {HTMLInputElement | null} */ ($("#edit-hero-name"));
+    const primaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-primary"));
+    const secondaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-secondary"));
+    if (authorInput && document.activeElement !== authorInput) {
+      authorInput.value = localStorage.getItem("tevel-edit-author") || "";
+    }
+    if (nameInput && document.activeElement !== nameInput) nameInput.value = tribe.name || "";
+    if (themeInput && document.activeElement !== themeInput) themeInput.value = tribe.theme || "";
+    if (heroInput && document.activeElement !== heroInput) heroInput.value = tribe.hero?.name || "Hero";
+    if (primaryInput && document.activeElement !== primaryInput) {
+      primaryInput.value = tribe.palette?.primary || "#3D5A80";
+    }
+    if (secondaryInput && document.activeElement !== secondaryInput) {
+      secondaryInput.value = tribe.palette?.secondary || "#E09F3E";
+    }
+  }
+  if (nameView) nameView.textContent = tribe?.name || "—";
+  if (themeView) themeView.textContent = tribe?.theme || "";
+}
+
+function escapeHtml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+async function renderEditHistory(tribeId) {
+  const host = $("#edit-history-list");
+  if (!host) return;
+  if (!tribeId) {
+    host.innerHTML = `<p class="muted">Select a tribe to see update history.</p>`;
+    return;
+  }
+
+  /** @type {object[]} */
+  let entries = [];
+  try {
+    const res = await fetch(`/api/tribes/${encodeURIComponent(tribeId)}/history?limit=20`);
+    const body = await res.json().catch(() => ({}));
+    if (res.ok && body.ok) entries = body.entries || [];
+  } catch {
+    /* offline */
+  }
+  const sessionEntries = listSessionHistory(tribeId, 20);
+  const byId = new Map();
+  for (const e of [...entries, ...sessionEntries]) {
+    if (e?.id && !byId.has(e.id)) byId.set(e.id, e);
+  }
+  const merged = [...byId.values()].sort((a, b) => String(b.at).localeCompare(String(a.at)));
+
+  if (!merged.length) {
+    host.innerHTML = `<p class="muted">No updates recorded for this tribe yet. Save an edit to start the history used for stat normalization.</p>`;
+    return;
+  }
+
+  host.innerHTML = merged
+    .slice(0, 20)
+    .map((e) => {
+      const when = e.at ? new Date(e.at).toLocaleString() : "—";
+      const who = e.author || "anonymous";
+      const src = e.source === "session" ? "session" : "backend";
+      const note = e.note ? ` · ${escapeHtml(e.note)}` : "";
+      return `<article class="edit-history-item">
+        <strong>${escapeHtml(who)} · ${escapeHtml(e.summary || "Update")}</strong>
+        <p class="muted">${escapeHtml(when)} · ${src}${note}</p>
+      </article>`;
+    })
+    .join("");
+}
+
+function enterEditMode() {
+  const tribe = tribeById(activeTribeId);
+  if (!tribe || !canEditTribe(tribe.id)) {
+    toast("This tribe cannot be edited (core roster is read-only)");
+    return;
+  }
+  if (compareMode) {
+    toast("Leave compare mode to edit a tribe");
+    return;
+  }
+  editMode = true;
+  editSnapshot = structuredClone(tribe);
+  setView("table");
+  syncEditChrome(tribe);
+  renderTroops(tribe);
+  renderHero(tribe);
+  renderEditHistory(tribe.id);
+  $("#tribe-edit-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  toast(`Editing ${tribe.name} — use the table cells, then Save changes`);
+}
+
+function exitEditMode(restore) {
+  if (!editMode) return;
+  const id = activeTribeId;
+  if (restore && editSnapshot && data?.tribes) {
+    const idx = data.tribes.findIndex((t) => t.id === id);
+    if (idx >= 0) data.tribes[idx] = editSnapshot;
+  }
+  editMode = false;
+  editSnapshot = null;
+  const tribe = tribeById(id);
+  syncEditChrome(tribe);
+  if (tribe) {
+    renderSummary(tribe);
+    renderTroops(tribe);
+    renderHero(tribe);
+    renderEditHistory(tribe.id);
+    if (activeView === "radar") renderRadarView(tribe);
+  }
+  renderNav();
+}
+
+function livePreviewEdits() {
+  if (!editMode) return;
+  const tribe = tribeById(activeTribeId);
+  if (!tribe) return;
+  const edits = readEditsFromTable($("#troop-tbody"), tribe);
+  const next = applyEditsToTribe(tribe, edits);
+  const idx = data.tribes.findIndex((t) => t.id === tribe.id);
+  if (idx >= 0) data.tribes[idx] = next;
+  // Preserve focus while refreshing derived columns
+  const active = document.activeElement;
+  const activeKey =
+    active instanceof HTMLInputElement && active.dataset.edit
+      ? `${active.closest("tr")?.dataset.troopRef}|${active.dataset.edit}|${active.selectionStart}`
+      : null;
+  renderSummary(next);
+  const paletteChanged =
+    next.palette?.primary !== tribe.palette?.primary ||
+    next.palette?.secondary !== tribe.palette?.secondary;
+  const metaChanged =
+    next.name !== tribe.name ||
+    next.theme !== tribe.theme ||
+    next.hero?.name !== tribe.hero?.name ||
+    paletteChanged;
+  if (paletteChanged) {
+    setAccent(next.palette?.primary);
+    renderPalette(next.palette);
+  }
+  if (metaChanged) {
+    renderHero(next);
+    // Keep sidebar name/dot in sync when tribe identity colors change.
+    const nameView = $("#tribe-name");
+    if (nameView && !document.body.classList.contains("tribe-editing")) {
+      nameView.textContent = next.name;
+    }
+    const btn = document.querySelector(`#tribe-nav .tribe-btn[data-id="${next.id}"]`);
+    if (btn) {
+      const dot = btn.querySelector(".tribe-dot");
+      if (dot && next.palette) {
+        /** @type {HTMLElement} */ (dot).style.background = `linear-gradient(135deg, ${next.palette.primary}, ${next.palette.secondary})`;
+      }
+      // Update label text node after the dot
+      const label = [...btn.childNodes].find((n) => n.nodeType === Node.TEXT_NODE);
+      if (label && next.name) label.textContent = next.name;
+    }
+  }
+  // Update derived cells in-place to avoid focus loss on every keystroke
+  for (const t of next.troops) {
+    const row = $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${t.ref}"]`);
+    if (!row) continue;
+    const defAvg = row.querySelector('[data-derived="defenseCombined"]');
+    const total = row.querySelector('[data-derived="totalCost"]');
+    if (defAvg) defAvg.textContent = String(t.metrics.defenseCombined);
+    if (total) total.textContent = t.totalCost.toLocaleString();
+    const trainInput = /** @type {HTMLInputElement | null} */ (row.querySelector('[data-edit="timeSeconds"]'));
+    if (trainInput) {
+      const formatted = formatTrainingTimeClient(t.training?.timeSeconds);
+      trainInput.title = `Train time in seconds (${formatted})`;
+    }
+  }
+  if (activeKey) {
+    const [ref, key] = activeKey.split("|");
+    const el = /** @type {HTMLInputElement | null} */ (
+      $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${ref}"] [data-edit="${key}"]`)
+    );
+    el?.focus();
+  }
+  void active;
+}
+
+async function commitEditMode() {
+  const tribe = tribeById(activeTribeId);
+  if (!tribe || !editMode) return;
+  const edits = readEditsFromTable($("#troop-tbody"), tribe);
+  if (!edits.name) {
+    toast("Tribe name is required");
+    return;
+  }
+  const next = applyEditsToTribe(tribe, edits);
+  const payload = tribeToUpdatePayload(next);
+  payload.beforeSnapshot = snapshotTribeForHistory(editSnapshot || tribe);
+  const buttons = [
+    /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe")),
+    /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe-menu")),
+  ].filter(Boolean);
+  for (const btn of buttons) {
+    btn.disabled = true;
+    btn.textContent = "Saving…";
+  }
+  try {
+    const author = payload.author || "anonymous";
+    if (author && author !== "anonymous") localStorage.setItem("tevel-edit-author", author);
+    const body = await saveTribeEdits(tribe.id, payload);
+    const saved = body.dashboardTribe || next;
+    // Session upsert no-ops on writable applet; required on Netlify.
+    upsertSessionTribe(saved);
+    if (body.historyEntry) appendSessionHistory(body.historyEntry);
+    window.__tevelPendingTribe = saved;
+    data = mergeTribeIntoData(data || { tribes: [] }, saved);
+    editMode = false;
+    editSnapshot = null;
+    try {
+      await loadData();
+    } catch {
+      data = mergeTribeIntoData(data || { tribes: [] }, saved);
+    }
+    recomputeGlobalScales();
+    selectTribe(saved.id);
+    toast(body.message || `Saved ${saved.name}`);
+  } catch (e) {
+    // Keep draft visible; session store only when enabled (Netlify).
+    upsertSessionTribe(next);
+    data = mergeTribeIntoData(data || { tribes: [] }, next);
+    toast(e.message || String(e));
+    syncEditChrome(next);
+    renderSummary(next);
+  } finally {
+    for (const btn of buttons) {
+      btn.disabled = false;
+      btn.textContent = "Save changes";
+    }
+  }
+}
+
 function selectTribe(id) {
+  if (editMode && id !== activeTribeId) {
+    if (!confirm("Discard unsaved tribe edits?")) return;
+    exitEditMode(true);
+  }
+
   activeTribeId = id;
   selectedTroopIndex = 0;
   hideAuxViews();
@@ -496,12 +896,12 @@ function selectTribe(id) {
   if (!tribe) return;
 
   setAccent(tribe.palette?.primary);
-  $("#tribe-name").textContent = tribe.name;
-  $("#tribe-theme").textContent = tribe.theme || "";
+  syncEditChrome(tribe);
   renderPalette(tribe.palette);
   renderSummary(tribe);
   renderTroops(tribe);
   renderHero(tribe);
+  renderEditHistory(tribe.id);
   if (activeView === "radar") renderRadarView(tribe);
   renderNav();
 }
@@ -518,8 +918,17 @@ function getCompareTribes() {
 function setCompareColumnCount(n) {
   const cols = Math.max(n, 2);
   document.documentElement.style.setProperty("--compare-cols", String(cols));
-  const minCol = cols <= 3 ? 220 : cols <= 5 ? 180 : cols <= 6 ? 160 : 148;
-  document.documentElement.style.setProperty("--compare-col-min", `${minCol}px`);
+  const compact = isCompareCompact();
+  const minCol = compact
+    ? 0
+    : cols <= 3
+      ? 220
+      : cols <= 5
+        ? 180
+        : cols <= 6
+          ? 160
+          : 148;
+  document.documentElement.style.setProperty("--compare-col-min", compact ? "0px" : `${minCol}px`);
 }
 
 function formatSlotUnitNames(tribes, slotIndex) {
@@ -711,11 +1120,15 @@ function renderCompareRadarSlots(tribes) {
   const grid = $("#compare-radar-slots");
   if (!grid || !globalScales) return;
   grid.innerHTML = "";
+  syncCompareCompactAttr();
   setCompareColumnCount(tribes.length);
 
   const hint = $("#compare-radar-hint");
   if (hint) {
-    hint.textContent = normalizeModeHint(statNormalizeMode);
+    const base = normalizeModeHint(statNormalizeMode);
+    hint.textContent = isCompareCompact()
+      ? `${base} On phones, each unit stacks tribes vertically for easier reading.`
+      : base;
   }
 
   const header = document.createElement("article");
@@ -745,21 +1158,32 @@ function renderCompareRadarSlots(tribes) {
 
     tribes.forEach((tribe, ti) => {
       const col = document.createElement("div");
+      col.className = "compare-tribe-block";
+      col.style.setProperty("--tribe-col", tribe.palette?.primary || "var(--accent)");
       const troop = tribe.troops[i];
       if (!troop) {
-        col.className = "compare-radar-empty";
+        col.className = "compare-radar-empty compare-tribe-block";
         col.textContent = "—";
         row.append(col);
         return;
       }
+      if (isCompareCompact()) {
+        const tribeTag = document.createElement("div");
+        tribeTag.className = "compare-tribe-tag";
+        tribeTag.style.color = tribe.palette?.primary || "inherit";
+        tribeTag.textContent = tribe.name;
+        col.append(tribeTag);
+      }
       const compareMetrics =
         tribes.length === 2 ? tribes[1 - ti].troops[i]?.metrics : undefined;
-      mountRadarCard(col, troop, globalScales, tribe.palette, {
+      const cardHost = document.createElement("div");
+      mountRadarCard(cardHost, troop, globalScales, tribe.palette, {
         mini: true,
         size: tribes.length <= 2 ? 140 : 120,
         displayMode: statDisplayMode,
         compareMetrics,
       });
+      col.append(cardHost);
       row.append(col);
     });
 
@@ -771,6 +1195,7 @@ function renderCompareGraphics() {
   const tribes = getCompareTribes();
   if (tribes.length < COMPARE_MIN_TRIBES) return;
 
+  syncCompareCompactAttr();
   const banners = $("#compare-banners");
   if (banners) {
     banners.innerHTML = "";
@@ -812,7 +1237,17 @@ function renderCompareGraphics() {
     row.append(label);
     tribes.forEach((tribe) => {
       const col = document.createElement("div");
-      renderUnitCard(col, tribe.troops[i], tribe.palette, globalScales);
+      col.className = "compare-tribe-block";
+      if (isCompareCompact()) {
+        const tribeTag = document.createElement("div");
+        tribeTag.className = "compare-tribe-tag";
+        tribeTag.style.color = tribe.palette?.primary || "inherit";
+        tribeTag.textContent = tribe.name;
+        col.append(tribeTag);
+      }
+      const cardHost = document.createElement("div");
+      renderUnitCard(cardHost, tribe.troops[i], tribe.palette, globalScales);
+      col.append(cardHost);
       row.append(col);
     });
     grid.append(row);
@@ -823,13 +1258,24 @@ function renderCompareCharts() {
   const tribes = getCompareTribes();
   if (tribes.length < COMPARE_MIN_TRIBES) return;
 
+  const compact = syncCompareCompactAttr();
+  const layoutId = effectiveCompareChartLayout();
+  const layoutSel = $("#compare-chart-layout");
+  if (layoutSel && layoutSel.value !== layoutId) {
+    layoutSel.value = layoutId;
+  }
+
   const metric =
     CHART_METRICS.find((m) => m.key === compareChartMetric) || CHART_METRICS[0];
   const metricLabel = chartMetricLabel(metric, statNormalizeMode);
   const slotLabels = compareSlotChartLabels(tribes);
   const troopLabels = slotLabels.map((l) => l.main);
-  const containerW = $("#compare-charts-wrap")?.clientWidth || 720;
-  const chartW = computeChartWidth(troopLabels, containerW);
+  const wrapEl = $("#compare-charts-wrap");
+  const containerW = Math.max(
+    280,
+    (wrapEl?.clientWidth || window.innerWidth || 360) - (compact ? 8 : 24)
+  );
+  const chartW = computeReadableChartWidth(containerW, layoutId, troopLabels);
   const colors = getCompareSeriesColors(tribes.length, tribes);
   const series = buildCompareChartSeries(tribes, metric, colors, statNormalizeMode);
   const names = formatCompareTribeList(tribes);
@@ -851,13 +1297,20 @@ function renderCompareCharts() {
   main.innerHTML = "";
   const cap = document.createElement("p");
   cap.className = "chart-caption muted";
-  cap.textContent = `${metricLabel} by unit — ${names}. ${normalizeModeHint(statNormalizeMode)}`;
+  const layoutNote =
+    compact && layoutId === "horizontal" && !compareChartLayoutUserPicked
+      ? " Phone layout: horizontal bars (readable without pinch-zoom)."
+      : "";
+  cap.textContent = `${metricLabel} by unit — ${names}. ${normalizeModeHint(statNormalizeMode)}${layoutNote}`;
   main.append(cap);
 
-  const chartH = Math.min(560, 380 + Math.max(0, tribes.length - 2) * 20);
+  const chartH =
+    layoutId === "horizontal"
+      ? undefined
+      : Math.min(560, 380 + Math.max(0, tribes.length - 2) * 20);
 
   const svgMain = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  drawCompareMetricChart(svgMain, compareChartLayout, {
+  drawCompareMetricChart(svgMain, layoutId, {
     labels: troopLabels,
     series,
     title: metricLabel,
@@ -871,25 +1324,76 @@ function renderCompareCharts() {
 
   const costWrap = $("#compare-chart-cost");
   costWrap.innerHTML = "";
+  if (compact) {
+    renderMobileCostCompare(costWrap, tribes, colors);
+  } else {
+    const capCost = document.createElement("p");
+    capCost.className = "chart-caption muted";
+    capCost.textContent =
+      "Training resources (wood / clay / iron / crop) — totals above each stack";
+    costWrap.append(capCost);
+
+    const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    drawMultiCostStackChart(svgCost, {
+      width: computeChartWidth(
+        tribes.map((_, i) => chartTroopName(tribes, i)),
+        containerW
+      ),
+      height: Math.min(480, 340 + tribes.length * 16),
+      title: "Training resources (W / C / I / Cr)",
+      series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
+      slots: data.roster.map((slot, i) => ({
+        label: chartTroopName(tribes, i),
+        costs: tribes.map((t) => t.troops[i].cost),
+        totals: tribes.map((t) => t.troops[i].totalCost),
+      })),
+    });
+    costWrap.append(svgCost);
+  }
+}
+
+/** Slot-by-slot cost bars — readable on narrow screens without shrinking SVG text. */
+function renderMobileCostCompare(container, tribes, colors) {
   const capCost = document.createElement("p");
   capCost.className = "chart-caption muted";
-  capCost.textContent =
-    "Training resources (wood / clay / iron / crop) — totals above each stack";
-  costWrap.append(capCost);
+  capCost.textContent = "Training cost by unit (total resources) — tap scroll to compare slots";
+  container.append(capCost);
 
-  const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  drawMultiCostStackChart(svgCost, {
-    width: chartW,
-    height: Math.min(480, 340 + tribes.length * 16),
-    title: "Training resources (W / C / I / Cr)",
-    series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
-    slots: data.roster.map((slot, i) => ({
-      label: chartTroopName(tribes, i),
-      costs: tribes.map((t) => t.troops[i].cost),
-      totals: tribes.map((t) => t.troops[i].totalCost),
-    })),
+  const list = document.createElement("div");
+  list.className = "compare-cost-mobile";
+
+  data.roster.forEach((slot, i) => {
+    const totals = tribes.map((t) => Number(t.troops[i]?.totalCost) || 0);
+    const maxCost = Math.max(1, ...totals);
+    const card = document.createElement("article");
+    card.className = "compare-cost-mobile-card";
+    const unitLabel = chartTroopName(tribes, i);
+    card.innerHTML = `
+      <header class="compare-cost-mobile-head">
+        <strong>Slot ${slot.slot}</strong>
+        <span class="role-badge">${slot.role}</span>
+        <span class="muted">${unitLabel}</span>
+      </header>
+      <div class="compare-cost-mobile-rows">
+        ${tribes
+          .map((t, ti) => {
+            const total = totals[ti];
+            const pct = Math.round((total / maxCost) * 100);
+            return `<div class="compare-cost-mobile-row">
+              <span class="compare-cost-mobile-name" style="color:${colors[ti]}">${t.name}</span>
+              <div class="compare-cost-mobile-track" role="presentation">
+                <div class="compare-cost-mobile-fill" style="width:${pct}%;background:${colors[ti]}"></div>
+              </div>
+              <strong class="compare-cost-mobile-val">${total.toLocaleString()}</strong>
+            </div>`;
+          })
+          .join("")}
+      </div>
+    `;
+    list.append(card);
   });
-  costWrap.append(svgCost);
+
+  container.append(list);
 }
 
 function renderCompareTable(tribes) {
@@ -1017,13 +1521,15 @@ function bindCompareChartMetric() {
 function bindCompareChartLayout() {
   const sel = $("#compare-chart-layout");
   if (!sel) return;
+  const effective = effectiveCompareChartLayout();
   sel.innerHTML = CHART_LAYOUTS.map(
     (l) =>
-      `<option value="${l.id}"${l.id === compareChartLayout ? " selected" : ""}>${l.name}</option>`
+      `<option value="${l.id}"${l.id === effective ? " selected" : ""}>${l.name}</option>`
   ).join("");
   if (!compareChartLayoutBound) {
     sel.addEventListener("change", () => {
       compareChartLayout = sel.value;
+      compareChartLayoutUserPicked = true;
       if (compareMode && compareViewMode === "charts") renderCompareCharts();
     });
     compareChartLayoutBound = true;
@@ -1066,14 +1572,12 @@ function renderCompare() {
 }
 
 function showCompare() {
-  monitorMode = false;
-  stopMonitorPolling();
   compareMode = true;
+  syncCompareCompactAttr();
+  if (!compareChartLayoutUserPicked) applyCompactChartLayoutDefault();
   $("#view-single").classList.add("hidden");
   $("#view-compare").classList.remove("hidden");
-  $("#view-monitor").classList.add("hidden");
   $("#btn-compare").textContent = "Back to tribe";
-  $("#btn-monitor").textContent = "Leader monitor";
   $("#topbar .view-tabs")?.classList.add("hidden");
 
   compareTribeIds = loadPersistedCompareSelection() || defaultCompareSelection();
@@ -1088,29 +1592,10 @@ function showCompare() {
 
 function hideAuxViews() {
   compareMode = false;
-  monitorMode = false;
   $("#view-single").classList.remove("hidden");
   $("#view-compare").classList.add("hidden");
-  $("#view-monitor").classList.add("hidden");
   $("#btn-compare").textContent = "Compare tribes";
-  $("#btn-monitor").textContent = "Leader monitor";
   $("#topbar .view-tabs")?.classList.remove("hidden");
-  stopMonitorPolling();
-}
-
-async function showMonitor() {
-  hideAuxViews();
-  monitorMode = true;
-  $("#view-single").classList.add("hidden");
-  $("#view-monitor").classList.remove("hidden");
-  $("#btn-monitor").textContent = "Back to tribe";
-  $("#btn-compare").textContent = "Compare tribes";
-  $("#topbar .view-tabs")?.classList.add("hidden");
-  $("#tribe-name").textContent = "Leader monitor";
-  $("#tribe-theme").textContent = "Top 10 aggregate polling — points, resources, raids";
-  renderNav();
-  await refreshMonitorView(toast);
-  startMonitorPolling(toast);
 }
 
 function bindSort() {
@@ -1122,6 +1607,7 @@ function bindSort() {
         sortKey = key;
         sortDir = 1;
       }
+      if (editMode) livePreviewEdits();
       const tribe = tribeById(activeTribeId);
       if (tribe) renderTroops(tribe);
     });
@@ -1130,7 +1616,13 @@ function bindSort() {
 
 function bindUi() {
   document.querySelectorAll(".view-tab[data-view]").forEach((btn) => {
-    btn.addEventListener("click", () => setView(btn.dataset.view));
+    btn.addEventListener("click", () => {
+      if (editMode && btn.dataset.view !== "table") {
+        toast("Finish or cancel edit before switching views");
+        return;
+      }
+      setView(btn.dataset.view);
+    });
   });
 
   document.querySelectorAll("[data-compare-mode]").forEach((btn) => {
@@ -1144,34 +1636,77 @@ function bindUi() {
   bindStatNormalize();
 
   $("#unit-filter")?.addEventListener("input", () => {
+    if (editMode) livePreviewEdits();
     const tribe = tribeById(activeTribeId);
     if (tribe) renderTroops(tribe);
   });
 
   $("#btn-compare")?.addEventListener("click", () => {
     if (!data?.tribes?.length) return;
+    if (editMode) {
+      if (!confirm("Discard unsaved tribe edits and open compare?")) return;
+      exitEditMode(true);
+    }
     if (compareMode) selectTribe(activeTribeId || data.tribes[0].id);
     else showCompare();
   });
 
-  $("#btn-monitor")?.addEventListener("click", async () => {
-    if (monitorMode) selectTribe(activeTribeId || data.tribes[0].id);
-    else showMonitor();
-  });
-
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
 
-  $("#btn-hero-xp")?.addEventListener("click", async () => {
-    const btn = $("#btn-hero-xp");
-    btn.disabled = true;
-    try {
-      await apiPost("/api/hero-xp");
-      toast("Hero XP table regenerated");
-    } catch (e) {
-      toast(e.message);
-    } finally {
-      btn.disabled = false;
-    }
+  const startEdit = () => enterEditMode();
+  const cancelEdit = () => exitEditMode(true);
+  const saveEdit = () => commitEditMode();
+
+  $("#btn-edit-tribe-menu")?.addEventListener("click", startEdit);
+  $("#btn-save-tribe-menu")?.addEventListener("click", saveEdit);
+  $("#btn-cancel-edit-menu")?.addEventListener("click", cancelEdit);
+  $("#btn-cancel-edit")?.addEventListener("click", cancelEdit);
+  $("#btn-save-tribe")?.addEventListener("click", saveEdit);
+  $("#edit-author")?.addEventListener("change", () => {
+    const el = /** @type {HTMLInputElement | null} */ ($("#edit-author"));
+    if (el?.value?.trim()) localStorage.setItem("tevel-edit-author", el.value.trim());
+  });
+  $("#edit-tribe-name")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-tribe-name")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-theme")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-hero-name")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-hero-name")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-primary")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-secondary")?.addEventListener("input", () => livePreviewEdits());
+
+  bindCompareCompactViewport();
+}
+
+function bindCompareCompactViewport() {
+  syncCompareCompactAttr();
+  applyCompactChartLayoutDefault();
+  if (!window.matchMedia) return;
+  compareCompactMq = window.matchMedia(COMPARE_COMPACT_MQ);
+  const onChange = () => {
+    const was = document.documentElement.dataset.compareCompact;
+    const now = syncCompareCompactAttr() ? "1" : "0";
+    if (!compareChartLayoutUserPicked) applyCompactChartLayoutDefault();
+    bindCompareChartLayout();
+    if (was === now && !compareMode) return;
+    if (compareMode) renderCompare();
+  };
+  if (compareCompactMq.addEventListener) compareCompactMq.addEventListener("change", onChange);
+  else compareCompactMq.addListener?.(onChange);
+
+  let resizeTimer = 0;
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      const was = document.documentElement.dataset.compareCompact;
+      const now = syncCompareCompactAttr() ? "1" : "0";
+      if (was !== now && !compareChartLayoutUserPicked) {
+        applyCompactChartLayoutDefault();
+        bindCompareChartLayout();
+        if (compareMode) renderCompare();
+        return;
+      }
+      if (compareMode && compareViewMode === "charts") renderCompareCharts();
+    }, 120);
   });
 }
 
@@ -1188,21 +1723,35 @@ async function setServerStatus() {
     try {
       const res = await fetch(path, { cache: "no-store" });
       if (!res.ok) continue;
-      const body = await res.json();
+      const body = await res.json().catch(() => ({}));
+      if (body.mode === "netlify" || body.writable === false) {
+        el.textContent = "Netlify — Add tribe is session-only";
+        el.className = "server-status ok";
+        return { ok: true, mode: "netlify", writable: false };
+      }
       if (body?.game === "Tevel") {
         el.textContent = "Applet connected";
         el.className = "server-status ok";
-        return true;
+        return { ok: true, mode: "applet", writable: true };
       }
     } catch {
-      /* try next */
+      /* try next path */
     }
   }
   el.textContent = isStandaloneDisplay()
     ? "Installed app — offline OK"
     : "PWA / static mode — viewing cached data";
   el.className = "server-status";
-  return false;
+  return { ok: false, mode: "static", writable: false };
+}
+
+/**
+ * Writable applet → disk. Netlify → browser session localStorage.
+ * @param {{ ok?: boolean, writable?: boolean, mode?: string }} apiStatus
+ */
+function configureTribeStorage(apiStatus) {
+  apiWritable = Boolean(apiStatus?.ok && apiStatus.writable);
+  setSessionStoreEnabled(Boolean(apiStatus?.ok) && !apiWritable);
 }
 
 async function rebuildData(btn) {
@@ -1257,22 +1806,49 @@ async function init() {
   bindUi();
   initUiTheme();
 
-  serverHasApi = await setServerStatus();
+  const apiStatus = await setServerStatus();
+  serverHasApi = Boolean(apiStatus.ok);
+  configureTribeStorage(apiStatus);
   showInstallHint(serverHasApi);
-  initMonitorView(serverHasApi, toast);
+  setAddTribeEnabled(serverHasApi);
+  initAddTribeUi(
+    toast,
+    async (tribeId, dashboardTribe) => {
+      if (dashboardTribe) {
+        window.__tevelPendingTribe = dashboardTribe;
+        data = mergeTribeIntoData(data || { tribes: [] }, dashboardTribe);
+      }
+      try {
+        await loadData();
+      } catch (e) {
+        // Keep the just-created tribe visible even if data.json rebuild lagged.
+        if (dashboardTribe) {
+          data = mergeTribeIntoData(data || { tribes: [] }, dashboardTribe);
+        } else {
+          throw e;
+        }
+      }
+      recomputeGlobalScales();
+      selectTribe(tribeId);
+      await refreshRemovableTribes();
+    },
+    async (removedId) => {
+      if (removedId) removeSessionTribe(removedId);
+      await loadData();
+      recomputeGlobalScales();
+      const fallback = data?.tribes?.[0]?.id;
+      if (fallback) selectTribe(fallback);
+      else renderNav();
+    }
+  );
+  if (serverHasApi) await refreshRemovableTribes();
 
   if (!serverHasApi) {
     const refresh = $("#btn-refresh");
-    const heroXp = $("#btn-hero-xp");
     if (refresh) {
       refresh.disabled = true;
       refresh.title = "Needs the local applet (npm start) to rebuild JSON";
       refresh.textContent = "Rebuild (applet only)";
-    }
-    if (heroXp) {
-      heroXp.disabled = true;
-      heroXp.title = "Needs the local applet (npm start)";
-      heroXp.classList.add("hidden");
     }
   }
 
@@ -1284,8 +1860,15 @@ async function init() {
     mountThemePicker($("#theme-picker"), onUiThemeChange);
     mountGraphPalettePicker($("#graph-palette-picker"), onGraphPaletteChange);
     selectTribe(data.tribes[0].id);
+    if (!serverHasApi) {
+      $("#btn-refresh").textContent = "Rebuild (needs applet)";
+    } else if (apiStatus.mode === "netlify") {
+      $("#btn-refresh").textContent = "Rebuild (via GitHub deploy)";
+    }
     if (location.protocol === "file:") {
       toast("Loaded from disk — use npm start or the installed PWA for full features.");
+    } else if (apiStatus.mode === "netlify") {
+      toast("Netlify mode — Add/Edit tribe saves in this browser session only.");
     }
   } catch (e) {
     showLoadError(e, serverHasApi);
