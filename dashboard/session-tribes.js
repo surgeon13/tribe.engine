@@ -97,3 +97,34 @@ export function mergeTribeIntoData(data, tribe) {
   next.push(tribe);
   return { ...data, tribes: next };
 }
+
+const HISTORY_KEY = "tevel-tribe-edit-history";
+
+export function loadSessionHistory() {
+  try {
+    const raw = localStorage.getItem(HISTORY_KEY);
+    const list = raw ? JSON.parse(raw) : [];
+    return Array.isArray(list) ? list : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * @param {object} entry
+ */
+export function appendSessionHistory(entry) {
+  if (!entry?.tribeId) return;
+  const next = [entry, ...loadSessionHistory().filter((e) => e.id !== entry.id)].slice(0, 200);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(next));
+}
+
+/**
+ * @param {string} [tribeId]
+ * @param {number} [limit]
+ */
+export function listSessionHistory(tribeId, limit = 40) {
+  let entries = loadSessionHistory();
+  if (tribeId) entries = entries.filter((e) => e.tribeId === tribeId);
+  return entries.slice(0, limit);
+}

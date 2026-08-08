@@ -36,6 +36,8 @@ import {
 } from "./themes.js";
 import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
 import {
+  appendSessionHistory,
+  listSessionHistory,
   mergeSessionTribes,
   mergeTribeIntoData,
   removeSessionTribe,
@@ -52,6 +54,7 @@ import {
   readEditsFromTable,
   ROLE_OPTIONS,
   saveTribeEdits,
+  snapshotTribeForHistory,
   tribeToUpdatePayload,
 } from "./tribe-edit.js";
 
@@ -197,19 +200,6 @@ function renderNav() {
     row.append(btn);
 
     if (serverHasApi && isRemovableTribe(tribe.id)) {
-      const edit = document.createElement("button");
-      edit.type = "button";
-      edit.className = "tribe-edit-btn";
-      edit.title = `Edit ${tribe.name}`;
-      edit.setAttribute("aria-label", `Edit ${tribe.name}`);
-      edit.textContent = "✎";
-      edit.addEventListener("click", (e) => {
-        e.stopPropagation();
-        selectTribe(tribe.id);
-        enterEditMode();
-      });
-      row.append(edit);
-
       const del = document.createElement("button");
       del.type = "button";
       del.className = "tribe-delete-btn";
@@ -556,27 +546,45 @@ function renderHero(tribe) {
 
 function syncEditChrome(tribe) {
   const editable = serverHasApi && tribe && canEditTribe(tribe.id);
-  const btnEdit = $("#btn-edit-tribe");
-  const btnSave = $("#btn-save-tribe");
-  const btnCancel = $("#btn-cancel-edit");
-  const fields = $("#tribe-edit-fields");
+  const editing = Boolean(editMode && editable);
+  const btnEditMenu = /** @type {HTMLButtonElement | null} */ ($("#btn-edit-tribe-menu"));
+  const sidebarActions = $("#sidebar-edit-actions");
+  const tableActions = $("#table-edit-actions");
+  const editPanel = $("#tribe-edit-panel");
   const banner = $("#tribe-edit-banner");
+  const badge = $("#roster-edit-badge");
   const nameView = $("#tribe-name");
   const themeView = $("#tribe-theme");
 
-  document.body.classList.toggle("tribe-editing", Boolean(editMode && editable));
-  btnEdit?.classList.toggle("hidden", !editable || editMode);
-  btnSave?.classList.toggle("hidden", !editMode || !editable);
-  btnCancel?.classList.toggle("hidden", !editMode || !editable);
-  fields?.classList.toggle("hidden", !editMode || !editable);
-  banner?.classList.toggle("hidden", !editMode || !editable);
+  document.body.classList.toggle("tribe-editing", editing);
+  btnEditMenu?.classList.toggle("is-active", editing);
+  btnEditMenu?.classList.toggle("hidden", editing);
+  if (btnEditMenu) {
+    btnEditMenu.disabled = !serverHasApi || !tribe;
+    btnEditMenu.title = !serverHasApi
+      ? "Needs the applet or Netlify API"
+      : !tribe
+        ? "Select a tribe first"
+        : !editable
+          ? "Core Travian tribes are read-only — pick a created tribe"
+          : "Edit the selected tribe's roster and colors";
+  }
+  sidebarActions?.classList.toggle("hidden", !editing);
+  tableActions?.classList.toggle("hidden", !editing);
+  editPanel?.classList.toggle("hidden", !editing);
+  banner?.classList.toggle("hidden", !editing);
+  badge?.classList.toggle("hidden", !editing);
 
-  if (editMode && editable && tribe) {
+  if (editing && tribe) {
+    const authorInput = /** @type {HTMLInputElement | null} */ ($("#edit-author"));
     const nameInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-name"));
     const themeInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-theme"));
     const heroInput = /** @type {HTMLInputElement | null} */ ($("#edit-hero-name"));
     const primaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-primary"));
     const secondaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-secondary"));
+    if (authorInput && document.activeElement !== authorInput) {
+      authorInput.value = localStorage.getItem("tevel-edit-author") || "";
+    }
     if (nameInput && document.activeElement !== nameInput) nameInput.value = tribe.name || "";
     if (themeInput && document.activeElement !== themeInput) themeInput.value = tribe.theme || "";
     if (heroInput && document.activeElement !== heroInput) heroInput.value = tribe.hero?.name || "Hero";
@@ -589,6 +597,58 @@ function syncEditChrome(tribe) {
   }
   if (nameView) nameView.textContent = tribe?.name || "—";
   if (themeView) themeView.textContent = tribe?.theme || "";
+}
+
+function escapeHtml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+async function renderEditHistory(tribeId) {
+  const host = $("#edit-history-list");
+  if (!host) return;
+  if (!tribeId) {
+    host.innerHTML = `<p class="muted">Select a tribe to see update history.</p>`;
+    return;
+  }
+
+  /** @type {object[]} */
+  let entries = [];
+  try {
+    const res = await fetch(`/api/tribes/${encodeURIComponent(tribeId)}/history?limit=20`);
+    const body = await res.json().catch(() => ({}));
+    if (res.ok && body.ok) entries = body.entries || [];
+  } catch {
+    /* offline */
+  }
+  const sessionEntries = listSessionHistory(tribeId, 20);
+  const byId = new Map();
+  for (const e of [...entries, ...sessionEntries]) {
+    if (e?.id && !byId.has(e.id)) byId.set(e.id, e);
+  }
+  const merged = [...byId.values()].sort((a, b) => String(b.at).localeCompare(String(a.at)));
+
+  if (!merged.length) {
+    host.innerHTML = `<p class="muted">No updates recorded for this tribe yet. Save an edit to start the history used for stat normalization.</p>`;
+    return;
+  }
+
+  host.innerHTML = merged
+    .slice(0, 20)
+    .map((e) => {
+      const when = e.at ? new Date(e.at).toLocaleString() : "—";
+      const who = e.author || "anonymous";
+      const src = e.source === "session" ? "session" : "backend";
+      const note = e.note ? ` · ${escapeHtml(e.note)}` : "";
+      return `<article class="edit-history-item">
+        <strong>${escapeHtml(who)} · ${escapeHtml(e.summary || "Update")}</strong>
+        <p class="muted">${escapeHtml(when)} · ${src}${note}</p>
+      </article>`;
+    })
+    .join("");
 }
 
 function enterEditMode() {
@@ -607,7 +667,9 @@ function enterEditMode() {
   syncEditChrome(tribe);
   renderTroops(tribe);
   renderHero(tribe);
-  toast(`Editing ${tribe.name} — names, colors, and roster stats`);
+  renderEditHistory(tribe.id);
+  $("#tribe-edit-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  toast(`Editing ${tribe.name} — use the table cells, then Save changes`);
 }
 
 function exitEditMode(restore) {
@@ -625,6 +687,7 @@ function exitEditMode(restore) {
     renderSummary(tribe);
     renderTroops(tribe);
     renderHero(tribe);
+    renderEditHistory(tribe.id);
     if (activeView === "radar") renderRadarView(tribe);
   }
   renderNav();
@@ -709,16 +772,23 @@ async function commitEditMode() {
   }
   const next = applyEditsToTribe(tribe, edits);
   const payload = tribeToUpdatePayload(next);
-  const btn = /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe"));
-  if (btn) {
+  payload.beforeSnapshot = snapshotTribeForHistory(editSnapshot || tribe);
+  const buttons = [
+    /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe")),
+    /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe-menu")),
+  ].filter(Boolean);
+  for (const btn of buttons) {
     btn.disabled = true;
     btn.textContent = "Saving…";
   }
   try {
+    const author = payload.author || "anonymous";
+    if (author && author !== "anonymous") localStorage.setItem("tevel-edit-author", author);
     const body = await saveTribeEdits(tribe.id, payload);
     const saved = body.dashboardTribe || next;
     // Session upsert no-ops on writable applet; required on Netlify.
     upsertSessionTribe(saved);
+    if (body.historyEntry) appendSessionHistory(body.historyEntry);
     window.__tevelPendingTribe = saved;
     data = mergeTribeIntoData(data || { tribes: [] }, saved);
     editMode = false;
@@ -739,9 +809,9 @@ async function commitEditMode() {
     syncEditChrome(next);
     renderSummary(next);
   } finally {
-    if (btn) {
+    for (const btn of buttons) {
       btn.disabled = false;
-      btn.textContent = "Save";
+      btn.textContent = "Save changes";
     }
   }
 }
@@ -765,6 +835,7 @@ function selectTribe(id) {
   renderSummary(tribe);
   renderTroops(tribe);
   renderHero(tribe);
+  renderEditHistory(tribe.id);
   if (activeView === "radar") renderRadarView(tribe);
   renderNav();
 }
@@ -1516,9 +1587,19 @@ function bindUi() {
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
 
-  $("#btn-edit-tribe")?.addEventListener("click", () => enterEditMode());
-  $("#btn-cancel-edit")?.addEventListener("click", () => exitEditMode(true));
-  $("#btn-save-tribe")?.addEventListener("click", () => commitEditMode());
+  const startEdit = () => enterEditMode();
+  const cancelEdit = () => exitEditMode(true);
+  const saveEdit = () => commitEditMode();
+
+  $("#btn-edit-tribe-menu")?.addEventListener("click", startEdit);
+  $("#btn-save-tribe-menu")?.addEventListener("click", saveEdit);
+  $("#btn-cancel-edit-menu")?.addEventListener("click", cancelEdit);
+  $("#btn-cancel-edit")?.addEventListener("click", cancelEdit);
+  $("#btn-save-tribe")?.addEventListener("click", saveEdit);
+  $("#edit-author")?.addEventListener("change", () => {
+    const el = /** @type {HTMLInputElement | null} */ ($("#edit-author"));
+    if (el?.value?.trim()) localStorage.setItem("tevel-edit-author", el.value.trim());
+  });
   $("#edit-tribe-name")?.addEventListener("change", () => livePreviewEdits());
   $("#edit-tribe-name")?.addEventListener("input", () => livePreviewEdits());
   $("#edit-tribe-theme")?.addEventListener("change", () => livePreviewEdits());

@@ -42,6 +42,11 @@
         <footer class="sidebar-foot">
           <button type="button" id="btn-compare" class="btn ghost">Compare tribes</button>
           <button type="button" id="btn-add-tribe" class="btn primary">Add tribe</button>
+          <button type="button" id="btn-edit-tribe-menu" class="btn ghost">Edit tribe</button>
+          <div id="sidebar-edit-actions" class="sidebar-edit-actions hidden">
+            <button type="button" id="btn-save-tribe-menu" class="btn primary">Save changes</button>
+            <button type="button" id="btn-cancel-edit-menu" class="btn ghost">Cancel edit</button>
+          </div>
           <button type="button" id="btn-refresh" class="btn ghost">Rebuild data</button>
           <p id="server-status" class="server-status">Connecting…</p>
         </footer>
@@ -53,61 +58,80 @@
             <div class="topbar-title">
               <h2 id="tribe-name">—</h2>
               <p id="tribe-theme" class="muted"></p>
-              <div id="tribe-edit-fields" class="tribe-edit-fields hidden">
-                <label>
-                  <span>Tribe name</span>
-                  <input id="edit-tribe-name" type="text" autocomplete="off" />
-                </label>
-                <label>
-                  <span>Theme</span>
-                  <input id="edit-tribe-theme" type="text" autocomplete="off" />
-                </label>
-                <label>
-                  <span>Hero name</span>
-                  <input id="edit-hero-name" type="text" autocomplete="off" placeholder="Hero" />
-                </label>
-                <div class="tribe-edit-palette-row">
-                  <label>
-                    <span>Primary</span>
-                    <input id="edit-tribe-primary" type="color" value="#3D5A80" />
-                  </label>
-                  <label>
-                    <span>Secondary</span>
-                    <input id="edit-tribe-secondary" type="color" value="#E09F3E" />
-                  </label>
-                </div>
-              </div>
             </div>
             <div class="view-tabs" role="tablist">
               <button type="button" class="view-tab active" data-view="table" role="tab">Table</button>
               <button type="button" class="view-tab" data-view="radar" role="tab">Stat graphs</button>
             </div>
             <div class="topbar-actions">
-              <div id="tribe-edit-actions" class="tribe-edit-actions">
-                <button type="button" id="btn-edit-tribe" class="btn ghost hidden">Edit tribe</button>
-                <button type="button" id="btn-save-tribe" class="btn primary hidden">Save</button>
-                <button type="button" id="btn-cancel-edit" class="btn ghost hidden">Cancel</button>
-              </div>
               <div class="palette-swatch" id="palette-swatch"></div>
             </div>
           </div>
-          <p id="tribe-edit-banner" class="tribe-edit-banner hidden" role="status">
-            Edit mode — change troop names in the Unit column, tribe colors above, and any other roster field, then Save. Core Travian tribes stay read-only.
-          </p>
         </header>
 
         <section id="view-single">
           <div class="summary-grid" id="summary-grid"></div>
 
-          <div id="panel-table" class="view-panel">
-            <section class="panel">
-              <div class="panel-head">
-                <h3>Troop roster</h3>
-                <label class="search">
-                  <span class="sr-only">Filter units</span>
-                  <input type="search" id="unit-filter" placeholder="Filter by name or role…" />
+          <section id="tribe-edit-panel" class="panel tribe-edit-panel hidden" aria-label="Edit tribe">
+            <div class="panel-head">
+              <h3>Editing tribe</h3>
+              <p class="muted edit-panel-hint">Change identity below, then edit cells in the troop table. Save from the sidebar or the table bar.</p>
+            </div>
+            <div id="tribe-edit-fields" class="tribe-edit-fields">
+              <label>
+                <span>Your name (for update history)</span>
+                <input id="edit-author" type="text" autocomplete="nickname" placeholder="e.g. surgeon13" />
+              </label>
+              <label>
+                <span>Tribe name</span>
+                <input id="edit-tribe-name" type="text" autocomplete="off" />
+              </label>
+              <label>
+                <span>Theme</span>
+                <input id="edit-tribe-theme" type="text" autocomplete="off" />
+              </label>
+              <label>
+                <span>Hero name</span>
+                <input id="edit-hero-name" type="text" autocomplete="off" placeholder="Hero" />
+              </label>
+              <div class="tribe-edit-palette-row">
+                <label>
+                  <span>Primary color</span>
+                  <input id="edit-tribe-primary" type="color" value="#3D5A80" />
+                </label>
+                <label>
+                  <span>Secondary color</span>
+                  <input id="edit-tribe-secondary" type="color" value="#E09F3E" />
                 </label>
               </div>
+              <label>
+                <span>Note for history (optional)</span>
+                <input id="edit-note" type="text" autocomplete="off" placeholder="Why these numbers?" />
+              </label>
+            </div>
+          </section>
+
+          <div id="panel-table" class="view-panel">
+            <section class="panel" id="roster-panel">
+              <div class="panel-head">
+                <div class="roster-head-title">
+                  <h3>Troop roster</h3>
+                  <span id="roster-edit-badge" class="roster-edit-badge hidden">Editing table</span>
+                </div>
+                <div class="roster-head-actions">
+                  <div id="table-edit-actions" class="table-edit-actions hidden">
+                    <button type="button" id="btn-save-tribe" class="btn primary">Save changes</button>
+                    <button type="button" id="btn-cancel-edit" class="btn ghost">Cancel</button>
+                  </div>
+                  <label class="search">
+                    <span class="sr-only">Filter units</span>
+                    <input type="search" id="unit-filter" placeholder="Filter by name or role…" />
+                  </label>
+                </div>
+              </div>
+              <p id="tribe-edit-banner" class="tribe-edit-banner hidden" role="status">
+                Table edit mode is on — click any Unit / Role / stat / cost / train / building cell to change it. Save writes to the backend (local applet) or this browser session (Netlify).
+              </p>
               <div class="table-wrap">
                 <table class="data-table" id="troop-table">
                   <thead>
@@ -134,6 +158,15 @@
                   </thead>
                   <tbody id="troop-tbody"></tbody>
                 </table>
+              </div>
+            </section>
+            <section class="panel" id="edit-history-panel">
+              <div class="panel-head">
+                <h3>Update history</h3>
+                <p class="muted edit-panel-hint">Prior contributor saves for this tribe — use them to normalize stats.</p>
+              </div>
+              <div id="edit-history-list" class="edit-history-list">
+                <p class="muted">No updates recorded yet.</p>
               </div>
             </section>
             <section class="panel" id="hero-panel">

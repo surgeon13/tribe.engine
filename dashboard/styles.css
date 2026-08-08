@@ -162,24 +162,6 @@ body {
   background: color-mix(in srgb, var(--negative, #c44) 10%, transparent);
 }
 
-.tribe-edit-btn {
-  flex: 0 0 auto;
-  width: 32px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 14px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.tribe-edit-btn:hover {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
-}
-
 .topbar-actions {
   display: flex;
   align-items: flex-start;
@@ -187,18 +169,27 @@ body {
   flex-wrap: wrap;
 }
 
-.tribe-edit-actions {
+.sidebar-edit-actions {
   display: flex;
+  flex-direction: column;
   gap: 6px;
-  flex-wrap: wrap;
+}
+
+.tribe-edit-panel {
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent) 6%, var(--bg-elevated, var(--bg)));
+}
+
+.edit-panel-hint {
+  margin: 0;
+  font-size: 12px;
 }
 
 .tribe-edit-fields {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 8px;
-  max-width: 440px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px 14px;
+  padding: 0 16px 16px;
 }
 
 .tribe-edit-fields > label span,
@@ -248,19 +239,85 @@ body.tribe-editing .data-table th[data-sort="name"]::after {
   font-size: 12px;
 }
 
-body.tribe-editing #tribe-name,
-body.tribe-editing #tribe-theme {
-  display: none;
-}
-
 .tribe-edit-banner {
-  margin: 10px 0 0;
-  padding: 8px 12px;
+  margin: 0 16px 12px;
+  padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
   background: color-mix(in srgb, var(--accent) 12%, transparent);
   color: var(--text);
   font-size: 13px;
+}
+
+.roster-head-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roster-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.table-edit-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.roster-edit-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--accent-text, #1a1a1a);
+  background: var(--accent);
+}
+
+body.tribe-editing #roster-panel {
+  outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline-offset: 2px;
+}
+
+body.tribe-editing #troop-table thead th {
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg-elevated, var(--bg)));
+}
+
+.edit-history-list {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 240px;
+  overflow: auto;
+}
+
+.edit-history-item {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.edit-history-item strong {
+  display: block;
+  font-size: 13px;
+}
+
+.edit-history-item .muted {
+  margin: 2px 0 0;
+  font-size: 12px;
+}
+
+#btn-edit-tribe-menu.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
 }
 
 .data-table input.cell-edit,

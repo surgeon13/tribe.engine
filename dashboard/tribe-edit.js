@@ -181,6 +181,8 @@ export function tribeToUpdatePayload(tribe) {
       training: training[t.ref],
     };
   }
+  const authorInput = /** @type {HTMLInputElement | null} */ (document.querySelector("#edit-author"));
+  const noteInput = /** @type {HTMLInputElement | null} */ (document.querySelector("#edit-note"));
   return {
     name: tribe.name,
     theme: tribe.theme,
@@ -194,6 +196,34 @@ export function tribeToUpdatePayload(tribe) {
     heroName: tribe.hero?.name,
     hero: tribe.hero?.name ? { name: tribe.hero.name } : undefined,
     historicalContext: tribe.theme,
+    author: authorInput?.value?.trim() || localStorage.getItem("tevel-edit-author") || "anonymous",
+    note: noteInput?.value?.trim() || "",
+  };
+}
+
+/**
+ * Compact snapshot used as history "before" payload.
+ * @param {object} tribe
+ */
+export function snapshotTribeForHistory(tribe) {
+  if (!tribe) return null;
+  return {
+    name: tribe.name,
+    theme: tribe.theme,
+    palette: tribe.palette
+      ? { primary: tribe.palette.primary, secondary: tribe.palette.secondary }
+      : null,
+    troops: (tribe.troops || []).map((t) => ({
+      ref: t.ref,
+      name: t.name,
+      role: t.role,
+      stats: { ...(t.stats || {}) },
+      cost: { ...(t.cost || {}) },
+      cropUpkeep: t.cropUpkeep,
+      training: t.training
+        ? { building: t.training.building, timeSeconds: t.training.timeSeconds }
+        : null,
+    })),
   };
 }
 
