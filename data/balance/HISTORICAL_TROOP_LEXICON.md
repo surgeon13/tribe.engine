@@ -12,7 +12,7 @@ Run a quick inventory:
 node --input-type=module -e "import { lexiconStats } from './lib/tribe-generator/troop-lexicon.js'; console.log(lexiconStats())"
 ```
 
-Current inventory (approx.): **33** culture packs, **~620** unique labels across slots.
+Current inventory: run `lexiconStats()` (target roughly **35+** culture packs and **700+** unique labels).
 
 | Slot family | Example labels |
 | --- | --- |
@@ -23,9 +23,9 @@ Current inventory (approx.): **33** culture packs, **~620** unique labels across
 
 ## Culture packs
 
-**Peoples / states:** Egyptian/Nubian, Hittite/Anatolian, Assyrian/Mesopotamian, Israelite/Levantine, Greek/Hellenistic, Thracian, Dacian, Roman, Persian/Iranian, Carthaginian, Celtic, Germanic, Norse, Byzantine, Arab/Islamic, Early Ottoman, Slavic, Aksumite, Indian, Chinese, Japanese, Korean, medieval European, Mesoamerican (to c. 1500).
+**Peoples / states:** Egyptian/Nubian, Hittite/Anatolian, Assyrian/Mesopotamian, Israelite/Levantine, Greek/Hellenistic, Thracian, Dacian, Roman, Persian/Iranian, Carthaginian, **North African / Berber / Maghreb**, Celtic/Brittonic, Germanic, **Norse / Scandinavian**, Byzantine, Arab/Islamic, Early Ottoman, **Eastern European / Slavic**, **Magyar / Hungarian**, Aksumite, **Indian subcontinent**, Chinese, Japanese, Korean, **Western / Central medieval Europe**, Mesoamerican (to c. 1500).
 
-**Biome / doctrine packs:** desert/Maghreb, steppe, naval, forest, mountain, arctic, tribal, imperial.
+**Biome / doctrine packs:** desert (arid), steppe, naval, forest, mountain, arctic, tribal, imperial.
 
 **Fantasy:** Undead.
 
