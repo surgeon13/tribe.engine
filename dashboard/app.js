@@ -1614,7 +1614,7 @@ async function init() {
     if (location.protocol === "file:") {
       toast("Loaded from disk — use npm start for full applet features.");
     } else if (apiStatus.mode === "netlify") {
-      toast("Netlify mode — browsing works; Add tribe is saved in this browser only.");
+      toast("Netlify mode — Add/Edit tribe saves in this browser session only.");
     }
   } catch (e) {
     showLoadError(e, serverHasApi);
