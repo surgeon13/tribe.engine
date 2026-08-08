@@ -574,8 +574,18 @@ function syncEditChrome(tribe) {
   if (editMode && editable && tribe) {
     const nameInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-name"));
     const themeInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-theme"));
+    const heroInput = /** @type {HTMLInputElement | null} */ ($("#edit-hero-name"));
+    const primaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-primary"));
+    const secondaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-secondary"));
     if (nameInput && document.activeElement !== nameInput) nameInput.value = tribe.name || "";
     if (themeInput && document.activeElement !== themeInput) themeInput.value = tribe.theme || "";
+    if (heroInput && document.activeElement !== heroInput) heroInput.value = tribe.hero?.name || "Hero";
+    if (primaryInput && document.activeElement !== primaryInput) {
+      primaryInput.value = tribe.palette?.primary || "#3D5A80";
+    }
+    if (secondaryInput && document.activeElement !== secondaryInput) {
+      secondaryInput.value = tribe.palette?.secondary || "#E09F3E";
+    }
   }
   if (nameView) nameView.textContent = tribe?.name || "—";
   if (themeView) themeView.textContent = tribe?.theme || "";
@@ -596,7 +606,8 @@ function enterEditMode() {
   setView("table");
   syncEditChrome(tribe);
   renderTroops(tribe);
-  toast(`Editing ${tribe.name} — tune stats, then Save`);
+  renderHero(tribe);
+  toast(`Editing ${tribe.name} — names, colors, and roster stats`);
 }
 
 function exitEditMode(restore) {
@@ -634,6 +645,36 @@ function livePreviewEdits() {
       ? `${active.closest("tr")?.dataset.troopRef}|${active.dataset.edit}|${active.selectionStart}`
       : null;
   renderSummary(next);
+  const paletteChanged =
+    next.palette?.primary !== tribe.palette?.primary ||
+    next.palette?.secondary !== tribe.palette?.secondary;
+  const metaChanged =
+    next.name !== tribe.name ||
+    next.theme !== tribe.theme ||
+    next.hero?.name !== tribe.hero?.name ||
+    paletteChanged;
+  if (paletteChanged) {
+    setAccent(next.palette?.primary);
+    renderPalette(next.palette);
+  }
+  if (metaChanged) {
+    renderHero(next);
+    // Keep sidebar name/dot in sync when tribe identity colors change.
+    const nameView = $("#tribe-name");
+    if (nameView && !document.body.classList.contains("tribe-editing")) {
+      nameView.textContent = next.name;
+    }
+    const btn = document.querySelector(`#tribe-nav .tribe-btn[data-id="${next.id}"]`);
+    if (btn) {
+      const dot = btn.querySelector(".tribe-dot");
+      if (dot && next.palette) {
+        /** @type {HTMLElement} */ (dot).style.background = `linear-gradient(135deg, ${next.palette.primary}, ${next.palette.secondary})`;
+      }
+      // Update label text node after the dot
+      const label = [...btn.childNodes].find((n) => n.nodeType === Node.TEXT_NODE);
+      if (label && next.name) label.textContent = next.name;
+    }
+  }
   // Update derived cells in-place to avoid focus loss on every keystroke
   for (const t of next.troops) {
     const row = $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${t.ref}"]`);
@@ -1479,7 +1520,12 @@ function bindUi() {
   $("#btn-cancel-edit")?.addEventListener("click", () => exitEditMode(true));
   $("#btn-save-tribe")?.addEventListener("click", () => commitEditMode());
   $("#edit-tribe-name")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-tribe-name")?.addEventListener("input", () => livePreviewEdits());
   $("#edit-tribe-theme")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-hero-name")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-hero-name")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-primary")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-secondary")?.addEventListener("input", () => livePreviewEdits());
 
   bindCompareCompactViewport();
 }

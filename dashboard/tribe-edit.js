@@ -95,12 +95,23 @@ export function summarizeTribeClient(troops) {
 
 /**
  * @param {object} tribe
- * @param {{ name?: string, theme?: string, troops?: Array<object> }} edits
+ * @param {{ name?: string, theme?: string, heroName?: string, palette?: { primary?: string, secondary?: string }, troops?: Array<object> }} edits
  */
 export function applyEditsToTribe(tribe, edits) {
   const next = structuredClone(tribe);
   if (edits.name != null && String(edits.name).trim()) next.name = String(edits.name).trim();
   if (edits.theme != null) next.theme = String(edits.theme);
+  if (edits.palette?.primary || edits.palette?.secondary) {
+    next.palette = {
+      ...(next.palette || {}),
+      primary: edits.palette.primary || next.palette?.primary,
+      secondary: edits.palette.secondary || next.palette?.secondary,
+    };
+  }
+  if (edits.heroName != null && next.hero) {
+    const heroName = String(edits.heroName).trim() || "Hero";
+    next.hero = { ...next.hero, name: heroName };
+  }
   const byRef = new Map((edits.troops || []).map((t) => [t.ref, t]));
   for (const troop of next.troops || []) {
     const patch = byRef.get(troop.ref);
@@ -181,6 +192,7 @@ export function tribeToUpdatePayload(tribe) {
     troopOverrides,
     training,
     heroName: tribe.hero?.name,
+    hero: tribe.hero?.name ? { name: tribe.hero.name } : undefined,
     historicalContext: tribe.theme,
   };
 }
@@ -303,9 +315,17 @@ export function readEditsFromTable(tbody, tribe) {
 
   const nameInput = /** @type {HTMLInputElement | null} */ (document.querySelector("#edit-tribe-name"));
   const themeInput = /** @type {HTMLInputElement | null} */ (document.querySelector("#edit-tribe-theme"));
+  const heroInput = /** @type {HTMLInputElement | null} */ (document.querySelector("#edit-hero-name"));
+  const primaryInput = /** @type {HTMLInputElement | null} */ (document.querySelector("#edit-tribe-primary"));
+  const secondaryInput = /** @type {HTMLInputElement | null} */ (document.querySelector("#edit-tribe-secondary"));
   return {
     name: nameInput?.value?.trim() || tribe.name,
     theme: themeInput?.value ?? tribe.theme,
+    heroName: heroInput?.value?.trim() || tribe.hero?.name || "Hero",
+    palette: {
+      primary: primaryInput?.value || tribe.palette?.primary || "#3D5A80",
+      secondary: secondaryInput?.value || tribe.palette?.secondary || "#E09F3E",
+    },
     troops,
   };
 }

@@ -55,13 +55,27 @@
               <p id="tribe-theme" class="muted"></p>
               <div id="tribe-edit-fields" class="tribe-edit-fields hidden">
                 <label>
-                  <span class="sr-only">Tribe name</span>
+                  <span>Tribe name</span>
                   <input id="edit-tribe-name" type="text" autocomplete="off" />
                 </label>
                 <label>
-                  <span class="sr-only">Theme</span>
+                  <span>Theme</span>
                   <input id="edit-tribe-theme" type="text" autocomplete="off" />
                 </label>
+                <label>
+                  <span>Hero name</span>
+                  <input id="edit-hero-name" type="text" autocomplete="off" placeholder="Hero" />
+                </label>
+                <div class="tribe-edit-palette-row">
+                  <label>
+                    <span>Primary</span>
+                    <input id="edit-tribe-primary" type="color" value="#3D5A80" />
+                  </label>
+                  <label>
+                    <span>Secondary</span>
+                    <input id="edit-tribe-secondary" type="color" value="#E09F3E" />
+                  </label>
+                </div>
               </div>
             </div>
             <div class="view-tabs" role="tablist">
@@ -78,7 +92,7 @@
             </div>
           </div>
           <p id="tribe-edit-banner" class="tribe-edit-banner hidden" role="status">
-            Edit mode — change any troop-table field (name, role, combat stats, costs, train time, building), then Save. Core Travian tribes stay read-only.
+            Edit mode — change troop names in the Unit column, tribe colors above, and any other roster field, then Save. Core Travian tribes stay read-only.
           </p>
         </header>
 

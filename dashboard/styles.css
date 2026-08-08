@@ -196,12 +196,20 @@ body {
 .tribe-edit-fields {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   margin-top: 8px;
-  max-width: 420px;
+  max-width: 440px;
 }
 
-.tribe-edit-fields input {
+.tribe-edit-fields > label span,
+.tribe-edit-palette-row label span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tribe-edit-fields input[type="text"] {
   width: 100%;
   padding: 6px 10px;
   border: 1px solid var(--border);
@@ -209,6 +217,35 @@ body {
   background: var(--bg);
   color: var(--text);
   font: inherit;
+}
+
+.tribe-edit-palette-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tribe-edit-palette-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tribe-edit-fields input[type="color"] {
+  width: 56px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+body.tribe-editing .data-table th[data-sort="name"]::after {
+  content: " (edit)";
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 12px;
 }
 
 body.tribe-editing #tribe-name,
