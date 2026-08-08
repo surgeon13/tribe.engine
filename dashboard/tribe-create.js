@@ -26,7 +26,7 @@ const SLOT_ORDER = [
 
 /**
  * @param {(msg: string) => void} toast
- * @param {(tribeId: string) => Promise<void> | void} onCreated
+ * @param {(tribeId: string, dashboardTribe?: object | null) => Promise<void> | void} onCreated
  * @param {(removedId: string) => Promise<void> | void} [onDeleted]
  */
 export function initAddTribeUi(toast, onCreated, onDeleted) {
@@ -408,17 +408,34 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
       });
       const body = await res.json();
       if (!res.ok || !body.ok) throw new Error(body.error || res.statusText);
-      if (body.dashboardTribe) {
+
+      const tribeMeta = body.tribe || {};
+      const dashboardTribe = body.dashboardTribe || null;
+      const sessionOnly =
+        tribeMeta.persisted === false ||
+        tribeMeta.sessionOnly === true ||
+        body.persisted === false;
+
+      if (dashboardTribe) {
         const { upsertSessionTribe } = await import("./session-tribes.js");
-        upsertSessionTribe(body.dashboardTribe);
-        toast(body.message || `Added ${body.tribe.name} (browser session)`);
+        // Netlify / non-writable: durable store is localStorage.
+        // Local applet: session upsert is a no-op when session store is disabled.
+        upsertSessionTribe(dashboardTribe);
+      }
+
+      if (tribeMeta.buildWarning) {
+        toast(
+          `Saved ${tribeMeta.name || "tribe"} but dashboard rebuild warned: ${tribeMeta.buildWarning}`
+        );
+      } else if (sessionOnly) {
+        toast(body.message || `Added ${tribeMeta.name} (browser session)`);
       } else {
-        toast(`Saved ${body.tribe.name} to disk`);
+        toast(body.message || `Saved ${tribeMeta.name} to disk`);
       }
       close();
       resetForm();
       await refreshRemovableTribes();
-      await onCreated(body.tribe.id);
+      await onCreated(tribeMeta.id, dashboardTribe);
     } catch (e) {
       toast(e.message || String(e));
     } finally {

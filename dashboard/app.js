@@ -35,11 +35,36 @@ import {
   resolveBarColors,
 } from "./themes.js";
 import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
-import { mergeSessionTribes, removeSessionTribe } from "./session-tribes.js";
+import {
+  appendSessionHistory,
+  listSessionHistory,
+  mergeSessionTribes,
+  mergeTribeIntoData,
+  removeSessionTribe,
+  setSessionStoreEnabled,
+  upsertSessionTribe,
+} from "./session-tribes.js";
+import {
+  applyEditsToTribe,
+  BUILDING_OPTIONS,
+  canEditTribe,
+  cellInputHtml,
+  cellSelectHtml,
+  formatTrainingTimeClient,
+  readEditsFromTable,
+  ROLE_OPTIONS,
+  saveTribeEdits,
+  snapshotTribeForHistory,
+  tribeToUpdatePayload,
+} from "./tribe-edit.js";
 
 let data = null;
 let globalScales = null;
 let activeTribeId = null;
+/** @type {boolean} */
+let editMode = false;
+/** @type {object | null} snapshot before edit */
+let editSnapshot = null;
 let sortKey = "slot";
 let sortDir = 1;
 let compareMode = false;
@@ -55,6 +80,8 @@ let selectedTroopIndex = 0;
 let compareChartMetricBound = false;
 let compareChartLayoutBound = false;
 let serverHasApi = false;
+/** @type {boolean} local applet can write data/; Netlify cannot */
+let apiWritable = false;
 let compareCompactMq = null;
 
 const COMPARE_COMPACT_MQ = "(max-width: 720px)";
@@ -126,6 +153,10 @@ async function loadData() {
   }
 
   data = mergeSessionTribes(data);
+  if (window.__tevelPendingTribe) {
+    data = mergeTribeIntoData(data, window.__tevelPendingTribe);
+    window.__tevelPendingTribe = null;
+  }
 }
 
 function setAccent(hex) {
@@ -178,6 +209,7 @@ function renderNav() {
       del.addEventListener("click", async (e) => {
         e.stopPropagation();
         try {
+          if (editMode) exitEditMode(false);
           await requestDeleteTribe(tribe.id, tribe.name);
         } catch (err) {
           toast(err.message || String(err));
@@ -278,14 +310,38 @@ function getTroopRows(tribe) {
 }
 
 function renderTroops(tribe) {
-  const maxAtk = tribe.summary.maxAttack || 1;
+  const maxAtk = tribe.summary?.maxAttack || 1;
   const rows = getTroopRows(tribe);
   const tbody = $("#troop-tbody");
+  const editing = editMode && canEditTribe(tribe.id);
   tbody.innerHTML = rows
     .map((t) => {
       const m = t.metrics;
       const idx = tribe.troops.indexOf(t);
-      return `<tr data-troop-index="${idx}" class="troop-row">
+      if (editing) {
+        const trainSecs = t.training?.timeSeconds ?? 0;
+        return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row editing">
+        <td class="troop-logo-col" data-logo-slot="${idx}"></td>
+        <td>${t.slot}</td>
+        <td>${cellInputHtml("name", t.name, { name: true })}</td>
+        <td>${cellSelectHtml("role", t.role, ROLE_OPTIONS)}</td>
+        <td class="num">${cellInputHtml("attack", t.stats?.attack)}</td>
+        <td class="num">${cellInputHtml("defenseInfantry", t.stats?.defenseInfantry)}</td>
+        <td class="num">${cellInputHtml("defenseCavalry", t.stats?.defenseCavalry)}</td>
+        <td class="num" data-derived="defenseCombined">${m.defenseCombined}</td>
+        <td class="num">${cellInputHtml("speed", t.stats?.speed)}</td>
+        <td class="num">${cellInputHtml("carry", t.stats?.carry)}</td>
+        <td class="num">${cellInputHtml("cropUpkeep", t.cropUpkeep)}</td>
+        <td class="num">${cellInputHtml("wood", t.cost?.wood)}</td>
+        <td class="num">${cellInputHtml("clay", t.cost?.clay)}</td>
+        <td class="num">${cellInputHtml("iron", t.cost?.iron)}</td>
+        <td class="num">${cellInputHtml("crop", t.cost?.crop)}</td>
+        <td class="num" data-derived="totalCost">${t.totalCost.toLocaleString()}</td>
+        <td class="num" title="${formatTrainingTimeClient(trainSecs)}">${cellInputHtml("timeSeconds", trainSecs, { title: `Train time in seconds (${formatTrainingTimeClient(trainSecs)})` })}</td>
+        <td>${cellSelectHtml("building", t.training?.building || "barracks", BUILDING_OPTIONS)}</td>
+      </tr>`;
+      }
+      return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row">
         <td class="troop-logo-col" data-logo-slot="${idx}"></td>
         <td>${t.slot}</td>
         <td><strong>${t.name}</strong></td>
@@ -313,11 +369,28 @@ function renderTroops(tribe) {
     if (cell) mountTroopLogoCell(cell, t, tribe.palette);
   });
 
+  if (editing) {
+    tbody.querySelectorAll("input.cell-edit, select.cell-edit").forEach((el) => {
+      el.addEventListener("click", (e) => e.stopPropagation());
+      el.addEventListener("change", () => livePreviewEdits());
+      el.addEventListener("input", () => {
+        if (el instanceof HTMLInputElement && el.type === "number") livePreviewEdits();
+      });
+    });
+  }
+
   tbody.querySelectorAll(".troop-row").forEach((row) => {
-    row.addEventListener("click", () => {
+    row.addEventListener("click", (e) => {
+      if (
+        editing &&
+        e.target instanceof HTMLElement &&
+        e.target.closest("input, select")
+      ) {
+        return;
+      }
       selectedTroopIndex = Number(row.dataset.troopIndex);
-      if (activeView === "radar") renderRadarView(tribe);
-      else setView("radar");
+      if (activeView === "radar") renderRadarView(tribeById(activeTribeId) || tribe);
+      else if (!editing) setView("radar");
     });
   });
 }
@@ -471,7 +544,284 @@ function renderHero(tribe) {
   `;
 }
 
+function syncEditChrome(tribe) {
+  const editable = serverHasApi && tribe && canEditTribe(tribe.id);
+  const editing = Boolean(editMode && editable);
+  const btnEditMenu = /** @type {HTMLButtonElement | null} */ ($("#btn-edit-tribe-menu"));
+  const sidebarActions = $("#sidebar-edit-actions");
+  const tableActions = $("#table-edit-actions");
+  const editPanel = $("#tribe-edit-panel");
+  const banner = $("#tribe-edit-banner");
+  const badge = $("#roster-edit-badge");
+  const nameView = $("#tribe-name");
+  const themeView = $("#tribe-theme");
+
+  document.body.classList.toggle("tribe-editing", editing);
+  btnEditMenu?.classList.toggle("is-active", editing);
+  btnEditMenu?.classList.toggle("hidden", editing);
+  if (btnEditMenu) {
+    btnEditMenu.disabled = !serverHasApi || !tribe;
+    btnEditMenu.title = !serverHasApi
+      ? "Needs the applet or Netlify API"
+      : !tribe
+        ? "Select a tribe first"
+        : !editable
+          ? "Core Travian tribes are read-only — pick a created tribe"
+          : "Edit the selected tribe's roster and colors";
+  }
+  sidebarActions?.classList.toggle("hidden", !editing);
+  tableActions?.classList.toggle("hidden", !editing);
+  editPanel?.classList.toggle("hidden", !editing);
+  banner?.classList.toggle("hidden", !editing);
+  badge?.classList.toggle("hidden", !editing);
+
+  if (editing && tribe) {
+    const authorInput = /** @type {HTMLInputElement | null} */ ($("#edit-author"));
+    const nameInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-name"));
+    const themeInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-theme"));
+    const heroInput = /** @type {HTMLInputElement | null} */ ($("#edit-hero-name"));
+    const primaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-primary"));
+    const secondaryInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-secondary"));
+    if (authorInput && document.activeElement !== authorInput) {
+      authorInput.value = localStorage.getItem("tevel-edit-author") || "";
+    }
+    if (nameInput && document.activeElement !== nameInput) nameInput.value = tribe.name || "";
+    if (themeInput && document.activeElement !== themeInput) themeInput.value = tribe.theme || "";
+    if (heroInput && document.activeElement !== heroInput) heroInput.value = tribe.hero?.name || "Hero";
+    if (primaryInput && document.activeElement !== primaryInput) {
+      primaryInput.value = tribe.palette?.primary || "#3D5A80";
+    }
+    if (secondaryInput && document.activeElement !== secondaryInput) {
+      secondaryInput.value = tribe.palette?.secondary || "#E09F3E";
+    }
+  }
+  if (nameView) nameView.textContent = tribe?.name || "—";
+  if (themeView) themeView.textContent = tribe?.theme || "";
+}
+
+function escapeHtml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+async function renderEditHistory(tribeId) {
+  const host = $("#edit-history-list");
+  if (!host) return;
+  if (!tribeId) {
+    host.innerHTML = `<p class="muted">Select a tribe to see update history.</p>`;
+    return;
+  }
+
+  /** @type {object[]} */
+  let entries = [];
+  try {
+    const res = await fetch(`/api/tribes/${encodeURIComponent(tribeId)}/history?limit=20`);
+    const body = await res.json().catch(() => ({}));
+    if (res.ok && body.ok) entries = body.entries || [];
+  } catch {
+    /* offline */
+  }
+  const sessionEntries = listSessionHistory(tribeId, 20);
+  const byId = new Map();
+  for (const e of [...entries, ...sessionEntries]) {
+    if (e?.id && !byId.has(e.id)) byId.set(e.id, e);
+  }
+  const merged = [...byId.values()].sort((a, b) => String(b.at).localeCompare(String(a.at)));
+
+  if (!merged.length) {
+    host.innerHTML = `<p class="muted">No updates recorded for this tribe yet. Save an edit to start the history used for stat normalization.</p>`;
+    return;
+  }
+
+  host.innerHTML = merged
+    .slice(0, 20)
+    .map((e) => {
+      const when = e.at ? new Date(e.at).toLocaleString() : "—";
+      const who = e.author || "anonymous";
+      const src = e.source === "session" ? "session" : "backend";
+      const note = e.note ? ` · ${escapeHtml(e.note)}` : "";
+      return `<article class="edit-history-item">
+        <strong>${escapeHtml(who)} · ${escapeHtml(e.summary || "Update")}</strong>
+        <p class="muted">${escapeHtml(when)} · ${src}${note}</p>
+      </article>`;
+    })
+    .join("");
+}
+
+function enterEditMode() {
+  const tribe = tribeById(activeTribeId);
+  if (!tribe || !canEditTribe(tribe.id)) {
+    toast("This tribe cannot be edited (core roster is read-only)");
+    return;
+  }
+  if (compareMode) {
+    toast("Leave compare mode to edit a tribe");
+    return;
+  }
+  editMode = true;
+  editSnapshot = structuredClone(tribe);
+  setView("table");
+  syncEditChrome(tribe);
+  renderTroops(tribe);
+  renderHero(tribe);
+  renderEditHistory(tribe.id);
+  $("#tribe-edit-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  toast(`Editing ${tribe.name} — use the table cells, then Save changes`);
+}
+
+function exitEditMode(restore) {
+  if (!editMode) return;
+  const id = activeTribeId;
+  if (restore && editSnapshot && data?.tribes) {
+    const idx = data.tribes.findIndex((t) => t.id === id);
+    if (idx >= 0) data.tribes[idx] = editSnapshot;
+  }
+  editMode = false;
+  editSnapshot = null;
+  const tribe = tribeById(id);
+  syncEditChrome(tribe);
+  if (tribe) {
+    renderSummary(tribe);
+    renderTroops(tribe);
+    renderHero(tribe);
+    renderEditHistory(tribe.id);
+    if (activeView === "radar") renderRadarView(tribe);
+  }
+  renderNav();
+}
+
+function livePreviewEdits() {
+  if (!editMode) return;
+  const tribe = tribeById(activeTribeId);
+  if (!tribe) return;
+  const edits = readEditsFromTable($("#troop-tbody"), tribe);
+  const next = applyEditsToTribe(tribe, edits);
+  const idx = data.tribes.findIndex((t) => t.id === tribe.id);
+  if (idx >= 0) data.tribes[idx] = next;
+  // Preserve focus while refreshing derived columns
+  const active = document.activeElement;
+  const activeKey =
+    active instanceof HTMLInputElement && active.dataset.edit
+      ? `${active.closest("tr")?.dataset.troopRef}|${active.dataset.edit}|${active.selectionStart}`
+      : null;
+  renderSummary(next);
+  const paletteChanged =
+    next.palette?.primary !== tribe.palette?.primary ||
+    next.palette?.secondary !== tribe.palette?.secondary;
+  const metaChanged =
+    next.name !== tribe.name ||
+    next.theme !== tribe.theme ||
+    next.hero?.name !== tribe.hero?.name ||
+    paletteChanged;
+  if (paletteChanged) {
+    setAccent(next.palette?.primary);
+    renderPalette(next.palette);
+  }
+  if (metaChanged) {
+    renderHero(next);
+    // Keep sidebar name/dot in sync when tribe identity colors change.
+    const nameView = $("#tribe-name");
+    if (nameView && !document.body.classList.contains("tribe-editing")) {
+      nameView.textContent = next.name;
+    }
+    const btn = document.querySelector(`#tribe-nav .tribe-btn[data-id="${next.id}"]`);
+    if (btn) {
+      const dot = btn.querySelector(".tribe-dot");
+      if (dot && next.palette) {
+        /** @type {HTMLElement} */ (dot).style.background = `linear-gradient(135deg, ${next.palette.primary}, ${next.palette.secondary})`;
+      }
+      // Update label text node after the dot
+      const label = [...btn.childNodes].find((n) => n.nodeType === Node.TEXT_NODE);
+      if (label && next.name) label.textContent = next.name;
+    }
+  }
+  // Update derived cells in-place to avoid focus loss on every keystroke
+  for (const t of next.troops) {
+    const row = $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${t.ref}"]`);
+    if (!row) continue;
+    const defAvg = row.querySelector('[data-derived="defenseCombined"]');
+    const total = row.querySelector('[data-derived="totalCost"]');
+    if (defAvg) defAvg.textContent = String(t.metrics.defenseCombined);
+    if (total) total.textContent = t.totalCost.toLocaleString();
+    const trainInput = /** @type {HTMLInputElement | null} */ (row.querySelector('[data-edit="timeSeconds"]'));
+    if (trainInput) {
+      const formatted = formatTrainingTimeClient(t.training?.timeSeconds);
+      trainInput.title = `Train time in seconds (${formatted})`;
+    }
+  }
+  if (activeKey) {
+    const [ref, key] = activeKey.split("|");
+    const el = /** @type {HTMLInputElement | null} */ (
+      $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${ref}"] [data-edit="${key}"]`)
+    );
+    el?.focus();
+  }
+  void active;
+}
+
+async function commitEditMode() {
+  const tribe = tribeById(activeTribeId);
+  if (!tribe || !editMode) return;
+  const edits = readEditsFromTable($("#troop-tbody"), tribe);
+  if (!edits.name) {
+    toast("Tribe name is required");
+    return;
+  }
+  const next = applyEditsToTribe(tribe, edits);
+  const payload = tribeToUpdatePayload(next);
+  payload.beforeSnapshot = snapshotTribeForHistory(editSnapshot || tribe);
+  const buttons = [
+    /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe")),
+    /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe-menu")),
+  ].filter(Boolean);
+  for (const btn of buttons) {
+    btn.disabled = true;
+    btn.textContent = "Saving…";
+  }
+  try {
+    const author = payload.author || "anonymous";
+    if (author && author !== "anonymous") localStorage.setItem("tevel-edit-author", author);
+    const body = await saveTribeEdits(tribe.id, payload);
+    const saved = body.dashboardTribe || next;
+    // Session upsert no-ops on writable applet; required on Netlify.
+    upsertSessionTribe(saved);
+    if (body.historyEntry) appendSessionHistory(body.historyEntry);
+    window.__tevelPendingTribe = saved;
+    data = mergeTribeIntoData(data || { tribes: [] }, saved);
+    editMode = false;
+    editSnapshot = null;
+    try {
+      await loadData();
+    } catch {
+      data = mergeTribeIntoData(data || { tribes: [] }, saved);
+    }
+    recomputeGlobalScales();
+    selectTribe(saved.id);
+    toast(body.message || `Saved ${saved.name}`);
+  } catch (e) {
+    // Keep draft visible; session store only when enabled (Netlify).
+    upsertSessionTribe(next);
+    data = mergeTribeIntoData(data || { tribes: [] }, next);
+    toast(e.message || String(e));
+    syncEditChrome(next);
+    renderSummary(next);
+  } finally {
+    for (const btn of buttons) {
+      btn.disabled = false;
+      btn.textContent = "Save changes";
+    }
+  }
+}
+
 function selectTribe(id) {
+  if (editMode && id !== activeTribeId) {
+    if (!confirm("Discard unsaved tribe edits?")) return;
+    exitEditMode(true);
+  }
+
   activeTribeId = id;
   selectedTroopIndex = 0;
   hideAuxViews();
@@ -480,12 +830,12 @@ function selectTribe(id) {
   if (!tribe) return;
 
   setAccent(tribe.palette?.primary);
-  $("#tribe-name").textContent = tribe.name;
-  $("#tribe-theme").textContent = tribe.theme || "";
+  syncEditChrome(tribe);
   renderPalette(tribe.palette);
   renderSummary(tribe);
   renderTroops(tribe);
   renderHero(tribe);
+  renderEditHistory(tribe.id);
   if (activeView === "radar") renderRadarView(tribe);
   renderNav();
 }
@@ -1191,6 +1541,7 @@ function bindSort() {
         sortKey = key;
         sortDir = 1;
       }
+      if (editMode) livePreviewEdits();
       const tribe = tribeById(activeTribeId);
       if (tribe) renderTroops(tribe);
     });
@@ -1199,7 +1550,13 @@ function bindSort() {
 
 function bindUi() {
   document.querySelectorAll(".view-tab[data-view]").forEach((btn) => {
-    btn.addEventListener("click", () => setView(btn.dataset.view));
+    btn.addEventListener("click", () => {
+      if (editMode && btn.dataset.view !== "table") {
+        toast("Finish or cancel edit before switching views");
+        return;
+      }
+      setView(btn.dataset.view);
+    });
   });
 
   document.querySelectorAll("[data-compare-mode]").forEach((btn) => {
@@ -1213,17 +1570,43 @@ function bindUi() {
   bindStatNormalize();
 
   $("#unit-filter")?.addEventListener("input", () => {
+    if (editMode) livePreviewEdits();
     const tribe = tribeById(activeTribeId);
     if (tribe) renderTroops(tribe);
   });
 
   $("#btn-compare")?.addEventListener("click", () => {
     if (!data?.tribes?.length) return;
+    if (editMode) {
+      if (!confirm("Discard unsaved tribe edits and open compare?")) return;
+      exitEditMode(true);
+    }
     if (compareMode) selectTribe(activeTribeId || data.tribes[0].id);
     else showCompare();
   });
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
+
+  const startEdit = () => enterEditMode();
+  const cancelEdit = () => exitEditMode(true);
+  const saveEdit = () => commitEditMode();
+
+  $("#btn-edit-tribe-menu")?.addEventListener("click", startEdit);
+  $("#btn-save-tribe-menu")?.addEventListener("click", saveEdit);
+  $("#btn-cancel-edit-menu")?.addEventListener("click", cancelEdit);
+  $("#btn-cancel-edit")?.addEventListener("click", cancelEdit);
+  $("#btn-save-tribe")?.addEventListener("click", saveEdit);
+  $("#edit-author")?.addEventListener("change", () => {
+    const el = /** @type {HTMLInputElement | null} */ ($("#edit-author"));
+    if (el?.value?.trim()) localStorage.setItem("tevel-edit-author", el.value.trim());
+  });
+  $("#edit-tribe-name")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-tribe-name")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-theme")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-hero-name")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-hero-name")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-primary")?.addEventListener("input", () => livePreviewEdits());
+  $("#edit-tribe-secondary")?.addEventListener("input", () => livePreviewEdits());
 
   bindCompareCompactViewport();
 }
@@ -1274,7 +1657,7 @@ async function setServerStatus() {
     const res = await fetch("/api/status");
     if (res.ok) {
       const body = await res.json().catch(() => ({}));
-      if (body.mode === "netlify") {
+      if (body.mode === "netlify" || body.writable === false) {
         el.textContent = "Netlify — Add tribe is session-only";
         el.className = "server-status ok";
         return { ok: true, mode: "netlify", writable: false };
@@ -1289,6 +1672,15 @@ async function setServerStatus() {
   el.textContent = "Static mode — use npm start for rebuild";
   el.className = "server-status";
   return { ok: false, mode: "static", writable: false };
+}
+
+/**
+ * Writable applet → disk. Netlify → browser session localStorage.
+ * @param {{ ok?: boolean, writable?: boolean, mode?: string }} apiStatus
+ */
+function configureTribeStorage(apiStatus) {
+  apiWritable = Boolean(apiStatus?.ok && apiStatus.writable);
+  setSessionStoreEnabled(Boolean(apiStatus?.ok) && !apiWritable);
 }
 
 async function rebuildData(btn) {
@@ -1344,13 +1736,28 @@ async function init() {
 
   const apiStatus = await setServerStatus();
   serverHasApi = Boolean(apiStatus.ok);
+  configureTribeStorage(apiStatus);
   setAddTribeEnabled(serverHasApi);
   initAddTribeUi(
     toast,
-    async (tribeId) => {
-      await loadData();
+    async (tribeId, dashboardTribe) => {
+      if (dashboardTribe) {
+        window.__tevelPendingTribe = dashboardTribe;
+        data = mergeTribeIntoData(data || { tribes: [] }, dashboardTribe);
+      }
+      try {
+        await loadData();
+      } catch (e) {
+        // Keep the just-created tribe visible even if data.json rebuild lagged.
+        if (dashboardTribe) {
+          data = mergeTribeIntoData(data || { tribes: [] }, dashboardTribe);
+        } else {
+          throw e;
+        }
+      }
       recomputeGlobalScales();
       selectTribe(tribeId);
+      await refreshRemovableTribes();
     },
     async (removedId) => {
       if (removedId) removeSessionTribe(removedId);
@@ -1378,7 +1785,7 @@ async function init() {
     if (location.protocol === "file:") {
       toast("Loaded from disk — use npm start for full applet features.");
     } else if (apiStatus.mode === "netlify") {
-      toast("Netlify mode — browsing works; Add tribe is saved in this browser only.");
+      toast("Netlify mode — Add/Edit tribe saves in this browser session only.");
     }
   } catch (e) {
     showLoadError(e, serverHasApi);
