@@ -35,11 +35,22 @@ import {
   resolveBarColors,
 } from "./themes.js";
 import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
-import { mergeSessionTribes, removeSessionTribe } from "./session-tribes.js";
+import { mergeSessionTribes, removeSessionTribe, upsertSessionTribe } from "./session-tribes.js";
+import {
+  applyEditsToTribe,
+  canEditTribe,
+  readEditsFromTable,
+  saveTribeEdits,
+  tribeToUpdatePayload,
+} from "./tribe-edit.js";
 
 let data = null;
 let globalScales = null;
 let activeTribeId = null;
+/** @type {boolean} */
+let editMode = false;
+/** @type {object | null} snapshot before edit */
+let editSnapshot = null;
 let sortKey = "slot";
 let sortDir = 1;
 let compareMode = false;
@@ -169,6 +180,19 @@ function renderNav() {
     row.append(btn);
 
     if (serverHasApi && isRemovableTribe(tribe.id)) {
+      const edit = document.createElement("button");
+      edit.type = "button";
+      edit.className = "tribe-edit-btn";
+      edit.title = `Edit ${tribe.name}`;
+      edit.setAttribute("aria-label", `Edit ${tribe.name}`);
+      edit.textContent = "✎";
+      edit.addEventListener("click", (e) => {
+        e.stopPropagation();
+        selectTribe(tribe.id);
+        enterEditMode();
+      });
+      row.append(edit);
+
       const del = document.createElement("button");
       del.type = "button";
       del.className = "tribe-delete-btn";
@@ -178,6 +202,7 @@ function renderNav() {
       del.addEventListener("click", async (e) => {
         e.stopPropagation();
         try {
+          if (editMode) exitEditMode(false);
           await requestDeleteTribe(tribe.id, tribe.name);
         } catch (err) {
           toast(err.message || String(err));
@@ -277,15 +302,46 @@ function getTroopRows(tribe) {
   return rows;
 }
 
+function cellInput(key, value, { name = false } = {}) {
+  const v = value ?? 0;
+  const cls = name ? "cell-edit cell-edit-name" : "cell-edit";
+  const type = name ? "text" : "number";
+  const extra = name ? "" : 'min="0" step="1"';
+  return `<input class="${cls}" type="${type}" data-edit="${key}" value="${String(v).replace(/"/g, "&quot;")}" ${extra} />`;
+}
+
 function renderTroops(tribe) {
-  const maxAtk = tribe.summary.maxAttack || 1;
+  const maxAtk = tribe.summary?.maxAttack || 1;
   const rows = getTroopRows(tribe);
   const tbody = $("#troop-tbody");
+  const editing = editMode && canEditTribe(tribe.id);
   tbody.innerHTML = rows
     .map((t) => {
       const m = t.metrics;
       const idx = tribe.troops.indexOf(t);
-      return `<tr data-troop-index="${idx}" class="troop-row">
+      if (editing) {
+        return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row editing">
+        <td class="troop-logo-col" data-logo-slot="${idx}"></td>
+        <td>${t.slot}</td>
+        <td>${cellInput("name", t.name, { name: true })}</td>
+        <td><span class="role-badge">${t.role}</span></td>
+        <td class="num">${cellInput("attack", t.stats?.attack)}</td>
+        <td class="num">${cellInput("defenseInfantry", t.stats?.defenseInfantry)}</td>
+        <td class="num">${cellInput("defenseCavalry", t.stats?.defenseCavalry)}</td>
+        <td class="num">${m.defenseCombined}</td>
+        <td class="num">${cellInput("speed", t.stats?.speed)}</td>
+        <td class="num">${cellInput("carry", t.stats?.carry)}</td>
+        <td class="num">${cellInput("cropUpkeep", t.cropUpkeep)}</td>
+        <td class="num">${cellInput("wood", t.cost?.wood)}</td>
+        <td class="num">${cellInput("clay", t.cost?.clay)}</td>
+        <td class="num">${cellInput("iron", t.cost?.iron)}</td>
+        <td class="num">${cellInput("crop", t.cost?.crop)}</td>
+        <td class="num">${t.totalCost.toLocaleString()}</td>
+        <td class="num">${t.training?.timeFormatted ?? "—"}</td>
+        <td>${t.training?.buildingLabel ?? "—"}</td>
+      </tr>`;
+      }
+      return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row">
         <td class="troop-logo-col" data-logo-slot="${idx}"></td>
         <td>${t.slot}</td>
         <td><strong>${t.name}</strong></td>
@@ -313,11 +369,22 @@ function renderTroops(tribe) {
     if (cell) mountTroopLogoCell(cell, t, tribe.palette);
   });
 
+  if (editing) {
+    tbody.querySelectorAll("input.cell-edit").forEach((el) => {
+      el.addEventListener("click", (e) => e.stopPropagation());
+      el.addEventListener("change", () => livePreviewEdits());
+      el.addEventListener("input", () => {
+        if (/** @type {HTMLInputElement} */ (el).type === "number") livePreviewEdits();
+      });
+    });
+  }
+
   tbody.querySelectorAll(".troop-row").forEach((row) => {
-    row.addEventListener("click", () => {
+    row.addEventListener("click", (e) => {
+      if (editing && e.target instanceof HTMLElement && e.target.closest("input")) return;
       selectedTroopIndex = Number(row.dataset.troopIndex);
-      if (activeView === "radar") renderRadarView(tribe);
-      else setView("radar");
+      if (activeView === "radar") renderRadarView(tribeById(activeTribeId) || tribe);
+      else if (!editing) setView("radar");
     });
   });
 }
@@ -471,7 +538,159 @@ function renderHero(tribe) {
   `;
 }
 
+function syncEditChrome(tribe) {
+  const editable = serverHasApi && tribe && canEditTribe(tribe.id);
+  const btnEdit = $("#btn-edit-tribe");
+  const btnSave = $("#btn-save-tribe");
+  const btnCancel = $("#btn-cancel-edit");
+  const fields = $("#tribe-edit-fields");
+  const banner = $("#tribe-edit-banner");
+  const nameView = $("#tribe-name");
+  const themeView = $("#tribe-theme");
+
+  document.body.classList.toggle("tribe-editing", Boolean(editMode && editable));
+  btnEdit?.classList.toggle("hidden", !editable || editMode);
+  btnSave?.classList.toggle("hidden", !editMode || !editable);
+  btnCancel?.classList.toggle("hidden", !editMode || !editable);
+  fields?.classList.toggle("hidden", !editMode || !editable);
+  banner?.classList.toggle("hidden", !editMode || !editable);
+
+  if (editMode && editable && tribe) {
+    const nameInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-name"));
+    const themeInput = /** @type {HTMLInputElement | null} */ ($("#edit-tribe-theme"));
+    if (nameInput && document.activeElement !== nameInput) nameInput.value = tribe.name || "";
+    if (themeInput && document.activeElement !== themeInput) themeInput.value = tribe.theme || "";
+  }
+  if (nameView) nameView.textContent = tribe?.name || "—";
+  if (themeView) themeView.textContent = tribe?.theme || "";
+}
+
+function enterEditMode() {
+  const tribe = tribeById(activeTribeId);
+  if (!tribe || !canEditTribe(tribe.id)) {
+    toast("This tribe cannot be edited (core roster is read-only)");
+    return;
+  }
+  if (compareMode) {
+    toast("Leave compare mode to edit a tribe");
+    return;
+  }
+  editMode = true;
+  editSnapshot = structuredClone(tribe);
+  setView("table");
+  syncEditChrome(tribe);
+  renderTroops(tribe);
+  toast(`Editing ${tribe.name} — tune stats, then Save`);
+}
+
+function exitEditMode(restore) {
+  if (!editMode) return;
+  const id = activeTribeId;
+  if (restore && editSnapshot && data?.tribes) {
+    const idx = data.tribes.findIndex((t) => t.id === id);
+    if (idx >= 0) data.tribes[idx] = editSnapshot;
+  }
+  editMode = false;
+  editSnapshot = null;
+  const tribe = tribeById(id);
+  syncEditChrome(tribe);
+  if (tribe) {
+    renderSummary(tribe);
+    renderTroops(tribe);
+    renderHero(tribe);
+    if (activeView === "radar") renderRadarView(tribe);
+  }
+  renderNav();
+}
+
+function livePreviewEdits() {
+  if (!editMode) return;
+  const tribe = tribeById(activeTribeId);
+  if (!tribe) return;
+  const edits = readEditsFromTable($("#troop-tbody"), tribe);
+  const next = applyEditsToTribe(tribe, edits);
+  const idx = data.tribes.findIndex((t) => t.id === tribe.id);
+  if (idx >= 0) data.tribes[idx] = next;
+  // Preserve focus while refreshing derived columns
+  const active = document.activeElement;
+  const activeKey =
+    active instanceof HTMLInputElement && active.dataset.edit
+      ? `${active.closest("tr")?.dataset.troopRef}|${active.dataset.edit}|${active.selectionStart}`
+      : null;
+  renderSummary(next);
+  // Update computed cells in-place to avoid focus loss on every keystroke
+  for (const t of next.troops) {
+    const row = $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${t.ref}"]`);
+    if (!row) continue;
+    const cells = row.querySelectorAll("td.num");
+    // layout: atk, defI, defC, defAvg, speed, carry, upkeep, W, C, I, Cr, total, train
+    if (cells[3]) cells[3].textContent = String(t.metrics.defenseCombined);
+    if (cells[11]) cells[11].textContent = t.totalCost.toLocaleString();
+  }
+  if (activeKey) {
+    const [ref, key] = activeKey.split("|");
+    const el = /** @type {HTMLInputElement | null} */ (
+      $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${ref}"] [data-edit="${key}"]`)
+    );
+    el?.focus();
+  }
+  void active;
+}
+
+async function commitEditMode() {
+  const tribe = tribeById(activeTribeId);
+  if (!tribe || !editMode) return;
+  const edits = readEditsFromTable($("#troop-tbody"), tribe);
+  if (!edits.name) {
+    toast("Tribe name is required");
+    return;
+  }
+  const next = applyEditsToTribe(tribe, edits);
+  const payload = tribeToUpdatePayload(next);
+  const btn = /** @type {HTMLButtonElement | null} */ ($("#btn-save-tribe"));
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Saving…";
+  }
+  try {
+    const body = await saveTribeEdits(tribe.id, payload);
+    const saved = body.dashboardTribe || next;
+    upsertSessionTribe(saved);
+    if (data?.tribes) {
+      const idx = data.tribes.findIndex((t) => t.id === tribe.id);
+      if (idx >= 0) data.tribes[idx] = saved;
+      else data.tribes.push(saved);
+    }
+    editMode = false;
+    editSnapshot = null;
+    await loadData();
+    recomputeGlobalScales();
+    selectTribe(saved.id);
+    toast(body.message || `Saved ${saved.name}`);
+  } catch (e) {
+    // Keep local draft in the table even if API fails (e.g. offline session tweak)
+    upsertSessionTribe(next);
+    if (data?.tribes) {
+      const idx = data.tribes.findIndex((t) => t.id === tribe.id);
+      if (idx >= 0) data.tribes[idx] = next;
+    }
+    toast(e.message || String(e));
+    syncEditChrome(next);
+    renderSummary(next);
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Save";
+    }
+  }
+}
+
 function selectTribe(id) {
+  if (editMode && id !== activeTribeId) {
+    if (!confirm("Discard unsaved tribe edits?")) return;
+    exitEditMode(true);
+  }
+
   activeTribeId = id;
   selectedTroopIndex = 0;
   hideAuxViews();
@@ -480,8 +699,7 @@ function selectTribe(id) {
   if (!tribe) return;
 
   setAccent(tribe.palette?.primary);
-  $("#tribe-name").textContent = tribe.name;
-  $("#tribe-theme").textContent = tribe.theme || "";
+  syncEditChrome(tribe);
   renderPalette(tribe.palette);
   renderSummary(tribe);
   renderTroops(tribe);
@@ -1191,6 +1409,7 @@ function bindSort() {
         sortKey = key;
         sortDir = 1;
       }
+      if (editMode) livePreviewEdits();
       const tribe = tribeById(activeTribeId);
       if (tribe) renderTroops(tribe);
     });
@@ -1199,7 +1418,13 @@ function bindSort() {
 
 function bindUi() {
   document.querySelectorAll(".view-tab[data-view]").forEach((btn) => {
-    btn.addEventListener("click", () => setView(btn.dataset.view));
+    btn.addEventListener("click", () => {
+      if (editMode && btn.dataset.view !== "table") {
+        toast("Finish or cancel edit before switching views");
+        return;
+      }
+      setView(btn.dataset.view);
+    });
   });
 
   document.querySelectorAll("[data-compare-mode]").forEach((btn) => {
@@ -1213,17 +1438,28 @@ function bindUi() {
   bindStatNormalize();
 
   $("#unit-filter")?.addEventListener("input", () => {
+    if (editMode) livePreviewEdits();
     const tribe = tribeById(activeTribeId);
     if (tribe) renderTroops(tribe);
   });
 
   $("#btn-compare")?.addEventListener("click", () => {
     if (!data?.tribes?.length) return;
+    if (editMode) {
+      if (!confirm("Discard unsaved tribe edits and open compare?")) return;
+      exitEditMode(true);
+    }
     if (compareMode) selectTribe(activeTribeId || data.tribes[0].id);
     else showCompare();
   });
 
   $("#btn-refresh")?.addEventListener("click", () => rebuildData($("#btn-refresh")));
+
+  $("#btn-edit-tribe")?.addEventListener("click", () => enterEditMode());
+  $("#btn-cancel-edit")?.addEventListener("click", () => exitEditMode(true));
+  $("#btn-save-tribe")?.addEventListener("click", () => commitEditMode());
+  $("#edit-tribe-name")?.addEventListener("change", () => livePreviewEdits());
+  $("#edit-tribe-theme")?.addEventListener("change", () => livePreviewEdits());
 
   bindCompareCompactViewport();
 }

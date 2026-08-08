@@ -162,6 +162,92 @@ body {
   background: color-mix(in srgb, var(--negative, #c44) 10%, transparent);
 }
 
+.tribe-edit-btn {
+  flex: 0 0 auto;
+  width: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tribe-edit-btn:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tribe-edit-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tribe-edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  max-width: 420px;
+}
+
+.tribe-edit-fields input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+body.tribe-editing #tribe-name,
+body.tribe-editing #tribe-theme {
+  display: none;
+}
+
+.tribe-edit-banner {
+  margin: 10px 0 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.data-table input.cell-edit {
+  width: 100%;
+  min-width: 3.2rem;
+  max-width: 7rem;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table input.cell-edit-name {
+  min-width: 8rem;
+  max-width: 14rem;
+}
+
+.data-table tr.troop-row.editing td.num {
+  vertical-align: middle;
+}
+
 .sidebar-foot {
   padding: 12px;
   border-top: 1px solid var(--border);

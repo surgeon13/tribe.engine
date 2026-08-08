@@ -53,13 +53,33 @@
             <div class="topbar-title">
               <h2 id="tribe-name">—</h2>
               <p id="tribe-theme" class="muted"></p>
+              <div id="tribe-edit-fields" class="tribe-edit-fields hidden">
+                <label>
+                  <span class="sr-only">Tribe name</span>
+                  <input id="edit-tribe-name" type="text" autocomplete="off" />
+                </label>
+                <label>
+                  <span class="sr-only">Theme</span>
+                  <input id="edit-tribe-theme" type="text" autocomplete="off" />
+                </label>
+              </div>
             </div>
             <div class="view-tabs" role="tablist">
               <button type="button" class="view-tab active" data-view="table" role="tab">Table</button>
               <button type="button" class="view-tab" data-view="radar" role="tab">Stat graphs</button>
             </div>
-            <div class="palette-swatch" id="palette-swatch"></div>
+            <div class="topbar-actions">
+              <div id="tribe-edit-actions" class="tribe-edit-actions">
+                <button type="button" id="btn-edit-tribe" class="btn ghost hidden">Edit tribe</button>
+                <button type="button" id="btn-save-tribe" class="btn primary hidden">Save</button>
+                <button type="button" id="btn-cancel-edit" class="btn ghost hidden">Cancel</button>
+              </div>
+              <div class="palette-swatch" id="palette-swatch"></div>
+            </div>
           </div>
+          <p id="tribe-edit-banner" class="tribe-edit-banner hidden" role="status">
+            Edit mode — change unit names, combat stats, and costs, then Save. Core Travian tribes stay read-only.
+          </p>
         </header>
 
         <section id="view-single">

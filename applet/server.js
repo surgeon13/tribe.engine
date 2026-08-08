@@ -87,14 +87,18 @@ export function startServer(port = 3456) {
         });
         if (result.status === 204) {
           res.writeHead(204, {
-            "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Headers": "Content-Type",
             ...(result.headers || {}),
           });
           res.end();
           return;
         }
-        json(res, result.status, result.body, result.headers || {});
+        json(res, result.status, result.body, {
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+          ...(result.headers || {}),
+        });
         return;
       }
 
