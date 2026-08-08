@@ -44,8 +44,13 @@ import {
 } from "./session-tribes.js";
 import {
   applyEditsToTribe,
+  BUILDING_OPTIONS,
   canEditTribe,
+  cellInputHtml,
+  cellSelectHtml,
+  formatTrainingTimeClient,
   readEditsFromTable,
+  ROLE_OPTIONS,
   saveTribeEdits,
   tribeToUpdatePayload,
 } from "./tribe-edit.js";
@@ -314,14 +319,6 @@ function getTroopRows(tribe) {
   return rows;
 }
 
-function cellInput(key, value, { name = false } = {}) {
-  const v = value ?? 0;
-  const cls = name ? "cell-edit cell-edit-name" : "cell-edit";
-  const type = name ? "text" : "number";
-  const extra = name ? "" : 'min="0" step="1"';
-  return `<input class="${cls}" type="${type}" data-edit="${key}" value="${String(v).replace(/"/g, "&quot;")}" ${extra} />`;
-}
-
 function renderTroops(tribe) {
   const maxAtk = tribe.summary?.maxAttack || 1;
   const rows = getTroopRows(tribe);
@@ -332,25 +329,26 @@ function renderTroops(tribe) {
       const m = t.metrics;
       const idx = tribe.troops.indexOf(t);
       if (editing) {
+        const trainSecs = t.training?.timeSeconds ?? 0;
         return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row editing">
         <td class="troop-logo-col" data-logo-slot="${idx}"></td>
         <td>${t.slot}</td>
-        <td>${cellInput("name", t.name, { name: true })}</td>
-        <td><span class="role-badge">${t.role}</span></td>
-        <td class="num">${cellInput("attack", t.stats?.attack)}</td>
-        <td class="num">${cellInput("defenseInfantry", t.stats?.defenseInfantry)}</td>
-        <td class="num">${cellInput("defenseCavalry", t.stats?.defenseCavalry)}</td>
-        <td class="num">${m.defenseCombined}</td>
-        <td class="num">${cellInput("speed", t.stats?.speed)}</td>
-        <td class="num">${cellInput("carry", t.stats?.carry)}</td>
-        <td class="num">${cellInput("cropUpkeep", t.cropUpkeep)}</td>
-        <td class="num">${cellInput("wood", t.cost?.wood)}</td>
-        <td class="num">${cellInput("clay", t.cost?.clay)}</td>
-        <td class="num">${cellInput("iron", t.cost?.iron)}</td>
-        <td class="num">${cellInput("crop", t.cost?.crop)}</td>
-        <td class="num">${t.totalCost.toLocaleString()}</td>
-        <td class="num">${t.training?.timeFormatted ?? "—"}</td>
-        <td>${t.training?.buildingLabel ?? "—"}</td>
+        <td>${cellInputHtml("name", t.name, { name: true })}</td>
+        <td>${cellSelectHtml("role", t.role, ROLE_OPTIONS)}</td>
+        <td class="num">${cellInputHtml("attack", t.stats?.attack)}</td>
+        <td class="num">${cellInputHtml("defenseInfantry", t.stats?.defenseInfantry)}</td>
+        <td class="num">${cellInputHtml("defenseCavalry", t.stats?.defenseCavalry)}</td>
+        <td class="num" data-derived="defenseCombined">${m.defenseCombined}</td>
+        <td class="num">${cellInputHtml("speed", t.stats?.speed)}</td>
+        <td class="num">${cellInputHtml("carry", t.stats?.carry)}</td>
+        <td class="num">${cellInputHtml("cropUpkeep", t.cropUpkeep)}</td>
+        <td class="num">${cellInputHtml("wood", t.cost?.wood)}</td>
+        <td class="num">${cellInputHtml("clay", t.cost?.clay)}</td>
+        <td class="num">${cellInputHtml("iron", t.cost?.iron)}</td>
+        <td class="num">${cellInputHtml("crop", t.cost?.crop)}</td>
+        <td class="num" data-derived="totalCost">${t.totalCost.toLocaleString()}</td>
+        <td class="num" title="${formatTrainingTimeClient(trainSecs)}">${cellInputHtml("timeSeconds", trainSecs, { title: `Train time in seconds (${formatTrainingTimeClient(trainSecs)})` })}</td>
+        <td>${cellSelectHtml("building", t.training?.building || "barracks", BUILDING_OPTIONS)}</td>
       </tr>`;
       }
       return `<tr data-troop-index="${idx}" data-troop-ref="${t.ref}" class="troop-row">
@@ -382,18 +380,24 @@ function renderTroops(tribe) {
   });
 
   if (editing) {
-    tbody.querySelectorAll("input.cell-edit").forEach((el) => {
+    tbody.querySelectorAll("input.cell-edit, select.cell-edit").forEach((el) => {
       el.addEventListener("click", (e) => e.stopPropagation());
       el.addEventListener("change", () => livePreviewEdits());
       el.addEventListener("input", () => {
-        if (/** @type {HTMLInputElement} */ (el).type === "number") livePreviewEdits();
+        if (el instanceof HTMLInputElement && el.type === "number") livePreviewEdits();
       });
     });
   }
 
   tbody.querySelectorAll(".troop-row").forEach((row) => {
     row.addEventListener("click", (e) => {
-      if (editing && e.target instanceof HTMLElement && e.target.closest("input")) return;
+      if (
+        editing &&
+        e.target instanceof HTMLElement &&
+        e.target.closest("input, select")
+      ) {
+        return;
+      }
       selectedTroopIndex = Number(row.dataset.troopIndex);
       if (activeView === "radar") renderRadarView(tribeById(activeTribeId) || tribe);
       else if (!editing) setView("radar");
@@ -630,14 +634,19 @@ function livePreviewEdits() {
       ? `${active.closest("tr")?.dataset.troopRef}|${active.dataset.edit}|${active.selectionStart}`
       : null;
   renderSummary(next);
-  // Update computed cells in-place to avoid focus loss on every keystroke
+  // Update derived cells in-place to avoid focus loss on every keystroke
   for (const t of next.troops) {
     const row = $("#troop-tbody")?.querySelector(`tr[data-troop-ref="${t.ref}"]`);
     if (!row) continue;
-    const cells = row.querySelectorAll("td.num");
-    // layout: atk, defI, defC, defAvg, speed, carry, upkeep, W, C, I, Cr, total, train
-    if (cells[3]) cells[3].textContent = String(t.metrics.defenseCombined);
-    if (cells[11]) cells[11].textContent = t.totalCost.toLocaleString();
+    const defAvg = row.querySelector('[data-derived="defenseCombined"]');
+    const total = row.querySelector('[data-derived="totalCost"]');
+    if (defAvg) defAvg.textContent = String(t.metrics.defenseCombined);
+    if (total) total.textContent = t.totalCost.toLocaleString();
+    const trainInput = /** @type {HTMLInputElement | null} */ (row.querySelector('[data-edit="timeSeconds"]'));
+    if (trainInput) {
+      const formatted = formatTrainingTimeClient(t.training?.timeSeconds);
+      trainInput.title = `Train time in seconds (${formatted})`;
+    }
   }
   if (activeKey) {
     const [ref, key] = activeKey.split("|");

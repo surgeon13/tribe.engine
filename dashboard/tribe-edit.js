@@ -1,9 +1,34 @@
 /**
- * Edit mode for created (non-core) tribes — tune troop names, combat stats, and costs.
+ * Edit mode for created (non-core) tribes — tune every stored troop-table field.
  */
 
 import { isRemovableTribe } from "./tribe-create.js";
 import { upsertSessionTribe } from "./session-tribes.js";
+
+export const ROLE_OPTIONS = ["infantry", "scout", "cavalry", "siege", "chief", "settler"];
+
+export const BUILDING_OPTIONS = [
+  { id: "barracks", label: "Barracks" },
+  { id: "stable", label: "Stable" },
+  { id: "workshop", label: "Workshop" },
+  { id: "residence", label: "Residence / Palace" },
+  { id: "hero_mansion", label: "Hero's Mansion" },
+];
+
+const BUILDING_LABELS = Object.fromEntries(BUILDING_OPTIONS.map((b) => [b.id, b.label]));
+
+/**
+ * @param {number | null | undefined} seconds
+ */
+export function formatTrainingTimeClient(seconds) {
+  if (seconds == null || seconds <= 0) return "—";
+  const h = Math.floor(seconds / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = seconds % 60;
+  const pad = (n) => String(n).padStart(2, "0");
+  if (h > 0) return `${h}:${pad(m)}:${pad(s)}`;
+  return `${m}:${pad(s)}`;
+}
 
 /**
  * @param {{ attack?: number, defenseInfantry?: number, defenseCavalry?: number, speed?: number, carry?: number }} stats
@@ -32,7 +57,7 @@ export function computeMetricsClient(stats = {}, cropUpkeep = 1, training = {}, 
     defensePerCrop:
       upkeep > 0 ? Math.round(((defInf + defCav) / upkeep) * 10) / 10 : defInf + defCav,
     trainTimeSeconds,
-    trainTimeFormatted: training?.timeFormatted ?? "—",
+    trainTimeFormatted: training?.timeFormatted ?? formatTrainingTimeClient(trainTimeSeconds),
     resourceCost: resourceCost || 0,
   };
 }
@@ -70,7 +95,7 @@ export function summarizeTribeClient(troops) {
 
 /**
  * @param {object} tribe
- * @param {{ name?: string, theme?: string, troops?: Array<{ ref: string, name?: string, stats?: object, cost?: object, cropUpkeep?: number }> }} edits
+ * @param {{ name?: string, theme?: string, troops?: Array<object> }} edits
  */
 export function applyEditsToTribe(tribe, edits) {
   const next = structuredClone(tribe);
@@ -81,9 +106,21 @@ export function applyEditsToTribe(tribe, edits) {
     const patch = byRef.get(troop.ref);
     if (!patch) continue;
     if (patch.name != null && String(patch.name).trim()) troop.name = String(patch.name).trim();
+    if (patch.role) troop.role = String(patch.role);
     if (patch.stats) troop.stats = { ...(troop.stats || {}), ...patch.stats };
     if (patch.cost) troop.cost = { ...(troop.cost || {}), ...patch.cost };
     if (patch.cropUpkeep != null) troop.cropUpkeep = Number(patch.cropUpkeep);
+    if (patch.training) {
+      const building = String(patch.training.building || troop.training?.building || "barracks");
+      const timeSeconds = Number(patch.training.timeSeconds ?? troop.training?.timeSeconds ?? 0);
+      troop.training = {
+        ...(troop.training || {}),
+        building,
+        buildingLabel: BUILDING_LABELS[building] || building,
+        timeSeconds,
+        timeFormatted: formatTrainingTimeClient(timeSeconds),
+      };
+    }
     troop.totalCost = totalCost(troop.cost);
     troop.metrics = computeMetricsClient(
       troop.stats,
@@ -97,7 +134,7 @@ export function applyEditsToTribe(tribe, edits) {
 }
 
 /**
- * Collect troopOverrides payload for PUT /api/tribes/:id from an edited tribe.
+ * Collect troopOverrides + training payload for PUT /api/tribes/:id.
  * @param {object} tribe
  */
 export function tribeToUpdatePayload(tribe) {
@@ -105,10 +142,17 @@ export function tribeToUpdatePayload(tribe) {
   const troopOverrides = {};
   /** @type {Record<string, string>} */
   const troopNames = {};
+  /** @type {Record<string, { building: string, timeSeconds: number }>} */
+  const training = {};
   for (const t of tribe.troops || []) {
     troopNames[t.ref] = t.name;
+    training[t.ref] = {
+      building: t.training?.building || "barracks",
+      timeSeconds: Number(t.training?.timeSeconds) || 0,
+    };
     troopOverrides[t.ref] = {
       name: t.name,
+      role: t.role,
       stats: {
         attack: Number(t.stats?.attack) || 0,
         defenseInfantry: Number(t.stats?.defenseInfantry) || 0,
@@ -123,6 +167,7 @@ export function tribeToUpdatePayload(tribe) {
         crop: Number(t.cost?.crop) || 0,
       },
       cropUpkeep: Number(t.cropUpkeep) || 0,
+      training: training[t.ref],
     };
   }
   return {
@@ -134,6 +179,7 @@ export function tribeToUpdatePayload(tribe) {
       : undefined,
     troopNames,
     troopOverrides,
+    training,
     heroName: tribe.hero?.name,
     historicalContext: tribe.theme,
   };
@@ -151,7 +197,6 @@ export async function saveTribeEdits(tribeId, payload) {
   });
   const body = await res.json().catch(() => ({}));
   if (!res.ok || !body.ok) throw new Error(body.error || res.statusText || "Save failed");
-  // Session upsert is a no-op on the writable applet; required on Netlify.
   if (body.dashboardTribe) {
     upsertSessionTribe(body.dashboardTribe);
   }
@@ -160,6 +205,44 @@ export async function saveTribeEdits(tribeId, payload) {
 
 export function canEditTribe(id) {
   return Boolean(id) && isRemovableTribe(id);
+}
+
+function escapeAttr(s) {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;");
+}
+
+/**
+ * @param {string} key
+ * @param {string | number} value
+ * @param {{ name?: boolean, title?: string }} [opts]
+ */
+export function cellInputHtml(key, value, opts = {}) {
+  const v = value ?? (opts.name ? "" : 0);
+  const cls = opts.name ? "cell-edit cell-edit-name" : "cell-edit";
+  const type = opts.name ? "text" : "number";
+  const extra = opts.name ? "" : 'min="0" step="1"';
+  const title = opts.title ? ` title="${escapeAttr(opts.title)}"` : "";
+  return `<input class="${cls}" type="${type}" data-edit="${key}" value="${escapeAttr(v)}" ${extra}${title} />`;
+}
+
+/**
+ * @param {string} key
+ * @param {string} value
+ * @param {Array<{ id: string, label?: string } | string>} options
+ */
+export function cellSelectHtml(key, value, options) {
+  const opts = options
+    .map((o) => {
+      const id = typeof o === "string" ? o : o.id;
+      const label = typeof o === "string" ? o : o.label || o.id;
+      const sel = id === value ? " selected" : "";
+      return `<option value="${escapeAttr(id)}"${sel}>${escapeAttr(label)}</option>`;
+    })
+    .join("");
+  return `<select class="cell-edit cell-edit-select" data-edit="${key}">${opts}</select>`;
 }
 
 /**
@@ -174,19 +257,32 @@ export function readEditsFromTable(tbody, tribe) {
       return {
         ref: t.ref,
         name: t.name,
+        role: t.role,
         stats: { ...t.stats },
         cost: { ...t.cost },
         cropUpkeep: t.cropUpkeep,
+        training: {
+          building: t.training?.building,
+          timeSeconds: t.training?.timeSeconds,
+        },
       };
     }
-    const num = (key) => {
-      const el = /** @type {HTMLInputElement | null} */ (row.querySelector(`[data-edit="${key}"]`));
-      return el ? Number(el.value) : undefined;
+    const val = (key) => {
+      const el = /** @type {HTMLInputElement | HTMLSelectElement | null} */ (
+        row.querySelector(`[data-edit="${key}"]`)
+      );
+      return el ? el.value : undefined;
     };
-    const nameEl = /** @type {HTMLInputElement | null} */ (row.querySelector(`[data-edit="name"]`));
+    const num = (key) => {
+      const raw = val(key);
+      return raw === undefined || raw === "" ? undefined : Number(raw);
+    };
+    const building = val("building") || t.training?.building || "barracks";
+    const timeSeconds = num("timeSeconds") ?? t.training?.timeSeconds ?? 0;
     return {
       ref: t.ref,
-      name: nameEl?.value?.trim() || t.name,
+      name: (val("name") || "").trim() || t.name,
+      role: val("role") || t.role,
       stats: {
         attack: num("attack") ?? t.stats?.attack,
         defenseInfantry: num("defenseInfantry") ?? t.stats?.defenseInfantry,
@@ -201,6 +297,7 @@ export function readEditsFromTable(tbody, tribe) {
         crop: num("crop") ?? t.cost?.crop,
       },
       cropUpkeep: num("cropUpkeep") ?? t.cropUpkeep,
+      training: { building, timeSeconds },
     };
   });
 

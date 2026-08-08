@@ -226,7 +226,8 @@ body.tribe-editing #tribe-theme {
   font-size: 13px;
 }
 
-.data-table input.cell-edit {
+.data-table input.cell-edit,
+.data-table select.cell-edit {
   width: 100%;
   min-width: 3.2rem;
   max-width: 7rem;
@@ -242,6 +243,11 @@ body.tribe-editing #tribe-theme {
 .data-table input.cell-edit-name {
   min-width: 8rem;
   max-width: 14rem;
+}
+
+.data-table select.cell-edit-select {
+  min-width: 6.5rem;
+  max-width: 10rem;
 }
 
 .data-table tr.troop-row.editing td.num {
