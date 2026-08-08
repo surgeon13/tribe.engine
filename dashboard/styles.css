@@ -278,8 +278,8 @@ body.tribe-editing #tribe-theme {
 }
 
 .data-table input.cell-edit-name {
-  min-width: 8rem;
-  max-width: 14rem;
+  min-width: 10rem;
+  max-width: 18rem;
 }
 
 .data-table select.cell-edit-select {
