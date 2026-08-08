@@ -33,9 +33,15 @@ export async function handler(event) {
       return { statusCode: 204, headers: corsHeaders(), body: "" };
     }
 
+    // Prefer path from redirect splat / raw URL — event.path can vary by runtime.
+    const pathname =
+      event.path ||
+      (event.rawUrl ? new URL(event.rawUrl).pathname : "/api") ||
+      "/api";
+
     const result = await handleApiRequest({
       method: event.httpMethod,
-      pathname: event.path,
+      pathname,
       query: event.queryStringParameters || {},
       body: event.httpMethod === "GET" || event.httpMethod === "DELETE" ? undefined : parseBody(event),
       persist: false,
