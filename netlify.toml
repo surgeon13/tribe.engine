@@ -1,0 +1,28 @@
+# Tevel Tribe Engine — GitHub → Netlify
+#
+# Publish the dashboard + /assets (not the repo root — index.html lives in dashboard/).
+# /api/* is handled by a serverless function (read + name preview; session create on Netlify).
+
+[build]
+  command = "npm run build:netlify"
+  publish = "netlify-dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  node_bundler = "esbuild"
+  # Ship data JSON so list/create preview can resolve tribes without a local applet.
+  included_files = ["data/**", "dashboard/data.json", "lib/**"]
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
