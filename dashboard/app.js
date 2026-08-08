@@ -35,6 +35,7 @@ import {
   resolveBarColors,
 } from "./themes.js";
 import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
+import { mergeSessionTribes, removeSessionTribe } from "./session-tribes.js";
 
 let data = null;
 let globalScales = null;
@@ -123,6 +124,8 @@ async function loadData() {
         : "No tribes in dashboard data. Run: npm run build:data"
     );
   }
+
+  data = mergeSessionTribes(data);
 }
 
 function setAccent(hex) {
@@ -1270,16 +1273,22 @@ async function setServerStatus() {
   try {
     const res = await fetch("/api/status");
     if (res.ok) {
+      const body = await res.json().catch(() => ({}));
+      if (body.mode === "netlify") {
+        el.textContent = "Netlify — Add tribe is session-only";
+        el.className = "server-status ok";
+        return { ok: true, mode: "netlify", writable: false };
+      }
       el.textContent = "Applet connected";
       el.className = "server-status ok";
-      return true;
+      return { ok: true, mode: "applet", writable: true };
     }
   } catch {
     /* static file mode */
   }
   el.textContent = "Static mode — use npm start for rebuild";
   el.className = "server-status";
-  return false;
+  return { ok: false, mode: "static", writable: false };
 }
 
 async function rebuildData(btn) {
@@ -1333,7 +1342,8 @@ async function init() {
   bindUi();
   initUiTheme();
 
-  serverHasApi = await setServerStatus();
+  const apiStatus = await setServerStatus();
+  serverHasApi = Boolean(apiStatus.ok);
   setAddTribeEnabled(serverHasApi);
   initAddTribeUi(
     toast,
@@ -1342,7 +1352,8 @@ async function init() {
       recomputeGlobalScales();
       selectTribe(tribeId);
     },
-    async () => {
+    async (removedId) => {
+      if (removedId) removeSessionTribe(removedId);
       await loadData();
       recomputeGlobalScales();
       const fallback = data?.tribes?.[0]?.id;
@@ -1361,9 +1372,13 @@ async function init() {
     selectTribe(data.tribes[0].id);
     if (!serverHasApi) {
       $("#btn-refresh").textContent = "Rebuild (needs applet)";
+    } else if (apiStatus.mode === "netlify") {
+      $("#btn-refresh").textContent = "Rebuild (via GitHub deploy)";
     }
     if (location.protocol === "file:") {
       toast("Loaded from disk — use npm start for full applet features.");
+    } else if (apiStatus.mode === "netlify") {
+      toast("Netlify mode — browsing works; Add tribe is saved in this browser only.");
     }
   } catch (e) {
     showLoadError(e, serverHasApi);

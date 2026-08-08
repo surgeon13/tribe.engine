@@ -127,6 +127,28 @@ npm run tribe:add -- --culture viking --name "Norse"
 npm run tribe:delete -- norse
 ```
 
+## Netlify (GitHub → https://tevelevet.netlify.app)
+
+The site is a **static dashboard** plus **Netlify Functions** for `/api/*`. The repo root is not a valid publish folder (`index.html` lives under `dashboard/`, assets under `assets/`).
+
+| Piece | Role |
+|------|------|
+| `netlify.toml` | Build command, publish dir, `/api/*` redirects |
+| `npm run build:netlify` | Builds `dashboard/data.json` and copies UI + `assets/` into `netlify-dist/` |
+| `netlify/functions/api.mjs` | Serverless API (status, profiles, name defaults, list, preview create) |
+
+**Connect Netlify to this GitHub repo** (branch `master` or your deploy branch). Build settings are read from `netlify.toml` — you should not need to set Publish directory manually.
+
+| Feature on Netlify | Behavior |
+|------|------|
+| Browse / compare tribes | Works (from built `data.json`) |
+| Troop logos (`/assets/…`) | Works |
+| Add tribe name preview | Works (`/api/tribes/defaults`) |
+| Add tribe | Works as **browser session** only (cannot write GitHub from the CDN) |
+| Rebuild data / persist delete | Use local `npm start` or push JSON changes to GitHub |
+
+Local applet still writes tribes under `data/` permanently.
+
 ## Median baseline (balance origin)
 
 The six original playable tribes (Romans–Spartans) define a **Median** reference tribe — per-slot statistical median of resolved combat stats, costs, and training times.

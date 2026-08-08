@@ -2,18 +2,7 @@ import http from "http";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { spawn } from "child_process";
-import {
-  createTribe,
-  deleteTribe,
-  listTribes,
-  listProfileSummaries,
-  listArchetypes,
-  defaultSlotLabels,
-  deriveFromUserInput,
-  matchProfile,
-  CORE_TRIBE_IDS,
-} from "../lib/tribe-generator/index.js";
+import { handleApiRequest } from "../lib/api/router.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -32,36 +21,15 @@ const MIME = {
 const HOST = process.env.HOST || "127.0.0.1";
 
 async function readJsonBody(req) {
-  const raw = await readBody(req);
+  const chunks = [];
+  for await (const chunk of req) chunks.push(chunk);
+  const raw = Buffer.concat(chunks).toString("utf8");
   if (!raw) return {};
   try {
     return JSON.parse(raw);
   } catch {
     throw new Error("Invalid JSON body");
   }
-}
-
-function runScript(scriptPath) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [scriptPath], {
-      cwd: root,
-      stdio: ["ignore", "pipe", "pipe"],
-    });
-    let out = "";
-    let err = "";
-    child.stdout.on("data", (d) => (out += d));
-    child.stderr.on("data", (d) => (err += d));
-    child.on("close", (code) => {
-      if (code === 0) resolve(out.trim());
-      else reject(new Error(err.trim() || out.trim() || `Exit code ${code}`));
-    });
-  });
-}
-
-async function readBody(req) {
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  return Buffer.concat(chunks).toString("utf8");
 }
 
 async function serveStatic(urlPath, res) {
@@ -87,9 +55,12 @@ async function serveStatic(urlPath, res) {
   res.end(body);
 }
 
-function json(res, status, body) {
-  res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" });
-  res.end(JSON.stringify(body));
+function json(res, status, body, extraHeaders = {}) {
+  res.writeHead(status, {
+    "Content-Type": "application/json; charset=utf-8",
+    ...extraHeaders,
+  });
+  res.end(status === 204 ? "" : JSON.stringify(body));
 }
 
 /**
@@ -102,116 +73,29 @@ export function startServer(port = 3456) {
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     try {
-      if (req.method === "OPTIONS") {
-        res.writeHead(204, {
-          "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
+      if (url.pathname === "/api" || url.pathname.startsWith("/api/")) {
+        const body =
+          req.method === "GET" || req.method === "HEAD" || req.method === "DELETE"
+            ? undefined
+            : await readJsonBody(req);
+        const result = await handleApiRequest({
+          method: req.method || "GET",
+          pathname: url.pathname,
+          query: Object.fromEntries(url.searchParams.entries()),
+          body,
+          persist: true,
         });
-        res.end();
-        return;
-      }
-
-      if (url.pathname === "/api/status" && req.method === "GET") {
-        json(res, 200, { ok: true, game: "Tevel", version: 1 });
-        return;
-      }
-
-      if (url.pathname === "/api/rebuild" && req.method === "POST") {
-        const out = await runScript(path.join(root, "scripts", "build-dashboard-data.js"));
-        json(res, 200, { ok: true, message: out || "Dashboard data rebuilt" });
-        return;
-      }
-
-      if (url.pathname === "/api/tribes/profiles" && req.method === "GET") {
-        json(res, 200, {
-          ok: true,
-          profiles: listProfileSummaries(),
-          archetypes: listArchetypes(),
-          slotLabels: defaultSlotLabels(),
-        });
-        return;
-      }
-
-      if (url.pathname === "/api/tribes/defaults" && req.method === "GET") {
-        const name = url.searchParams.get("name") || "Custom";
-        const theme = url.searchParams.get("theme") || "";
-        const historicalContext =
-          url.searchParams.get("context") || url.searchParams.get("historicalContext") || "";
-        const derived = deriveFromUserInput({ name, theme, historicalContext });
-        json(res, 200, {
-          ok: true,
-          ...derived,
-          troopNames: derived.troopNames,
-          slotLabels: defaultSlotLabels(),
-          archetypes: listArchetypes(),
-        });
-        return;
-      }
-
-      if (url.pathname === "/api/tribes" && req.method === "GET") {
-        const tribes = await listTribes();
-        json(res, 200, { ok: true, tribes, coreTribeIds: CORE_TRIBE_IDS });
-        return;
-      }
-
-      if (url.pathname === "/api/tribes/match" && req.method === "GET") {
-        const q = url.searchParams.get("q") || "";
-        const matched = matchProfile(q);
-        json(res, 200, {
-          ok: true,
-          query: q,
-          match: matched
-            ? {
-                id: matched.id,
-                name: matched.name,
-                era: matched.era,
-                region: matched.region,
-                theme: matched.theme,
-                historicalContext: matched.historicalContext,
-                archetype: matched.archetype,
-                palette: matched.palette,
-              }
-            : null,
-        });
-        return;
-      }
-
-      if (url.pathname === "/api/tribes" && req.method === "POST") {
-        const body = await readJsonBody(req);
-        const result = await createTribe({
-          custom: body.custom === true || body.mode === "custom" || body.cultureId === "custom",
-          cultureId: body.cultureId,
-          historicalContext: body.historicalContext || body.context,
-          name: body.name,
-          id: body.id,
-          type: body.type === "npc" ? "npc" : "playable",
-          palette: body.palette,
-          theme: body.theme,
-          era: body.era,
-          region: body.region,
-          archetype: body.archetype,
-          troopNames: body.troopNames,
-          troopOverrides: body.troopOverrides,
-          hero: body.hero,
-          heroName: body.heroName,
-          accountName: body.accountName || body.playerName,
-          playerName: body.playerName,
-          logos: body.logos,
-          training: body.training,
-          rebuild: body.rebuild !== false,
-        });
-        json(res, 201, { ok: true, tribe: result, message: `Created ${result.name}` });
-        return;
-      }
-
-      {
-        const delMatch = url.pathname.match(/^\/api\/tribes\/([^/]+)$/);
-        if (delMatch && req.method === "DELETE") {
-          const id = decodeURIComponent(delMatch[1]);
-          const result = await deleteTribe(id);
-          json(res, 200, { ok: true, tribe: result, message: `Deleted ${result.name}` });
+        if (result.status === 204) {
+          res.writeHead(204, {
+            "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+            ...(result.headers || {}),
+          });
+          res.end();
           return;
         }
+        json(res, result.status, result.body, result.headers || {});
+        return;
       }
 
       if (req.method === "GET" && url.pathname.startsWith("/assets/")) {

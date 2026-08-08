@@ -408,7 +408,13 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
       });
       const body = await res.json();
       if (!res.ok || !body.ok) throw new Error(body.error || res.statusText);
-      toast(`Saved ${body.tribe.name} to disk`);
+      if (body.dashboardTribe) {
+        const { upsertSessionTribe } = await import("./session-tribes.js");
+        upsertSessionTribe(body.dashboardTribe);
+        toast(body.message || `Added ${body.tribe.name} (browser session)`);
+      } else {
+        toast(`Saved ${body.tribe.name} to disk`);
+      }
       close();
       resetForm();
       await refreshRemovableTribes();
@@ -425,7 +431,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     const label = tribeName || tribeId;
     if (
       !confirm(
-        `Delete tribe "${label}"?\n\nThis removes it from data/ permanently. Core tribes (Romans, Teutons, …) cannot be deleted.`
+        `Delete tribe "${label}"?\n\nOn the local applet this removes it from data/. On Netlify it only leaves this browser session.`
       )
     ) {
       return;
@@ -433,7 +439,13 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     const res = await fetch(`/api/tribes/${encodeURIComponent(tribeId)}`, { method: "DELETE" });
     const body = await res.json();
     if (!res.ok || !body.ok) throw new Error(body.error || res.statusText);
-    toast(`Deleted ${body.tribe.name}`);
+    if (body.sessionOnly) {
+      const { removeSessionTribe } = await import("./session-tribes.js");
+      removeSessionTribe(tribeId);
+      toast(`Removed ${label} from this browser session`);
+    } else {
+      toast(`Deleted ${body.tribe.name}`);
+    }
     await refreshRemovableTribes();
     await onDeleted?.(tribeId);
   };
@@ -444,8 +456,8 @@ export function setAddTribeEnabled(enabled) {
   if (!btn) return;
   btn.disabled = !enabled;
   btn.title = enabled
-    ? "Create a tribe from your description (saved under data/)"
-    : "Needs the local applet (npm start)";
+    ? "Create a tribe from your description"
+    : "Needs the local applet (npm start) or a Netlify Functions deploy";
 }
 
 export async function refreshRemovableTribes() {
@@ -456,6 +468,12 @@ export async function refreshRemovableTribes() {
     removableIds = new Set((body.tribes || []).filter((t) => t.removable).map((t) => t.id));
   } catch {
     /* static mode */
+  }
+  try {
+    const { loadSessionTribes } = await import("./session-tribes.js");
+    for (const t of loadSessionTribes()) removableIds.add(t.id);
+  } catch {
+    /* ignore */
   }
   return removableIds;
 }
