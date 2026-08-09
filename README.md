@@ -149,6 +149,22 @@ The site is a **static dashboard** plus **Netlify Functions** for `/api/*`. The 
 
 Local applet still writes tribes under `data/` permanently.
 
+## Progressive Web App (phone / offline)
+
+The dashboard is a PWA. After it’s served over **HTTPS** (or `localhost`), you can install it and use tribe data offline.
+
+### Install on iPhone
+
+1. Open the live site in **Safari** (Chrome on iOS cannot Add to Home Screen for PWAs).
+2. Tap **Share** → **Add to Home Screen** → Add.
+3. Launch **Tevel** from your home screen — it runs standalone and keeps working offline after the first load.
+
+GitHub Pages deploys automatically from `master` via `.github/workflows/pages.yml`. Enable Pages once in the repo settings (**Settings → Pages → Source: GitHub Actions**). The site URL will be:
+
+`https://surgeon13.github.io/tribe.engine/`
+
+Rebuild needs the local applet (`npm start`) or a GitHub/Netlify deploy; the installed app is for browsing and comparing tribes.
+
 ## Median baseline (balance origin)
 
 The six original playable tribes (Romans–Spartans) define a **Median** reference tribe — per-slot statistical median of resolved combat stats, costs, and training times.
@@ -173,9 +189,10 @@ View attack, defense, speed, carry, upkeep, **training resources** (wood/clay/ir
 |------|------|
 | `lib/merge.js` | Merge engine + computed metrics |
 | `scripts/build-dashboard-data.js` | Writes `dashboard/data.json` |
-| `dashboard/` | Static UI |
+| `dashboard/` | Static UI + PWA (`manifest.webmanifest`, `sw.js`) |
+| `.github/workflows/pages.yml` | Publishes the PWA to GitHub Pages |
 
-After editing tribe JSON: `npm run build:data` then reload the browser.
+After editing tribe JSON: `npm run build:data` then reload the browser (or push to `master` to refresh Pages).
 
 ## Workflow (planned)
 

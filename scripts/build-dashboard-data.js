@@ -39,7 +39,8 @@ const tribes = index.tribes.map((entry) => {
 const payload = {
   version: 1,
   game: "Tevel",
-  assetBase: "/assets",
+  // Relative so the PWA / GitHub Pages site root resolves correctly.
+  assetBase: "assets",
   generatedAt: new Date().toISOString(),
   roster: roster.slots,
   logoGroups: logoGroups.groups,

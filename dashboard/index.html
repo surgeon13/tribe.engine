@@ -2,8 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Tevel tribe stats, troop roster, and balance comparison." />
+    <meta name="theme-color" content="#12141a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Tevel" />
     <title>Tevel Tribe Engine</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -48,6 +57,7 @@
             <button type="button" id="btn-cancel-edit-menu" class="btn ghost">Cancel edit</button>
           </div>
           <button type="button" id="btn-refresh" class="btn ghost">Rebuild data</button>
+          <p id="install-hint" class="install-hint hidden" hidden></p>
           <p id="server-status" class="server-status">Connecting…</p>
         </footer>
       </aside>
