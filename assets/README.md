@@ -11,8 +11,12 @@ SVG logos live in grouped folders and are tinted with each tribe's `palette.prim
 | `infantry/` | Melee weapons & scouts |
 | `cavalry/` | Mount heads |
 | `animals/` | Nature tribe / fauna |
-| `resources/` | Settlers & economy |
-| `powder.svg` | Siege (catapult) |
+| `resources/` | Economy piles (legacy settler placeholders) |
+| `rams/` | Wall-breaker / ram logos |
+| `catapults/` | Catapult / artillery logos |
+| `chiefs/` | Chief / administrator logos |
+| `settlers/` | Settler / expansion logos |
+| `powder.svg` | Legacy siege placeholder (prefer `catapults/`) |
 
 Catalog and defaults: `data/logo-groups.json`  
 Per-tribe assignments (one unique logo per troop slot): `data/tribe-logos.json`

@@ -80,7 +80,7 @@
       ]
     },
     "resources": {
-      "label": "Resources & settlers",
+      "label": "Resources & economy",
       "icons": [
         "resources/brick-pile.svg",
         "resources/cash-pile.svg",
@@ -93,8 +93,24 @@
         "resources/wood-pile.svg"
       ]
     },
+    "rams": {
+      "label": "Rams / wall-breakers",
+      "icons": []
+    },
+    "catapults": {
+      "label": "Catapults / artillery",
+      "icons": []
+    },
+    "chiefs": {
+      "label": "Chiefs / administrators",
+      "icons": []
+    },
+    "settlers": {
+      "label": "Settlers / expansion",
+      "icons": []
+    },
     "siege": {
-      "label": "Siege",
+      "label": "Siege (legacy placeholders until rams/ + catapults/ are filled)",
       "icons": ["powder.svg", "infantry/crowbar.svg", "infantry/war-pick.svg", "infantry/spiked-ball.svg"]
     }
   },
