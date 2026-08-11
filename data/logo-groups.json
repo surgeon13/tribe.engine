@@ -96,7 +96,8 @@
     "rams": {
       "label": "Rams / wall-breakers",
       "icons": [
-        "rams/siege-ram.svg"
+        "rams/siege-ram.svg",
+        "rams/siege-tower.svg"
       ]
     },
     "catapults": {

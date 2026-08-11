@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-11T08:48:06.465Z",
+  "generatedAt": "2026-08-11T08:48:50.702Z",
   "roster": [
     {
       "slot": 1,
@@ -168,7 +168,8 @@
     "rams": {
       "label": "Rams / wall-breakers",
       "icons": [
-        "rams/siege-ram.svg"
+        "rams/siege-ram.svg",
+        "rams/siege-tower.svg"
       ]
     },
     "catapults": {
