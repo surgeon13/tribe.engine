@@ -1,8 +1,16 @@
-# Catapults troop logos
+# Catapults / artillery
 
-Drop SVG logos for this roster slot family here.
+SVG troop logos for this roster slot family (black tile / white glyph for tribe palette tinting).
 
-Paths are relative to `assets/`, e.g. `catapults/example.svg`.
+| File |
+| --- |
+| `ballista.svg` |
+| `counterweight.svg` |
+| `mangonel.svg` |
+| `onager.svg` |
+| `scorpio.svg` |
+| `springald.svg` |
+| `stone-thrower.svg` |
+| `trebuchet.svg` |
 
-Register new files in `data/logo-groups.json` under the `catapults` group.
-
+Registered in `data/logo-groups.json` under `catapults`.

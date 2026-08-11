@@ -1,8 +1,16 @@
-# Chiefs troop logos
+# Chiefs / administrators
 
-Drop SVG logos for this roster slot family here.
+SVG troop logos for this roster slot family (black tile / white glyph for tribe palette tinting).
 
-Paths are relative to `assets/`, e.g. `chiefs/example.svg`.
+| File |
+| --- |
+| `commander-helm.svg` |
+| `diadem.svg` |
+| `eagle-totem.svg` |
+| `office-baton.svg` |
+| `ring-of-office.svg` |
+| `scepter.svg` |
+| `scroll-seal.svg` |
+| `war-standard.svg` |
 
-Register new files in `data/logo-groups.json` under the `chiefs` group.
-
+Registered in `data/logo-groups.json` under `chiefs`.

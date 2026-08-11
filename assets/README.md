@@ -18,6 +18,8 @@ SVG logos live in grouped folders and are tinted with each tribe's `palette.prim
 | `settlers/` | Settler / expansion logos |
 | `powder.svg` | Legacy siege placeholder (prefer `catapults/`) |
 
+Default logos for ram / catapult / chief / settler now live under those folders; see `data/logo-groups.json`.
+
 Catalog and defaults: `data/logo-groups.json`  
 Per-tribe assignments (one unique logo per troop slot): `data/tribe-logos.json`
 

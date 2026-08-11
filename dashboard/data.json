@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-09T11:59:32.610Z",
+  "generatedAt": "2026-08-11T08:40:57.657Z",
   "roster": [
     {
       "slot": 1,
@@ -167,22 +167,58 @@
     },
     "rams": {
       "label": "Rams / wall-breakers",
-      "icons": []
+      "icons": [
+        "rams/covered-ram.svg",
+        "rams/horned-beam.svg",
+        "rams/iron-headed-ram.svg",
+        "rams/siege-tower-ram.svg",
+        "rams/spiked-ram.svg",
+        "rams/timber-ram.svg",
+        "rams/tortoise-ram.svg",
+        "rams/wheeled-ram.svg"
+      ]
     },
     "catapults": {
       "label": "Catapults / artillery",
-      "icons": []
+      "icons": [
+        "catapults/ballista.svg",
+        "catapults/counterweight.svg",
+        "catapults/mangonel.svg",
+        "catapults/onager.svg",
+        "catapults/scorpio.svg",
+        "catapults/springald.svg",
+        "catapults/stone-thrower.svg",
+        "catapults/trebuchet.svg"
+      ]
     },
     "chiefs": {
       "label": "Chiefs / administrators",
-      "icons": []
+      "icons": [
+        "chiefs/commander-helm.svg",
+        "chiefs/diadem.svg",
+        "chiefs/eagle-totem.svg",
+        "chiefs/office-baton.svg",
+        "chiefs/ring-of-office.svg",
+        "chiefs/scepter.svg",
+        "chiefs/scroll-seal.svg",
+        "chiefs/war-standard.svg"
+      ]
     },
     "settlers": {
       "label": "Settlers / expansion",
-      "icons": []
+      "icons": [
+        "settlers/caravan.svg",
+        "settlers/founding-flag.svg",
+        "settlers/homestead.svg",
+        "settlers/ox-cart.svg",
+        "settlers/plow.svg",
+        "settlers/seed-bag.svg",
+        "settlers/survey-stake.svg",
+        "settlers/village-hut.svg"
+      ]
     },
     "siege": {
-      "label": "Siege (legacy placeholders until rams/ + catapults/ are filled)",
+      "label": "Siege (legacy placeholders)",
       "icons": [
         "powder.svg",
         "infantry/crowbar.svg",

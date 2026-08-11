@@ -1,8 +1,16 @@
-# Rams troop logos
+# Rams / wall-breakers
 
-Drop SVG logos for this roster slot family here.
+SVG troop logos for this roster slot family (black tile / white glyph for tribe palette tinting).
 
-Paths are relative to `assets/`, e.g. `rams/example.svg`.
+| File |
+| --- |
+| `covered-ram.svg` |
+| `horned-beam.svg` |
+| `iron-headed-ram.svg` |
+| `siege-tower-ram.svg` |
+| `spiked-ram.svg` |
+| `timber-ram.svg` |
+| `tortoise-ram.svg` |
+| `wheeled-ram.svg` |
 
-Register new files in `data/logo-groups.json` under the `rams` group.
-
+Registered in `data/logo-groups.json` under `rams`.
