@@ -2104,19 +2104,19 @@ body.tribe-editing #troop-table thead th {
 }
 
 .unit-portrait--sm {
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   border-radius: 8px;
   border-width: 1px;
 }
 
 .unit-portrait--sm .unit-portrait-fallback {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .troop-logo-col,
 .troop-logo-cell {
-  width: 60px;
+  width: 72px;
   padding: 4px 6px !important;
   vertical-align: middle;
 }
