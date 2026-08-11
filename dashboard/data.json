@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-11T08:40:57.657Z",
+  "generatedAt": "2026-08-11T08:48:06.465Z",
   "roster": [
     {
       "slot": 1,
@@ -168,26 +168,14 @@
     "rams": {
       "label": "Rams / wall-breakers",
       "icons": [
-        "rams/covered-ram.svg",
-        "rams/horned-beam.svg",
-        "rams/iron-headed-ram.svg",
-        "rams/siege-tower-ram.svg",
-        "rams/spiked-ram.svg",
-        "rams/timber-ram.svg",
-        "rams/tortoise-ram.svg",
-        "rams/wheeled-ram.svg"
+        "rams/siege-ram.svg"
       ]
     },
     "catapults": {
       "label": "Catapults / artillery",
       "icons": [
         "catapults/ballista.svg",
-        "catapults/counterweight.svg",
-        "catapults/mangonel.svg",
-        "catapults/onager.svg",
-        "catapults/scorpio.svg",
-        "catapults/springald.svg",
-        "catapults/stone-thrower.svg",
+        "catapults/catapult.svg",
         "catapults/trebuchet.svg"
       ]
     },
@@ -207,14 +195,16 @@
     "settlers": {
       "label": "Settlers / expansion",
       "icons": [
-        "settlers/caravan.svg",
-        "settlers/founding-flag.svg",
-        "settlers/homestead.svg",
-        "settlers/ox-cart.svg",
+        "settlers/barn.svg",
+        "settlers/farmer.svg",
+        "settlers/hut.svg",
+        "settlers/huts-village.svg",
+        "settlers/old-wagon.svg",
         "settlers/plow.svg",
-        "settlers/seed-bag.svg",
-        "settlers/survey-stake.svg",
-        "settlers/village-hut.svg"
+        "settlers/village.svg",
+        "settlers/wheelbarrow.svg",
+        "settlers/windmill.svg",
+        "settlers/wood-cabin.svg"
       ]
     },
     "siege": {

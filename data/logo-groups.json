@@ -96,26 +96,14 @@
     "rams": {
       "label": "Rams / wall-breakers",
       "icons": [
-        "rams/covered-ram.svg",
-        "rams/horned-beam.svg",
-        "rams/iron-headed-ram.svg",
-        "rams/siege-tower-ram.svg",
-        "rams/spiked-ram.svg",
-        "rams/timber-ram.svg",
-        "rams/tortoise-ram.svg",
-        "rams/wheeled-ram.svg"
+        "rams/siege-ram.svg"
       ]
     },
     "catapults": {
       "label": "Catapults / artillery",
       "icons": [
         "catapults/ballista.svg",
-        "catapults/counterweight.svg",
-        "catapults/mangonel.svg",
-        "catapults/onager.svg",
-        "catapults/scorpio.svg",
-        "catapults/springald.svg",
-        "catapults/stone-thrower.svg",
+        "catapults/catapult.svg",
         "catapults/trebuchet.svg"
       ]
     },
@@ -135,14 +123,16 @@
     "settlers": {
       "label": "Settlers / expansion",
       "icons": [
-        "settlers/caravan.svg",
-        "settlers/founding-flag.svg",
-        "settlers/homestead.svg",
-        "settlers/ox-cart.svg",
+        "settlers/barn.svg",
+        "settlers/farmer.svg",
+        "settlers/hut.svg",
+        "settlers/huts-village.svg",
+        "settlers/old-wagon.svg",
         "settlers/plow.svg",
-        "settlers/seed-bag.svg",
-        "settlers/survey-stake.svg",
-        "settlers/village-hut.svg"
+        "settlers/village.svg",
+        "settlers/wheelbarrow.svg",
+        "settlers/windmill.svg",
+        "settlers/wood-cabin.svg"
       ]
     },
     "siege": {
@@ -163,9 +153,9 @@
     "cav_t1": "cavalry/horse-head.svg",
     "cav_t2": "cavalry/chess-knight.svg",
     "cav_t3": "cavalry/elephant.svg",
-    "ram": "rams/covered-ram.svg",
-    "catapult": "catapults/onager.svg",
+    "ram": "rams/siege-ram.svg",
+    "catapult": "catapults/catapult.svg",
     "chief": "chiefs/scepter.svg",
-    "settler": "settlers/founding-flag.svg"
+    "settler": "settlers/farmer.svg"
   }
 }

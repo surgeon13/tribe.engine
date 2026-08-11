@@ -1,16 +1,20 @@
 # Settlers / expansion
 
-SVG troop logos for this roster slot family (black tile / white glyph for tribe palette tinting).
+Tintable SVG logos for this roster slot (black tile / white glyph for tribe palette).
+
+Source: Icons by Delapouite, licensed CC BY 3.0 — https://game-icons.net
 
 | File |
 | --- |
-| `caravan.svg` |
-| `founding-flag.svg` |
-| `homestead.svg` |
-| `ox-cart.svg` |
+| `barn.svg` |
+| `farmer.svg` |
+| `hut.svg` |
+| `huts-village.svg` |
+| `old-wagon.svg` |
 | `plow.svg` |
-| `seed-bag.svg` |
-| `survey-stake.svg` |
-| `village-hut.svg` |
+| `village.svg` |
+| `wheelbarrow.svg` |
+| `windmill.svg` |
+| `wood-cabin.svg` |
 
 Registered in `data/logo-groups.json` under `settlers`.

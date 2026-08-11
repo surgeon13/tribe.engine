@@ -1,16 +1,11 @@
 # Rams / wall-breakers
 
-SVG troop logos for this roster slot family (black tile / white glyph for tribe palette tinting).
+Tintable SVG logos for this roster slot (black tile / white glyph for tribe palette).
+
+Source: Icons by Skoll, licensed CC BY 3.0 — https://game-icons.net
 
 | File |
 | --- |
-| `covered-ram.svg` |
-| `horned-beam.svg` |
-| `iron-headed-ram.svg` |
-| `siege-tower-ram.svg` |
-| `spiked-ram.svg` |
-| `timber-ram.svg` |
-| `tortoise-ram.svg` |
-| `wheeled-ram.svg` |
+| `siege-ram.svg` |
 
 Registered in `data/logo-groups.json` under `rams`.
