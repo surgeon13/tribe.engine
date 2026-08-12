@@ -1,5 +1,12 @@
 /** Dashboard UI themes + graph color palettes. */
 
+import {
+  adaptToBackground,
+  MIN_GRAPHIC_CONTRAST,
+  MIN_TEXT_CONTRAST,
+  readableInkOn,
+} from "./color.js";
+
 export const UI_THEMES = {
   dark: { name: "Dark", description: "Default dark workspace" },
   light: { name: "Light", description: "Bright, high-contrast light" },
@@ -64,6 +71,46 @@ export function applyGraphPalette(paletteId) {
   return id;
 }
 
+/** Surface that tribe colors are drawn on: cards, table rows, chart canvases. */
+function themeSurface() {
+  const s = getComputedStyle(document.documentElement);
+  const v = (name) => s.getPropertyValue(name).trim();
+  return v("--bg-elevated") || v("--bg") || "#0f1114";
+}
+
+/**
+ * Tribe color shifted until it reads as label text on the active theme. Palettes
+ * are authored for the troop logo (primary glyph on secondary tile), so a tribe
+ * like Undead is near-black — invisible as text on a dark theme, and the same
+ * problem inverted on Light/Sand.
+ * @param {{ primary?: string } | null | undefined} palette
+ * @returns {string}
+ */
+export function tribeInkColor(palette) {
+  const raw = palette?.primary;
+  if (!raw) return getChartColors().a;
+  return adaptToBackground(raw, themeSurface(), MIN_TEXT_CONTRAST);
+}
+
+/**
+ * Same idea for shapes rather than text: dots, bars, chart strokes.
+ * @param {string | null | undefined} hex
+ * @returns {string}
+ */
+export function tribeGraphicColor(hex) {
+  if (!hex) return getChartColors().a;
+  return adaptToBackground(hex, themeSurface(), MIN_GRAPHIC_CONTRAST);
+}
+
+/**
+ * Ink for text sitting on top of a tribe-colored fill.
+ * @param {string} background
+ * @returns {string}
+ */
+export function inkOn(background) {
+  return readableInkOn(background);
+}
+
 const COMPARE_SERIES_EXTRA = [
   "#e05a5a",
   "#66c888",
@@ -89,7 +136,7 @@ export function getCompareSeriesColors(count, tribes = []) {
       color = pool[i % pool.length];
     }
     used.add(color);
-    out.push(color);
+    out.push(tribeGraphicColor(color));
   }
   return out;
 }
@@ -111,8 +158,8 @@ export function resolveBarColors(tribePalette, mode = "chart") {
   const chart = getChartColors();
   if (mode === "tribe" && tribePalette?.primary) {
     return {
-      primary: tribePalette.primary,
-      secondary: tribePalette.secondary || chart.b,
+      primary: tribeGraphicColor(tribePalette.primary),
+      secondary: tribeGraphicColor(tribePalette.secondary || chart.b),
     };
   }
   return { primary: chart.a, secondary: chart.b };

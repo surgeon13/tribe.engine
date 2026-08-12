@@ -26,6 +26,7 @@ import {
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
+import { mountPaletteContrastHint } from "./palette-hint.js";
 import {
   renderTribeBanner,
   renderUnitCard,
@@ -36,9 +37,12 @@ import {
 import {
   getCompareSeriesColors,
   initUiTheme,
+  inkOn,
   mountGraphPalettePicker,
   mountThemePicker,
   resolveBarColors,
+  tribeGraphicColor,
+  tribeInkColor,
 } from "./themes.js";
 import { initAddTribeUi, setAddTribeEnabled, refreshRemovableTribes, isRemovableTribe, requestDeleteTribe } from "./tribe-create.js";
 import {
@@ -232,7 +236,12 @@ async function loadData() {
 }
 
 function setAccent(hex) {
-  document.documentElement.style.setProperty("--accent", hex || "#c9a227");
+  const accent = hex || "#c9a227";
+  const style = document.documentElement.style;
+  style.setProperty("--accent", accent);
+  // Themes ship a fixed dark --accent-text, which disappears once a tribe's
+  // primary is dark too (buttons, badges, the brand mark all sit on --accent).
+  style.setProperty("--accent-text", inkOn(accent));
 }
 
 function toast(msg) {
@@ -703,6 +712,7 @@ function syncEditChrome(tribe) {
     if (secondaryInput && document.activeElement !== secondaryInput) {
       secondaryInput.value = tribe.palette?.secondary || "#E09F3E";
     }
+    mountPaletteContrastHint(primaryInput, secondaryInput, $("#edit-palette-hint"));
   }
   if (nameView) nameView.textContent = tribe?.name || "—";
   if (themeView) themeView.textContent = tribe?.theme || "";
@@ -1057,7 +1067,7 @@ function renderCompareTribePicker() {
     const checked = compareTribeIds.includes(tribe.id);
     label.innerHTML = `
       <input type="checkbox" value="${tribe.id}" ${checked ? "checked" : ""} />
-      <span class="compare-tribe-dot" style="background:${tribe.palette?.primary || "#888"}"></span>
+      <span class="compare-tribe-dot" style="background:${tribeGraphicColor(tribe.palette?.primary)}"></span>
       <span class="compare-tribe-name">${tribe.name}</span>
     `;
     list.append(label);
@@ -1111,11 +1121,32 @@ function renderCompareLegend(tribes) {
   host.innerHTML = tribes
     .map(
       (t, i) =>
-        `<span class="compare-legend-chip" style="--chip-color:${t.palette?.primary || colors[i]}">
+        `<span class="compare-legend-chip" style="--chip-color:${colors[i]}">
           <span class="compare-legend-dot"></span>${t.name}
         </span>`
     )
     .join("");
+}
+
+/**
+ * Compare views label columns with the tribe color and also fill small badges
+ * with it, so each element needs the theme-adapted color plus an ink that reads
+ * on top of it.
+ * @param {object} tribe
+ */
+function tribeColorVarStyle(tribe) {
+  const col = tribeInkColor(tribe?.palette);
+  return `--tribe-col:${col};--tribe-ink:${inkOn(col)}`;
+}
+
+/**
+ * @param {HTMLElement} el
+ * @param {object} tribe
+ */
+function setTribeColorVars(el, tribe) {
+  const col = tribeInkColor(tribe?.palette);
+  el.style.setProperty("--tribe-col", col);
+  el.style.setProperty("--tribe-ink", inkOn(col));
 }
 
 function renderCompareSummary(tribes) {
@@ -1130,14 +1161,14 @@ function renderCompareSummary(tribes) {
   host.innerHTML = tribes
     .map((tribe) => {
       const s = tribe.summary;
-      const color = tribe.palette?.primary || "var(--accent)";
+      const color = tribeInkColor(tribe.palette);
       const bestAtkPerCrop = Math.max(
         0,
         ...tribe.troops
           .filter((t) => !["settler", "chief"].includes(t.role))
           .map((t) => (t.metrics.cropUpkeep > 0 ? t.metrics.offense / t.metrics.cropUpkeep : 0))
       );
-      return `<article class="compare-summary-card" style="--tribe-col:${color}">
+      return `<article class="compare-summary-card" style="--tribe-col:${color};--tribe-ink:${inkOn(color)}">
         <header class="compare-summary-head">
           <span class="compare-summary-dot"></span>
           <h4>${tribe.name}</h4>
@@ -1179,7 +1210,7 @@ function renderCompareRadarSlots(tribes) {
   const headerCells = tribes
     .map(
       (t) =>
-        `<h4 class="compare-col-title" style="color:${t.palette?.primary || "inherit"}">${t.name}</h4>`
+        `<h4 class="compare-col-title" style="color:${tribeInkColor(t.palette)}">${t.name}</h4>`
     )
     .join("");
   header.innerHTML = `<div class="compare-slot-label"><strong>Unit</strong></div>${headerCells}`;
@@ -1202,7 +1233,7 @@ function renderCompareRadarSlots(tribes) {
     tribes.forEach((tribe, ti) => {
       const col = document.createElement("div");
       col.className = "compare-tribe-block";
-      col.style.setProperty("--tribe-col", tribe.palette?.primary || "var(--accent)");
+      setTribeColorVars(col, tribe);
       const troop = tribe.troops[i];
       if (!troop) {
         col.className = "compare-radar-empty compare-tribe-block";
@@ -1213,7 +1244,7 @@ function renderCompareRadarSlots(tribes) {
       if (isCompareCompact()) {
         const tribeTag = document.createElement("div");
         tribeTag.className = "compare-tribe-tag";
-        tribeTag.style.color = tribe.palette?.primary || "inherit";
+        tribeTag.style.color = tribeInkColor(tribe.palette);
         tribeTag.textContent = tribe.name;
         col.append(tribeTag);
       }
@@ -1258,7 +1289,7 @@ function renderCompareGraphics() {
   const headerCells = tribes
     .map(
       (t) =>
-        `<h4 class="compare-col-title" style="color:${t.palette?.primary || "inherit"}">${t.name}</h4>`
+        `<h4 class="compare-col-title" style="color:${tribeInkColor(t.palette)}">${t.name}</h4>`
     )
     .join("");
   header.innerHTML = `<div class="compare-slot-label"><strong>Unit</strong></div>${headerCells}`;
@@ -1284,7 +1315,7 @@ function renderCompareGraphics() {
       if (isCompareCompact()) {
         const tribeTag = document.createElement("div");
         tribeTag.className = "compare-tribe-tag";
-        tribeTag.style.color = tribe.palette?.primary || "inherit";
+        tribeTag.style.color = tribeInkColor(tribe.palette);
         tribeTag.textContent = tribe.name;
         col.append(tribeTag);
       }
@@ -1446,7 +1477,7 @@ function renderCompareTable(tribes) {
   const tribeHeaders = tribes
     .map(
       (t, i) =>
-        `<th class="compare-tribe-col" style="--tribe-col:${t.palette?.primary || "inherit"}">${t.name}</th>`
+        `<th class="compare-tribe-col" style="${tribeColorVarStyle(t)}">${t.name}</th>`
     )
     .join("");
   thead.innerHTML = `
@@ -1472,7 +1503,7 @@ function renderCompareTable(tribes) {
           const bestDef = Math.max(...defs);
           const atkBest = u.metrics.offense === bestAtk && bestAtk > 0;
           const defBest = u.metrics.defenseCombined === bestDef && bestDef > 0;
-          return `<td class="compare-tribe-cell ${atkBest || defBest ? "compare-cell-best" : ""}" style="--tribe-col:${t.palette?.primary || "inherit"}">
+          return `<td class="compare-tribe-cell ${atkBest || defBest ? "compare-cell-best" : ""}" style="${tribeColorVarStyle(t)}">
             <strong>${u.name}</strong>
             <span class="compare-stat-pair">
               <span class="compare-stat ${atkBest ? "best" : ""}" title="Attack">⚔ ${u.metrics.offense}</span>
@@ -1821,9 +1852,10 @@ function refreshGraphViews() {
   const tribe = tribeById(activeTribeId);
   if (activeView === "radar" && tribe) renderRadarView(tribe);
   if (!compareMode) return;
-  if (compareViewMode === "radar") renderCompareRadar();
-  if (compareViewMode === "charts") renderCompareCharts();
-  if (compareViewMode === "graphics") renderCompareGraphics();
+  // Tribe colors are adapted to the theme background at render time, so the
+  // whole compare view (picker dots, labels, tables) has to be redrawn.
+  renderCompareTribePicker();
+  renderCompare();
 }
 
 function onUiThemeChange() {

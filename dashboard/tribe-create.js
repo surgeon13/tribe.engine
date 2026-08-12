@@ -2,6 +2,8 @@
  * Add / delete tribe UI — custom (from user input) or optional culture presets.
  */
 
+import { mountPaletteContrastHint } from "./palette-hint.js";
+
 /** @type {(tribeId: string, tribeName: string) => Promise<void>} */
 let deleteTribeHandler = async () => {
   throw new Error("Delete requires the applet API");
@@ -51,6 +53,8 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
   const preview = document.querySelector("#add-tribe-preview");
   const submit = /** @type {HTMLButtonElement} */ (document.querySelector("#add-tribe-submit"));
   const cancel = document.querySelector("#add-tribe-cancel");
+  const paletteHint = /** @type {HTMLElement | null} */ (document.querySelector("#add-palette-hint"));
+  const refreshPaletteHint = mountPaletteContrastHint(primaryInput, secondaryInput, paletteHint);
 
   /** @type {Array<object>} */
   let profiles = [];
@@ -137,6 +141,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     if ((!paletteDirty || force) && derived.palette) {
       if (primaryInput.dataset.auto !== "0") primaryInput.value = derived.palette.primary;
       if (secondaryInput.dataset.auto !== "0") secondaryInput.value = derived.palette.secondary;
+      refreshPaletteHint();
     }
     if ((!eraDirty || force) && !eraInput.value.trim() && derived.era) {
       eraInput.placeholder = derived.era;
@@ -297,6 +302,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
     troopNamesWrap?.querySelectorAll("input").forEach((el) => {
       /** @type {HTMLInputElement} */ (el).value = "";
     });
+    refreshPaletteHint();
     syncModeUi();
   }
 
@@ -319,6 +325,7 @@ export function initAddTribeUi(toast, onCreated, onDeleted) {
       contextInput.value = p.historicalContext;
       if (p.palette?.primary) primaryInput.value = p.palette.primary;
       if (p.palette?.secondary) secondaryInput.value = p.palette.secondary;
+      refreshPaletteHint();
     }
   });
 

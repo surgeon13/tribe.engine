@@ -41,6 +41,7 @@ function runStep(script) {
 }
 
 runStep("validate-logo-assets.js");
+runStep("validate-palettes.js");
 runStep("build-dashboard-data.js");
 
 fs.rmSync(outDir, { recursive: true, force: true });
