@@ -21,19 +21,39 @@ export function unitInitials(name) {
  * @param {string} svgText
  */
 export function prepareSvgForTint(svgText) {
-  return svgText
+  const tinted = svgText
     .replace(/<path\b([^>]*\bd="M0 0h512v512H0z"[^>/]*)(\/)?>/gi, (_, attrs, selfClose) => {
       const cleaned = attrs
         .replace(/\sfill="[^"]*"/gi, "")
         .replace(/\sfill-opacity="[^"]*"/gi, "")
         .replace(/\sclass="[^"]*"/gi, "");
       return selfClose
-        ? `<path${cleaned} class="troop-logo-bg"/>`
+        ? `<path${cleaned} class="troop-logo-bg"></path>`
         : `<path${cleaned} class="troop-logo-bg">`;
     })
-    .replace(/\sfill="#fff(?:fff)?"(?:\s+fill-opacity="[^"]*")?/gi, ' class="troop-logo-fg"')
-    .replace(/\sfill="white"(?:\s+fill-opacity="[^"]*")?/gi, ' class="troop-logo-fg"')
+    .replace(
+      /(<path\b[^>]*?)\sfill="#fff(?:fff)?"(?:\s+fill-opacity="[^"]*")?/gi,
+      "$1 class=\"troop-logo-fg\"",
+    )
+    .replace(
+      /(<path\b[^>]*?)\sfill="white"(?:\s+fill-opacity="[^"]*")?/gi,
+      "$1 class=\"troop-logo-fg\"",
+    )
     .replace(/<svg\b/, '<svg class="troop-logo-svg"');
+
+  // Self-closing <path /> breaks when SVG is injected via innerHTML on a div (HTML parser).
+  return tinted.replace(/<path\b([^>]*)\/>/gi, "<path$1></path>");
+}
+
+/**
+ * @param {SVGElement | HTMLElement} root
+ * @param {{ primary?: string, secondary?: string }} opts
+ */
+function applyLogoPalette(root, opts = {}) {
+  const bg = opts.secondary || "#333";
+  const fg = opts.primary || "#fff";
+  root.querySelectorAll(".troop-logo-bg").forEach((node) => node.setAttribute("fill", bg));
+  root.querySelectorAll(".troop-logo-fg").forEach((node) => node.setAttribute("fill", fg));
 }
 
 /**
@@ -60,6 +80,7 @@ export async function mountSvgLogo(el, url, opts = {}) {
   wrap.innerHTML = prepareSvgForTint(text);
   wrap.style.setProperty("--logo-bg", opts.secondary || "#333");
   wrap.style.setProperty("--logo-fg", opts.primary || "#fff");
+  applyLogoPalette(wrap, opts);
   wrap.setAttribute("role", "img");
   wrap.setAttribute("aria-label", opts.alt || opts.label || "Troop logo");
   el.append(wrap);
