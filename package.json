@@ -16,6 +16,7 @@
     "tribe:list": "node scripts/add-tribe.js --list",
     "tribe:list-registered": "node scripts/add-tribe.js --list-tribes",
     "tribe:delete": "node scripts/add-tribe.js --delete",
+    "tribe:regen-custom": "node scripts/regenerate-custom-tribes.js",
     "dashboard": "npm run start"
   }
 }
