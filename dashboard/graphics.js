@@ -5,6 +5,59 @@ import { mountStatBars } from "./radar.js";
 
 const svgCache = new Map();
 
+/** Tribe unit PNG paths are templates — not shipped in assets; avoid broken <img> fallbacks. */
+const PLACEHOLDER_RASTER_RE = /\/tribes\/[^/]+\/units\//;
+
+/**
+ * Resolve relative asset URLs against the page (PWA / subdirectory safe).
+ * @param {string} url
+ */
+export function resolveAssetUrl(url) {
+  if (!url || typeof url !== "string") return url;
+  if (/^https?:\/\//i.test(url) || url.startsWith("data:")) return url;
+  try {
+    return new URL(url, document.baseURI || window.location.href).href;
+  } catch {
+    return url;
+  }
+}
+
+/**
+ * @param {string | null | undefined} url
+ */
+export function isPlaceholderTroopRaster(url) {
+  return !url || PLACEHOLDER_RASTER_RE.test(url);
+}
+
+/**
+ * @param {object} unit
+ * @param {object} [palette]
+ * @param {{ size?: "sm" | "md" }} [extra]
+ */
+export function portraitOptsFromUnit(unit, palette, extra = {}) {
+  const gfx = unit.graphicsUrls || {};
+  const logoUrl = gfx.logo || null;
+  const baseLogoUrl =
+    gfx.baseLogo && gfx.baseLogo !== logoUrl ? gfx.baseLogo : null;
+  const iconCandidate = gfx.icon || gfx.sprite || gfx.portrait || null;
+  let iconUrl = null;
+  if (!logoUrl && !baseLogoUrl) {
+    iconUrl = iconCandidate;
+  } else if (iconCandidate && !isPlaceholderTroopRaster(iconCandidate)) {
+    iconUrl = iconCandidate;
+  }
+  return {
+    logoUrl,
+    baseLogoUrl,
+    iconUrl,
+    primary: palette?.primary,
+    secondary: palette?.secondary,
+    label: unit.name,
+    alt: unit.name,
+    ...extra,
+  };
+}
+
 /**
  * @param {string} name
  */
@@ -45,6 +98,44 @@ export function prepareSvgForTint(svgText) {
   return tinted.replace(/<path\b([^>]*)\/>/gi, "<path$1></path>");
 }
 
+const SHAPE_SELECTOR = "path, rect, circle, ellipse, polygon, polyline";
+
+/**
+ * Game-Icons ship two export styles (with/without an explicit background fill and
+ * inline pixel size). Normalize geometry so every icon scales to its container
+ * identically instead of inheriting the source file's own width/height.
+ * @param {SVGSVGElement} svg
+ */
+function normalizeLogoSvg(svg) {
+  if (!svg.getAttribute("viewBox")) {
+    const w = parseFloat(svg.getAttribute("width") || "512") || 512;
+    const h = parseFloat(svg.getAttribute("height") || "512") || 512;
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+  }
+  svg.removeAttribute("width");
+  svg.removeAttribute("height");
+  svg.removeAttribute("style");
+  svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+  svg.setAttribute("focusable", "false");
+  svg.setAttribute("aria-hidden", "true");
+  svg.classList.add("troop-logo-svg");
+  return svg;
+}
+
+/**
+ * Full-canvas background tile, written either as a path rect or a <rect>.
+ * @param {Element} node
+ */
+function isCanvasTile(node) {
+  if (node.tagName.toLowerCase() === "rect") {
+    const w = parseFloat(node.getAttribute("width") || "0");
+    const h = parseFloat(node.getAttribute("height") || "0");
+    return w >= 512 && h >= 512;
+  }
+  const d = (node.getAttribute("d") || "").replace(/[\s,]+/g, "").toLowerCase();
+  return d.startsWith("m00h512v512h0z") || d.startsWith("m00l5120l5125120512z");
+}
+
 /**
  * @param {SVGElement | HTMLElement} root
  * @param {{ primary?: string, secondary?: string }} opts
@@ -53,17 +144,16 @@ function applyLogoPalette(root, opts = {}) {
   const bg = opts.secondary || "#333";
   const fg = opts.primary || "#fff";
   const paint = (node, color) => {
-    if (!(node instanceof SVGElement)) return;
     node.setAttribute("fill", color);
-    node.style.setProperty("fill", color, "important");
+    node.style?.setProperty("fill", color, "important");
     node.removeAttribute("fill-opacity");
+    node.removeAttribute("opacity");
   };
 
   // Paint by tile geometry — CSS custom properties often fail to inherit into imported SVG (mobile Safari).
-  root.querySelectorAll("path").forEach((path) => {
-    const d = path.getAttribute("d") || "";
-    paint(path, /^M0 0h512v512H0z/i.test(d) ? bg : fg);
-  });
+  const shapes = root.querySelectorAll(SHAPE_SELECTOR);
+  shapes.forEach((node) => paint(node, isCanvasTile(node) ? bg : fg));
+  return shapes.length;
 }
 
 /**
@@ -77,18 +167,21 @@ function parseTintedSvg(svgText) {
   if (err) {
     throw new Error(err.textContent?.trim() || "SVG parse error");
   }
-  return doc.documentElement;
+  const svg = doc.documentElement;
+  if (svg.tagName.toLowerCase() !== "svg") throw new Error("not an SVG document");
+  return normalizeLogoSvg(/** @type {SVGSVGElement} */ (svg));
 }
 
 /**
  * @param {string} url
  */
 async function fetchSvg(url) {
-  if (svgCache.has(url)) return svgCache.get(url);
-  const res = await fetch(url, { cache: "force-cache" });
-  if (!res.ok) throw new Error(`SVG ${res.status}`);
+  const resolved = resolveAssetUrl(url);
+  if (svgCache.has(resolved)) return svgCache.get(resolved);
+  const res = await fetch(resolved, { cache: "default" });
+  if (!res.ok) throw new Error(`SVG ${res.status} ${resolved}`);
   const text = await res.text();
-  svgCache.set(url, text);
+  svgCache.set(resolved, text);
   return text;
 }
 
@@ -98,6 +191,7 @@ async function fetchSvg(url) {
  * @param {{ primary?: string, secondary?: string, label?: string, alt?: string }} opts
  */
 export async function mountSvgLogo(el, url, opts = {}) {
+  el.querySelector(".troop-logo-wrap")?.remove();
   const text = await fetchSvg(url);
   const wrap = document.createElement("div");
   wrap.className = "troop-logo-wrap";
@@ -105,7 +199,7 @@ export async function mountSvgLogo(el, url, opts = {}) {
   wrap.style.setProperty("--logo-fg", opts.primary || "#fff");
 
   const svg = parseTintedSvg(text);
-  applyLogoPalette(svg, opts);
+  if (!applyLogoPalette(svg, opts)) throw new Error(`SVG has no drawable shapes: ${url}`);
   wrap.append(document.importNode(svg, true));
 
   wrap.setAttribute("role", "img");
@@ -118,9 +212,28 @@ export async function mountSvgLogo(el, url, opts = {}) {
  * @param {HTMLElement} el
  * @param {{ logoUrl?: string | null, iconUrl?: string | null, primary?: string, secondary?: string, label?: string, alt?: string, size?: "sm" | "md" }} opts
  */
+/**
+ * @param {HTMLElement} el
+ * @param {string[]} urls
+ * @param {{ primary?: string, secondary?: string, label?: string, alt?: string }} paint
+ */
+async function mountFirstSvgLogo(el, urls, paint) {
+  for (const url of urls) {
+    if (!url) continue;
+    try {
+      await mountSvgLogo(el, url, paint);
+      return true;
+    } catch {
+      /* try next candidate */
+    }
+  }
+  return false;
+}
+
 export function mountPortrait(el, opts = {}) {
   const {
     logoUrl = null,
+    baseLogoUrl = null,
     iconUrl = null,
     primary,
     secondary,
@@ -141,19 +254,24 @@ export function mountPortrait(el, opts = {}) {
   fallback.textContent = unitInitials(label);
   el.append(fallback);
 
-  if (logoUrl) {
-    mountSvgLogo(el, logoUrl, { primary, secondary, label, alt })
-      .then(() => {
+  const paint = { primary, secondary, label, alt };
+  const logoCandidates = [logoUrl, baseLogoUrl].filter(Boolean);
+
+  if (logoCandidates.length) {
+    mountFirstSvgLogo(el, logoCandidates, paint).then((ok) => {
+      if (ok) {
         el.classList.remove("no-img");
-      })
-      .catch(() => {
-        el.classList.add("no-img");
-        if (iconUrl) mountRasterPortrait(el, iconUrl, alt || label, fallback);
-      });
+        return;
+      }
+      el.classList.add("no-img");
+      if (iconUrl && !isPlaceholderTroopRaster(iconUrl)) {
+        mountRasterPortrait(el, iconUrl, alt || label, fallback);
+      }
+    });
     return;
   }
 
-  if (iconUrl) {
+  if (iconUrl && !isPlaceholderTroopRaster(iconUrl)) {
     mountRasterPortrait(el, iconUrl, alt || label, fallback);
     return;
   }
@@ -172,10 +290,12 @@ function mountRasterPortrait(el, url, alt, fallback) {
   img.alt = alt || "Unit";
   img.loading = "lazy";
   img.decoding = "async";
-  img.src = url;
+  img.onload = () => {
+    el.classList.remove("no-img");
+    el.prepend(img);
+  };
   img.onerror = () => el.classList.add("no-img");
-  img.onload = () => el.classList.remove("no-img");
-  el.prepend(img);
+  img.src = resolveAssetUrl(url);
   el.append(fallback);
 }
 
@@ -237,14 +357,7 @@ export function renderUnitCard(container, unit, palette, scales, opts = {}) {
   top.className = "compare-unit-top";
 
   const portrait = document.createElement("div");
-  mountPortrait(portrait, {
-    logoUrl: unit.graphicsUrls?.logo,
-    iconUrl: unit.graphicsUrls?.icon || unit.graphicsUrls?.sprite,
-    primary: palette?.primary,
-    secondary: palette?.secondary,
-    label: unit.name,
-    alt: unit.name,
-  });
+  mountPortrait(portrait, portraitOptsFromUnit(unit, palette));
 
   const meta = document.createElement("div");
   meta.className = "compare-unit-meta";
@@ -285,14 +398,6 @@ export function mountTroopLogoCell(cell, unit, palette) {
   cell.innerHTML = "";
   cell.className = "troop-logo-cell";
   const portrait = document.createElement("div");
-  mountPortrait(portrait, {
-    logoUrl: unit.graphicsUrls?.logo,
-    iconUrl: unit.graphicsUrls?.icon || unit.graphicsUrls?.sprite,
-    primary: palette?.primary,
-    secondary: palette?.secondary,
-    label: unit.name,
-    alt: unit.name,
-    size: "sm",
-  });
+  mountPortrait(portrait, portraitOptsFromUnit(unit, palette, { size: "sm" }));
   cell.append(portrait);
 }

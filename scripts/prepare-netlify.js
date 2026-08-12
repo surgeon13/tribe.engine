@@ -27,16 +27,21 @@ function copyRecursive(src, dest) {
   fs.copyFileSync(src, dest);
 }
 
-const build = spawnSync(process.execPath, [path.join(root, "scripts", "build-dashboard-data.js")], {
-  cwd: root,
-  encoding: "utf8",
-});
-if (build.status !== 0) {
-  console.error(build.stdout || "");
-  console.error(build.stderr || "");
-  process.exit(build.status || 1);
+function runStep(script) {
+  const step = spawnSync(process.execPath, [path.join(root, "scripts", script)], {
+    cwd: root,
+    encoding: "utf8",
+  });
+  if (step.status !== 0) {
+    console.error(step.stdout || "");
+    console.error(step.stderr || "");
+    process.exit(step.status || 1);
+  }
+  console.log((step.stdout || "").trim());
 }
-console.log((build.stdout || "").trim());
+
+runStep("validate-logo-assets.js");
+runStep("build-dashboard-data.js");
 
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.mkdirSync(outDir, { recursive: true });
