@@ -84,14 +84,6 @@
       }
     },
     {
-      "id": "norse",
-      "file": "norse.json",
-      "type": "playable",
-      "name": {
-        "en": "Norse"
-      }
-    },
-    {
       "id": "byzantine",
       "file": "byzantine.json",
       "type": "playable",
@@ -108,11 +100,35 @@
       }
     },
     {
-      "id": "moors",
-      "file": "moors.json",
+      "id": "persian",
+      "file": "persian.json",
       "type": "playable",
       "name": {
-        "en": "Moors"
+        "en": "Persians"
+      }
+    },
+    {
+      "id": "axum",
+      "file": "axum.json",
+      "type": "playable",
+      "name": {
+        "en": "Axum"
+      }
+    },
+    {
+      "id": "arab",
+      "file": "arab.json",
+      "type": "playable",
+      "name": {
+        "en": "Arabs"
+      }
+    },
+    {
+      "id": "nabateans",
+      "file": "nabateans.json",
+      "type": "playable",
+      "name": {
+        "en": "Nabateans"
       }
     },
     {

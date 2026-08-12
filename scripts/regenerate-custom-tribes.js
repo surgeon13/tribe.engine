@@ -29,6 +29,9 @@ const CULTURE_TO_LEXICON = Object.freeze({
   viking: "norse",
   moors: "north_african",
   arab: "arab",
+  nabateans: "nabatean",
+  axum: "axumite",
+  persian: "persian",
 });
 
 async function readJson(rel) {

@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-12T06:38:45.465Z",
+  "generatedAt": "2026-08-12T06:43:14.382Z",
   "roster": [
     {
       "slot": 1,
@@ -326,10 +326,6 @@
         "fightingStrengthPerPoint": 90,
         "resourceProductionBonusPercent": 0
       },
-      "norse": {
-        "fightingStrengthPerPoint": 85,
-        "resourceProductionBonusPercent": 0
-      },
       "byzantine": {
         "fightingStrengthPerPoint": 95,
         "resourceProductionBonusPercent": 0
@@ -338,16 +334,28 @@
         "fightingStrengthPerPoint": 90,
         "resourceProductionBonusPercent": 5
       },
-      "moors": {
-        "fightingStrengthPerPoint": 88,
-        "resourceProductionBonusPercent": 0
-      },
       "undead": {
         "fightingStrengthPerPoint": 110,
         "resourceProductionBonusPercent": 0
       },
       "median": {
         "fightingStrengthPerPoint": 80,
+        "resourceProductionBonusPercent": 0
+      },
+      "persian": {
+        "fightingStrengthPerPoint": 85,
+        "resourceProductionBonusPercent": 15
+      },
+      "axum": {
+        "fightingStrengthPerPoint": 88,
+        "resourceProductionBonusPercent": 12
+      },
+      "arab": {
+        "fightingStrengthPerPoint": 88,
+        "resourceProductionBonusPercent": 0
+      },
+      "nabateans": {
+        "fightingStrengthPerPoint": 88,
         "resourceProductionBonusPercent": 0
       }
     }
@@ -8635,835 +8643,6 @@
       }
     },
     {
-      "id": "norse",
-      "name": "Norse",
-      "type": "playable",
-      "theme": "Raid-focused infantry, cheap aggression, limited heavy cavalry (Viking Age (8th–11th c. CE), Scandinavia / North Sea)",
-      "palette": {
-        "primary": "#1A3A5C",
-        "secondary": "#A8B4C0"
-      },
-      "graphics": {
-        "banner": "tribes/norse/banner.png"
-      },
-      "summary": {
-        "unitCount": 11,
-        "maxAttack": 155,
-        "maxDefenseInfantry": 70,
-        "maxDefenseCavalry": 85,
-        "maxSpeed": 15,
-        "maxCarry": 110,
-        "avgAttack": 79,
-        "avgDefenseCombined": 41,
-        "totalCropUpkeep": 31
-      },
-      "troops": [
-        {
-          "slot": 1,
-          "role": "infantry",
-          "ref": "inf_t1",
-          "id": "inf_t1",
-          "name": "Leidang Spearman",
-          "category": "infantry",
-          "stats": {
-            "attack": 40,
-            "defenseInfantry": 30,
-            "defenseCavalry": 20,
-            "speed": 7,
-            "carry": 50
-          },
-          "cost": {
-            "wood": 85,
-            "clay": 70,
-            "iron": 55,
-            "crop": 30
-          },
-          "cropUpkeep": 1,
-          "totalCost": 240,
-          "training": {
-            "building": "barracks",
-            "buildingLabel": "Barracks",
-            "timeSeconds": 720,
-            "timeFormatted": "12:00",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "barracks",
-                "level": 1
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/01_infantry.png",
-            "icon": "tribes/norse/units/01_infantry_icon.png",
-            "logo": "infantry/wood-club.svg",
-            "baseSprite": "units/base/inf_t1.png",
-            "baseIcon": "units/base/inf_t1_icon.png",
-            "baseLogo": "infantry/gladius.svg"
-          },
-          "metrics": {
-            "offense": 40,
-            "defenseInfantry": 30,
-            "defenseCavalry": 20,
-            "defenseCombined": 25,
-            "defenseTotal": 50,
-            "speed": 7,
-            "carry": 50,
-            "cropUpkeep": 1,
-            "attackPerCrop": 40,
-            "defensePerCrop": 50,
-            "trainTimeSeconds": 720,
-            "trainTimeFormatted": "12:00",
-            "resourceCost": 240
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/01_infantry_icon.png",
-            "sprite": "assets/tribes/norse/units/01_infantry.png",
-            "logo": "assets/infantry/wood-club.svg",
-            "baseIcon": "assets/units/base/inf_t1_icon.png",
-            "baseSprite": "assets/units/base/inf_t1.png",
-            "baseLogo": "assets/infantry/gladius.svg"
-          }
-        },
-        {
-          "slot": 2,
-          "role": "infantry",
-          "ref": "inf_t2",
-          "id": "inf_t2",
-          "name": "Bogemann",
-          "category": "infantry",
-          "stats": {
-            "attack": 55,
-            "defenseInfantry": 45,
-            "defenseCavalry": 25,
-            "speed": 6,
-            "carry": 40
-          },
-          "cost": {
-            "wood": 110,
-            "clay": 100,
-            "iron": 140,
-            "crop": 55
-          },
-          "cropUpkeep": 1,
-          "totalCost": 405,
-          "training": {
-            "building": "barracks",
-            "buildingLabel": "Barracks",
-            "timeSeconds": 1040,
-            "timeFormatted": "17:20",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "barracks",
-                "level": 1
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/02_infantry.png",
-            "icon": "tribes/norse/units/02_infantry_icon.png",
-            "logo": "infantry/battle-axe.svg",
-            "baseSprite": "units/base/inf_t2.png",
-            "baseIcon": "units/base/inf_t2_icon.png",
-            "baseLogo": "infantry/battle-axe.svg"
-          },
-          "metrics": {
-            "offense": 55,
-            "defenseInfantry": 45,
-            "defenseCavalry": 25,
-            "defenseCombined": 35,
-            "defenseTotal": 70,
-            "speed": 6,
-            "carry": 40,
-            "cropUpkeep": 1,
-            "attackPerCrop": 55,
-            "defensePerCrop": 70,
-            "trainTimeSeconds": 1040,
-            "trainTimeFormatted": "17:20",
-            "resourceCost": 405
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/02_infantry_icon.png",
-            "sprite": "assets/tribes/norse/units/02_infantry.png",
-            "logo": "assets/infantry/battle-axe.svg",
-            "baseIcon": "assets/units/base/inf_t2_icon.png",
-            "baseSprite": "assets/units/base/inf_t2.png",
-            "baseLogo": "assets/infantry/battle-axe.svg"
-          }
-        },
-        {
-          "slot": 3,
-          "role": "infantry",
-          "ref": "inf_t3",
-          "id": "inf_t3",
-          "name": "Berserker",
-          "category": "infantry",
-          "stats": {
-            "attack": 85,
-            "defenseInfantry": 30,
-            "defenseCavalry": 20,
-            "speed": 8,
-            "carry": 45
-          },
-          "cost": {
-            "wood": 145,
-            "clay": 120,
-            "iron": 190,
-            "crop": 70
-          },
-          "cropUpkeep": 1,
-          "totalCost": 525,
-          "training": {
-            "building": "barracks",
-            "buildingLabel": "Barracks",
-            "timeSeconds": 1280,
-            "timeFormatted": "21:20",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "barracks",
-                "level": 3
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/03_infantry.png",
-            "icon": "tribes/norse/units/03_infantry_icon.png",
-            "logo": "infantry/war-axe.svg",
-            "baseSprite": "units/base/inf_t3.png",
-            "baseIcon": "units/base/inf_t3_icon.png",
-            "baseLogo": "infantry/warhammer.svg"
-          },
-          "metrics": {
-            "offense": 85,
-            "defenseInfantry": 30,
-            "defenseCavalry": 20,
-            "defenseCombined": 25,
-            "defenseTotal": 50,
-            "speed": 8,
-            "carry": 45,
-            "cropUpkeep": 1,
-            "attackPerCrop": 85,
-            "defensePerCrop": 50,
-            "trainTimeSeconds": 1280,
-            "trainTimeFormatted": "21:20",
-            "resourceCost": 525
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/03_infantry_icon.png",
-            "sprite": "assets/tribes/norse/units/03_infantry.png",
-            "logo": "assets/infantry/war-axe.svg",
-            "baseIcon": "assets/units/base/inf_t3_icon.png",
-            "baseSprite": "assets/units/base/inf_t3.png",
-            "baseLogo": "assets/infantry/warhammer.svg"
-          }
-        },
-        {
-          "slot": 4,
-          "role": "scout",
-          "ref": "scout",
-          "id": "scout",
-          "name": "Coast Watcher",
-          "category": "scout",
-          "stats": {
-            "attack": 0,
-            "defenseInfantry": 15,
-            "defenseCavalry": 10,
-            "speed": 15,
-            "carry": 0
-          },
-          "cost": {
-            "wood": 120,
-            "clay": 130,
-            "iron": 20,
-            "crop": 35
-          },
-          "cropUpkeep": 2,
-          "totalCost": 305,
-          "training": {
-            "building": "barracks",
-            "buildingLabel": "Barracks",
-            "timeSeconds": 1120,
-            "timeFormatted": "18:40",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "stable",
-                "level": 1
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/04_scout.png",
-            "icon": "tribes/norse/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
-            "baseSprite": "units/base/scout.png",
-            "baseIcon": "units/base/scout_icon.png",
-            "baseLogo": "infantry/heavy-arrow.svg"
-          },
-          "metrics": {
-            "offense": 0,
-            "defenseInfantry": 15,
-            "defenseCavalry": 10,
-            "defenseCombined": 13,
-            "defenseTotal": 25,
-            "speed": 15,
-            "carry": 0,
-            "cropUpkeep": 2,
-            "attackPerCrop": 0,
-            "defensePerCrop": 12.5,
-            "trainTimeSeconds": 1120,
-            "trainTimeFormatted": "18:40",
-            "resourceCost": 305
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/04_scout_icon.png",
-            "sprite": "assets/tribes/norse/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
-            "baseIcon": "assets/units/base/scout_icon.png",
-            "baseSprite": "assets/units/base/scout.png",
-            "baseLogo": "assets/infantry/heavy-arrow.svg"
-          }
-        },
-        {
-          "slot": 5,
-          "role": "cavalry",
-          "ref": "cav_t1",
-          "id": "cav_t1",
-          "name": "Shore Raider",
-          "category": "cavalry",
-          "stats": {
-            "attack": 100,
-            "defenseInfantry": 45,
-            "defenseCavalry": 40,
-            "speed": 15,
-            "carry": 110
-          },
-          "cost": {
-            "wood": 420,
-            "clay": 350,
-            "iron": 260,
-            "crop": 85
-          },
-          "cropUpkeep": 3,
-          "totalCost": 1115,
-          "training": {
-            "building": "stable",
-            "buildingLabel": "Stable",
-            "timeSeconds": 1500,
-            "timeFormatted": "25:00",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "stable",
-                "level": 3
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/05_cavalry.png",
-            "icon": "tribes/norse/units/05_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
-            "baseSprite": "units/base/cav_t1.png",
-            "baseIcon": "units/base/cav_t1_icon.png",
-            "baseLogo": "cavalry/horse-head.svg"
-          },
-          "metrics": {
-            "offense": 100,
-            "defenseInfantry": 45,
-            "defenseCavalry": 40,
-            "defenseCombined": 43,
-            "defenseTotal": 85,
-            "speed": 15,
-            "carry": 110,
-            "cropUpkeep": 3,
-            "attackPerCrop": 33.3,
-            "defensePerCrop": 28.3,
-            "trainTimeSeconds": 1500,
-            "trainTimeFormatted": "25:00",
-            "resourceCost": 1115
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/05_cavalry_icon.png",
-            "sprite": "assets/tribes/norse/units/05_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
-            "baseIcon": "assets/units/base/cav_t1_icon.png",
-            "baseSprite": "assets/units/base/cav_t1.png",
-            "baseLogo": "assets/cavalry/horse-head.svg"
-          }
-        },
-        {
-          "slot": 6,
-          "role": "cavalry",
-          "ref": "cav_t2",
-          "id": "cav_t2",
-          "name": "Heavy Raider",
-          "category": "cavalry",
-          "stats": {
-            "attack": 145,
-            "defenseInfantry": 65,
-            "defenseCavalry": 80,
-            "speed": 11,
-            "carry": 75
-          },
-          "cost": {
-            "wood": 500,
-            "clay": 520,
-            "iron": 650,
-            "crop": 150
-          },
-          "cropUpkeep": 4,
-          "totalCost": 1820,
-          "training": {
-            "building": "stable",
-            "buildingLabel": "Stable",
-            "timeSeconds": 2000,
-            "timeFormatted": "33:20",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "stable",
-                "level": 5
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/06_cavalry.png",
-            "icon": "tribes/norse/units/06_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
-            "baseSprite": "units/base/cav_t2.png",
-            "baseIcon": "units/base/cav_t2_icon.png",
-            "baseLogo": "cavalry/chess-knight.svg"
-          },
-          "metrics": {
-            "offense": 145,
-            "defenseInfantry": 65,
-            "defenseCavalry": 80,
-            "defenseCombined": 73,
-            "defenseTotal": 145,
-            "speed": 11,
-            "carry": 75,
-            "cropUpkeep": 4,
-            "attackPerCrop": 36.3,
-            "defensePerCrop": 36.3,
-            "trainTimeSeconds": 2000,
-            "trainTimeFormatted": "33:20",
-            "resourceCost": 1820
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/06_cavalry_icon.png",
-            "sprite": "assets/tribes/norse/units/06_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
-            "baseIcon": "assets/units/base/cav_t2_icon.png",
-            "baseSprite": "assets/units/base/cav_t2.png",
-            "baseLogo": "assets/cavalry/chess-knight.svg"
-          }
-        },
-        {
-          "slot": 7,
-          "role": "cavalry",
-          "ref": "cav_t3",
-          "id": "cav_t3",
-          "name": "Hird Cavalry",
-          "category": "cavalry",
-          "stats": {
-            "attack": 155,
-            "defenseInfantry": 70,
-            "defenseCavalry": 85,
-            "speed": 12,
-            "carry": 80
-          },
-          "cost": {
-            "wood": 520,
-            "clay": 540,
-            "iron": 680,
-            "crop": 160
-          },
-          "cropUpkeep": 4,
-          "totalCost": 1900,
-          "training": {
-            "building": "stable",
-            "buildingLabel": "Stable",
-            "timeSeconds": 2200,
-            "timeFormatted": "36:40",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "stable",
-                "level": 10
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/07_cavalry.png",
-            "icon": "tribes/norse/units/07_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
-            "baseSprite": "units/base/cav_t3.png",
-            "baseIcon": "units/base/cav_t3_icon.png",
-            "baseLogo": "cavalry/elephant.svg"
-          },
-          "metrics": {
-            "offense": 155,
-            "defenseInfantry": 70,
-            "defenseCavalry": 85,
-            "defenseCombined": 78,
-            "defenseTotal": 155,
-            "speed": 12,
-            "carry": 80,
-            "cropUpkeep": 4,
-            "attackPerCrop": 38.8,
-            "defensePerCrop": 38.8,
-            "trainTimeSeconds": 2200,
-            "trainTimeFormatted": "36:40",
-            "resourceCost": 1900
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/07_cavalry_icon.png",
-            "sprite": "assets/tribes/norse/units/07_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
-            "baseIcon": "assets/units/base/cav_t3_icon.png",
-            "baseSprite": "assets/units/base/cav_t3.png",
-            "baseLogo": "assets/cavalry/elephant.svg"
-          }
-        },
-        {
-          "slot": 8,
-          "role": "siege",
-          "ref": "ram",
-          "id": "ram",
-          "name": "Timber Ram",
-          "category": "siege",
-          "stats": {
-            "attack": 65,
-            "defenseInfantry": 25,
-            "defenseCavalry": 70,
-            "speed": 4,
-            "carry": 0
-          },
-          "cost": {
-            "wood": 850,
-            "clay": 340,
-            "iron": 480,
-            "crop": 65
-          },
-          "cropUpkeep": 3,
-          "totalCost": 1735,
-          "training": {
-            "building": "workshop",
-            "buildingLabel": "Workshop",
-            "timeSeconds": 4600,
-            "timeFormatted": "1:16:40",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "workshop",
-                "level": 1
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/08_ram.png",
-            "icon": "tribes/norse/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
-            "baseSprite": "units/base/ram.png",
-            "baseIcon": "units/base/ram_icon.png",
-            "baseLogo": "rams/siege-ram.svg"
-          },
-          "metrics": {
-            "offense": 65,
-            "defenseInfantry": 25,
-            "defenseCavalry": 70,
-            "defenseCombined": 48,
-            "defenseTotal": 95,
-            "speed": 4,
-            "carry": 0,
-            "cropUpkeep": 3,
-            "attackPerCrop": 21.7,
-            "defensePerCrop": 31.7,
-            "trainTimeSeconds": 4600,
-            "trainTimeFormatted": "1:16:40",
-            "resourceCost": 1735
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/08_ram_icon.png",
-            "sprite": "assets/tribes/norse/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
-            "baseIcon": "assets/units/base/ram_icon.png",
-            "baseSprite": "assets/units/base/ram.png",
-            "baseLogo": "assets/rams/siege-ram.svg"
-          }
-        },
-        {
-          "slot": 9,
-          "role": "siege",
-          "ref": "catapult",
-          "id": "catapult",
-          "name": "Petrary",
-          "category": "siege",
-          "stats": {
-            "attack": 70,
-            "defenseInfantry": 50,
-            "defenseCavalry": 10,
-            "speed": 3,
-            "carry": 0
-          },
-          "cost": {
-            "wood": 900,
-            "clay": 1250,
-            "iron": 560,
-            "crop": 85
-          },
-          "cropUpkeep": 6,
-          "totalCost": 2795,
-          "training": {
-            "building": "workshop",
-            "buildingLabel": "Workshop",
-            "timeSeconds": 9000,
-            "timeFormatted": "2:30:00",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "workshop",
-                "level": 5
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/09_catapult.png",
-            "icon": "tribes/norse/units/09_catapult_icon.png",
-            "logo": "catapults/trebuchet.svg",
-            "baseSprite": "units/base/catapult.png",
-            "baseIcon": "units/base/catapult_icon.png",
-            "baseLogo": "catapults/catapult.svg"
-          },
-          "metrics": {
-            "offense": 70,
-            "defenseInfantry": 50,
-            "defenseCavalry": 10,
-            "defenseCombined": 30,
-            "defenseTotal": 60,
-            "speed": 3,
-            "carry": 0,
-            "cropUpkeep": 6,
-            "attackPerCrop": 11.7,
-            "defensePerCrop": 10,
-            "trainTimeSeconds": 9000,
-            "trainTimeFormatted": "2:30:00",
-            "resourceCost": 2795
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/09_catapult_icon.png",
-            "sprite": "assets/tribes/norse/units/09_catapult.png",
-            "logo": "assets/catapults/trebuchet.svg",
-            "baseIcon": "assets/units/base/catapult_icon.png",
-            "baseSprite": "assets/units/base/catapult.png",
-            "baseLogo": "assets/catapults/catapult.svg"
-          }
-        },
-        {
-          "slot": 10,
-          "role": "chief",
-          "ref": "chief",
-          "id": "chief",
-          "name": "Jarl",
-          "category": "chief",
-          "stats": {
-            "attack": 55,
-            "defenseInfantry": 35,
-            "defenseCavalry": 25,
-            "speed": 5,
-            "carry": 0
-          },
-          "cost": {
-            "wood": 28000,
-            "clay": 25000,
-            "iron": 40000,
-            "crop": 34000
-          },
-          "cropUpkeep": 5,
-          "totalCost": 127000,
-          "training": {
-            "building": "residence",
-            "buildingLabel": "Residence / Palace",
-            "timeSeconds": 90720,
-            "timeFormatted": "25:12:00",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "residence",
-                "level": 10
-              },
-              {
-                "type": "building",
-                "id": "rally_point",
-                "level": 1
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/10_chief.png",
-            "icon": "tribes/norse/units/10_chief_icon.png",
-            "logo": "chiefs/scroll-seal.svg",
-            "baseSprite": "units/base/chief.png",
-            "baseIcon": "units/base/chief_icon.png",
-            "baseLogo": "chiefs/scepter.svg"
-          },
-          "metrics": {
-            "offense": 55,
-            "defenseInfantry": 35,
-            "defenseCavalry": 25,
-            "defenseCombined": 30,
-            "defenseTotal": 60,
-            "speed": 5,
-            "carry": 0,
-            "cropUpkeep": 5,
-            "attackPerCrop": 11,
-            "defensePerCrop": 12,
-            "trainTimeSeconds": 90720,
-            "trainTimeFormatted": "25:12:00",
-            "resourceCost": 127000
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/10_chief_icon.png",
-            "sprite": "assets/tribes/norse/units/10_chief.png",
-            "logo": "assets/chiefs/scroll-seal.svg",
-            "baseIcon": "assets/units/base/chief_icon.png",
-            "baseSprite": "assets/units/base/chief.png",
-            "baseLogo": "assets/chiefs/scepter.svg"
-          }
-        },
-        {
-          "slot": 11,
-          "role": "settler",
-          "ref": "settler",
-          "id": "settler",
-          "name": "Colony Settler",
-          "category": "settler",
-          "stats": {
-            "attack": 0,
-            "defenseInfantry": 80,
-            "defenseCavalry": 80,
-            "speed": 5,
-            "carry": 3000
-          },
-          "cost": {
-            "wood": 5500,
-            "clay": 5000,
-            "iron": 6800,
-            "crop": 5200
-          },
-          "cropUpkeep": 1,
-          "totalCost": 22500,
-          "training": {
-            "building": "residence",
-            "buildingLabel": "Residence / Palace",
-            "timeSeconds": 30000,
-            "timeFormatted": "8:20:00",
-            "requirements": [
-              {
-                "type": "building",
-                "id": "residence",
-                "level": 10
-              }
-            ]
-          },
-          "graphics": {
-            "sprite": "tribes/norse/units/11_settler.png",
-            "icon": "tribes/norse/units/11_settler_icon.png",
-            "logo": "settlers/windmill.svg",
-            "baseSprite": "units/base/settler.png",
-            "baseIcon": "units/base/settler_icon.png",
-            "baseLogo": "settlers/farmer.svg"
-          },
-          "metrics": {
-            "offense": 0,
-            "defenseInfantry": 80,
-            "defenseCavalry": 80,
-            "defenseCombined": 80,
-            "defenseTotal": 160,
-            "speed": 5,
-            "carry": 3000,
-            "cropUpkeep": 1,
-            "attackPerCrop": 0,
-            "defensePerCrop": 160,
-            "trainTimeSeconds": 30000,
-            "trainTimeFormatted": "8:20:00",
-            "resourceCost": 22500
-          },
-          "graphicsUrls": {
-            "icon": "assets/tribes/norse/units/11_settler_icon.png",
-            "sprite": "assets/tribes/norse/units/11_settler.png",
-            "logo": "assets/settlers/windmill.svg",
-            "baseIcon": "assets/units/base/settler_icon.png",
-            "baseSprite": "assets/units/base/settler.png",
-            "baseLogo": "assets/settlers/farmer.svg"
-          }
-        }
-      ],
-      "hero": {
-        "id": "norse_hero",
-        "progression": "hero.system.json",
-        "role": "hero",
-        "category": "hero",
-        "name": "Norse Hero",
-        "description": {
-          "en": "Sea-king war-leader — raid tempo and infantry shock."
-        },
-        "isBase": false,
-        "stats": {
-          "attack": 120,
-          "defenseInfantry": 95,
-          "defenseCavalry": 85,
-          "speed": 9,
-          "carry": 120
-        },
-        "cost": {
-          "wood": 0,
-          "clay": 0,
-          "iron": 0,
-          "crop": 0
-        },
-        "cropUpkeep": 6,
-        "training": {
-          "building": "hero_mansion",
-          "buildingLabel": "Hero's Mansion",
-          "timeSeconds": 0,
-          "timeFormatted": null,
-          "requirements": []
-        },
-        "graphics": {
-          "sprite": "tribes/norse/hero/hero.png",
-          "icon": "tribes/norse/hero/hero_icon.png",
-          "portrait": "tribes/norse/hero/hero_portrait.png"
-        },
-        "metrics": {
-          "offense": 120,
-          "defenseInfantry": 95,
-          "defenseCavalry": 85,
-          "defenseCombined": 90,
-          "defenseTotal": 180,
-          "speed": 9,
-          "carry": 120,
-          "cropUpkeep": 6,
-          "attackPerCrop": 20,
-          "defensePerCrop": 30,
-          "trainTimeSeconds": 0,
-          "trainTimeFormatted": null,
-          "resourceCost": 0
-        },
-        "totalCost": 0,
-        "graphicsUrls": {
-          "icon": "assets/tribes/norse/hero/hero_icon.png",
-          "sprite": "assets/tribes/norse/hero/hero.png",
-          "portrait": "assets/tribes/norse/hero/hero_portrait.png"
-        }
-      },
-      "graphicsUrls": {
-        "banner": "assets/tribes/norse/banner.png"
-      }
-    },
-    {
       "id": "byzantine",
       "name": "Byzantines",
       "type": "playable",
@@ -11122,16 +10301,1674 @@
       }
     },
     {
-      "id": "moors",
-      "name": "Moors",
+      "id": "persian",
+      "name": "Persians",
       "type": "playable",
-      "theme": "Andalusian cavalry and desert skirmishers",
+      "theme": "Vast levy infantry, Immortals, and horse archers of the Great King (Achaemenid Empire (6th–4th c. BCE), Iranian plateau / Near East)",
       "palette": {
-        "primary": "#1B4332",
-        "secondary": "#D4A017"
+        "primary": "#6B2D5C",
+        "secondary": "#E8C547"
       },
       "graphics": {
-        "banner": "tribes/moors/banner.png"
+        "banner": "tribes/persian/banner.png"
+      },
+      "summary": {
+        "unitCount": 11,
+        "maxAttack": 170,
+        "maxDefenseInfantry": 85,
+        "maxDefenseCavalry": 100,
+        "maxSpeed": 16,
+        "maxCarry": 110,
+        "avgAttack": 79,
+        "avgDefenseCombined": 47,
+        "totalCropUpkeep": 31
+      },
+      "troops": [
+        {
+          "slot": 1,
+          "role": "infantry",
+          "ref": "inf_t1",
+          "id": "inf_t1",
+          "name": "Sparabara",
+          "category": "infantry",
+          "stats": {
+            "attack": 30,
+            "defenseInfantry": 45,
+            "defenseCavalry": 35,
+            "speed": 6,
+            "carry": 40
+          },
+          "cost": {
+            "wood": 100,
+            "clay": 90,
+            "iron": 80,
+            "crop": 35
+          },
+          "cropUpkeep": 1,
+          "totalCost": 305,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 900,
+            "timeFormatted": "15:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/01_infantry.png",
+            "icon": "tribes/persian/units/01_infantry_icon.png",
+            "logo": "infantry/stone-spear.svg",
+            "baseSprite": "units/base/inf_t1.png",
+            "baseIcon": "units/base/inf_t1_icon.png",
+            "baseLogo": "infantry/gladius.svg"
+          },
+          "metrics": {
+            "offense": 30,
+            "defenseInfantry": 45,
+            "defenseCavalry": 35,
+            "defenseCombined": 40,
+            "defenseTotal": 80,
+            "speed": 6,
+            "carry": 40,
+            "cropUpkeep": 1,
+            "attackPerCrop": 30,
+            "defensePerCrop": 80,
+            "trainTimeSeconds": 900,
+            "trainTimeFormatted": "15:00",
+            "resourceCost": 305
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/persian/units/01_infantry.png",
+            "logo": "assets/infantry/stone-spear.svg",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png",
+            "baseLogo": "assets/infantry/gladius.svg"
+          }
+        },
+        {
+          "slot": 2,
+          "role": "infantry",
+          "ref": "inf_t2",
+          "id": "inf_t2",
+          "name": "Takabara Archer",
+          "category": "infantry",
+          "stats": {
+            "attack": 50,
+            "defenseInfantry": 30,
+            "defenseCavalry": 25,
+            "speed": 7,
+            "carry": 35
+          },
+          "cost": {
+            "wood": 140,
+            "clay": 90,
+            "iron": 60,
+            "crop": 50
+          },
+          "cropUpkeep": 1,
+          "totalCost": 340,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1200,
+            "timeFormatted": "20:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/02_infantry.png",
+            "icon": "tribes/persian/units/02_infantry_icon.png",
+            "logo": "infantry/heavy-arrow.svg",
+            "baseSprite": "units/base/inf_t2.png",
+            "baseIcon": "units/base/inf_t2_icon.png",
+            "baseLogo": "infantry/battle-axe.svg"
+          },
+          "metrics": {
+            "offense": 50,
+            "defenseInfantry": 30,
+            "defenseCavalry": 25,
+            "defenseCombined": 28,
+            "defenseTotal": 55,
+            "speed": 7,
+            "carry": 35,
+            "cropUpkeep": 1,
+            "attackPerCrop": 50,
+            "defensePerCrop": 55,
+            "trainTimeSeconds": 1200,
+            "trainTimeFormatted": "20:00",
+            "resourceCost": 340
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/persian/units/02_infantry.png",
+            "logo": "assets/infantry/heavy-arrow.svg",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png",
+            "baseLogo": "assets/infantry/battle-axe.svg"
+          }
+        },
+        {
+          "slot": 3,
+          "role": "infantry",
+          "ref": "inf_t3",
+          "id": "inf_t3",
+          "name": "Immortal",
+          "category": "infantry",
+          "stats": {
+            "attack": 75,
+            "defenseInfantry": 50,
+            "defenseCavalry": 35,
+            "speed": 7,
+            "carry": 50
+          },
+          "cost": {
+            "wood": 170,
+            "clay": 160,
+            "iron": 220,
+            "crop": 95
+          },
+          "cropUpkeep": 1,
+          "totalCost": 645,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1600,
+            "timeFormatted": "26:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/03_infantry.png",
+            "icon": "tribes/persian/units/03_infantry_icon.png",
+            "logo": "infantry/flanged-mace.svg",
+            "baseSprite": "units/base/inf_t3.png",
+            "baseIcon": "units/base/inf_t3_icon.png",
+            "baseLogo": "infantry/warhammer.svg"
+          },
+          "metrics": {
+            "offense": 75,
+            "defenseInfantry": 50,
+            "defenseCavalry": 35,
+            "defenseCombined": 43,
+            "defenseTotal": 85,
+            "speed": 7,
+            "carry": 50,
+            "cropUpkeep": 1,
+            "attackPerCrop": 75,
+            "defensePerCrop": 85,
+            "trainTimeSeconds": 1600,
+            "trainTimeFormatted": "26:40",
+            "resourceCost": 645
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/persian/units/03_infantry.png",
+            "logo": "assets/infantry/flanged-mace.svg",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png",
+            "baseLogo": "assets/infantry/warhammer.svg"
+          }
+        },
+        {
+          "slot": 4,
+          "role": "scout",
+          "ref": "scout",
+          "id": "scout",
+          "name": "Mounted Scout",
+          "category": "scout",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 20,
+            "defenseCavalry": 10,
+            "speed": 16,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 135,
+            "clay": 150,
+            "iron": 20,
+            "crop": 40
+          },
+          "cropUpkeep": 2,
+          "totalCost": 345,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1120,
+            "timeFormatted": "18:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/04_scout.png",
+            "icon": "tribes/persian/units/04_scout_icon.png",
+            "logo": "infantry/arrowhead.svg",
+            "baseSprite": "units/base/scout.png",
+            "baseIcon": "units/base/scout_icon.png",
+            "baseLogo": "infantry/heavy-arrow.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 20,
+            "defenseCavalry": 10,
+            "defenseCombined": 15,
+            "defenseTotal": 30,
+            "speed": 16,
+            "carry": 0,
+            "cropUpkeep": 2,
+            "attackPerCrop": 0,
+            "defensePerCrop": 15,
+            "trainTimeSeconds": 1120,
+            "trainTimeFormatted": "18:40",
+            "resourceCost": 345
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/04_scout_icon.png",
+            "sprite": "assets/tribes/persian/units/04_scout.png",
+            "logo": "assets/infantry/arrowhead.svg",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png",
+            "baseLogo": "assets/infantry/heavy-arrow.svg"
+          }
+        },
+        {
+          "slot": 5,
+          "role": "cavalry",
+          "ref": "cav_t1",
+          "id": "cav_t1",
+          "name": "Median Horseman",
+          "category": "cavalry",
+          "stats": {
+            "attack": 115,
+            "defenseInfantry": 55,
+            "defenseCavalry": 50,
+            "speed": 15,
+            "carry": 95
+          },
+          "cost": {
+            "wood": 500,
+            "clay": 400,
+            "iron": 300,
+            "crop": 100
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1300,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 1680,
+            "timeFormatted": "28:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/05_cavalry.png",
+            "icon": "tribes/persian/units/05_cavalry_icon.png",
+            "logo": "cavalry/horse-head.svg",
+            "baseSprite": "units/base/cav_t1.png",
+            "baseIcon": "units/base/cav_t1_icon.png",
+            "baseLogo": "cavalry/horse-head.svg"
+          },
+          "metrics": {
+            "offense": 115,
+            "defenseInfantry": 55,
+            "defenseCavalry": 50,
+            "defenseCombined": 53,
+            "defenseTotal": 105,
+            "speed": 15,
+            "carry": 95,
+            "cropUpkeep": 3,
+            "attackPerCrop": 38.3,
+            "defensePerCrop": 35,
+            "trainTimeSeconds": 1680,
+            "trainTimeFormatted": "28:00",
+            "resourceCost": 1300
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/persian/units/05_cavalry.png",
+            "logo": "assets/cavalry/horse-head.svg",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png",
+            "baseLogo": "assets/cavalry/horse-head.svg"
+          }
+        },
+        {
+          "slot": 6,
+          "role": "cavalry",
+          "ref": "cav_t2",
+          "id": "cav_t2",
+          "name": "Persian Cataphract",
+          "category": "cavalry",
+          "stats": {
+            "attack": 170,
+            "defenseInfantry": 85,
+            "defenseCavalry": 100,
+            "speed": 10,
+            "carry": 65
+          },
+          "cost": {
+            "wood": 560,
+            "clay": 620,
+            "iron": 780,
+            "crop": 180
+          },
+          "cropUpkeep": 4,
+          "totalCost": 2140,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2100,
+            "timeFormatted": "35:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/06_cavalry.png",
+            "icon": "tribes/persian/units/06_cavalry_icon.png",
+            "logo": "cavalry/chess-knight.svg",
+            "baseSprite": "units/base/cav_t2.png",
+            "baseIcon": "units/base/cav_t2_icon.png",
+            "baseLogo": "cavalry/chess-knight.svg"
+          },
+          "metrics": {
+            "offense": 170,
+            "defenseInfantry": 85,
+            "defenseCavalry": 100,
+            "defenseCombined": 93,
+            "defenseTotal": 185,
+            "speed": 10,
+            "carry": 65,
+            "cropUpkeep": 4,
+            "attackPerCrop": 42.5,
+            "defensePerCrop": 46.3,
+            "trainTimeSeconds": 2100,
+            "trainTimeFormatted": "35:00",
+            "resourceCost": 2140
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/persian/units/06_cavalry.png",
+            "logo": "assets/cavalry/chess-knight.svg",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png",
+            "baseLogo": "assets/cavalry/chess-knight.svg"
+          }
+        },
+        {
+          "slot": 7,
+          "role": "cavalry",
+          "ref": "cav_t3",
+          "id": "cav_t3",
+          "name": "Camel Corps",
+          "category": "cavalry",
+          "stats": {
+            "attack": 140,
+            "defenseInfantry": 60,
+            "defenseCavalry": 70,
+            "speed": 12,
+            "carry": 110
+          },
+          "cost": {
+            "wood": 480,
+            "clay": 450,
+            "iron": 420,
+            "crop": 150
+          },
+          "cropUpkeep": 4,
+          "totalCost": 1500,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2300,
+            "timeFormatted": "38:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/07_cavalry.png",
+            "icon": "tribes/persian/units/07_cavalry_icon.png",
+            "logo": "cavalry/camel-head.svg",
+            "baseSprite": "units/base/cav_t3.png",
+            "baseIcon": "units/base/cav_t3_icon.png",
+            "baseLogo": "cavalry/elephant.svg"
+          },
+          "metrics": {
+            "offense": 140,
+            "defenseInfantry": 60,
+            "defenseCavalry": 70,
+            "defenseCombined": 65,
+            "defenseTotal": 130,
+            "speed": 12,
+            "carry": 110,
+            "cropUpkeep": 4,
+            "attackPerCrop": 35,
+            "defensePerCrop": 32.5,
+            "trainTimeSeconds": 2300,
+            "trainTimeFormatted": "38:20",
+            "resourceCost": 1500
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/persian/units/07_cavalry.png",
+            "logo": "assets/cavalry/camel-head.svg",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png",
+            "baseLogo": "assets/cavalry/elephant.svg"
+          }
+        },
+        {
+          "slot": 8,
+          "role": "siege",
+          "ref": "ram",
+          "id": "ram",
+          "name": "Siege Ram",
+          "category": "siege",
+          "stats": {
+            "attack": 60,
+            "defenseInfantry": 30,
+            "defenseCavalry": 75,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 900,
+            "clay": 360,
+            "iron": 500,
+            "crop": 70
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1830,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 4600,
+            "timeFormatted": "1:16:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/08_ram.png",
+            "icon": "tribes/persian/units/08_ram_icon.png",
+            "logo": "rams/siege-ram.svg",
+            "baseSprite": "units/base/ram.png",
+            "baseIcon": "units/base/ram_icon.png",
+            "baseLogo": "rams/siege-ram.svg"
+          },
+          "metrics": {
+            "offense": 60,
+            "defenseInfantry": 30,
+            "defenseCavalry": 75,
+            "defenseCombined": 53,
+            "defenseTotal": 105,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 3,
+            "attackPerCrop": 20,
+            "defensePerCrop": 35,
+            "trainTimeSeconds": 4600,
+            "trainTimeFormatted": "1:16:40",
+            "resourceCost": 1830
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/08_ram_icon.png",
+            "sprite": "assets/tribes/persian/units/08_ram.png",
+            "logo": "assets/rams/siege-ram.svg",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png",
+            "baseLogo": "assets/rams/siege-ram.svg"
+          }
+        },
+        {
+          "slot": 9,
+          "role": "siege",
+          "ref": "catapult",
+          "id": "catapult",
+          "name": "Siege Engine",
+          "category": "siege",
+          "stats": {
+            "attack": 75,
+            "defenseInfantry": 60,
+            "defenseCavalry": 10,
+            "speed": 3,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 950,
+            "clay": 1350,
+            "iron": 600,
+            "crop": 90
+          },
+          "cropUpkeep": 6,
+          "totalCost": 2990,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/09_catapult.png",
+            "icon": "tribes/persian/units/09_catapult_icon.png",
+            "logo": "catapults/ballista.svg",
+            "baseSprite": "units/base/catapult.png",
+            "baseIcon": "units/base/catapult_icon.png",
+            "baseLogo": "catapults/catapult.svg"
+          },
+          "metrics": {
+            "offense": 75,
+            "defenseInfantry": 60,
+            "defenseCavalry": 10,
+            "defenseCombined": 35,
+            "defenseTotal": 70,
+            "speed": 3,
+            "carry": 0,
+            "cropUpkeep": 6,
+            "attackPerCrop": 12.5,
+            "defensePerCrop": 11.7,
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 2990
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/persian/units/09_catapult.png",
+            "logo": "assets/catapults/ballista.svg",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png",
+            "baseLogo": "assets/catapults/catapult.svg"
+          }
+        },
+        {
+          "slot": 10,
+          "role": "chief",
+          "ref": "chief",
+          "id": "chief",
+          "name": "Satrap",
+          "category": "chief",
+          "stats": {
+            "attack": 50,
+            "defenseInfantry": 40,
+            "defenseCavalry": 30,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 31000,
+            "clay": 27500,
+            "iron": 45000,
+            "crop": 37000
+          },
+          "cropUpkeep": 5,
+          "totalCost": 140500,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 90720,
+            "timeFormatted": "25:12:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              },
+              {
+                "type": "building",
+                "id": "rally_point",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/10_chief.png",
+            "icon": "tribes/persian/units/10_chief_icon.png",
+            "logo": "chiefs/diadem.svg",
+            "baseSprite": "units/base/chief.png",
+            "baseIcon": "units/base/chief_icon.png",
+            "baseLogo": "chiefs/scepter.svg"
+          },
+          "metrics": {
+            "offense": 50,
+            "defenseInfantry": 40,
+            "defenseCavalry": 30,
+            "defenseCombined": 35,
+            "defenseTotal": 70,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 5,
+            "attackPerCrop": 10,
+            "defensePerCrop": 14,
+            "trainTimeSeconds": 90720,
+            "trainTimeFormatted": "25:12:00",
+            "resourceCost": 140500
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/10_chief_icon.png",
+            "sprite": "assets/tribes/persian/units/10_chief.png",
+            "logo": "assets/chiefs/diadem.svg",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png",
+            "baseLogo": "assets/chiefs/scepter.svg"
+          }
+        },
+        {
+          "slot": 11,
+          "role": "settler",
+          "ref": "settler",
+          "id": "settler",
+          "name": "Settler",
+          "category": "settler",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 80,
+            "defenseCavalry": 80,
+            "speed": 5,
+            "carry": 3000
+          },
+          "cost": {
+            "wood": 5800,
+            "clay": 5300,
+            "iron": 7200,
+            "crop": 5500
+          },
+          "cropUpkeep": 1,
+          "totalCost": 23800,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 26920,
+            "timeFormatted": "7:28:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/persian/units/11_settler.png",
+            "icon": "tribes/persian/units/11_settler_icon.png",
+            "logo": "settlers/barn.svg",
+            "baseSprite": "units/base/settler.png",
+            "baseIcon": "units/base/settler_icon.png",
+            "baseLogo": "settlers/farmer.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 80,
+            "defenseCavalry": 80,
+            "defenseCombined": 80,
+            "defenseTotal": 160,
+            "speed": 5,
+            "carry": 3000,
+            "cropUpkeep": 1,
+            "attackPerCrop": 0,
+            "defensePerCrop": 160,
+            "trainTimeSeconds": 26920,
+            "trainTimeFormatted": "7:28:40",
+            "resourceCost": 23800
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/persian/units/11_settler_icon.png",
+            "sprite": "assets/tribes/persian/units/11_settler.png",
+            "logo": "assets/settlers/barn.svg",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png",
+            "baseLogo": "assets/settlers/farmer.svg"
+          }
+        }
+      ],
+      "hero": {
+        "id": "persian_hero",
+        "progression": "hero.system.json",
+        "role": "hero",
+        "category": "hero",
+        "name": "Hero",
+        "description": {
+          "en": "Player hero — defaults to the account's in-game name; editable later."
+        },
+        "isBase": false,
+        "stats": {
+          "attack": 95,
+          "defenseInfantry": 115,
+          "defenseCavalry": 100,
+          "speed": 8,
+          "carry": 100
+        },
+        "cost": {
+          "wood": 0,
+          "clay": 0,
+          "iron": 0,
+          "crop": 0
+        },
+        "cropUpkeep": 6,
+        "training": {
+          "building": "hero_mansion",
+          "buildingLabel": "Hero's Mansion",
+          "timeSeconds": 0,
+          "timeFormatted": null,
+          "requirements": []
+        },
+        "graphics": {
+          "sprite": "tribes/persian/hero/hero.png",
+          "icon": "tribes/persian/hero/hero_icon.png",
+          "portrait": "tribes/persian/hero/hero_portrait.png"
+        },
+        "metrics": {
+          "offense": 95,
+          "defenseInfantry": 115,
+          "defenseCavalry": 100,
+          "defenseCombined": 108,
+          "defenseTotal": 215,
+          "speed": 8,
+          "carry": 100,
+          "cropUpkeep": 6,
+          "attackPerCrop": 15.8,
+          "defensePerCrop": 35.8,
+          "trainTimeSeconds": 0,
+          "trainTimeFormatted": null,
+          "resourceCost": 0
+        },
+        "totalCost": 0,
+        "graphicsUrls": {
+          "icon": "assets/tribes/persian/hero/hero_icon.png",
+          "sprite": "assets/tribes/persian/hero/hero.png",
+          "portrait": "assets/tribes/persian/hero/hero_portrait.png"
+        }
+      },
+      "graphicsUrls": {
+        "banner": "assets/tribes/persian/banner.png"
+      }
+    },
+    {
+      "id": "axum",
+      "name": "Axum",
+      "type": "playable",
+      "theme": "Highland spearmen, ivory-trade wealth, and Red Sea projection (Kingdom of Aksum (1st–7th c. CE), Ethiopian highlands / Red Sea)",
+      "palette": {
+        "primary": "#6B2D1A",
+        "secondary": "#E8B84A"
+      },
+      "graphics": {
+        "banner": "tribes/axum/banner.png"
+      },
+      "summary": {
+        "unitCount": 11,
+        "maxAttack": 160,
+        "maxDefenseInfantry": 72,
+        "maxDefenseCavalry": 92,
+        "maxSpeed": 16,
+        "maxCarry": 115,
+        "avgAttack": 77,
+        "avgDefenseCombined": 46,
+        "totalCropUpkeep": 31
+      },
+      "troops": [
+        {
+          "slot": 1,
+          "role": "infantry",
+          "ref": "inf_t1",
+          "id": "inf_t1",
+          "name": "Highland Spearman",
+          "category": "infantry",
+          "stats": {
+            "attack": 36,
+            "defenseInfantry": 40,
+            "defenseCavalry": 45,
+            "speed": 6,
+            "carry": 42
+          },
+          "cost": {
+            "wood": 108,
+            "clay": 92,
+            "iron": 115,
+            "crop": 35
+          },
+          "cropUpkeep": 1,
+          "totalCost": 350,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1100,
+            "timeFormatted": "18:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/01_infantry.png",
+            "icon": "tribes/axum/units/01_infantry_icon.png",
+            "logo": "infantry/stone-spear.svg",
+            "baseSprite": "units/base/inf_t1.png",
+            "baseIcon": "units/base/inf_t1_icon.png",
+            "baseLogo": "infantry/gladius.svg"
+          },
+          "metrics": {
+            "offense": 36,
+            "defenseInfantry": 40,
+            "defenseCavalry": 45,
+            "defenseCombined": 43,
+            "defenseTotal": 85,
+            "speed": 6,
+            "carry": 42,
+            "cropUpkeep": 1,
+            "attackPerCrop": 36,
+            "defensePerCrop": 85,
+            "trainTimeSeconds": 1100,
+            "trainTimeFormatted": "18:20",
+            "resourceCost": 350
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/axum/units/01_infantry.png",
+            "logo": "assets/infantry/stone-spear.svg",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png",
+            "baseLogo": "assets/infantry/gladius.svg"
+          }
+        },
+        {
+          "slot": 2,
+          "role": "infantry",
+          "ref": "inf_t2",
+          "id": "inf_t2",
+          "name": "Javelin Skirmisher",
+          "category": "infantry",
+          "stats": {
+            "attack": 46,
+            "defenseInfantry": 30,
+            "defenseCavalry": 28,
+            "speed": 8,
+            "carry": 35
+          },
+          "cost": {
+            "wood": 120,
+            "clay": 88,
+            "iron": 75,
+            "crop": 42
+          },
+          "cropUpkeep": 1,
+          "totalCost": 325,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1300,
+            "timeFormatted": "21:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/02_infantry.png",
+            "icon": "tribes/axum/units/02_infantry_icon.png",
+            "logo": "infantry/barbed-spear.svg",
+            "baseSprite": "units/base/inf_t2.png",
+            "baseIcon": "units/base/inf_t2_icon.png",
+            "baseLogo": "infantry/battle-axe.svg"
+          },
+          "metrics": {
+            "offense": 46,
+            "defenseInfantry": 30,
+            "defenseCavalry": 28,
+            "defenseCombined": 29,
+            "defenseTotal": 58,
+            "speed": 8,
+            "carry": 35,
+            "cropUpkeep": 1,
+            "attackPerCrop": 46,
+            "defensePerCrop": 58,
+            "trainTimeSeconds": 1300,
+            "trainTimeFormatted": "21:40",
+            "resourceCost": 325
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/axum/units/02_infantry.png",
+            "logo": "assets/infantry/barbed-spear.svg",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png",
+            "baseLogo": "assets/infantry/battle-axe.svg"
+          }
+        },
+        {
+          "slot": 3,
+          "role": "infantry",
+          "ref": "inf_t3",
+          "id": "inf_t3",
+          "name": "Royal Guard",
+          "category": "infantry",
+          "stats": {
+            "attack": 70,
+            "defenseInfantry": 52,
+            "defenseCavalry": 38,
+            "speed": 6,
+            "carry": 48
+          },
+          "cost": {
+            "wood": 168,
+            "clay": 158,
+            "iron": 210,
+            "crop": 92
+          },
+          "cropUpkeep": 1,
+          "totalCost": 628,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1550,
+            "timeFormatted": "25:50",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/03_infantry.png",
+            "icon": "tribes/axum/units/03_infantry_icon.png",
+            "logo": "infantry/battle-axe.svg",
+            "baseSprite": "units/base/inf_t3.png",
+            "baseIcon": "units/base/inf_t3_icon.png",
+            "baseLogo": "infantry/warhammer.svg"
+          },
+          "metrics": {
+            "offense": 70,
+            "defenseInfantry": 52,
+            "defenseCavalry": 38,
+            "defenseCombined": 45,
+            "defenseTotal": 90,
+            "speed": 6,
+            "carry": 48,
+            "cropUpkeep": 1,
+            "attackPerCrop": 70,
+            "defensePerCrop": 90,
+            "trainTimeSeconds": 1550,
+            "trainTimeFormatted": "25:50",
+            "resourceCost": 628
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/axum/units/03_infantry.png",
+            "logo": "assets/infantry/battle-axe.svg",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png",
+            "baseLogo": "assets/infantry/warhammer.svg"
+          }
+        },
+        {
+          "slot": 4,
+          "role": "scout",
+          "ref": "scout",
+          "id": "scout",
+          "name": "Border Scout",
+          "category": "scout",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 18,
+            "defenseCavalry": 12,
+            "speed": 16,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 128,
+            "clay": 140,
+            "iron": 22,
+            "crop": 38
+          },
+          "cropUpkeep": 2,
+          "totalCost": 328,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1200,
+            "timeFormatted": "20:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/04_scout.png",
+            "icon": "tribes/axum/units/04_scout_icon.png",
+            "logo": "infantry/heavy-arrow.svg",
+            "baseSprite": "units/base/scout.png",
+            "baseIcon": "units/base/scout_icon.png",
+            "baseLogo": "infantry/heavy-arrow.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 18,
+            "defenseCavalry": 12,
+            "defenseCombined": 15,
+            "defenseTotal": 30,
+            "speed": 16,
+            "carry": 0,
+            "cropUpkeep": 2,
+            "attackPerCrop": 0,
+            "defensePerCrop": 15,
+            "trainTimeSeconds": 1200,
+            "trainTimeFormatted": "20:00",
+            "resourceCost": 328
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/04_scout_icon.png",
+            "sprite": "assets/tribes/axum/units/04_scout.png",
+            "logo": "assets/infantry/heavy-arrow.svg",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png",
+            "baseLogo": "assets/infantry/heavy-arrow.svg"
+          }
+        },
+        {
+          "slot": 5,
+          "role": "cavalry",
+          "ref": "cav_t1",
+          "id": "cav_t1",
+          "name": "Highland Horse",
+          "category": "cavalry",
+          "stats": {
+            "attack": 112,
+            "defenseInfantry": 52,
+            "defenseCavalry": 48,
+            "speed": 15,
+            "carry": 92
+          },
+          "cost": {
+            "wood": 470,
+            "clay": 390,
+            "iron": 290,
+            "crop": 95
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1245,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 1700,
+            "timeFormatted": "28:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/05_cavalry.png",
+            "icon": "tribes/axum/units/05_cavalry_icon.png",
+            "logo": "cavalry/donkey.svg",
+            "baseSprite": "units/base/cav_t1.png",
+            "baseIcon": "units/base/cav_t1_icon.png",
+            "baseLogo": "cavalry/horse-head.svg"
+          },
+          "metrics": {
+            "offense": 112,
+            "defenseInfantry": 52,
+            "defenseCavalry": 48,
+            "defenseCombined": 50,
+            "defenseTotal": 100,
+            "speed": 15,
+            "carry": 92,
+            "cropUpkeep": 3,
+            "attackPerCrop": 37.3,
+            "defensePerCrop": 33.3,
+            "trainTimeSeconds": 1700,
+            "trainTimeFormatted": "28:20",
+            "resourceCost": 1245
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/axum/units/05_cavalry.png",
+            "logo": "assets/cavalry/donkey.svg",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png",
+            "baseLogo": "assets/cavalry/horse-head.svg"
+          }
+        },
+        {
+          "slot": 6,
+          "role": "cavalry",
+          "ref": "cav_t2",
+          "id": "cav_t2",
+          "name": "Noble Cavalry",
+          "category": "cavalry",
+          "stats": {
+            "attack": 160,
+            "defenseInfantry": 72,
+            "defenseCavalry": 92,
+            "speed": 11,
+            "carry": 70
+          },
+          "cost": {
+            "wood": 545,
+            "clay": 610,
+            "iron": 730,
+            "crop": 170
+          },
+          "cropUpkeep": 4,
+          "totalCost": 2055,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2100,
+            "timeFormatted": "35:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/06_cavalry.png",
+            "icon": "tribes/axum/units/06_cavalry_icon.png",
+            "logo": "cavalry/horse-head.svg",
+            "baseSprite": "units/base/cav_t2.png",
+            "baseIcon": "units/base/cav_t2_icon.png",
+            "baseLogo": "cavalry/chess-knight.svg"
+          },
+          "metrics": {
+            "offense": 160,
+            "defenseInfantry": 72,
+            "defenseCavalry": 92,
+            "defenseCombined": 82,
+            "defenseTotal": 164,
+            "speed": 11,
+            "carry": 70,
+            "cropUpkeep": 4,
+            "attackPerCrop": 40,
+            "defensePerCrop": 41,
+            "trainTimeSeconds": 2100,
+            "trainTimeFormatted": "35:00",
+            "resourceCost": 2055
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/axum/units/06_cavalry.png",
+            "logo": "assets/cavalry/horse-head.svg",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png",
+            "baseLogo": "assets/cavalry/chess-knight.svg"
+          }
+        },
+        {
+          "slot": 7,
+          "role": "cavalry",
+          "ref": "cav_t3",
+          "id": "cav_t3",
+          "name": "Camel Corps",
+          "category": "cavalry",
+          "stats": {
+            "attack": 138,
+            "defenseInfantry": 58,
+            "defenseCavalry": 68,
+            "speed": 12,
+            "carry": 115
+          },
+          "cost": {
+            "wood": 490,
+            "clay": 460,
+            "iron": 430,
+            "crop": 155
+          },
+          "cropUpkeep": 4,
+          "totalCost": 1535,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2400,
+            "timeFormatted": "40:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/07_cavalry.png",
+            "icon": "tribes/axum/units/07_cavalry_icon.png",
+            "logo": "cavalry/camel-head.svg",
+            "baseSprite": "units/base/cav_t3.png",
+            "baseIcon": "units/base/cav_t3_icon.png",
+            "baseLogo": "cavalry/elephant.svg"
+          },
+          "metrics": {
+            "offense": 138,
+            "defenseInfantry": 58,
+            "defenseCavalry": 68,
+            "defenseCombined": 63,
+            "defenseTotal": 126,
+            "speed": 12,
+            "carry": 115,
+            "cropUpkeep": 4,
+            "attackPerCrop": 34.5,
+            "defensePerCrop": 31.5,
+            "trainTimeSeconds": 2400,
+            "trainTimeFormatted": "40:00",
+            "resourceCost": 1535
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/axum/units/07_cavalry.png",
+            "logo": "assets/cavalry/camel-head.svg",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png",
+            "baseLogo": "assets/cavalry/elephant.svg"
+          }
+        },
+        {
+          "slot": 8,
+          "role": "siege",
+          "ref": "ram",
+          "id": "ram",
+          "name": "Siege Ram",
+          "category": "siege",
+          "stats": {
+            "attack": 58,
+            "defenseInfantry": 28,
+            "defenseCavalry": 70,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 885,
+            "clay": 350,
+            "iron": 485,
+            "crop": 68
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1788,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 4600,
+            "timeFormatted": "1:16:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/08_ram.png",
+            "icon": "tribes/axum/units/08_ram_icon.png",
+            "logo": "rams/siege-tower.svg",
+            "baseSprite": "units/base/ram.png",
+            "baseIcon": "units/base/ram_icon.png",
+            "baseLogo": "rams/siege-ram.svg"
+          },
+          "metrics": {
+            "offense": 58,
+            "defenseInfantry": 28,
+            "defenseCavalry": 70,
+            "defenseCombined": 49,
+            "defenseTotal": 98,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 3,
+            "attackPerCrop": 19.3,
+            "defensePerCrop": 32.7,
+            "trainTimeSeconds": 4600,
+            "trainTimeFormatted": "1:16:40",
+            "resourceCost": 1788
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/08_ram_icon.png",
+            "sprite": "assets/tribes/axum/units/08_ram.png",
+            "logo": "assets/rams/siege-tower.svg",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png",
+            "baseLogo": "assets/rams/siege-ram.svg"
+          }
+        },
+        {
+          "slot": 9,
+          "role": "siege",
+          "ref": "catapult",
+          "id": "catapult",
+          "name": "Stone Thrower",
+          "category": "siege",
+          "stats": {
+            "attack": 74,
+            "defenseInfantry": 58,
+            "defenseCavalry": 10,
+            "speed": 3,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 945,
+            "clay": 1330,
+            "iron": 595,
+            "crop": 90
+          },
+          "cropUpkeep": 6,
+          "totalCost": 2960,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/09_catapult.png",
+            "icon": "tribes/axum/units/09_catapult_icon.png",
+            "logo": "catapults/catapult.svg",
+            "baseSprite": "units/base/catapult.png",
+            "baseIcon": "units/base/catapult_icon.png",
+            "baseLogo": "catapults/catapult.svg"
+          },
+          "metrics": {
+            "offense": 74,
+            "defenseInfantry": 58,
+            "defenseCavalry": 10,
+            "defenseCombined": 34,
+            "defenseTotal": 68,
+            "speed": 3,
+            "carry": 0,
+            "cropUpkeep": 6,
+            "attackPerCrop": 12.3,
+            "defensePerCrop": 11.3,
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 2960
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/axum/units/09_catapult.png",
+            "logo": "assets/catapults/catapult.svg",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png",
+            "baseLogo": "assets/catapults/catapult.svg"
+          }
+        },
+        {
+          "slot": 10,
+          "role": "chief",
+          "ref": "chief",
+          "id": "chief",
+          "name": "Negus",
+          "category": "chief",
+          "stats": {
+            "attack": 48,
+            "defenseInfantry": 40,
+            "defenseCavalry": 32,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 30200,
+            "clay": 27200,
+            "iron": 44800,
+            "crop": 36800
+          },
+          "cropUpkeep": 5,
+          "totalCost": 139000,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 90720,
+            "timeFormatted": "25:12:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              },
+              {
+                "type": "building",
+                "id": "rally_point",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/10_chief.png",
+            "icon": "tribes/axum/units/10_chief_icon.png",
+            "logo": "chiefs/scroll-seal.svg",
+            "baseSprite": "units/base/chief.png",
+            "baseIcon": "units/base/chief_icon.png",
+            "baseLogo": "chiefs/scepter.svg"
+          },
+          "metrics": {
+            "offense": 48,
+            "defenseInfantry": 40,
+            "defenseCavalry": 32,
+            "defenseCombined": 36,
+            "defenseTotal": 72,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 5,
+            "attackPerCrop": 9.6,
+            "defensePerCrop": 14.4,
+            "trainTimeSeconds": 90720,
+            "trainTimeFormatted": "25:12:00",
+            "resourceCost": 139000
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/10_chief_icon.png",
+            "sprite": "assets/tribes/axum/units/10_chief.png",
+            "logo": "assets/chiefs/scroll-seal.svg",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png",
+            "baseLogo": "assets/chiefs/scepter.svg"
+          }
+        },
+        {
+          "slot": 11,
+          "role": "settler",
+          "ref": "settler",
+          "id": "settler",
+          "name": "Colonist",
+          "category": "settler",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 80,
+            "defenseCavalry": 80,
+            "speed": 5,
+            "carry": 3000
+          },
+          "cost": {
+            "wood": 5700,
+            "clay": 5200,
+            "iron": 7050,
+            "crop": 5400
+          },
+          "cropUpkeep": 1,
+          "totalCost": 23350,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 26920,
+            "timeFormatted": "7:28:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/axum/units/11_settler.png",
+            "icon": "tribes/axum/units/11_settler_icon.png",
+            "logo": "settlers/barn.svg",
+            "baseSprite": "units/base/settler.png",
+            "baseIcon": "units/base/settler_icon.png",
+            "baseLogo": "settlers/farmer.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 80,
+            "defenseCavalry": 80,
+            "defenseCombined": 80,
+            "defenseTotal": 160,
+            "speed": 5,
+            "carry": 3000,
+            "cropUpkeep": 1,
+            "attackPerCrop": 0,
+            "defensePerCrop": 160,
+            "trainTimeSeconds": 26920,
+            "trainTimeFormatted": "7:28:40",
+            "resourceCost": 23350
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/axum/units/11_settler_icon.png",
+            "sprite": "assets/tribes/axum/units/11_settler.png",
+            "logo": "assets/settlers/barn.svg",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png",
+            "baseLogo": "assets/settlers/farmer.svg"
+          }
+        }
+      ],
+      "hero": {
+        "id": "axum_hero",
+        "progression": "hero.system.json",
+        "role": "hero",
+        "category": "hero",
+        "name": "Hero",
+        "description": {
+          "en": "Player hero — defaults to the account's in-game name; editable later."
+        },
+        "isBase": false,
+        "stats": {
+          "attack": 102,
+          "defenseInfantry": 112,
+          "defenseCavalry": 100,
+          "speed": 8,
+          "carry": 105
+        },
+        "cost": {
+          "wood": 0,
+          "clay": 0,
+          "iron": 0,
+          "crop": 0
+        },
+        "cropUpkeep": 6,
+        "training": {
+          "building": "hero_mansion",
+          "buildingLabel": "Hero's Mansion",
+          "timeSeconds": 0,
+          "timeFormatted": null,
+          "requirements": []
+        },
+        "graphics": {
+          "sprite": "tribes/axum/hero/hero.png",
+          "icon": "tribes/axum/hero/hero_icon.png",
+          "portrait": "tribes/axum/hero/hero_portrait.png"
+        },
+        "metrics": {
+          "offense": 102,
+          "defenseInfantry": 112,
+          "defenseCavalry": 100,
+          "defenseCombined": 106,
+          "defenseTotal": 212,
+          "speed": 8,
+          "carry": 105,
+          "cropUpkeep": 6,
+          "attackPerCrop": 17,
+          "defensePerCrop": 35.3,
+          "trainTimeSeconds": 0,
+          "trainTimeFormatted": null,
+          "resourceCost": 0
+        },
+        "totalCost": 0,
+        "graphicsUrls": {
+          "icon": "assets/tribes/axum/hero/hero_icon.png",
+          "sprite": "assets/tribes/axum/hero/hero.png",
+          "portrait": "assets/tribes/axum/hero/hero_portrait.png"
+        }
+      },
+      "graphicsUrls": {
+        "banner": "assets/tribes/axum/banner.png"
+      }
+    },
+    {
+      "id": "arab",
+      "name": "Arabs",
+      "type": "playable",
+      "theme": "Desert cavalry, tribal spears, and camel riders",
+      "palette": {
+        "primary": "#6B3F2A",
+        "secondary": "#E6B422"
+      },
+      "graphics": {
+        "banner": "tribes/arab/banner.png"
       },
       "summary": {
         "unitCount": 11,
@@ -11181,8 +12018,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/01_infantry.png",
-            "icon": "tribes/moors/units/01_infantry_icon.png",
+            "sprite": "tribes/arab/units/01_infantry.png",
+            "icon": "tribes/arab/units/01_infantry_icon.png",
             "logo": "infantry/stone-spear.svg",
             "baseSprite": "units/base/inf_t1.png",
             "baseIcon": "units/base/inf_t1_icon.png",
@@ -11204,8 +12041,8 @@
             "resourceCost": 330
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/01_infantry_icon.png",
-            "sprite": "assets/tribes/moors/units/01_infantry.png",
+            "icon": "assets/tribes/arab/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/arab/units/01_infantry.png",
             "logo": "assets/infantry/stone-spear.svg",
             "baseIcon": "assets/units/base/inf_t1_icon.png",
             "baseSprite": "assets/units/base/inf_t1.png",
@@ -11217,7 +12054,7 @@
           "role": "infantry",
           "ref": "inf_t2",
           "id": "inf_t2",
-          "name": "Berber Skirmisher",
+          "name": "Najdi Skirmisher",
           "category": "infantry",
           "stats": {
             "attack": 35,
@@ -11248,8 +12085,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/02_infantry.png",
-            "icon": "tribes/moors/units/02_infantry_icon.png",
+            "sprite": "tribes/arab/units/02_infantry.png",
+            "icon": "tribes/arab/units/02_infantry_icon.png",
             "logo": "infantry/battle-axe.svg",
             "baseSprite": "units/base/inf_t2.png",
             "baseIcon": "units/base/inf_t2_icon.png",
@@ -11271,8 +12108,8 @@
             "resourceCost": 464
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/02_infantry_icon.png",
-            "sprite": "assets/tribes/moors/units/02_infantry.png",
+            "icon": "assets/tribes/arab/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/arab/units/02_infantry.png",
             "logo": "assets/infantry/battle-axe.svg",
             "baseIcon": "assets/units/base/inf_t2_icon.png",
             "baseSprite": "assets/units/base/inf_t2.png",
@@ -11284,7 +12121,7 @@
           "role": "infantry",
           "ref": "inf_t3",
           "id": "inf_t3",
-          "name": "Almohad Infantry",
+          "name": "Abna Infantry",
           "category": "infantry",
           "stats": {
             "attack": 63,
@@ -11315,8 +12152,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/03_infantry.png",
-            "icon": "tribes/moors/units/03_infantry_icon.png",
+            "sprite": "tribes/arab/units/03_infantry.png",
+            "icon": "tribes/arab/units/03_infantry_icon.png",
             "logo": "infantry/gladius.svg",
             "baseSprite": "units/base/inf_t3.png",
             "baseIcon": "units/base/inf_t3_icon.png",
@@ -11338,8 +12175,8 @@
             "resourceCost": 685
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/03_infantry_icon.png",
-            "sprite": "assets/tribes/moors/units/03_infantry.png",
+            "icon": "assets/tribes/arab/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/arab/units/03_infantry.png",
             "logo": "assets/infantry/gladius.svg",
             "baseIcon": "assets/units/base/inf_t3_icon.png",
             "baseSprite": "assets/units/base/inf_t3.png",
@@ -11382,8 +12219,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/04_scout.png",
-            "icon": "tribes/moors/units/04_scout_icon.png",
+            "sprite": "tribes/arab/units/04_scout.png",
+            "icon": "tribes/arab/units/04_scout_icon.png",
             "logo": "infantry/heavy-arrow.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
@@ -11405,8 +12242,8 @@
             "resourceCost": 378
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/04_scout_icon.png",
-            "sprite": "assets/tribes/moors/units/04_scout.png",
+            "icon": "assets/tribes/arab/units/04_scout_icon.png",
+            "sprite": "assets/tribes/arab/units/04_scout.png",
             "logo": "assets/infantry/heavy-arrow.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
@@ -11418,7 +12255,7 @@
           "role": "cavalry",
           "ref": "cav_t1",
           "id": "cav_t1",
-          "name": "Zenata Rider",
+          "name": "Light Faris",
           "category": "cavalry",
           "stats": {
             "attack": 145,
@@ -11449,8 +12286,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/05_cavalry.png",
-            "icon": "tribes/moors/units/05_cavalry_icon.png",
+            "sprite": "tribes/arab/units/05_cavalry.png",
+            "icon": "tribes/arab/units/05_cavalry_icon.png",
             "logo": "cavalry/camel-head.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
@@ -11472,8 +12309,8 @@
             "resourceCost": 1497
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/05_cavalry_icon.png",
-            "sprite": "assets/tribes/moors/units/05_cavalry.png",
+            "icon": "assets/tribes/arab/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/arab/units/05_cavalry.png",
             "logo": "assets/cavalry/camel-head.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
@@ -11485,7 +12322,7 @@
           "role": "cavalry",
           "ref": "cav_t2",
           "id": "cav_t2",
-          "name": "Andalusi Cavalry",
+          "name": "Faris",
           "category": "cavalry",
           "stats": {
             "attack": 185,
@@ -11516,8 +12353,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/06_cavalry.png",
-            "icon": "tribes/moors/units/06_cavalry_icon.png",
+            "sprite": "tribes/arab/units/06_cavalry.png",
+            "icon": "tribes/arab/units/06_cavalry_icon.png",
             "logo": "cavalry/chess-knight.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
@@ -11539,8 +12376,8 @@
             "resourceCost": 2387
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/06_cavalry_icon.png",
-            "sprite": "assets/tribes/moors/units/06_cavalry.png",
+            "icon": "assets/tribes/arab/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/arab/units/06_cavalry.png",
             "logo": "assets/cavalry/chess-knight.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
@@ -11552,7 +12389,7 @@
           "role": "cavalry",
           "ref": "cav_t3",
           "id": "cav_t3",
-          "name": "Royal Cavalry",
+          "name": "Royal Mamluk",
           "category": "cavalry",
           "stats": {
             "attack": 165,
@@ -11583,8 +12420,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/07_cavalry.png",
-            "icon": "tribes/moors/units/07_cavalry_icon.png",
+            "sprite": "tribes/arab/units/07_cavalry.png",
+            "icon": "tribes/arab/units/07_cavalry_icon.png",
             "logo": "cavalry/camel-head.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
@@ -11606,8 +12443,837 @@
             "resourceCost": 2132
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/07_cavalry_icon.png",
-            "sprite": "assets/tribes/moors/units/07_cavalry.png",
+            "icon": "assets/tribes/arab/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/arab/units/07_cavalry.png",
+            "logo": "assets/cavalry/camel-head.svg",
+            "baseIcon": "assets/units/base/cav_t3_icon.png",
+            "baseSprite": "assets/units/base/cav_t3.png",
+            "baseLogo": "assets/cavalry/elephant.svg"
+          }
+        },
+        {
+          "slot": 8,
+          "role": "siege",
+          "ref": "ram",
+          "id": "ram",
+          "name": "Siege Ram",
+          "category": "siege",
+          "stats": {
+            "attack": 62,
+            "defenseInfantry": 29,
+            "defenseCavalry": 71,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 972,
+            "clay": 389,
+            "iron": 540,
+            "crop": 76
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1977,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 4600,
+            "timeFormatted": "1:16:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/arab/units/08_ram.png",
+            "icon": "tribes/arab/units/08_ram_icon.png",
+            "logo": "rams/siege-tower.svg",
+            "baseSprite": "units/base/ram.png",
+            "baseIcon": "units/base/ram_icon.png",
+            "baseLogo": "rams/siege-ram.svg"
+          },
+          "metrics": {
+            "offense": 62,
+            "defenseInfantry": 29,
+            "defenseCavalry": 71,
+            "defenseCombined": 50,
+            "defenseTotal": 100,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 3,
+            "attackPerCrop": 20.7,
+            "defensePerCrop": 33.3,
+            "trainTimeSeconds": 4600,
+            "trainTimeFormatted": "1:16:40",
+            "resourceCost": 1977
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/arab/units/08_ram_icon.png",
+            "sprite": "assets/tribes/arab/units/08_ram.png",
+            "logo": "assets/rams/siege-tower.svg",
+            "baseIcon": "assets/units/base/ram_icon.png",
+            "baseSprite": "assets/units/base/ram.png",
+            "baseLogo": "assets/rams/siege-ram.svg"
+          }
+        },
+        {
+          "slot": 9,
+          "role": "siege",
+          "ref": "catapult",
+          "id": "catapult",
+          "name": "Arradah",
+          "category": "siege",
+          "stats": {
+            "attack": 77,
+            "defenseInfantry": 57,
+            "defenseCavalry": 10,
+            "speed": 3,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 1026,
+            "clay": 1458,
+            "iron": 648,
+            "crop": 97
+          },
+          "cropUpkeep": 6,
+          "totalCost": 3229,
+          "training": {
+            "building": "workshop",
+            "buildingLabel": "Workshop",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "workshop",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/arab/units/09_catapult.png",
+            "icon": "tribes/arab/units/09_catapult_icon.png",
+            "logo": "catapults/trebuchet.svg",
+            "baseSprite": "units/base/catapult.png",
+            "baseIcon": "units/base/catapult_icon.png",
+            "baseLogo": "catapults/catapult.svg"
+          },
+          "metrics": {
+            "offense": 77,
+            "defenseInfantry": 57,
+            "defenseCavalry": 10,
+            "defenseCombined": 34,
+            "defenseTotal": 67,
+            "speed": 3,
+            "carry": 0,
+            "cropUpkeep": 6,
+            "attackPerCrop": 12.8,
+            "defensePerCrop": 11.2,
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 3229
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/arab/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/arab/units/09_catapult.png",
+            "logo": "assets/catapults/trebuchet.svg",
+            "baseIcon": "assets/units/base/catapult_icon.png",
+            "baseSprite": "assets/units/base/catapult.png",
+            "baseLogo": "assets/catapults/catapult.svg"
+          }
+        },
+        {
+          "slot": 10,
+          "role": "chief",
+          "ref": "chief",
+          "id": "chief",
+          "name": "Arab Sheikh",
+          "category": "chief",
+          "stats": {
+            "attack": 52,
+            "defenseInfantry": 38,
+            "defenseCavalry": 29,
+            "speed": 4,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 32400,
+            "clay": 29160,
+            "iron": 47520,
+            "crop": 38880
+          },
+          "cropUpkeep": 5,
+          "totalCost": 147960,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 90720,
+            "timeFormatted": "25:12:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              },
+              {
+                "type": "building",
+                "id": "rally_point",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/arab/units/10_chief.png",
+            "icon": "tribes/arab/units/10_chief_icon.png",
+            "logo": "chiefs/scepter.svg",
+            "baseSprite": "units/base/chief.png",
+            "baseIcon": "units/base/chief_icon.png",
+            "baseLogo": "chiefs/scepter.svg"
+          },
+          "metrics": {
+            "offense": 52,
+            "defenseInfantry": 38,
+            "defenseCavalry": 29,
+            "defenseCombined": 34,
+            "defenseTotal": 67,
+            "speed": 4,
+            "carry": 0,
+            "cropUpkeep": 5,
+            "attackPerCrop": 10.4,
+            "defensePerCrop": 13.4,
+            "trainTimeSeconds": 90720,
+            "trainTimeFormatted": "25:12:00",
+            "resourceCost": 147960
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/arab/units/10_chief_icon.png",
+            "sprite": "assets/tribes/arab/units/10_chief.png",
+            "logo": "assets/chiefs/scepter.svg",
+            "baseIcon": "assets/units/base/chief_icon.png",
+            "baseSprite": "assets/units/base/chief.png",
+            "baseLogo": "assets/chiefs/scepter.svg"
+          }
+        },
+        {
+          "slot": 11,
+          "role": "settler",
+          "ref": "settler",
+          "id": "settler",
+          "name": "Arab Settler",
+          "category": "settler",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 76,
+            "defenseCavalry": 76,
+            "speed": 5,
+            "carry": 3000
+          },
+          "cost": {
+            "wood": 6264,
+            "clay": 5724,
+            "iron": 7776,
+            "crop": 5940
+          },
+          "cropUpkeep": 1,
+          "totalCost": 25704,
+          "training": {
+            "building": "residence",
+            "buildingLabel": "Residence / Palace",
+            "timeSeconds": 26920,
+            "timeFormatted": "7:28:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "residence",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/arab/units/11_settler.png",
+            "icon": "tribes/arab/units/11_settler_icon.png",
+            "logo": "settlers/old-wagon.svg",
+            "baseSprite": "units/base/settler.png",
+            "baseIcon": "units/base/settler_icon.png",
+            "baseLogo": "settlers/farmer.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 76,
+            "defenseCavalry": 76,
+            "defenseCombined": 76,
+            "defenseTotal": 152,
+            "speed": 5,
+            "carry": 3000,
+            "cropUpkeep": 1,
+            "attackPerCrop": 0,
+            "defensePerCrop": 152,
+            "trainTimeSeconds": 26920,
+            "trainTimeFormatted": "7:28:40",
+            "resourceCost": 25704
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/arab/units/11_settler_icon.png",
+            "sprite": "assets/tribes/arab/units/11_settler.png",
+            "logo": "assets/settlers/old-wagon.svg",
+            "baseIcon": "assets/units/base/settler_icon.png",
+            "baseSprite": "assets/units/base/settler.png",
+            "baseLogo": "assets/settlers/farmer.svg"
+          }
+        }
+      ],
+      "hero": {
+        "id": "arab_hero",
+        "progression": "hero.system.json",
+        "role": "hero",
+        "category": "hero",
+        "name": "Hero",
+        "description": {
+          "en": "Player hero — defaults to the account's in-game name; editable later."
+        },
+        "isBase": false,
+        "stats": {
+          "attack": 103,
+          "defenseInfantry": 105,
+          "defenseCavalry": 95,
+          "speed": 8,
+          "carry": 100
+        },
+        "cost": {
+          "wood": 0,
+          "clay": 0,
+          "iron": 0,
+          "crop": 0
+        },
+        "cropUpkeep": 6,
+        "training": {
+          "building": "hero_mansion",
+          "buildingLabel": "Hero's Mansion",
+          "timeSeconds": 0,
+          "timeFormatted": null,
+          "requirements": []
+        },
+        "graphics": {
+          "sprite": "tribes/arab/hero/hero.png",
+          "icon": "tribes/arab/hero/hero_icon.png",
+          "portrait": "tribes/arab/hero/hero_portrait.png"
+        },
+        "metrics": {
+          "offense": 103,
+          "defenseInfantry": 105,
+          "defenseCavalry": 95,
+          "defenseCombined": 100,
+          "defenseTotal": 200,
+          "speed": 8,
+          "carry": 100,
+          "cropUpkeep": 6,
+          "attackPerCrop": 17.2,
+          "defensePerCrop": 33.3,
+          "trainTimeSeconds": 0,
+          "trainTimeFormatted": null,
+          "resourceCost": 0
+        },
+        "totalCost": 0,
+        "graphicsUrls": {
+          "icon": "assets/tribes/arab/hero/hero_icon.png",
+          "sprite": "assets/tribes/arab/hero/hero.png",
+          "portrait": "assets/tribes/arab/hero/hero_portrait.png"
+        }
+      },
+      "graphicsUrls": {
+        "banner": "assets/tribes/arab/banner.png"
+      }
+    },
+    {
+      "id": "nabateans",
+      "name": "Nabateans",
+      "type": "playable",
+      "theme": "Caravan-kingdom desert infantry and camel riders",
+      "palette": {
+        "primary": "#7A4A28",
+        "secondary": "#C4A35A"
+      },
+      "graphics": {
+        "banner": "tribes/nabateans/banner.png"
+      },
+      "summary": {
+        "unitCount": 11,
+        "maxAttack": 185,
+        "maxDefenseInfantry": 60,
+        "maxDefenseCavalry": 71,
+        "maxSpeed": 17,
+        "maxCarry": 89,
+        "avgAttack": 83,
+        "avgDefenseCombined": 42,
+        "totalCropUpkeep": 31
+      },
+      "troops": [
+        {
+          "slot": 1,
+          "role": "infantry",
+          "ref": "inf_t1",
+          "id": "inf_t1",
+          "name": "Shield Bearer",
+          "category": "infantry",
+          "stats": {
+            "attack": 11,
+            "defenseInfantry": 33,
+            "defenseCavalry": 59,
+            "speed": 7,
+            "carry": 40
+          },
+          "cost": {
+            "wood": 101,
+            "clay": 87,
+            "iron": 110,
+            "crop": 32
+          },
+          "cropUpkeep": 1,
+          "totalCost": 330,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1200,
+            "timeFormatted": "20:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/nabateans/units/01_infantry.png",
+            "icon": "tribes/nabateans/units/01_infantry_icon.png",
+            "logo": "infantry/stone-spear.svg",
+            "baseSprite": "units/base/inf_t1.png",
+            "baseIcon": "units/base/inf_t1_icon.png",
+            "baseLogo": "infantry/gladius.svg"
+          },
+          "metrics": {
+            "offense": 11,
+            "defenseInfantry": 33,
+            "defenseCavalry": 59,
+            "defenseCombined": 46,
+            "defenseTotal": 92,
+            "speed": 7,
+            "carry": 40,
+            "cropUpkeep": 1,
+            "attackPerCrop": 11,
+            "defensePerCrop": 92,
+            "trainTimeSeconds": 1200,
+            "trainTimeFormatted": "20:00",
+            "resourceCost": 330
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/nabateans/units/01_infantry_icon.png",
+            "sprite": "assets/tribes/nabateans/units/01_infantry.png",
+            "logo": "assets/infantry/stone-spear.svg",
+            "baseIcon": "assets/units/base/inf_t1_icon.png",
+            "baseSprite": "assets/units/base/inf_t1.png",
+            "baseLogo": "assets/infantry/gladius.svg"
+          }
+        },
+        {
+          "slot": 2,
+          "role": "infantry",
+          "ref": "inf_t2",
+          "id": "inf_t2",
+          "name": "Slinger",
+          "category": "infantry",
+          "stats": {
+            "attack": 35,
+            "defenseInfantry": 36,
+            "defenseCavalry": 43,
+            "speed": 6,
+            "carry": 45
+          },
+          "cost": {
+            "wood": 135,
+            "clay": 119,
+            "iron": 151,
+            "crop": 59
+          },
+          "cropUpkeep": 1,
+          "totalCost": 464,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1400,
+            "timeFormatted": "23:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/nabateans/units/02_infantry.png",
+            "icon": "tribes/nabateans/units/02_infantry_icon.png",
+            "logo": "infantry/battle-axe.svg",
+            "baseSprite": "units/base/inf_t2.png",
+            "baseIcon": "units/base/inf_t2_icon.png",
+            "baseLogo": "infantry/battle-axe.svg"
+          },
+          "metrics": {
+            "offense": 35,
+            "defenseInfantry": 36,
+            "defenseCavalry": 43,
+            "defenseCombined": 40,
+            "defenseTotal": 79,
+            "speed": 6,
+            "carry": 45,
+            "cropUpkeep": 1,
+            "attackPerCrop": 35,
+            "defensePerCrop": 79,
+            "trainTimeSeconds": 1400,
+            "trainTimeFormatted": "23:20",
+            "resourceCost": 464
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/nabateans/units/02_infantry_icon.png",
+            "sprite": "assets/tribes/nabateans/units/02_infantry.png",
+            "logo": "assets/infantry/battle-axe.svg",
+            "baseIcon": "assets/units/base/inf_t2_icon.png",
+            "baseSprite": "assets/units/base/inf_t2.png",
+            "baseLogo": "assets/infantry/battle-axe.svg"
+          }
+        },
+        {
+          "slot": 3,
+          "role": "infantry",
+          "ref": "inf_t3",
+          "id": "inf_t3",
+          "name": "Petra Guard",
+          "category": "infantry",
+          "stats": {
+            "attack": 63,
+            "defenseInfantry": 36,
+            "defenseCavalry": 27,
+            "speed": 7,
+            "carry": 50
+          },
+          "cost": {
+            "wood": 181,
+            "clay": 170,
+            "iron": 238,
+            "crop": 96
+          },
+          "cropUpkeep": 1,
+          "totalCost": 685,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1600,
+            "timeFormatted": "26:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "barracks",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/nabateans/units/03_infantry.png",
+            "icon": "tribes/nabateans/units/03_infantry_icon.png",
+            "logo": "infantry/gladius.svg",
+            "baseSprite": "units/base/inf_t3.png",
+            "baseIcon": "units/base/inf_t3_icon.png",
+            "baseLogo": "infantry/warhammer.svg"
+          },
+          "metrics": {
+            "offense": 63,
+            "defenseInfantry": 36,
+            "defenseCavalry": 27,
+            "defenseCombined": 32,
+            "defenseTotal": 63,
+            "speed": 7,
+            "carry": 50,
+            "cropUpkeep": 1,
+            "attackPerCrop": 63,
+            "defensePerCrop": 63,
+            "trainTimeSeconds": 1600,
+            "trainTimeFormatted": "26:40",
+            "resourceCost": 685
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/nabateans/units/03_infantry_icon.png",
+            "sprite": "assets/tribes/nabateans/units/03_infantry.png",
+            "logo": "assets/infantry/gladius.svg",
+            "baseIcon": "assets/units/base/inf_t3_icon.png",
+            "baseSprite": "assets/units/base/inf_t3.png",
+            "baseLogo": "assets/infantry/warhammer.svg"
+          }
+        },
+        {
+          "slot": 4,
+          "role": "scout",
+          "ref": "scout",
+          "id": "scout",
+          "name": "Caravan Scout",
+          "category": "scout",
+          "stats": {
+            "attack": 0,
+            "defenseInfantry": 19,
+            "defenseCavalry": 10,
+            "speed": 17,
+            "carry": 0
+          },
+          "cost": {
+            "wood": 146,
+            "clay": 162,
+            "iron": 27,
+            "crop": 43
+          },
+          "cropUpkeep": 2,
+          "totalCost": 378,
+          "training": {
+            "building": "barracks",
+            "buildingLabel": "Barracks",
+            "timeSeconds": 1280,
+            "timeFormatted": "21:20",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 1
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/nabateans/units/04_scout.png",
+            "icon": "tribes/nabateans/units/04_scout_icon.png",
+            "logo": "infantry/heavy-arrow.svg",
+            "baseSprite": "units/base/scout.png",
+            "baseIcon": "units/base/scout_icon.png",
+            "baseLogo": "infantry/heavy-arrow.svg"
+          },
+          "metrics": {
+            "offense": 0,
+            "defenseInfantry": 19,
+            "defenseCavalry": 10,
+            "defenseCombined": 15,
+            "defenseTotal": 29,
+            "speed": 17,
+            "carry": 0,
+            "cropUpkeep": 2,
+            "attackPerCrop": 0,
+            "defensePerCrop": 14.5,
+            "trainTimeSeconds": 1280,
+            "trainTimeFormatted": "21:20",
+            "resourceCost": 378
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/nabateans/units/04_scout_icon.png",
+            "sprite": "assets/tribes/nabateans/units/04_scout.png",
+            "logo": "assets/infantry/heavy-arrow.svg",
+            "baseIcon": "assets/units/base/scout_icon.png",
+            "baseSprite": "assets/units/base/scout.png",
+            "baseLogo": "assets/infantry/heavy-arrow.svg"
+          }
+        },
+        {
+          "slot": 5,
+          "role": "cavalry",
+          "ref": "cav_t1",
+          "id": "cav_t1",
+          "name": "Light Desert Horse",
+          "category": "cavalry",
+          "stats": {
+            "attack": 145,
+            "defenseInfantry": 52,
+            "defenseCavalry": 48,
+            "speed": 15,
+            "carry": 89
+          },
+          "cost": {
+            "wood": 567,
+            "clay": 465,
+            "iron": 352,
+            "crop": 113
+          },
+          "cropUpkeep": 3,
+          "totalCost": 1497,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 1800,
+            "timeFormatted": "30:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 3
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/nabateans/units/05_cavalry.png",
+            "icon": "tribes/nabateans/units/05_cavalry_icon.png",
+            "logo": "cavalry/camel-head.svg",
+            "baseSprite": "units/base/cav_t1.png",
+            "baseIcon": "units/base/cav_t1_icon.png",
+            "baseLogo": "cavalry/horse-head.svg"
+          },
+          "metrics": {
+            "offense": 145,
+            "defenseInfantry": 52,
+            "defenseCavalry": 48,
+            "defenseCombined": 50,
+            "defenseTotal": 100,
+            "speed": 15,
+            "carry": 89,
+            "cropUpkeep": 3,
+            "attackPerCrop": 48.3,
+            "defensePerCrop": 33.3,
+            "trainTimeSeconds": 1800,
+            "trainTimeFormatted": "30:00",
+            "resourceCost": 1497
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/nabateans/units/05_cavalry_icon.png",
+            "sprite": "assets/tribes/nabateans/units/05_cavalry.png",
+            "logo": "assets/cavalry/camel-head.svg",
+            "baseIcon": "assets/units/base/cav_t1_icon.png",
+            "baseSprite": "assets/units/base/cav_t1.png",
+            "baseLogo": "assets/cavalry/horse-head.svg"
+          }
+        },
+        {
+          "slot": 6,
+          "role": "cavalry",
+          "ref": "cav_t2",
+          "id": "cav_t2",
+          "name": "Nabatean Lancer",
+          "category": "cavalry",
+          "stats": {
+            "attack": 185,
+            "defenseInfantry": 60,
+            "defenseCavalry": 55,
+            "speed": 13,
+            "carry": 77
+          },
+          "cost": {
+            "wood": 624,
+            "clay": 703,
+            "iron": 862,
+            "crop": 198
+          },
+          "cropUpkeep": 4,
+          "totalCost": 2387,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2400,
+            "timeFormatted": "40:00",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 5
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/nabateans/units/06_cavalry.png",
+            "icon": "tribes/nabateans/units/06_cavalry_icon.png",
+            "logo": "cavalry/chess-knight.svg",
+            "baseSprite": "units/base/cav_t2.png",
+            "baseIcon": "units/base/cav_t2_icon.png",
+            "baseLogo": "cavalry/chess-knight.svg"
+          },
+          "metrics": {
+            "offense": 185,
+            "defenseInfantry": 60,
+            "defenseCavalry": 55,
+            "defenseCombined": 58,
+            "defenseTotal": 115,
+            "speed": 13,
+            "carry": 77,
+            "cropUpkeep": 4,
+            "attackPerCrop": 46.3,
+            "defensePerCrop": 28.8,
+            "trainTimeSeconds": 2400,
+            "trainTimeFormatted": "40:00",
+            "resourceCost": 2387
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/nabateans/units/06_cavalry_icon.png",
+            "sprite": "assets/tribes/nabateans/units/06_cavalry.png",
+            "logo": "assets/cavalry/chess-knight.svg",
+            "baseIcon": "assets/units/base/cav_t2_icon.png",
+            "baseSprite": "assets/units/base/cav_t2.png",
+            "baseLogo": "assets/cavalry/chess-knight.svg"
+          }
+        },
+        {
+          "slot": 7,
+          "role": "cavalry",
+          "ref": "cav_t3",
+          "id": "cav_t3",
+          "name": "Royal Camel Guard",
+          "category": "cavalry",
+          "stats": {
+            "attack": 165,
+            "defenseInfantry": 57,
+            "defenseCavalry": 52,
+            "speed": 14,
+            "carry": 81
+          },
+          "cost": {
+            "wood": 601,
+            "clay": 624,
+            "iron": 737,
+            "crop": 170
+          },
+          "cropUpkeep": 4,
+          "totalCost": 2132,
+          "training": {
+            "building": "stable",
+            "buildingLabel": "Stable",
+            "timeSeconds": 2500,
+            "timeFormatted": "41:40",
+            "requirements": [
+              {
+                "type": "building",
+                "id": "stable",
+                "level": 10
+              }
+            ]
+          },
+          "graphics": {
+            "sprite": "tribes/nabateans/units/07_cavalry.png",
+            "icon": "tribes/nabateans/units/07_cavalry_icon.png",
+            "logo": "cavalry/camel-head.svg",
+            "baseSprite": "units/base/cav_t3.png",
+            "baseIcon": "units/base/cav_t3_icon.png",
+            "baseLogo": "cavalry/elephant.svg"
+          },
+          "metrics": {
+            "offense": 165,
+            "defenseInfantry": 57,
+            "defenseCavalry": 52,
+            "defenseCombined": 55,
+            "defenseTotal": 109,
+            "speed": 14,
+            "carry": 81,
+            "cropUpkeep": 4,
+            "attackPerCrop": 41.3,
+            "defensePerCrop": 27.3,
+            "trainTimeSeconds": 2500,
+            "trainTimeFormatted": "41:40",
+            "resourceCost": 2132
+          },
+          "graphicsUrls": {
+            "icon": "assets/tribes/nabateans/units/07_cavalry_icon.png",
+            "sprite": "assets/tribes/nabateans/units/07_cavalry.png",
             "logo": "assets/cavalry/camel-head.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
@@ -11650,9 +13316,9 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/08_ram.png",
-            "icon": "tribes/moors/units/08_ram_icon.png",
-            "logo": "rams/siege-tower.svg",
+            "sprite": "tribes/nabateans/units/08_ram.png",
+            "icon": "tribes/nabateans/units/08_ram_icon.png",
+            "logo": "rams/siege-ram.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -11673,9 +13339,9 @@
             "resourceCost": 1977
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/08_ram_icon.png",
-            "sprite": "assets/tribes/moors/units/08_ram.png",
-            "logo": "assets/rams/siege-tower.svg",
+            "icon": "assets/tribes/nabateans/units/08_ram_icon.png",
+            "sprite": "assets/tribes/nabateans/units/08_ram.png",
+            "logo": "assets/rams/siege-ram.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -11686,7 +13352,7 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Manjaniq",
+          "name": "Ballista",
           "category": "siege",
           "stats": {
             "attack": 77,
@@ -11717,9 +13383,9 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/09_catapult.png",
-            "icon": "tribes/moors/units/09_catapult_icon.png",
-            "logo": "catapults/trebuchet.svg",
+            "sprite": "tribes/nabateans/units/09_catapult.png",
+            "icon": "tribes/nabateans/units/09_catapult_icon.png",
+            "logo": "catapults/ballista.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -11740,9 +13406,9 @@
             "resourceCost": 3229
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/09_catapult_icon.png",
-            "sprite": "assets/tribes/moors/units/09_catapult.png",
-            "logo": "assets/catapults/trebuchet.svg",
+            "icon": "assets/tribes/nabateans/units/09_catapult_icon.png",
+            "sprite": "assets/tribes/nabateans/units/09_catapult.png",
+            "logo": "assets/catapults/ballista.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"
@@ -11753,7 +13419,7 @@
           "role": "chief",
           "ref": "chief",
           "id": "chief",
-          "name": "Moorish Sheikh",
+          "name": "Nabatean Ethnarch",
           "category": "chief",
           "stats": {
             "attack": 52,
@@ -11789,8 +13455,8 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/10_chief.png",
-            "icon": "tribes/moors/units/10_chief_icon.png",
+            "sprite": "tribes/nabateans/units/10_chief.png",
+            "icon": "tribes/nabateans/units/10_chief_icon.png",
             "logo": "chiefs/diadem.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
@@ -11812,8 +13478,8 @@
             "resourceCost": 147960
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/10_chief_icon.png",
-            "sprite": "assets/tribes/moors/units/10_chief.png",
+            "icon": "assets/tribes/nabateans/units/10_chief_icon.png",
+            "sprite": "assets/tribes/nabateans/units/10_chief.png",
             "logo": "assets/chiefs/diadem.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
@@ -11825,7 +13491,7 @@
           "role": "settler",
           "ref": "settler",
           "id": "settler",
-          "name": "Moorish Settler",
+          "name": "Nabatean Settler",
           "category": "settler",
           "stats": {
             "attack": 0,
@@ -11856,9 +13522,9 @@
             ]
           },
           "graphics": {
-            "sprite": "tribes/moors/units/11_settler.png",
-            "icon": "tribes/moors/units/11_settler_icon.png",
-            "logo": "settlers/plow.svg",
+            "sprite": "tribes/nabateans/units/11_settler.png",
+            "icon": "tribes/nabateans/units/11_settler_icon.png",
+            "logo": "settlers/hut.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -11879,9 +13545,9 @@
             "resourceCost": 25704
           },
           "graphicsUrls": {
-            "icon": "assets/tribes/moors/units/11_settler_icon.png",
-            "sprite": "assets/tribes/moors/units/11_settler.png",
-            "logo": "assets/settlers/plow.svg",
+            "icon": "assets/tribes/nabateans/units/11_settler_icon.png",
+            "sprite": "assets/tribes/nabateans/units/11_settler.png",
+            "logo": "assets/settlers/hut.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -11889,13 +13555,13 @@
         }
       ],
       "hero": {
-        "id": "moors_hero",
+        "id": "nabateans_hero",
         "progression": "hero.system.json",
         "role": "hero",
         "category": "hero",
-        "name": "Moors Hero",
+        "name": "Hero",
         "description": {
-          "en": "Player hero for Moors. Defaults to the account's in-game name; editable later."
+          "en": "Player hero — defaults to the account's in-game name; editable later."
         },
         "isBase": false,
         "stats": {
@@ -11920,9 +13586,9 @@
           "requirements": []
         },
         "graphics": {
-          "sprite": "tribes/moors/hero/hero.png",
-          "icon": "tribes/moors/hero/hero_icon.png",
-          "portrait": "tribes/moors/hero/hero_portrait.png"
+          "sprite": "tribes/nabateans/hero/hero.png",
+          "icon": "tribes/nabateans/hero/hero_icon.png",
+          "portrait": "tribes/nabateans/hero/hero_portrait.png"
         },
         "metrics": {
           "offense": 103,
@@ -11941,13 +13607,13 @@
         },
         "totalCost": 0,
         "graphicsUrls": {
-          "icon": "assets/tribes/moors/hero/hero_icon.png",
-          "sprite": "assets/tribes/moors/hero/hero.png",
-          "portrait": "assets/tribes/moors/hero/hero_portrait.png"
+          "icon": "assets/tribes/nabateans/hero/hero_icon.png",
+          "sprite": "assets/tribes/nabateans/hero/hero.png",
+          "portrait": "assets/tribes/nabateans/hero/hero_portrait.png"
         }
       },
       "graphicsUrls": {
-        "banner": "assets/tribes/moors/banner.png"
+        "banner": "assets/tribes/nabateans/banner.png"
       }
     },
     {

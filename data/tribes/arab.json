@@ -3,22 +3,22 @@
   "version": 1,
   "game": "Tevel",
   "tribe": {
-    "id": "moors",
+    "id": "arab",
     "name": {
-      "en": "Moors"
+      "en": "Arabs"
     },
-    "theme": "Andalusian cavalry and desert skirmishers",
+    "theme": "Desert cavalry, tribal spears, and camel riders",
     "graphics": {
-      "banner": "tribes/moors/banner.png"
+      "banner": "tribes/arab/banner.png"
     }
   },
   "palette": {
-    "primary": "#1B4332",
-    "secondary": "#D4A017"
+    "primary": "#6B3F2A",
+    "secondary": "#E6B422"
   },
   "buildings": {
     "usePalette": true,
-    "spriteRoot": "tribes/moors/buildings"
+    "spriteRoot": "tribes/arab/buildings"
   },
   "troops": [
     {
@@ -45,7 +45,7 @@
           "logo": "infantry/stone-spear.svg"
         },
         "description": {
-          "en": "Shield Bearer — Andalusian cavalry and desert skirmishers [def_cav]"
+          "en": "Shield Bearer — Desert cavalry, tribal spears, and camel riders [def_cav]"
         }
       }
     },
@@ -53,7 +53,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": {
-          "en": "Berber Skirmisher"
+          "en": "Najdi Skirmisher"
         },
         "stats": {
           "attack": 35,
@@ -73,7 +73,7 @@
           "logo": "infantry/battle-axe.svg"
         },
         "description": {
-          "en": "Berber Skirmisher — Andalusian cavalry and desert skirmishers [line]"
+          "en": "Najdi Skirmisher — Desert cavalry, tribal spears, and camel riders [line]"
         }
       }
     },
@@ -81,7 +81,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": {
-          "en": "Almohad Infantry"
+          "en": "Abna Infantry"
         },
         "stats": {
           "attack": 63,
@@ -101,7 +101,7 @@
           "logo": "infantry/gladius.svg"
         },
         "description": {
-          "en": "Almohad Infantry — Andalusian cavalry and desert skirmishers [off_inf]"
+          "en": "Abna Infantry — Desert cavalry, tribal spears, and camel riders [off_inf]"
         }
       }
     },
@@ -129,7 +129,7 @@
           "logo": "infantry/heavy-arrow.svg"
         },
         "description": {
-          "en": "Desert Scout — Andalusian cavalry and desert skirmishers [scout]"
+          "en": "Desert Scout — Desert cavalry, tribal spears, and camel riders [scout]"
         }
       }
     },
@@ -137,7 +137,7 @@
       "ref": "cav_t1",
       "overrides": {
         "name": {
-          "en": "Zenata Rider"
+          "en": "Light Faris"
         },
         "stats": {
           "attack": 145,
@@ -157,7 +157,7 @@
           "logo": "cavalry/camel-head.svg"
         },
         "description": {
-          "en": "Zenata Rider — Andalusian cavalry and desert skirmishers [cav_off]"
+          "en": "Light Faris — Desert cavalry, tribal spears, and camel riders [cav_off]"
         }
       }
     },
@@ -165,7 +165,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": {
-          "en": "Andalusi Cavalry"
+          "en": "Faris"
         },
         "stats": {
           "attack": 185,
@@ -185,7 +185,7 @@
           "logo": "cavalry/chess-knight.svg"
         },
         "description": {
-          "en": "Andalusi Cavalry — Andalusian cavalry and desert skirmishers [cav_off]"
+          "en": "Faris — Desert cavalry, tribal spears, and camel riders [cav_off]"
         }
       }
     },
@@ -193,7 +193,7 @@
       "ref": "cav_t3",
       "overrides": {
         "name": {
-          "en": "Royal Cavalry"
+          "en": "Royal Mamluk"
         },
         "stats": {
           "attack": 165,
@@ -213,7 +213,7 @@
           "logo": "cavalry/camel-head.svg"
         },
         "description": {
-          "en": "Royal Cavalry — Andalusian cavalry and desert skirmishers [cav_off]"
+          "en": "Royal Mamluk — Desert cavalry, tribal spears, and camel riders [cav_off]"
         }
       }
     },
@@ -221,7 +221,7 @@
       "ref": "ram",
       "overrides": {
         "name": {
-          "en": "Battering Ram"
+          "en": "Siege Ram"
         },
         "stats": {
           "attack": 62,
@@ -241,7 +241,7 @@
           "logo": "rams/siege-tower.svg"
         },
         "description": {
-          "en": "Battering Ram — Andalusian cavalry and desert skirmishers"
+          "en": "Siege Ram — Desert cavalry, tribal spears, and camel riders"
         }
       }
     },
@@ -249,7 +249,7 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Manjaniq"
+          "en": "Arradah"
         },
         "stats": {
           "attack": 77,
@@ -269,7 +269,7 @@
           "logo": "catapults/trebuchet.svg"
         },
         "description": {
-          "en": "Manjaniq — Andalusian cavalry and desert skirmishers"
+          "en": "Arradah — Desert cavalry, tribal spears, and camel riders"
         }
       }
     },
@@ -277,7 +277,7 @@
       "ref": "chief",
       "overrides": {
         "name": {
-          "en": "Moorish Sheikh"
+          "en": "Arab Sheikh"
         },
         "stats": {
           "attack": 52,
@@ -294,10 +294,10 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "chiefs/diadem.svg"
+          "logo": "chiefs/scepter.svg"
         },
         "description": {
-          "en": "Moorish Sheikh — Andalusian cavalry and desert skirmishers"
+          "en": "Arab Sheikh — Desert cavalry, tribal spears, and camel riders"
         }
       }
     },
@@ -305,7 +305,7 @@
       "ref": "settler",
       "overrides": {
         "name": {
-          "en": "Moorish Settler"
+          "en": "Arab Settler"
         },
         "stats": {
           "attack": 0,
@@ -322,24 +322,24 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "settlers/plow.svg"
+          "logo": "settlers/old-wagon.svg"
         },
         "description": {
-          "en": "Moorish Settler — Andalusian cavalry and desert skirmishers"
+          "en": "Arab Settler — Desert cavalry, tribal spears, and camel riders"
         }
       }
     }
   ],
   "hero": {
-    "id": "moors_hero",
+    "id": "arab_hero",
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
     "name": {
-      "en": "Moors Hero"
+      "en": "Hero"
     },
     "description": {
-      "en": "Player hero for Moors. Defaults to the account's in-game name; editable later."
+      "en": "Player hero — defaults to the account's in-game name; editable later."
     },
     "isBase": false,
     "stats": {
@@ -362,9 +362,9 @@
       "requirements": []
     },
     "graphics": {
-      "sprite": "tribes/moors/hero/hero.png",
-      "icon": "tribes/moors/hero/hero_icon.png",
-      "portrait": "tribes/moors/hero/hero_portrait.png"
+      "sprite": "tribes/arab/hero/hero.png",
+      "icon": "tribes/arab/hero/hero_icon.png",
+      "portrait": "tribes/arab/hero/hero_portrait.png"
     }
   },
   "meta": {
@@ -372,16 +372,9 @@
     "custom": true,
     "cultureId": "custom",
     "archetype": "cavalry",
-    "era": "8th–15th c. CE",
-    "region": "Iberia / Maghreb",
-    "historicalContext": "Independent Tevel take on Moorish forces — not locked to a preset profile.",
-    "createdAt": "2026-08-05T12:01:46.506Z",
-    "regeneratedAt": "2026-08-12T06:15:23.653Z",
-    "flavorId": "north_african",
-    "algorithms": [
-      "troop-lexicon",
-      "troop-role-balance",
-      "game-icons-logos"
-    ]
+    "era": "Arabian / early Islamic",
+    "region": "Arabia & Near East",
+    "historicalContext": "Arab tribal and early Islamic armies with camel cavalry, faris lancers, and desert scouts across Arabia and the Near East",
+    "createdAt": "2026-08-12T06:42:50.142Z"
   }
 }

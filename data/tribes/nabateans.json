@@ -1,0 +1,380 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "nabateans",
+    "name": {
+      "en": "Nabateans"
+    },
+    "theme": "Caravan-kingdom desert infantry and camel riders",
+    "graphics": {
+      "banner": "tribes/nabateans/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#7A4A28",
+    "secondary": "#C4A35A"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/nabateans/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": {
+          "en": "Shield Bearer"
+        },
+        "stats": {
+          "attack": 11,
+          "defenseInfantry": 33,
+          "defenseCavalry": 59,
+          "speed": 7,
+          "carry": 40
+        },
+        "cost": {
+          "wood": 101,
+          "clay": 87,
+          "iron": 110,
+          "crop": 32
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/stone-spear.svg"
+        },
+        "description": {
+          "en": "Shield Bearer — Caravan-kingdom desert infantry and camel riders [def_cav]"
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": {
+          "en": "Slinger"
+        },
+        "stats": {
+          "attack": 35,
+          "defenseInfantry": 36,
+          "defenseCavalry": 43,
+          "speed": 6,
+          "carry": 45
+        },
+        "cost": {
+          "wood": 135,
+          "clay": 119,
+          "iron": 151,
+          "crop": 59
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/battle-axe.svg"
+        },
+        "description": {
+          "en": "Slinger — Caravan-kingdom desert infantry and camel riders [line]"
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": {
+          "en": "Petra Guard"
+        },
+        "stats": {
+          "attack": 63,
+          "defenseInfantry": 36,
+          "defenseCavalry": 27,
+          "speed": 7,
+          "carry": 50
+        },
+        "cost": {
+          "wood": 181,
+          "clay": 170,
+          "iron": 238,
+          "crop": 96
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/gladius.svg"
+        },
+        "description": {
+          "en": "Petra Guard — Caravan-kingdom desert infantry and camel riders [off_inf]"
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": {
+          "en": "Caravan Scout"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 19,
+          "defenseCavalry": 10,
+          "speed": 17,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 146,
+          "clay": 162,
+          "iron": 27,
+          "crop": 43
+        },
+        "cropUpkeep": 2,
+        "graphics": {
+          "logo": "infantry/heavy-arrow.svg"
+        },
+        "description": {
+          "en": "Caravan Scout — Caravan-kingdom desert infantry and camel riders [scout]"
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": {
+          "en": "Light Desert Horse"
+        },
+        "stats": {
+          "attack": 145,
+          "defenseInfantry": 52,
+          "defenseCavalry": 48,
+          "speed": 15,
+          "carry": 89
+        },
+        "cost": {
+          "wood": 567,
+          "clay": 465,
+          "iron": 352,
+          "crop": 113
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "cavalry/camel-head.svg"
+        },
+        "description": {
+          "en": "Light Desert Horse — Caravan-kingdom desert infantry and camel riders [cav_off]"
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": {
+          "en": "Nabatean Lancer"
+        },
+        "stats": {
+          "attack": 185,
+          "defenseInfantry": 60,
+          "defenseCavalry": 55,
+          "speed": 13,
+          "carry": 77
+        },
+        "cost": {
+          "wood": 624,
+          "clay": 703,
+          "iron": 862,
+          "crop": 198
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/chess-knight.svg"
+        },
+        "description": {
+          "en": "Nabatean Lancer — Caravan-kingdom desert infantry and camel riders [cav_off]"
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": {
+          "en": "Royal Camel Guard"
+        },
+        "stats": {
+          "attack": 165,
+          "defenseInfantry": 57,
+          "defenseCavalry": 52,
+          "speed": 14,
+          "carry": 81
+        },
+        "cost": {
+          "wood": 601,
+          "clay": 624,
+          "iron": 737,
+          "crop": 170
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/camel-head.svg"
+        },
+        "description": {
+          "en": "Royal Camel Guard — Caravan-kingdom desert infantry and camel riders [cav_off]"
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": {
+          "en": "Battering Ram"
+        },
+        "stats": {
+          "attack": 62,
+          "defenseInfantry": 29,
+          "defenseCavalry": 71,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 972,
+          "clay": 389,
+          "iron": 540,
+          "crop": 76
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "rams/siege-ram.svg"
+        },
+        "description": {
+          "en": "Battering Ram — Caravan-kingdom desert infantry and camel riders"
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": {
+          "en": "Ballista"
+        },
+        "stats": {
+          "attack": 77,
+          "defenseInfantry": 57,
+          "defenseCavalry": 10,
+          "speed": 3,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 1026,
+          "clay": 1458,
+          "iron": 648,
+          "crop": 97
+        },
+        "cropUpkeep": 6,
+        "graphics": {
+          "logo": "catapults/ballista.svg"
+        },
+        "description": {
+          "en": "Ballista — Caravan-kingdom desert infantry and camel riders"
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": {
+          "en": "Nabatean Ethnarch"
+        },
+        "stats": {
+          "attack": 52,
+          "defenseInfantry": 38,
+          "defenseCavalry": 29,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 32400,
+          "clay": 29160,
+          "iron": 47520,
+          "crop": 38880
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "chiefs/diadem.svg"
+        },
+        "description": {
+          "en": "Nabatean Ethnarch — Caravan-kingdom desert infantry and camel riders"
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": {
+          "en": "Nabatean Settler"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 76,
+          "defenseCavalry": 76,
+          "speed": 5,
+          "carry": 3000
+        },
+        "cost": {
+          "wood": 6264,
+          "clay": 5724,
+          "iron": 7776,
+          "crop": 5940
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "settlers/hut.svg"
+        },
+        "description": {
+          "en": "Nabatean Settler — Caravan-kingdom desert infantry and camel riders"
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "nabateans_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": {
+      "en": "Hero"
+    },
+    "description": {
+      "en": "Player hero — defaults to the account's in-game name; editable later."
+    },
+    "isBase": false,
+    "stats": {
+      "attack": 103,
+      "defenseInfantry": 105,
+      "defenseCavalry": 95,
+      "speed": 8,
+      "carry": 100
+    },
+    "cost": {
+      "wood": 0,
+      "clay": 0,
+      "iron": 0,
+      "crop": 0
+    },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
+    "graphics": {
+      "sprite": "tribes/nabateans/hero/hero.png",
+      "icon": "tribes/nabateans/hero/hero_icon.png",
+      "portrait": "tribes/nabateans/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "generated": true,
+    "custom": true,
+    "cultureId": "custom",
+    "archetype": "cavalry",
+    "era": "Nabataean Kingdom (4th c. BCE–2nd c. CE)",
+    "region": "Northwest Arabia / Petra",
+    "historicalContext": "Nabatean caravan kingdom of Petra with desert infantry, camel riders, oasis fortresses, and Red Sea trade routes",
+    "createdAt": "2026-08-12T06:42:50.226Z"
+  }
+}
