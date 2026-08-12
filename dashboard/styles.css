@@ -2178,12 +2178,10 @@ body.tribe-editing #troop-table thead th {
   display: block;
 }
 
-.troop-logo-bg {
-  fill: var(--logo-bg, #333);
-}
-
+/* Troop logo fills are set inline in graphics.js (palette primary/secondary). */
+.troop-logo-bg,
 .troop-logo-fg {
-  fill: var(--logo-fg, #fff);
+  fill: unset;
 }
 
 .unit-portrait img {

@@ -53,12 +53,17 @@ function applyLogoPalette(root, opts = {}) {
   const bg = opts.secondary || "#333";
   const fg = opts.primary || "#fff";
   const paint = (node, color) => {
+    if (!(node instanceof SVGElement)) return;
     node.setAttribute("fill", color);
-    node.style.fill = color;
+    node.style.setProperty("fill", color, "important");
     node.removeAttribute("fill-opacity");
   };
-  root.querySelectorAll(".troop-logo-bg").forEach((node) => paint(node, bg));
-  root.querySelectorAll(".troop-logo-fg").forEach((node) => paint(node, fg));
+
+  // Paint by tile geometry — CSS custom properties often fail to inherit into imported SVG (mobile Safari).
+  root.querySelectorAll("path").forEach((path) => {
+    const d = path.getAttribute("d") || "";
+    paint(path, /^M0 0h512v512H0z/i.test(d) ? bg : fg);
+  });
 }
 
 /**

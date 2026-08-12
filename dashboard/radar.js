@@ -682,7 +682,8 @@ export function mountRadarCard(container, entity, scales, palette, opts = {}) {
   head.className = "unit-stat-card-head";
   const logoSlot = document.createElement("div");
   logoSlot.className = "unit-stat-logo";
-  mountPortrait(logoSlot, {
+  const portrait = document.createElement("div");
+  mountPortrait(portrait, {
     logoUrl: entity.graphicsUrls?.logo,
     iconUrl: entity.graphicsUrls?.icon || entity.graphicsUrls?.sprite,
     primary: palette?.primary,
@@ -691,6 +692,7 @@ export function mountRadarCard(container, entity, scales, palette, opts = {}) {
     alt: entity.name,
     size: "sm",
   });
+  logoSlot.append(portrait);
   const title = document.createElement("div");
   title.className = "unit-stat-card-title";
   title.innerHTML = `
