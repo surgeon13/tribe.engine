@@ -435,9 +435,17 @@ function renderTroops(tribe) {
     })
     .join("");
 
-  rows.forEach((t, i) => {
-    const cell = tbody.querySelector(`[data-logo-slot="${i}"]`);
+  rows.forEach((t) => {
+    const idx = tribe.troops.indexOf(t);
+    const cell = tbody.querySelector(`[data-logo-slot="${idx}"]`);
     if (cell) mountTroopLogoCell(cell, t, tribe.palette);
+  });
+
+  tbody.querySelectorAll(".troop-row").forEach((row) => {
+    row.classList.toggle(
+      "selected",
+      activeView === "radar" && Number(row.dataset.troopIndex) === selectedTroopIndex,
+    );
   });
 
   if (editing) {
@@ -462,6 +470,7 @@ function renderTroops(tribe) {
       selectedTroopIndex = Number(row.dataset.troopIndex);
       if (activeView === "radar") renderRadarView(tribeById(activeTribeId) || tribe);
       else if (!editing) setView("radar");
+      else renderTroops(tribe);
     });
   });
 }
@@ -486,9 +495,16 @@ function renderFeatureRadar(container, entity, palette, opts = {}) {
   const head = document.createElement("header");
   head.className = "stat-profile-head";
 
+  const title = document.createElement("div");
+  title.className = "stat-profile-title";
+
+  const titleRow = document.createElement("div");
+  titleRow.className = "stat-profile-title-row";
+
   const logoSlot = document.createElement("div");
   logoSlot.className = "stat-profile-logo";
-  mountPortrait(logoSlot, {
+  const portrait = document.createElement("div");
+  mountPortrait(portrait, {
     logoUrl: entity.graphicsUrls?.logo,
     iconUrl:
       entity.graphicsUrls?.icon ||
@@ -498,18 +514,29 @@ function renderFeatureRadar(container, entity, palette, opts = {}) {
     secondary: palette?.secondary,
     label: entity.name,
     alt: entity.name,
-    size: opts.featured ? "md" : "sm",
+    size: opts.featured ? "sm" : "sm",
   });
+  logoSlot.append(portrait);
 
-  const title = document.createElement("div");
-  title.className = "stat-profile-title";
-  title.innerHTML = `
-    <h4>${entity.name}</h4>
-    ${opts.subtitle ? `<p class="stat-profile-subtitle">${opts.subtitle}</p>` : ""}
-    ${norm.id !== "raw" ? `<p class="stat-profile-subtitle muted">${norm.label}: ${norm.description}</p>` : ""}
-  `;
+  const nameEl = document.createElement("h4");
+  nameEl.textContent = entity.name;
+  titleRow.append(logoSlot, nameEl);
+  title.append(titleRow);
 
-  head.append(logoSlot, title);
+  if (opts.subtitle) {
+    const sub = document.createElement("p");
+    sub.className = "stat-profile-subtitle";
+    sub.textContent = opts.subtitle;
+    title.append(sub);
+  }
+  if (norm.id !== "raw") {
+    const normNote = document.createElement("p");
+    normNote.className = "stat-profile-subtitle muted";
+    normNote.textContent = `${norm.label}: ${norm.description}`;
+    title.append(normNote);
+  }
+
+  head.append(title);
   wrap.append(head);
 
   const keynums = document.createElement("div");
@@ -594,6 +621,8 @@ function renderRadarView(tribe) {
     slot.querySelector(".unit-stat-card")?.addEventListener("click", () => {
       selectedTroopIndex = i;
       renderRadarView(tribe);
+      const tableTribe = tribeById(activeTribeId);
+      if (tableTribe) renderTroops(tableTribe);
     });
     grid.append(slot);
   });
@@ -608,6 +637,7 @@ function setView(view) {
   $("#panel-radar").classList.toggle("hidden", view !== "radar");
   const tribe = tribeById(activeTribeId);
   if (view === "radar" && tribe) renderRadarView(tribe);
+  if (view === "table" && tribe) renderTroops(tribe);
 }
 
 function renderHero(tribe) {
