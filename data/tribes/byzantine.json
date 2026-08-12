@@ -126,7 +126,7 @@
         },
         "cropUpkeep": 2,
         "graphics": {
-          "logo": "infantry/heavy-arrow.svg"
+          "logo": "infantry/double-shot.svg"
         }
       }
     },
@@ -207,7 +207,7 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "cavalry/elephant.svg"
+          "logo": "cavalry/cavalry.svg"
         },
         "description": {
           "en": "Super-heavy household cavalry."
@@ -235,7 +235,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "rams/siege-ram.svg"
+          "logo": "rams/siege-tower.svg"
         }
       }
     },

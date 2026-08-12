@@ -151,7 +151,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "cavalry/horse-head.svg"
+          "logo": "cavalry/horse-head-alt.svg"
         }
       }
     },
@@ -201,7 +201,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/donkey.svg"
+          "logo": "cavalry/mounted-knight.svg"
         }
       }
     },
@@ -226,7 +226,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "rams/siege-tower.svg"
+          "logo": "rams/ladder.svg"
         }
       }
     },

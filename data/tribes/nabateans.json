@@ -126,7 +126,7 @@
         },
         "cropUpkeep": 2,
         "graphics": {
-          "logo": "infantry/heavy-arrow.svg"
+          "logo": "infantry/double-shot.svg"
         },
         "description": {
           "en": "Caravan Scout — Caravan-kingdom desert infantry and camel riders [scout]"
@@ -154,7 +154,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "cavalry/camel-head.svg"
+          "logo": "cavalry/donkey.svg"
         },
         "description": {
           "en": "Light Desert Horse — Caravan-kingdom desert infantry and camel riders [cav_off]"
@@ -182,7 +182,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/chess-knight.svg"
+          "logo": "cavalry/camel-head.svg"
         },
         "description": {
           "en": "Nabatean Lancer — Caravan-kingdom desert infantry and camel riders [cav_off]"
@@ -210,7 +210,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/camel-head.svg"
+          "logo": "cavalry/camel.svg"
         },
         "description": {
           "en": "Royal Camel Guard — Caravan-kingdom desert infantry and camel riders [cav_off]"
@@ -238,7 +238,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "rams/siege-ram.svg"
+          "logo": "rams/ladder.svg"
         },
         "description": {
           "en": "Battering Ram — Caravan-kingdom desert infantry and camel riders"

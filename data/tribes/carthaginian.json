@@ -126,7 +126,7 @@
         },
         "cropUpkeep": 2,
         "graphics": {
-          "logo": "infantry/heavy-arrow.svg"
+          "logo": "infantry/harpoon-chain.svg"
         },
         "description": {
           "en": "Light riders used for reconnaissance across Maghreb plains."
@@ -182,7 +182,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/chess-knight.svg"
+          "logo": "cavalry/camel.svg"
         },
         "description": {
           "en": "Armored citizen cavalry for decisive charges."
