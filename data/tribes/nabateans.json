@@ -322,7 +322,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "settlers/hut.svg"
+          "logo": "settlers/wheelbarrow.svg"
         },
         "description": {
           "en": "Nabatean Settler — Caravan-kingdom desert infantry and camel riders"

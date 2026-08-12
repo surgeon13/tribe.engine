@@ -13,7 +13,7 @@
       "ram": "rams/siege-ram.svg",
       "catapult": "catapults/ballista.svg",
       "chief": "chiefs/commander-helm.svg",
-      "settler": "settlers/barn.svg"
+      "settler": "settlers/farmer.svg"
     },
     "teuton": {
       "inf_t1": "infantry/wood-club.svg",
@@ -39,7 +39,7 @@
       "ram": "rams/siege-tower.svg",
       "catapult": "catapults/catapult.svg",
       "chief": "chiefs/eagle-totem.svg",
-      "settler": "settlers/hut.svg"
+      "settler": "settlers/plow.svg"
     },
     "egyptian": {
       "inf_t1": "infantry/sacrificial-dagger.svg",
@@ -52,7 +52,7 @@
       "ram": "rams/siege-ram.svg",
       "catapult": "catapults/ballista.svg",
       "chief": "chiefs/office-baton.svg",
-      "settler": "settlers/huts-village.svg"
+      "settler": "settlers/wheelbarrow.svg"
     },
     "hun": {
       "inf_t1": "infantry/arrowhead.svg",
@@ -91,7 +91,7 @@
       "ram": "rams/siege-tower.svg",
       "catapult": "catapults/ballista.svg",
       "chief": "chiefs/ring-of-office.svg",
-      "settler": "settlers/village.svg"
+      "settler": "settlers/farmer.svg"
     },
     "nature": {
       "inf_t1": "animals/feline.svg",
@@ -143,7 +143,7 @@
       "ram": "rams/siege-ram.svg",
       "catapult": "catapults/ballista.svg",
       "chief": "chiefs/war-standard.svg",
-      "settler": "settlers/wood-cabin.svg"
+      "settler": "settlers/old-wagon.svg"
     },
     "israelite": {
       "inf_t1": "infantry/stone-spear.svg",
@@ -156,7 +156,7 @@
       "ram": "rams/siege-ram.svg",
       "catapult": "catapults/catapult.svg",
       "chief": "chiefs/scepter.svg",
-      "settler": "settlers/wood-cabin.svg"
+      "settler": "settlers/old-wagon.svg"
     },
     "undead": {
       "inf_t1": "infantry/bone-mace.svg",
@@ -169,7 +169,7 @@
       "ram": "rams/siege-tower.svg",
       "catapult": "catapults/trebuchet.svg",
       "chief": "chiefs/commander-helm.svg",
-      "settler": "settlers/hut.svg"
+      "settler": "settlers/plow.svg"
     },
     "median": {
       "inf_t1": "infantry/stone-spear.svg",
@@ -195,7 +195,7 @@
       "ram": "rams/siege-ram.svg",
       "catapult": "catapults/ballista.svg",
       "chief": "chiefs/diadem.svg",
-      "settler": "settlers/barn.svg"
+      "settler": "settlers/farmer.svg"
     },
     "axum": {
       "inf_t1": "infantry/stone-spear.svg",
@@ -208,7 +208,7 @@
       "ram": "rams/siege-tower.svg",
       "catapult": "catapults/catapult.svg",
       "chief": "chiefs/scroll-seal.svg",
-      "settler": "settlers/barn.svg"
+      "settler": "settlers/plow.svg"
     },
     "arab": {
       "inf_t1": "infantry/stone-spear.svg",
@@ -234,7 +234,7 @@
       "ram": "rams/siege-ram.svg",
       "catapult": "catapults/ballista.svg",
       "chief": "chiefs/diadem.svg",
-      "settler": "settlers/hut.svg"
+      "settler": "settlers/wheelbarrow.svg"
     }
   }
 }

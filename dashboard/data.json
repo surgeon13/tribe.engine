@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-12T07:09:28.019Z",
+  "generatedAt": "2026-08-12T07:47:51.644Z",
   "roster": [
     {
       "slot": 1,
@@ -203,16 +203,10 @@
     "settlers": {
       "label": "Settlers / expansion",
       "icons": [
-        "settlers/barn.svg",
         "settlers/farmer.svg",
-        "settlers/hut.svg",
-        "settlers/huts-village.svg",
         "settlers/old-wagon.svg",
         "settlers/plow.svg",
-        "settlers/village.svg",
-        "settlers/wheelbarrow.svg",
-        "settlers/windmill.svg",
-        "settlers/wood-cabin.svg"
+        "settlers/wheelbarrow.svg"
       ]
     }
   },
@@ -1096,7 +1090,7 @@
           "graphics": {
             "sprite": "tribes/roman/units/11_settler.png",
             "icon": "tribes/roman/units/11_settler_icon.png",
-            "logo": "settlers/barn.svg",
+            "logo": "settlers/farmer.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -1119,7 +1113,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/11_settler_icon.png",
             "sprite": "assets/tribes/roman/units/11_settler.png",
-            "logo": "assets/settlers/barn.svg",
+            "logo": "assets/settlers/farmer.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -2751,7 +2745,7 @@
           "graphics": {
             "sprite": "tribes/gaul/units/11_settler.png",
             "icon": "tribes/gaul/units/11_settler_icon.png",
-            "logo": "settlers/hut.svg",
+            "logo": "settlers/plow.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -2774,7 +2768,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/11_settler_icon.png",
             "sprite": "assets/tribes/gaul/units/11_settler.png",
-            "logo": "assets/settlers/hut.svg",
+            "logo": "assets/settlers/plow.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -3577,7 +3571,7 @@
           "graphics": {
             "sprite": "tribes/egyptian/units/11_settler.png",
             "icon": "tribes/egyptian/units/11_settler_icon.png",
-            "logo": "settlers/huts-village.svg",
+            "logo": "settlers/wheelbarrow.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -3600,7 +3594,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/egyptian/units/11_settler_icon.png",
             "sprite": "assets/tribes/egyptian/units/11_settler.png",
-            "logo": "assets/settlers/huts-village.svg",
+            "logo": "assets/settlers/wheelbarrow.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -6061,7 +6055,7 @@
           "graphics": {
             "sprite": "tribes/natar/units/11_settler.png",
             "icon": "tribes/natar/units/11_settler_icon.png",
-            "logo": "settlers/village.svg",
+            "logo": "settlers/farmer.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -6084,7 +6078,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/natar/units/11_settler_icon.png",
             "sprite": "assets/tribes/natar/units/11_settler.png",
-            "logo": "assets/settlers/village.svg",
+            "logo": "assets/settlers/farmer.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -9377,7 +9371,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/11_settler.png",
             "icon": "tribes/byzantine/units/11_settler_icon.png",
-            "logo": "settlers/wood-cabin.svg",
+            "logo": "settlers/old-wagon.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -9400,7 +9394,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/11_settler_icon.png",
             "sprite": "assets/tribes/byzantine/units/11_settler.png",
-            "logo": "assets/settlers/wood-cabin.svg",
+            "logo": "assets/settlers/old-wagon.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -10206,7 +10200,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/11_settler.png",
             "icon": "tribes/israelite/units/11_settler_icon.png",
-            "logo": "settlers/wood-cabin.svg",
+            "logo": "settlers/old-wagon.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -10229,7 +10223,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/11_settler_icon.png",
             "sprite": "assets/tribes/israelite/units/11_settler.png",
-            "logo": "assets/settlers/wood-cabin.svg",
+            "logo": "assets/settlers/old-wagon.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -11035,7 +11029,7 @@
           "graphics": {
             "sprite": "tribes/persian/units/11_settler.png",
             "icon": "tribes/persian/units/11_settler_icon.png",
-            "logo": "settlers/barn.svg",
+            "logo": "settlers/farmer.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -11058,7 +11052,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/persian/units/11_settler_icon.png",
             "sprite": "assets/tribes/persian/units/11_settler.png",
-            "logo": "assets/settlers/barn.svg",
+            "logo": "assets/settlers/farmer.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -11864,7 +11858,7 @@
           "graphics": {
             "sprite": "tribes/axum/units/11_settler.png",
             "icon": "tribes/axum/units/11_settler_icon.png",
-            "logo": "settlers/barn.svg",
+            "logo": "settlers/plow.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -11887,7 +11881,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/axum/units/11_settler_icon.png",
             "sprite": "assets/tribes/axum/units/11_settler.png",
-            "logo": "assets/settlers/barn.svg",
+            "logo": "assets/settlers/plow.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -13522,7 +13516,7 @@
           "graphics": {
             "sprite": "tribes/nabateans/units/11_settler.png",
             "icon": "tribes/nabateans/units/11_settler_icon.png",
-            "logo": "settlers/hut.svg",
+            "logo": "settlers/wheelbarrow.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -13545,7 +13539,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nabateans/units/11_settler_icon.png",
             "sprite": "assets/tribes/nabateans/units/11_settler.png",
-            "logo": "assets/settlers/hut.svg",
+            "logo": "assets/settlers/wheelbarrow.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"
@@ -14351,7 +14345,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/11_settler.png",
             "icon": "tribes/undead/units/11_settler_icon.png",
-            "logo": "settlers/hut.svg",
+            "logo": "settlers/plow.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "settlers/farmer.svg"
@@ -14374,7 +14368,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/11_settler_icon.png",
             "sprite": "assets/tribes/undead/units/11_settler.png",
-            "logo": "assets/settlers/hut.svg",
+            "logo": "assets/settlers/plow.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/settlers/farmer.svg"

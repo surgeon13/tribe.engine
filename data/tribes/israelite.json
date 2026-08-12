@@ -316,7 +316,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "settlers/wood-cabin.svg"
+          "logo": "settlers/old-wagon.svg"
         }
       }
     }

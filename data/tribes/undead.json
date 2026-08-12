@@ -322,7 +322,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "settlers/hut.svg"
+          "logo": "settlers/plow.svg"
         },
         "description": {
           "en": "Raise a new crypt-colony from barren ground — fortified undead settlers."

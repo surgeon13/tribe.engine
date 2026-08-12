@@ -21,17 +21,63 @@ export function unitInitials(name) {
  * @param {string} svgText
  */
 export function prepareSvgForTint(svgText) {
-  return svgText
-    .replace(/<path\b([^>]*\bd="M0 0h512v512H0z"[^>]*)(\/?)>/gi, (_, attrs, slash) => {
+  const tinted = svgText
+    .replace(/<path\b([^>]*\bd="M0 0h512v512H0z"[^>/]*)(\/)?>/gi, (_, attrs, selfClose) => {
       const cleaned = attrs
         .replace(/\sfill="[^"]*"/gi, "")
         .replace(/\sfill-opacity="[^"]*"/gi, "")
         .replace(/\sclass="[^"]*"/gi, "");
-      return `<path${cleaned} class="troop-logo-bg"${slash}>`;
+      return selfClose
+        ? `<path${cleaned} class="troop-logo-bg"></path>`
+        : `<path${cleaned} class="troop-logo-bg">`;
     })
-    .replace(/\sfill="#fff(?:fff)?"/gi, ' class="troop-logo-fg"')
-    .replace(/\sfill="white"/gi, ' class="troop-logo-fg"')
+    .replace(
+      /(<path\b[^>]*?)\sfill="#fff(?:fff)?"(?:\s+fill-opacity="[^"]*")?/gi,
+      "$1 class=\"troop-logo-fg\"",
+    )
+    .replace(
+      /(<path\b[^>]*?)\sfill="white"(?:\s+fill-opacity="[^"]*")?/gi,
+      "$1 class=\"troop-logo-fg\"",
+    )
     .replace(/<svg\b/, '<svg class="troop-logo-svg"');
+
+  // Self-closing <path /> breaks when SVG is injected via innerHTML on a div (HTML parser).
+  return tinted.replace(/<path\b([^>]*)\/>/gi, "<path$1></path>");
+}
+
+/**
+ * @param {SVGElement | HTMLElement} root
+ * @param {{ primary?: string, secondary?: string }} opts
+ */
+function applyLogoPalette(root, opts = {}) {
+  const bg = opts.secondary || "#333";
+  const fg = opts.primary || "#fff";
+  const paint = (node, color) => {
+    if (!(node instanceof SVGElement)) return;
+    node.setAttribute("fill", color);
+    node.style.setProperty("fill", color, "important");
+    node.removeAttribute("fill-opacity");
+  };
+
+  // Paint by tile geometry — CSS custom properties often fail to inherit into imported SVG (mobile Safari).
+  root.querySelectorAll("path").forEach((path) => {
+    const d = path.getAttribute("d") || "";
+    paint(path, /^M0 0h512v512H0z/i.test(d) ? bg : fg);
+  });
+}
+
+/**
+ * Parse tinted SVG with the XML parser (innerHTML on a div breaks long path data).
+ * @param {string} svgText
+ * @returns {SVGSVGElement}
+ */
+function parseTintedSvg(svgText) {
+  const doc = new DOMParser().parseFromString(prepareSvgForTint(svgText), "image/svg+xml");
+  const err = doc.querySelector("parsererror");
+  if (err) {
+    throw new Error(err.textContent?.trim() || "SVG parse error");
+  }
+  return doc.documentElement;
 }
 
 /**
@@ -55,9 +101,13 @@ export async function mountSvgLogo(el, url, opts = {}) {
   const text = await fetchSvg(url);
   const wrap = document.createElement("div");
   wrap.className = "troop-logo-wrap";
-  wrap.innerHTML = prepareSvgForTint(text);
   wrap.style.setProperty("--logo-bg", opts.secondary || "#333");
   wrap.style.setProperty("--logo-fg", opts.primary || "#fff");
+
+  const svg = parseTintedSvg(text);
+  applyLogoPalette(svg, opts);
+  wrap.append(document.importNode(svg, true));
+
   wrap.setAttribute("role", "img");
   wrap.setAttribute("aria-label", opts.alt || opts.label || "Troop logo");
   el.append(wrap);

@@ -353,6 +353,14 @@ body.tribe-editing #troop-table thead th {
   vertical-align: middle;
 }
 
+.data-table tr.troop-row.selected td {
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+
+.data-table tr.troop-row.selected td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
 .sidebar-foot {
   padding: 12px;
   border-top: 1px solid var(--border);
@@ -892,6 +900,7 @@ body.tribe-editing #troop-table thead th {
   gap: 8px;
 }
 
+.compare-radar-col--compact .stat-profile-title-row h4,
 .compare-radar-col--compact .stat-profile-title h4 {
   font-size: 15px;
 }
@@ -1294,10 +1303,44 @@ body.tribe-editing #troop-table thead th {
 
 .stat-profile-head {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
   width: 100%;
+}
+
+.stat-profile-logo {
+  flex-shrink: 0;
+}
+
+.stat-profile-logo .unit-portrait {
+  width: 72px;
+  height: 72px;
+}
+
+.stat-profile-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.stat-profile-title-row h4 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  min-width: 0;
+}
+
+.stat-profile-head .stat-profile-logo,
+.stat-profile-head .unit-portrait {
+  flex-shrink: 0;
+}
+
+.stat-profile-title {
+  flex: 1;
+  min-width: 0;
 }
 
 .stat-profile-title h4 {
@@ -2135,12 +2178,10 @@ body.tribe-editing #troop-table thead th {
   display: block;
 }
 
-.troop-logo-bg {
-  fill: var(--logo-bg, #333);
-}
-
+/* Troop logo fills are set inline in graphics.js (palette primary/secondary). */
+.troop-logo-bg,
 .troop-logo-fg {
-  fill: var(--logo-fg, #fff);
+  fill: unset;
 }
 
 .unit-portrait img {
@@ -2558,6 +2599,11 @@ html[data-compare-compact="1"] #compare-table-wrap {
   .unit-portrait--sm {
     width: 56px;
     height: 56px;
+  }
+
+  .stat-profile-logo .unit-portrait {
+    width: 64px;
+    height: 64px;
   }
 
   .troop-logo-col,

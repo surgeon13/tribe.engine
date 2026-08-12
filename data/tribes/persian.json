@@ -307,7 +307,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "settlers/barn.svg"
+          "logo": "settlers/farmer.svg"
         }
       }
     }

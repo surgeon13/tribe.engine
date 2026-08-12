@@ -1,5 +1,5 @@
 /* Tevel Tribe Engine — offline shell + data cache */
-const CACHE = "tevel-pwa-v3";
+const CACHE = "tevel-pwa-v6";
 
 const PRECACHE = [
   "./",
@@ -61,6 +61,11 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (url.origin === self.location.origin) {
+    const path = url.pathname;
+    if (path.endsWith(".js") || path.endsWith(".css")) {
+      event.respondWith(networkFirst(req));
+      return;
+    }
     event.respondWith(staleWhileRevalidate(req));
     return;
   }
