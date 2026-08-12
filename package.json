@@ -18,7 +18,8 @@
     "tribe:list-registered": "node scripts/add-tribe.js --list-tribes",
     "tribe:delete": "node scripts/add-tribe.js --delete",
     "tribe:regen-custom": "node scripts/regenerate-custom-tribes.js",
-    "tribe:refresh-siege-logos": "node scripts/refresh-siege-logos.js",
+    "tribe:refresh-logos": "node scripts/refresh-troop-logos.js",
+    "tribe:refresh-siege-logos": "node scripts/refresh-troop-logos.js",
     "dashboard": "npm run start"
   }
 }
