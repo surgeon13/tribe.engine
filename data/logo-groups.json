@@ -103,8 +103,10 @@
     "rams": {
       "label": "Rams / wall-breakers",
       "icons": [
+        "rams/ladder.svg",
         "rams/siege-ram.svg",
-        "rams/siege-tower.svg"
+        "rams/siege-tower.svg",
+        "rams/wrecking-ball.svg"
       ]
     },
     "catapults": {
