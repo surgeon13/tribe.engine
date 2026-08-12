@@ -182,7 +182,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/chess-knight.svg"
+          "logo": "cavalry/camel.svg"
         },
         "description": {
           "en": "Faris — Desert cavalry, tribal spears, and camel riders [cav_off]"
@@ -210,7 +210,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/camel-head.svg"
+          "logo": "cavalry/cloaked-rider.svg"
         },
         "description": {
           "en": "Royal Mamluk — Desert cavalry, tribal spears, and camel riders [cav_off]"
@@ -238,7 +238,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "rams/siege-tower.svg"
+          "logo": "rams/ladder.svg"
         },
         "description": {
           "en": "Siege Ram — Desert cavalry, tribal spears, and camel riders"
