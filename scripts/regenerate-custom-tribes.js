@@ -19,6 +19,7 @@ import {
   rosterFromLexicon,
 } from "../lib/tribe-generator/troop-lexicon.js";
 import { CORE_TRIBE_IDS, isCoreTribe } from "../lib/tribe-generator/write.js";
+import { SIEGE_LOGOS } from "../lib/tribe-generator/siege-logos.js";
 
 const root = resolveRepoRoot();
 const dataDir = path.join(root, "data");
@@ -67,10 +68,11 @@ function refreshSlotLogos(tribeId, baseLogos, logoGroups) {
   const cats = logoGroups.groups?.catapults?.icons || ["catapults/catapult.svg"];
   const chiefs = logoGroups.groups?.chiefs?.icons || ["chiefs/scepter.svg"];
   const settlers = logoGroups.groups?.settlers?.icons || ["settlers/farmer.svg"];
+  const curated = SIEGE_LOGOS[tribeId];
   return {
     ...baseLogos,
-    ram: pickStable(`${tribeId}:ram`, rams),
-    catapult: pickStable(`${tribeId}:catapult`, cats),
+    ram: curated?.ram || pickStable(`${tribeId}:ram`, rams),
+    catapult: curated?.catapult || pickStable(`${tribeId}:catapult`, cats),
     chief: pickStable(`${tribeId}:chief`, chiefs),
     settler: pickStable(`${tribeId}:settler`, settlers),
   };

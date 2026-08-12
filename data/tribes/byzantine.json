@@ -260,7 +260,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "catapults/catapult.svg"
+          "logo": "catapults/ballista.svg"
         }
       }
     },

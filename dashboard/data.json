@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-12T06:17:45.478Z",
+  "generatedAt": "2026-08-12T06:23:06.994Z",
   "roster": [
     {
       "slot": 1,
@@ -1780,7 +1780,7 @@
           "graphics": {
             "sprite": "tribes/teuton/units/09_catapult.png",
             "icon": "tribes/teuton/units/09_catapult_icon.png",
-            "logo": "catapults/catapult.svg",
+            "logo": "catapults/trebuchet.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -1803,7 +1803,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/09_catapult_icon.png",
             "sprite": "assets/tribes/teuton/units/09_catapult.png",
-            "logo": "assets/catapults/catapult.svg",
+            "logo": "assets/catapults/trebuchet.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"
@@ -2539,7 +2539,7 @@
           "graphics": {
             "sprite": "tribes/gaul/units/08_ram.png",
             "icon": "tribes/gaul/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -2562,7 +2562,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/08_ram_icon.png",
             "sprite": "assets/tribes/gaul/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -2606,7 +2606,7 @@
           "graphics": {
             "sprite": "tribes/gaul/units/09_catapult.png",
             "icon": "tribes/gaul/units/09_catapult_icon.png",
-            "logo": "catapults/trebuchet.svg",
+            "logo": "catapults/catapult.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -2629,7 +2629,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/09_catapult_icon.png",
             "sprite": "assets/tribes/gaul/units/09_catapult.png",
-            "logo": "assets/catapults/trebuchet.svg",
+            "logo": "assets/catapults/catapult.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"
@@ -4194,7 +4194,7 @@
           "graphics": {
             "sprite": "tribes/hun/units/08_ram.png",
             "icon": "tribes/hun/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -4217,7 +4217,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/08_ram_icon.png",
             "sprite": "assets/tribes/hun/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -5849,7 +5849,7 @@
           "graphics": {
             "sprite": "tribes/natar/units/08_ram.png",
             "icon": "tribes/natar/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -5872,7 +5872,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/natar/units/08_ram_icon.png",
             "sprite": "assets/tribes/natar/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -7574,7 +7574,7 @@
           "graphics": {
             "sprite": "tribes/carthaginian/units/09_catapult.png",
             "icon": "tribes/carthaginian/units/09_catapult_icon.png",
-            "logo": "catapults/catapult.svg",
+            "logo": "catapults/ballista.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -7597,7 +7597,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/carthaginian/units/09_catapult_icon.png",
             "sprite": "assets/tribes/carthaginian/units/09_catapult.png",
-            "logo": "assets/catapults/catapult.svg",
+            "logo": "assets/catapults/ballista.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"
@@ -9165,7 +9165,7 @@
           "graphics": {
             "sprite": "tribes/norse/units/08_ram.png",
             "icon": "tribes/norse/units/08_ram_icon.png",
-            "logo": "rams/siege-tower.svg",
+            "logo": "rams/siege-ram.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -9188,7 +9188,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/norse/units/08_ram_icon.png",
             "sprite": "assets/tribes/norse/units/08_ram.png",
-            "logo": "assets/rams/siege-tower.svg",
+            "logo": "assets/rams/siege-ram.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -10061,7 +10061,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/09_catapult.png",
             "icon": "tribes/byzantine/units/09_catapult_icon.png",
-            "logo": "catapults/catapult.svg",
+            "logo": "catapults/ballista.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -10084,7 +10084,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/09_catapult_icon.png",
             "sprite": "assets/tribes/byzantine/units/09_catapult.png",
-            "logo": "assets/catapults/catapult.svg",
+            "logo": "assets/catapults/ballista.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"
@@ -11652,7 +11652,7 @@
           "graphics": {
             "sprite": "tribes/moors/units/08_ram.png",
             "icon": "tribes/moors/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -11675,7 +11675,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/08_ram_icon.png",
             "sprite": "assets/tribes/moors/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -11719,7 +11719,7 @@
           "graphics": {
             "sprite": "tribes/moors/units/09_catapult.png",
             "icon": "tribes/moors/units/09_catapult_icon.png",
-            "logo": "catapults/catapult.svg",
+            "logo": "catapults/trebuchet.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -11742,7 +11742,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/09_catapult_icon.png",
             "sprite": "assets/tribes/moors/units/09_catapult.png",
-            "logo": "assets/catapults/catapult.svg",
+            "logo": "assets/catapults/trebuchet.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"
@@ -13377,7 +13377,7 @@
           "graphics": {
             "sprite": "tribes/median/units/09_catapult.png",
             "icon": "tribes/median/units/09_catapult_icon.png",
-            "logo": "catapults/ballista.svg",
+            "logo": "catapults/catapult.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -13400,7 +13400,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/09_catapult_icon.png",
             "sprite": "assets/tribes/median/units/09_catapult.png",
-            "logo": "assets/catapults/ballista.svg",
+            "logo": "assets/catapults/catapult.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"

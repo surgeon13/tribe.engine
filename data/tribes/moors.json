@@ -238,7 +238,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "rams/siege-ram.svg"
+          "logo": "rams/siege-tower.svg"
         },
         "description": {
           "en": "Battering Ram — Andalusian cavalry and desert skirmishers"
@@ -266,7 +266,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "catapults/catapult.svg"
+          "logo": "catapults/trebuchet.svg"
         },
         "description": {
           "en": "Manjaniq — Andalusian cavalry and desert skirmishers"
