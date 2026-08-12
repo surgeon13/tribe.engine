@@ -26,7 +26,12 @@ import {
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
-import { renderTribeBanner, renderUnitCard, mountTroopLogoCell } from "./graphics.js";
+import {
+  renderTribeBanner,
+  renderUnitCard,
+  mountTroopLogoCell,
+  mountPortrait,
+} from "./graphics.js";
 import {
   getCompareSeriesColors,
   initUiTheme,
@@ -480,13 +485,31 @@ function renderFeatureRadar(container, entity, palette, opts = {}) {
 
   const head = document.createElement("header");
   head.className = "stat-profile-head";
-  head.innerHTML = `
-    <div class="stat-profile-title">
-      <h4>${entity.name}</h4>
-      ${opts.subtitle ? `<p class="stat-profile-subtitle">${opts.subtitle}</p>` : ""}
-      ${norm.id !== "raw" ? `<p class="stat-profile-subtitle muted">${norm.label}: ${norm.description}</p>` : ""}
-    </div>
+
+  const logoSlot = document.createElement("div");
+  logoSlot.className = "stat-profile-logo";
+  mountPortrait(logoSlot, {
+    logoUrl: entity.graphicsUrls?.logo,
+    iconUrl:
+      entity.graphicsUrls?.icon ||
+      entity.graphicsUrls?.sprite ||
+      entity.graphicsUrls?.portrait,
+    primary: palette?.primary,
+    secondary: palette?.secondary,
+    label: entity.name,
+    alt: entity.name,
+    size: opts.featured ? "md" : "sm",
+  });
+
+  const title = document.createElement("div");
+  title.className = "stat-profile-title";
+  title.innerHTML = `
+    <h4>${entity.name}</h4>
+    ${opts.subtitle ? `<p class="stat-profile-subtitle">${opts.subtitle}</p>` : ""}
+    ${norm.id !== "raw" ? `<p class="stat-profile-subtitle muted">${norm.label}: ${norm.description}</p>` : ""}
   `;
+
+  head.append(logoSlot, title);
   wrap.append(head);
 
   const keynums = document.createElement("div");
