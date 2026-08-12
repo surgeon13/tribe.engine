@@ -131,16 +131,10 @@
     "settlers": {
       "label": "Settlers / expansion",
       "icons": [
-        "settlers/barn.svg",
         "settlers/farmer.svg",
-        "settlers/hut.svg",
-        "settlers/huts-village.svg",
         "settlers/old-wagon.svg",
         "settlers/plow.svg",
-        "settlers/village.svg",
-        "settlers/wheelbarrow.svg",
-        "settlers/windmill.svg",
-        "settlers/wood-cabin.svg"
+        "settlers/wheelbarrow.svg"
       ]
     }
   },
