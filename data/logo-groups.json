@@ -135,15 +135,6 @@
         "settlers/windmill.svg",
         "settlers/wood-cabin.svg"
       ]
-    },
-    "siege": {
-      "label": "Siege (legacy placeholders)",
-      "icons": [
-        "powder.svg",
-        "infantry/crowbar.svg",
-        "infantry/war-pick.svg",
-        "infantry/spiked-ball.svg"
-      ]
     }
   },
   "defaults": {

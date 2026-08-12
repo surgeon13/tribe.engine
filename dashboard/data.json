@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-12T06:43:14.382Z",
+  "generatedAt": "2026-08-12T07:07:58.582Z",
   "roster": [
     {
       "slot": 1,
@@ -206,15 +206,6 @@
         "settlers/wheelbarrow.svg",
         "settlers/windmill.svg",
         "settlers/wood-cabin.svg"
-      ]
-    },
-    "siege": {
-      "label": "Siege (legacy placeholders)",
-      "icons": [
-        "powder.svg",
-        "infantry/crowbar.svg",
-        "infantry/war-pick.svg",
-        "infantry/spiked-ball.svg"
       ]
     }
   },
