@@ -53,11 +53,6 @@
       "secondary": "#F5F0E6",
       "notes": "Lacquer red + rice-paper cream"
     },
-    "norse": {
-      "primary": "#1A3A5C",
-      "secondary": "#A8B4C0",
-      "notes": "Fjord blue + iron silver"
-    },
     "byzantine": {
       "primary": "#2C3E6B",
       "secondary": "#D4AF37",
@@ -68,11 +63,6 @@
       "secondary": "#C9A227",
       "notes": "Deep indigo + temple gold"
     },
-    "moors": {
-      "primary": "#1B4332",
-      "secondary": "#D4A017",
-      "notes": "Moors custom palette"
-    },
     "undead": {
       "primary": "#1A1A2E",
       "secondary": "#6BCB77",
@@ -82,6 +72,26 @@
       "primary": "#4A5568",
       "secondary": "#A0AEC0",
       "notes": "Neutral baseline — slate"
+    },
+    "persian": {
+      "primary": "#6B2D5C",
+      "secondary": "#E8C547",
+      "notes": "Royal purple + sun gold"
+    },
+    "axum": {
+      "primary": "#6B2D1A",
+      "secondary": "#E8B84A",
+      "notes": "Laterite earth + trade gold"
+    },
+    "arab": {
+      "primary": "#6B3F2A",
+      "secondary": "#E6B422",
+      "notes": "Arabs · arab flavor from your description"
+    },
+    "nabateans": {
+      "primary": "#7A4A28",
+      "secondary": "#C4A35A",
+      "notes": "Nabateans · nabatean flavor from your description"
     }
   }
 }

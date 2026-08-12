@@ -227,7 +227,7 @@
       "graphics": {
         "sprite": "units/base/ram.png",
         "icon": "units/base/ram_icon.png",
-        "logo": "infantry/crowbar.svg"
+        "logo": "rams/siege-ram.svg"
       }
     },
     "catapult": {
@@ -255,7 +255,7 @@
       "graphics": {
         "sprite": "units/base/catapult.png",
         "icon": "units/base/catapult_icon.png",
-        "logo": "powder.svg"
+        "logo": "catapults/catapult.svg"
       }
     },
     "chief": {
@@ -286,7 +286,7 @@
       "graphics": {
         "sprite": "units/base/chief.png",
         "icon": "units/base/chief_icon.png",
-        "logo": "infantry/baton.svg"
+        "logo": "chiefs/scepter.svg"
       }
     },
     "settler": {
@@ -313,7 +313,7 @@
       "graphics": {
         "sprite": "units/base/settler.png",
         "icon": "units/base/settler_icon.png",
-        "logo": "resources/brick-pile.svg"
+        "logo": "settlers/farmer.svg"
       }
     }
   }

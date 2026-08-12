@@ -3,49 +3,49 @@
   "version": 1,
   "game": "Tevel",
   "tribe": {
-    "id": "moors",
+    "id": "arab",
     "name": {
-      "en": "Moors"
+      "en": "Arabs"
     },
-    "theme": "Andalusian cavalry and desert skirmishers",
+    "theme": "Desert cavalry, tribal spears, and camel riders",
     "graphics": {
-      "banner": "tribes/moors/banner.png"
+      "banner": "tribes/arab/banner.png"
     }
   },
   "palette": {
-    "primary": "#1B4332",
-    "secondary": "#D4A017"
+    "primary": "#6B3F2A",
+    "secondary": "#E6B422"
   },
   "buildings": {
     "usePalette": true,
-    "spriteRoot": "tribes/moors/buildings"
+    "spriteRoot": "tribes/arab/buildings"
   },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
         "name": {
-          "en": "Moors Spearman"
+          "en": "Shield Bearer"
         },
         "stats": {
-          "attack": 32,
-          "defenseInfantry": 37,
-          "defenseCavalry": 37,
-          "speed": 6,
-          "carry": 45
+          "attack": 11,
+          "defenseInfantry": 33,
+          "defenseCavalry": 59,
+          "speed": 7,
+          "carry": 40
         },
         "cost": {
-          "wood": 119,
-          "clay": 103,
-          "iron": 130,
-          "crop": 38
+          "wood": 101,
+          "clay": 87,
+          "iron": 110,
+          "crop": 32
         },
         "cropUpkeep": 1,
         "graphics": {
           "logo": "infantry/stone-spear.svg"
         },
         "description": {
-          "en": "Custom infantry unit for Moors."
+          "en": "Shield Bearer — Desert cavalry, tribal spears, and camel riders [def_cav]"
         }
       }
     },
@@ -53,14 +53,14 @@
       "ref": "inf_t2",
       "overrides": {
         "name": {
-          "en": "Moors Skirmisher"
+          "en": "Najdi Skirmisher"
         },
         "stats": {
-          "attack": 41,
-          "defenseInfantry": 41,
-          "defenseCavalry": 28,
+          "attack": 35,
+          "defenseInfantry": 36,
+          "defenseCavalry": 43,
           "speed": 6,
-          "carry": 35
+          "carry": 45
         },
         "cost": {
           "wood": 135,
@@ -73,7 +73,7 @@
           "logo": "infantry/battle-axe.svg"
         },
         "description": {
-          "en": "Custom infantry unit for Moors."
+          "en": "Najdi Skirmisher — Desert cavalry, tribal spears, and camel riders [line]"
         }
       }
     },
@@ -81,27 +81,27 @@
       "ref": "inf_t3",
       "overrides": {
         "name": {
-          "en": "Moors Elite Infantry"
+          "en": "Abna Infantry"
         },
         "stats": {
           "attack": 63,
-          "defenseInfantry": 41,
-          "defenseCavalry": 32,
+          "defenseInfantry": 36,
+          "defenseCavalry": 27,
           "speed": 7,
-          "carry": 45
+          "carry": 50
         },
         "cost": {
-          "wood": 173,
-          "clay": 162,
-          "iron": 227,
-          "crop": 92
+          "wood": 181,
+          "clay": 170,
+          "iron": 238,
+          "crop": 96
         },
         "cropUpkeep": 1,
         "graphics": {
           "logo": "infantry/gladius.svg"
         },
         "description": {
-          "en": "Custom infantry unit for Moors."
+          "en": "Abna Infantry — Desert cavalry, tribal spears, and camel riders [off_inf]"
         }
       }
     },
@@ -109,12 +109,12 @@
       "ref": "scout",
       "overrides": {
         "name": {
-          "en": "Moors Scout"
+          "en": "Desert Scout"
         },
         "stats": {
           "attack": 0,
-          "defenseInfantry": 18,
-          "defenseCavalry": 9,
+          "defenseInfantry": 19,
+          "defenseCavalry": 10,
           "speed": 17,
           "carry": 0
         },
@@ -129,7 +129,7 @@
           "logo": "infantry/heavy-arrow.svg"
         },
         "description": {
-          "en": "Custom scout unit for Moors."
+          "en": "Desert Scout — Desert cavalry, tribal spears, and camel riders [scout]"
         }
       }
     },
@@ -137,27 +137,27 @@
       "ref": "cav_t1",
       "overrides": {
         "name": {
-          "en": "Moors Light Cavalry"
+          "en": "Light Faris"
         },
         "stats": {
-          "attack": 129,
-          "defenseInfantry": 59,
-          "defenseCavalry": 54,
+          "attack": 145,
+          "defenseInfantry": 52,
+          "defenseCavalry": 48,
           "speed": 15,
-          "carry": 95
+          "carry": 89
         },
         "cost": {
-          "wood": 540,
-          "clay": 443,
-          "iron": 335,
-          "crop": 108
+          "wood": 567,
+          "clay": 465,
+          "iron": 352,
+          "crop": 113
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "cavalry/horse-head.svg"
+          "logo": "cavalry/camel-head.svg"
         },
         "description": {
-          "en": "Custom cavalry unit for Moors."
+          "en": "Light Faris — Desert cavalry, tribal spears, and camel riders [cav_off]"
         }
       }
     },
@@ -165,27 +165,27 @@
       "ref": "cav_t2",
       "overrides": {
         "name": {
-          "en": "Moors Heavy Cavalry"
+          "en": "Faris"
         },
         "stats": {
           "attack": 185,
-          "defenseInfantry": 81,
-          "defenseCavalry": 103,
-          "speed": 12,
-          "carry": 70
+          "defenseInfantry": 60,
+          "defenseCavalry": 55,
+          "speed": 13,
+          "carry": 77
         },
         "cost": {
-          "wood": 594,
-          "clay": 670,
-          "iron": 821,
-          "crop": 189
+          "wood": 624,
+          "clay": 703,
+          "iron": 862,
+          "crop": 198
         },
         "cropUpkeep": 4,
         "graphics": {
           "logo": "cavalry/chess-knight.svg"
         },
         "description": {
-          "en": "Custom cavalry unit for Moors."
+          "en": "Faris — Desert cavalry, tribal spears, and camel riders [cav_off]"
         }
       }
     },
@@ -193,27 +193,27 @@
       "ref": "cav_t3",
       "overrides": {
         "name": {
-          "en": "Moors Guard Cavalry"
+          "en": "Royal Mamluk"
         },
         "stats": {
-          "attack": 168,
-          "defenseInfantry": 76,
-          "defenseCavalry": 86,
-          "speed": 13,
-          "carry": 80
+          "attack": 165,
+          "defenseInfantry": 57,
+          "defenseCavalry": 52,
+          "speed": 14,
+          "carry": 81
         },
         "cost": {
-          "wood": 572,
-          "clay": 594,
-          "iron": 702,
-          "crop": 162
+          "wood": 601,
+          "clay": 624,
+          "iron": 737,
+          "crop": 170
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/donkey.svg"
+          "logo": "cavalry/camel-head.svg"
         },
         "description": {
-          "en": "Custom cavalry unit for Moors."
+          "en": "Royal Mamluk — Desert cavalry, tribal spears, and camel riders [cav_off]"
         }
       }
     },
@@ -221,12 +221,12 @@
       "ref": "ram",
       "overrides": {
         "name": {
-          "en": "Battering Ram"
+          "en": "Siege Ram"
         },
         "stats": {
-          "attack": 60,
-          "defenseInfantry": 30,
-          "defenseCavalry": 75,
+          "attack": 62,
+          "defenseInfantry": 29,
+          "defenseCavalry": 71,
           "speed": 4,
           "carry": 0
         },
@@ -238,10 +238,10 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "infantry/crowbar.svg"
+          "logo": "rams/siege-tower.svg"
         },
         "description": {
-          "en": "Custom siege unit for Moors."
+          "en": "Siege Ram — Desert cavalry, tribal spears, and camel riders"
         }
       }
     },
@@ -249,11 +249,11 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Catapult"
+          "en": "Arradah"
         },
         "stats": {
-          "attack": 75,
-          "defenseInfantry": 60,
+          "attack": 77,
+          "defenseInfantry": 57,
           "defenseCavalry": 10,
           "speed": 3,
           "carry": 0
@@ -266,10 +266,10 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "powder.svg"
+          "logo": "catapults/trebuchet.svg"
         },
         "description": {
-          "en": "Custom siege unit for Moors."
+          "en": "Arradah — Desert cavalry, tribal spears, and camel riders"
         }
       }
     },
@@ -277,12 +277,12 @@
       "ref": "chief",
       "overrides": {
         "name": {
-          "en": "Moors Chief"
+          "en": "Arab Sheikh"
         },
         "stats": {
-          "attack": 50,
-          "defenseInfantry": 40,
-          "defenseCavalry": 30,
+          "attack": 52,
+          "defenseInfantry": 38,
+          "defenseCavalry": 29,
           "speed": 4,
           "carry": 0
         },
@@ -294,10 +294,10 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "infantry/baton.svg"
+          "logo": "chiefs/scepter.svg"
         },
         "description": {
-          "en": "Custom chief unit for Moors."
+          "en": "Arab Sheikh — Desert cavalry, tribal spears, and camel riders"
         }
       }
     },
@@ -305,12 +305,12 @@
       "ref": "settler",
       "overrides": {
         "name": {
-          "en": "Settler"
+          "en": "Arab Settler"
         },
         "stats": {
           "attack": 0,
-          "defenseInfantry": 80,
-          "defenseCavalry": 80,
+          "defenseInfantry": 76,
+          "defenseCavalry": 76,
           "speed": 5,
           "carry": 3000
         },
@@ -322,30 +322,30 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "resources/brick-pile.svg"
+          "logo": "settlers/old-wagon.svg"
         },
         "description": {
-          "en": "Custom settler unit for Moors."
+          "en": "Arab Settler — Desert cavalry, tribal spears, and camel riders"
         }
       }
     }
   ],
   "hero": {
-    "id": "moors_hero",
+    "id": "arab_hero",
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
     "name": {
-      "en": "Moors Hero"
+      "en": "Hero"
     },
     "description": {
-      "en": "Custom hero for Moors — cavalry-focused doctrine."
+      "en": "Player hero — defaults to the account's in-game name; editable later."
     },
     "isBase": false,
     "stats": {
-      "attack": 101,
-      "defenseInfantry": 101,
-      "defenseCavalry": 108,
+      "attack": 103,
+      "defenseInfantry": 105,
+      "defenseCavalry": 95,
       "speed": 8,
       "carry": 100
     },
@@ -362,9 +362,9 @@
       "requirements": []
     },
     "graphics": {
-      "sprite": "tribes/moors/hero/hero.png",
-      "icon": "tribes/moors/hero/hero_icon.png",
-      "portrait": "tribes/moors/hero/hero_portrait.png"
+      "sprite": "tribes/arab/hero/hero.png",
+      "icon": "tribes/arab/hero/hero_icon.png",
+      "portrait": "tribes/arab/hero/hero_portrait.png"
     }
   },
   "meta": {
@@ -372,9 +372,9 @@
     "custom": true,
     "cultureId": "custom",
     "archetype": "cavalry",
-    "era": "8th–15th c. CE",
-    "region": "Iberia / Maghreb",
-    "historicalContext": "Independent Tevel take on Moorish forces — not locked to a preset profile.",
-    "createdAt": "2026-08-05T12:01:46.506Z"
+    "era": "Arabian / early Islamic",
+    "region": "Arabia & Near East",
+    "historicalContext": "Arab tribal and early Islamic armies with camel cavalry, faris lancers, and desert scouts across Arabia and the Near East",
+    "createdAt": "2026-08-12T06:42:50.142Z"
   }
 }

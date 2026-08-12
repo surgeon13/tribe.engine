@@ -24,7 +24,7 @@
       "cav_t2": "cavalry/horse-head.svg",
       "cav_t3": "cavalry/camel-head.svg",
       "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/catapult.svg",
+      "catapult": "catapults/trebuchet.svg",
       "chief": "chiefs/diadem.svg",
       "settler": "settlers/farmer.svg"
     },
@@ -36,8 +36,8 @@
       "cav_t1": "cavalry/horse-head.svg",
       "cav_t2": "cavalry/chess-knight.svg",
       "cav_t3": "animals/ram.svg",
-      "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/trebuchet.svg",
+      "ram": "rams/siege-tower.svg",
+      "catapult": "catapults/catapult.svg",
       "chief": "chiefs/eagle-totem.svg",
       "settler": "settlers/hut.svg"
     },
@@ -62,7 +62,7 @@
       "cav_t1": "cavalry/horse-head.svg",
       "cav_t2": "cavalry/chess-knight.svg",
       "cav_t3": "animals/pegasus.svg",
-      "ram": "rams/siege-ram.svg",
+      "ram": "rams/siege-tower.svg",
       "catapult": "catapults/catapult.svg",
       "chief": "chiefs/ring-of-office.svg",
       "settler": "settlers/old-wagon.svg"
@@ -88,7 +88,7 @@
       "cav_t1": "cavalry/horse-head.svg",
       "cav_t2": "cavalry/elephant.svg",
       "cav_t3": "cavalry/chess-knight.svg",
-      "ram": "rams/siege-ram.svg",
+      "ram": "rams/siege-tower.svg",
       "catapult": "catapults/ballista.svg",
       "chief": "chiefs/ring-of-office.svg",
       "settler": "settlers/village.svg"
@@ -114,10 +114,10 @@
       "cav_t1": "cavalry/horse-head.svg",
       "cav_t2": "cavalry/chess-knight.svg",
       "cav_t3": "cavalry/elephant.svg",
-      "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/trebuchet.svg",
-      "chief": "chiefs/commander-helm.svg",
-      "settler": "settlers/windmill.svg"
+      "ram": "rams/siege-tower.svg",
+      "catapult": "catapults/ballista.svg",
+      "chief": "chiefs/scroll-seal.svg",
+      "settler": "settlers/old-wagon.svg"
     },
     "japanese": {
       "inf_t1": "infantry/stone-spear.svg",
@@ -127,23 +127,10 @@
       "cav_t1": "cavalry/horse-head.svg",
       "cav_t2": "cavalry/chess-knight.svg",
       "cav_t3": "cavalry/donkey.svg",
-      "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/ballista.svg",
-      "chief": "chiefs/diadem.svg",
-      "settler": "settlers/wood-cabin.svg"
-    },
-    "norse": {
-      "inf_t1": "infantry/wood-club.svg",
-      "inf_t2": "infantry/battle-axe.svg",
-      "inf_t3": "infantry/war-axe.svg",
-      "scout": "infantry/heavy-arrow.svg",
-      "cav_t1": "cavalry/donkey.svg",
-      "cav_t2": "cavalry/horse-head.svg",
-      "cav_t3": "cavalry/chess-knight.svg",
-      "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/catapult.svg",
-      "chief": "chiefs/eagle-totem.svg",
-      "settler": "settlers/barn.svg"
+      "ram": "rams/siege-tower.svg",
+      "catapult": "catapults/trebuchet.svg",
+      "chief": "chiefs/ring-of-office.svg",
+      "settler": "settlers/old-wagon.svg"
     },
     "byzantine": {
       "inf_t1": "infantry/gladius.svg",
@@ -154,9 +141,9 @@
       "cav_t2": "cavalry/chess-knight.svg",
       "cav_t3": "cavalry/elephant.svg",
       "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/trebuchet.svg",
-      "chief": "chiefs/office-baton.svg",
-      "settler": "settlers/farmer.svg"
+      "catapult": "catapults/ballista.svg",
+      "chief": "chiefs/war-standard.svg",
+      "settler": "settlers/wood-cabin.svg"
     },
     "israelite": {
       "inf_t1": "infantry/stone-spear.svg",
@@ -167,22 +154,9 @@
       "cav_t2": "cavalry/chess-knight.svg",
       "cav_t3": "cavalry/donkey.svg",
       "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/ballista.svg",
-      "chief": "chiefs/ring-of-office.svg",
-      "settler": "settlers/hut.svg"
-    },
-    "moors": {
-      "inf_t1": "infantry/stone-spear.svg",
-      "inf_t2": "infantry/battle-axe.svg",
-      "inf_t3": "infantry/gladius.svg",
-      "scout": "infantry/heavy-arrow.svg",
-      "cav_t1": "cavalry/horse-head.svg",
-      "cav_t2": "cavalry/chess-knight.svg",
-      "cav_t3": "cavalry/donkey.svg",
-      "ram": "rams/siege-ram.svg",
       "catapult": "catapults/catapult.svg",
       "chief": "chiefs/scepter.svg",
-      "settler": "settlers/huts-village.svg"
+      "settler": "settlers/wood-cabin.svg"
     },
     "undead": {
       "inf_t1": "infantry/bone-mace.svg",
@@ -192,10 +166,10 @@
       "cav_t1": "cavalry/horse-head.svg",
       "cav_t2": "animals/ram.svg",
       "cav_t3": "cavalry/donkey.svg",
-      "ram": "rams/siege-ram.svg",
+      "ram": "rams/siege-tower.svg",
       "catapult": "catapults/trebuchet.svg",
-      "chief": "chiefs/diadem.svg",
-      "settler": "settlers/old-wagon.svg"
+      "chief": "chiefs/commander-helm.svg",
+      "settler": "settlers/hut.svg"
     },
     "median": {
       "inf_t1": "infantry/stone-spear.svg",
@@ -206,9 +180,61 @@
       "cav_t2": "cavalry/chess-knight.svg",
       "cav_t3": "cavalry/donkey.svg",
       "ram": "rams/siege-ram.svg",
-      "catapult": "catapults/ballista.svg",
+      "catapult": "catapults/catapult.svg",
       "chief": "chiefs/war-standard.svg",
       "settler": "settlers/plow.svg"
+    },
+    "persian": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/heavy-arrow.svg",
+      "inf_t3": "infantry/flanged-mace.svg",
+      "scout": "infantry/arrowhead.svg",
+      "cav_t1": "cavalry/horse-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/camel-head.svg",
+      "ram": "rams/siege-ram.svg",
+      "catapult": "catapults/ballista.svg",
+      "chief": "chiefs/diadem.svg",
+      "settler": "settlers/barn.svg"
+    },
+    "axum": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/barbed-spear.svg",
+      "inf_t3": "infantry/battle-axe.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/donkey.svg",
+      "cav_t2": "cavalry/horse-head.svg",
+      "cav_t3": "cavalry/camel-head.svg",
+      "ram": "rams/siege-tower.svg",
+      "catapult": "catapults/catapult.svg",
+      "chief": "chiefs/scroll-seal.svg",
+      "settler": "settlers/barn.svg"
+    },
+    "arab": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/battle-axe.svg",
+      "inf_t3": "infantry/gladius.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/camel-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/camel-head.svg",
+      "ram": "rams/siege-tower.svg",
+      "catapult": "catapults/trebuchet.svg",
+      "chief": "chiefs/scepter.svg",
+      "settler": "settlers/old-wagon.svg"
+    },
+    "nabateans": {
+      "inf_t1": "infantry/stone-spear.svg",
+      "inf_t2": "infantry/battle-axe.svg",
+      "inf_t3": "infantry/gladius.svg",
+      "scout": "infantry/heavy-arrow.svg",
+      "cav_t1": "cavalry/camel-head.svg",
+      "cav_t2": "cavalry/chess-knight.svg",
+      "cav_t3": "cavalry/camel-head.svg",
+      "ram": "rams/siege-ram.svg",
+      "catapult": "catapults/ballista.svg",
+      "chief": "chiefs/diadem.svg",
+      "settler": "settlers/hut.svg"
     }
   }
 }

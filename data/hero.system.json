@@ -627,10 +627,6 @@
       "fightingStrengthPerPoint": 90,
       "resourceProductionBonusPercent": 0
     },
-    "norse": {
-      "fightingStrengthPerPoint": 85,
-      "resourceProductionBonusPercent": 0
-    },
     "byzantine": {
       "fightingStrengthPerPoint": 95,
       "resourceProductionBonusPercent": 0
@@ -639,16 +635,28 @@
       "fightingStrengthPerPoint": 90,
       "resourceProductionBonusPercent": 5
     },
-    "moors": {
-      "fightingStrengthPerPoint": 88,
-      "resourceProductionBonusPercent": 0
-    },
     "undead": {
       "fightingStrengthPerPoint": 110,
       "resourceProductionBonusPercent": 0
     },
     "median": {
       "fightingStrengthPerPoint": 80,
+      "resourceProductionBonusPercent": 0
+    },
+    "persian": {
+      "fightingStrengthPerPoint": 85,
+      "resourceProductionBonusPercent": 15
+    },
+    "axum": {
+      "fightingStrengthPerPoint": 88,
+      "resourceProductionBonusPercent": 12
+    },
+    "arab": {
+      "fightingStrengthPerPoint": 88,
+      "resourceProductionBonusPercent": 0
+    },
+    "nabateans": {
+      "fightingStrengthPerPoint": 88,
       "resourceProductionBonusPercent": 0
     }
   },

@@ -81,7 +81,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": {
-          "en": "Sacred Band"
+          "en": "Iberian Swordsman"
         },
         "stats": {
           "attack": 65,
@@ -165,7 +165,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": {
-          "en": "Punic Noble Horse"
+          "en": "Punic Lancer"
         },
         "stats": {
           "attack": 165,
@@ -221,7 +221,7 @@
       "ref": "ram",
       "overrides": {
         "name": {
-          "en": "Siege Ram"
+          "en": "Battering Ram"
         },
         "stats": {
           "attack": 55,
@@ -238,7 +238,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "infantry/crowbar.svg"
+          "logo": "rams/siege-tower.svg"
         }
       }
     },
@@ -246,7 +246,7 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Stone Thrower"
+          "en": "Catapult"
         },
         "stats": {
           "attack": 70,
@@ -263,7 +263,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "powder.svg"
+          "logo": "catapults/ballista.svg"
         }
       }
     },
@@ -271,7 +271,7 @@
       "ref": "chief",
       "overrides": {
         "name": {
-          "en": "Suffete"
+          "en": "Sufete"
         },
         "stats": {
           "attack": 45,
@@ -288,7 +288,7 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "infantry/orb-wand.svg"
+          "logo": "chiefs/scroll-seal.svg"
         },
         "description": {
           "en": "Elected magistrate-general empowered to receive cities."
@@ -299,7 +299,7 @@
       "ref": "settler",
       "overrides": {
         "name": {
-          "en": "Colonist"
+          "en": "Colony Settler"
         },
         "stats": {
           "attack": 0,
@@ -316,7 +316,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "resources/cash-pile.svg"
+          "logo": "settlers/old-wagon.svg"
         }
       }
     }
@@ -364,6 +364,14 @@
     "era": "Punic Wars (3rd–2nd c. BCE)",
     "region": "North Africa / western Mediterranean",
     "historicalContext": "Carthage fielded mixed mercenary hosts: Libyan spearmen, Balearic slingers, Numidian light horse, and war elephants, financed by Mediterranean trade.",
-    "createdAt": "2026-08-05T10:20:38.736Z"
+    "createdAt": "2026-08-05T10:20:38.736Z",
+    "regeneratedAt": "2026-08-12T06:15:23.632Z",
+    "archetype": "balanced",
+    "flavorId": "carthaginian",
+    "algorithms": [
+      "troop-lexicon",
+      "culture-profile-stats",
+      "game-icons-logos"
+    ]
   }
 }

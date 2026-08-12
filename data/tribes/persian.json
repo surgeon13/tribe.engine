@@ -3,41 +3,41 @@
   "version": 1,
   "game": "Tevel",
   "tribe": {
-    "id": "japanese",
+    "id": "persian",
     "name": {
-      "en": "Japanese"
+      "en": "Persians"
     },
-    "theme": "Ashigaru masses, samurai quality, weak native cavalry tradition (Sengoku / late medieval Japan (15th–16th c. CE), Japanese archipelago)",
+    "theme": "Vast levy infantry, Immortals, and horse archers of the Great King (Achaemenid Empire (6th–4th c. BCE), Iranian plateau / Near East)",
     "graphics": {
-      "banner": "tribes/japanese/banner.png"
+      "banner": "tribes/persian/banner.png"
     }
   },
   "palette": {
-    "primary": "#8B1A1A",
-    "secondary": "#F5F0E6"
+    "primary": "#6B2D5C",
+    "secondary": "#E8C547"
   },
   "buildings": {
     "usePalette": true,
-    "spriteRoot": "tribes/japanese/buildings"
+    "spriteRoot": "tribes/persian/buildings"
   },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
         "name": {
-          "en": "Ashigaru Spearman"
+          "en": "Sparabara"
         },
         "stats": {
-          "attack": 35,
+          "attack": 30,
           "defenseInfantry": 45,
-          "defenseCavalry": 55,
+          "defenseCavalry": 35,
           "speed": 6,
           "carry": 40
         },
         "cost": {
           "wood": 100,
-          "clay": 85,
-          "iron": 100,
+          "clay": 90,
+          "iron": 80,
           "crop": 35
         },
         "cropUpkeep": 1,
@@ -45,7 +45,7 @@
           "logo": "infantry/stone-spear.svg"
         },
         "description": {
-          "en": "Pike ashigaru — backbone of Sengoku armies."
+          "en": "Shield-bearer levy with spear and large pavise."
         }
       }
     },
@@ -53,27 +53,27 @@
       "ref": "inf_t2",
       "overrides": {
         "name": {
-          "en": "Ashigaru Archer"
+          "en": "Takabara Archer"
         },
         "stats": {
           "attack": 50,
           "defenseInfantry": 30,
           "defenseCavalry": 25,
           "speed": 7,
-          "carry": 30
+          "carry": 35
         },
         "cost": {
-          "wood": 130,
+          "wood": 140,
           "clay": 90,
-          "iron": 70,
-          "crop": 45
+          "iron": 60,
+          "crop": 50
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "infantry/kusarigama.svg"
+          "logo": "infantry/heavy-arrow.svg"
         },
         "description": {
-          "en": "Bow ashigaru supporting the spear line."
+          "en": "Shielded bowmen supporting the battle line."
         }
       }
     },
@@ -81,27 +81,27 @@
       "ref": "inf_t3",
       "overrides": {
         "name": {
-          "en": "Samurai"
+          "en": "Immortal"
         },
         "stats": {
-          "attack": 80,
-          "defenseInfantry": 55,
-          "defenseCavalry": 40,
+          "attack": 75,
+          "defenseInfantry": 50,
+          "defenseCavalry": 35,
           "speed": 7,
-          "carry": 45
+          "carry": 50
         },
         "cost": {
           "wood": 170,
           "clay": 160,
-          "iron": 230,
-          "crop": 100
+          "iron": 220,
+          "crop": 95
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "infantry/machete.svg"
+          "logo": "infantry/flanged-mace.svg"
         },
         "description": {
-          "en": "Elite retainers — costly, versatile melee."
+          "en": "10,000 household infantry — elite of the Great King."
         }
       }
     },
@@ -109,7 +109,7 @@
       "ref": "scout",
       "overrides": {
         "name": {
-          "en": "Pathfinder"
+          "en": "Mounted Scout"
         },
         "stats": {
           "attack": 0,
@@ -119,14 +119,14 @@
           "carry": 0
         },
         "cost": {
-          "wood": 130,
-          "clay": 145,
-          "iron": 30,
+          "wood": 135,
+          "clay": 150,
+          "iron": 20,
           "crop": 40
         },
         "cropUpkeep": 2,
         "graphics": {
-          "logo": "infantry/shuriken.svg"
+          "logo": "infantry/arrowhead.svg"
         }
       }
     },
@@ -134,19 +134,19 @@
       "ref": "cav_t1",
       "overrides": {
         "name": {
-          "en": "Kihei"
+          "en": "Median Horseman"
         },
         "stats": {
-          "attack": 110,
+          "attack": 115,
           "defenseInfantry": 55,
           "defenseCavalry": 50,
-          "speed": 14,
-          "carry": 90
+          "speed": 15,
+          "carry": 95
         },
         "cost": {
-          "wood": 520,
-          "clay": 420,
-          "iron": 340,
+          "wood": 500,
+          "clay": 400,
+          "iron": 300,
           "crop": 100
         },
         "cropUpkeep": 3,
@@ -159,24 +159,27 @@
       "ref": "cav_t2",
       "overrides": {
         "name": {
-          "en": "Samurai Cavalry"
+          "en": "Persian Cataphract"
         },
         "stats": {
-          "attack": 160,
-          "defenseInfantry": 75,
-          "defenseCavalry": 95,
-          "speed": 11,
-          "carry": 70
+          "attack": 170,
+          "defenseInfantry": 85,
+          "defenseCavalry": 100,
+          "speed": 10,
+          "carry": 65
         },
         "cost": {
           "wood": 560,
           "clay": 620,
-          "iron": 760,
-          "crop": 175
+          "iron": 780,
+          "crop": 180
         },
         "cropUpkeep": 4,
         "graphics": {
           "logo": "cavalry/chess-knight.svg"
+        },
+        "description": {
+          "en": "Early heavy horse with scale and kontos."
         }
       }
     },
@@ -184,24 +187,27 @@
       "ref": "cav_t3",
       "overrides": {
         "name": {
-          "en": "Guard Cavalry"
+          "en": "Camel Corps"
         },
         "stats": {
-          "attack": 150,
-          "defenseInfantry": 70,
-          "defenseCavalry": 85,
+          "attack": 140,
+          "defenseInfantry": 60,
+          "defenseCavalry": 70,
           "speed": 12,
-          "carry": 75
+          "carry": 110
         },
         "cost": {
-          "wood": 540,
-          "clay": 580,
-          "iron": 700,
-          "crop": 160
+          "wood": 480,
+          "clay": 450,
+          "iron": 420,
+          "crop": 150
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/donkey.svg"
+          "logo": "cavalry/camel-head.svg"
+        },
+        "description": {
+          "en": "Desert camelry — unsettling to untrained horses."
         }
       }
     },
@@ -226,7 +232,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "rams/siege-tower.svg"
+          "logo": "rams/siege-ram.svg"
         }
       }
     },
@@ -234,7 +240,7 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Mangonel"
+          "en": "Siege Engine"
         },
         "stats": {
           "attack": 75,
@@ -251,7 +257,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "catapults/trebuchet.svg"
+          "logo": "catapults/ballista.svg"
         }
       }
     },
@@ -259,7 +265,7 @@
       "ref": "chief",
       "overrides": {
         "name": {
-          "en": "Daimyo"
+          "en": "Satrap"
         },
         "stats": {
           "attack": 50,
@@ -269,14 +275,14 @@
           "carry": 0
         },
         "cost": {
-          "wood": 30500,
-          "clay": 27000,
-          "iron": 44500,
+          "wood": 31000,
+          "clay": 27500,
+          "iron": 45000,
           "crop": 37000
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "chiefs/ring-of-office.svg"
+          "logo": "chiefs/diadem.svg"
         }
       }
     },
@@ -284,7 +290,7 @@
       "ref": "settler",
       "overrides": {
         "name": {
-          "en": "Village Settler"
+          "en": "Settler"
         },
         "stats": {
           "attack": 0,
@@ -301,27 +307,27 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "settlers/old-wagon.svg"
+          "logo": "settlers/barn.svg"
         }
       }
     }
   ],
   "hero": {
-    "id": "japanese_hero",
+    "id": "persian_hero",
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
     "name": {
-      "en": "Japanese Hero"
+      "en": "Hero"
     },
     "description": {
-      "en": "Sengoku warlord — infantry discipline and retainer quality."
+      "en": "Player hero — defaults to the account's in-game name; editable later."
     },
     "isBase": false,
     "stats": {
-      "attack": 110,
-      "defenseInfantry": 120,
-      "defenseCavalry": 95,
+      "attack": 95,
+      "defenseInfantry": 115,
+      "defenseCavalry": 100,
       "speed": 8,
       "carry": 100
     },
@@ -338,25 +344,19 @@
       "requirements": []
     },
     "graphics": {
-      "sprite": "tribes/japanese/hero/hero.png",
-      "icon": "tribes/japanese/hero/hero_icon.png",
-      "portrait": "tribes/japanese/hero/hero_portrait.png"
+      "sprite": "tribes/persian/hero/hero.png",
+      "icon": "tribes/persian/hero/hero_icon.png",
+      "portrait": "tribes/persian/hero/hero_portrait.png"
     }
   },
   "meta": {
     "generated": true,
-    "cultureId": "japanese",
-    "era": "Sengoku / late medieval Japan (15th–16th c. CE)",
-    "region": "Japanese archipelago",
-    "historicalContext": "Sengoku armies mixed ashigaru pike and arquebus lines with samurai retainers; cavalry existed but infantry decided most battles.",
-    "createdAt": "2026-08-05T10:20:38.804Z",
-    "regeneratedAt": "2026-08-12T06:15:23.635Z",
-    "archetype": "infantry",
-    "flavorId": "japanese",
-    "algorithms": [
-      "troop-lexicon",
-      "culture-profile-stats",
-      "game-icons-logos"
-    ]
+    "custom": false,
+    "cultureId": "persian",
+    "archetype": "balanced",
+    "era": "Achaemenid Empire (6th–4th c. BCE)",
+    "region": "Iranian plateau / Near East",
+    "historicalContext": "Achaemenid armies combined subject levies with elite Immortals and Median/Persian cavalry; logistics and numbers mattered as much as shock.",
+    "createdAt": "2026-08-12T06:41:55.197Z"
   }
 }

@@ -57,10 +57,17 @@
       "label": "Cavalry mounts",
       "icons": [
         "cavalry/camel-head.svg",
+        "cavalry/camel.svg",
+        "cavalry/cavalry.svg",
         "cavalry/chess-knight.svg",
+        "cavalry/cloaked-rider.svg",
         "cavalry/donkey.svg",
         "cavalry/elephant.svg",
-        "cavalry/horse-head.svg"
+        "cavalry/elephant-head.svg",
+        "cavalry/horse-head.svg",
+        "cavalry/horse-head-alt.svg",
+        "cavalry/mammoth.svg",
+        "cavalry/mounted-knight.svg"
       ]
     },
     "animals": {
@@ -134,15 +141,6 @@
         "settlers/wheelbarrow.svg",
         "settlers/windmill.svg",
         "settlers/wood-cabin.svg"
-      ]
-    },
-    "siege": {
-      "label": "Siege (legacy placeholders)",
-      "icons": [
-        "powder.svg",
-        "infantry/crowbar.svg",
-        "infantry/war-pick.svg",
-        "infantry/spiked-ball.svg"
       ]
     }
   },

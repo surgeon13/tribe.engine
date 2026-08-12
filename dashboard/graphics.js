@@ -17,15 +17,20 @@ export function unitInitials(name) {
 /**
  * Prepare Game-Icons SVG markup for tribe palette tinting.
  * Black tile → secondary, white glyph → primary.
+ * Handles tiles with or without an explicit fill (newer game-icons exports omit fill="#000").
  * @param {string} svgText
  */
 export function prepareSvgForTint(svgText) {
   return svgText
-    .replace(
-      /(<path[^>]*d="M0 0h512v512H0z"[^>]*)\s*fill="[^"]*"/i,
-      '$1 class="troop-logo-bg"'
-    )
-    .replace(/fill="#fff"/gi, 'class="troop-logo-fg"')
+    .replace(/<path\b([^>]*\bd="M0 0h512v512H0z"[^>]*)(\/?)>/gi, (_, attrs, slash) => {
+      const cleaned = attrs
+        .replace(/\sfill="[^"]*"/gi, "")
+        .replace(/\sfill-opacity="[^"]*"/gi, "")
+        .replace(/\sclass="[^"]*"/gi, "");
+      return `<path${cleaned} class="troop-logo-bg"${slash}>`;
+    })
+    .replace(/\sfill="#fff(?:fff)?"/gi, ' class="troop-logo-fg"')
+    .replace(/\sfill="white"/gi, ' class="troop-logo-fg"')
     .replace(/<svg\b/, '<svg class="troop-logo-svg"');
 }
 

@@ -16,7 +16,6 @@ SVG logos live in grouped folders and are tinted with each tribe's `palette.prim
 | `catapults/` | Catapult / artillery logos |
 | `chiefs/` | Chief / administrator logos |
 | `settlers/` | Settler / expansion logos |
-| `powder.svg` | Legacy siege placeholder (prefer `catapults/`) |
 
 Default logos for ram / catapult / chief / settler now live under those folders; see `data/logo-groups.json`.
 

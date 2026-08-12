@@ -340,10 +340,10 @@ function main() {
       cav_t1: "cavalry/horse-head.svg",
       cav_t2: "cavalry/chess-knight.svg",
       cav_t3: "cavalry/donkey.svg",
-      ram: "infantry/crowbar.svg",
-      catapult: "powder.svg",
-      chief: "infantry/baton.svg",
-      settler: "resources/brick-pile.svg",
+      ram: "rams/siege-ram.svg",
+      catapult: "catapults/catapult.svg",
+      chief: "chiefs/scepter.svg",
+      settler: "settlers/farmer.svg",
     };
     writeJson("tribe-logos.json", logos);
 

@@ -1,0 +1,365 @@
+{
+  "$schema": "../units.schema.json",
+  "version": 1,
+  "game": "Tevel",
+  "tribe": {
+    "id": "axum",
+    "name": {
+      "en": "Axum"
+    },
+    "theme": "Highland spearmen, ivory-trade wealth, and Red Sea projection (Kingdom of Aksum (1st–7th c. CE), Ethiopian highlands / Red Sea)",
+    "graphics": {
+      "banner": "tribes/axum/banner.png"
+    }
+  },
+  "palette": {
+    "primary": "#6B2D1A",
+    "secondary": "#E8B84A"
+  },
+  "buildings": {
+    "usePalette": true,
+    "spriteRoot": "tribes/axum/buildings"
+  },
+  "troops": [
+    {
+      "ref": "inf_t1",
+      "overrides": {
+        "name": {
+          "en": "Highland Spearman"
+        },
+        "stats": {
+          "attack": 36,
+          "defenseInfantry": 40,
+          "defenseCavalry": 45,
+          "speed": 6,
+          "carry": 42
+        },
+        "cost": {
+          "wood": 108,
+          "clay": 92,
+          "iron": 115,
+          "crop": 35
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/stone-spear.svg"
+        },
+        "description": {
+          "en": "Aksumite levy from the Ethiopian plateau."
+        }
+      }
+    },
+    {
+      "ref": "inf_t2",
+      "overrides": {
+        "name": {
+          "en": "Javelin Skirmisher"
+        },
+        "stats": {
+          "attack": 46,
+          "defenseInfantry": 30,
+          "defenseCavalry": 28,
+          "speed": 8,
+          "carry": 35
+        },
+        "cost": {
+          "wood": 120,
+          "clay": 88,
+          "iron": 75,
+          "crop": 42
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/barbed-spear.svg"
+        },
+        "description": {
+          "en": "Light troops screening columns on highland roads."
+        }
+      }
+    },
+    {
+      "ref": "inf_t3",
+      "overrides": {
+        "name": {
+          "en": "Royal Guard"
+        },
+        "stats": {
+          "attack": 70,
+          "defenseInfantry": 52,
+          "defenseCavalry": 38,
+          "speed": 6,
+          "carry": 48
+        },
+        "cost": {
+          "wood": 168,
+          "clay": 158,
+          "iron": 210,
+          "crop": 92
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "infantry/battle-axe.svg"
+        },
+        "description": {
+          "en": "Household infantry of the negus — costly elite foot."
+        }
+      }
+    },
+    {
+      "ref": "scout",
+      "overrides": {
+        "name": {
+          "en": "Border Scout"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 18,
+          "defenseCavalry": 12,
+          "speed": 16,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 128,
+          "clay": 140,
+          "iron": 22,
+          "crop": 38
+        },
+        "cropUpkeep": 2,
+        "graphics": {
+          "logo": "infantry/heavy-arrow.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t1",
+      "overrides": {
+        "name": {
+          "en": "Highland Horse"
+        },
+        "stats": {
+          "attack": 112,
+          "defenseInfantry": 52,
+          "defenseCavalry": 48,
+          "speed": 15,
+          "carry": 92
+        },
+        "cost": {
+          "wood": 470,
+          "clay": 390,
+          "iron": 290,
+          "crop": 95
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "cavalry/donkey.svg"
+        },
+        "description": {
+          "en": "Light cavalry adapted to plateau warfare."
+        }
+      }
+    },
+    {
+      "ref": "cav_t2",
+      "overrides": {
+        "name": {
+          "en": "Noble Cavalry"
+        },
+        "stats": {
+          "attack": 160,
+          "defenseInfantry": 72,
+          "defenseCavalry": 92,
+          "speed": 11,
+          "carry": 70
+        },
+        "cost": {
+          "wood": 545,
+          "clay": 610,
+          "iron": 730,
+          "crop": 170
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/horse-head.svg"
+        }
+      }
+    },
+    {
+      "ref": "cav_t3",
+      "overrides": {
+        "name": {
+          "en": "Camel Corps"
+        },
+        "stats": {
+          "attack": 138,
+          "defenseInfantry": 58,
+          "defenseCavalry": 68,
+          "speed": 12,
+          "carry": 115
+        },
+        "cost": {
+          "wood": 490,
+          "clay": 460,
+          "iron": 430,
+          "crop": 155
+        },
+        "cropUpkeep": 4,
+        "graphics": {
+          "logo": "cavalry/camel-head.svg"
+        },
+        "description": {
+          "en": "Desert and coastal camelry for Red Sea approaches."
+        }
+      }
+    },
+    {
+      "ref": "ram",
+      "overrides": {
+        "name": {
+          "en": "Siege Ram"
+        },
+        "stats": {
+          "attack": 58,
+          "defenseInfantry": 28,
+          "defenseCavalry": 70,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 885,
+          "clay": 350,
+          "iron": 485,
+          "crop": 68
+        },
+        "cropUpkeep": 3,
+        "graphics": {
+          "logo": "rams/siege-tower.svg"
+        }
+      }
+    },
+    {
+      "ref": "catapult",
+      "overrides": {
+        "name": {
+          "en": "Stone Thrower"
+        },
+        "stats": {
+          "attack": 74,
+          "defenseInfantry": 58,
+          "defenseCavalry": 10,
+          "speed": 3,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 945,
+          "clay": 1330,
+          "iron": 595,
+          "crop": 90
+        },
+        "cropUpkeep": 6,
+        "graphics": {
+          "logo": "catapults/catapult.svg"
+        }
+      }
+    },
+    {
+      "ref": "chief",
+      "overrides": {
+        "name": {
+          "en": "Negus"
+        },
+        "stats": {
+          "attack": 48,
+          "defenseInfantry": 40,
+          "defenseCavalry": 32,
+          "speed": 4,
+          "carry": 0
+        },
+        "cost": {
+          "wood": 30200,
+          "clay": 27200,
+          "iron": 44800,
+          "crop": 36800
+        },
+        "cropUpkeep": 5,
+        "graphics": {
+          "logo": "chiefs/scroll-seal.svg"
+        },
+        "description": {
+          "en": "Aksumite king or appointed viceroy."
+        }
+      }
+    },
+    {
+      "ref": "settler",
+      "overrides": {
+        "name": {
+          "en": "Colonist"
+        },
+        "stats": {
+          "attack": 0,
+          "defenseInfantry": 80,
+          "defenseCavalry": 80,
+          "speed": 5,
+          "carry": 3000
+        },
+        "cost": {
+          "wood": 5700,
+          "clay": 5200,
+          "iron": 7050,
+          "crop": 5400
+        },
+        "cropUpkeep": 1,
+        "graphics": {
+          "logo": "settlers/barn.svg"
+        }
+      }
+    }
+  ],
+  "hero": {
+    "id": "axum_hero",
+    "progression": "hero.system.json",
+    "role": "hero",
+    "category": "hero",
+    "name": {
+      "en": "Hero"
+    },
+    "description": {
+      "en": "Player hero — defaults to the account's in-game name; editable later."
+    },
+    "isBase": false,
+    "stats": {
+      "attack": 102,
+      "defenseInfantry": 112,
+      "defenseCavalry": 100,
+      "speed": 8,
+      "carry": 105
+    },
+    "cost": {
+      "wood": 0,
+      "clay": 0,
+      "iron": 0,
+      "crop": 0
+    },
+    "cropUpkeep": 6,
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
+    "graphics": {
+      "sprite": "tribes/axum/hero/hero.png",
+      "icon": "tribes/axum/hero/hero_icon.png",
+      "portrait": "tribes/axum/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "generated": true,
+    "custom": false,
+    "cultureId": "axum",
+    "archetype": "balanced",
+    "era": "Kingdom of Aksum (1st–7th c. CE)",
+    "region": "Ethiopian highlands / Red Sea",
+    "historicalContext": "Aksum controlled highland agriculture and Red Sea trade (ivory, gold, incense), fielding spear infantry and limited cavalry while projecting power into South Arabia and the Nile corridor.",
+    "createdAt": "2026-08-12T06:41:55.271Z"
+  }
+}
