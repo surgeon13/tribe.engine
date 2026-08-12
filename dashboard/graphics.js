@@ -98,7 +98,6 @@ export function prepareSvgForTint(svgText) {
   return tinted.replace(/<path\b([^>]*)\/>/gi, "<path$1></path>");
 }
 
-const LOGO_VIEWBOX = "0 0 512 512";
 const SHAPE_SELECTOR = "path, rect, circle, ellipse, polygon, polyline";
 
 /**
