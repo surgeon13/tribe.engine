@@ -98,6 +98,45 @@ export function prepareSvgForTint(svgText) {
   return tinted.replace(/<path\b([^>]*)\/>/gi, "<path$1></path>");
 }
 
+const LOGO_VIEWBOX = "0 0 512 512";
+const SHAPE_SELECTOR = "path, rect, circle, ellipse, polygon, polyline";
+
+/**
+ * Game-Icons ship two export styles (with/without an explicit background fill and
+ * inline pixel size). Normalize geometry so every icon scales to its container
+ * identically instead of inheriting the source file's own width/height.
+ * @param {SVGSVGElement} svg
+ */
+function normalizeLogoSvg(svg) {
+  if (!svg.getAttribute("viewBox")) {
+    const w = parseFloat(svg.getAttribute("width") || "512") || 512;
+    const h = parseFloat(svg.getAttribute("height") || "512") || 512;
+    svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+  }
+  svg.removeAttribute("width");
+  svg.removeAttribute("height");
+  svg.removeAttribute("style");
+  svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+  svg.setAttribute("focusable", "false");
+  svg.setAttribute("aria-hidden", "true");
+  svg.classList.add("troop-logo-svg");
+  return svg;
+}
+
+/**
+ * Full-canvas background tile, written either as a path rect or a <rect>.
+ * @param {Element} node
+ */
+function isCanvasTile(node) {
+  if (node.tagName.toLowerCase() === "rect") {
+    const w = parseFloat(node.getAttribute("width") || "0");
+    const h = parseFloat(node.getAttribute("height") || "0");
+    return w >= 512 && h >= 512;
+  }
+  const d = (node.getAttribute("d") || "").replace(/[\s,]+/g, "").toLowerCase();
+  return d.startsWith("m00h512v512h0z") || d.startsWith("m00l5120l5125120512z");
+}
+
 /**
  * @param {SVGElement | HTMLElement} root
  * @param {{ primary?: string, secondary?: string }} opts
@@ -106,17 +145,16 @@ function applyLogoPalette(root, opts = {}) {
   const bg = opts.secondary || "#333";
   const fg = opts.primary || "#fff";
   const paint = (node, color) => {
-    if (!(node instanceof SVGElement)) return;
     node.setAttribute("fill", color);
-    node.style.setProperty("fill", color, "important");
+    node.style?.setProperty("fill", color, "important");
     node.removeAttribute("fill-opacity");
+    node.removeAttribute("opacity");
   };
 
   // Paint by tile geometry — CSS custom properties often fail to inherit into imported SVG (mobile Safari).
-  root.querySelectorAll("path").forEach((path) => {
-    const d = path.getAttribute("d") || "";
-    paint(path, /^M0 0h512v512H0z/i.test(d) ? bg : fg);
-  });
+  const shapes = root.querySelectorAll(SHAPE_SELECTOR);
+  shapes.forEach((node) => paint(node, isCanvasTile(node) ? bg : fg));
+  return shapes.length;
 }
 
 /**
@@ -130,7 +168,9 @@ function parseTintedSvg(svgText) {
   if (err) {
     throw new Error(err.textContent?.trim() || "SVG parse error");
   }
-  return doc.documentElement;
+  const svg = doc.documentElement;
+  if (svg.tagName.toLowerCase() !== "svg") throw new Error("not an SVG document");
+  return normalizeLogoSvg(/** @type {SVGSVGElement} */ (svg));
 }
 
 /**
@@ -160,7 +200,7 @@ export async function mountSvgLogo(el, url, opts = {}) {
   wrap.style.setProperty("--logo-fg", opts.primary || "#fff");
 
   const svg = parseTintedSvg(text);
-  applyLogoPalette(svg, opts);
+  if (!applyLogoPalette(svg, opts)) throw new Error(`SVG has no drawable shapes: ${url}`);
   wrap.append(document.importNode(svg, true));
 
   wrap.setAttribute("role", "img");
