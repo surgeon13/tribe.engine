@@ -31,6 +31,7 @@ import {
   renderUnitCard,
   mountTroopLogoCell,
   mountPortrait,
+  portraitOptsFromUnit,
 } from "./graphics.js";
 import {
   getCompareSeriesColors,
@@ -504,18 +505,7 @@ function renderFeatureRadar(container, entity, palette, opts = {}) {
   const logoSlot = document.createElement("div");
   logoSlot.className = "stat-profile-logo";
   const portrait = document.createElement("div");
-  mountPortrait(portrait, {
-    logoUrl: entity.graphicsUrls?.logo,
-    iconUrl:
-      entity.graphicsUrls?.icon ||
-      entity.graphicsUrls?.sprite ||
-      entity.graphicsUrls?.portrait,
-    primary: palette?.primary,
-    secondary: palette?.secondary,
-    label: entity.name,
-    alt: entity.name,
-    size: opts.featured ? "sm" : "sm",
-  });
+  mountPortrait(portrait, portraitOptsFromUnit(entity, palette, { size: "sm" }));
   logoSlot.append(portrait);
 
   const nameEl = document.createElement("h4");

@@ -5,6 +5,59 @@ import { mountStatBars } from "./radar.js";
 
 const svgCache = new Map();
 
+/** Tribe unit PNG paths are templates — not shipped in assets; avoid broken <img> fallbacks. */
+const PLACEHOLDER_RASTER_RE = /\/tribes\/[^/]+\/units\//;
+
+/**
+ * Resolve relative asset URLs against the page (PWA / subdirectory safe).
+ * @param {string} url
+ */
+export function resolveAssetUrl(url) {
+  if (!url || typeof url !== "string") return url;
+  if (/^https?:\/\//i.test(url) || url.startsWith("data:")) return url;
+  try {
+    return new URL(url, document.baseURI || window.location.href).href;
+  } catch {
+    return url;
+  }
+}
+
+/**
+ * @param {string | null | undefined} url
+ */
+export function isPlaceholderTroopRaster(url) {
+  return !url || PLACEHOLDER_RASTER_RE.test(url);
+}
+
+/**
+ * @param {object} unit
+ * @param {object} [palette]
+ * @param {{ size?: "sm" | "md" }} [extra]
+ */
+export function portraitOptsFromUnit(unit, palette, extra = {}) {
+  const gfx = unit.graphicsUrls || {};
+  const logoUrl = gfx.logo || null;
+  const baseLogoUrl =
+    gfx.baseLogo && gfx.baseLogo !== logoUrl ? gfx.baseLogo : null;
+  const iconCandidate = gfx.icon || gfx.sprite || gfx.portrait || null;
+  let iconUrl = null;
+  if (!logoUrl && !baseLogoUrl) {
+    iconUrl = iconCandidate;
+  } else if (iconCandidate && !isPlaceholderTroopRaster(iconCandidate)) {
+    iconUrl = iconCandidate;
+  }
+  return {
+    logoUrl,
+    baseLogoUrl,
+    iconUrl,
+    primary: palette?.primary,
+    secondary: palette?.secondary,
+    label: unit.name,
+    alt: unit.name,
+    ...extra,
+  };
+}
+
 /**
  * @param {string} name
  */
@@ -84,11 +137,12 @@ function parseTintedSvg(svgText) {
  * @param {string} url
  */
 async function fetchSvg(url) {
-  if (svgCache.has(url)) return svgCache.get(url);
-  const res = await fetch(url, { cache: "force-cache" });
-  if (!res.ok) throw new Error(`SVG ${res.status}`);
+  const resolved = resolveAssetUrl(url);
+  if (svgCache.has(resolved)) return svgCache.get(resolved);
+  const res = await fetch(resolved, { cache: "default" });
+  if (!res.ok) throw new Error(`SVG ${res.status} ${resolved}`);
   const text = await res.text();
-  svgCache.set(url, text);
+  svgCache.set(resolved, text);
   return text;
 }
 
@@ -98,6 +152,7 @@ async function fetchSvg(url) {
  * @param {{ primary?: string, secondary?: string, label?: string, alt?: string }} opts
  */
 export async function mountSvgLogo(el, url, opts = {}) {
+  el.querySelector(".troop-logo-wrap")?.remove();
   const text = await fetchSvg(url);
   const wrap = document.createElement("div");
   wrap.className = "troop-logo-wrap";
@@ -118,9 +173,28 @@ export async function mountSvgLogo(el, url, opts = {}) {
  * @param {HTMLElement} el
  * @param {{ logoUrl?: string | null, iconUrl?: string | null, primary?: string, secondary?: string, label?: string, alt?: string, size?: "sm" | "md" }} opts
  */
+/**
+ * @param {HTMLElement} el
+ * @param {string[]} urls
+ * @param {{ primary?: string, secondary?: string, label?: string, alt?: string }} paint
+ */
+async function mountFirstSvgLogo(el, urls, paint) {
+  for (const url of urls) {
+    if (!url) continue;
+    try {
+      await mountSvgLogo(el, url, paint);
+      return true;
+    } catch {
+      /* try next candidate */
+    }
+  }
+  return false;
+}
+
 export function mountPortrait(el, opts = {}) {
   const {
     logoUrl = null,
+    baseLogoUrl = null,
     iconUrl = null,
     primary,
     secondary,
@@ -141,19 +215,24 @@ export function mountPortrait(el, opts = {}) {
   fallback.textContent = unitInitials(label);
   el.append(fallback);
 
-  if (logoUrl) {
-    mountSvgLogo(el, logoUrl, { primary, secondary, label, alt })
-      .then(() => {
+  const paint = { primary, secondary, label, alt };
+  const logoCandidates = [logoUrl, baseLogoUrl].filter(Boolean);
+
+  if (logoCandidates.length) {
+    mountFirstSvgLogo(el, logoCandidates, paint).then((ok) => {
+      if (ok) {
         el.classList.remove("no-img");
-      })
-      .catch(() => {
-        el.classList.add("no-img");
-        if (iconUrl) mountRasterPortrait(el, iconUrl, alt || label, fallback);
-      });
+        return;
+      }
+      el.classList.add("no-img");
+      if (iconUrl && !isPlaceholderTroopRaster(iconUrl)) {
+        mountRasterPortrait(el, iconUrl, alt || label, fallback);
+      }
+    });
     return;
   }
 
-  if (iconUrl) {
+  if (iconUrl && !isPlaceholderTroopRaster(iconUrl)) {
     mountRasterPortrait(el, iconUrl, alt || label, fallback);
     return;
   }
@@ -172,10 +251,12 @@ function mountRasterPortrait(el, url, alt, fallback) {
   img.alt = alt || "Unit";
   img.loading = "lazy";
   img.decoding = "async";
-  img.src = url;
+  img.onload = () => {
+    el.classList.remove("no-img");
+    el.prepend(img);
+  };
   img.onerror = () => el.classList.add("no-img");
-  img.onload = () => el.classList.remove("no-img");
-  el.prepend(img);
+  img.src = resolveAssetUrl(url);
   el.append(fallback);
 }
 
@@ -237,14 +318,7 @@ export function renderUnitCard(container, unit, palette, scales, opts = {}) {
   top.className = "compare-unit-top";
 
   const portrait = document.createElement("div");
-  mountPortrait(portrait, {
-    logoUrl: unit.graphicsUrls?.logo,
-    iconUrl: unit.graphicsUrls?.icon || unit.graphicsUrls?.sprite,
-    primary: palette?.primary,
-    secondary: palette?.secondary,
-    label: unit.name,
-    alt: unit.name,
-  });
+  mountPortrait(portrait, portraitOptsFromUnit(unit, palette));
 
   const meta = document.createElement("div");
   meta.className = "compare-unit-meta";
@@ -285,14 +359,6 @@ export function mountTroopLogoCell(cell, unit, palette) {
   cell.innerHTML = "";
   cell.className = "troop-logo-cell";
   const portrait = document.createElement("div");
-  mountPortrait(portrait, {
-    logoUrl: unit.graphicsUrls?.logo,
-    iconUrl: unit.graphicsUrls?.icon || unit.graphicsUrls?.sprite,
-    primary: palette?.primary,
-    secondary: palette?.secondary,
-    label: unit.name,
-    alt: unit.name,
-    size: "sm",
-  });
+  mountPortrait(portrait, portraitOptsFromUnit(unit, palette, { size: "sm" }));
   cell.append(portrait);
 }
