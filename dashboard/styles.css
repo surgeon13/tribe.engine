@@ -221,6 +221,23 @@ body {
   flex-wrap: wrap;
 }
 
+.palette-contrast-hint {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+/* Sit under both swatches rather than beside them. */
+.tribe-edit-palette-row .palette-contrast-hint {
+  flex: 1 0 100%;
+}
+
+.palette-contrast-hint[data-level="bad"] {
+  color: var(--negative);
+  font-weight: 600;
+}
+
 .tribe-edit-palette-row label {
   display: flex;
   flex-direction: column;

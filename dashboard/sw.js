@@ -13,6 +13,7 @@ const PRECACHE = [
   "./color.js",
   "./graphics.js",
   "./metrics-normalize.js",
+  "./palette-hint.js",
   "./radar.js",
   "./themes.js",
   "./session-tribes.js",

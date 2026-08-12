@@ -26,6 +26,7 @@ import {
   drawCompareMetricChart,
   drawMultiCostStackChart,
 } from "./charts.js";
+import { mountPaletteContrastHint } from "./palette-hint.js";
 import {
   renderTribeBanner,
   renderUnitCard,
@@ -711,6 +712,7 @@ function syncEditChrome(tribe) {
     if (secondaryInput && document.activeElement !== secondaryInput) {
       secondaryInput.value = tribe.palette?.secondary || "#E09F3E";
     }
+    mountPaletteContrastHint(primaryInput, secondaryInput, $("#edit-palette-hint"));
   }
   if (nameView) nameView.textContent = tribe?.name || "—";
   if (themeView) themeView.textContent = tribe?.theme || "";
