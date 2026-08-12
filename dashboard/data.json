@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-12T08:25:09.463Z",
+  "generatedAt": "2026-08-12T17:56:22.007Z",
   "roster": [
     {
       "slot": 1,
@@ -359,7 +359,7 @@
       "type": "playable",
       "theme": "Elite troops, strong infantry and cavalry, expensive training",
       "palette": {
-        "primary": "#8B1A1A",
+        "primary": "#851818",
         "secondary": "#D4AF37"
       },
       "graphics": {
@@ -1188,7 +1188,7 @@
       "type": "playable",
       "theme": "Aggressive infantry and heavy cavalry, strong raiders",
       "palette": {
-        "primary": "#4A3728",
+        "primary": "#2E2217",
         "secondary": "#B8860B"
       },
       "graphics": {
@@ -2014,7 +2014,7 @@
       "type": "playable",
       "theme": "Fast cavalry, solid defense, fastest scouts",
       "palette": {
-        "primary": "#2D5A27",
+        "primary": "#2B5625",
         "secondary": "#C0C0C0"
       },
       "graphics": {
@@ -2841,7 +2841,7 @@
       "theme": "Strong defense, cheap militia, stone wall synergy",
       "palette": {
         "primary": "#C9A227",
-        "secondary": "#1A4A6E"
+        "secondary": "#163F5E"
       },
       "graphics": {
         "banner": "tribes/egyptian/banner.png"
@@ -3669,7 +3669,7 @@
       "type": "playable",
       "theme": "Pure offense, fast cavalry, weak defense",
       "palette": {
-        "primary": "#5C4033",
+        "primary": "#F2CE66",
         "secondary": "#A52A2A"
       },
       "graphics": {
@@ -5324,7 +5324,7 @@
       "type": "npc",
       "theme": "NPC endgame tribe — guards artefacts and Wonder plans",
       "palette": {
-        "primary": "#2B2B2B",
+        "primary": "#A9B0BC",
         "secondary": "#6B0000"
       },
       "graphics": {
@@ -6153,8 +6153,8 @@
       "type": "npc",
       "theme": "Oasis animals — no upkeep, captured with hero cages",
       "palette": {
-        "primary": "#3D6B35",
-        "secondary": "#8B6914"
+        "primary": "#8FD14F",
+        "secondary": "#3B2A16"
       },
       "graphics": {
         "banner": "tribes/nature/banner.png"
@@ -6982,7 +6982,7 @@
       "type": "playable",
       "theme": "Mercenary armies, elephants, and naval wealth — soft core infantry, elite mounted punch (Punic Wars (3rd–2nd c. BCE), North Africa / western Mediterranean)",
       "palette": {
-        "primary": "#1B4F72",
+        "primary": "#153E59",
         "secondary": "#C9A227"
       },
       "graphics": {
@@ -12785,7 +12785,7 @@
       "type": "playable",
       "theme": "Caravan-kingdom desert infantry and camel riders",
       "palette": {
-        "primary": "#7A4A28",
+        "primary": "#57351D",
         "secondary": "#C4A35A"
       },
       "graphics": {
@@ -14443,7 +14443,7 @@
       "type": "playable",
       "theme": "Statistical baseline — per-slot median of Romans, Teutons, Gauls, Egyptians, Huns, Spartans. Use as the balance origin for tribe identity offsets.",
       "palette": {
-        "primary": "#4A5568",
+        "primary": "#373F4D",
         "secondary": "#A0AEC0"
       },
       "graphics": {
