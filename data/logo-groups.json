@@ -95,23 +95,55 @@
     },
     "rams": {
       "label": "Rams / wall-breakers",
-      "icons": []
+      "icons": [
+        "rams/siege-ram.svg",
+        "rams/siege-tower.svg"
+      ]
     },
     "catapults": {
       "label": "Catapults / artillery",
-      "icons": []
+      "icons": [
+        "catapults/ballista.svg",
+        "catapults/catapult.svg",
+        "catapults/trebuchet.svg"
+      ]
     },
     "chiefs": {
       "label": "Chiefs / administrators",
-      "icons": []
+      "icons": [
+        "chiefs/commander-helm.svg",
+        "chiefs/diadem.svg",
+        "chiefs/eagle-totem.svg",
+        "chiefs/office-baton.svg",
+        "chiefs/ring-of-office.svg",
+        "chiefs/scepter.svg",
+        "chiefs/scroll-seal.svg",
+        "chiefs/war-standard.svg"
+      ]
     },
     "settlers": {
       "label": "Settlers / expansion",
-      "icons": []
+      "icons": [
+        "settlers/barn.svg",
+        "settlers/farmer.svg",
+        "settlers/hut.svg",
+        "settlers/huts-village.svg",
+        "settlers/old-wagon.svg",
+        "settlers/plow.svg",
+        "settlers/village.svg",
+        "settlers/wheelbarrow.svg",
+        "settlers/windmill.svg",
+        "settlers/wood-cabin.svg"
+      ]
     },
     "siege": {
-      "label": "Siege (legacy placeholders until rams/ + catapults/ are filled)",
-      "icons": ["powder.svg", "infantry/crowbar.svg", "infantry/war-pick.svg", "infantry/spiked-ball.svg"]
+      "label": "Siege (legacy placeholders)",
+      "icons": [
+        "powder.svg",
+        "infantry/crowbar.svg",
+        "infantry/war-pick.svg",
+        "infantry/spiked-ball.svg"
+      ]
     }
   },
   "defaults": {
@@ -122,9 +154,9 @@
     "cav_t1": "cavalry/horse-head.svg",
     "cav_t2": "cavalry/chess-knight.svg",
     "cav_t3": "cavalry/elephant.svg",
-    "ram": "infantry/crowbar.svg",
-    "catapult": "powder.svg",
-    "chief": "infantry/baton.svg",
-    "settler": "resources/brick-pile.svg"
+    "ram": "rams/siege-ram.svg",
+    "catapult": "catapults/catapult.svg",
+    "chief": "chiefs/scepter.svg",
+    "settler": "settlers/farmer.svg"
   }
 }
