@@ -22,15 +22,17 @@ export function unitInitials(name) {
  */
 export function prepareSvgForTint(svgText) {
   return svgText
-    .replace(/<path\b([^>]*\bd="M0 0h512v512H0z"[^>]*)(\/?)>/gi, (_, attrs, slash) => {
+    .replace(/<path\b([^>]*\bd="M0 0h512v512H0z"[^>/]*)(\/)?>/gi, (_, attrs, selfClose) => {
       const cleaned = attrs
         .replace(/\sfill="[^"]*"/gi, "")
         .replace(/\sfill-opacity="[^"]*"/gi, "")
         .replace(/\sclass="[^"]*"/gi, "");
-      return `<path${cleaned} class="troop-logo-bg"${slash}>`;
+      return selfClose
+        ? `<path${cleaned} class="troop-logo-bg"/>`
+        : `<path${cleaned} class="troop-logo-bg">`;
     })
-    .replace(/\sfill="#fff(?:fff)?"/gi, ' class="troop-logo-fg"')
-    .replace(/\sfill="white"/gi, ' class="troop-logo-fg"')
+    .replace(/\sfill="#fff(?:fff)?"(?:\s+fill-opacity="[^"]*")?/gi, ' class="troop-logo-fg"')
+    .replace(/\sfill="white"(?:\s+fill-opacity="[^"]*")?/gi, ' class="troop-logo-fg"')
     .replace(/<svg\b/, '<svg class="troop-logo-svg"');
 }
 
