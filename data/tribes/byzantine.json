@@ -25,7 +25,7 @@
       "ref": "inf_t1",
       "overrides": {
         "name": {
-          "en": "Skutatos"
+          "en": "Skoutatos"
         },
         "stats": {
           "attack": 38,
@@ -53,7 +53,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": {
-          "en": "Akontistes"
+          "en": "Peltast"
         },
         "stats": {
           "attack": 40,
@@ -81,7 +81,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": {
-          "en": "Toxotes"
+          "en": "Optimatoi"
         },
         "stats": {
           "attack": 60,
@@ -109,7 +109,7 @@
       "ref": "scout",
       "overrides": {
         "name": {
-          "en": "Prokoursator"
+          "en": "Akritai Scout"
         },
         "stats": {
           "attack": 0,
@@ -134,7 +134,7 @@
       "ref": "cav_t1",
       "overrides": {
         "name": {
-          "en": "Trapezites"
+          "en": "Light Horse"
         },
         "stats": {
           "attack": 125,
@@ -162,7 +162,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": {
-          "en": "Cataphract"
+          "en": "Kataphraktos"
         },
         "stats": {
           "attack": 190,
@@ -190,7 +190,7 @@
       "ref": "cav_t3",
       "overrides": {
         "name": {
-          "en": "Klibanophoros"
+          "en": "Scholai Cavalry"
         },
         "stats": {
           "attack": 175,
@@ -235,7 +235,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "infantry/crowbar.svg"
+          "logo": "rams/siege-ram.svg"
         }
       }
     },
@@ -243,7 +243,7 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Petrobolos"
+          "en": "Mangonel"
         },
         "stats": {
           "attack": 80,
@@ -260,7 +260,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "powder.svg"
+          "logo": "catapults/catapult.svg"
         }
       }
     },
@@ -285,7 +285,7 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "infantry/baton.svg"
+          "logo": "chiefs/war-standard.svg"
         }
       }
     },
@@ -293,7 +293,7 @@
       "ref": "settler",
       "overrides": {
         "name": {
-          "en": "Settler"
+          "en": "Colonist"
         },
         "stats": {
           "attack": 0,
@@ -310,7 +310,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "resources/brick-pile.svg"
+          "logo": "settlers/wood-cabin.svg"
         }
       }
     }
@@ -358,6 +358,14 @@
     "era": "Eastern Roman Empire (6th–11th c. CE)",
     "region": "Anatolia / Balkans / eastern Mediterranean",
     "historicalContext": "Byzantine armies emphasized professional cavalry (cataphracts), thematic infantry, and engineered siegecraft inherited from Rome.",
-    "createdAt": "2026-08-05T10:47:07.061Z"
+    "createdAt": "2026-08-05T10:47:07.061Z",
+    "regeneratedAt": "2026-08-12T06:15:23.639Z",
+    "archetype": "cavalry",
+    "flavorId": "byzantine",
+    "algorithms": [
+      "troop-lexicon",
+      "culture-profile-stats",
+      "game-icons-logos"
+    ]
   }
 }

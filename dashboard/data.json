@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-11T08:48:50.702Z",
+  "generatedAt": "2026-08-12T06:15:23.681Z",
   "roster": [
     {
       "slot": 1,
@@ -7139,7 +7139,7 @@
           "role": "infantry",
           "ref": "inf_t3",
           "id": "inf_t3",
-          "name": "Sacred Band",
+          "name": "Iberian Swordsman",
           "category": "infantry",
           "stats": {
             "attack": 65,
@@ -7340,7 +7340,7 @@
           "role": "cavalry",
           "ref": "cav_t2",
           "id": "cav_t2",
-          "name": "Punic Noble Horse",
+          "name": "Punic Lancer",
           "category": "cavalry",
           "stats": {
             "attack": 165,
@@ -7474,7 +7474,7 @@
           "role": "siege",
           "ref": "ram",
           "id": "ram",
-          "name": "Siege Ram",
+          "name": "Battering Ram",
           "category": "siege",
           "stats": {
             "attack": 55,
@@ -7507,7 +7507,7 @@
           "graphics": {
             "sprite": "tribes/carthaginian/units/08_ram.png",
             "icon": "tribes/carthaginian/units/08_ram_icon.png",
-            "logo": "infantry/crowbar.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "infantry/crowbar.svg"
@@ -7530,7 +7530,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/carthaginian/units/08_ram_icon.png",
             "sprite": "assets/tribes/carthaginian/units/08_ram.png",
-            "logo": "assets/infantry/crowbar.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/infantry/crowbar.svg"
@@ -7541,7 +7541,7 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Stone Thrower",
+          "name": "Catapult",
           "category": "siege",
           "stats": {
             "attack": 70,
@@ -7574,7 +7574,7 @@
           "graphics": {
             "sprite": "tribes/carthaginian/units/09_catapult.png",
             "icon": "tribes/carthaginian/units/09_catapult_icon.png",
-            "logo": "powder.svg",
+            "logo": "catapults/catapult.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "powder.svg"
@@ -7597,7 +7597,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/carthaginian/units/09_catapult_icon.png",
             "sprite": "assets/tribes/carthaginian/units/09_catapult.png",
-            "logo": "assets/powder.svg",
+            "logo": "assets/catapults/catapult.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/powder.svg"
@@ -7608,7 +7608,7 @@
           "role": "chief",
           "ref": "chief",
           "id": "chief",
-          "name": "Suffete",
+          "name": "Sufete",
           "category": "chief",
           "stats": {
             "attack": 45,
@@ -7646,7 +7646,7 @@
           "graphics": {
             "sprite": "tribes/carthaginian/units/10_chief.png",
             "icon": "tribes/carthaginian/units/10_chief_icon.png",
-            "logo": "infantry/orb-wand.svg",
+            "logo": "chiefs/scroll-seal.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
             "baseLogo": "infantry/baton.svg"
@@ -7669,7 +7669,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/carthaginian/units/10_chief_icon.png",
             "sprite": "assets/tribes/carthaginian/units/10_chief.png",
-            "logo": "assets/infantry/orb-wand.svg",
+            "logo": "assets/chiefs/scroll-seal.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
             "baseLogo": "assets/infantry/baton.svg"
@@ -7680,7 +7680,7 @@
           "role": "settler",
           "ref": "settler",
           "id": "settler",
-          "name": "Colonist",
+          "name": "Colony Settler",
           "category": "settler",
           "stats": {
             "attack": 0,
@@ -7713,7 +7713,7 @@
           "graphics": {
             "sprite": "tribes/carthaginian/units/11_settler.png",
             "icon": "tribes/carthaginian/units/11_settler_icon.png",
-            "logo": "resources/cash-pile.svg",
+            "logo": "settlers/old-wagon.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "resources/brick-pile.svg"
@@ -7736,7 +7736,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/carthaginian/units/11_settler_icon.png",
             "sprite": "assets/tribes/carthaginian/units/11_settler.png",
-            "logo": "assets/resources/cash-pile.svg",
+            "logo": "assets/settlers/old-wagon.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/resources/brick-pile.svg"
@@ -7834,7 +7834,7 @@
           "role": "infantry",
           "ref": "inf_t1",
           "id": "inf_t1",
-          "name": "Ashigaru Yari",
+          "name": "Ashigaru Spearman",
           "category": "infantry",
           "stats": {
             "attack": 35,
@@ -7901,7 +7901,7 @@
           "role": "infantry",
           "ref": "inf_t2",
           "id": "inf_t2",
-          "name": "Ashigaru Yumi",
+          "name": "Ashigaru Archer",
           "category": "infantry",
           "stats": {
             "attack": 50,
@@ -8035,7 +8035,7 @@
           "role": "scout",
           "ref": "scout",
           "id": "scout",
-          "name": "Shinobi Scout",
+          "name": "Pathfinder",
           "category": "scout",
           "stats": {
             "attack": 0,
@@ -8102,7 +8102,7 @@
           "role": "cavalry",
           "ref": "cav_t1",
           "id": "cav_t1",
-          "name": "Ki Cavalry",
+          "name": "Kihei",
           "category": "cavalry",
           "stats": {
             "attack": 110,
@@ -8236,7 +8236,7 @@
           "role": "cavalry",
           "ref": "cav_t3",
           "id": "cav_t3",
-          "name": "Hatamoto Horse",
+          "name": "Guard Cavalry",
           "category": "cavalry",
           "stats": {
             "attack": 150,
@@ -8303,7 +8303,7 @@
           "role": "siege",
           "ref": "ram",
           "id": "ram",
-          "name": "Ram",
+          "name": "Siege Ram",
           "category": "siege",
           "stats": {
             "attack": 60,
@@ -8336,7 +8336,7 @@
           "graphics": {
             "sprite": "tribes/japanese/units/08_ram.png",
             "icon": "tribes/japanese/units/08_ram_icon.png",
-            "logo": "infantry/crowbar.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "infantry/crowbar.svg"
@@ -8359,7 +8359,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/japanese/units/08_ram_icon.png",
             "sprite": "assets/tribes/japanese/units/08_ram.png",
-            "logo": "assets/infantry/crowbar.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/infantry/crowbar.svg"
@@ -8370,7 +8370,7 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Hōsha",
+          "name": "Mangonel",
           "category": "siege",
           "stats": {
             "attack": 75,
@@ -8403,7 +8403,7 @@
           "graphics": {
             "sprite": "tribes/japanese/units/09_catapult.png",
             "icon": "tribes/japanese/units/09_catapult_icon.png",
-            "logo": "powder.svg",
+            "logo": "catapults/trebuchet.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "powder.svg"
@@ -8426,7 +8426,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/japanese/units/09_catapult_icon.png",
             "sprite": "assets/tribes/japanese/units/09_catapult.png",
-            "logo": "assets/powder.svg",
+            "logo": "assets/catapults/trebuchet.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/powder.svg"
@@ -8437,7 +8437,7 @@
           "role": "chief",
           "ref": "chief",
           "id": "chief",
-          "name": "Daimyō",
+          "name": "Daimyo",
           "category": "chief",
           "stats": {
             "attack": 50,
@@ -8475,7 +8475,7 @@
           "graphics": {
             "sprite": "tribes/japanese/units/10_chief.png",
             "icon": "tribes/japanese/units/10_chief_icon.png",
-            "logo": "infantry/baton.svg",
+            "logo": "chiefs/ring-of-office.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
             "baseLogo": "infantry/baton.svg"
@@ -8498,7 +8498,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/japanese/units/10_chief_icon.png",
             "sprite": "assets/tribes/japanese/units/10_chief.png",
-            "logo": "assets/infantry/baton.svg",
+            "logo": "assets/chiefs/ring-of-office.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
             "baseLogo": "assets/infantry/baton.svg"
@@ -8509,7 +8509,7 @@
           "role": "settler",
           "ref": "settler",
           "id": "settler",
-          "name": "Settler",
+          "name": "Village Settler",
           "category": "settler",
           "stats": {
             "attack": 0,
@@ -8542,7 +8542,7 @@
           "graphics": {
             "sprite": "tribes/japanese/units/11_settler.png",
             "icon": "tribes/japanese/units/11_settler_icon.png",
-            "logo": "resources/wheat-pile.svg",
+            "logo": "settlers/old-wagon.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "resources/brick-pile.svg"
@@ -8565,7 +8565,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/japanese/units/11_settler_icon.png",
             "sprite": "assets/tribes/japanese/units/11_settler.png",
-            "logo": "assets/resources/wheat-pile.svg",
+            "logo": "assets/settlers/old-wagon.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/resources/brick-pile.svg"
@@ -8663,7 +8663,7 @@
           "role": "infantry",
           "ref": "inf_t1",
           "id": "inf_t1",
-          "name": "Bondi",
+          "name": "Leidang Spearman",
           "category": "infantry",
           "stats": {
             "attack": 40,
@@ -8730,7 +8730,7 @@
           "role": "infantry",
           "ref": "inf_t2",
           "id": "inf_t2",
-          "name": "Hirdman",
+          "name": "Bogemann",
           "category": "infantry",
           "stats": {
             "attack": 55,
@@ -8864,7 +8864,7 @@
           "role": "scout",
           "ref": "scout",
           "id": "scout",
-          "name": "Scout",
+          "name": "Coast Watcher",
           "category": "scout",
           "stats": {
             "attack": 0,
@@ -8931,7 +8931,7 @@
           "role": "cavalry",
           "ref": "cav_t1",
           "id": "cav_t1",
-          "name": "Raider Horse",
+          "name": "Shore Raider",
           "category": "cavalry",
           "stats": {
             "attack": 100,
@@ -8998,7 +8998,7 @@
           "role": "cavalry",
           "ref": "cav_t2",
           "id": "cav_t2",
-          "name": "Huscarl Rider",
+          "name": "Heavy Raider",
           "category": "cavalry",
           "stats": {
             "attack": 145,
@@ -9065,7 +9065,7 @@
           "role": "cavalry",
           "ref": "cav_t3",
           "id": "cav_t3",
-          "name": "Jarl’s Guard",
+          "name": "Hird Cavalry",
           "category": "cavalry",
           "stats": {
             "attack": 155,
@@ -9132,7 +9132,7 @@
           "role": "siege",
           "ref": "ram",
           "id": "ram",
-          "name": "Ram",
+          "name": "Timber Ram",
           "category": "siege",
           "stats": {
             "attack": 65,
@@ -9165,7 +9165,7 @@
           "graphics": {
             "sprite": "tribes/norse/units/08_ram.png",
             "icon": "tribes/norse/units/08_ram_icon.png",
-            "logo": "infantry/battered-axe.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "infantry/crowbar.svg"
@@ -9188,7 +9188,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/norse/units/08_ram_icon.png",
             "sprite": "assets/tribes/norse/units/08_ram.png",
-            "logo": "assets/infantry/battered-axe.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/infantry/crowbar.svg"
@@ -9199,7 +9199,7 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Catapult",
+          "name": "Petrary",
           "category": "siege",
           "stats": {
             "attack": 70,
@@ -9232,7 +9232,7 @@
           "graphics": {
             "sprite": "tribes/norse/units/09_catapult.png",
             "icon": "tribes/norse/units/09_catapult_icon.png",
-            "logo": "powder.svg",
+            "logo": "catapults/trebuchet.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "powder.svg"
@@ -9255,7 +9255,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/norse/units/09_catapult_icon.png",
             "sprite": "assets/tribes/norse/units/09_catapult.png",
-            "logo": "assets/powder.svg",
+            "logo": "assets/catapults/trebuchet.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/powder.svg"
@@ -9304,7 +9304,7 @@
           "graphics": {
             "sprite": "tribes/norse/units/10_chief.png",
             "icon": "tribes/norse/units/10_chief_icon.png",
-            "logo": "infantry/thor-hammer.svg",
+            "logo": "chiefs/scroll-seal.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
             "baseLogo": "infantry/baton.svg"
@@ -9327,7 +9327,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/norse/units/10_chief_icon.png",
             "sprite": "assets/tribes/norse/units/10_chief.png",
-            "logo": "assets/infantry/thor-hammer.svg",
+            "logo": "assets/chiefs/scroll-seal.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
             "baseLogo": "assets/infantry/baton.svg"
@@ -9338,7 +9338,7 @@
           "role": "settler",
           "ref": "settler",
           "id": "settler",
-          "name": "Settler",
+          "name": "Colony Settler",
           "category": "settler",
           "stats": {
             "attack": 0,
@@ -9371,7 +9371,7 @@
           "graphics": {
             "sprite": "tribes/norse/units/11_settler.png",
             "icon": "tribes/norse/units/11_settler_icon.png",
-            "logo": "resources/wood-pile.svg",
+            "logo": "settlers/windmill.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "resources/brick-pile.svg"
@@ -9394,7 +9394,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/norse/units/11_settler_icon.png",
             "sprite": "assets/tribes/norse/units/11_settler.png",
-            "logo": "assets/resources/wood-pile.svg",
+            "logo": "assets/settlers/windmill.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/resources/brick-pile.svg"
@@ -9492,7 +9492,7 @@
           "role": "infantry",
           "ref": "inf_t1",
           "id": "inf_t1",
-          "name": "Skutatos",
+          "name": "Skoutatos",
           "category": "infantry",
           "stats": {
             "attack": 38,
@@ -9559,7 +9559,7 @@
           "role": "infantry",
           "ref": "inf_t2",
           "id": "inf_t2",
-          "name": "Akontistes",
+          "name": "Peltast",
           "category": "infantry",
           "stats": {
             "attack": 40,
@@ -9626,7 +9626,7 @@
           "role": "infantry",
           "ref": "inf_t3",
           "id": "inf_t3",
-          "name": "Toxotes",
+          "name": "Optimatoi",
           "category": "infantry",
           "stats": {
             "attack": 60,
@@ -9693,7 +9693,7 @@
           "role": "scout",
           "ref": "scout",
           "id": "scout",
-          "name": "Prokoursator",
+          "name": "Akritai Scout",
           "category": "scout",
           "stats": {
             "attack": 0,
@@ -9760,7 +9760,7 @@
           "role": "cavalry",
           "ref": "cav_t1",
           "id": "cav_t1",
-          "name": "Trapezites",
+          "name": "Light Horse",
           "category": "cavalry",
           "stats": {
             "attack": 125,
@@ -9827,7 +9827,7 @@
           "role": "cavalry",
           "ref": "cav_t2",
           "id": "cav_t2",
-          "name": "Cataphract",
+          "name": "Kataphraktos",
           "category": "cavalry",
           "stats": {
             "attack": 190,
@@ -9894,7 +9894,7 @@
           "role": "cavalry",
           "ref": "cav_t3",
           "id": "cav_t3",
-          "name": "Klibanophoros",
+          "name": "Scholai Cavalry",
           "category": "cavalry",
           "stats": {
             "attack": 175,
@@ -9994,7 +9994,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/08_ram.png",
             "icon": "tribes/byzantine/units/08_ram_icon.png",
-            "logo": "infantry/crowbar.svg",
+            "logo": "rams/siege-ram.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "infantry/crowbar.svg"
@@ -10017,7 +10017,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/08_ram_icon.png",
             "sprite": "assets/tribes/byzantine/units/08_ram.png",
-            "logo": "assets/infantry/crowbar.svg",
+            "logo": "assets/rams/siege-ram.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/infantry/crowbar.svg"
@@ -10028,7 +10028,7 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Petrobolos",
+          "name": "Mangonel",
           "category": "siege",
           "stats": {
             "attack": 80,
@@ -10061,7 +10061,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/09_catapult.png",
             "icon": "tribes/byzantine/units/09_catapult_icon.png",
-            "logo": "powder.svg",
+            "logo": "catapults/catapult.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "powder.svg"
@@ -10084,7 +10084,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/09_catapult_icon.png",
             "sprite": "assets/tribes/byzantine/units/09_catapult.png",
-            "logo": "assets/powder.svg",
+            "logo": "assets/catapults/catapult.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/powder.svg"
@@ -10133,7 +10133,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/10_chief.png",
             "icon": "tribes/byzantine/units/10_chief_icon.png",
-            "logo": "infantry/baton.svg",
+            "logo": "chiefs/war-standard.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
             "baseLogo": "infantry/baton.svg"
@@ -10156,7 +10156,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/10_chief_icon.png",
             "sprite": "assets/tribes/byzantine/units/10_chief.png",
-            "logo": "assets/infantry/baton.svg",
+            "logo": "assets/chiefs/war-standard.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
             "baseLogo": "assets/infantry/baton.svg"
@@ -10167,7 +10167,7 @@
           "role": "settler",
           "ref": "settler",
           "id": "settler",
-          "name": "Settler",
+          "name": "Colonist",
           "category": "settler",
           "stats": {
             "attack": 0,
@@ -10200,7 +10200,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/11_settler.png",
             "icon": "tribes/byzantine/units/11_settler_icon.png",
-            "logo": "resources/brick-pile.svg",
+            "logo": "settlers/wood-cabin.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "resources/brick-pile.svg"
@@ -10223,7 +10223,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/11_settler_icon.png",
             "sprite": "assets/tribes/byzantine/units/11_settler.png",
-            "logo": "assets/resources/brick-pile.svg",
+            "logo": "assets/settlers/wood-cabin.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/resources/brick-pile.svg"
@@ -10321,7 +10321,7 @@
           "role": "infantry",
           "ref": "inf_t1",
           "id": "inf_t1",
-          "name": "Levy Spearman",
+          "name": "Levy Shield Bearer",
           "category": "infantry",
           "stats": {
             "attack": 35,
@@ -10388,7 +10388,7 @@
           "role": "infantry",
           "ref": "inf_t2",
           "id": "inf_t2",
-          "name": "Slinger",
+          "name": "Javelin Thrower",
           "category": "infantry",
           "stats": {
             "attack": 48,
@@ -10455,7 +10455,7 @@
           "role": "infantry",
           "ref": "inf_t3",
           "id": "inf_t3",
-          "name": "Gibbor",
+          "name": "Champion",
           "category": "infantry",
           "stats": {
             "attack": 72,
@@ -10522,7 +10522,7 @@
           "role": "scout",
           "ref": "scout",
           "id": "scout",
-          "name": "Watchman",
+          "name": "Hill Scout",
           "category": "scout",
           "stats": {
             "attack": 0,
@@ -10589,7 +10589,7 @@
           "role": "cavalry",
           "ref": "cav_t1",
           "id": "cav_t1",
-          "name": "Chariot Runner",
+          "name": "Light Horse",
           "category": "cavalry",
           "stats": {
             "attack": 105,
@@ -10823,7 +10823,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/08_ram.png",
             "icon": "tribes/israelite/units/08_ram_icon.png",
-            "logo": "infantry/crowbar.svg",
+            "logo": "rams/siege-ram.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "infantry/crowbar.svg"
@@ -10846,7 +10846,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/08_ram_icon.png",
             "sprite": "assets/tribes/israelite/units/08_ram.png",
-            "logo": "assets/infantry/crowbar.svg",
+            "logo": "assets/rams/siege-ram.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/infantry/crowbar.svg"
@@ -10857,7 +10857,7 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Stone Engine",
+          "name": "Petrary",
           "category": "siege",
           "stats": {
             "attack": 72,
@@ -10890,7 +10890,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/09_catapult.png",
             "icon": "tribes/israelite/units/09_catapult_icon.png",
-            "logo": "powder.svg",
+            "logo": "catapults/catapult.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "powder.svg"
@@ -10913,7 +10913,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/09_catapult_icon.png",
             "sprite": "assets/tribes/israelite/units/09_catapult.png",
-            "logo": "assets/powder.svg",
+            "logo": "assets/catapults/catapult.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/powder.svg"
@@ -10924,7 +10924,7 @@
           "role": "chief",
           "ref": "chief",
           "id": "chief",
-          "name": "Nasi",
+          "name": "Judge",
           "category": "chief",
           "stats": {
             "attack": 48,
@@ -10962,7 +10962,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/10_chief.png",
             "icon": "tribes/israelite/units/10_chief_icon.png",
-            "logo": "infantry/crescent-staff.svg",
+            "logo": "chiefs/scepter.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
             "baseLogo": "infantry/baton.svg"
@@ -10985,7 +10985,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/10_chief_icon.png",
             "sprite": "assets/tribes/israelite/units/10_chief.png",
-            "logo": "assets/infantry/crescent-staff.svg",
+            "logo": "assets/chiefs/scepter.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
             "baseLogo": "assets/infantry/baton.svg"
@@ -11029,7 +11029,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/11_settler.png",
             "icon": "tribes/israelite/units/11_settler_icon.png",
-            "logo": "resources/wheat-pile.svg",
+            "logo": "settlers/wood-cabin.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "resources/brick-pile.svg"
@@ -11052,7 +11052,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/11_settler_icon.png",
             "sprite": "assets/tribes/israelite/units/11_settler.png",
-            "logo": "assets/resources/wheat-pile.svg",
+            "logo": "assets/settlers/wood-cabin.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/resources/brick-pile.svg"
@@ -11136,12 +11136,12 @@
       "summary": {
         "unitCount": 11,
         "maxAttack": 185,
-        "maxDefenseInfantry": 81,
-        "maxDefenseCavalry": 103,
+        "maxDefenseInfantry": 60,
+        "maxDefenseCavalry": 71,
         "maxSpeed": 17,
-        "maxCarry": 95,
-        "avgAttack": 84,
-        "avgDefenseCombined": 49,
+        "maxCarry": 89,
+        "avgAttack": 83,
+        "avgDefenseCombined": 42,
         "totalCropUpkeep": 31
       },
       "troops": [
@@ -11150,23 +11150,23 @@
           "role": "infantry",
           "ref": "inf_t1",
           "id": "inf_t1",
-          "name": "Moors Spearman",
+          "name": "Shield Bearer",
           "category": "infantry",
           "stats": {
-            "attack": 32,
-            "defenseInfantry": 37,
-            "defenseCavalry": 37,
-            "speed": 6,
-            "carry": 45
+            "attack": 11,
+            "defenseInfantry": 33,
+            "defenseCavalry": 59,
+            "speed": 7,
+            "carry": 40
           },
           "cost": {
-            "wood": 119,
-            "clay": 103,
-            "iron": 130,
-            "crop": 38
+            "wood": 101,
+            "clay": 87,
+            "iron": 110,
+            "crop": 32
           },
           "cropUpkeep": 1,
-          "totalCost": 390,
+          "totalCost": 330,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
@@ -11189,19 +11189,19 @@
             "baseLogo": "infantry/gladius.svg"
           },
           "metrics": {
-            "offense": 32,
-            "defenseInfantry": 37,
-            "defenseCavalry": 37,
-            "defenseCombined": 37,
-            "defenseTotal": 74,
-            "speed": 6,
-            "carry": 45,
+            "offense": 11,
+            "defenseInfantry": 33,
+            "defenseCavalry": 59,
+            "defenseCombined": 46,
+            "defenseTotal": 92,
+            "speed": 7,
+            "carry": 40,
             "cropUpkeep": 1,
-            "attackPerCrop": 32,
-            "defensePerCrop": 74,
+            "attackPerCrop": 11,
+            "defensePerCrop": 92,
             "trainTimeSeconds": 1200,
             "trainTimeFormatted": "20:00",
-            "resourceCost": 390
+            "resourceCost": 330
           },
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/01_infantry_icon.png",
@@ -11217,14 +11217,14 @@
           "role": "infantry",
           "ref": "inf_t2",
           "id": "inf_t2",
-          "name": "Moors Skirmisher",
+          "name": "Berber Skirmisher",
           "category": "infantry",
           "stats": {
-            "attack": 41,
-            "defenseInfantry": 41,
-            "defenseCavalry": 28,
+            "attack": 35,
+            "defenseInfantry": 36,
+            "defenseCavalry": 43,
             "speed": 6,
-            "carry": 35
+            "carry": 45
           },
           "cost": {
             "wood": 135,
@@ -11256,16 +11256,16 @@
             "baseLogo": "infantry/battle-axe.svg"
           },
           "metrics": {
-            "offense": 41,
-            "defenseInfantry": 41,
-            "defenseCavalry": 28,
-            "defenseCombined": 35,
-            "defenseTotal": 69,
+            "offense": 35,
+            "defenseInfantry": 36,
+            "defenseCavalry": 43,
+            "defenseCombined": 40,
+            "defenseTotal": 79,
             "speed": 6,
-            "carry": 35,
+            "carry": 45,
             "cropUpkeep": 1,
-            "attackPerCrop": 41,
-            "defensePerCrop": 69,
+            "attackPerCrop": 35,
+            "defensePerCrop": 79,
             "trainTimeSeconds": 1400,
             "trainTimeFormatted": "23:20",
             "resourceCost": 464
@@ -11284,23 +11284,23 @@
           "role": "infantry",
           "ref": "inf_t3",
           "id": "inf_t3",
-          "name": "Moors Elite Infantry",
+          "name": "Almohad Infantry",
           "category": "infantry",
           "stats": {
             "attack": 63,
-            "defenseInfantry": 41,
-            "defenseCavalry": 32,
+            "defenseInfantry": 36,
+            "defenseCavalry": 27,
             "speed": 7,
-            "carry": 45
+            "carry": 50
           },
           "cost": {
-            "wood": 173,
-            "clay": 162,
-            "iron": 227,
-            "crop": 92
+            "wood": 181,
+            "clay": 170,
+            "iron": 238,
+            "crop": 96
           },
           "cropUpkeep": 1,
-          "totalCost": 654,
+          "totalCost": 685,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
@@ -11324,18 +11324,18 @@
           },
           "metrics": {
             "offense": 63,
-            "defenseInfantry": 41,
-            "defenseCavalry": 32,
-            "defenseCombined": 37,
-            "defenseTotal": 73,
+            "defenseInfantry": 36,
+            "defenseCavalry": 27,
+            "defenseCombined": 32,
+            "defenseTotal": 63,
             "speed": 7,
-            "carry": 45,
+            "carry": 50,
             "cropUpkeep": 1,
             "attackPerCrop": 63,
-            "defensePerCrop": 73,
+            "defensePerCrop": 63,
             "trainTimeSeconds": 1600,
             "trainTimeFormatted": "26:40",
-            "resourceCost": 654
+            "resourceCost": 685
           },
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/03_infantry_icon.png",
@@ -11351,12 +11351,12 @@
           "role": "scout",
           "ref": "scout",
           "id": "scout",
-          "name": "Moors Scout",
+          "name": "Desert Scout",
           "category": "scout",
           "stats": {
             "attack": 0,
-            "defenseInfantry": 18,
-            "defenseCavalry": 9,
+            "defenseInfantry": 19,
+            "defenseCavalry": 10,
             "speed": 17,
             "carry": 0
           },
@@ -11391,15 +11391,15 @@
           },
           "metrics": {
             "offense": 0,
-            "defenseInfantry": 18,
-            "defenseCavalry": 9,
-            "defenseCombined": 14,
-            "defenseTotal": 27,
+            "defenseInfantry": 19,
+            "defenseCavalry": 10,
+            "defenseCombined": 15,
+            "defenseTotal": 29,
             "speed": 17,
             "carry": 0,
             "cropUpkeep": 2,
             "attackPerCrop": 0,
-            "defensePerCrop": 13.5,
+            "defensePerCrop": 14.5,
             "trainTimeSeconds": 1280,
             "trainTimeFormatted": "21:20",
             "resourceCost": 378
@@ -11418,23 +11418,23 @@
           "role": "cavalry",
           "ref": "cav_t1",
           "id": "cav_t1",
-          "name": "Moors Light Cavalry",
+          "name": "Zenata Rider",
           "category": "cavalry",
           "stats": {
-            "attack": 129,
-            "defenseInfantry": 59,
-            "defenseCavalry": 54,
+            "attack": 145,
+            "defenseInfantry": 52,
+            "defenseCavalry": 48,
             "speed": 15,
-            "carry": 95
+            "carry": 89
           },
           "cost": {
-            "wood": 540,
-            "clay": 443,
-            "iron": 335,
-            "crop": 108
+            "wood": 567,
+            "clay": 465,
+            "iron": 352,
+            "crop": 113
           },
           "cropUpkeep": 3,
-          "totalCost": 1426,
+          "totalCost": 1497,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
@@ -11451,30 +11451,30 @@
           "graphics": {
             "sprite": "tribes/moors/units/05_cavalry.png",
             "icon": "tribes/moors/units/05_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/camel-head.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
           },
           "metrics": {
-            "offense": 129,
-            "defenseInfantry": 59,
-            "defenseCavalry": 54,
-            "defenseCombined": 57,
-            "defenseTotal": 113,
+            "offense": 145,
+            "defenseInfantry": 52,
+            "defenseCavalry": 48,
+            "defenseCombined": 50,
+            "defenseTotal": 100,
             "speed": 15,
-            "carry": 95,
+            "carry": 89,
             "cropUpkeep": 3,
-            "attackPerCrop": 43,
-            "defensePerCrop": 37.7,
+            "attackPerCrop": 48.3,
+            "defensePerCrop": 33.3,
             "trainTimeSeconds": 1800,
             "trainTimeFormatted": "30:00",
-            "resourceCost": 1426
+            "resourceCost": 1497
           },
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/moors/units/05_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/camel-head.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -11485,23 +11485,23 @@
           "role": "cavalry",
           "ref": "cav_t2",
           "id": "cav_t2",
-          "name": "Moors Heavy Cavalry",
+          "name": "Andalusi Cavalry",
           "category": "cavalry",
           "stats": {
             "attack": 185,
-            "defenseInfantry": 81,
-            "defenseCavalry": 103,
-            "speed": 12,
-            "carry": 70
+            "defenseInfantry": 60,
+            "defenseCavalry": 55,
+            "speed": 13,
+            "carry": 77
           },
           "cost": {
-            "wood": 594,
-            "clay": 670,
-            "iron": 821,
-            "crop": 189
+            "wood": 624,
+            "clay": 703,
+            "iron": 862,
+            "crop": 198
           },
           "cropUpkeep": 4,
-          "totalCost": 2274,
+          "totalCost": 2387,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
@@ -11525,18 +11525,18 @@
           },
           "metrics": {
             "offense": 185,
-            "defenseInfantry": 81,
-            "defenseCavalry": 103,
-            "defenseCombined": 92,
-            "defenseTotal": 184,
-            "speed": 12,
-            "carry": 70,
+            "defenseInfantry": 60,
+            "defenseCavalry": 55,
+            "defenseCombined": 58,
+            "defenseTotal": 115,
+            "speed": 13,
+            "carry": 77,
             "cropUpkeep": 4,
             "attackPerCrop": 46.3,
-            "defensePerCrop": 46,
+            "defensePerCrop": 28.8,
             "trainTimeSeconds": 2400,
             "trainTimeFormatted": "40:00",
-            "resourceCost": 2274
+            "resourceCost": 2387
           },
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/06_cavalry_icon.png",
@@ -11552,23 +11552,23 @@
           "role": "cavalry",
           "ref": "cav_t3",
           "id": "cav_t3",
-          "name": "Moors Guard Cavalry",
+          "name": "Royal Cavalry",
           "category": "cavalry",
           "stats": {
-            "attack": 168,
-            "defenseInfantry": 76,
-            "defenseCavalry": 86,
-            "speed": 13,
-            "carry": 80
+            "attack": 165,
+            "defenseInfantry": 57,
+            "defenseCavalry": 52,
+            "speed": 14,
+            "carry": 81
           },
           "cost": {
-            "wood": 572,
-            "clay": 594,
-            "iron": 702,
-            "crop": 162
+            "wood": 601,
+            "clay": 624,
+            "iron": 737,
+            "crop": 170
           },
           "cropUpkeep": 4,
-          "totalCost": 2030,
+          "totalCost": 2132,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
@@ -11585,30 +11585,30 @@
           "graphics": {
             "sprite": "tribes/moors/units/07_cavalry.png",
             "icon": "tribes/moors/units/07_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
+            "logo": "cavalry/camel-head.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 168,
-            "defenseInfantry": 76,
-            "defenseCavalry": 86,
-            "defenseCombined": 81,
-            "defenseTotal": 162,
-            "speed": 13,
-            "carry": 80,
+            "offense": 165,
+            "defenseInfantry": 57,
+            "defenseCavalry": 52,
+            "defenseCombined": 55,
+            "defenseTotal": 109,
+            "speed": 14,
+            "carry": 81,
             "cropUpkeep": 4,
-            "attackPerCrop": 42,
-            "defensePerCrop": 40.5,
+            "attackPerCrop": 41.3,
+            "defensePerCrop": 27.3,
             "trainTimeSeconds": 2500,
             "trainTimeFormatted": "41:40",
-            "resourceCost": 2030
+            "resourceCost": 2132
           },
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/moors/units/07_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
+            "logo": "assets/cavalry/camel-head.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -11622,9 +11622,9 @@
           "name": "Battering Ram",
           "category": "siege",
           "stats": {
-            "attack": 60,
-            "defenseInfantry": 30,
-            "defenseCavalry": 75,
+            "attack": 62,
+            "defenseInfantry": 29,
+            "defenseCavalry": 71,
             "speed": 4,
             "carry": 0
           },
@@ -11652,22 +11652,22 @@
           "graphics": {
             "sprite": "tribes/moors/units/08_ram.png",
             "icon": "tribes/moors/units/08_ram_icon.png",
-            "logo": "infantry/crowbar.svg",
+            "logo": "rams/siege-ram.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "infantry/crowbar.svg"
           },
           "metrics": {
-            "offense": 60,
-            "defenseInfantry": 30,
-            "defenseCavalry": 75,
-            "defenseCombined": 53,
-            "defenseTotal": 105,
+            "offense": 62,
+            "defenseInfantry": 29,
+            "defenseCavalry": 71,
+            "defenseCombined": 50,
+            "defenseTotal": 100,
             "speed": 4,
             "carry": 0,
             "cropUpkeep": 3,
-            "attackPerCrop": 20,
-            "defensePerCrop": 35,
+            "attackPerCrop": 20.7,
+            "defensePerCrop": 33.3,
             "trainTimeSeconds": 4600,
             "trainTimeFormatted": "1:16:40",
             "resourceCost": 1977
@@ -11675,7 +11675,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/08_ram_icon.png",
             "sprite": "assets/tribes/moors/units/08_ram.png",
-            "logo": "assets/infantry/crowbar.svg",
+            "logo": "assets/rams/siege-ram.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/infantry/crowbar.svg"
@@ -11686,11 +11686,11 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Catapult",
+          "name": "Manjaniq",
           "category": "siege",
           "stats": {
-            "attack": 75,
-            "defenseInfantry": 60,
+            "attack": 77,
+            "defenseInfantry": 57,
             "defenseCavalry": 10,
             "speed": 3,
             "carry": 0
@@ -11719,22 +11719,22 @@
           "graphics": {
             "sprite": "tribes/moors/units/09_catapult.png",
             "icon": "tribes/moors/units/09_catapult_icon.png",
-            "logo": "powder.svg",
+            "logo": "catapults/catapult.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "powder.svg"
           },
           "metrics": {
-            "offense": 75,
-            "defenseInfantry": 60,
+            "offense": 77,
+            "defenseInfantry": 57,
             "defenseCavalry": 10,
-            "defenseCombined": 35,
-            "defenseTotal": 70,
+            "defenseCombined": 34,
+            "defenseTotal": 67,
             "speed": 3,
             "carry": 0,
             "cropUpkeep": 6,
-            "attackPerCrop": 12.5,
-            "defensePerCrop": 11.7,
+            "attackPerCrop": 12.8,
+            "defensePerCrop": 11.2,
             "trainTimeSeconds": 9000,
             "trainTimeFormatted": "2:30:00",
             "resourceCost": 3229
@@ -11742,7 +11742,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/09_catapult_icon.png",
             "sprite": "assets/tribes/moors/units/09_catapult.png",
-            "logo": "assets/powder.svg",
+            "logo": "assets/catapults/catapult.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/powder.svg"
@@ -11753,12 +11753,12 @@
           "role": "chief",
           "ref": "chief",
           "id": "chief",
-          "name": "Moors Chief",
+          "name": "Moorish Sheikh",
           "category": "chief",
           "stats": {
-            "attack": 50,
-            "defenseInfantry": 40,
-            "defenseCavalry": 30,
+            "attack": 52,
+            "defenseInfantry": 38,
+            "defenseCavalry": 29,
             "speed": 4,
             "carry": 0
           },
@@ -11791,22 +11791,22 @@
           "graphics": {
             "sprite": "tribes/moors/units/10_chief.png",
             "icon": "tribes/moors/units/10_chief_icon.png",
-            "logo": "infantry/baton.svg",
+            "logo": "chiefs/diadem.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
             "baseLogo": "infantry/baton.svg"
           },
           "metrics": {
-            "offense": 50,
-            "defenseInfantry": 40,
-            "defenseCavalry": 30,
-            "defenseCombined": 35,
-            "defenseTotal": 70,
+            "offense": 52,
+            "defenseInfantry": 38,
+            "defenseCavalry": 29,
+            "defenseCombined": 34,
+            "defenseTotal": 67,
             "speed": 4,
             "carry": 0,
             "cropUpkeep": 5,
-            "attackPerCrop": 10,
-            "defensePerCrop": 14,
+            "attackPerCrop": 10.4,
+            "defensePerCrop": 13.4,
             "trainTimeSeconds": 90720,
             "trainTimeFormatted": "25:12:00",
             "resourceCost": 147960
@@ -11814,7 +11814,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/10_chief_icon.png",
             "sprite": "assets/tribes/moors/units/10_chief.png",
-            "logo": "assets/infantry/baton.svg",
+            "logo": "assets/chiefs/diadem.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
             "baseLogo": "assets/infantry/baton.svg"
@@ -11825,12 +11825,12 @@
           "role": "settler",
           "ref": "settler",
           "id": "settler",
-          "name": "Settler",
+          "name": "Moorish Settler",
           "category": "settler",
           "stats": {
             "attack": 0,
-            "defenseInfantry": 80,
-            "defenseCavalry": 80,
+            "defenseInfantry": 76,
+            "defenseCavalry": 76,
             "speed": 5,
             "carry": 3000
           },
@@ -11858,22 +11858,22 @@
           "graphics": {
             "sprite": "tribes/moors/units/11_settler.png",
             "icon": "tribes/moors/units/11_settler_icon.png",
-            "logo": "resources/brick-pile.svg",
+            "logo": "settlers/plow.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "resources/brick-pile.svg"
           },
           "metrics": {
             "offense": 0,
-            "defenseInfantry": 80,
-            "defenseCavalry": 80,
-            "defenseCombined": 80,
-            "defenseTotal": 160,
+            "defenseInfantry": 76,
+            "defenseCavalry": 76,
+            "defenseCombined": 76,
+            "defenseTotal": 152,
             "speed": 5,
             "carry": 3000,
             "cropUpkeep": 1,
             "attackPerCrop": 0,
-            "defensePerCrop": 160,
+            "defensePerCrop": 152,
             "trainTimeSeconds": 26920,
             "trainTimeFormatted": "7:28:40",
             "resourceCost": 25704
@@ -11881,7 +11881,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/moors/units/11_settler_icon.png",
             "sprite": "assets/tribes/moors/units/11_settler.png",
-            "logo": "assets/resources/brick-pile.svg",
+            "logo": "assets/settlers/plow.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/resources/brick-pile.svg"
@@ -11895,13 +11895,13 @@
         "category": "hero",
         "name": "Moors Hero",
         "description": {
-          "en": "Custom hero for Moors — cavalry-focused doctrine."
+          "en": "Player hero for Moors. Defaults to the account's in-game name; editable later."
         },
         "isBase": false,
         "stats": {
-          "attack": 101,
-          "defenseInfantry": 101,
-          "defenseCavalry": 108,
+          "attack": 103,
+          "defenseInfantry": 105,
+          "defenseCavalry": 95,
           "speed": 8,
           "carry": 100
         },
@@ -11925,16 +11925,16 @@
           "portrait": "tribes/moors/hero/hero_portrait.png"
         },
         "metrics": {
-          "offense": 101,
-          "defenseInfantry": 101,
-          "defenseCavalry": 108,
-          "defenseCombined": 105,
-          "defenseTotal": 209,
+          "offense": 103,
+          "defenseInfantry": 105,
+          "defenseCavalry": 95,
+          "defenseCombined": 100,
+          "defenseTotal": 200,
           "speed": 8,
           "carry": 100,
           "cropUpkeep": 6,
-          "attackPerCrop": 16.8,
-          "defensePerCrop": 34.8,
+          "attackPerCrop": 17.2,
+          "defensePerCrop": 33.3,
           "trainTimeSeconds": 0,
           "trainTimeFormatted": null,
           "resourceCost": 0
@@ -12247,7 +12247,7 @@
           "role": "cavalry",
           "ref": "cav_t1",
           "id": "cav_t1",
-          "name": "Bone Rider",
+          "name": "Skeletal Horse",
           "category": "cavalry",
           "stats": {
             "attack": 175,
@@ -12314,7 +12314,7 @@
           "role": "cavalry",
           "ref": "cav_t2",
           "id": "cav_t2",
-          "name": "Death Knight",
+          "name": "Black Rider",
           "category": "cavalry",
           "stats": {
             "attack": 200,
@@ -12481,7 +12481,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/08_ram.png",
             "icon": "tribes/undead/units/08_ram_icon.png",
-            "logo": "infantry/crowbar.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "infantry/crowbar.svg"
@@ -12504,7 +12504,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/08_ram_icon.png",
             "sprite": "assets/tribes/undead/units/08_ram.png",
-            "logo": "assets/infantry/crowbar.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/infantry/crowbar.svg"
@@ -12515,7 +12515,7 @@
           "role": "siege",
           "ref": "catapult",
           "id": "catapult",
-          "name": "Tomb Catapult",
+          "name": "Mangonel",
           "category": "siege",
           "stats": {
             "attack": 230,
@@ -12548,7 +12548,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/09_catapult.png",
             "icon": "tribes/undead/units/09_catapult_icon.png",
-            "logo": "powder.svg",
+            "logo": "catapults/trebuchet.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "powder.svg"
@@ -12571,7 +12571,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/09_catapult_icon.png",
             "sprite": "assets/tribes/undead/units/09_catapult.png",
-            "logo": "assets/powder.svg",
+            "logo": "assets/catapults/trebuchet.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/powder.svg"
@@ -12582,7 +12582,7 @@
           "role": "chief",
           "ref": "chief",
           "id": "chief",
-          "name": "Lich",
+          "name": "Necromancer",
           "category": "chief",
           "stats": {
             "attack": 650,
@@ -12620,7 +12620,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/10_chief.png",
             "icon": "tribes/undead/units/10_chief_icon.png",
-            "logo": "infantry/orb-wand.svg",
+            "logo": "chiefs/commander-helm.svg",
             "baseSprite": "units/base/chief.png",
             "baseIcon": "units/base/chief_icon.png",
             "baseLogo": "infantry/baton.svg"
@@ -12643,7 +12643,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/10_chief_icon.png",
             "sprite": "assets/tribes/undead/units/10_chief.png",
-            "logo": "assets/infantry/orb-wand.svg",
+            "logo": "assets/chiefs/commander-helm.svg",
             "baseIcon": "assets/units/base/chief_icon.png",
             "baseSprite": "assets/units/base/chief.png",
             "baseLogo": "assets/infantry/baton.svg"
@@ -12687,7 +12687,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/11_settler.png",
             "icon": "tribes/undead/units/11_settler_icon.png",
-            "logo": "resources/stone-pile.svg",
+            "logo": "settlers/hut.svg",
             "baseSprite": "units/base/settler.png",
             "baseIcon": "units/base/settler_icon.png",
             "baseLogo": "resources/brick-pile.svg"
@@ -12710,7 +12710,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/11_settler_icon.png",
             "sprite": "assets/tribes/undead/units/11_settler.png",
-            "logo": "assets/resources/stone-pile.svg",
+            "logo": "assets/settlers/hut.svg",
             "baseIcon": "assets/units/base/settler_icon.png",
             "baseSprite": "assets/units/base/settler.png",
             "baseLogo": "assets/resources/brick-pile.svg"

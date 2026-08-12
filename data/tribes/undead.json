@@ -45,7 +45,7 @@
           "logo": "infantry/bone-mace.svg"
         },
         "description": {
-          "en": "Rattling bone warriors — cheap pressure that still hits harder than oasis vermin."
+          "en": "Rattling bone levy — cheap pressure that still hits harder than oasis vermin."
         }
       }
     },
@@ -137,7 +137,7 @@
       "ref": "cav_t1",
       "overrides": {
         "name": {
-          "en": "Bone Rider"
+          "en": "Skeletal Horse"
         },
         "stats": {
           "attack": 175,
@@ -165,7 +165,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": {
-          "en": "Death Knight"
+          "en": "Black Rider"
         },
         "stats": {
           "attack": 200,
@@ -238,7 +238,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "infantry/crowbar.svg"
+          "logo": "rams/siege-tower.svg"
         },
         "description": {
           "en": "Ossuary colossus — bone siege that crushes walls harder than oasis crocodiles."
@@ -249,7 +249,7 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Tomb Catapult"
+          "en": "Mangonel"
         },
         "stats": {
           "attack": 230,
@@ -266,7 +266,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "powder.svg"
+          "logo": "catapults/trebuchet.svg"
         },
         "description": {
           "en": "Hurls crypt-stone with force beyond oasis tigers."
@@ -277,7 +277,7 @@
       "ref": "chief",
       "overrides": {
         "name": {
-          "en": "Lich"
+          "en": "Necromancer"
         },
         "stats": {
           "attack": 650,
@@ -294,7 +294,7 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "infantry/orb-wand.svg"
+          "logo": "chiefs/commander-helm.svg"
         },
         "description": {
           "en": "Arch-lich emperor — outpowers Nature elephants and binds villages to the grave."
@@ -322,7 +322,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "resources/stone-pile.svg"
+          "logo": "settlers/hut.svg"
         },
         "description": {
           "en": "Raise a new crypt-colony from barren ground — fortified undead settlers."
@@ -375,6 +375,13 @@
     "era": "Fantasy / necromantic",
     "region": "Grave-realms / cursed marches",
     "historicalContext": "A necromantic host of raised dead, wights, and cursed riders. Fantasy faction (not historical): infantry waves and dread cavalry that outmatch Natarian guards and oasis beasts, with siege and lich-lords scaled above Nature titans.",
-    "createdAt": "2026-08-05T12:05:42.173Z"
+    "createdAt": "2026-08-05T12:05:42.173Z",
+    "regeneratedAt": "2026-08-12T06:15:23.655Z",
+    "flavorId": "undead",
+    "algorithms": [
+      "troop-lexicon",
+      "culture-profile-stats",
+      "game-icons-logos"
+    ]
   }
 }

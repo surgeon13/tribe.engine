@@ -25,7 +25,7 @@
       "ref": "inf_t1",
       "overrides": {
         "name": {
-          "en": "Levy Spearman"
+          "en": "Levy Shield Bearer"
         },
         "stats": {
           "attack": 35,
@@ -53,7 +53,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": {
-          "en": "Slinger"
+          "en": "Javelin Thrower"
         },
         "stats": {
           "attack": 48,
@@ -81,7 +81,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": {
-          "en": "Gibbor"
+          "en": "Champion"
         },
         "stats": {
           "attack": 72,
@@ -109,7 +109,7 @@
       "ref": "scout",
       "overrides": {
         "name": {
-          "en": "Watchman"
+          "en": "Hill Scout"
         },
         "stats": {
           "attack": 0,
@@ -137,7 +137,7 @@
       "ref": "cav_t1",
       "overrides": {
         "name": {
-          "en": "Chariot Runner"
+          "en": "Light Horse"
         },
         "stats": {
           "attack": 105,
@@ -238,7 +238,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "infantry/crowbar.svg"
+          "logo": "rams/siege-ram.svg"
         }
       }
     },
@@ -246,7 +246,7 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Stone Engine"
+          "en": "Petrary"
         },
         "stats": {
           "attack": 72,
@@ -263,7 +263,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "powder.svg"
+          "logo": "catapults/catapult.svg"
         }
       }
     },
@@ -271,7 +271,7 @@
       "ref": "chief",
       "overrides": {
         "name": {
-          "en": "Nasi"
+          "en": "Judge"
         },
         "stats": {
           "attack": 48,
@@ -288,7 +288,7 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "infantry/crescent-staff.svg"
+          "logo": "chiefs/scepter.svg"
         },
         "description": {
           "en": "Prince or appointed governor empowered to receive cities."
@@ -316,7 +316,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "resources/wheat-pile.svg"
+          "logo": "settlers/wood-cabin.svg"
         }
       }
     }
@@ -364,6 +364,14 @@
     "era": "Iron Age Israel & Judah (c. 1000–586 BCE)",
     "region": "Levant / Canaan",
     "historicalContext": "Israelite and Judahite armies mixed tribal levies with royal guards: spearmen and slingers in the highlands, chariots on suitable ground, and fortified-city defense traditions reflected in Judges–Kings narratives and archaeology.",
-    "createdAt": "2026-08-05T10:50:37.750Z"
+    "createdAt": "2026-08-05T10:50:37.750Z",
+    "regeneratedAt": "2026-08-12T06:15:23.640Z",
+    "archetype": "infantry",
+    "flavorId": "israelite",
+    "algorithms": [
+      "troop-lexicon",
+      "culture-profile-stats",
+      "game-icons-logos"
+    ]
   }
 }

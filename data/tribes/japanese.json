@@ -25,7 +25,7 @@
       "ref": "inf_t1",
       "overrides": {
         "name": {
-          "en": "Ashigaru Yari"
+          "en": "Ashigaru Spearman"
         },
         "stats": {
           "attack": 35,
@@ -53,7 +53,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": {
-          "en": "Ashigaru Yumi"
+          "en": "Ashigaru Archer"
         },
         "stats": {
           "attack": 50,
@@ -109,7 +109,7 @@
       "ref": "scout",
       "overrides": {
         "name": {
-          "en": "Shinobi Scout"
+          "en": "Pathfinder"
         },
         "stats": {
           "attack": 0,
@@ -134,7 +134,7 @@
       "ref": "cav_t1",
       "overrides": {
         "name": {
-          "en": "Ki Cavalry"
+          "en": "Kihei"
         },
         "stats": {
           "attack": 110,
@@ -184,7 +184,7 @@
       "ref": "cav_t3",
       "overrides": {
         "name": {
-          "en": "Hatamoto Horse"
+          "en": "Guard Cavalry"
         },
         "stats": {
           "attack": 150,
@@ -209,7 +209,7 @@
       "ref": "ram",
       "overrides": {
         "name": {
-          "en": "Ram"
+          "en": "Siege Ram"
         },
         "stats": {
           "attack": 60,
@@ -226,7 +226,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "infantry/crowbar.svg"
+          "logo": "rams/siege-tower.svg"
         }
       }
     },
@@ -234,7 +234,7 @@
       "ref": "catapult",
       "overrides": {
         "name": {
-          "en": "Hōsha"
+          "en": "Mangonel"
         },
         "stats": {
           "attack": 75,
@@ -251,7 +251,7 @@
         },
         "cropUpkeep": 6,
         "graphics": {
-          "logo": "powder.svg"
+          "logo": "catapults/trebuchet.svg"
         }
       }
     },
@@ -259,7 +259,7 @@
       "ref": "chief",
       "overrides": {
         "name": {
-          "en": "Daimyō"
+          "en": "Daimyo"
         },
         "stats": {
           "attack": 50,
@@ -276,7 +276,7 @@
         },
         "cropUpkeep": 5,
         "graphics": {
-          "logo": "infantry/baton.svg"
+          "logo": "chiefs/ring-of-office.svg"
         }
       }
     },
@@ -284,7 +284,7 @@
       "ref": "settler",
       "overrides": {
         "name": {
-          "en": "Settler"
+          "en": "Village Settler"
         },
         "stats": {
           "attack": 0,
@@ -301,7 +301,7 @@
         },
         "cropUpkeep": 1,
         "graphics": {
-          "logo": "resources/wheat-pile.svg"
+          "logo": "settlers/old-wagon.svg"
         }
       }
     }
@@ -349,6 +349,14 @@
     "era": "Sengoku / late medieval Japan (15th–16th c. CE)",
     "region": "Japanese archipelago",
     "historicalContext": "Sengoku armies mixed ashigaru pike and arquebus lines with samurai retainers; cavalry existed but infantry decided most battles.",
-    "createdAt": "2026-08-05T10:20:38.804Z"
+    "createdAt": "2026-08-05T10:20:38.804Z",
+    "regeneratedAt": "2026-08-12T06:15:23.635Z",
+    "archetype": "infantry",
+    "flavorId": "japanese",
+    "algorithms": [
+      "troop-lexicon",
+      "culture-profile-stats",
+      "game-icons-logos"
+    ]
   }
 }
