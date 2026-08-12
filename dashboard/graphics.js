@@ -52,8 +52,27 @@ export function prepareSvgForTint(svgText) {
 function applyLogoPalette(root, opts = {}) {
   const bg = opts.secondary || "#333";
   const fg = opts.primary || "#fff";
-  root.querySelectorAll(".troop-logo-bg").forEach((node) => node.setAttribute("fill", bg));
-  root.querySelectorAll(".troop-logo-fg").forEach((node) => node.setAttribute("fill", fg));
+  const paint = (node, color) => {
+    node.setAttribute("fill", color);
+    node.style.fill = color;
+    node.removeAttribute("fill-opacity");
+  };
+  root.querySelectorAll(".troop-logo-bg").forEach((node) => paint(node, bg));
+  root.querySelectorAll(".troop-logo-fg").forEach((node) => paint(node, fg));
+}
+
+/**
+ * Parse tinted SVG with the XML parser (innerHTML on a div breaks long path data).
+ * @param {string} svgText
+ * @returns {SVGSVGElement}
+ */
+function parseTintedSvg(svgText) {
+  const doc = new DOMParser().parseFromString(prepareSvgForTint(svgText), "image/svg+xml");
+  const err = doc.querySelector("parsererror");
+  if (err) {
+    throw new Error(err.textContent?.trim() || "SVG parse error");
+  }
+  return doc.documentElement;
 }
 
 /**
@@ -77,10 +96,13 @@ export async function mountSvgLogo(el, url, opts = {}) {
   const text = await fetchSvg(url);
   const wrap = document.createElement("div");
   wrap.className = "troop-logo-wrap";
-  wrap.innerHTML = prepareSvgForTint(text);
   wrap.style.setProperty("--logo-bg", opts.secondary || "#333");
   wrap.style.setProperty("--logo-fg", opts.primary || "#fff");
-  applyLogoPalette(wrap, opts);
+
+  const svg = parseTintedSvg(text);
+  applyLogoPalette(svg, opts);
+  wrap.append(document.importNode(svg, true));
+
   wrap.setAttribute("role", "img");
   wrap.setAttribute("aria-label", opts.alt || opts.label || "Troop logo");
   el.append(wrap);
