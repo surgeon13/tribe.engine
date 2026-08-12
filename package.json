@@ -10,6 +10,7 @@
     "build:data": "node scripts/build-dashboard-data.js",
     "build:netlify": "node scripts/prepare-netlify.js",
     "validate:logos": "node scripts/validate-logo-assets.js",
+    "validate:palettes": "node scripts/validate-palettes.js",
     "balance:median": "node scripts/compute-median-tribe.js && node scripts/build-dashboard-data.js",
     "balance:roles": "node scripts/audit-troop-roles.js",
     "balance:roles:demo": "node scripts/audit-troop-roles.js --demo-archetypes",

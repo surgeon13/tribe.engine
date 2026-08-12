@@ -1,5 +1,6 @@
 /** Unit portraits, SVG troop logos, and tribe banners for compare / roster views. */
 
+import { adaptToBackground, MIN_GRAPHIC_CONTRAST } from "./color.js";
 import { buildViewMetrics } from "./metrics-normalize.js";
 import { mountStatBars } from "./radar.js";
 
@@ -137,12 +138,21 @@ function isCanvasTile(node) {
 }
 
 /**
+ * Tribes created in the UI can pick any two colors, so lift the glyph off its
+ * tile when they are too close instead of drawing a near-solid block.
+ * @param {{ primary?: string, secondary?: string }} opts
+ */
+function logoColors(opts = {}) {
+  const bg = opts.secondary || "#333";
+  return { bg, fg: adaptToBackground(opts.primary || "#fff", bg, MIN_GRAPHIC_CONTRAST) };
+}
+
+/**
  * @param {SVGElement | HTMLElement} root
  * @param {{ primary?: string, secondary?: string }} opts
  */
 function applyLogoPalette(root, opts = {}) {
-  const bg = opts.secondary || "#333";
-  const fg = opts.primary || "#fff";
+  const { bg, fg } = logoColors(opts);
   const paint = (node, color) => {
     node.setAttribute("fill", color);
     node.style?.setProperty("fill", color, "important");
@@ -195,8 +205,9 @@ export async function mountSvgLogo(el, url, opts = {}) {
   const text = await fetchSvg(url);
   const wrap = document.createElement("div");
   wrap.className = "troop-logo-wrap";
-  wrap.style.setProperty("--logo-bg", opts.secondary || "#333");
-  wrap.style.setProperty("--logo-fg", opts.primary || "#fff");
+  const { bg, fg } = logoColors(opts);
+  wrap.style.setProperty("--logo-bg", bg);
+  wrap.style.setProperty("--logo-fg", fg);
 
   const svg = parseTintedSvg(text);
   if (!applyLogoPalette(svg, opts)) throw new Error(`SVG has no drawable shapes: ${url}`);
