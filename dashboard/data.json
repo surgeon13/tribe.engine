@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-12T07:07:58.582Z",
+  "generatedAt": "2026-08-12T07:09:28.019Z",
   "roster": [
     {
       "slot": 1,
@@ -129,10 +129,17 @@
       "label": "Cavalry mounts",
       "icons": [
         "cavalry/camel-head.svg",
+        "cavalry/camel.svg",
+        "cavalry/cavalry.svg",
         "cavalry/chess-knight.svg",
+        "cavalry/cloaked-rider.svg",
         "cavalry/donkey.svg",
         "cavalry/elephant.svg",
-        "cavalry/horse-head.svg"
+        "cavalry/elephant-head.svg",
+        "cavalry/horse-head.svg",
+        "cavalry/horse-head-alt.svg",
+        "cavalry/mammoth.svg",
+        "cavalry/mounted-knight.svg"
       ]
     },
     "animals": {
