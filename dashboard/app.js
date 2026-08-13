@@ -13,6 +13,7 @@ import {
 import {
   computeGlobalScales,
   drawMultiRadar,
+  formatStatValue,
   mountRadarCard,
   overallRating,
   statBarPercent,
@@ -31,6 +32,7 @@ import {
   drawMultiHorizontalCompareChart,
   drawMultiLineCompareChart,
   drawSlotBarChart,
+  slotBarChartWidth,
 } from "./charts.js";
 import { mountPaletteContrastHint } from "./palette-hint.js";
 import { SMITHY_MAX_LEVEL, smithyGainRange, upgradeTribe } from "./smithy.js";
@@ -1335,12 +1337,21 @@ const RADAR_PROFILE_MODE = "raw";
  * against its own slot, a full axis means best-in-class and the shapes actually
  * separate. The yardstick comes from every tribe rather than the selected ones
  * so a shape does not change under you when you add a tribe to the comparison.
+ *
+ * It is also measured at a full smithy rather than at the level on screen. The
+ * smithy lifts every roster at once, so a yardstick that moved with it rose by
+ * as much as the units did and the shapes sat perfectly still while the slider
+ * ran 0 to 20 — the view looked broken, and it hid the one thing worth seeing,
+ * which is that the lift is not even. Pinning the far edge to the best anyone
+ * can reach fully upgraded leaves the combat corners short at level 0 with room
+ * to grow, and dragging the slider fills that room at each unit's own rate.
  */
 let slotScaleCache = null;
 
 function slotProfileScales() {
   if (slotScaleCache) return slotScaleCache;
   const axes = getProfileAxes(RADAR_PROFILE_MODE);
+  const ceiling = data.tribes.map((t) => upgradeTribe(t, SMITHY_MAX_LEVEL));
   slotScaleCache = data.roster.map((_, slotIndex) => {
     const maxes = {};
     const mins = {};
@@ -1348,7 +1359,7 @@ function slotProfileScales() {
       maxes[ax.key] = 1;
       mins[ax.key] = ax.higherBetter === false ? Infinity : 0;
     }
-    for (const tribe of smithyTribes()) {
+    for (const tribe of ceiling) {
       const troop = tribe.troops?.[slotIndex];
       if (!troop) continue;
       const view = buildViewMetrics(troop.metrics, RADAR_PROFILE_MODE);
@@ -1387,7 +1398,8 @@ function renderCompareGraphSlots(tribes) {
 
   const hint = $("#compare-graphs-hint");
   if (hint) {
-    hint.textContent = `Every axis is scaled against the best any tribe reaches in that slot, so a full corner means best in class and a short one means worst. Training time and cost are inverted — faster and cheaper reach further out. OVR is the average of all ${axes.length} axes.`;
+    hint.textContent =
+      "Every axis is scaled against the best any tribe reaches in that slot at smithy 20, so the rim is the ceiling for the slot and a short corner means worst in class — training time and cost are inverted, where faster and cheaper reach further out. Attack and both defences start short of the rim and grow as you raise the smithy, each unit at its own rate; speed, carry, cost and training time the smithy never touches. One unit at a time shows its real numbers at the corners: point at a row, or tap it, to read another. Rating is that unit's average across all seven axes, out of 100.";
   }
 
   data.roster.forEach((_, slotIndex) => {
@@ -1402,10 +1414,16 @@ function renderCompareGraphSlots(tribes) {
         unitName: troop.name,
         color: colors[ti],
         values,
+        raw: axes.map((ax) => view[ax.key] ?? 0),
+        metrics: troop.metrics,
         rating: overallRating(values),
       });
     });
     if (!entries.length) return;
+
+    // Best first, so the shape reading its numbers by default is the one worth
+    // looking at, and the list doubles as the answer to "who wins this slot".
+    entries.sort((a, b) => b.rating - a.rating);
 
     const card = document.createElement("article");
     card.className = "compare-radar-card";
@@ -1416,22 +1434,67 @@ function renderCompareGraphSlots(tribes) {
     card.append(title);
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    drawMultiRadar(svg, { axes, series: entries, size: compact ? 230 : 250 });
     card.append(svg);
 
-    const ranked = [...entries].sort((a, b) => b.rating - a.rating);
+    // The rating is a made-up scale, so the column says so. Without a heading
+    // it reads as a mystery number sitting next to a unit name.
+    const listHead = document.createElement("div");
+    listHead.className = "compare-radar-rank-head";
+    listHead.innerHTML = `
+      <span></span>
+      <span>Unit</span>
+      <b title="Average of all ${axes.length} axes, each scored against the best any tribe reaches in this slot">Rating /100</b>
+    `;
+    card.append(listHead);
+
     const list = document.createElement("ol");
     list.className = "compare-radar-rank";
-    for (const entry of ranked) {
-      const item = document.createElement("li");
-      item.innerHTML = `
-        <span class="compare-radar-swatch" style="background:${entry.color}"></span>
-        <span class="compare-radar-unit">${entry.unitName}<small>${entry.name}</small></span>
-        <b class="compare-radar-rating" title="Overall: the average of all ${axes.length} axes against the best in this slot">${entry.rating}</b>
-      `;
-      list.append(item);
-    }
+    list.innerHTML = entries
+      .map(
+        (entry, i) => `
+        <li data-series="${i}" style="--rank-col:${entry.color};--rank-fill:${entry.rating}%">
+          <span class="compare-radar-swatch"></span>
+          <span class="compare-radar-unit">${entry.unitName}<small>${entry.name}</small></span>
+          <b class="compare-radar-rating">${entry.rating}</b>
+        </li>`
+      )
+      .join("");
     card.append(list);
+
+    const rows = [...list.children];
+    let focus = 0;
+    const paint = () => {
+      const shown = entries[focus];
+      drawMultiRadar(svg, {
+        axes,
+        series: entries,
+        focus,
+        size: compact ? 240 : 260,
+        formatValue: (key, raw) =>
+          formatStatValue(key, raw, shown.metrics, { normalizeMode: RADAR_PROFILE_MODE }),
+      });
+      rows.forEach((row, i) => row.classList.toggle("focused", i === focus));
+      for (const poly of svg.querySelectorAll("polygon[data-series]")) {
+        const index = Number(poly.dataset.series);
+        poly.addEventListener("pointerenter", () => setFocus(index));
+        poly.addEventListener("click", () => setFocus(index));
+      }
+    };
+    const setFocus = (index) => {
+      if (index === focus || !entries[index]) return;
+      focus = index;
+      paint();
+    };
+
+    rows.forEach((row, i) => {
+      row.addEventListener("pointerenter", () => setFocus(i));
+      row.addEventListener("click", () => setFocus(i));
+    });
+    // Back to the leader once the pointer leaves, so a card at rest always
+    // reads the same way rather than keeping whatever was last brushed past.
+    card.addEventListener("pointerleave", () => setFocus(0));
+
+    paint();
     grid.append(card);
   });
 }
@@ -1613,9 +1676,11 @@ function finishSmallMultiples(host, grid, metric) {
 function renderSlotBarCharts(host, { tribes, series, metric, formatVal, compact }) {
   // Each bar has to stay wide enough to hold a name, so the column count
   // follows how many tribes are on the axis rather than the window alone.
+  // Past the point where even one chart per row cannot hold them all, the
+  // chart keeps its width and the card scrolls sideways.
   const { grid, chartW } = smallMultiplesGrid(host, {
     compact,
-    minChartW: 200 + tribes.length * 55,
+    minChartW: slotBarChartWidth(tribes.length),
     maxPerRow: 3,
   });
   const chartH = Math.max(210, Math.min(300, 190 + tribes.length * 12));
@@ -1909,9 +1974,6 @@ function setSmithyLevel(level) {
   const next = clampSmithyLevel(level);
   if (next === smithyLevel) return;
   smithyLevel = next;
-  // Both caches are keyed on the level, but the radar yardsticks are also
-  // rebuilt from the upgraded roster, so they have to go with it.
-  slotScaleCache = null;
   try {
     localStorage.setItem(SMITHY_STORAGE_KEY, String(smithyLevel));
   } catch {
