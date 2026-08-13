@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-13T08:00:10.063Z",
+  "generatedAt": "2026-08-13T08:05:07.303Z",
   "roster": [
     {
       "slot": 1,
@@ -819,7 +819,7 @@
           "graphics": {
             "sprite": "tribes/roman/units/07_cavalry.png",
             "icon": "tribes/roman/units/07_cavalry_icon.png",
-            "logo": "cavalry/elephant.svg",
+            "logo": "cavalry/mounted-knight.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -842,7 +842,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/roman/units/07_cavalry.png",
-            "logo": "assets/cavalry/elephant.svg",
+            "logo": "assets/cavalry/mounted-knight.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -10758,7 +10758,7 @@
           "graphics": {
             "sprite": "tribes/persian/units/07_cavalry.png",
             "icon": "tribes/persian/units/07_cavalry_icon.png",
-            "logo": "cavalry/elephant.svg",
+            "logo": "cavalry/camel.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -10781,7 +10781,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/persian/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/persian/units/07_cavalry.png",
-            "logo": "assets/cavalry/elephant.svg",
+            "logo": "assets/cavalry/camel.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
