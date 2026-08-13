@@ -251,10 +251,25 @@ function drawNiceYAxis(svg, pad, innerW, innerH, maxVal, fmt) {
  *   height?: number,
  * }} opts
  */
+/**
+ * Width one column needs before its two stacked labels start losing letters.
+ *
+ * A tribe name and a unit name sit under every bar. Below this the labels are
+ * clipped to initials and the chart stops saying which bar is whose, so past
+ * that point the chart grows and scrolls sideways instead of squeezing.
+ */
+const SLOT_BAR_MIN_COL = 92;
+const SLOT_BAR_CHROME = 56;
+
+/** Width a per-slot bar chart wants for this many bars. @param {number} bars */
+export function slotBarChartWidth(bars) {
+  return SLOT_BAR_CHROME + Math.max(1, bars) * SLOT_BAR_MIN_COL;
+}
+
 export function drawSlotBarChart(svg, opts) {
   const bars = opts.bars ?? [];
   const n = Math.max(bars.length, 1);
-  const width = opts.width ?? 320;
+  const width = Math.max(opts.width ?? 320, slotBarChartWidth(n));
   const height = opts.height ?? 250;
   const fmt = opts.formatValue || ((v) => String(Math.round(v)));
   const hasUnitNames = bars.some((b) => b.unitName && b.unitName !== b.name);

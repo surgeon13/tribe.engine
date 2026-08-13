@@ -2014,23 +2014,33 @@ body.tribe-editing #troop-table thead th {
   gap: 3px;
 }
 
+/* The bar behind each row is the rating: it says "out of 100" without a
+   sentence, and turns the column into something scannable at a glance. */
 .compare-radar-rank li {
   display: grid;
   grid-template-columns: 10px minmax(0, 1fr) auto;
   gap: 8px;
   align-items: center;
-  padding: 3px 4px;
+  padding: 3px 5px;
+  border: 1px solid transparent;
   border-radius: 6px;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--rank-col) 20%, transparent) var(--rank-fill, 0%),
+    transparent var(--rank-fill, 0%)
+  );
 }
 
-.compare-radar-rank li:first-child {
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+.compare-radar-rank li.focused {
+  border-color: color-mix(in srgb, var(--rank-col) 60%, transparent);
 }
 
 .compare-radar-swatch {
   width: 10px;
   height: 10px;
   border-radius: 3px;
+  background: var(--rank-col);
 }
 
 .compare-radar-unit {
@@ -2270,11 +2280,15 @@ body.tribe-editing #troop-table thead th {
   background: var(--bg-elevated);
   padding: 4px;
   min-width: 0;
+  overflow-x: auto;
 }
 
+/* Intrinsic width, not 100%: a chart too wide for its card scrolls rather
+   than scaling down and taking its labels with it. */
 .compare-slot-card .chart-svg-slot {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: none;
   height: auto;
 }
 
@@ -2407,6 +2421,12 @@ html[data-compare-compact="1"] .chart-panel {
 html[data-compare-compact="1"] .chart-svg {
   width: 100%;
   max-width: 100%;
+}
+
+/* Except the per-slot bars, which would rather scroll than shrink. */
+html[data-compare-compact="1"] .compare-slot-card .chart-svg-slot {
+  width: auto;
+  max-width: none;
 }
 
 html[data-compare-compact="1"] .compare-modes {
