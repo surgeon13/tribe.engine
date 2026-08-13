@@ -20,6 +20,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { combatIndex, totalCost } from "../lib/balance/anchors.js";
 import { TRAVIAN_CANON, canonLock, isCanonTribe } from "../lib/balance/canon.js";
+import { CORE_TRIBE_IDS } from "../lib/tribe-generator/write.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, "..", "data");
@@ -29,6 +30,18 @@ const index = readJson("tribes/index.json");
 const base = readJson("units.base.json").units || {};
 const errors = [];
 const warnings = [];
+
+// The dashboard and API refuse to edit or delete a "core" tribe. That list is
+// maintained by hand next to the write path, so check here that it still covers
+// everything the canon protects — otherwise a tribe could be frozen in the build
+// and freely editable in the UI, which is worse than either alone.
+for (const id of Object.keys(TRAVIAN_CANON.tribes)) {
+  if (!CORE_TRIBE_IDS.includes(id)) {
+    errors.push(
+      `${id} is frozen by the canon but missing from CORE_TRIBE_IDS in lib/tribe-generator/write.js, so the dashboard would still let someone edit it`
+    );
+  }
+}
 
 const STAT_KEYS = ["attack", "defenseInfantry", "defenseCavalry", "speed", "carry"];
 const COST_KEYS = ["wood", "clay", "iron", "crop"];
