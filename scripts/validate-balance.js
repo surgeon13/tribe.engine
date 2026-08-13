@@ -10,9 +10,10 @@
  * Checks, in order of how loudly they fail:
  *   1. every identity spec's crop pressure stays inside the allowed range
  *   2. every player tribe's realized power price sits inside the tolerance band
- *   3. no two tribes ship the same stat block (copy-paste rosters)
- *   4. tier ordering holds: boss > NPC guard > players > wildlife
- *   5. stats stay inside sane ranges and tiers do not go backwards
+ *   3. every tribe's heavy cavalry is its strongest and dearest army unit
+ *   4. no two tribes ship the same stat block (copy-paste rosters)
+ *   5. tier ordering holds: boss > NPC guard > players > wildlife
+ *   6. stats stay inside sane ranges and tiers do not go backwards
  *
  * Usage: npm run validate:balance [-- --json]
  */
@@ -149,6 +150,45 @@ if (boss && guard && boss.power <= guard.power) {
   );
 }
 
+// The tier-3 horse is what a tribe is built around, so it has to read that way
+// in the roster: strongest, dearest, and best at whichever job its role gives
+// it. Siege and expansion are excluded — a catapult outcosts a Caesaris in
+// Travian too, and neither is an army unit you mass.
+const ARMY_REFS = SCORED_REFS.filter((ref) => ref !== "ram" && ref !== "catapult");
+for (const t of tribes) {
+  const horse = t.troops.get("cav_t3");
+  if (!horse) continue;
+  const rivals = ARMY_REFS.filter((ref) => ref !== "cav_t3" && t.troops.has(ref));
+  const defense = (u) => 0.5 * ((u.stats.defenseInfantry || 0) + (u.stats.defenseCavalry || 0));
+  const offensive = (horse.stats.attack || 0) >= defense(horse);
+  const axis = offensive ? (u) => u.stats.attack || 0 : defense;
+
+  const best = Math.max(...rivals.map((ref) => combatIndex(t.troops.get(ref).stats)));
+  t.lead = combatIndex(horse.stats) / best;
+
+  const stronger = rivals.find((ref) => combatIndex(t.troops.get(ref).stats) >= combatIndex(horse.stats));
+  if (stronger) {
+    errors.push(
+      `${t.id} — ${horse.name} is the heavy cavalry but ${t.troops.get(stronger).name} (${stronger}) out-fights it; the last stable unlock has to be the tribe's centerpiece`
+    );
+  }
+  const better = rivals.find((ref) => axis(t.troops.get(ref)) > axis(horse));
+  if (better) {
+    errors.push(
+      `${t.id} — ${horse.name} leans ${offensive ? "offensive" : "defensive"} but ${t.troops.get(better).name} (${better}) beats it on ${offensive ? "attack" : "defense"}; a centerpiece should top the column it is built for`
+    );
+  }
+  // Wildlife is not trained, so its price is not a promise to anyone.
+  if (t.tier !== "wild") {
+    const dearer = rivals.find((ref) => totalCost(t.troops.get(ref).cost) > totalCost(horse.cost));
+    if (dearer) {
+      errors.push(
+        `${t.id} — ${horse.name} costs ${totalCost(horse.cost)} but ${t.troops.get(dearer).name} (${dearer}) costs ${totalCost(t.troops.get(dearer).cost)}; the centerpiece should be the most expensive unit in the barracks`
+      );
+    }
+  }
+}
+
 const signatures = new Map();
 for (const t of tribes) {
   const sig = JSON.stringify([...t.troops.entries()].map(([ref, u]) => [ref, u.stats]));
@@ -189,14 +229,18 @@ for (const t of tribes) {
 if (asJson) {
   console.log(JSON.stringify({ ok: errors.length === 0, errors, warnings, tribes: tribes.map(({ troops, ...rest }) => rest) }, null, 2));
 } else {
-  console.log("Tribe power pricing — efficiency is power per unit of price, 1.00 = the anchor rate\n");
+  console.log(
+    "Tribe power pricing — efficiency is power per unit of price, 1.00 = the anchor rate.\n" +
+      "cav-lead is how far the heavy cavalry out-fights the next best army unit.\n"
+  );
   console.log(
     "tribe".padEnd(14),
     "tier".padEnd(11),
     "power".padStart(5),
     "crop-eff".padStart(9),
     "res-eff".padStart(8),
-    "combined".padStart(9)
+    "combined".padStart(9),
+    "cav-lead".padStart(9)
   );
   for (const t of [...tribes].sort((a, b) => b.power - a.power)) {
     // Wildlife eats no crop, so its crop rate is not a number worth printing.
@@ -207,7 +251,8 @@ if (asJson) {
       t.power.toFixed(2).padStart(5),
       rate(t.cropEfficiency).padStart(9),
       rate(t.resEfficiency).padStart(8),
-      rate(Math.sqrt(t.cropEfficiency * t.resEfficiency)).padStart(9)
+      rate(Math.sqrt(t.cropEfficiency * t.resEfficiency)).padStart(9),
+      (t.lead ? `${t.lead.toFixed(2)}x` : "—").padStart(9)
     );
   }
   console.log("");
