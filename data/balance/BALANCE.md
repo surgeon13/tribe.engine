@@ -61,17 +61,25 @@ per canonical tribe is ours to invent:
 | Tribe | Slot | Unit |
 |-------|------|------|
 | Rome | `cav_t3` | Equites Regales — the anvil Rome never had |
-| Teutons | `cav_t3` | Teutonic Raider — the plunder horse |
-| Gauls | `inf_t3` | Gaul Tracker — a third footman |
-| Egyptians | `cav_t3` | Royal Chariot — Egypt's only mounted attacker |
-| Huns | `inf_t3` | Hun Warrior — a footman who can hold a gate |
-| Spartans | `cav_t3` | Spartan Horseman — a flank guard |
-| Natars | `cav_t3` | Natarian Lancer |
+| Teutons | `cav_t3` | Teutonic Raider — the tribe's best hauler per head of crop |
+| Gauls | `inf_t3` | Gaul Tracker — the quality wall, where the Phalanx is the cheap one |
+| Egyptians | `cav_t3` | Royal Chariot — Egypt's one blade |
+| Huns | `inf_t3` | Hun Warrior — the raid you can afford before the horses arrive |
+| Spartans | `cav_t3` | Spartan Horseman — cavalry that stops cavalry |
+| Natars | `cav_t3` | Natarian Lancer — the anti-cavalry lance |
 | Nature | `settler` | Herd |
 
 These are marked `extension` in the canon file and held by the same validator
 to **sitting alongside the published units rather than outclassing them**. An
 extension that out-weighs everything Travian gives its tribe fails the build.
+
+That ceiling is a constraint, not a brief, and reading it as one produced five
+units nobody would train. The Spartan Horseman's note used to say it "neither
+out-charges the Crusher nor out-holds the Elpida", which is a description of
+filler written down as though it were a design. An extension has to lead its own
+family at something too — the ceiling only says which something is available.
+There is always one, because the ceiling is measured on the combat index, and
+speed and carry barely register in it.
 
 That is also why the canonical tribes have no centerpiece: Travian does not
 make every tribe's third horse its best one. Rome's third horse is our anvil
@@ -242,11 +250,53 @@ Rome trains. Being the centerpiece is what makes it expensive, since price is
 derived from power — an elite defender has to be the top slot to be priced like
 one.
 
-`validate:balance` fails on a unit that is matched or beaten everywhere for no
-more crop and no more money, and warns on one that merely tops no column. Seven
-warnings stand today, all of them middle infantry in the hybrid `line` role,
-whose average stats at an average price cannot win an efficiency column by
-construction.
+#### Judge a unit against its own kind
+
+Weighing every unit against the whole army answers the wrong question. Horses
+out-stat infantry on every raw column, so a Legionnaire, a Praetorian and a
+Clubswinger all top nothing raw — 78 units failed that reading, most of them
+Travian's own — when being cheap per crop is exactly what a footman is for.
+
+So `validate:balance` asks twice. Against the whole army it asks whether there
+is *any* reason to build this, counting the per-crop and per-resource columns,
+which is where cheap units win. Against its own infantry or cavalry family it
+asks the sharper question — does this lead its own kind at something? — and
+that is where a real dud shows up: a tier three that is a downgrade from the
+tier two you already own.
+
+A crown has to be readable in the table, so leading means leading by one step
+of the grid the stat is written on: five points for the combat stats, one field
+for speed. A tie is not a job. Two units with the same numbers are one unit you
+can build twice.
+
+Carry is the exception that needs a second test. Loot is hauled by the army, not
+by the unit, so the pack animal is whichever moves the most *per head of crop*.
+The Teutonic Raider was nominally the Teuton plunder horse while carrying less
+per head than the Paladin beside it. Combat crowns get no such test — a
+centerpiece is supposed to be dear.
+
+#### The three ways a slot ends up with no job
+
+Every dud we have found came from one of these, and none of them is a bad number
+you can fix in isolation:
+
+1. **A hybrid with no crown.** `line` leans on nothing by definition, so its only
+   distinguishing stat was anti-cavalry defence — which a `def_cav` specialist
+   does better, while `off_inf` takes attack. It now owns the foot carry crown
+   instead, yielded by `off_inf`: the all-rounder is the soldier you also send to
+   the farms.
+2. **A crown too narrow to survive rounding.** `CAV_TIER` splits speed and carry
+   between the two light horses, but the tier modifier multiplies a role shape
+   already leaning the other way, and the five-point grid rounds the four percent
+   that survives into a dead heat. The split is now settled explicitly rather than
+   left to arithmetic.
+3. **The same role twice in one family.** Two slots with one role differ only by
+   tier multiplier, so the lower one is the upper one with smaller numbers. Give
+   each family a triangle — hauler, wall, blade — not a line.
+
+Travian's published units are exempt: their shape is transcribed, not designed,
+so it is not ours to answer for. The eleventh slot we invent for each canon tribe
+is ours, and it is held to the rule as an error rather than a warning.
 
 ### Tiers outside the player band
 
