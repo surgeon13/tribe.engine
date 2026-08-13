@@ -23,8 +23,9 @@ import {
   CHART_METRICS,
   computeChartWidth,
   computeReadableChartWidth,
-  drawCompareMetricChart,
   drawMultiCostStackChart,
+  drawMultiHorizontalCompareChart,
+  drawMultiLineCompareChart,
   drawSlotBarChart,
 } from "./charts.js";
 import { mountPaletteContrastHint } from "./palette-hint.js";
@@ -81,7 +82,7 @@ let compareMode = false;
 let activeView = "table";
 let compareViewMode = "table";
 let compareChartMetric = "offense";
-let compareChartLayout = "split";
+let compareChartLayout = "bars";
 let compareChartLayoutUserPicked = false;
 let statDisplayMode = "bars";
 let statNormalizeMode = "crop";
@@ -109,12 +110,9 @@ function syncCompareCompactAttr() {
   return compact;
 }
 
-// Grouped columns are the dense overview and stay one pick away, but they are
-// a poor default: eleven slots on one axis leaves each bar too narrow to name,
-// so reading one means going back and forth to the legend.
 function applyCompactChartLayoutDefault() {
   if (compareChartLayoutUserPicked) return compareChartLayout;
-  compareChartLayout = isCompareCompact() ? "horizontal" : "split";
+  compareChartLayout = isCompareCompact() ? "horizontal" : "bars";
   return compareChartLayout;
 }
 
@@ -1410,7 +1408,6 @@ function renderCompareCharts() {
     280,
     (wrapEl?.clientWidth || window.innerWidth || 360) - (compact ? 8 : 24)
   );
-  const chartW = computeReadableChartWidth(containerW, layoutId, troopLabels);
   const colors = getCompareSeriesColors(tribes.length, tribes);
   const series = buildCompareChartSeries(tribes, metric, colors, statNormalizeMode);
   const names = formatCompareTribeList(tribes);
@@ -1432,33 +1429,31 @@ function renderCompareCharts() {
   main.innerHTML = "";
   const cap = document.createElement("p");
   cap.className = "chart-caption muted";
-  const layoutNote =
-    layoutId === "split"
-      ? " One chart per unit, so each is scaled to its own slot — compare tribes within a chart, not across them."
-      : compact && layoutId === "horizontal" && !compareChartLayoutUserPicked
-        ? " Phone layout: horizontal bars (readable without pinch-zoom)."
-        : "";
-  cap.textContent = `${metricLabel} by unit — ${names}. ${normalizeModeHint(statNormalizeMode)}${layoutNote}`;
+  const layoutNote = {
+    bars: " One chart per unit, each scaled to its own slot — compare tribes within a chart, not across them.",
+    lines: " One chart per troop family, each scaled to its own family — hover a point for its unit and value.",
+    horizontal: compact
+      ? " Phone layout: horizontal bars (readable without pinch-zoom)."
+      : " Every unit in one chart, grouped by unit.",
+  }[layoutId];
+  cap.textContent = `${metricLabel} by unit — ${names}. ${normalizeModeHint(statNormalizeMode)}${layoutNote || ""}`;
   main.append(cap);
 
-  if (layoutId === "split") {
-    renderSplitSlotCharts(main, { tribes, series, metric, formatVal, containerW, compact });
+  const split = { tribes, series, metric, formatVal, compact };
+  if (layoutId === "bars") {
+    renderSlotBarCharts(main, split);
+  } else if (layoutId === "lines") {
+    renderFamilyLineCharts(main, split);
   } else {
-    const chartH =
-      layoutId === "horizontal"
-        ? undefined
-        : Math.min(560, 380 + Math.max(0, tribes.length - 2) * 20);
-
     const svgMain = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    drawCompareMetricChart(svgMain, layoutId, {
+    drawMultiHorizontalCompareChart(svgMain, {
       labels: troopLabels,
       series,
       title: metricLabel,
       yAxisLabel: metricLabel,
       formatValue: formatVal,
       showBarValues: true,
-      width: chartW,
-      height: chartH,
+      width: computeReadableChartWidth(containerW, layoutId, troopLabels),
     });
     main.append(svgMain);
   }
@@ -1512,37 +1507,69 @@ function renderCompareCharts() {
 }
 
 /**
- * A grid of small charts, one per troop slot, tribes along each x-axis.
+ * The grid every small-multiple layout sits in.
+ *
+ * The column count is decided here and handed to CSS rather than the other way
+ * round: if auto-fit picked its own number the SVGs, which are drawn at a fixed
+ * width, would be scaled to fit it and their text would shrink with them —
+ * which is the opposite of why these layouts exist. Measure the panel we are
+ * about to fill, not the wrapper around it, or every chart comes out wider than
+ * the column it lands in.
+ */
+function smallMultiplesGrid(host, { compact, minChartW, maxPerRow }) {
+  const gap = 12;
+  const cardChrome = 10; // 1px border + 4px padding a side; see .compare-slot-card
+  const style = getComputedStyle(host);
+  const avail = Math.max(
+    240,
+    (host.clientWidth || window.innerWidth || 360) -
+      (parseFloat(style.paddingLeft) || 0) -
+      (parseFloat(style.paddingRight) || 0)
+  );
+  const perRow = compact ? 1 : Math.max(1, Math.min(maxPerRow, Math.floor(avail / minChartW)));
+  const grid = document.createElement("div");
+  grid.className = "compare-slot-grid";
+  grid.style.gridTemplateColumns = `repeat(${perRow}, minmax(0, 1fr))`;
+  return {
+    grid,
+    chartW: Math.max(240, Math.floor((avail - gap * (perRow - 1)) / perRow) - cardChrome),
+  };
+}
+
+function appendChartCard(grid, svg) {
+  const card = document.createElement("div");
+  card.className = "compare-slot-card";
+  card.append(svg);
+  grid.append(card);
+}
+
+function finishSmallMultiples(host, grid, metric) {
+  if (!grid.children.length) {
+    const empty = document.createElement("p");
+    empty.className = "muted";
+    empty.textContent = `No unit has a ${metric.label.toLowerCase()} value to chart.`;
+    host.append(empty);
+    return;
+  }
+  host.append(grid);
+}
+
+/**
+ * One chart per troop slot, tribes along each x-axis.
  *
  * Slots where nobody has a number are dropped rather than drawn empty — every
  * scout has zero attack, and eleven charts of which two are blank is worse than
  * nine that all say something.
  */
-function renderSplitSlotCharts(host, { tribes, series, metric, formatVal, containerW, compact }) {
-  const grid = document.createElement("div");
-  grid.className = "compare-slot-grid";
-
-  // Each bar has to stay wide enough to hold a name, so the column count comes
-  // from how many tribes are on the axis, not from the window alone. JS then
-  // tells the grid what it decided: if CSS auto-fit picked its own number the
-  // SVGs would be scaled to fit it, shrinking the very text this layout exists
-  // to make readable. Measure the panel we are about to fill rather than the
-  // wrapper around it, or the SVGs come out wider than their column and get
-  // scaled down anyway.
-  const gap = 12;
-  const cardChrome = 10; // 1px border + 4px padding a side; see .compare-slot-card
-  const hostStyle = getComputedStyle(host);
-  const avail = Math.max(
-    240,
-    (host.clientWidth || containerW) -
-      (parseFloat(hostStyle.paddingLeft) || 0) -
-      (parseFloat(hostStyle.paddingRight) || 0)
-  );
-  const minChartW = 200 + tribes.length * 55;
-  const perRow = compact ? 1 : Math.max(1, Math.min(3, Math.floor(avail / minChartW)));
-  const chartW = Math.max(240, Math.floor((avail - gap * (perRow - 1)) / perRow) - cardChrome);
+function renderSlotBarCharts(host, { tribes, series, metric, formatVal, compact }) {
+  // Each bar has to stay wide enough to hold a name, so the column count
+  // follows how many tribes are on the axis rather than the window alone.
+  const { grid, chartW } = smallMultiplesGrid(host, {
+    compact,
+    minChartW: 200 + tribes.length * 55,
+    maxPerRow: 3,
+  });
   const chartH = Math.max(210, Math.min(300, 190 + tribes.length * 12));
-  grid.style.gridTemplateColumns = `repeat(${perRow}, minmax(0, 1fr))`;
 
   data.roster.forEach((_, slotIndex) => {
     const bars = series.map((s, si) => ({
@@ -1561,21 +1588,77 @@ function renderSplitSlotCharts(host, { tribes, series, metric, formatVal, contai
       width: chartW,
       height: chartH,
     });
-
-    const card = document.createElement("div");
-    card.className = "compare-slot-card";
-    card.append(svg);
-    grid.append(card);
+    appendChartCard(grid, svg);
   });
 
-  if (!grid.children.length) {
-    const empty = document.createElement("p");
-    empty.className = "muted";
-    empty.textContent = `No unit has a ${metric.label.toLowerCase()} value to chart.`;
-    host.append(empty);
-    return;
+  finishSmallMultiples(host, grid, metric);
+}
+
+/**
+ * The families the line layout splits along.
+ *
+ * A line is a claim that the x-axis is ordered, so the split has to fall where
+ * that claim holds. Infantry I to III and Cavalry I to III are real tiers and a
+ * line across them says something true about how a tribe's roster escalates.
+ * Drawing one line across all eleven slots does not: it runs a stroke from the
+ * catapult to the chieftain, which is a sequence only in the sense that they
+ * sit next to each other in the table. Scouts ride with the cavalry because
+ * that is where they sit in the roster and, in most tribes, what they are.
+ */
+const TROOP_FAMILIES = [
+  { title: "Infantry", roles: ["infantry"] },
+  { title: "Scouts & cavalry", roles: ["scout", "cavalry"] },
+  { title: "Siege", roles: ["siege"] },
+  { title: "Expansion", roles: ["chief", "settler"] },
+];
+
+function troopFamilyGroups() {
+  const claimed = new Set();
+  const groups = [];
+  for (const family of TROOP_FAMILIES) {
+    const indices = data.roster
+      .map((slot, i) => (family.roles.includes(slot.role) ? i : -1))
+      .filter((i) => i >= 0);
+    if (!indices.length) continue;
+    for (const i of indices) claimed.add(i);
+    groups.push({ title: family.title, indices });
   }
-  host.append(grid);
+  const rest = data.roster.map((_, i) => i).filter((i) => !claimed.has(i));
+  if (rest.length) groups.push({ title: "Other units", indices: rest });
+  return groups;
+}
+
+/** One line chart per troop family, a line per tribe across that family's tiers. */
+function renderFamilyLineCharts(host, { tribes, series, metric, formatVal, compact }) {
+  const { grid, chartW } = smallMultiplesGrid(host, {
+    compact,
+    minChartW: 360,
+    maxPerRow: 2,
+  });
+
+  for (const group of troopFamilyGroups()) {
+    const groupSeries = series.map((s) => ({
+      name: s.name,
+      color: s.color,
+      values: group.indices.map((i) => s.values[i] ?? 0),
+      unitNames: group.indices.map((i) => s.unitNames?.[i]),
+    }));
+    if (!groupSeries.some((s) => s.values.some((v) => v > 0))) continue;
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    drawMultiLineCompareChart(svg, {
+      labels: group.indices.map((i) => slotCategoryLabel(i)),
+      series: groupSeries,
+      title: group.title,
+      formatValue: (v, i, si) => formatVal(v, group.indices[i], si),
+      width: chartW,
+      minGroupWidth: compact ? 52 : undefined,
+      height: Math.max(160, 140 + tribes.length * 8),
+    });
+    appendChartCard(grid, svg);
+  }
+
+  finishSmallMultiples(host, grid, metric);
 }
 
 /** Slot-by-slot cost bars — readable on narrow screens without shrinking SVG text. */
