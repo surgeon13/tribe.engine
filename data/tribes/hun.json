@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Mercenary" },
-        "stats": { "attack": 61, "defenseInfantry": 27, "defenseCavalry": 20, "speed": 8, "carry": 56 },
-        "cost": { "wood": 135, "clay": 135, "iron": 110, "crop": 150 },
+        "stats": { "attack": 59, "defenseInfantry": 26, "defenseCavalry": 19, "speed": 8, "carry": 56 },
+        "cost": { "wood": 125, "clay": 125, "iron": 100, "crop": 140 },
         "cropUpkeep": 1
       }
     },
@@ -24,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Bowman" },
-        "stats": { "attack": 37, "defenseInfantry": 29, "defenseCavalry": 35, "speed": 7, "carry": 50 },
-        "cost": { "wood": 85, "clay": 90, "iron": 120, "crop": 60 },
+        "stats": { "attack": 36, "defenseInfantry": 28, "defenseCavalry": 34, "speed": 7, "carry": 50 },
+        "cost": { "wood": 80, "clay": 85, "iron": 115, "crop": 55 },
         "cropUpkeep": 1
       }
     },
@@ -34,8 +34,8 @@
       "overrides": {
         "name": { "en": "Hun Warrior" },
         "description": { "en": "Tevel slot 3 — Travian Huns have two infantry units; Spotter is the scout." },
-        "stats": { "attack": 73, "defenseInfantry": 32, "defenseCavalry": 24, "speed": 8, "carry": 56 },
-        "cost": { "wood": 150, "clay": 155, "iron": 215, "crop": 105 },
+        "stats": { "attack": 71, "defenseInfantry": 31, "defenseCavalry": 23, "speed": 8, "carry": 56 },
+        "cost": { "wood": 145, "clay": 145, "iron": 205, "crop": 100 },
         "cropUpkeep": 1
       }
     },
@@ -43,17 +43,17 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Spotter" },
-        "stats": { "attack": 0, "defenseInfantry": 15, "defenseCavalry": 8, "speed": 17, "carry": 0 },
-        "cost": { "wood": 85, "clay": 85, "iron": 30, "crop": 45 },
-        "cropUpkeep": 2
+        "stats": { "attack": 0, "defenseInfantry": 15, "defenseCavalry": 7, "speed": 17, "carry": 0 },
+        "cost": { "wood": 140, "clay": 140, "iron": 50, "crop": 75 },
+        "cropUpkeep": 1
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Steppe Rider" },
-        "stats": { "attack": 120, "defenseInfantry": 42, "defenseCavalry": 38, "speed": 17, "carry": 107 },
-        "cost": { "wood": 500, "clay": 470, "iron": 420, "crop": 230 },
+        "stats": { "attack": 111, "defenseInfantry": 39, "defenseCavalry": 35, "speed": 17, "carry": 107 },
+        "cost": { "wood": 430, "clay": 400, "iron": 360, "crop": 190 },
         "cropUpkeep": 2
       }
     },
@@ -61,8 +61,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Marksman" },
-        "stats": { "attack": 146, "defenseInfantry": 47, "defenseCavalry": 43, "speed": 15, "carry": 90 },
-        "cost": { "wood": 450, "clay": 510, "iron": 560, "crop": 250 },
+        "stats": { "attack": 136, "defenseInfantry": 44, "defenseCavalry": 40, "speed": 15, "carry": 90 },
+        "cost": { "wood": 390, "clay": 440, "iron": 490, "crop": 210 },
         "cropUpkeep": 2
       }
     },
@@ -70,9 +70,9 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Marauder" },
-        "stats": { "attack": 167, "defenseInfantry": 52, "defenseCavalry": 48, "speed": 14, "carry": 81 },
-        "cost": { "wood": 430, "clay": 490, "iron": 510, "crop": 200 },
-        "cropUpkeep": 3
+        "stats": { "attack": 221, "defenseInfantry": 69, "defenseCavalry": 64, "speed": 14, "carry": 81 },
+        "cost": { "wood": 560, "clay": 640, "iron": 660, "crop": 260 },
+        "cropUpkeep": 4
       }
     },
     {

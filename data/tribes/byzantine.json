@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Skoutatos" },
-        "stats": { "attack": 36, "defenseInfantry": 37, "defenseCavalry": 44, "speed": 6, "carry": 44 },
-        "cost": { "wood": 105, "clay": 140, "iron": 110, "crop": 80 },
+        "stats": { "attack": 35, "defenseInfantry": 36, "defenseCavalry": 43, "speed": 6, "carry": 44 },
+        "cost": { "wood": 100, "clay": 130, "iron": 105, "crop": 75 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },
         "description": { "en": "Thematic heavy infantry with spear and large shield." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Peltast" },
-        "stats": { "attack": 13, "defenseInfantry": 37, "defenseCavalry": 66, "speed": 7, "carry": 39 },
-        "cost": { "wood": 60, "clay": 95, "iron": 120, "crop": 30 },
+        "stats": { "attack": 12, "defenseInfantry": 36, "defenseCavalry": 64, "speed": 7, "carry": 39 },
+        "cost": { "wood": 60, "clay": 85, "iron": 115, "crop": 30 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Javelin light infantry screening the line." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Optimatoi" },
-        "stats": { "attack": 78, "defenseInfantry": 45, "defenseCavalry": 33, "speed": 7, "carry": 49 },
-        "cost": { "wood": 170, "clay": 240, "iron": 330, "crop": 90 },
+        "stats": { "attack": 76, "defenseInfantry": 43, "defenseCavalry": 32, "speed": 7, "carry": 49 },
+        "cost": { "wood": 165, "clay": 230, "iron": 310, "crop": 80 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/crossbow.svg" },
         "description": { "en": "Professional archers of the tagmata / themes." }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Akritai Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 21, "defenseCavalry": 11, "speed": 16, "carry": 0 },
-        "cost": { "wood": 135, "clay": 180, "iron": 65, "crop": 50 },
+        "stats": { "attack": 0, "defenseInfantry": 21, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 125, "clay": 170, "iron": 60, "crop": 50 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/double-shot.svg" }
       }
@@ -58,8 +58,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Light Horse" },
-        "stats": { "attack": 134, "defenseInfantry": 60, "defenseCavalry": 55, "speed": 15, "carry": 93 },
-        "cost": { "wood": 410, "clay": 520, "iron": 460, "crop": 130 },
+        "stats": { "attack": 124, "defenseInfantry": 55, "defenseCavalry": 50, "speed": 15, "carry": 93 },
+        "cost": { "wood": 350, "clay": 440, "iron": 390, "crop": 110 },
         "cropUpkeep": 3,
         "graphics": { "logo": "cavalry/horse-head.svg" },
         "description": { "en": "Light cavalry for pursuit and screening." }
@@ -69,8 +69,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Kataphraktos" },
-        "stats": { "attack": 163, "defenseInfantry": 68, "defenseCavalry": 62, "speed": 13, "carry": 79 },
-        "cost": { "wood": 360, "clay": 560, "iron": 600, "crop": 140 },
+        "stats": { "attack": 152, "defenseInfantry": 63, "defenseCavalry": 58, "speed": 13, "carry": 79 },
+        "cost": { "wood": 310, "clay": 480, "iron": 530, "crop": 120 },
         "cropUpkeep": 3,
         "graphics": { "logo": "cavalry/chess-knight.svg" },
         "description": { "en": "Fully armored shock cavalry — Byzantine signature." }
@@ -80,8 +80,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Scholai Cavalry" },
-        "stats": { "attack": 180, "defenseInfantry": 74, "defenseCavalry": 192, "speed": 13, "carry": 54 },
-        "cost": { "wood": 570, "clay": 870, "iron": 880, "crop": 190 },
+        "stats": { "attack": 184, "defenseInfantry": 76, "defenseCavalry": 196, "speed": 13, "carry": 54 },
+        "cost": { "wood": 590, "clay": 910, "iron": 920, "crop": 200 },
         "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/cavalry.svg" },
         "description": { "en": "Super-heavy household cavalry." }

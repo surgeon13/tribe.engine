@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Sparabara" },
-        "stats": { "attack": 9, "defenseInfantry": 30, "defenseCavalry": 54, "speed": 7, "carry": 43 },
-        "cost": { "wood": 70, "clay": 60, "iron": 35, "crop": 35 },
+        "stats": { "attack": 9, "defenseInfantry": 29, "defenseCavalry": 52, "speed": 7, "carry": 43 },
+        "cost": { "wood": 65, "clay": 55, "iron": 30, "crop": 35 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Shield-bearer levy with spear and large pavise." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Takabara Archer" },
-        "stats": { "attack": 25, "defenseInfantry": 64, "defenseCavalry": 33, "speed": 5, "carry": 24 },
-        "cost": { "wood": 120, "clay": 120, "iron": 110, "crop": 40 },
+        "stats": { "attack": 24, "defenseInfantry": 62, "defenseCavalry": 32, "speed": 5, "carry": 24 },
+        "cost": { "wood": 115, "clay": 115, "iron": 100, "crop": 40 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/heavy-arrow.svg" },
         "description": { "en": "Shielded bowmen supporting the battle line." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Immortal" },
-        "stats": { "attack": 63, "defenseInfantry": 39, "defenseCavalry": 29, "speed": 7, "carry": 54 },
-        "cost": { "wood": 185, "clay": 170, "iron": 160, "crop": 60 },
+        "stats": { "attack": 61, "defenseInfantry": 38, "defenseCavalry": 28, "speed": 7, "carry": 54 },
+        "cost": { "wood": 175, "clay": 160, "iron": 150, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/flanged-mace.svg" },
         "description": { "en": "10,000 household infantry — elite of the Great King." }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Mounted Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 19, "defenseCavalry": 9, "speed": 17, "carry": 0 },
-        "cost": { "wood": 145, "clay": 130, "iron": 30, "crop": 35 },
+        "stats": { "attack": 0, "defenseInfantry": 18, "defenseCavalry": 9, "speed": 17, "carry": 0 },
+        "cost": { "wood": 135, "clay": 120, "iron": 30, "crop": 35 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/arrowhead.svg" }
       }
@@ -58,9 +58,9 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Median Horseman" },
-        "stats": { "attack": 110, "defenseInfantry": 48, "defenseCavalry": 44, "speed": 15, "carry": 103 },
-        "cost": { "wood": 400, "clay": 340, "iron": 200, "crop": 90 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 101, "defenseInfantry": 44, "defenseCavalry": 41, "speed": 15, "carry": 103 },
+        "cost": { "wood": 510, "clay": 430, "iron": 260, "crop": 110 },
+        "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/camel-head.svg" }
       }
     },
@@ -68,9 +68,9 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Persian Cataphract" },
-        "stats": { "attack": 134, "defenseInfantry": 54, "defenseCavalry": 50, "speed": 14, "carry": 87 },
-        "cost": { "wood": 370, "clay": 380, "iron": 280, "crop": 90 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 125, "defenseInfantry": 51, "defenseCavalry": 46, "speed": 14, "carry": 87 },
+        "cost": { "wood": 480, "clay": 490, "iron": 360, "crop": 120 },
+        "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/cavalry.svg" },
         "description": { "en": "Early heavy horse with scale and kontos." }
       }
@@ -79,9 +79,9 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Camel Corps" },
-        "stats": { "attack": 84, "defenseInfantry": 180, "defenseCavalry": 77, "speed": 11, "carry": 117 },
-        "cost": { "wood": 530, "clay": 540, "iron": 380, "crop": 120 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 106, "defenseInfantry": 193, "defenseCavalry": 83, "speed": 11, "carry": 117 },
+        "cost": { "wood": 520, "clay": 530, "iron": 370, "crop": 120 },
+        "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/elephant.svg" },
         "description": { "en": "Desert camelry — unsettling to untrained horses." }
       }
