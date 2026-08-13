@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Shield Bearer" },
-        "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 62, "speed": 7, "carry": 50 },
-        "cost": { "wood": 55, "clay": 100, "iron": 50, "crop": 55 },
+        "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 50 },
+        "cost": { "wood": 55, "clay": 95, "iron": 50, "crop": 50 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Shield Bearer — Caravan-kingdom desert infantry and camel riders [def_cav]" }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Slinger" },
-        "stats": { "attack": 34, "defenseInfantry": 41, "defenseCavalry": 49, "speed": 6, "carry": 57 },
-        "cost": { "wood": 90, "clay": 170, "iron": 150, "crop": 55 },
+        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 6, "carry": 55 },
+        "cost": { "wood": 90, "clay": 175, "iron": 150, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/battle-axe.svg" },
         "description": { "en": "Slinger — Caravan-kingdom desert infantry and camel riders [line]" }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Petra Guard" },
-        "stats": { "attack": 30, "defenseInfantry": 81, "defenseCavalry": 42, "speed": 5, "carry": 28 },
-        "cost": { "wood": 100, "clay": 180, "iron": 165, "crop": 60 },
+        "stats": { "attack": 30, "defenseInfantry": 80, "defenseCavalry": 40, "speed": 5, "carry": 30 },
+        "cost": { "wood": 100, "clay": 175, "iron": 160, "crop": 60 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },
         "description": { "en": "Petra Guard — Caravan-kingdom desert infantry and camel riders [off_inf]" }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Caravan Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 22, "defenseCavalry": 11, "speed": 15, "carry": 0 },
-        "cost": { "wood": 125, "clay": 215, "iron": 50, "crop": 60 },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 15, "carry": 0 },
+        "cost": { "wood": 105, "clay": 185, "iron": 40, "crop": 50 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/double-shot.svg" },
         "description": { "en": "Caravan Scout — Caravan-kingdom desert infantry and camel riders [scout]" }
@@ -59,8 +59,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Light Desert Horse" },
-        "stats": { "attack": 38, "defenseInfantry": 94, "defenseCavalry": 40, "speed": 12, "carry": 155 },
-        "cost": { "wood": 180, "clay": 295, "iron": 170, "crop": 70 },
+        "stats": { "attack": 40, "defenseInfantry": 95, "defenseCavalry": 40, "speed": 12, "carry": 130 },
+        "cost": { "wood": 185, "clay": 310, "iron": 175, "crop": 75 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/donkey.svg" },
         "description": { "en": "Light Desert Horse — Caravan-kingdom desert infantry and camel riders [cav_off]" }
@@ -70,8 +70,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Nabatean Lancer" },
-        "stats": { "attack": 122, "defenseInfantry": 62, "defenseCavalry": 57, "speed": 12, "carry": 102 },
-        "cost": { "wood": 330, "clay": 650, "iron": 460, "crop": 150 },
+        "stats": { "attack": 120, "defenseInfantry": 60, "defenseCavalry": 55, "speed": 12, "carry": 135 },
+        "cost": { "wood": 310, "clay": 630, "iron": 450, "crop": 150 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/camel-head.svg" },
         "description": { "en": "Nabatean Lancer — Caravan-kingdom desert infantry and camel riders [cav_off]" }
@@ -81,8 +81,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Royal Camel Guard" },
-        "stats": { "attack": 105, "defenseInfantry": 236, "defenseCavalry": 102, "speed": 10, "carry": 112 },
-        "cost": { "wood": 410, "clay": 810, "iron": 540, "crop": 170 },
+        "stats": { "attack": 60, "defenseInfantry": 295, "defenseCavalry": 125, "speed": 10, "carry": 110 },
+        "cost": { "wood": 400, "clay": 790, "iron": 530, "crop": 160 },
         "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/camel.svg" },
         "description": { "en": "Royal Camel Guard — Caravan-kingdom desert infantry and camel riders [cav_off]" }
@@ -92,8 +92,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Battering Ram" },
-        "stats": { "attack": 64, "defenseInfantry": 30, "defenseCavalry": 74, "speed": 4, "carry": 0 },
-        "cost": { "wood": 730, "clay": 540, "iron": 510, "crop": 90 },
+        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
+        "cost": { "wood": 750, "clay": 560, "iron": 520, "crop": 90 },
         "cropUpkeep": 3,
         "graphics": { "logo": "rams/ladder.svg" },
         "description": { "en": "Battering Ram — Caravan-kingdom desert infantry and camel riders" }
@@ -103,8 +103,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Ballista" },
-        "stats": { "attack": 54, "defenseInfantry": 59, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 630, "clay": 1730, "iron": 540, "crop": 90 },
+        "stats": { "attack": 55, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 650, "clay": 1790, "iron": 560, "crop": 100 },
         "cropUpkeep": 5,
         "graphics": { "logo": "catapults/ballista.svg" },
         "description": { "en": "Ballista — Caravan-kingdom desert infantry and camel riders" }

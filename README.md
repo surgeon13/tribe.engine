@@ -69,6 +69,13 @@ data/
 
 Playable tribes use **full stat overrides** per unit (Travian-accurate). See `data/STATS.md` for sources and roster extensions.
 
+> **The eight Travian tribes are frozen.** Romans, Teutons, Gauls, Egyptians,
+> Huns, Spartans, Natars and Nature hold Travian's published numbers, kept in
+> `data/balance/travian-canon.json` and copied verbatim. Nothing about them is
+> generated, the build fails if one drifts, and a checksum makes changing one a
+> deliberate act. Do not edit them unless you have been asked to — and then
+> follow the steps in `data/STATS.md`.
+
 ## Tribe colors (units + buildings)
 
 Each tribe defines a **two-color palette** (`primary` + `secondary`). The same colors tint troops and buildings — see `data/THEMING.md`.

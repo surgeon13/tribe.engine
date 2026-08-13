@@ -29,7 +29,6 @@ import {
 import { mountPaletteContrastHint } from "./palette-hint.js";
 import {
   renderTribeBanner,
-  renderUnitCard,
   mountTroopLogoCell,
   mountPortrait,
   portraitOptsFromUnit,
@@ -1029,15 +1028,37 @@ function defaultCompareSelection() {
   return [first, rest[0]].filter(Boolean);
 }
 
-function compareSlotChartLabels(tribes) {
-  const ref = tribes[0];
+/**
+ * Row labels for the comparison charts.
+ *
+ * A row spans every selected tribe, so it is named after the slot rather than
+ * after any one tribe's unit. Labelling the rows from the first tribe made the
+ * whole chart look like it was about the Romans, and reordering the tribe
+ * picker silently renamed every row.
+ */
+function compareSlotChartLabels() {
   return data.roster.map((slot, i) => ({
-    main: ref.troops[i]?.name || slot.role,
+    main: slotCategoryLabel(i),
   }));
 }
 
-function chartTroopName(tribes, slotIndex) {
-  return tribes[0]?.troops[slotIndex]?.name || data.roster[slotIndex]?.role || "—";
+/**
+ * The generic name of what a slot holds — "Infantry I", "Cavalry III".
+ * @param {number} slotIndex
+ */
+function slotCategoryLabel(slotIndex) {
+  const slot = data.roster[slotIndex];
+  if (!slot) return "—";
+  return slot.label || slot.baseUnitId || `Slot ${slot.slot}`;
+}
+
+/**
+ * What each tribe calls the unit in this slot, in the same order as the series.
+ * @param {Array<object>} tribes
+ * @param {number} slotIndex
+ */
+function slotUnitNames(tribes, slotIndex) {
+  return tribes.map((t) => t.troops[slotIndex]?.name || slotCategoryLabel(slotIndex));
 }
 
 function buildCompareChartSeries(tribes, metric, colors, normalizeMode) {
@@ -1045,6 +1066,9 @@ function buildCompareChartSeries(tribes, metric, colors, normalizeMode) {
     name: tribe.name,
     color: colors[i],
     values: tribe.troops.map((t) => chartMetricValue(t, metric.key, normalizeMode)),
+    // Every tribe's own name for each slot, so a bar can say what it actually is
+    // rather than borrowing the label of whichever tribe happens to be first.
+    unitNames: data.roster.map((_, si) => tribe.troops[si]?.name || slotCategoryLabel(si)),
   }));
 }
 
@@ -1188,20 +1212,33 @@ function renderCompareSummary(tribes) {
     .join("");
 }
 
-function renderCompareRadar() {
+function renderCompareGraphs() {
   const tribes = getCompareTribes();
   if (tribes.length < COMPARE_MIN_TRIBES || !globalScales) return;
-  renderCompareRadarSlots(tribes);
+  renderCompareBanners(tribes);
+  renderCompareGraphSlots(tribes);
 }
 
-function renderCompareRadarSlots(tribes) {
-  const grid = $("#compare-radar-slots");
+function renderCompareBanners(tribes) {
+  const banners = $("#compare-banners");
+  if (!banners) return;
+  banners.innerHTML = "";
+  setCompareColumnCount(tribes.length);
+  tribes.forEach((tribe) => {
+    const slot = document.createElement("div");
+    renderTribeBanner(slot, tribe);
+    banners.append(slot);
+  });
+}
+
+function renderCompareGraphSlots(tribes) {
+  const grid = $("#compare-graphs-slots");
   if (!grid || !globalScales) return;
   grid.innerHTML = "";
   syncCompareCompactAttr();
   setCompareColumnCount(tribes.length);
 
-  const hint = $("#compare-radar-hint");
+  const hint = $("#compare-graphs-hint");
   if (hint) {
     const base = normalizeModeHint(statNormalizeMode);
     hint.textContent = isCompareCompact()
@@ -1210,7 +1247,7 @@ function renderCompareRadarSlots(tribes) {
   }
 
   const header = document.createElement("article");
-  header.className = "compare-radar-row compare-grid-header";
+  header.className = "compare-graphs-row compare-grid-header";
   const headerCells = tribes
     .map(
       (t) =>
@@ -1222,7 +1259,7 @@ function renderCompareRadarSlots(tribes) {
 
   data.roster.forEach((slot, i) => {
     const row = document.createElement("article");
-    row.className = "compare-radar-row";
+    row.className = "compare-graphs-row";
 
     const unitNames = formatSlotUnitNames(tribes, i);
     const label = document.createElement("div");
@@ -1240,7 +1277,7 @@ function renderCompareRadarSlots(tribes) {
       setTribeColorVars(col, tribe);
       const troop = tribe.troops[i];
       if (!troop) {
-        col.className = "compare-radar-empty compare-tribe-block";
+        col.className = "compare-graphs-empty compare-tribe-block";
         col.textContent = "—";
         row.append(col);
         return;
@@ -1265,69 +1302,6 @@ function renderCompareRadarSlots(tribes) {
       row.append(col);
     });
 
-    grid.append(row);
-  });
-}
-
-function renderCompareGraphics() {
-  const tribes = getCompareTribes();
-  if (tribes.length < COMPARE_MIN_TRIBES) return;
-
-  syncCompareCompactAttr();
-  const banners = $("#compare-banners");
-  if (banners) {
-    banners.innerHTML = "";
-    setCompareColumnCount(tribes.length);
-    tribes.forEach((tribe) => {
-      const slot = document.createElement("div");
-      renderTribeBanner(slot, tribe);
-      banners.append(slot);
-    });
-  }
-
-  const grid = $("#compare-graphics-grid");
-  grid.innerHTML = "";
-
-  const header = document.createElement("article");
-  header.className = "compare-graphics-row compare-grid-header";
-  const headerCells = tribes
-    .map(
-      (t) =>
-        `<h4 class="compare-col-title" style="color:${tribeInkColor(t.palette)}">${t.name}</h4>`
-    )
-    .join("");
-  header.innerHTML = `<div class="compare-slot-label"><strong>Unit</strong></div>${headerCells}`;
-  grid.append(header);
-
-  data.roster.forEach((slot, i) => {
-    const row = document.createElement("article");
-    row.className = "compare-graphics-row";
-
-    const unitNames = formatSlotUnitNames(tribes, i);
-    const label = document.createElement("div");
-    label.className = "compare-slot-label";
-    label.innerHTML = `
-      <strong>Slot ${slot.slot}</strong>
-      <span class="role-badge">${slot.role}</span>
-      <p class="compare-slot-units muted">${unitNames}</p>
-    `;
-
-    row.append(label);
-    tribes.forEach((tribe) => {
-      const col = document.createElement("div");
-      col.className = "compare-tribe-block";
-      if (isCompareCompact()) {
-        const tribeTag = document.createElement("div");
-        tribeTag.className = "compare-tribe-tag";
-        tribeTag.style.color = tribeInkColor(tribe.palette);
-        tribeTag.textContent = tribe.name;
-        col.append(tribeTag);
-      }
-      const cardHost = document.createElement("div");
-      renderUnitCard(cardHost, tribe.troops[i], tribe.palette, globalScales);
-      col.append(cardHost);
-      row.append(col);
-    });
     grid.append(row);
   });
 }
@@ -1408,25 +1382,43 @@ function renderCompareCharts() {
     const capCost = document.createElement("p");
     capCost.className = "chart-caption muted";
     capCost.textContent =
-      "Training resources (wood / clay / iron / crop) — totals above each stack";
+      "Training resources (wood / clay / iron / crop) — hover a stack for the exact split";
     costWrap.append(capCost);
 
-    const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    drawMultiCostStackChart(svgCost, {
-      width: computeChartWidth(
-        tribes.map((_, i) => chartTroopName(tribes, i)),
-        containerW
-      ),
-      height: Math.min(480, 340 + tribes.length * 16),
-      title: "Training resources (W / C / I / Cr)",
-      series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
-      slots: data.roster.map((slot, i) => ({
-        label: chartTroopName(tribes, i),
-        costs: tribes.map((t) => t.troops[i].cost),
-        totals: tribes.map((t) => t.troops[i].totalCost),
-      })),
-    });
-    costWrap.append(svgCost);
+    // A chief costs about 140,000 and a legionnaire about 400. On one scale the
+    // whole army flattens into a line along the axis, so the settlers and
+    // chiefs get their own panel and the army gets a scale it can use.
+    const EXPANSION_ROLES = new Set(["chief", "settler"]);
+    const groups = [
+      {
+        title: "Army units — training resources (W / C / I / Cr)",
+        indices: data.roster.map((_, i) => i).filter((i) => !EXPANSION_ROLES.has(data.roster[i].role)),
+      },
+      {
+        title: "Expansion — training resources (W / C / I / Cr)",
+        indices: data.roster.map((_, i) => i).filter((i) => EXPANSION_ROLES.has(data.roster[i].role)),
+      },
+    ].filter((g) => g.indices.length);
+
+    for (const group of groups) {
+      const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      drawMultiCostStackChart(svgCost, {
+        width: computeChartWidth(
+          group.indices.map((i) => troopLabels[i]),
+          containerW
+        ),
+        height: Math.min(480, 340 + tribes.length * 16),
+        title: group.title,
+        series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
+        slots: group.indices.map((i) => ({
+          label: slotCategoryLabel(i),
+          unitNames: slotUnitNames(tribes, i),
+          costs: tribes.map((t) => t.troops[i].cost),
+          totals: tribes.map((t) => t.troops[i].totalCost),
+        })),
+      });
+      costWrap.append(svgCost);
+    }
   }
 }
 
@@ -1445,12 +1437,12 @@ function renderMobileCostCompare(container, tribes, colors) {
     const maxCost = Math.max(1, ...totals);
     const card = document.createElement("article");
     card.className = "compare-cost-mobile-card";
-    const unitLabel = chartTroopName(tribes, i);
+    const unitNames = slotUnitNames(tribes, i);
     card.innerHTML = `
       <header class="compare-cost-mobile-head">
-        <strong>Slot ${slot.slot}</strong>
+        <strong>${slotCategoryLabel(i)}</strong>
         <span class="role-badge">${slot.role}</span>
-        <span class="muted">${unitLabel}</span>
+        <span class="muted">Slot ${slot.slot}</span>
       </header>
       <div class="compare-cost-mobile-rows">
         ${tribes
@@ -1458,7 +1450,10 @@ function renderMobileCostCompare(container, tribes, colors) {
             const total = totals[ti];
             const pct = Math.round((total / maxCost) * 100);
             return `<div class="compare-cost-mobile-row">
-              <span class="compare-cost-mobile-name" style="color:${colors[ti]}">${t.name}</span>
+              <span class="compare-cost-mobile-name" style="color:${colors[ti]}">
+                <span class="compare-cost-mobile-unit">${unitNames[ti]}</span>
+                <span class="compare-cost-mobile-tribe">${t.name}</span>
+              </span>
               <div class="compare-cost-mobile-track" role="presentation">
                 <div class="compare-cost-mobile-fill" style="width:${pct}%;background:${colors[ti]}"></div>
               </div>
@@ -1621,9 +1616,8 @@ function renderCompare() {
   if (tribes.length < COMPARE_MIN_TRIBES) {
     hint?.classList.remove("hidden");
     $("#compare-table-wrap")?.classList.add("hidden");
-    $("#compare-graphics-wrap")?.classList.add("hidden");
+    $("#compare-graphs-wrap")?.classList.add("hidden");
     $("#compare-charts-wrap")?.classList.add("hidden");
-    $("#compare-radar-wrap")?.classList.add("hidden");
     renderCompareLegend([]);
     renderCompareSummary([]);
     return;
@@ -1635,12 +1629,10 @@ function renderCompare() {
   renderCompareSummary(tribes);
 
   $("#compare-table-wrap")?.classList.toggle("hidden", compareViewMode !== "table");
-  $("#compare-graphics-wrap")?.classList.toggle("hidden", compareViewMode !== "graphics");
+  $("#compare-graphs-wrap")?.classList.toggle("hidden", compareViewMode !== "graphs");
   $("#compare-charts-wrap")?.classList.toggle("hidden", compareViewMode !== "charts");
-  $("#compare-radar-wrap")?.classList.toggle("hidden", compareViewMode !== "radar");
 
-  if (compareViewMode === "radar") renderCompareRadar();
-  if (compareViewMode === "graphics") renderCompareGraphics();
+  if (compareViewMode === "graphs") renderCompareGraphs();
   if (compareViewMode === "charts") renderCompareCharts();
   if (compareViewMode === "table") renderCompareTable(tribes);
 

@@ -11,16 +11,26 @@
  *   1. every identity spec's crop pressure stays inside the allowed range
  *   2. every player tribe's realized power price sits inside the tolerance band
  *   3. every tribe's heavy cavalry is its strongest and dearest army unit
- *   4. no two tribes ship the same stat block (copy-paste rosters)
- *   5. tier ordering holds: boss > NPC guard > players > wildlife
- *   6. stats stay inside sane ranges and tiers do not go backwards
+ *   4. no slot is filler — every unit is the best pick for something
+ *   5. no two tribes ship the same stat block (copy-paste rosters)
+ *   6. tier ordering holds: boss > NPC guard > players > wildlife
+ *   7. stats stay inside sane ranges and tiers do not go backwards
+ *   8. every stat and cost we author lands on the five-point grid Travian uses
  *
  * Usage: npm run validate:balance [-- --json]
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { SCORED_REFS, SLOT_ANCHORS, combatIndex, totalCost } from "../lib/balance/anchors.js";
+import {
+  SCORED_REFS,
+  SLOT_ANCHORS,
+  combatIndex,
+  pricePaid,
+  totalCost,
+} from "../lib/balance/anchors.js";
+import { isCanonTribe } from "../lib/balance/canon.js";
+import { STAT_STEP, onStep } from "../lib/balance/quantize.js";
 import {
   CROP_PRESSURE_RANGE,
   FAIRNESS_TOLERANCE,
@@ -83,6 +93,10 @@ for (const entry of index.tribes || []) {
 
   tribes.push({
     id,
+    // Travian's own tribes are transcribed, not designed here. They are the
+    // reference our anchors were measured from, so holding them to our model's
+    // invariants would be marking the ruler against the thing it measures.
+    canon: isCanonTribe(id),
     tier: spec?.tier || (spec ? "player" : "unspecified"),
     // >1 means the tribe gets more power per unit of that currency than the anchor.
     cropEfficiency: crop ? anchorCrop / crop : 0,
@@ -102,6 +116,7 @@ for (const [id, spec] of Object.entries(TRIBE_IDENTITIES)) {
 }
 
 for (const t of tribes) {
+  if (t.canon) continue;
   if (t.tier === "unspecified") {
     // The median tribe is derived from the cores by compute-median-tribe.js, so
     // it has no identity of its own to price — it *is* the reference point.
@@ -131,6 +146,11 @@ const tierPower = (tier) => POWER_TIERS[tier] ?? 1;
 const strongestPlayer = Math.max(...players.map((t) => t.power));
 for (const t of tribes) {
   if (t.tier === "player" || t.tier === "unspecified") continue;
+  // Nature and the Natars are as strong as Travian makes them. An oasis
+  // elephant really does out-fight anything a player can field one-for-one,
+  // so the wildlife-sits-below-players rule was an artefact of the weakened
+  // numbers we used to generate, not something to hold the real ones to.
+  if (t.canon) continue;
   const expected = tierPower(t.tier);
   if (expected > 1 && t.power <= strongestPlayer) {
     errors.push(
@@ -156,6 +176,12 @@ if (boss && guard && boss.power <= guard.power) {
 // Travian too, and neither is an army unit you mass.
 const ARMY_REFS = SCORED_REFS.filter((ref) => ref !== "ram" && ref !== "catapult");
 for (const t of tribes) {
+  if (t.canon) continue;
+  // The median tribe is the per-slot median of the cores, not a design. Travian
+  // does not make every tribe's third horse its best one — Rome's third horse
+  // is our anvil and the Teutons' is our raider — so the median honestly comes
+  // out without a centerpiece, and demanding one would only mean fudging it.
+  if (t.tier === "unspecified") continue;
   const horse = t.troops.get("cav_t3");
   if (!horse) continue;
   const rivals = ARMY_REFS.filter((ref) => ref !== "cav_t3" && t.troops.has(ref));
@@ -178,12 +204,78 @@ for (const t of tribes) {
       `${t.id} — ${horse.name} leans ${offensive ? "offensive" : "defensive"} but ${t.troops.get(better).name} (${better}) beats it on ${offensive ? "attack" : "defense"}; a centerpiece should top the column it is built for`
     );
   }
-  // Wildlife is not trained, so its price is not a promise to anyone.
+  // Wildlife is not trained, so its price is not a promise to anyone. Price is
+  // resources plus upkeep: the centerpiece often rounds up into a higher crop
+  // bracket and takes a resource discount for it, so the market columns alone
+  // would call it the cheaper unit.
   if (t.tier !== "wild") {
-    const dearer = rivals.find((ref) => totalCost(t.troops.get(ref).cost) > totalCost(horse.cost));
+    const paid = (u) => pricePaid(u.cost, u.cropUpkeep);
+    const dearer = rivals.find((ref) => paid(t.troops.get(ref)) > paid(horse));
     if (dearer) {
+      const rival = t.troops.get(dearer);
       errors.push(
-        `${t.id} — ${horse.name} costs ${totalCost(horse.cost)} but ${t.troops.get(dearer).name} (${dearer}) costs ${totalCost(t.troops.get(dearer).cost)}; the centerpiece should be the most expensive unit in the barracks`
+        `${t.id} — ${horse.name} costs ${paid(horse)} (${totalCost(horse.cost)} plus ${horse.cropUpkeep} crop) but ${rival.name} (${dearer}) costs ${paid(rival)} (${totalCost(rival.cost)} plus ${rival.cropUpkeep} crop); the centerpiece should be the most expensive unit in the barracks`
+      );
+    }
+  }
+}
+
+// No slot should be filler. A unit earns its place by being the best pick for
+// something, so these are the columns a player actually shops on: a raw stat
+// when they want the biggest single unit, and the same stat per crop or per
+// resource when population or money is the constraint.
+const SHOP_COLUMNS = {
+  attack: (u) => u.stats.attack || 0,
+  "defence vs infantry": (u) => u.stats.defenseInfantry || 0,
+  "defence vs cavalry": (u) => u.stats.defenseCavalry || 0,
+  "total defence": (u) => (u.stats.defenseInfantry || 0) + (u.stats.defenseCavalry || 0),
+  power: (u) => combatIndex(u.stats),
+  speed: (u) => u.stats.speed || 0,
+  carry: (u) => u.stats.carry || 0,
+};
+for (const [name, read] of Object.entries({ ...SHOP_COLUMNS })) {
+  SHOP_COLUMNS[`${name} per crop`] = (u) => read(u) / (u.cropUpkeep || 1);
+  SHOP_COLUMNS[`${name} per resource`] = (u) => read(u) / Math.max(1, totalCost(u.cost));
+}
+
+// Scouts sit out: nobody weighs a scout against a battle horse, and letting
+// the fastest unit in the game hold the speed crown would make every light
+// cavalry look like filler when its job is raiding, not racing.
+const BATTLE_REFS = ARMY_REFS.filter((ref) => ref !== "scout");
+
+for (const t of tribes) {
+  // Travian ships what it ships; flagging its filler is noise we cannot act on.
+  if (t.canon) continue;
+  const army = BATTLE_REFS.filter((ref) => t.troops.has(ref));
+  for (const ref of army) {
+    const unit = t.troops.get(ref);
+    const rivals = army.filter((o) => o !== ref).map((o) => t.troops.get(o));
+
+    // Outright dominated: another unit is at least as good everywhere and
+    // costs no more in either currency. Nobody could defend training this.
+    const dominator = rivals.find(
+      (r) =>
+        ["attack", "defenseInfantry", "defenseCavalry", "speed", "carry"].every(
+          (k) => (r.stats[k] || 0) >= (unit.stats[k] || 0)
+        ) &&
+        totalCost(r.cost) <= totalCost(unit.cost) &&
+        (r.cropUpkeep ?? 0) <= (unit.cropUpkeep ?? 0)
+    );
+    if (dominator) {
+      errors.push(
+        `${t.id} — ${unit.name} (${ref}) is matched or beaten on every stat by ${dominator.name} for no more crop and no more resources, so nobody would ever train it`
+      );
+      continue;
+    }
+
+    // Best at nothing: not dominated, but tops no column either, so for any
+    // goal a player has some other unit in the same roster serves it better.
+    const tops = Object.entries(SHOP_COLUMNS)
+      .filter(([, read]) => rivals.every((r) => read(unit) >= read(r)))
+      .map(([name]) => name);
+    if (!tops.length) {
+      warnings.push(
+        `${t.id} — ${unit.name} (${ref}) tops no column: it is not the best pick for any stat, nor per crop, nor per resource, so the slot is filler`
       );
     }
   }
@@ -211,6 +303,11 @@ for (const t of tribes) {
     }
     if ((u.cropUpkeep ?? 0) < 0) errors.push(`${t.id}/${ref} — negative crop upkeep`);
   }
+  // Travian's roster is not ours to reorder, and the eleventh slot we add to it
+  // is deliberately not the family's best — that is the whole point of holding
+  // an extension to sitting alongside the published units. The median inherits
+  // the same shape, being the per-slot median of exactly those rosters.
+  if (t.canon || t.tier === "unspecified") continue;
   for (const family of [["inf_t1", "inf_t2", "inf_t3"], ["cav_t1", "cav_t2", "cav_t3"]]) {
     const tiers = family.map((ref) => t.troops.get(ref)).filter(Boolean);
     if (tiers.length < 3) continue;
@@ -222,6 +319,32 @@ for (const t of tribes) {
       warnings.push(
         `${t.id} — ${family[2]} (${tiers[2].name}) is weaker than an earlier tier; the last unlock in a family should be its best`
       );
+    }
+  }
+}
+
+// Tribes we write ourselves are held to the five-point grid Travian's own
+// tables use. Travian's tribes are exempt because they are transcribed rather
+// than designed, and a handful of their numbers genuinely sit off it: a
+// Spartan Sentinel defends 22 against cavalry and a bear hauls 19.
+const GRID_STATS = ["attack", "defenseInfantry", "defenseCavalry"];
+for (const t of tribes) {
+  if (t.canon) continue;
+  for (const [ref, u] of t.troops) {
+    // Settlers carry 3000 in Travian and ours inherit it; that is a payload,
+    // not a stat anyone compares across tribes.
+    const keys = ref === "settler" ? GRID_STATS : [...GRID_STATS, "carry"];
+    for (const key of keys) {
+      if (!onStep(u.stats[key])) {
+        errors.push(
+          `${t.id}/${ref} — ${key} is ${u.stats[key]}, off the ${STAT_STEP}-point grid; regenerate with \`npm run balance:rebuild\``
+        );
+      }
+    }
+    for (const [res, value] of Object.entries(u.cost || {})) {
+      if (!onStep(value)) {
+        errors.push(`${t.id}/${ref} — ${res} cost is ${value}, off the ${STAT_STEP}-point grid`);
+      }
     }
   }
 }

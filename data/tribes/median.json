@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Median Levy" },
-        "stats": { "attack": 38, "defenseInfantry": 33, "defenseCavalry": 42, "speed": 7, "carry": 43 },
-        "cost": { "wood": 118, "clay": 115, "iron": 85, "crop": 88 },
+        "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 7, "carry": 50 },
+        "cost": { "wood": 105, "clay": 90, "iron": 50, "crop": 35 },
         "cropUpkeep": 1,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot inf_t1." }
       }
@@ -25,8 +25,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Median Warrior" },
-        "stats": { "attack": 32, "defenseInfantry": 51, "defenseCavalry": 40, "speed": 6, "carry": 34 },
-        "cost": { "wood": 103, "clay": 115, "iron": 115, "crop": 53 },
+        "stats": { "attack": 35, "defenseInfantry": 45, "defenseCavalry": 40, "speed": 6, "carry": 40 },
+        "cost": { "wood": 140, "clay": 105, "iron": 155, "crop": 60 },
         "cropUpkeep": 1,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot inf_t2." }
       }
@@ -35,8 +35,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Median Elite" },
-        "stats": { "attack": 72, "defenseInfantry": 41, "defenseCavalry": 30, "speed": 7, "carry": 51 },
-        "cost": { "wood": 195, "clay": 170, "iron": 193, "crop": 80 },
+        "stats": { "attack": 65, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 50 },
+        "cost": { "wood": 130, "clay": 140, "iron": 190, "crop": 75 },
         "cropUpkeep": 1,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot inf_t3." }
       }
@@ -45,8 +45,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Median Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 19, "defenseCavalry": 10, "speed": 16, "carry": 0 },
-        "cost": { "wood": 145, "clay": 140, "iron": 43, "crop": 53 },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
         "cropUpkeep": 2,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot scout." }
       }
@@ -55,8 +55,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Median Light Cavalry" },
-        "stats": { "attack": 77, "defenseInfantry": 63, "defenseCavalry": 38, "speed": 13, "carry": 109 },
-        "cost": { "wood": 320, "clay": 265, "iron": 300, "crop": 100 },
+        "stats": { "attack": 80, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 16, "carry": 90 },
+        "cost": { "wood": 365, "clay": 405, "iron": 285, "crop": 90 },
         "cropUpkeep": 2,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot cav_t1." }
       }
@@ -65,9 +65,9 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Median Heavy Cavalry" },
-        "stats": { "attack": 131, "defenseInfantry": 57, "defenseCavalry": 45, "speed": 13, "carry": 84 },
-        "cost": { "wood": 350, "clay": 385, "iron": 400, "crop": 115 },
-        "cropUpkeep": 2,
+        "stats": { "attack": 130, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 10, "carry": 75 },
+        "cost": { "wood": 450, "clay": 505, "iron": 545, "crop": 145 },
+        "cropUpkeep": 3,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot cav_t2." }
       }
     },
@@ -75,9 +75,9 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Median Guard Cavalry" },
-        "stats": { "attack": 193, "defenseInfantry": 69, "defenseCavalry": 69, "speed": 12, "carry": 69 },
-        "cost": { "wood": 600, "clay": 630, "iron": 575, "crop": 185 },
-        "cropUpkeep": 4,
+        "stats": { "attack": 115, "defenseInfantry": 60, "defenseCavalry": 75, "speed": 12, "carry": 75 },
+        "cost": { "wood": 405, "clay": 480, "iron": 585, "crop": 120 },
+        "cropUpkeep": 3,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot cav_t3." }
       }
     },
@@ -85,8 +85,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Median Ram" },
-        "stats": { "attack": 67, "defenseInfantry": 31, "defenseCavalry": 78, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1000, "clay": 390, "iron": 465, "crop": 85 },
+        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 85, "speed": 4, "carry": 0 },
+        "cost": { "wood": 975, "clay": 345, "iron": 355, "crop": 75 },
         "cropUpkeep": 3,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot ram." }
       }
@@ -95,8 +95,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Median Catapult" },
-        "stats": { "attack": 57, "defenseInfantry": 62, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 915, "clay": 1290, "iron": 500, "crop": 95 },
+        "stats": { "attack": 60, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 950, "clay": 1315, "iron": 625, "crop": 90 },
         "cropUpkeep": 6,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot catapult." }
       }
@@ -105,8 +105,8 @@
       "ref": "chief",
       "overrides": {
         "name": { "en": "Median Chief" },
-        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 27425, "clay": 23975, "iron": 39725, "crop": 38025 },
+        "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 33725, "clay": 29135, "iron": 32500, "crop": 32550 },
         "cropUpkeep": 4,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot chief." }
       }
@@ -115,8 +115,8 @@
       "ref": "settler",
       "overrides": {
         "name": { "en": "Settler" },
-        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3513, "clay": 4125, "iron": 1925, "crop": 4500 },
+        "stats": { "attack": 5, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 5080, "clay": 5090, "iron": 4815, "crop": 4510 },
         "cropUpkeep": 1,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot settler." }
       }
@@ -150,6 +150,6 @@
     "aggregator": "median",
     "sources": ["roman", "teuton", "gaul", "egyptian", "hun", "spartan"],
     "preciseSource": "balance/median-baseline.json",
-    "createdAt": "2026-08-13T07:41:55.820Z"
+    "createdAt": "2026-08-13T09:17:43.510Z"
   }
 }

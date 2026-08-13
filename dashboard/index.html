@@ -71,7 +71,7 @@
             </div>
             <div class="view-tabs" role="tablist">
               <button type="button" class="view-tab active" data-view="table" role="tab">Table</button>
-              <button type="button" class="view-tab" data-view="radar" role="tab">Stat graphs</button>
+              <button type="button" class="view-tab" data-view="radar" role="tab">Graphs</button>
             </div>
             <div class="topbar-actions">
               <div class="palette-swatch" id="palette-swatch"></div>
@@ -190,7 +190,7 @@
             <section class="panel radar-panel">
               <div class="panel-head panel-head-split">
                 <div>
-                  <h3>Stat graphs</h3>
+                  <h3>Graphs</h3>
                   <p class="muted radar-hint">Efficiency stats per unit. Normalize by crop, resources, or training time — raw values stay in the keyline above each graph.</p>
                 </div>
                 <div class="stat-toolbar">
@@ -226,8 +226,8 @@
             <div class="panel-head panel-head-split">
               <div>
                 <h3>Multi-tribe comparison</h3>
-                <p class="muted compare-intro">Select tribes below, then switch tabs to compare stats, graphics, charts, or profile graphs.</p>
-                <p class="muted compare-intro-mobile">On phones: Charts use horizontal bars; Graphics and Stat graphs stack each unit’s tribes vertically so labels stay readable.</p>
+                <p class="muted compare-intro">Select tribes below, then switch tabs for the stat table, per-unit graphs, or charts.</p>
+                <p class="muted compare-intro-mobile">On phones: Charts use horizontal bars; Graphs stacks each unit’s tribes vertically so labels stay readable.</p>
               </div>
               <div class="compare-picks">
                 <div id="compare-tribe-picker" class="compare-tribe-picker" aria-label="Tribes to compare"></div>
@@ -239,9 +239,8 @@
             <div class="compare-toolbar">
               <div class="compare-modes" role="tablist" aria-label="Comparison view">
                 <button type="button" class="view-tab active" data-compare-mode="table" role="tab">Table</button>
-                <button type="button" class="view-tab" data-compare-mode="graphics" role="tab">Graphics</button>
+                <button type="button" class="view-tab" data-compare-mode="graphs" role="tab">Graphs</button>
                 <button type="button" class="view-tab" data-compare-mode="charts" role="tab">Charts</button>
-                <button type="button" class="view-tab" data-compare-mode="radar" role="tab">Stat graphs</button>
               </div>
             </div>
             <div id="compare-legend" class="compare-legend hidden" aria-label="Tribe colors"></div>
@@ -251,10 +250,6 @@
                 <thead id="compare-thead"></thead>
                 <tbody id="compare-tbody"></tbody>
               </table>
-            </div>
-            <div id="compare-graphics-wrap" class="compare-content compare-graphics-wrap hidden">
-              <div id="compare-banners" class="compare-banners"></div>
-              <div id="compare-graphics-grid" class="compare-graphics-grid" aria-label="Unit graphics by slot"></div>
             </div>
             <div id="compare-charts-wrap" class="compare-content compare-charts-wrap hidden">
               <div class="chart-toolbar">
@@ -274,8 +269,8 @@
               <div id="compare-chart-main" class="chart-panel"></div>
               <div id="compare-chart-cost" class="chart-panel"></div>
             </div>
-            <div id="compare-radar-wrap" class="compare-content compare-radar-wrap hidden">
-              <div class="compare-radar-toolbar">
+            <div id="compare-graphs-wrap" class="compare-content compare-graphs-wrap hidden">
+              <div class="compare-graphs-toolbar">
                 <label class="stat-toolbar-field">
                   <span class="muted">Normalize</span>
                   <select id="stat-normalize-compare" data-stat-normalize aria-label="Compare stat normalization"></select>
@@ -285,8 +280,9 @@
                   <button type="button" class="view-tab" data-stat-display="grid" role="tab">Stat grid</button>
                 </div>
               </div>
-              <p id="compare-radar-hint" class="muted compare-radar-note"></p>
-              <div id="compare-radar-slots" class="compare-radar-slots compare-radar-slots-scroll"></div>
+              <p id="compare-graphs-hint" class="muted compare-graphs-note"></p>
+              <div id="compare-banners" class="compare-banners"></div>
+              <div id="compare-graphs-slots" class="compare-graphs-slots compare-graphs-slots-scroll"></div>
             </div>
           </div>
         </section>

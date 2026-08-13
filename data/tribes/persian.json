@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Sparabara" },
-        "stats": { "attack": 9, "defenseInfantry": 29, "defenseCavalry": 52, "speed": 7, "carry": 43 },
-        "cost": { "wood": 65, "clay": 55, "iron": 30, "crop": 35 },
+        "stats": { "attack": 10, "defenseInfantry": 30, "defenseCavalry": 50, "speed": 7, "carry": 45 },
+        "cost": { "wood": 65, "clay": 60, "iron": 30, "crop": 35 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Shield-bearer levy with spear and large pavise." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Takabara Archer" },
-        "stats": { "attack": 24, "defenseInfantry": 62, "defenseCavalry": 32, "speed": 5, "carry": 24 },
-        "cost": { "wood": 115, "clay": 115, "iron": 100, "crop": 40 },
+        "stats": { "attack": 25, "defenseInfantry": 60, "defenseCavalry": 30, "speed": 5, "carry": 25 },
+        "cost": { "wood": 110, "clay": 110, "iron": 100, "crop": 40 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/heavy-arrow.svg" },
         "description": { "en": "Shielded bowmen supporting the battle line." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Immortal" },
-        "stats": { "attack": 61, "defenseInfantry": 38, "defenseCavalry": 28, "speed": 7, "carry": 54 },
-        "cost": { "wood": 175, "clay": 160, "iron": 150, "crop": 55 },
+        "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 55 },
+        "cost": { "wood": 180, "clay": 165, "iron": 155, "crop": 60 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/flanged-mace.svg" },
         "description": { "en": "10,000 household infantry — elite of the Great King." }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Mounted Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 18, "defenseCavalry": 9, "speed": 17, "carry": 0 },
-        "cost": { "wood": 135, "clay": 120, "iron": 30, "crop": 35 },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 },
+        "cost": { "wood": 160, "clay": 145, "iron": 35, "crop": 40 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/arrowhead.svg" }
       }
@@ -58,8 +58,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Median Horseman" },
-        "stats": { "attack": 101, "defenseInfantry": 44, "defenseCavalry": 41, "speed": 15, "carry": 103 },
-        "cost": { "wood": 510, "clay": 430, "iron": 260, "crop": 110 },
+        "stats": { "attack": 100, "defenseInfantry": 45, "defenseCavalry": 40, "speed": 16, "carry": 85 },
+        "cost": { "wood": 500, "clay": 420, "iron": 250, "crop": 110 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/camel-head.svg" }
       }
@@ -68,7 +68,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Persian Cataphract" },
-        "stats": { "attack": 125, "defenseInfantry": 51, "defenseCavalry": 46, "speed": 14, "carry": 87 },
+        "stats": { "attack": 125, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 13, "carry": 115 },
         "cost": { "wood": 480, "clay": 490, "iron": 360, "crop": 120 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/cavalry.svg" },
@@ -79,10 +79,10 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Camel Corps" },
-        "stats": { "attack": 106, "defenseInfantry": 193, "defenseCavalry": 83, "speed": 11, "carry": 117 },
-        "cost": { "wood": 520, "clay": 530, "iron": 370, "crop": 120 },
+        "stats": { "attack": 60, "defenseInfantry": 260, "defenseCavalry": 110, "speed": 11, "carry": 115 },
+        "cost": { "wood": 530, "clay": 540, "iron": 370, "crop": 120 },
         "cropUpkeep": 4,
-        "graphics": { "logo": "cavalry/elephant.svg" },
+        "graphics": { "logo": "cavalry/camel.svg" },
         "description": { "en": "Desert camelry — unsettling to untrained horses." }
       }
     },
@@ -90,8 +90,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Siege Ram" },
-        "stats": { "attack": 71, "defenseInfantry": 33, "defenseCavalry": 82, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1260, "clay": 480, "iron": 460, "crop": 80 },
+        "stats": { "attack": 70, "defenseInfantry": 35, "defenseCavalry": 80, "speed": 4, "carry": 0 },
+        "cost": { "wood": 1240, "clay": 480, "iron": 460, "crop": 80 },
         "cropUpkeep": 3,
         "graphics": { "logo": "rams/siege-ram.svg" }
       }
@@ -100,8 +100,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Siege Engine" },
-        "stats": { "attack": 60, "defenseInfantry": 65, "defenseCavalry": 11, "speed": 3, "carry": 0 },
-        "cost": { "wood": 1030, "clay": 1470, "iron": 470, "crop": 80 },
+        "stats": { "attack": 60, "defenseInfantry": 65, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 1020, "clay": 1450, "iron": 470, "crop": 80 },
         "cropUpkeep": 6,
         "graphics": { "logo": "catapults/ballista.svg" }
       }

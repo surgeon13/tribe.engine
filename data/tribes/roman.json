@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Legionnaire" },
-        "stats": { "attack": 36, "defenseInfantry": 37, "defenseCavalry": 44, "speed": 6, "carry": 43 },
-        "cost": { "wood": 110, "clay": 105, "iron": 135, "crop": 80 },
+        "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 50 },
+        "cost": { "wood": 120, "clay": 100, "iron": 150, "crop": 30 },
         "cropUpkeep": 1
       }
     },
@@ -24,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Praetorian" },
-        "stats": { "attack": 31, "defenseInfantry": 73, "defenseCavalry": 38, "speed": 5, "carry": 21 },
-        "cost": { "wood": 115, "clay": 120, "iron": 255, "crop": 55 },
+        "stats": { "attack": 30, "defenseInfantry": 65, "defenseCavalry": 35, "speed": 5, "carry": 20 },
+        "cost": { "wood": 100, "clay": 130, "iron": 160, "crop": 70 },
         "cropUpkeep": 1
       }
     },
@@ -33,8 +33,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Imperian" },
-        "stats": { "attack": 77, "defenseInfantry": 45, "defenseCavalry": 33, "speed": 7, "carry": 48 },
-        "cost": { "wood": 180, "clay": 170, "iron": 380, "crop": 80 },
+        "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 25, "speed": 7, "carry": 50 },
+        "cost": { "wood": 150, "clay": 160, "iron": 210, "crop": 80 },
         "cropUpkeep": 1
       }
     },
@@ -42,8 +42,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Equites Legati" },
-        "stats": { "attack": 0, "defenseInfantry": 21, "defenseCavalry": 11, "speed": 15, "carry": 0 },
-        "cost": { "wood": 150, "clay": 140, "iron": 80, "crop": 55 },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 140, "clay": 160, "iron": 20, "crop": 40 },
         "cropUpkeep": 2
       }
     },
@@ -51,8 +51,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Equites Imperatoris" },
-        "stats": { "attack": 119, "defenseInfantry": 54, "defenseCavalry": 50, "speed": 14, "carry": 90 },
-        "cost": { "wood": 350, "clay": 310, "iron": 440, "crop": 110 },
+        "stats": { "attack": 120, "defenseInfantry": 65, "defenseCavalry": 50, "speed": 14, "carry": 100 },
+        "cost": { "wood": 550, "clay": 440, "iron": 320, "crop": 100 },
         "cropUpkeep": 3
       }
     },
@@ -60,18 +60,21 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Equites Caesaris" },
-        "stats": { "attack": 146, "defenseInfantry": 62, "defenseCavalry": 57, "speed": 12, "carry": 77 },
-        "cost": { "wood": 310, "clay": 330, "iron": 590, "crop": 110 },
-        "cropUpkeep": 3
+        "stats": { "attack": 180, "defenseInfantry": 80, "defenseCavalry": 105, "speed": 10, "carry": 70 },
+        "cost": { "wood": 550, "clay": 640, "iron": 800, "crop": 180 },
+        "cropUpkeep": 4,
+        "description": { "en": "The emperor's own heavy cavalry: the hammer a Roman army swings." }
       }
     },
     {
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Equites Regales" },
-        "description": { "en": "Tevel slot 7 — Travian Romans field two cavalry types; this slot extends the roster." },
-        "stats": { "attack": 223, "defenseInfantry": 91, "defenseCavalry": 83, "speed": 12, "carry": 69 },
-        "cost": { "wood": 590, "clay": 630, "iron": 1050, "crop": 190 },
+        "description": {
+          "en": "Royal heavy cavalry, armoured to stand rather than charge — the anvil a legion forms up behind, and the costliest thing in the stable."
+        },
+        "stats": { "attack": 45, "defenseInfantry": 125, "defenseCavalry": 175, "speed": 9, "carry": 65 },
+        "cost": { "wood": 310, "clay": 340, "iron": 560, "crop": 100 },
         "cropUpkeep": 4
       }
     },
@@ -79,8 +82,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Battering Ram" },
-        "stats": { "attack": 76, "defenseInfantry": 35, "defenseCavalry": 87, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1080, "clay": 430, "iron": 990, "crop": 100 },
+        "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
+        "cost": { "wood": 900, "clay": 360, "iron": 500, "crop": 70 },
         "cropUpkeep": 3
       }
     },
@@ -88,8 +91,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Fire Catapult" },
-        "stats": { "attack": 64, "defenseInfantry": 70, "defenseCavalry": 12, "speed": 3, "carry": 0 },
-        "cost": { "wood": 940, "clay": 1390, "iron": 1070, "crop": 110 },
+        "stats": { "attack": 75, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 950, "clay": 1350, "iron": 600, "crop": 90 },
         "cropUpkeep": 6
       }
     },
@@ -97,9 +100,9 @@
       "ref": "chief",
       "overrides": {
         "name": { "en": "Senator" },
-        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 23900, "clay": 20650, "iron": 61350, "crop": 34500 },
-        "cropUpkeep": 4
+        "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 4, "carry": 0 },
+        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "cropUpkeep": 5
       }
     },
     {
@@ -107,7 +110,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3200, "clay": 4125, "iron": 3775, "crop": 4550 },
+        "cost": { "wood": 4600, "clay": 4200, "iron": 5800, "crop": 4400 },
         "cropUpkeep": 1
       }
     }
@@ -136,8 +139,9 @@
   },
   "meta": {
     "balance": {
-      "model": "identity-budget",
-      "identity": "Elite and expensive: the best unit per crop in the game, paid for in resources and drill time.",
+      "model": "travian-canon",
+      "source": "Travian: Legends published unit tables",
+      "extendedSlot": "cav_t3",
       "tier": "player"
     }
   }
