@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Highland Spearman" },
-        "stats": { "attack": 11, "defenseInfantry": 34, "defenseCavalry": 60, "speed": 7, "carry": 46 },
-        "cost": { "wood": 80, "clay": 70, "iron": 40, "crop": 60 },
+        "stats": { "attack": 10, "defenseInfantry": 33, "defenseCavalry": 58, "speed": 7, "carry": 46 },
+        "cost": { "wood": 75, "clay": 65, "iron": 35, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Aksumite levy from the Ethiopian plateau." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Javelin Skirmisher" },
-        "stats": { "attack": 37, "defenseInfantry": 40, "defenseCavalry": 47, "speed": 6, "carry": 51 },
-        "cost": { "wood": 145, "clay": 135, "iron": 130, "crop": 70 },
+        "stats": { "attack": 36, "defenseInfantry": 38, "defenseCavalry": 46, "speed": 6, "carry": 51 },
+        "cost": { "wood": 135, "clay": 125, "iron": 125, "crop": 65 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/barbed-spear.svg" },
         "description": { "en": "Light troops screening columns on highland roads." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Royal Guard" },
-        "stats": { "attack": 32, "defenseInfantry": 78, "defenseCavalry": 40, "speed": 5, "carry": 25 },
-        "cost": { "wood": 155, "clay": 135, "iron": 135, "crop": 75 },
+        "stats": { "attack": 31, "defenseInfantry": 76, "defenseCavalry": 39, "speed": 5, "carry": 25 },
+        "cost": { "wood": 145, "clay": 130, "iron": 130, "crop": 70 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/battle-axe.svg" },
         "description": { "en": "Household infantry of the negus — costly elite foot." }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Border Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 21, "defenseCavalry": 10, "speed": 16, "carry": 0 },
-        "cost": { "wood": 165, "clay": 140, "iron": 35, "crop": 60 },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 155, "clay": 135, "iron": 35, "crop": 60 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/tomahawk.svg" }
       }
@@ -58,9 +58,9 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Highland Horse" },
-        "stats": { "attack": 115, "defenseInfantry": 53, "defenseCavalry": 49, "speed": 15, "carry": 109 },
-        "cost": { "wood": 440, "clay": 350, "iron": 230, "crop": 140 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 106, "defenseInfantry": 49, "defenseCavalry": 45, "speed": 15, "carry": 109 },
+        "cost": { "wood": 560, "clay": 450, "iron": 290, "crop": 180 },
+        "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/camel.svg" },
         "description": { "en": "Light cavalry adapted to plateau warfare." }
       }
@@ -69,9 +69,9 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Noble Cavalry" },
-        "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 55, "speed": 13, "carry": 92 },
-        "cost": { "wood": 400, "clay": 390, "iron": 310, "crop": 150 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 130, "defenseInfantry": 56, "defenseCavalry": 51, "speed": 13, "carry": 92 },
+        "cost": { "wood": 520, "clay": 510, "iron": 400, "crop": 200 },
+        "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/horse-head-alt.svg" }
       }
     },
@@ -79,9 +79,9 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Camel Corps" },
-        "stats": { "attack": 91, "defenseInfantry": 190, "defenseCavalry": 81, "speed": 11, "carry": 122 },
-        "cost": { "wood": 590, "clay": 570, "iron": 430, "crop": 190 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 109, "defenseInfantry": 209, "defenseCavalry": 89, "speed": 11, "carry": 122 },
+        "cost": { "wood": 570, "clay": 550, "iron": 410, "crop": 190 },
+        "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/elephant-head.svg" },
         "description": { "en": "Desert and coastal camelry for Red Sea approaches." }
       }

@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Shield Bearer" },
-        "stats": { "attack": 10, "defenseInfantry": 27, "defenseCavalry": 47, "speed": 8, "carry": 46 },
-        "cost": { "wood": 45, "clay": 50, "iron": 30, "crop": 45 },
+        "stats": { "attack": 10, "defenseInfantry": 26, "defenseCavalry": 46, "speed": 8, "carry": 46 },
+        "cost": { "wood": 40, "clay": 45, "iron": 30, "crop": 45 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Shield Bearer — Desert cavalry, tribal spears, and camel riders [def_cav]" }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Najdi Skirmisher" },
-        "stats": { "attack": 35, "defenseInfantry": 31, "defenseCavalry": 37, "speed": 7, "carry": 52 },
-        "cost": { "wood": 85, "clay": 105, "iron": 110, "crop": 55 },
+        "stats": { "attack": 34, "defenseInfantry": 30, "defenseCavalry": 36, "speed": 7, "carry": 52 },
+        "cost": { "wood": 80, "clay": 95, "iron": 105, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/battle-axe.svg" },
         "description": { "en": "Najdi Skirmisher — Desert cavalry, tribal spears, and camel riders [line]" }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Abna Infantry" },
-        "stats": { "attack": 69, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 8, "carry": 58 },
-        "cost": { "wood": 150, "clay": 170, "iron": 190, "crop": 95 },
+        "stats": { "attack": 66, "defenseInfantry": 34, "defenseCavalry": 25, "speed": 8, "carry": 58 },
+        "cost": { "wood": 140, "clay": 155, "iron": 180, "crop": 90 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },
         "description": { "en": "Abna Infantry — Desert cavalry, tribal spears, and camel riders [off_inf]" }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Desert Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 17, "defenseCavalry": 8, "speed": 18, "carry": 0 },
-        "cost": { "wood": 95, "clay": 105, "iron": 30, "crop": 50 },
+        "stats": { "attack": 0, "defenseInfantry": 16, "defenseCavalry": 8, "speed": 18, "carry": 0 },
+        "cost": { "wood": 90, "clay": 100, "iron": 30, "crop": 45 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/heavy-arrow.svg" },
         "description": { "en": "Desert Scout — Desert cavalry, tribal spears, and camel riders [scout]" }
@@ -59,9 +59,9 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Light Faris" },
-        "stats": { "attack": 113, "defenseInfantry": 45, "defenseCavalry": 41, "speed": 17, "carry": 110 },
-        "cost": { "wood": 320, "clay": 330, "iron": 240, "crop": 130 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 104, "defenseInfantry": 41, "defenseCavalry": 38, "speed": 17, "carry": 110 },
+        "cost": { "wood": 410, "clay": 420, "iron": 310, "crop": 170 },
+        "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/camel-head.svg" },
         "description": { "en": "Light Faris — Desert cavalry, tribal spears, and camel riders [cav_off]" }
       }
@@ -70,9 +70,9 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Faris" },
-        "stats": { "attack": 138, "defenseInfantry": 51, "defenseCavalry": 46, "speed": 15, "carry": 94 },
-        "cost": { "wood": 290, "clay": 360, "iron": 330, "crop": 150 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 129, "defenseInfantry": 47, "defenseCavalry": 43, "speed": 15, "carry": 94 },
+        "cost": { "wood": 380, "clay": 470, "iron": 430, "crop": 190 },
+        "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/camel.svg" },
         "description": { "en": "Faris — Desert cavalry, tribal spears, and camel riders [cav_off]" }
       }
@@ -81,9 +81,9 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Royal Mamluk" },
-        "stats": { "attack": 158, "defenseInfantry": 56, "defenseCavalry": 51, "speed": 14, "carry": 84 },
-        "cost": { "wood": 410, "clay": 520, "iron": 440, "crop": 180 },
-        "cropUpkeep": 3,
+        "stats": { "attack": 199, "defenseInfantry": 70, "defenseCavalry": 64, "speed": 14, "carry": 84 },
+        "cost": { "wood": 490, "clay": 610, "iron": 510, "crop": 210 },
+        "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/cloaked-rider.svg" },
         "description": { "en": "Royal Mamluk — Desert cavalry, tribal spears, and camel riders [cav_off]" }
       }
