@@ -2563,7 +2563,9 @@ html[data-compare-compact="1"] #compare-table-wrap {
 
 .compare-cost-mobile-row {
   display: grid;
-  grid-template-columns: minmax(72px, 28%) 1fr auto;
+  /* The first column carries the unit name now, not just a tribe name, so it
+     needs the room; unit names are the longest text on the card. */
+  grid-template-columns: minmax(96px, 40%) 1fr auto;
   gap: 8px;
   align-items: center;
 }

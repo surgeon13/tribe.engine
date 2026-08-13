@@ -1433,23 +1433,43 @@ function renderCompareCharts() {
     const capCost = document.createElement("p");
     capCost.className = "chart-caption muted";
     capCost.textContent =
-      "Training resources (wood / clay / iron / crop) — totals above each stack";
+      "Training resources (wood / clay / iron / crop) — hover a stack for the exact split";
     costWrap.append(capCost);
 
-    const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    drawMultiCostStackChart(svgCost, {
-      width: computeChartWidth(troopLabels, containerW),
-      height: Math.min(480, 340 + tribes.length * 16),
-      title: "Training resources (W / C / I / Cr)",
-      series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
-      slots: data.roster.map((slot, i) => ({
-        label: slotCategoryLabel(i),
-        unitNames: slotUnitNames(tribes, i),
-        costs: tribes.map((t) => t.troops[i].cost),
-        totals: tribes.map((t) => t.troops[i].totalCost),
-      })),
-    });
-    costWrap.append(svgCost);
+    // A chief costs about 140,000 and a legionnaire about 400. On one scale the
+    // whole army flattens into a line along the axis, so the settlers and
+    // chiefs get their own panel and the army gets a scale it can use.
+    const EXPANSION_ROLES = new Set(["chief", "settler"]);
+    const groups = [
+      {
+        title: "Army units — training resources (W / C / I / Cr)",
+        indices: data.roster.map((_, i) => i).filter((i) => !EXPANSION_ROLES.has(data.roster[i].role)),
+      },
+      {
+        title: "Expansion — training resources (W / C / I / Cr)",
+        indices: data.roster.map((_, i) => i).filter((i) => EXPANSION_ROLES.has(data.roster[i].role)),
+      },
+    ].filter((g) => g.indices.length);
+
+    for (const group of groups) {
+      const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      drawMultiCostStackChart(svgCost, {
+        width: computeChartWidth(
+          group.indices.map((i) => troopLabels[i]),
+          containerW
+        ),
+        height: Math.min(480, 340 + tribes.length * 16),
+        title: group.title,
+        series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
+        slots: group.indices.map((i) => ({
+          label: slotCategoryLabel(i),
+          unitNames: slotUnitNames(tribes, i),
+          costs: tribes.map((t) => t.troops[i].cost),
+          totals: tribes.map((t) => t.troops[i].totalCost),
+        })),
+      });
+      costWrap.append(svgCost);
+    }
   }
 }
 

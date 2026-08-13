@@ -1008,8 +1008,12 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
     ...unitNames.flat().map((nm) => String(nm).length),
     ...(hasUnitNames ? [] : labels.map((l) => String(l).length))
   );
-  const idealLeft = Math.min(narrow ? 132 : 210, longestUnit * CHAR_PX + 18);
-  const leftPad = Math.max(narrow ? 76 : 110, Math.min(idealLeft, Math.floor(width * (narrow ? 0.36 : 0.32))));
+  // CHAR_PX is calibrated for the 12px label font; the gutter names are smaller
+  // than that, and measuring them at the larger width truncated names that
+  // would have fitted ("Javelin Skirmish…" for an 18-character unit).
+  const unitCharPx = CHAR_PX * (unitFont / CHART_FONT.label);
+  const idealLeft = Math.min(narrow ? 148 : 210, longestUnit * unitCharPx + 16);
+  const leftPad = Math.max(narrow ? 76 : 110, Math.min(idealLeft, Math.floor(width * (narrow ? 0.42 : 0.32))));
   const rightPad = narrow ? 44 : 28;
   const innerW = Math.max(110, width - leftPad - rightPad);
   const legendH = measureLegendHeight(series, innerW);
@@ -1045,7 +1049,7 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
   }
   drawSeriesLegend(svg, series, width, height, pad);
 
-  const maxUnitChars = Math.max(6, Math.floor((leftPad - 12) / CHAR_PX));
+  const maxUnitChars = Math.max(6, Math.floor((leftPad - 10) / unitCharPx));
 
   labels.forEach((label, i) => {
     const top = pad.top + rowH * i;
@@ -1231,7 +1235,11 @@ export function drawMultiCostStackChart(svg, opts) {
         r.append(rt);
         svg.append(r);
       }
-      if (total > 0) {
+      // Only label a stack that is wide enough to hold the number. With seven
+      // tribes the stacks are a few pixels apart, and printing a five-digit
+      // total over each one turned the top of the chart into one long smear of
+      // overlapping digits. The hover text carries it in that case.
+      if (total > 0 && stackW + gap >= String(total.toLocaleString()).length * CHAR_PX) {
         const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
         t.setAttribute("x", String(x0 + stackW / 2));
         t.setAttribute("y", String(baseY - total * scale - 6));
