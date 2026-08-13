@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-12T17:56:22.007Z",
+  "generatedAt": "2026-08-12T18:12:44.155Z",
   "roster": [
     {
       "slot": 1,
@@ -175,8 +175,10 @@
     "rams": {
       "label": "Rams / wall-breakers",
       "icons": [
+        "rams/ladder.svg",
         "rams/siege-ram.svg",
-        "rams/siege-tower.svg"
+        "rams/siege-tower.svg",
+        "rams/wrecking-ball.svg"
       ]
     },
     "catapults": {
@@ -1512,7 +1514,7 @@
           "graphics": {
             "sprite": "tribes/teuton/units/05_cavalry.png",
             "icon": "tribes/teuton/units/05_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
+            "logo": "cavalry/horse-head-alt.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -1535,7 +1537,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/teuton/units/05_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
+            "logo": "assets/cavalry/horse-head-alt.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -1579,7 +1581,7 @@
           "graphics": {
             "sprite": "tribes/teuton/units/06_cavalry.png",
             "icon": "tribes/teuton/units/06_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/mounted-knight.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -1602,7 +1604,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/teuton/units/06_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/mounted-knight.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -1646,7 +1648,7 @@
           "graphics": {
             "sprite": "tribes/teuton/units/07_cavalry.png",
             "icon": "tribes/teuton/units/07_cavalry_icon.png",
-            "logo": "cavalry/camel-head.svg",
+            "logo": "cavalry/cavalry.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -1669,7 +1671,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/teuton/units/07_cavalry.png",
-            "logo": "assets/cavalry/camel-head.svg",
+            "logo": "assets/cavalry/cavalry.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -1713,7 +1715,7 @@
           "graphics": {
             "sprite": "tribes/teuton/units/08_ram.png",
             "icon": "tribes/teuton/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/wrecking-ball.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -1736,7 +1738,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/08_ram_icon.png",
             "sprite": "assets/tribes/teuton/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/wrecking-ball.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -2405,7 +2407,7 @@
           "graphics": {
             "sprite": "tribes/gaul/units/06_cavalry.png",
             "icon": "tribes/gaul/units/06_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/cavalry.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -2428,7 +2430,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/gaul/units/06_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/cavalry.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -3097,7 +3099,7 @@
           "graphics": {
             "sprite": "tribes/egyptian/units/04_scout.png",
             "icon": "tribes/egyptian/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/barbed-spear.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -3120,7 +3122,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/egyptian/units/04_scout_icon.png",
             "sprite": "assets/tribes/egyptian/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/barbed-spear.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -3231,7 +3233,7 @@
           "graphics": {
             "sprite": "tribes/egyptian/units/06_cavalry.png",
             "icon": "tribes/egyptian/units/06_cavalry_icon.png",
-            "logo": "cavalry/elephant.svg",
+            "logo": "cavalry/camel.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -3254,7 +3256,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/egyptian/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/egyptian/units/06_cavalry.png",
-            "logo": "assets/cavalry/elephant.svg",
+            "logo": "assets/cavalry/camel.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -3298,7 +3300,7 @@
           "graphics": {
             "sprite": "tribes/egyptian/units/07_cavalry.png",
             "icon": "tribes/egyptian/units/07_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/elephant-head.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -3321,7 +3323,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/egyptian/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/egyptian/units/07_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/elephant-head.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -3993,7 +3995,7 @@
           "graphics": {
             "sprite": "tribes/hun/units/05_cavalry.png",
             "icon": "tribes/hun/units/05_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/horse-head-alt.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -4016,7 +4018,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/hun/units/05_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/horse-head-alt.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -4060,7 +4062,7 @@
           "graphics": {
             "sprite": "tribes/hun/units/06_cavalry.png",
             "icon": "tribes/hun/units/06_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/cloaked-rider.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -4083,7 +4085,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/hun/units/06_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/cloaked-rider.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -4194,7 +4196,7 @@
           "graphics": {
             "sprite": "tribes/hun/units/08_ram.png",
             "icon": "tribes/hun/units/08_ram_icon.png",
-            "logo": "rams/siege-tower.svg",
+            "logo": "rams/wrecking-ball.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -4217,7 +4219,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/08_ram_icon.png",
             "sprite": "assets/tribes/hun/units/08_ram.png",
-            "logo": "assets/rams/siege-tower.svg",
+            "logo": "assets/rams/wrecking-ball.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -4755,7 +4757,7 @@
           "graphics": {
             "sprite": "tribes/spartan/units/04_scout.png",
             "icon": "tribes/spartan/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/barbed-spear.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -4778,7 +4780,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/04_scout_icon.png",
             "sprite": "assets/tribes/spartan/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/barbed-spear.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -4956,7 +4958,7 @@
           "graphics": {
             "sprite": "tribes/spartan/units/07_cavalry.png",
             "icon": "tribes/spartan/units/07_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/mounted-knight.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -4979,7 +4981,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/spartan/units/07_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/mounted-knight.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -5023,7 +5025,7 @@
           "graphics": {
             "sprite": "tribes/spartan/units/08_ram.png",
             "icon": "tribes/spartan/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/ladder.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -5046,7 +5048,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/08_ram_icon.png",
             "sprite": "assets/tribes/spartan/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/ladder.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -5581,7 +5583,7 @@
           "graphics": {
             "sprite": "tribes/natar/units/04_scout.png",
             "icon": "tribes/natar/units/04_scout_icon.png",
-            "logo": "infantry/crossbow.svg",
+            "logo": "infantry/star-shuriken.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -5604,7 +5606,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/natar/units/04_scout_icon.png",
             "sprite": "assets/tribes/natar/units/04_scout.png",
-            "logo": "assets/infantry/crossbow.svg",
+            "logo": "assets/infantry/star-shuriken.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -5648,7 +5650,7 @@
           "graphics": {
             "sprite": "tribes/natar/units/05_cavalry.png",
             "icon": "tribes/natar/units/05_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/cloaked-rider.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -5671,7 +5673,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/natar/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/natar/units/05_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/cloaked-rider.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -5715,7 +5717,7 @@
           "graphics": {
             "sprite": "tribes/natar/units/06_cavalry.png",
             "icon": "tribes/natar/units/06_cavalry_icon.png",
-            "logo": "cavalry/elephant.svg",
+            "logo": "cavalry/mounted-knight.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -5738,7 +5740,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/natar/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/natar/units/06_cavalry.png",
-            "logo": "assets/cavalry/elephant.svg",
+            "logo": "assets/cavalry/mounted-knight.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -5782,7 +5784,7 @@
           "graphics": {
             "sprite": "tribes/natar/units/07_cavalry.png",
             "icon": "tribes/natar/units/07_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/mammoth.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -5805,7 +5807,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/natar/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/natar/units/07_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/mammoth.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -5916,7 +5918,7 @@
           "graphics": {
             "sprite": "tribes/natar/units/09_catapult.png",
             "icon": "tribes/natar/units/09_catapult_icon.png",
-            "logo": "catapults/ballista.svg",
+            "logo": "catapults/trebuchet.svg",
             "baseSprite": "units/base/catapult.png",
             "baseIcon": "units/base/catapult_icon.png",
             "baseLogo": "catapults/catapult.svg"
@@ -5939,7 +5941,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/natar/units/09_catapult_icon.png",
             "sprite": "assets/tribes/natar/units/09_catapult.png",
-            "logo": "assets/catapults/ballista.svg",
+            "logo": "assets/catapults/trebuchet.svg",
             "baseIcon": "assets/units/base/catapult_icon.png",
             "baseSprite": "assets/units/base/catapult.png",
             "baseLogo": "assets/catapults/catapult.svg"
@@ -6611,7 +6613,7 @@
           "graphics": {
             "sprite": "tribes/nature/units/07_cavalry.png",
             "icon": "tribes/nature/units/07_cavalry_icon.png",
-            "logo": "animals/pegasus.svg",
+            "logo": "cavalry/mammoth.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -6634,7 +6636,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nature/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/nature/units/07_cavalry.png",
-            "logo": "assets/animals/pegasus.svg",
+            "logo": "assets/cavalry/mammoth.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -6678,7 +6680,7 @@
           "graphics": {
             "sprite": "tribes/nature/units/08_ram.png",
             "icon": "tribes/nature/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/wrecking-ball.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -6701,7 +6703,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nature/units/08_ram_icon.png",
             "sprite": "assets/tribes/nature/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/wrecking-ball.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -7239,7 +7241,7 @@
           "graphics": {
             "sprite": "tribes/carthaginian/units/04_scout.png",
             "icon": "tribes/carthaginian/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/harpoon-chain.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -7262,7 +7264,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/carthaginian/units/04_scout_icon.png",
             "sprite": "assets/tribes/carthaginian/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/harpoon-chain.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -7373,7 +7375,7 @@
           "graphics": {
             "sprite": "tribes/carthaginian/units/06_cavalry.png",
             "icon": "tribes/carthaginian/units/06_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/camel.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -7396,7 +7398,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/carthaginian/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/carthaginian/units/06_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/camel.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -8135,7 +8137,7 @@
           "graphics": {
             "sprite": "tribes/japanese/units/05_cavalry.png",
             "icon": "tribes/japanese/units/05_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/horse-head-alt.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -8158,7 +8160,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/japanese/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/japanese/units/05_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/horse-head-alt.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -8269,7 +8271,7 @@
           "graphics": {
             "sprite": "tribes/japanese/units/07_cavalry.png",
             "icon": "tribes/japanese/units/07_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
+            "logo": "cavalry/mounted-knight.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -8292,7 +8294,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/japanese/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/japanese/units/07_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
+            "logo": "assets/cavalry/mounted-knight.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -8336,7 +8338,7 @@
           "graphics": {
             "sprite": "tribes/japanese/units/08_ram.png",
             "icon": "tribes/japanese/units/08_ram_icon.png",
-            "logo": "rams/siege-tower.svg",
+            "logo": "rams/ladder.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -8359,7 +8361,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/japanese/units/08_ram_icon.png",
             "sprite": "assets/tribes/japanese/units/08_ram.png",
-            "logo": "assets/rams/siege-tower.svg",
+            "logo": "assets/rams/ladder.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -8897,7 +8899,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/04_scout.png",
             "icon": "tribes/byzantine/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/double-shot.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -8920,7 +8922,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/04_scout_icon.png",
             "sprite": "assets/tribes/byzantine/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/double-shot.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -9098,7 +9100,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/07_cavalry.png",
             "icon": "tribes/byzantine/units/07_cavalry_icon.png",
-            "logo": "cavalry/elephant.svg",
+            "logo": "cavalry/cavalry.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -9121,7 +9123,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/byzantine/units/07_cavalry.png",
-            "logo": "assets/cavalry/elephant.svg",
+            "logo": "assets/cavalry/cavalry.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -9165,7 +9167,7 @@
           "graphics": {
             "sprite": "tribes/byzantine/units/08_ram.png",
             "icon": "tribes/byzantine/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/siege-tower.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -9188,7 +9190,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/byzantine/units/08_ram_icon.png",
             "sprite": "assets/tribes/byzantine/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/siege-tower.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -9726,7 +9728,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/04_scout.png",
             "icon": "tribes/israelite/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/harpoon-chain.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -9749,7 +9751,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/04_scout_icon.png",
             "sprite": "assets/tribes/israelite/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/harpoon-chain.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -9793,7 +9795,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/05_cavalry.png",
             "icon": "tribes/israelite/units/05_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/donkey.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -9816,7 +9818,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/israelite/units/05_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/donkey.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -9860,7 +9862,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/06_cavalry.png",
             "icon": "tribes/israelite/units/06_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/horse-head.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -9883,7 +9885,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/israelite/units/06_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/horse-head.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -9927,7 +9929,7 @@
           "graphics": {
             "sprite": "tribes/israelite/units/07_cavalry.png",
             "icon": "tribes/israelite/units/07_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
+            "logo": "cavalry/chess-knight.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -9950,7 +9952,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/israelite/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/israelite/units/07_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
+            "logo": "assets/cavalry/chess-knight.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -10622,7 +10624,7 @@
           "graphics": {
             "sprite": "tribes/persian/units/05_cavalry.png",
             "icon": "tribes/persian/units/05_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/camel-head.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -10645,7 +10647,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/persian/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/persian/units/05_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/camel-head.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -10689,7 +10691,7 @@
           "graphics": {
             "sprite": "tribes/persian/units/06_cavalry.png",
             "icon": "tribes/persian/units/06_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/cavalry.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -10712,7 +10714,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/persian/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/persian/units/06_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/cavalry.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -10756,7 +10758,7 @@
           "graphics": {
             "sprite": "tribes/persian/units/07_cavalry.png",
             "icon": "tribes/persian/units/07_cavalry_icon.png",
-            "logo": "cavalry/camel-head.svg",
+            "logo": "cavalry/elephant.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -10779,7 +10781,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/persian/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/persian/units/07_cavalry.png",
-            "logo": "assets/cavalry/camel-head.svg",
+            "logo": "assets/cavalry/elephant.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -11384,7 +11386,7 @@
           "graphics": {
             "sprite": "tribes/axum/units/04_scout.png",
             "icon": "tribes/axum/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/tomahawk.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -11407,7 +11409,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/axum/units/04_scout_icon.png",
             "sprite": "assets/tribes/axum/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/tomahawk.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -11451,7 +11453,7 @@
           "graphics": {
             "sprite": "tribes/axum/units/05_cavalry.png",
             "icon": "tribes/axum/units/05_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
+            "logo": "cavalry/camel.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -11474,7 +11476,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/axum/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/axum/units/05_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
+            "logo": "assets/cavalry/camel.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -11518,7 +11520,7 @@
           "graphics": {
             "sprite": "tribes/axum/units/06_cavalry.png",
             "icon": "tribes/axum/units/06_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/horse-head-alt.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -11541,7 +11543,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/axum/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/axum/units/06_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/horse-head-alt.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -11585,7 +11587,7 @@
           "graphics": {
             "sprite": "tribes/axum/units/07_cavalry.png",
             "icon": "tribes/axum/units/07_cavalry_icon.png",
-            "logo": "cavalry/camel-head.svg",
+            "logo": "cavalry/elephant-head.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -11608,7 +11610,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/axum/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/axum/units/07_cavalry.png",
-            "logo": "assets/cavalry/camel-head.svg",
+            "logo": "assets/cavalry/elephant-head.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -11652,7 +11654,7 @@
           "graphics": {
             "sprite": "tribes/axum/units/08_ram.png",
             "icon": "tribes/axum/units/08_ram_icon.png",
-            "logo": "rams/siege-tower.svg",
+            "logo": "rams/ladder.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -11675,7 +11677,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/axum/units/08_ram_icon.png",
             "sprite": "assets/tribes/axum/units/08_ram.png",
-            "logo": "assets/rams/siege-tower.svg",
+            "logo": "assets/rams/ladder.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -12347,7 +12349,7 @@
           "graphics": {
             "sprite": "tribes/arab/units/06_cavalry.png",
             "icon": "tribes/arab/units/06_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/camel.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -12370,7 +12372,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/arab/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/arab/units/06_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/camel.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -12414,7 +12416,7 @@
           "graphics": {
             "sprite": "tribes/arab/units/07_cavalry.png",
             "icon": "tribes/arab/units/07_cavalry_icon.png",
-            "logo": "cavalry/camel-head.svg",
+            "logo": "cavalry/cloaked-rider.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -12437,7 +12439,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/arab/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/arab/units/07_cavalry.png",
-            "logo": "assets/cavalry/camel-head.svg",
+            "logo": "assets/cavalry/cloaked-rider.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -12481,7 +12483,7 @@
           "graphics": {
             "sprite": "tribes/arab/units/08_ram.png",
             "icon": "tribes/arab/units/08_ram_icon.png",
-            "logo": "rams/siege-tower.svg",
+            "logo": "rams/ladder.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -12504,7 +12506,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/arab/units/08_ram_icon.png",
             "sprite": "assets/tribes/arab/units/08_ram.png",
-            "logo": "assets/rams/siege-tower.svg",
+            "logo": "assets/rams/ladder.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -13042,7 +13044,7 @@
           "graphics": {
             "sprite": "tribes/nabateans/units/04_scout.png",
             "icon": "tribes/nabateans/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/double-shot.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -13065,7 +13067,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nabateans/units/04_scout_icon.png",
             "sprite": "assets/tribes/nabateans/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/double-shot.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -13109,7 +13111,7 @@
           "graphics": {
             "sprite": "tribes/nabateans/units/05_cavalry.png",
             "icon": "tribes/nabateans/units/05_cavalry_icon.png",
-            "logo": "cavalry/camel-head.svg",
+            "logo": "cavalry/donkey.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -13132,7 +13134,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nabateans/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/nabateans/units/05_cavalry.png",
-            "logo": "assets/cavalry/camel-head.svg",
+            "logo": "assets/cavalry/donkey.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -13176,7 +13178,7 @@
           "graphics": {
             "sprite": "tribes/nabateans/units/06_cavalry.png",
             "icon": "tribes/nabateans/units/06_cavalry_icon.png",
-            "logo": "cavalry/chess-knight.svg",
+            "logo": "cavalry/camel-head.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -13199,7 +13201,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nabateans/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/nabateans/units/06_cavalry.png",
-            "logo": "assets/cavalry/chess-knight.svg",
+            "logo": "assets/cavalry/camel-head.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -13243,7 +13245,7 @@
           "graphics": {
             "sprite": "tribes/nabateans/units/07_cavalry.png",
             "icon": "tribes/nabateans/units/07_cavalry_icon.png",
-            "logo": "cavalry/camel-head.svg",
+            "logo": "cavalry/camel.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -13266,7 +13268,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nabateans/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/nabateans/units/07_cavalry.png",
-            "logo": "assets/cavalry/camel-head.svg",
+            "logo": "assets/cavalry/camel.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -13310,7 +13312,7 @@
           "graphics": {
             "sprite": "tribes/nabateans/units/08_ram.png",
             "icon": "tribes/nabateans/units/08_ram_icon.png",
-            "logo": "rams/siege-ram.svg",
+            "logo": "rams/ladder.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -13333,7 +13335,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/nabateans/units/08_ram_icon.png",
             "sprite": "assets/tribes/nabateans/units/08_ram.png",
-            "logo": "assets/rams/siege-ram.svg",
+            "logo": "assets/rams/ladder.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -13871,7 +13873,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/04_scout.png",
             "icon": "tribes/undead/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/whirlpool-shuriken.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -13894,7 +13896,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/04_scout_icon.png",
             "sprite": "assets/tribes/undead/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/whirlpool-shuriken.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -13938,7 +13940,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/05_cavalry.png",
             "icon": "tribes/undead/units/05_cavalry_icon.png",
-            "logo": "cavalry/horse-head.svg",
+            "logo": "cavalry/cloaked-rider.svg",
             "baseSprite": "units/base/cav_t1.png",
             "baseIcon": "units/base/cav_t1_icon.png",
             "baseLogo": "cavalry/horse-head.svg"
@@ -13961,7 +13963,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/05_cavalry_icon.png",
             "sprite": "assets/tribes/undead/units/05_cavalry.png",
-            "logo": "assets/cavalry/horse-head.svg",
+            "logo": "assets/cavalry/cloaked-rider.svg",
             "baseIcon": "assets/units/base/cav_t1_icon.png",
             "baseSprite": "assets/units/base/cav_t1.png",
             "baseLogo": "assets/cavalry/horse-head.svg"
@@ -14072,7 +14074,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/07_cavalry.png",
             "icon": "tribes/undead/units/07_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
+            "logo": "cavalry/mammoth.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -14095,7 +14097,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/undead/units/07_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
+            "logo": "assets/cavalry/mammoth.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -14139,7 +14141,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/08_ram.png",
             "icon": "tribes/undead/units/08_ram_icon.png",
-            "logo": "rams/siege-tower.svg",
+            "logo": "rams/wrecking-ball.svg",
             "baseSprite": "units/base/ram.png",
             "baseIcon": "units/base/ram_icon.png",
             "baseLogo": "rams/siege-ram.svg"
@@ -14162,7 +14164,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/08_ram_icon.png",
             "sprite": "assets/tribes/undead/units/08_ram.png",
-            "logo": "assets/rams/siege-tower.svg",
+            "logo": "assets/rams/wrecking-ball.svg",
             "baseIcon": "assets/units/base/ram_icon.png",
             "baseSprite": "assets/units/base/ram.png",
             "baseLogo": "assets/rams/siege-ram.svg"
@@ -14700,7 +14702,7 @@
           "graphics": {
             "sprite": "tribes/median/units/04_scout.png",
             "icon": "tribes/median/units/04_scout_icon.png",
-            "logo": "infantry/heavy-arrow.svg",
+            "logo": "infantry/arrowhead.svg",
             "baseSprite": "units/base/scout.png",
             "baseIcon": "units/base/scout_icon.png",
             "baseLogo": "infantry/heavy-arrow.svg"
@@ -14723,7 +14725,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/04_scout_icon.png",
             "sprite": "assets/tribes/median/units/04_scout.png",
-            "logo": "assets/infantry/heavy-arrow.svg",
+            "logo": "assets/infantry/arrowhead.svg",
             "baseIcon": "assets/units/base/scout_icon.png",
             "baseSprite": "assets/units/base/scout.png",
             "baseLogo": "assets/infantry/heavy-arrow.svg"
@@ -14901,7 +14903,7 @@
           "graphics": {
             "sprite": "tribes/median/units/07_cavalry.png",
             "icon": "tribes/median/units/07_cavalry_icon.png",
-            "logo": "cavalry/donkey.svg",
+            "logo": "cavalry/cavalry.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -14924,7 +14926,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/median/units/07_cavalry.png",
-            "logo": "assets/cavalry/donkey.svg",
+            "logo": "assets/cavalry/cavalry.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"

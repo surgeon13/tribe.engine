@@ -151,7 +151,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "cavalry/horse-head.svg"
+          "logo": "cavalry/camel-head.svg"
         }
       }
     },
@@ -176,7 +176,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/chess-knight.svg"
+          "logo": "cavalry/cavalry.svg"
         },
         "description": {
           "en": "Early heavy horse with scale and kontos."
@@ -204,7 +204,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/camel-head.svg"
+          "logo": "cavalry/elephant.svg"
         },
         "description": {
           "en": "Desert camelry — unsettling to untrained horses."

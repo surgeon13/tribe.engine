@@ -126,7 +126,7 @@
         },
         "cropUpkeep": 2,
         "graphics": {
-          "logo": "infantry/heavy-arrow.svg"
+          "logo": "infantry/tomahawk.svg"
         }
       }
     },
@@ -151,7 +151,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "cavalry/donkey.svg"
+          "logo": "cavalry/camel.svg"
         },
         "description": {
           "en": "Light cavalry adapted to plateau warfare."
@@ -179,7 +179,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/horse-head.svg"
+          "logo": "cavalry/horse-head-alt.svg"
         }
       }
     },
@@ -204,7 +204,7 @@
         },
         "cropUpkeep": 4,
         "graphics": {
-          "logo": "cavalry/camel-head.svg"
+          "logo": "cavalry/elephant-head.svg"
         },
         "description": {
           "en": "Desert and coastal camelry for Red Sea approaches."
@@ -232,7 +232,7 @@
         },
         "cropUpkeep": 3,
         "graphics": {
-          "logo": "rams/siege-tower.svg"
+          "logo": "rams/ladder.svg"
         }
       }
     },
