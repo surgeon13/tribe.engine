@@ -170,6 +170,33 @@ export const CHART_LAYOUTS = [
 ];
 
 /**
+ * Round numbers for a small chart's axis.
+ *
+ * Splitting the exact maximum into four gives ticks like 5.42 and 16.3, which
+ * are noise at this size. Try a few interval counts against the step sizes
+ * people actually read numbers in, and take whichever wastes the least
+ * headroom above the tallest bar.
+ *
+ * @param {number} maxVal
+ */
+function niceAxis(maxVal) {
+  const target = Math.max(maxVal, Number.EPSILON);
+  let best = null;
+  for (const intervals of [4, 5, 6]) {
+    const magnitude = 10 ** Math.floor(Math.log10(target / intervals));
+    for (const multiple of [1, 2, 2.5, 5, 10]) {
+      const step = multiple * magnitude;
+      const top = step * intervals;
+      if (top < target) continue;
+      if (!best || top < best.top || (top === best.top && intervals < best.intervals)) {
+        best = { step, intervals, top };
+      }
+    }
+  }
+  return best || { step: target / 4, intervals: 4, top: target };
+}
+
+/**
  * One slot, one chart, tribes along the bottom.
  *
  * The grouped layout puts all eleven slots on a single axis, which leaves each
@@ -204,7 +231,8 @@ export function drawSlotBarChart(svg, opts) {
   const pad = { top: 42, right: 12, bottom: hasUnitNames ? 48 : 32, left: 44 };
   const innerW = width - pad.left - pad.right;
   const innerH = height - pad.top - pad.bottom;
-  const maxVal = Math.max(1, ...bars.map((b) => b.value || 0));
+  const axis = niceAxis(Math.max(1, ...bars.map((b) => b.value || 0)));
+  const maxVal = axis.top;
   const colW = innerW / n;
   const barW = Math.min(56, Math.max(12, colW * 0.62));
 
@@ -223,7 +251,27 @@ export function drawSlotBarChart(svg, opts) {
   title.textContent = opts.title || "";
   svg.append(title);
 
-  drawYAxisTicks(svg, pad, innerW, innerH, maxVal, fmt);
+  for (let tick = 0; tick <= axis.intervals; tick++) {
+    const yVal = axis.step * tick;
+    const y = pad.top + innerH - (yVal / maxVal) * innerH;
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", String(pad.left));
+    line.setAttribute("x2", String(pad.left + innerW));
+    line.setAttribute("y1", String(y));
+    line.setAttribute("y2", String(y));
+    line.setAttribute("stroke", "var(--chart-grid)");
+    line.setAttribute("stroke-width", "1");
+    svg.append(line);
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("x", String(pad.left - 8));
+    label.setAttribute("y", String(y + 4));
+    label.setAttribute("text-anchor", "end");
+    label.setAttribute("fill", "var(--text-muted)");
+    label.setAttribute("font-size", String(CHART_FONT.tick));
+    label.setAttribute("font-weight", "600");
+    label.textContent = fmt(yVal);
+    svg.append(label);
+  }
 
   const baseY = pad.top + innerH;
   const nameChars = Math.max(4, Math.floor(colW / 5.4));
@@ -284,8 +332,8 @@ export function drawSlotBarChart(svg, opts) {
 /** @param {number} seconds */
 function clockFromSeconds(seconds) {
   const total = Math.max(0, Math.round(Number(seconds) || 0));
-  if (!total) return "—";
   const pad = (n) => String(n).padStart(2, "0");
+  if (!total) return "0:00";
   const h = Math.floor(total / 3600);
   const m = Math.floor((total % 3600) / 60);
   return h > 0 ? `${h}:${pad(m)}:${pad(total % 60)}` : `${m}:${pad(total % 60)}`;

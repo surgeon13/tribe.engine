@@ -1522,10 +1522,27 @@ function renderSplitSlotCharts(host, { tribes, series, metric, formatVal, contai
   const grid = document.createElement("div");
   grid.className = "compare-slot-grid";
 
-  const perRow = compact ? 1 : containerW >= 1080 ? 3 : containerW >= 720 ? 2 : 1;
+  // Each bar has to stay wide enough to hold a name, so the column count comes
+  // from how many tribes are on the axis, not from the window alone. JS then
+  // tells the grid what it decided: if CSS auto-fit picked its own number the
+  // SVGs would be scaled to fit it, shrinking the very text this layout exists
+  // to make readable. Measure the panel we are about to fill rather than the
+  // wrapper around it, or the SVGs come out wider than their column and get
+  // scaled down anyway.
   const gap = 12;
-  const chartW = Math.max(240, Math.floor((containerW - gap * (perRow - 1)) / perRow) - 2);
+  const cardChrome = 10; // 1px border + 4px padding a side; see .compare-slot-card
+  const hostStyle = getComputedStyle(host);
+  const avail = Math.max(
+    240,
+    (host.clientWidth || containerW) -
+      (parseFloat(hostStyle.paddingLeft) || 0) -
+      (parseFloat(hostStyle.paddingRight) || 0)
+  );
+  const minChartW = 200 + tribes.length * 55;
+  const perRow = compact ? 1 : Math.max(1, Math.min(3, Math.floor(avail / minChartW)));
+  const chartW = Math.max(240, Math.floor((avail - gap * (perRow - 1)) / perRow) - cardChrome);
   const chartH = Math.max(210, Math.min(300, 190 + tribes.length * 12));
+  grid.style.gridTemplateColumns = `repeat(${perRow}, minmax(0, 1fr))`;
 
   data.roster.forEach((_, slotIndex) => {
     const bars = series.map((s, si) => ({

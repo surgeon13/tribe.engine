@@ -1,5 +1,5 @@
 /* Tevel Tribe Engine — offline shell + data cache */
-const CACHE = "tevel-pwa-v12";
+const CACHE = "tevel-pwa-v15";
 
 const PRECACHE = [
   "./",

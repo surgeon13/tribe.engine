@@ -2229,12 +2229,12 @@ body.tribe-editing #troop-table thead th {
   background: var(--surface);
 }
 
-/* Small multiples: one chart per troop slot. The columns are sized in JS so
-   each SVG is drawn at its real width rather than scaled down afterwards, and
-   auto-fit lets the row count follow the panel instead of the window. */
+/* Small multiples: one chart per troop slot. The column count is set inline by
+   the renderer, which sizes each SVG to match, so the charts are drawn at their
+   real width rather than scaled down into a column CSS chose on its own. */
 .compare-slot-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
 }
 
