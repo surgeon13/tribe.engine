@@ -150,6 +150,6 @@
     "aggregator": "median",
     "sources": ["roman", "teuton", "gaul", "egyptian", "hun", "spartan"],
     "preciseSource": "balance/median-baseline.json",
-    "createdAt": "2026-08-13T08:52:52.009Z"
+    "createdAt": "2026-08-13T09:01:14.359Z"
   }
 }

@@ -19,7 +19,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { combatIndex, totalCost } from "../lib/balance/anchors.js";
-import { TRAVIAN_CANON, isCanonTribe } from "../lib/balance/canon.js";
+import { TRAVIAN_CANON, canonLock, isCanonTribe } from "../lib/balance/canon.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataDir = path.join(__dirname, "..", "data");
@@ -32,6 +32,16 @@ const warnings = [];
 
 const STAT_KEYS = ["attack", "defenseInfantry", "defenseCavalry", "speed", "carry"];
 const COST_KEYS = ["wood", "clay", "iron", "crop"];
+
+// The seal. Default tribes are meant to stay put unless somebody deliberately
+// changes them, so changing one has to be a visible act rather than a nudge:
+// re-seal with `npm run canon:seal` and the new checksum lands in the diff.
+const sealed = canonLock(TRAVIAN_CANON);
+if (TRAVIAN_CANON.lock !== sealed) {
+  errors.push(
+    `the canon's seal is broken — it reads ${TRAVIAN_CANON.lock ?? "(none)"} but its contents hash to ${sealed}. A default tribe has been edited. If that was intended, re-seal with \`npm run canon:seal\`; if not, revert data/balance/travian-canon.json.`
+  );
+}
 
 let checkedTribes = 0;
 let checkedUnits = 0;
@@ -54,6 +64,20 @@ for (const entry of index.tribes || []) {
     checkedUnits += 1;
     const stats = { ...base[ref]?.stats, ...troop.overrides?.stats };
     const name = troop.overrides?.name?.en ?? base[ref]?.name?.en;
+
+    // Every number has to be present. A gap would silently fall back to the
+    // balance model at rebuild time, which is exactly the drift this prevents.
+    const missing = [
+      ...STAT_KEYS.filter((k) => unit.stats?.[k] == null),
+      ...(unit.cost ? COST_KEYS.filter((k) => unit.cost[k] == null) : ["cost"]),
+      ...(unit.cropUpkeep == null ? ["cropUpkeep"] : []),
+      ...(unit.timeSeconds == null ? ["timeSeconds"] : []),
+    ];
+    if (missing.length) {
+      errors.push(
+        `${id} — ${unit.name} is missing ${missing.join(", ")} in the canon; run \`npm run canon:freeze\``
+      );
+    }
 
     if (name !== unit.name) {
       errors.push(`${id} — ${ref} is called "${name}" but Travian calls it "${unit.name}"`);
@@ -110,8 +134,10 @@ for (const entry of index.tribes || []) {
   const cost = totalCost({ ...base[ref]?.cost, ...troop.overrides?.cost });
   const priced = Object.entries(canon.units).filter(([r, u]) => r !== "chief" && r !== "settler" && u.cost);
   const dearest = priced.map(([, u]) => totalCost(u.cost)).reduce((a, b) => Math.max(a, b), 0);
-  // Only meaningful where Travian actually publishes what its units cost.
-  if (priced.length && cost > dearest) {
+  // Only meaningful for something you buy by the hundred. A chief or a settler
+  // outcosts the whole barracks in Travian too, and neither is an army unit.
+  const armySlot = ref !== "chief" && ref !== "settler";
+  if (armySlot && priced.length && cost > dearest) {
     warnings.push(
       `${id} — ${name} (${ref}) costs ${cost}, more than any unit Travian gives the tribe (${dearest})`
     );

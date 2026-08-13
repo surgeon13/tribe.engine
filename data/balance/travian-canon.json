@@ -38,10 +38,7 @@
       "travian.fandom.com/wiki/Troops",
       "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
     ],
-    "nature": [
-      "support.kingdoms.com/en/articles/115-nature",
-      "wikitravian.free.fr/voir.php?page=Animals"
-    ]
+    "nature": ["support.kingdoms.com/en/articles/115-nature", "wikitravian.free.fr/voir.php?page=Animals"]
   },
   "$smithy": [
     "Travian's level-20 comparison tables can be back-solved to base values with",
@@ -53,115 +50,425 @@
     "roman": {
       "extendedSlot": "cav_t3",
       "units": {
-        "inf_t1": { "name": "Legionnaire", "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
-        "inf_t2": { "name": "Praetorian", "stats": { "attack": 30, "defenseInfantry": 65, "defenseCavalry": 35, "speed": 5, "carry": 20 }, "cropUpkeep": 1 },
-        "inf_t3": { "name": "Imperian", "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 25, "speed": 7, "carry": 50 }, "cropUpkeep": 1 },
-        "scout": { "name": "Equites Legati", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 }, "cropUpkeep": 2 },
-        "cav_t1": { "name": "Equites Imperatoris", "stats": { "attack": 120, "defenseInfantry": 65, "defenseCavalry": 50, "speed": 14, "carry": 100 }, "cropUpkeep": 3 },
-        "cav_t2": { "name": "Equites Caesaris", "stats": { "attack": 180, "defenseInfantry": 80, "defenseCavalry": 105, "speed": 10, "carry": 70 }, "cropUpkeep": 4 },
-        "ram": { "name": "Battering Ram", "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
-        "catapult": { "name": "Fire Catapult", "stats": { "attack": 75, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
-        "chief": { "name": "Senator", "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 4, "carry": 0 }, "cropUpkeep": 5 },
-        "settler": { "name": "Settler", "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+        "inf_t1": {
+          "name": "Legionnaire",
+          "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 50 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 130, "clay": 120, "iron": 155, "crop": 95 },
+          "timeSeconds": 1425
+        },
+        "inf_t2": {
+          "name": "Praetorian",
+          "stats": { "attack": 30, "defenseInfantry": 65, "defenseCavalry": 35, "speed": 5, "carry": 20 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 100, "clay": 100, "iron": 220, "crop": 45 },
+          "timeSeconds": 1590
+        },
+        "inf_t3": {
+          "name": "Imperian",
+          "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 25, "speed": 7, "carry": 50 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 140, "clay": 135, "iron": 300, "crop": 65 },
+          "timeSeconds": 1690
+        },
+        "scout": {
+          "name": "Equites Legati",
+          "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 135, "clay": 125, "iron": 75, "crop": 50 },
+          "timeSeconds": 1570
+        },
+        "cav_t1": {
+          "name": "Equites Imperatoris",
+          "stats": { "attack": 120, "defenseInfantry": 65, "defenseCavalry": 50, "speed": 14, "carry": 100 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 380, "clay": 340, "iron": 480, "crop": 120 },
+          "timeSeconds": 2235
+        },
+        "cav_t2": {
+          "name": "Equites Caesaris",
+          "stats": { "attack": 180, "defenseInfantry": 80, "defenseCavalry": 105, "speed": 10, "carry": 70 },
+          "cropUpkeep": 4,
+          "cost": { "wood": 540, "clay": 580, "iron": 1030, "crop": 200 },
+          "timeSeconds": 3105
+        },
+        "ram": {
+          "name": "Battering Ram",
+          "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 730, "clay": 290, "iron": 670, "crop": 70 },
+          "timeSeconds": 5285
+        },
+        "catapult": {
+          "name": "Fire Catapult",
+          "stats": { "attack": 75, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+          "cropUpkeep": 6,
+          "cost": { "wood": 1030, "clay": 1530, "iron": 1170, "crop": 120 },
+          "timeSeconds": 12310
+        },
+        "chief": {
+          "name": "Senator",
+          "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 4, "carry": 0 },
+          "cropUpkeep": 5,
+          "cost": { "wood": 21100, "clay": 18200, "iron": 54100, "crop": 30450 },
+          "timeSeconds": 98655
+        },
+        "settler": {
+          "name": "Settler",
+          "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 2950, "clay": 3850, "iron": 3500, "crop": 4250 },
+          "timeSeconds": 31815
+        }
       },
       "extension": {
         "cav_t3": {
           "name": "Equites Regales",
           "$comment": "Ours, not Travian's. Rome has a hammer and no anvil, so this is the anvil: barely a threat on the charge, and the wall a legion forms up behind. One field slower than the Caesaris it stands beside.",
           "stats": { "attack": 45, "defenseInfantry": 125, "defenseCavalry": 175, "speed": 9, "carry": 65 },
-          "cropUpkeep": 4
+          "cropUpkeep": 4,
+          "cost": { "wood": 310, "clay": 340, "iron": 560, "crop": 100 },
+          "timeSeconds": 2130
         }
       }
     },
     "teuton": {
       "extendedSlot": "cav_t3",
       "units": {
-        "inf_t1": { "name": "Clubswinger", "stats": { "attack": 40, "defenseInfantry": 20, "defenseCavalry": 5, "speed": 7, "carry": 60 }, "cropUpkeep": 1 },
-        "inf_t2": { "name": "Spearman", "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 }, "cropUpkeep": 1 },
-        "inf_t3": { "name": "Axeman", "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 30, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
-        "scout": { "name": "Scout", "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 5, "speed": 9, "carry": 0 }, "cropUpkeep": 1 },
-        "cav_t1": { "name": "Paladin", "stats": { "attack": 55, "defenseInfantry": 100, "defenseCavalry": 40, "speed": 10, "carry": 110 }, "cropUpkeep": 2 },
-        "cav_t2": { "name": "Teutonic Knight", "stats": { "attack": 150, "defenseInfantry": 50, "defenseCavalry": 75, "speed": 9, "carry": 80 }, "cropUpkeep": 3 },
-        "ram": { "name": "Ram", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
-        "catapult": { "name": "Catapult", "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
-        "chief": { "name": "Chief", "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 }, "cropUpkeep": 4 },
-        "settler": { "name": "Settler", "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+        "inf_t1": {
+          "name": "Clubswinger",
+          "stats": { "attack": 40, "defenseInfantry": 20, "defenseCavalry": 5, "speed": 7, "carry": 60 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 80, "clay": 65, "iron": 30, "crop": 35 },
+          "timeSeconds": 560
+        },
+        "inf_t2": {
+          "name": "Spearman",
+          "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 85, "clay": 75, "iron": 55, "crop": 25 },
+          "timeSeconds": 735
+        },
+        "inf_t3": {
+          "name": "Axeman",
+          "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 30, "speed": 6, "carry": 50 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 180, "clay": 150, "iron": 115, "crop": 55 },
+          "timeSeconds": 995
+        },
+        "scout": {
+          "name": "Scout",
+          "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 5, "speed": 9, "carry": 0 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 90, "clay": 70, "iron": 15, "crop": 20 },
+          "timeSeconds": 705
+        },
+        "cav_t1": {
+          "name": "Paladin",
+          "stats": { "attack": 55, "defenseInfantry": 100, "defenseCavalry": 40, "speed": 10, "carry": 110 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 430, "clay": 320, "iron": 160, "crop": 80 },
+          "timeSeconds": 1290
+        },
+        "cav_t2": {
+          "name": "Teutonic Knight",
+          "stats": { "attack": 150, "defenseInfantry": 50, "defenseCavalry": 75, "speed": 9, "carry": 80 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 530, "clay": 490, "iron": 300, "crop": 120 },
+          "timeSeconds": 1570
+        },
+        "ram": {
+          "name": "Ram",
+          "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 1200, "clay": 410, "iron": 320, "crop": 70 },
+          "timeSeconds": 3995
+        },
+        "catapult": {
+          "name": "Catapult",
+          "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+          "cropUpkeep": 6,
+          "cost": { "wood": 860, "clay": 1090, "iron": 290, "crop": 60 },
+          "timeSeconds": 6125
+        },
+        "chief": {
+          "name": "Chief",
+          "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+          "cropUpkeep": 4,
+          "cost": { "wood": 40850, "clay": 30050, "iron": 30800, "crop": 37100 },
+          "timeSeconds": 73820
+        },
+        "settler": {
+          "name": "Settler",
+          "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 5000, "clay": 5500, "iron": 1750, "crop": 4450 },
+          "timeSeconds": 24180
+        }
       },
       "extension": {
         "cav_t3": {
           "name": "Teutonic Raider",
           "$comment": "Ours, not Travian's. Teutons raid, so the spare slot is the plunder horse: the biggest saddlebags in the tribe and enough bite to take a farm, without touching the Knight's job.",
           "stats": { "attack": 90, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 11, "carry": 130 },
-          "cropUpkeep": 3
+          "cropUpkeep": 3,
+          "cost": { "wood": 360, "clay": 320, "iron": 180, "crop": 70 },
+          "timeSeconds": 1190
         }
       }
     },
     "gaul": {
       "extendedSlot": "inf_t3",
       "units": {
-        "inf_t1": { "name": "Phalanx", "stats": { "attack": 15, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 7, "carry": 35 }, "cropUpkeep": 1 },
-        "inf_t2": { "name": "Swordsman", "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 20, "speed": 6, "carry": 45 }, "cropUpkeep": 1 },
-        "scout": { "name": "Pathfinder", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 }, "cropUpkeep": 2 },
-        "cav_t1": { "name": "Theutates Thunder", "stats": { "attack": 90, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 }, "cropUpkeep": 2 },
-        "cav_t2": { "name": "Druidrider", "stats": { "attack": 45, "defenseInfantry": 115, "defenseCavalry": 55, "speed": 16, "carry": 35 }, "cropUpkeep": 2 },
-        "cav_t3": { "name": "Haeduan", "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 165, "speed": 13, "carry": 65 }, "cropUpkeep": 3 },
-        "ram": { "name": "Ram", "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 105, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
-        "catapult": { "name": "Trebuchet", "stats": { "attack": 70, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
-        "chief": { "name": "Chieftain", "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 0 }, "cropUpkeep": 4 },
-        "settler": { "name": "Settler", "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+        "inf_t1": {
+          "name": "Phalanx",
+          "stats": { "attack": 15, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 7, "carry": 35 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 95, "clay": 75, "iron": 45, "crop": 55 },
+          "timeSeconds": 760
+        },
+        "inf_t2": {
+          "name": "Swordsman",
+          "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 20, "speed": 6, "carry": 45 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 200, "clay": 170, "iron": 180, "crop": 80 },
+          "timeSeconds": 1555
+        },
+        "scout": {
+          "name": "Pathfinder",
+          "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 170, "clay": 135, "iron": 35, "crop": 50 },
+          "timeSeconds": 1275
+        },
+        "cav_t1": {
+          "name": "Theutates Thunder",
+          "stats": { "attack": 90, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 380, "clay": 280, "iron": 190, "crop": 90 },
+          "timeSeconds": 1460
+        },
+        "cav_t2": {
+          "name": "Druidrider",
+          "stats": { "attack": 45, "defenseInfantry": 115, "defenseCavalry": 55, "speed": 16, "carry": 35 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 280, "clay": 250, "iron": 210, "crop": 80 },
+          "timeSeconds": 1260
+        },
+        "cav_t3": {
+          "name": "Haeduan",
+          "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 165, "speed": 13, "carry": 65 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 570, "clay": 510, "iron": 410, "crop": 150 },
+          "timeSeconds": 1985
+        },
+        "ram": {
+          "name": "Ram",
+          "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 105, "speed": 4, "carry": 0 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 1080, "clay": 360, "iron": 400, "crop": 80 },
+          "timeSeconds": 4505
+        },
+        "catapult": {
+          "name": "Trebuchet",
+          "stats": { "attack": 70, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+          "cropUpkeep": 6,
+          "cost": { "wood": 1080, "clay": 1340, "iron": 500, "crop": 100 },
+          "timeSeconds": 8475
+        },
+        "chief": {
+          "name": "Chieftain",
+          "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 0 },
+          "cropUpkeep": 4,
+          "cost": { "wood": 35450, "clay": 25500, "iron": 36500, "crop": 41650 },
+          "timeSeconds": 85645
+        },
+        "settler": {
+          "name": "Settler",
+          "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 3900, "clay": 4200, "iron": 1850, "crop": 4550 },
+          "timeSeconds": 25615
+        }
       },
       "extension": {
         "inf_t3": {
           "name": "Gaul Tracker",
           "$comment": "Ours, not Travian's. Gauls field only two footmen, so this is the third: a woodsman who moves quicker than either and asks nothing of the granary.",
           "stats": { "attack": 40, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 8, "carry": 60 },
-          "cropUpkeep": 1
+          "cropUpkeep": 1,
+          "cost": { "wood": 110, "clay": 85, "iron": 95, "crop": 40 },
+          "timeSeconds": 880
         }
       }
     },
     "hun": {
       "extendedSlot": "inf_t3",
       "units": {
-        "inf_t1": { "name": "Mercenary", "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
-        "inf_t2": { "name": "Bowman", "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 6, "carry": 30 }, "cropUpkeep": 1 },
-        "scout": { "name": "Spotter", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 19, "carry": 0 }, "cropUpkeep": 2 },
-        "cav_t1": { "name": "Steppe Rider", "stats": { "attack": 120, "defenseInfantry": 30, "defenseCavalry": 15, "speed": 16, "carry": 75 }, "cropUpkeep": 2 },
-        "cav_t2": { "name": "Marksman", "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 16, "carry": 105 }, "cropUpkeep": 2 },
-        "cav_t3": { "name": "Marauder", "stats": { "attack": 180, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 14, "carry": 80 }, "cropUpkeep": 3 },
-        "ram": { "name": "Ram", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 90, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
-        "catapult": { "name": "Catapult", "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
-        "chief": { "name": "Logades", "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 5, "carry": 0 }, "cropUpkeep": 4 },
-        "settler": { "name": "Settler", "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+        "inf_t1": {
+          "name": "Mercenary",
+          "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 6, "carry": 50 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 95, "clay": 95, "iron": 75, "crop": 100 },
+          "timeSeconds": 880
+        },
+        "inf_t2": {
+          "name": "Bowman",
+          "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 6, "carry": 30 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 85, "clay": 90, "iron": 125, "crop": 60 },
+          "timeSeconds": 1030
+        },
+        "scout": {
+          "name": "Spotter",
+          "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 19, "carry": 0 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 135, "clay": 135, "iron": 50, "crop": 75 },
+          "timeSeconds": 1225
+        },
+        "cav_t1": {
+          "name": "Steppe Rider",
+          "stats": { "attack": 120, "defenseInfantry": 30, "defenseCavalry": 15, "speed": 16, "carry": 75 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 390, "clay": 370, "iron": 330, "crop": 180 },
+          "timeSeconds": 1675
+        },
+        "cav_t2": {
+          "name": "Marksman",
+          "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 16, "carry": 105 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 420, "clay": 480, "iron": 530, "crop": 230 },
+          "timeSeconds": 1890
+        },
+        "cav_t3": {
+          "name": "Marauder",
+          "stats": { "attack": 180, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 14, "carry": 80 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 480, "clay": 540, "iron": 570, "crop": 230 },
+          "timeSeconds": 2015
+        },
+        "ram": {
+          "name": "Ram",
+          "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 90, "speed": 4, "carry": 0 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 1000, "clay": 420, "iron": 610, "crop": 140 },
+          "timeSeconds": 4620
+        },
+        "catapult": {
+          "name": "Catapult",
+          "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+          "cropUpkeep": 6,
+          "cost": { "wood": 650, "clay": 1030, "iron": 500, "crop": 110 },
+          "timeSeconds": 6715
+        },
+        "chief": {
+          "name": "Logades",
+          "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 5, "carry": 0 },
+          "cropUpkeep": 4,
+          "cost": { "wood": 21450, "clay": 19600, "iron": 36700, "crop": 46450 },
+          "timeSeconds": 75360
+        },
+        "settler": {
+          "name": "Settler",
+          "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 3150, "clay": 4300, "iron": 2500, "crop": 6750 },
+          "timeSeconds": 26535
+        }
       },
       "extension": {
         "inf_t3": {
           "name": "Hun Warrior",
           "$comment": "Ours, not Travian's. The Huns get two footmen and three horses; this is the footman who can actually hold a gate long enough for the horses to come back.",
           "stats": { "attack": 60, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 6, "carry": 45 },
-          "cropUpkeep": 1
+          "cropUpkeep": 1,
+          "cost": { "wood": 120, "clay": 120, "iron": 170, "crop": 85 },
+          "timeSeconds": 1090
         }
       }
     },
     "egyptian": {
       "extendedSlot": "cav_t3",
       "units": {
-        "inf_t1": { "name": "Slave Militia", "stats": { "attack": 10, "defenseInfantry": 30, "defenseCavalry": 20, "speed": 7, "carry": 15 }, "cost": { "wood": 45, "clay": 60, "iron": 30, "crop": 15 }, "cropUpkeep": 1, "timeSeconds": 530 },
-        "inf_t2": { "name": "Ash Warden", "stats": { "attack": 30, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 }, "cost": { "wood": 115, "clay": 100, "iron": 145, "crop": 60 }, "cropUpkeep": 1, "timeSeconds": 1320 },
-        "inf_t3": { "name": "Khopesh Warrior", "stats": { "attack": 65, "defenseInfantry": 50, "defenseCavalry": 20, "speed": 7, "carry": 45 }, "cost": { "wood": 170, "clay": 180, "iron": 220, "crop": 80 }, "cropUpkeep": 1, "timeSeconds": 1440 },
-        "scout": { "name": "Sopdu Explorer", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 }, "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 }, "cropUpkeep": 2, "timeSeconds": 1360 },
-        "cav_t1": { "name": "Anhur Guard", "stats": { "attack": 50, "defenseInfantry": 110, "defenseCavalry": 50, "speed": 15, "carry": 50 }, "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 }, "cropUpkeep": 2, "timeSeconds": 2560 },
-        "cav_t2": { "name": "Resheph Chariot", "stats": { "attack": 110, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 10, "carry": 70 }, "cost": { "wood": 450, "clay": 560, "iron": 610, "crop": 180 }, "cropUpkeep": 3, "timeSeconds": 3240 },
-        "ram": { "name": "Ram", "stats": { "attack": 55, "defenseInfantry": 30, "defenseCavalry": 95, "speed": 4, "carry": 0 }, "cost": { "wood": 995, "clay": 575, "iron": 340, "crop": 80 }, "cropUpkeep": 3, "timeSeconds": 4800 },
-        "catapult": { "name": "Stone Catapult", "stats": { "attack": 65, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cost": { "wood": 980, "clay": 1510, "iron": 660, "crop": 100 }, "cropUpkeep": 6, "timeSeconds": 9000 },
-        "chief": { "name": "Nomarch", "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 4, "carry": 0 }, "cost": { "wood": 34000, "clay": 50000, "iron": 34000, "crop": 42000 }, "cropUpkeep": 4, "timeSeconds": 90700 },
-        "settler": { "name": "Settler", "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cost": { "wood": 5040, "clay": 6510, "iron": 4830, "crop": 4620 }, "cropUpkeep": 1, "timeSeconds": 24800 }
+        "inf_t1": {
+          "name": "Slave Militia",
+          "stats": { "attack": 10, "defenseInfantry": 30, "defenseCavalry": 20, "speed": 7, "carry": 15 },
+          "cost": { "wood": 45, "clay": 60, "iron": 30, "crop": 15 },
+          "cropUpkeep": 1,
+          "timeSeconds": 530
+        },
+        "inf_t2": {
+          "name": "Ash Warden",
+          "stats": { "attack": 30, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
+          "cost": { "wood": 115, "clay": 100, "iron": 145, "crop": 60 },
+          "cropUpkeep": 1,
+          "timeSeconds": 1320
+        },
+        "inf_t3": {
+          "name": "Khopesh Warrior",
+          "stats": { "attack": 65, "defenseInfantry": 50, "defenseCavalry": 20, "speed": 7, "carry": 45 },
+          "cost": { "wood": 170, "clay": 180, "iron": 220, "crop": 80 },
+          "cropUpkeep": 1,
+          "timeSeconds": 1440
+        },
+        "scout": {
+          "name": "Sopdu Explorer",
+          "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+          "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
+          "cropUpkeep": 2,
+          "timeSeconds": 1360
+        },
+        "cav_t1": {
+          "name": "Anhur Guard",
+          "stats": { "attack": 50, "defenseInfantry": 110, "defenseCavalry": 50, "speed": 15, "carry": 50 },
+          "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 },
+          "cropUpkeep": 2,
+          "timeSeconds": 2560
+        },
+        "cav_t2": {
+          "name": "Resheph Chariot",
+          "stats": { "attack": 110, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 10, "carry": 70 },
+          "cost": { "wood": 450, "clay": 560, "iron": 610, "crop": 180 },
+          "cropUpkeep": 3,
+          "timeSeconds": 3240
+        },
+        "ram": {
+          "name": "Ram",
+          "stats": { "attack": 55, "defenseInfantry": 30, "defenseCavalry": 95, "speed": 4, "carry": 0 },
+          "cost": { "wood": 995, "clay": 575, "iron": 340, "crop": 80 },
+          "cropUpkeep": 3,
+          "timeSeconds": 4800
+        },
+        "catapult": {
+          "name": "Stone Catapult",
+          "stats": { "attack": 65, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+          "cost": { "wood": 980, "clay": 1510, "iron": 660, "crop": 100 },
+          "cropUpkeep": 6,
+          "timeSeconds": 9000
+        },
+        "chief": {
+          "name": "Nomarch",
+          "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 4, "carry": 0 },
+          "cost": { "wood": 34000, "clay": 50000, "iron": 34000, "crop": 42000 },
+          "cropUpkeep": 4,
+          "timeSeconds": 90700
+        },
+        "settler": {
+          "name": "Settler",
+          "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+          "cost": { "wood": 5040, "clay": 6510, "iron": 4830, "crop": 4620 },
+          "cropUpkeep": 1,
+          "timeSeconds": 24800
+        }
       },
       "extension": {
         "cav_t3": {
           "name": "Royal Chariot",
           "$comment": "Ours, not Travian's. Egypt has no cavalry that attacks; this is the pharaoh's own, quick enough to answer a raid without becoming the hammer the tribe is deliberately denied.",
           "stats": { "attack": 130, "defenseInfantry": 60, "defenseCavalry": 70, "speed": 11, "carry": 80 },
-          "cropUpkeep": 3
+          "cropUpkeep": 3,
+          "cost": { "wood": 340, "clay": 560, "iron": 320, "crop": 100 },
+          "timeSeconds": 1595
         }
       }
     },
@@ -169,46 +476,170 @@
       "extendedSlot": "cav_t3",
       "$comment": "Natar troops have fixed stats and take no smithy upgrades. They cannot be trained by players, so Travian publishes no price for them and our own model supplies one.",
       "units": {
-        "inf_t1": { "name": "Pikeman", "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 10 }, "cropUpkeep": 1 },
-        "inf_t2": { "name": "Thorned Warrior", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 7, "carry": 10 }, "cropUpkeep": 1 },
-        "inf_t3": { "name": "Guardsman", "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 75, "speed": 6, "carry": 10 }, "cropUpkeep": 1 },
-        "scout": { "name": "Birds of Prey", "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 10, "speed": 25, "carry": 10 }, "cropUpkeep": 1 },
-        "cav_t1": { "name": "Axerider", "stats": { "attack": 155, "defenseInfantry": 80, "defenseCavalry": 50, "speed": 14, "carry": 10 }, "cropUpkeep": 2 },
-        "cav_t2": { "name": "Natarian Knight", "stats": { "attack": 170, "defenseInfantry": 140, "defenseCavalry": 80, "speed": 12, "carry": 10 }, "cropUpkeep": 3 },
-        "ram": { "name": "War Elephant", "stats": { "attack": 250, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 5, "carry": 10 }, "cropUpkeep": 4 },
-        "catapult": { "name": "Ballista", "stats": { "attack": 60, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 10 }, "cropUpkeep": 5 },
-        "chief": { "name": "Natarian Emperor", "stats": { "attack": 80, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 10 }, "cropUpkeep": 1 },
-        "settler": { "name": "Settler", "stats": { "attack": 30, "defenseInfantry": 40, "defenseCavalry": 40, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+        "inf_t1": {
+          "name": "Pikeman",
+          "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 10 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 75, "clay": 85, "iron": 75, "crop": 50 },
+          "timeSeconds": 1040
+        },
+        "inf_t2": {
+          "name": "Thorned Warrior",
+          "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 7, "carry": 10 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 115, "clay": 145, "iron": 210, "crop": 50 },
+          "timeSeconds": 1820
+        },
+        "inf_t3": {
+          "name": "Guardsman",
+          "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 75, "speed": 6, "carry": 10 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 310, "clay": 360, "iron": 540, "crop": 130 },
+          "timeSeconds": 2890
+        },
+        "scout": {
+          "name": "Birds of Prey",
+          "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 10, "speed": 25, "carry": 10 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 140, "clay": 160, "iron": 60, "crop": 50 },
+          "timeSeconds": 1740
+        },
+        "cav_t1": {
+          "name": "Axerider",
+          "stats": { "attack": 155, "defenseInfantry": 80, "defenseCavalry": 50, "speed": 14, "carry": 10 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 580, "clay": 630, "iron": 600, "crop": 170 },
+          "timeSeconds": 3085
+        },
+        "cav_t2": {
+          "name": "Natarian Knight",
+          "stats": { "attack": 170, "defenseInfantry": 140, "defenseCavalry": 80, "speed": 12, "carry": 10 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 590, "clay": 770, "iron": 910, "crop": 200 },
+          "timeSeconds": 3390
+        },
+        "ram": {
+          "name": "War Elephant",
+          "stats": { "attack": 250, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 5, "carry": 10 },
+          "cropUpkeep": 4,
+          "cost": { "wood": 3700, "clay": 1800, "iron": 2800, "crop": 350 },
+          "timeSeconds": 15770
+        },
+        "catapult": {
+          "name": "Ballista",
+          "stats": { "attack": 60, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 10 },
+          "cropUpkeep": 5,
+          "cost": { "wood": 760, "clay": 1380, "iron": 710, "crop": 80 },
+          "timeSeconds": 10945
+        },
+        "chief": {
+          "name": "Natarian Emperor",
+          "stats": { "attack": 80, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 10 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 42050, "clay": 44400, "iron": 88350, "crop": 57350 },
+          "timeSeconds": 157185
+        },
+        "settler": {
+          "name": "Settler",
+          "stats": { "attack": 30, "defenseInfantry": 40, "defenseCavalry": 40, "speed": 5, "carry": 3000 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 2550, "clay": 4050, "iron": 2450, "crop": 3450 },
+          "timeSeconds": 30620
+        }
       },
       "extension": {
         "cav_t3": {
           "name": "Natarian Lancer",
           "$comment": "Ours, not Travian's. A second Natarian horse between the Axerider and the Knight — enough to make an artefact village hurt, well short of the Warelephant.",
           "stats": { "attack": 160, "defenseInfantry": 70, "defenseCavalry": 95, "speed": 13, "carry": 10 },
-          "cropUpkeep": 3
+          "cropUpkeep": 3,
+          "cost": { "wood": 490, "clay": 640, "iron": 710, "crop": 150 },
+          "timeSeconds": 2975
         }
       }
     },
     "spartan": {
       "extendedSlot": "cav_t3",
       "units": {
-        "inf_t1": { "name": "Hoplite", "stats": { "attack": 50, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 6, "carry": 60 }, "cropUpkeep": 1 },
-        "inf_t2": { "name": "Shieldsman", "stats": { "attack": 40, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 8, "carry": 40 }, "cropUpkeep": 1 },
-        "inf_t3": { "name": "Twinsteel Therion", "stats": { "attack": 90, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
-        "scout": { "name": "Sentinel", "stats": { "attack": 0, "defenseInfantry": 40, "defenseCavalry": 22, "speed": 9, "carry": 0 }, "cropUpkeep": 1 },
-        "cav_t1": { "name": "Elpida Rider", "stats": { "attack": 55, "defenseInfantry": 120, "defenseCavalry": 90, "speed": 16, "carry": 110 }, "cropUpkeep": 2 },
-        "cav_t2": { "name": "Corinthian Crusher", "stats": { "attack": 195, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 9, "carry": 80 }, "cropUpkeep": 3 },
-        "ram": { "name": "Ram", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
-        "catapult": { "name": "Ballista", "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
-        "chief": { "name": "Ephor", "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 }, "cropUpkeep": 4 },
-        "settler": { "name": "Settler", "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+        "inf_t1": {
+          "name": "Hoplite",
+          "stats": { "attack": 50, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 6, "carry": 60 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 150, "clay": 105, "iron": 145, "crop": 105 },
+          "timeSeconds": 1450
+        },
+        "inf_t2": {
+          "name": "Shieldsman",
+          "stats": { "attack": 40, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 8, "carry": 40 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 200, "clay": 150, "iron": 360, "crop": 90 },
+          "timeSeconds": 2315
+        },
+        "inf_t3": {
+          "name": "Twinsteel Therion",
+          "stats": { "attack": 90, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 260, "clay": 190, "iron": 450, "crop": 120 },
+          "timeSeconds": 2320
+        },
+        "scout": {
+          "name": "Sentinel",
+          "stats": { "attack": 0, "defenseInfantry": 40, "defenseCavalry": 22, "speed": 9, "carry": 0 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 410, "clay": 290, "iron": 180, "crop": 150 },
+          "timeSeconds": 3045
+        },
+        "cav_t1": {
+          "name": "Elpida Rider",
+          "stats": { "attack": 55, "defenseInfantry": 120, "defenseCavalry": 90, "speed": 16, "carry": 110 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 540, "clay": 360, "iron": 560, "crop": 160 },
+          "timeSeconds": 2600
+        },
+        "cav_t2": {
+          "name": "Corinthian Crusher",
+          "stats": { "attack": 195, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 9, "carry": 80 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 640, "clay": 510, "iron": 980, "crop": 230 },
+          "timeSeconds": 3160
+        },
+        "ram": {
+          "name": "Ram",
+          "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 930, "clay": 280, "iron": 700, "crop": 90 },
+          "timeSeconds": 5845
+        },
+        "catapult": {
+          "name": "Ballista",
+          "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+          "cropUpkeep": 6,
+          "cost": { "wood": 870, "clay": 970, "iron": 820, "crop": 100 },
+          "timeSeconds": 10090
+        },
+        "chief": {
+          "name": "Ephor",
+          "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+          "cropUpkeep": 4,
+          "cost": { "wood": 26850, "clay": 17400, "iron": 56650, "crop": 37900 },
+          "timeSeconds": 108030
+        },
+        "settler": {
+          "name": "Settler",
+          "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 3850, "clay": 3750, "iron": 3750, "crop": 5350 },
+          "timeSeconds": 35380
+        }
       },
       "extension": {
         "cav_t3": {
           "name": "Spartan Horseman",
           "$comment": "Ours, not Travian's. Sparta trusts its shield wall and keeps two horses; this is the third, a flank guard that neither out-charges the Crusher nor out-holds the Elpida.",
           "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 80, "speed": 12, "carry": 70 },
-          "cropUpkeep": 2
+          "cropUpkeep": 2,
+          "cost": { "wood": 500, "clay": 400, "iron": 720, "crop": 150 },
+          "timeSeconds": 2640
         }
       }
     },
@@ -216,25 +647,88 @@
       "extendedSlot": "settler",
       "$comment": "Oasis animals. Travian publishes their combat values and crop, but they never move and cannot be trained, so speed, carry and price are left to our model rather than invented here.",
       "units": {
-        "inf_t1": { "name": "Rat", "stats": { "attack": 10, "defenseInfantry": 25, "defenseCavalry": 20 }, "cropUpkeep": 1 },
-        "inf_t2": { "name": "Spider", "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 40 }, "cropUpkeep": 1 },
-        "inf_t3": { "name": "Snake", "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 60 }, "cropUpkeep": 1 },
-        "scout": { "name": "Bat", "stats": { "attack": 80, "defenseInfantry": 66, "defenseCavalry": 50 }, "cropUpkeep": 1 },
-        "cav_t1": { "name": "Wild Boar", "stats": { "attack": 50, "defenseInfantry": 70, "defenseCavalry": 33 }, "cropUpkeep": 2 },
-        "cav_t2": { "name": "Wolf", "stats": { "attack": 100, "defenseInfantry": 80, "defenseCavalry": 70 }, "cropUpkeep": 2 },
-        "cav_t3": { "name": "Bear", "stats": { "attack": 250, "defenseInfantry": 140, "defenseCavalry": 200 }, "cropUpkeep": 3 },
-        "ram": { "name": "Crocodile", "stats": { "attack": 450, "defenseInfantry": 380, "defenseCavalry": 240 }, "cropUpkeep": 3 },
-        "catapult": { "name": "Tiger", "stats": { "attack": 200, "defenseInfantry": 170, "defenseCavalry": 250 }, "cropUpkeep": 3 },
-        "chief": { "name": "Elephant", "stats": { "attack": 600, "defenseInfantry": 440, "defenseCavalry": 520 }, "cropUpkeep": 5 }
+        "inf_t1": {
+          "name": "Rat",
+          "stats": { "attack": 10, "defenseInfantry": 25, "defenseCavalry": 20, "speed": 7, "carry": 9 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 50, "clay": 45, "iron": 35, "crop": 30 },
+          "timeSeconds": 565
+        },
+        "inf_t2": {
+          "name": "Spider",
+          "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 40, "speed": 6, "carry": 4 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 90, "clay": 95, "iron": 110, "crop": 35 },
+          "timeSeconds": 1080
+        },
+        "inf_t3": {
+          "name": "Snake",
+          "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 60, "speed": 8, "carry": 8 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 165, "clay": 160, "iron": 200, "crop": 65 },
+          "timeSeconds": 1350
+        },
+        "scout": {
+          "name": "Bat",
+          "stats": { "attack": 80, "defenseInfantry": 66, "defenseCavalry": 50, "speed": 18, "carry": 0 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 1270, "clay": 1200, "iron": 390, "crop": 390 },
+          "timeSeconds": 5355
+        },
+        "cav_t1": {
+          "name": "Wild Boar",
+          "stats": { "attack": 50, "defenseInfantry": 70, "defenseCavalry": 33, "speed": 14, "carry": 20 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 280, "clay": 250, "iron": 200, "crop": 70 },
+          "timeSeconds": 1380
+        },
+        "cav_t2": {
+          "name": "Wolf",
+          "stats": { "attack": 100, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 14, "carry": 21 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 370, "clay": 390, "iron": 390, "crop": 110 },
+          "timeSeconds": 1765
+        },
+        "cav_t3": {
+          "name": "Bear",
+          "stats": { "attack": 250, "defenseInfantry": 140, "defenseCavalry": 200, "speed": 11, "carry": 19 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 920, "clay": 980, "iron": 920, "crop": 240 },
+          "timeSeconds": 3135
+        },
+        "ram": {
+          "name": "Crocodile",
+          "stats": { "attack": 450, "defenseInfantry": 380, "defenseCavalry": 240, "speed": 4, "carry": 0 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 6150, "clay": 2450, "iron": 3200, "crop": 500 },
+          "timeSeconds": 15840
+        },
+        "catapult": {
+          "name": "Tiger",
+          "stats": { "attack": 200, "defenseInfantry": 170, "defenseCavalry": 250, "speed": 3, "carry": 0 },
+          "cropUpkeep": 3,
+          "cost": { "wood": 3850, "clay": 5700, "iron": 2500, "crop": 350 },
+          "timeSeconds": 22385
+        },
+        "chief": {
+          "name": "Elephant",
+          "stats": { "attack": 600, "defenseInfantry": 440, "defenseCavalry": 520, "speed": 4, "carry": 0 },
+          "cropUpkeep": 5,
+          "cost": { "wood": 371400, "clay": 320750, "iron": 540200, "crop": 455800 },
+          "timeSeconds": 456695
+        }
       },
       "extension": {
         "settler": {
           "name": "Herd",
           "$comment": "Ours, not Travian's. Wildlife does not settle, so the slot holds the herd an oasis grows back with.",
-          "stats": { "attack": 0, "defenseInfantry": 60, "defenseCavalry": 60 },
-          "cropUpkeep": 1
+          "stats": { "attack": 0, "defenseInfantry": 60, "defenseCavalry": 60, "speed": 5, "carry": 3000 },
+          "cropUpkeep": 1,
+          "cost": { "wood": 3000, "clay": 3850, "iron": 2000, "crop": 3600 },
+          "timeSeconds": 24345
         }
       }
     }
-  }
+  },
+  "lock": "45f17ead59556328"
 }

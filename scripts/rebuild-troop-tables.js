@@ -16,7 +16,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { SCORED_REFS, combatIndex, totalCost } from "../lib/balance/anchors.js";
 import { TRAVIAN_CANON, isCanonTribe } from "../lib/balance/canon.js";
-import { buildAllTables, priceUnit } from "../lib/balance/generate-troops.js";
+import { buildAllTables } from "../lib/balance/generate-troops.js";
 import { TRIBE_IDENTITIES } from "../lib/balance/identities.js";
 import { formatJson } from "../lib/json-format.js";
 
@@ -40,24 +40,19 @@ const { calibration, tables } = buildAllTables();
  * sit alongside them instead of towering over them.
  * @param {string} id
  */
-function canonTable(id, generated) {
+function canonTable(id) {
   const tribe = TRAVIAN_CANON.tribes[id];
-  const spec = TRIBE_IDENTITIES[id];
   const out = {};
   for (const [ref, unit] of Object.entries({ ...tribe.units, ...tribe.extension })) {
-    // Anything the canon leaves out stays with our model. Travian publishes no
-    // meaningful speed or carry for oasis animals, which never move, and no
-    // price for anything that cannot be trained.
-    const stats = { ...generated?.[ref]?.stats, ...unit.stats };
-    const priced =
-      unit.cost && unit.cropUpkeep != null && unit.timeSeconds != null
-        ? null
-        : priceUnit(ref, stats, spec);
+    // Pure transcription, on purpose. Nothing here consults the identity model
+    // or the calibration, so no amount of rebalancing elsewhere can reach a
+    // default tribe. Gaps were filled once by scripts/freeze-canon.js and are
+    // data now; validate-canon.js fails the build if any are left open.
     out[ref] = {
-      stats,
-      cost: unit.cost ?? priced.cost,
-      cropUpkeep: unit.cropUpkeep ?? priced.cropUpkeep,
-      timeSeconds: unit.timeSeconds ?? priced.timeSeconds,
+      stats: unit.stats,
+      cost: unit.cost,
+      cropUpkeep: unit.cropUpkeep,
+      timeSeconds: unit.timeSeconds,
     };
   }
   return out;
@@ -71,7 +66,7 @@ for (const entry of index.tribes || []) {
   const rel = `tribes/${entry.file}`;
   const doc = readJson(rel);
   const id = entry.id || doc.tribe?.id;
-  const table = isCanonTribe(id) ? canonTable(id, tables[id]) : tables[id];
+  const table = isCanonTribe(id) ? canonTable(id) : tables[id];
   if (!table) {
     console.warn(`  skipped ${id} — no identity spec`);
     continue;
@@ -134,7 +129,7 @@ for (const entry of index.tribes || []) {
   const slot = training.tribes?.[id];
   if (slot) {
     for (const [ref, next] of Object.entries(table)) {
-      if (!slot[ref]) continue;
+      if (!slot[ref] || next.timeSeconds == null) continue;
       slot[ref].timeSeconds = next.timeSeconds;
     }
   }

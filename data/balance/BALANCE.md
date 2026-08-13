@@ -13,17 +13,45 @@ We transcribe them; we do not tune them.
 | Loader and helpers | `lib/balance/canon.js` |
 | Gate that fails the build on drift | `npm run validate:canon` |
 
-Two rules follow from this, and both are enforced:
+Three rules follow from this, and all three are enforced:
 
 1. **The canon does not move.** `validate-canon.js` compares every published
-   unit's name, stats, crop upkeep and — where the price is verified — cost
-   against the canon file. A Hun Marksman is 110/80/70. It once drifted to
-   142/46/42 through the generator, which is what prompted all of this.
-2. **The canonical tribes are exempt from the identity model below.** The
+   unit's name, stats, crop upkeep and cost against the canon file. A Hun
+   Marksman is 110/80/70. It once drifted to 142/46/42 through the generator,
+   which is what prompted all of this.
+2. **Nothing about a default tribe is computed.** Travian does not publish a
+   price for every unit, and publishes nothing at all for oasis animals, which
+   never move and cannot be bought. Those gaps used to be filled at rebuild
+   time by our pricing model — which meant a default tribe's costs shifted
+   whenever an unrelated dial moved, because the calibration is a mean across
+   all player tribes. They were filled once by `npm run canon:freeze` and are
+   plain data now. `canonTable()` consults neither the model nor the
+   calibration, and the validator fails on any gap that could reopen the door.
+3. **The canonical tribes are exempt from the identity model below.** The
    anchors that model prices against were measured *from* these tribes, so
    holding them to it would be marking the ruler against the thing it measures.
    They are skipped by the fairness band, the centerpiece rule, tier ordering
    and filler detection.
+
+### Changing a default tribe on purpose
+
+The canon carries a `lock`: a checksum over every number in it. This is not
+security, it is intent — a default tribe should only change when somebody asks
+for that, so changing one is a visible act rather than a nudge.
+
+```
+npm run canon:seal      # re-seal after a deliberate edit
+npm run canon:freeze    # fill any new gap from the model, then seal
+```
+
+Edit the canon, re-seal, rebuild. The new checksum lands in the diff on its own
+line. Skip the re-seal and the build fails with the old and new hashes side by
+side. Prose and `$comment` keys are excluded from the checksum, so
+documentation can be improved freely.
+
+Where a cost is Travian's own it is marked in `sources`; the rest are ours,
+frozen at the value the model last produced, and can be replaced with published
+figures as they are verified.
 
 ### The eleventh slot
 
