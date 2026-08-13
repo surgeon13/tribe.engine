@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-13T09:49:50.111Z",
+  "generatedAt": "2026-08-13T10:19:32.955Z",
   "roster": [
     {
       "slot": 1,
@@ -2485,7 +2485,7 @@
           "graphics": {
             "sprite": "tribes/gaul/units/07_cavalry.png",
             "icon": "tribes/gaul/units/07_cavalry_icon.png",
-            "logo": "animals/ram.svg",
+            "logo": "cavalry/mounted-knight.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -2508,7 +2508,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/gaul/units/07_cavalry.png",
-            "logo": "assets/animals/ram.svg",
+            "logo": "assets/cavalry/mounted-knight.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -4140,7 +4140,7 @@
           "graphics": {
             "sprite": "tribes/hun/units/07_cavalry.png",
             "icon": "tribes/hun/units/07_cavalry_icon.png",
-            "logo": "animals/pegasus.svg",
+            "logo": "cavalry/cavalry.svg",
             "baseSprite": "units/base/cav_t3.png",
             "baseIcon": "units/base/cav_t3_icon.png",
             "baseLogo": "cavalry/elephant.svg"
@@ -4163,7 +4163,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/07_cavalry_icon.png",
             "sprite": "assets/tribes/hun/units/07_cavalry.png",
-            "logo": "assets/animals/pegasus.svg",
+            "logo": "assets/cavalry/cavalry.svg",
             "baseIcon": "assets/units/base/cav_t3_icon.png",
             "baseSprite": "assets/units/base/cav_t3.png",
             "baseLogo": "assets/cavalry/elephant.svg"
@@ -4902,7 +4902,7 @@
           "graphics": {
             "sprite": "tribes/spartan/units/06_cavalry.png",
             "icon": "tribes/spartan/units/06_cavalry_icon.png",
-            "logo": "animals/ram.svg",
+            "logo": "cavalry/chess-knight.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -4925,7 +4925,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/spartan/units/06_cavalry.png",
-            "logo": "assets/animals/ram.svg",
+            "logo": "assets/cavalry/chess-knight.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"
@@ -14018,7 +14018,7 @@
           "graphics": {
             "sprite": "tribes/undead/units/06_cavalry.png",
             "icon": "tribes/undead/units/06_cavalry_icon.png",
-            "logo": "animals/ram.svg",
+            "logo": "cavalry/mounted-knight.svg",
             "baseSprite": "units/base/cav_t2.png",
             "baseIcon": "units/base/cav_t2_icon.png",
             "baseLogo": "cavalry/chess-knight.svg"
@@ -14041,7 +14041,7 @@
           "graphicsUrls": {
             "icon": "assets/tribes/undead/units/06_cavalry_icon.png",
             "sprite": "assets/tribes/undead/units/06_cavalry.png",
-            "logo": "assets/animals/ram.svg",
+            "logo": "assets/cavalry/mounted-knight.svg",
             "baseIcon": "assets/units/base/cav_t2_icon.png",
             "baseSprite": "assets/units/base/cav_t2.png",
             "baseLogo": "assets/cavalry/chess-knight.svg"

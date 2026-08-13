@@ -73,7 +73,7 @@
         "stats": { "attack": 210, "defenseInfantry": 70, "defenseCavalry": 65, "speed": 14, "carry": 90 },
         "cost": { "wood": 680, "clay": 580, "iron": 940, "crop": 250 },
         "cropUpkeep": 3,
-        "graphics": { "logo": "animals/ram.svg" },
+        "graphics": { "logo": "cavalry/mounted-knight.svg" },
         "description": { "en": "Cursed heavy cavalry — dread charge that breaks Natarian knights." }
       }
     },

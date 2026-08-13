@@ -13,9 +13,10 @@ import fs from "fs/promises";
 import path from "path";
 import { spawn } from "child_process";
 import { resolveRepoRoot } from "../lib/repo-root.js";
+import { formatJson } from "../lib/json-format.js";
 import { isCoreTribe } from "../lib/tribe-generator/write.js";
 import { SIEGE_LOGOS } from "../lib/tribe-generator/siege-logos.js";
-import { MOUNT_LOGOS } from "../lib/tribe-generator/mount-logos.js";
+import { MOUNT_LOGOS, WILDLIFE_MOUNTS } from "../lib/tribe-generator/mount-logos.js";
 
 const root = resolveRepoRoot();
 const dataDir = path.join(root, "data");
@@ -24,18 +25,27 @@ const dataDir = path.join(root, "data");
 const CURATED_REFS = Object.freeze({
   ram: ["rams"],
   catapult: ["catapults"],
-  cav_t1: ["cavalry", "animals"],
-  cav_t2: ["cavalry", "animals"],
-  cav_t3: ["cavalry", "animals"],
+  cav_t1: ["cavalry"],
+  cav_t2: ["cavalry"],
+  cav_t3: ["cavalry"],
   scout: ["infantry", "animals"],
 });
+
+/** @returns {string[]} groups `ref` may draw from for this tribe */
+function groupsFor(tribeId, ref) {
+  const allowed = CURATED_REFS[ref];
+  if (ref.startsWith("cav_") && WILDLIFE_MOUNTS.includes(tribeId)) {
+    return [...allowed, "animals"];
+  }
+  return allowed;
+}
 
 async function readJson(rel) {
   return JSON.parse(await fs.readFile(path.join(dataDir, rel), "utf8"));
 }
 
 async function writeJson(rel, value) {
-  await fs.writeFile(path.join(dataDir, rel), `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  await fs.writeFile(path.join(dataDir, rel), formatJson(value), "utf8");
 }
 
 function runBuild() {
@@ -57,14 +67,17 @@ function runBuild() {
 
 /**
  * @param {object} logoGroups
+ * @param {string} tribeId
  * @param {string} ref
  * @param {string} iconPath
  */
-function assertInGroups(logoGroups, ref, iconPath) {
-  const allowed = CURATED_REFS[ref];
+function assertInGroups(logoGroups, tribeId, ref, iconPath) {
+  const allowed = groupsFor(tribeId, ref);
   const ok = allowed.some((group) => (logoGroups.groups?.[group]?.icons || []).includes(iconPath));
   if (!ok) {
-    throw new Error(`${iconPath} for ${ref} is not listed in logo-groups ${allowed.join("/")}`);
+    throw new Error(
+      `${iconPath} for ${tribeId}.${ref} is not listed in logo-groups ${allowed.join("/")}`
+    );
   }
 }
 
@@ -120,7 +133,7 @@ async function main() {
       continue;
     }
 
-    for (const ref of refs) assertInGroups(logoGroups, ref, curated[ref]);
+    for (const ref of refs) assertInGroups(logoGroups, tribeId, ref, curated[ref]);
 
     const prev = tribeLogos.tribes[tribeId] || {};
     const next = { ...prev };
