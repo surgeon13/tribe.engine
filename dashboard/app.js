@@ -304,7 +304,7 @@ function renderNav() {
 
     nav.append(row);
   }
-  updateTribeNavOverflow();
+  scheduleTribeNavOverflow();
 }
 
 /** The top-bar layout, where the tribe list is capped and can hide tribes. */
@@ -348,21 +348,41 @@ function updateTribeNavOverflow() {
     : "Show fewer";
 }
 
+/**
+ * Counting has to wait for the layout the count describes. Chips are laid out
+ * by text width, so the roster rewraps when the web font swaps in, and a number
+ * measured before that is simply wrong about a different layout. Coalesced to
+ * one frame because scroll, resize and the observer all ask for the same thing.
+ */
+let tribeNavOverflowFrame = 0;
+function scheduleTribeNavOverflow() {
+  if (tribeNavOverflowFrame) return;
+  tribeNavOverflowFrame = requestAnimationFrame(() => {
+    tribeNavOverflowFrame = 0;
+    updateTribeNavOverflow();
+  });
+}
+
 function bindTribeNav() {
   const wrap = $("#tribe-nav-wrap");
   const nav = $("#tribe-nav");
   const more = $("#tribe-nav-more");
   if (!wrap || !nav || !more) return;
 
+  // The font swap rewraps the chips; the observer catches the breakpoint
+  // flipping the cap between sidebar height and top-bar height.
+  document.fonts?.ready.then(scheduleTribeNavOverflow);
+  if (window.ResizeObserver) new ResizeObserver(scheduleTribeNavOverflow).observe(nav);
+
   more.addEventListener("click", () => {
     const expanded = wrap.dataset.expanded === "1";
     wrap.dataset.expanded = expanded ? "0" : "1";
     more.setAttribute("aria-expanded", String(!expanded));
     if (expanded) nav.scrollTop = 0;
-    updateTribeNavOverflow();
+    scheduleTribeNavOverflow();
   });
 
-  nav.addEventListener("scroll", updateTribeNavOverflow, { passive: true });
+  nav.addEventListener("scroll", scheduleTribeNavOverflow, { passive: true });
 }
 
 function renderPalette(palette) {
@@ -1827,7 +1847,7 @@ function bindCompareCompactViewport() {
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
-      updateTribeNavOverflow();
+      scheduleTribeNavOverflow();
       const was = document.documentElement.dataset.compareCompact;
       const now = syncCompareCompactAttr() ? "1" : "0";
       if (was !== now && !compareChartLayoutUserPicked) {
