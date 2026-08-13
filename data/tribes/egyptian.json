@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Slave Militia" },
-        "stats": { "attack": 29, "defenseInfantry": 35, "defenseCavalry": 41, "speed": 6, "carry": 43 },
-        "cost": { "wood": 90, "clay": 130, "iron": 55, "crop": 60 },
+        "stats": { "attack": 28, "defenseInfantry": 34, "defenseCavalry": 40, "speed": 6, "carry": 43 },
+        "cost": { "wood": 85, "clay": 120, "iron": 55, "crop": 55 },
         "cropUpkeep": 1
       }
     },
@@ -24,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Ash Warden" },
-        "stats": { "attack": 25, "defenseInfantry": 67, "defenseCavalry": 35, "speed": 5, "carry": 21 },
-        "cost": { "wood": 100, "clay": 160, "iron": 115, "crop": 45 },
+        "stats": { "attack": 24, "defenseInfantry": 65, "defenseCavalry": 34, "speed": 5, "carry": 21 },
+        "cost": { "wood": 90, "clay": 150, "iron": 110, "crop": 40 },
         "cropUpkeep": 1
       }
     },
@@ -33,8 +33,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Khopesh Warrior" },
-        "stats": { "attack": 61, "defenseInfantry": 41, "defenseCavalry": 31, "speed": 7, "carry": 48 },
-        "cost": { "wood": 140, "clay": 210, "iron": 160, "crop": 60 },
+        "stats": { "attack": 59, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 48 },
+        "cost": { "wood": 135, "clay": 200, "iron": 150, "crop": 60 },
         "cropUpkeep": 1
       }
     },
@@ -42,8 +42,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Sopdu Explorer" },
-        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
-        "cost": { "wood": 125, "clay": 180, "iron": 35, "crop": 40 },
+        "stats": { "attack": 0, "defenseInfantry": 19, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 115, "clay": 170, "iron": 35, "crop": 40 },
         "cropUpkeep": 2
       }
     },
@@ -51,8 +51,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Anhur Guard" },
-        "stats": { "attack": 37, "defenseInfantry": 85, "defenseCavalry": 37, "speed": 12, "carry": 117 },
-        "cost": { "wood": 185, "clay": 255, "iron": 125, "crop": 55 },
+        "stats": { "attack": 34, "defenseInfantry": 79, "defenseCavalry": 34, "speed": 12, "carry": 117 },
+        "cost": { "wood": 160, "clay": 220, "iron": 110, "crop": 45 },
         "cropUpkeep": 2
       }
     },
@@ -60,8 +60,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Resheph Chariot" },
-        "stats": { "attack": 119, "defenseInfantry": 55, "defenseCavalry": 51, "speed": 13, "carry": 77 },
-        "cost": { "wood": 360, "clay": 590, "iron": 360, "crop": 120 },
+        "stats": { "attack": 110, "defenseInfantry": 51, "defenseCavalry": 47, "speed": 13, "carry": 77 },
+        "cost": { "wood": 300, "clay": 510, "iron": 310, "crop": 110 },
         "cropUpkeep": 2
       }
     },
@@ -70,8 +70,8 @@
       "overrides": {
         "name": { "en": "Royal Chariot" },
         "description": { "en": "Tevel slot 7 — Travian Egyptians have two chariot lines." },
-        "stats": { "attack": 135, "defenseInfantry": 61, "defenseCavalry": 56, "speed": 12, "carry": 69 },
-        "cost": { "wood": 330, "clay": 550, "iron": 310, "crop": 100 },
+        "stats": { "attack": 145, "defenseInfantry": 65, "defenseCavalry": 60, "speed": 12, "carry": 69 },
+        "cost": { "wood": 380, "clay": 630, "iron": 360, "crop": 110 },
         "cropUpkeep": 3
       }
     },

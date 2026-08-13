@@ -40,11 +40,39 @@ down in crop pays more per point of power in wood and iron, and the reverse.
 | `shape` | infantry or cavalry, attack or defense, speed and carry |
 | `eliteness` | a few big units or many small ones — big units are crop-efficient and expensive, small ones the reverse |
 | `cropPressure` | how much of the price sits on population rather than resources |
+| `centerpiece` | how far the heavy cavalry outweighs the rest of the roster |
 | `trainBias`, `mixBias`, `siege` | queue length, resource flavor, workshop strength |
 
 Romans and Spartans field expensive units that are worth more per crop; Teutons
 and Persians field cheap ones that eat more of a village. Both pay the same for
 the army they end up with — `npm run validate:balance` prints the receipt.
+
+### The heavy cavalry is the centerpiece
+
+Every tribe is built around its tier-3 horse, so the generator guarantees three
+things about it rather than hoping the dials produce them:
+
+1. it out-fights every other army unit,
+2. it tops the column its role is built for — attack for a hammer, defense for
+   a guard,
+3. it is the most expensive thing in the barracks.
+
+The third follows from the first, because cost is derived from power. Siege is
+excluded from the comparison: a catapult outcosts an Equites Caesaris in
+Travian too, and neither is a unit you mass.
+
+`centerpiece` sets how far ahead it sits, as a multiple of the next best unit.
+The floor is **1.4**, the low end of Travian's own range — an Equites Caesaris
+is about 1.5× an Equites Imperatoris, a Haeduan about 2× a Theutates Thunder.
+Tribes go above it where doctrine says so (Huns 1.6, the whole tribe being a
+delivery system for one horse) and sit near the floor where it does not (Japan
+1.26, "cavalry that never caught up"). None may fall below.
+
+This replaced a per-tribe fudge: because a tier multiplier is a fraction of the
+gap between one role and another, a tribe whose top horse *defends* landed
+behind its own tier-2 hammer no matter how the tier was tuned, and five tribes
+carried bespoke multipliers to paper over it. The rule is now structural, and
+`validate:balance` fails the build if any tribe breaks it.
 
 ### Tiers outside the player band
 

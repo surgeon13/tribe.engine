@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Ashigaru Spearman" },
-        "stats": { "attack": 11, "defenseInfantry": 33, "defenseCavalry": 58, "speed": 7, "carry": 37 },
-        "cost": { "wood": 80, "clay": 50, "iron": 65, "crop": 45 },
+        "stats": { "attack": 11, "defenseInfantry": 32, "defenseCavalry": 56, "speed": 7, "carry": 37 },
+        "cost": { "wood": 75, "clay": 50, "iron": 60, "crop": 40 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Pike ashigaru — backbone of Sengoku armies." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Ashigaru Archer" },
-        "stats": { "attack": 30, "defenseInfantry": 69, "defenseCavalry": 36, "speed": 5, "carry": 20 },
-        "cost": { "wood": 135, "clay": 95, "iron": 210, "crop": 50 },
+        "stats": { "attack": 29, "defenseInfantry": 67, "defenseCavalry": 35, "speed": 5, "carry": 20 },
+        "cost": { "wood": 130, "clay": 90, "iron": 200, "crop": 50 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/kusarigama.svg" },
         "description": { "en": "Bow ashigaru supporting the spear line." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Samurai" },
-        "stats": { "attack": 75, "defenseInfantry": 43, "defenseCavalry": 31, "speed": 7, "carry": 46 },
-        "cost": { "wood": 220, "clay": 145, "iron": 325, "crop": 80 },
+        "stats": { "attack": 73, "defenseInfantry": 41, "defenseCavalry": 30, "speed": 7, "carry": 46 },
+        "cost": { "wood": 205, "clay": 135, "iron": 305, "crop": 75 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/machete.svg" },
         "description": { "en": "Elite retainers — costly, versatile melee." }
@@ -58,8 +58,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Kihei" },
-        "stats": { "attack": 38, "defenseInfantry": 81, "defenseCavalry": 35, "speed": 12, "carry": 113 },
-        "cost": { "wood": 220, "clay": 130, "iron": 190, "crop": 50 },
+        "stats": { "attack": 35, "defenseInfantry": 75, "defenseCavalry": 32, "speed": 12, "carry": 113 },
+        "cost": { "wood": 190, "clay": 115, "iron": 170, "crop": 45 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/horse-head-alt.svg" }
       }
@@ -68,8 +68,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Samurai Cavalry" },
-        "stats": { "attack": 121, "defenseInfantry": 52, "defenseCavalry": 48, "speed": 13, "carry": 74 },
-        "cost": { "wood": 420, "clay": 310, "iron": 560, "crop": 120 },
+        "stats": { "attack": 113, "defenseInfantry": 49, "defenseCavalry": 45, "speed": 13, "carry": 74 },
+        "cost": { "wood": 370, "clay": 270, "iron": 490, "crop": 110 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/chess-knight.svg" }
       }
@@ -78,8 +78,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Guard Cavalry" },
-        "stats": { "attack": 138, "defenseInfantry": 58, "defenseCavalry": 53, "speed": 12, "carry": 66 },
-        "cost": { "wood": 400, "clay": 290, "iron": 490, "crop": 100 },
+        "stats": { "attack": 145, "defenseInfantry": 61, "defenseCavalry": 55, "speed": 12, "carry": 66 },
+        "cost": { "wood": 440, "clay": 320, "iron": 540, "crop": 110 },
         "cropUpkeep": 3,
         "graphics": { "logo": "cavalry/mounted-knight.svg" }
       }

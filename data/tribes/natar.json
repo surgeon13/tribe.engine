@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Pikeman" },
-        "stats": { "attack": 13, "defenseInfantry": 41, "defenseCavalry": 72, "speed": 7, "carry": 36 },
-        "cost": { "wood": 95, "clay": 105, "iron": 90, "crop": 65 },
+        "stats": { "attack": 13, "defenseInfantry": 39, "defenseCavalry": 70, "speed": 7, "carry": 36 },
+        "cost": { "wood": 90, "clay": 100, "iron": 85, "crop": 60 },
         "cropUpkeep": 1
       }
     },
@@ -24,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Thorned Warrior" },
-        "stats": { "attack": 82, "defenseInfantry": 48, "defenseCavalry": 35, "speed": 7, "carry": 45 },
-        "cost": { "wood": 220, "clay": 280, "iron": 400, "crop": 100 },
+        "stats": { "attack": 79, "defenseInfantry": 46, "defenseCavalry": 34, "speed": 7, "carry": 45 },
+        "cost": { "wood": 210, "clay": 270, "iron": 380, "crop": 90 },
         "cropUpkeep": 1
       }
     },
@@ -33,8 +33,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Guardsman" },
-        "stats": { "attack": 40, "defenseInfantry": 124, "defenseCavalry": 64, "speed": 5, "carry": 20 },
-        "cost": { "wood": 230, "clay": 270, "iron": 400, "crop": 100 },
+        "stats": { "attack": 39, "defenseInfantry": 121, "defenseCavalry": 62, "speed": 5, "carry": 20 },
+        "cost": { "wood": 220, "clay": 260, "iron": 390, "crop": 100 },
         "cropUpkeep": 1
       }
     },
@@ -42,8 +42,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Birds of Prey" },
-        "stats": { "attack": 0, "defenseInfantry": 25, "defenseCavalry": 13, "speed": 16, "carry": 0 },
-        "cost": { "wood": 200, "clay": 230, "iron": 90, "crop": 70 },
+        "stats": { "attack": 0, "defenseInfantry": 24, "defenseCavalry": 12, "speed": 16, "carry": 0 },
+        "cost": { "wood": 180, "clay": 210, "iron": 80, "crop": 60 },
         "cropUpkeep": 2
       }
     },
@@ -51,8 +51,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Axerider" },
-        "stats": { "attack": 145, "defenseInfantry": 65, "defenseCavalry": 60, "speed": 14, "carry": 86 },
-        "cost": { "wood": 520, "clay": 570, "iron": 540, "crop": 150 },
+        "stats": { "attack": 133, "defenseInfantry": 61, "defenseCavalry": 55, "speed": 14, "carry": 86 },
+        "cost": { "wood": 440, "clay": 480, "iron": 460, "crop": 130 },
         "cropUpkeep": 3
       }
     },
@@ -60,8 +60,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Natarian Knight" },
-        "stats": { "attack": 176, "defenseInfantry": 74, "defenseCavalry": 68, "speed": 13, "carry": 73 },
-        "cost": { "wood": 460, "clay": 610, "iron": 720, "crop": 160 },
+        "stats": { "attack": 164, "defenseInfantry": 69, "defenseCavalry": 63, "speed": 13, "carry": 73 },
+        "cost": { "wood": 400, "clay": 530, "iron": 620, "crop": 140 },
         "cropUpkeep": 3
       }
     },
@@ -70,8 +70,8 @@
       "overrides": {
         "name": { "en": "Natarian Lancer" },
         "description": { "en": "Tevel slot 7 — Travian Natars have two cavalry types." },
-        "stats": { "attack": 201, "defenseInfantry": 82, "defenseCavalry": 75, "speed": 12, "carry": 65 },
-        "cost": { "wood": 490, "clay": 640, "iron": 710, "crop": 150 },
+        "stats": { "attack": 232, "defenseInfantry": 95, "defenseCavalry": 87, "speed": 12, "carry": 65 },
+        "cost": { "wood": 660, "clay": 860, "iron": 950, "crop": 200 },
         "cropUpkeep": 4
       }
     },
