@@ -11,7 +11,8 @@
  *   1. every identity spec's crop pressure stays inside the allowed range
  *   2. every player tribe's realized power price sits inside the tolerance band
  *   3. every tribe's heavy cavalry is its strongest and dearest army unit
- *   4. no slot is filler — every unit is the best pick for something
+ *   4. no slot is filler — every unit is the best pick for something, and every
+ *      unit we author leads its own infantry or cavalry family at something
  *   5. no two tribes ship the same stat block (copy-paste rosters)
  *   6. tier ordering holds: boss > NPC guard > players > wildlife
  *   7. stats stay inside sane ranges and tiers do not go backwards
@@ -29,7 +30,7 @@ import {
   pricePaid,
   totalCost,
 } from "../lib/balance/anchors.js";
-import { isCanonTribe } from "../lib/balance/canon.js";
+import { extendedSlot, isCanonTribe } from "../lib/balance/canon.js";
 import { STAT_STEP, onStep } from "../lib/balance/quantize.js";
 import {
   CROP_PRESSURE_RANGE,
@@ -277,6 +278,83 @@ for (const t of tribes) {
       warnings.push(
         `${t.id} — ${unit.name} (${ref}) tops no column: it is not the best pick for any stat, nor per crop, nor per resource, so the slot is filler`
       );
+    }
+  }
+}
+
+// The check above weighs a unit against the whole army, which is the wrong
+// question for a footman: horses out-stat infantry everywhere, so a Legionnaire
+// or a Clubswinger tops nothing raw and looks like filler when being cheap per
+// crop is precisely its job. Ask the narrower question too — does a unit lead
+// its own kind at something? — because that is where a genuine dud shows up: a
+// tier-three that is a downgrade from the tier-two you already have.
+const FAMILIES = {
+  infantry: ["inf_t1", "inf_t2", "inf_t3"],
+  cavalry: ["cav_t1", "cav_t2", "cav_t3"],
+};
+const CLASS_COLUMNS = {
+  attack: (u) => u.stats.attack || 0,
+  "defence vs infantry": (u) => u.stats.defenseInfantry || 0,
+  "defence vs cavalry": (u) => u.stats.defenseCavalry || 0,
+  "total defence": (u) => (u.stats.defenseInfantry || 0) + (u.stats.defenseCavalry || 0),
+  speed: (u) => u.stats.speed || 0,
+  carry: (u) => u.stats.carry || 0,
+};
+// A tie is not a job: two units with the same number in every column are one
+// unit you can build twice. A claim has to be visible in the table, and the
+// smallest visible difference is one step of the grid the stat is written on —
+// five points for the combat stats, one field for speed.
+const LEAD_STEP = { speed: 1 };
+
+/** Columns where `unit` beats every peer in its family by a readable step. */
+function classCrowns(unit, peers) {
+  return Object.entries(CLASS_COLUMNS)
+    .filter(([name, read]) => {
+      const mine = read(unit);
+      const step = LEAD_STEP[name] ?? STAT_STEP;
+      return mine > 0 && peers.every((p) => mine >= read(p) + step);
+    })
+    .map(([name]) => name);
+}
+
+for (const t of tribes) {
+  // The median is the per-slot middle of the other rosters, not a design. Its
+  // slots are averages and averages do not have specialities.
+  if (t.tier === "unspecified") continue;
+  for (const [family, refs] of Object.entries(FAMILIES)) {
+    const kin = refs.filter((ref) => t.troops.has(ref));
+    if (kin.length < 2) continue;
+    for (const ref of kin) {
+      // Travian's published units are transcribed, not designed, so their
+      // shape is not ours to answer for. The slot we invent for the tribe is.
+      const ours = !t.canon || extendedSlot(t.id) === ref;
+      if (!ours) continue;
+
+      const unit = t.troops.get(ref);
+      const peers = kin.filter((o) => o !== ref).map((o) => t.troops.get(o));
+      const crowns = classCrowns(unit, peers);
+      if (crowns.length) {
+        // Carry is the one crown that is worthless in the raw. Loot is hauled
+        // by the army, not by the unit, so the pack animal is whichever one
+        // moves the most per head of population it costs you. That was the
+        // Teutonic Raider: nominally the tribe's plunder horse, actually
+        // carrying less per crop than the Paladin standing next to it. Combat
+        // crowns get no such test, because a centrepiece is meant to be dear.
+        const carries = crowns.includes("carry");
+        const perCrop =
+          unit.stats.carry / (unit.cropUpkeep || 1) >=
+          Math.max(...peers.map((p) => p.stats.carry / (p.cropUpkeep || 1)));
+        if (carries && !perCrop) {
+          const msg = `${t.id} — ${unit.name} (${ref}) hauls the most of any ${family} unit but not per head of crop, so the cheaper stablemate is the better pack unit and this one's carry is decoration`;
+          if (t.canon) errors.push(msg);
+          else warnings.push(msg);
+        }
+        continue;
+      }
+
+      const msg = `${t.id} — ${unit.name} (${ref}) leads the ${family} in nothing: every stat it has, another ${family} unit in the same tribe matches or beats, so the slot is a downgrade rather than a choice`;
+      if (t.canon) errors.push(msg);
+      else warnings.push(msg);
     }
   }
 }

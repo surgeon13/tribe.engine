@@ -37,7 +37,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Immortal" },
-        "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 55 },
+        "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 50 },
         "cost": { "wood": 180, "clay": 165, "iron": 155, "crop": 60 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/flanged-mace.svg" },
@@ -68,7 +68,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Persian Cataphract" },
-        "stats": { "attack": 125, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 13, "carry": 115 },
+        "stats": { "attack": 125, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 13, "carry": 120 },
         "cost": { "wood": 480, "clay": 490, "iron": 360, "crop": 120 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/cavalry.svg" },

@@ -26,7 +26,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Javelin Thrower" },
-        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 6, "carry": 45 },
+        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 6, "carry": 60 },
         "cost": { "wood": 115, "clay": 145, "iron": 130, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/boomerang.svg" },
@@ -37,7 +37,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Champion" },
-        "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 50 },
+        "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 45 },
         "cost": { "wood": 180, "clay": 210, "iron": 200, "crop": 80 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },

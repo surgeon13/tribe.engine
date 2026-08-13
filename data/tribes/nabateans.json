@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Slinger" },
-        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 6, "carry": 55 },
-        "cost": { "wood": 90, "clay": 175, "iron": 150, "crop": 55 },
+        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 6, "carry": 75 },
+        "cost": { "wood": 90, "clay": 175, "iron": 155, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/battle-axe.svg" },
         "description": { "en": "Slinger — Caravan-kingdom desert infantry and camel riders [line]" }
@@ -59,8 +59,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Light Desert Horse" },
-        "stats": { "attack": 40, "defenseInfantry": 95, "defenseCavalry": 40, "speed": 12, "carry": 130 },
-        "cost": { "wood": 185, "clay": 310, "iron": 175, "crop": 75 },
+        "stats": { "attack": 40, "defenseInfantry": 95, "defenseCavalry": 40, "speed": 13, "carry": 130 },
+        "cost": { "wood": 185, "clay": 310, "iron": 180, "crop": 75 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/donkey.svg" },
         "description": { "en": "Light Desert Horse — Caravan-kingdom desert infantry and camel riders [cav_off]" }

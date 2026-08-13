@@ -15,7 +15,7 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Skoutatos" },
-        "stats": { "attack": 35, "defenseInfantry": 35, "defenseCavalry": 45, "speed": 6, "carry": 45 },
+        "stats": { "attack": 35, "defenseInfantry": 35, "defenseCavalry": 45, "speed": 6, "carry": 60 },
         "cost": { "wood": 100, "clay": 135, "iron": 105, "crop": 75 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },
@@ -37,7 +37,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Optimatoi" },
-        "stats": { "attack": 75, "defenseInfantry": 45, "defenseCavalry": 30, "speed": 7, "carry": 50 },
+        "stats": { "attack": 75, "defenseInfantry": 45, "defenseCavalry": 30, "speed": 7, "carry": 45 },
         "cost": { "wood": 160, "clay": 225, "iron": 305, "crop": 80 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/crossbow.svg" },

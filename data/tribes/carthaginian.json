@@ -26,7 +26,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Balearic Slinger" },
-        "stats": { "attack": 35, "defenseInfantry": 35, "defenseCavalry": 40, "speed": 6, "carry": 50 },
+        "stats": { "attack": 35, "defenseInfantry": 35, "defenseCavalry": 40, "speed": 6, "carry": 65 },
         "cost": { "wood": 85, "clay": 130, "iron": 125, "crop": 50 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/boomerang.svg" },
@@ -37,7 +37,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Iberian Swordsman" },
-        "stats": { "attack": 75, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 55 },
+        "stats": { "attack": 75, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 50 },
         "cost": { "wood": 170, "clay": 240, "iron": 240, "crop": 95 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/battle-axe.svg" },

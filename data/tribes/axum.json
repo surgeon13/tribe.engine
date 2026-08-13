@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Javelin Skirmisher" },
-        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 6, "carry": 50 },
-        "cost": { "wood": 130, "clay": 125, "iron": 120, "crop": 65 },
+        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 6, "carry": 70 },
+        "cost": { "wood": 135, "clay": 125, "iron": 120, "crop": 65 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/barbed-spear.svg" },
         "description": { "en": "Light troops screening columns on highland roads." }
@@ -69,7 +69,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Noble Cavalry" },
-        "stats": { "attack": 130, "defenseInfantry": 55, "defenseCavalry": 50, "speed": 13, "carry": 120 },
+        "stats": { "attack": 130, "defenseInfantry": 55, "defenseCavalry": 50, "speed": 13, "carry": 125 },
         "cost": { "wood": 520, "clay": 500, "iron": 400, "crop": 200 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/horse-head-alt.svg" }
