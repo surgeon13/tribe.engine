@@ -1337,12 +1337,21 @@ const RADAR_PROFILE_MODE = "raw";
  * against its own slot, a full axis means best-in-class and the shapes actually
  * separate. The yardstick comes from every tribe rather than the selected ones
  * so a shape does not change under you when you add a tribe to the comparison.
+ *
+ * It is also measured at a full smithy rather than at the level on screen. The
+ * smithy lifts every roster at once, so a yardstick that moved with it rose by
+ * as much as the units did and the shapes sat perfectly still while the slider
+ * ran 0 to 20 — the view looked broken, and it hid the one thing worth seeing,
+ * which is that the lift is not even. Pinning the far edge to the best anyone
+ * can reach fully upgraded leaves the combat corners short at level 0 with room
+ * to grow, and dragging the slider fills that room at each unit's own rate.
  */
 let slotScaleCache = null;
 
 function slotProfileScales() {
   if (slotScaleCache) return slotScaleCache;
   const axes = getProfileAxes(RADAR_PROFILE_MODE);
+  const ceiling = data.tribes.map((t) => upgradeTribe(t, SMITHY_MAX_LEVEL));
   slotScaleCache = data.roster.map((_, slotIndex) => {
     const maxes = {};
     const mins = {};
@@ -1350,7 +1359,7 @@ function slotProfileScales() {
       maxes[ax.key] = 1;
       mins[ax.key] = ax.higherBetter === false ? Infinity : 0;
     }
-    for (const tribe of smithyTribes()) {
+    for (const tribe of ceiling) {
       const troop = tribe.troops?.[slotIndex];
       if (!troop) continue;
       const view = buildViewMetrics(troop.metrics, RADAR_PROFILE_MODE);
@@ -1390,7 +1399,7 @@ function renderCompareGraphSlots(tribes) {
   const hint = $("#compare-graphs-hint");
   if (hint) {
     hint.textContent =
-      "Every axis is scaled against the best any tribe reaches in that slot, so a full corner means best in class and a short one means worst — training time and cost are inverted, where faster and cheaper reach further out. One unit at a time shows its real numbers at the corners: point at a row, or tap it, to read another. Rating is that unit's average across all seven axes, out of 100.";
+      "Every axis is scaled against the best any tribe reaches in that slot at smithy 20, so the rim is the ceiling for the slot and a short corner means worst in class — training time and cost are inverted, where faster and cheaper reach further out. Attack and both defences start short of the rim and grow as you raise the smithy, each unit at its own rate; speed, carry, cost and training time the smithy never touches. One unit at a time shows its real numbers at the corners: point at a row, or tap it, to read another. Rating is that unit's average across all seven axes, out of 100.";
   }
 
   data.roster.forEach((_, slotIndex) => {
@@ -1965,9 +1974,6 @@ function setSmithyLevel(level) {
   const next = clampSmithyLevel(level);
   if (next === smithyLevel) return;
   smithyLevel = next;
-  // Both caches are keyed on the level, but the radar yardsticks are also
-  // rebuilt from the upgraded roster, so they have to go with it.
-  slotScaleCache = null;
   try {
     localStorage.setItem(SMITHY_STORAGE_KEY, String(smithyLevel));
   } catch {
