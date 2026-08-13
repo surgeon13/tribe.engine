@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Skeleton Warrior" },
-        "stats": { "attack": 95, "defenseInfantry": 45, "defenseCavalry": 30, "speed": 8, "carry": 45 },
-        "cost": { "wood": 260, "clay": 190, "iron": 230, "crop": 190 },
+        "stats": { "attack": 55, "defenseInfantry": 45, "defenseCavalry": 50, "speed": 6, "carry": 50 },
+        "cost": { "wood": 200, "clay": 150, "iron": 175, "crop": 150 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/bone-mace.svg" },
         "description": { "en": "Rattling bone levy — cheap pressure that still hits harder than oasis vermin." }
@@ -26,7 +26,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Ghoul" },
-        "stats": { "attack": 60, "defenseInfantry": 45, "defenseCavalry": 55, "speed": 6, "carry": 40 },
+        "stats": { "attack": 45, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 5, "carry": 20 },
         "cost": { "wood": 220, "clay": 180, "iron": 360, "crop": 110 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/sacrificial-dagger.svg" },
@@ -37,7 +37,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Wight" },
-        "stats": { "attack": 115, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 8, "carry": 45 },
+        "stats": { "attack": 115, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 8, "carry": 40 },
         "cost": { "wood": 310, "clay": 240, "iron": 490, "crop": 150 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/scythe.svg" },

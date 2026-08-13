@@ -70,9 +70,9 @@
       "overrides": {
         "name": { "en": "Teutonic Raider" },
         "description": { "en": "Tevel slot 7 — Travian Teutons have two cavalry types." },
-        "stats": { "attack": 90, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 11, "carry": 130 },
-        "cost": { "wood": 360, "clay": 320, "iron": 180, "crop": 70 },
-        "cropUpkeep": 3
+        "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 100, "speed": 13, "carry": 130 },
+        "cost": { "wood": 420, "clay": 380, "iron": 270, "crop": 100 },
+        "cropUpkeep": 2
       }
     },
     {

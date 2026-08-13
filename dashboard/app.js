@@ -304,6 +304,85 @@ function renderNav() {
 
     nav.append(row);
   }
+  scheduleTribeNavOverflow();
+}
+
+/** The top-bar layout, where the tribe list is capped and can hide tribes. */
+const TRIBE_NAV_STACKED_MQ = "(max-width: 900px)";
+
+/**
+ * Says out loud how much of the tribe list is out of sight.
+ *
+ * In the top bar the list is a wrapped grid with a ceiling on it, so on a phone
+ * it can show six tribes of eighteen and cut the next row in half. A sliced row
+ * is not an affordance — it reads as the end of the list as easily as it reads
+ * as more to come — so the tribes that do not fit are counted on a button that
+ * opens the list up. Nested scrolling inside a page that also scrolls is the
+ * thing worth avoiding here; tapping once to see everything is not.
+ */
+function updateTribeNavOverflow() {
+  const wrap = $("#tribe-nav-wrap");
+  const nav = $("#tribe-nav");
+  const more = $("#tribe-nav-more");
+  if (!wrap || !nav || !more) return;
+
+  // The sidebar gets the full window height and scrolls as one piece; only the
+  // top bar caps the list, so only the top bar can hide anything.
+  if (!window.matchMedia?.(TRIBE_NAV_STACKED_MQ).matches) {
+    wrap.dataset.overflow = "0";
+    more.hidden = true;
+    return;
+  }
+
+  const bottom = nav.getBoundingClientRect().bottom;
+  let hidden = 0;
+  for (const row of nav.children) {
+    if (row.getBoundingClientRect().bottom > bottom + 1) hidden += 1;
+  }
+
+  wrap.dataset.overflow = hidden ? "1" : "0";
+  const expanded = wrap.dataset.expanded === "1";
+  more.hidden = !hidden && !expanded;
+  more.textContent = hidden
+    ? `Show ${hidden} more ${hidden === 1 ? "tribe" : "tribes"}`
+    : "Show fewer";
+}
+
+/**
+ * Counting has to wait for the layout the count describes. Chips are laid out
+ * by text width, so the roster rewraps when the web font swaps in, and a number
+ * measured before that is simply wrong about a different layout. Coalesced to
+ * one frame because scroll, resize and the observer all ask for the same thing.
+ */
+let tribeNavOverflowFrame = 0;
+function scheduleTribeNavOverflow() {
+  if (tribeNavOverflowFrame) return;
+  tribeNavOverflowFrame = requestAnimationFrame(() => {
+    tribeNavOverflowFrame = 0;
+    updateTribeNavOverflow();
+  });
+}
+
+function bindTribeNav() {
+  const wrap = $("#tribe-nav-wrap");
+  const nav = $("#tribe-nav");
+  const more = $("#tribe-nav-more");
+  if (!wrap || !nav || !more) return;
+
+  // The font swap rewraps the chips; the observer catches the breakpoint
+  // flipping the cap between sidebar height and top-bar height.
+  document.fonts?.ready.then(scheduleTribeNavOverflow);
+  if (window.ResizeObserver) new ResizeObserver(scheduleTribeNavOverflow).observe(nav);
+
+  more.addEventListener("click", () => {
+    const expanded = wrap.dataset.expanded === "1";
+    wrap.dataset.expanded = expanded ? "0" : "1";
+    more.setAttribute("aria-expanded", String(!expanded));
+    if (expanded) nav.scrollTop = 0;
+    scheduleTribeNavOverflow();
+  });
+
+  nav.addEventListener("scroll", scheduleTribeNavOverflow, { passive: true });
 }
 
 function renderPalette(palette) {
@@ -1744,6 +1823,7 @@ function bindUi() {
   $("#edit-tribe-primary")?.addEventListener("input", () => livePreviewEdits());
   $("#edit-tribe-secondary")?.addEventListener("input", () => livePreviewEdits());
 
+  bindTribeNav();
   bindCompareCompactViewport();
 }
 
@@ -1767,6 +1847,7 @@ function bindCompareCompactViewport() {
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
+      scheduleTribeNavOverflow();
       const was = document.documentElement.dataset.compareCompact;
       const now = syncCompareCompactAttr() ? "1" : "0";
       if (was !== now && !compareChartLayoutUserPicked) {

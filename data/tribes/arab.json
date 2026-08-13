@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Najdi Skirmisher" },
-        "stats": { "attack": 35, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 7, "carry": 50 },
-        "cost": { "wood": 80, "clay": 100, "iron": 105, "crop": 55 },
+        "stats": { "attack": 35, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 7, "carry": 70 },
+        "cost": { "wood": 80, "clay": 100, "iron": 110, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/battle-axe.svg" },
         "description": { "en": "Najdi Skirmisher — Desert cavalry, tribal spears, and camel riders [line]" }
@@ -37,7 +37,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Abna Infantry" },
-        "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 8, "carry": 60 },
+        "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 8, "carry": 50 },
         "cost": { "wood": 135, "clay": 155, "iron": 175, "crop": 90 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },

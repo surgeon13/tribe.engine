@@ -34,8 +34,8 @@
       "overrides": {
         "name": { "en": "Hun Warrior" },
         "description": { "en": "Tevel slot 3 — Travian Huns have two infantry units; Spotter is the scout." },
-        "stats": { "attack": 60, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 6, "carry": 45 },
-        "cost": { "wood": 120, "clay": 120, "iron": 170, "crop": 85 },
+        "stats": { "attack": 85, "defenseInfantry": 40, "defenseCavalry": 20, "speed": 7, "carry": 60 },
+        "cost": { "wood": 175, "clay": 150, "iron": 300, "crop": 75 },
         "cropUpkeep": 1
       }
     },

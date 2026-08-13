@@ -37,7 +37,7 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Samurai" },
-        "stats": { "attack": 75, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 45 },
+        "stats": { "attack": 75, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 40 },
         "cost": { "wood": 210, "clay": 140, "iron": 315, "crop": 75 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/machete.svg" },
@@ -68,7 +68,7 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Samurai Cavalry" },
-        "stats": { "attack": 110, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 12, "carry": 95 },
+        "stats": { "attack": 110, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 12, "carry": 100 },
         "cost": { "wood": 360, "clay": 260, "iron": 480, "crop": 100 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/chess-knight.svg" }
