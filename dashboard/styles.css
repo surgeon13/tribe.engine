@@ -2,6 +2,10 @@
 :root {
   --accent: #c9a227;
   --accent-dim: color-mix(in srgb, var(--accent) 25%, transparent);
+  /* Thin marks drawn straight onto the page use --accent-mark, the tribe color
+     nudged until it clears the theme's surface. app.js sets it per tribe. */
+  --accent-mark: var(--accent);
+  --accent-mark-dim: color-mix(in srgb, var(--accent-mark) 25%, transparent);
   --radius: 10px;
   --font: "DM Sans", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -1181,7 +1185,7 @@ body.tribe-editing #troop-table thead th {
 .bar {
   height: 6px;
   border-radius: 3px;
-  background: var(--accent-dim);
+  background: var(--accent-mark-dim);
   min-width: 4px;
   max-width: 80px;
 }
@@ -1189,7 +1193,7 @@ body.tribe-editing #troop-table thead th {
 .bar-fill {
   height: 100%;
   border-radius: 3px;
-  background: var(--accent);
+  background: var(--accent-mark);
 }
 
 .delta-pos {
@@ -1694,9 +1698,9 @@ body.tribe-editing #troop-table thead th {
   border-radius: inherit;
   min-width: 4px;
   transition: width 0.3s ease;
-  background: var(--stat-bar-color, var(--accent));
+  background: var(--stat-bar-color, var(--accent-mark));
   box-shadow:
-    0 0 10px color-mix(in srgb, var(--stat-bar-color, var(--accent)) 65%, transparent),
+    0 0 10px color-mix(in srgb, var(--stat-bar-color, var(--accent-mark)) 65%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
@@ -1794,7 +1798,7 @@ body.tribe-editing #troop-table thead th {
 
 .unit-stat-slot {
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-mark);
   font-family: var(--mono);
   font-size: 11px;
 }
