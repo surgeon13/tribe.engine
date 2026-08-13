@@ -163,10 +163,133 @@ function drawYAxisTicks(svg, pad, innerW, innerH, maxVal, formatTick = (v) => St
 }
 
 export const CHART_LAYOUTS = [
+  { id: "split", name: "One graph per unit", description: "A small chart per slot, bars are tribes" },
   { id: "bars", name: "Vertical bars", description: "Grouped columns per slot" },
   { id: "lines", name: "Line chart", description: "Trend across slots 1–11" },
   { id: "horizontal", name: "Horizontal bars", description: "Side-by-side bars per slot" },
 ];
+
+/**
+ * One slot, one chart, tribes along the bottom.
+ *
+ * The grouped layout puts all eleven slots on a single axis, which leaves each
+ * bar a few pixels wide and no room to say whose it is — you get a picket fence
+ * and a legend, and matching the two up is work. Turning the axis around fixes
+ * it: with one chart per slot the x-axis is four or five tribes rather than
+ * eleven groups, so every bar is wide enough to stand its own name underneath
+ * and its value on top, and the legend stops being load-bearing.
+ *
+ * Each chart scales to its own slot. A shared scale would be the honest choice
+ * for reading across charts, but the ranges do not allow it — a settler hauls
+ * 3000 where a horse hauls 130, and one shared axis turns every army unit into
+ * a sliver, which is the disease being cured. The caption says so, and the axis
+ * top is printed on each chart.
+ *
+ * @param {SVGSVGElement} svg
+ * @param {{
+ *   title: string,
+ *   bars: Array<{ name: string, unitName?: string, value: number, color: string }>,
+ *   formatValue?: (v: number, i: number) => string,
+ *   width?: number,
+ *   height?: number,
+ * }} opts
+ */
+export function drawSlotBarChart(svg, opts) {
+  const bars = opts.bars ?? [];
+  const n = Math.max(bars.length, 1);
+  const width = opts.width ?? 320;
+  const height = opts.height ?? 250;
+  const fmt = opts.formatValue || ((v) => String(Math.round(v)));
+  const hasUnitNames = bars.some((b) => b.unitName && b.unitName !== b.name);
+  const pad = { top: 42, right: 12, bottom: hasUnitNames ? 48 : 32, left: 44 };
+  const innerW = width - pad.left - pad.right;
+  const innerH = height - pad.top - pad.bottom;
+  const maxVal = Math.max(1, ...bars.map((b) => b.value || 0));
+  const colW = innerW / n;
+  const barW = Math.min(56, Math.max(12, colW * 0.62));
+
+  svg.innerHTML = "";
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("width", String(width));
+  svg.setAttribute("height", String(height));
+  svg.classList.add("chart-svg", "chart-svg-slot");
+
+  const title = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  title.setAttribute("x", String(pad.left - 30));
+  title.setAttribute("y", "20");
+  title.setAttribute("fill", "currentColor");
+  title.setAttribute("font-size", String(CHART_FONT.label + 1));
+  title.setAttribute("font-weight", "700");
+  title.textContent = opts.title || "";
+  svg.append(title);
+
+  drawYAxisTicks(svg, pad, innerW, innerH, maxVal, fmt);
+
+  const baseY = pad.top + innerH;
+  const nameChars = Math.max(4, Math.floor(colW / 5.4));
+  const unitChars = Math.max(4, Math.floor(colW / 5));
+
+  bars.forEach((b, i) => {
+    const val = b.value || 0;
+    const h = (val / maxVal) * innerH;
+    const cx = pad.left + colW * i + colW / 2;
+
+    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute("x", String(cx - barW / 2));
+    rect.setAttribute("y", String(baseY - h));
+    rect.setAttribute("width", String(barW));
+    rect.setAttribute("height", String(Math.max(h, val > 0 ? 2 : 0)));
+    rect.setAttribute("rx", "4");
+    rect.setAttribute("fill", b.color);
+    rect.setAttribute("stroke", "rgba(0,0,0,0.12)");
+    rect.setAttribute("stroke-width", "1");
+    const tip = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    tip.textContent = `${b.name}${b.unitName ? ` — ${b.unitName}` : ""}: ${fmt(val, i)}`;
+    rect.append(tip);
+    svg.append(rect);
+
+    const value = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    value.setAttribute("x", String(cx));
+    value.setAttribute("y", String(baseY - h - 6));
+    value.setAttribute("text-anchor", "middle");
+    value.setAttribute("fill", b.color);
+    value.setAttribute("font-size", String(CHART_FONT.value));
+    value.setAttribute("font-weight", "700");
+    value.textContent = fmt(val, i);
+    svg.append(value);
+
+    const tribe = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    tribe.setAttribute("x", String(cx));
+    tribe.setAttribute("y", String(baseY + 16));
+    tribe.setAttribute("text-anchor", "middle");
+    tribe.setAttribute("fill", "currentColor");
+    tribe.setAttribute("font-size", String(CHART_FONT.tick));
+    tribe.setAttribute("font-weight", "600");
+    tribe.textContent = clipLabel(b.name, nameChars);
+    svg.append(tribe);
+
+    if (hasUnitNames) {
+      const unit = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      unit.setAttribute("x", String(cx));
+      unit.setAttribute("y", String(baseY + 31));
+      unit.setAttribute("text-anchor", "middle");
+      unit.setAttribute("fill", "var(--text-muted)");
+      unit.setAttribute("font-size", "10");
+      unit.textContent = clipLabel(b.unitName || "", unitChars);
+      svg.append(unit);
+    }
+  });
+}
+
+/** @param {number} seconds */
+function clockFromSeconds(seconds) {
+  const total = Math.max(0, Math.round(Number(seconds) || 0));
+  if (!total) return "—";
+  const pad = (n) => String(n).padStart(2, "0");
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  return h > 0 ? `${h}:${pad(m)}:${pad(total % 60)}` : `${m}:${pad(total % 60)}`;
+}
 
 export const CHART_METRICS = [
   { key: "offense", label: "Attack", combat: true },
@@ -178,7 +301,9 @@ export const CHART_METRICS = [
     key: "trainTimeSeconds",
     label: "Training time",
     from: (u) => u.metrics.trainTimeSeconds ?? 0,
-    format: (v, u) => u.metrics.trainTimeFormatted || (v > 0 ? `${v}s` : "—"),
+    // Also formats axis ticks, which are a number with no unit behind them, so
+    // it has to stand on the value alone rather than reaching into the troop.
+    format: (v, u) => u?.metrics?.trainTimeFormatted || clockFromSeconds(v),
   },
   {
     key: "resourceCost",

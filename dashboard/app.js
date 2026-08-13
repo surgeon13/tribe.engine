@@ -25,6 +25,7 @@ import {
   computeReadableChartWidth,
   drawCompareMetricChart,
   drawMultiCostStackChart,
+  drawSlotBarChart,
 } from "./charts.js";
 import { mountPaletteContrastHint } from "./palette-hint.js";
 import {
@@ -80,7 +81,7 @@ let compareMode = false;
 let activeView = "table";
 let compareViewMode = "table";
 let compareChartMetric = "offense";
-let compareChartLayout = "bars";
+let compareChartLayout = "split";
 let compareChartLayoutUserPicked = false;
 let statDisplayMode = "bars";
 let statNormalizeMode = "crop";
@@ -108,9 +109,12 @@ function syncCompareCompactAttr() {
   return compact;
 }
 
+// Grouped columns are the dense overview and stay one pick away, but they are
+// a poor default: eleven slots on one axis leaves each bar too narrow to name,
+// so reading one means going back and forth to the legend.
 function applyCompactChartLayoutDefault() {
   if (compareChartLayoutUserPicked) return compareChartLayout;
-  compareChartLayout = isCompareCompact() ? "horizontal" : "bars";
+  compareChartLayout = isCompareCompact() ? "horizontal" : "split";
   return compareChartLayout;
 }
 
@@ -1429,29 +1433,35 @@ function renderCompareCharts() {
   const cap = document.createElement("p");
   cap.className = "chart-caption muted";
   const layoutNote =
-    compact && layoutId === "horizontal" && !compareChartLayoutUserPicked
-      ? " Phone layout: horizontal bars (readable without pinch-zoom)."
-      : "";
+    layoutId === "split"
+      ? " One chart per unit, so each is scaled to its own slot — compare tribes within a chart, not across them."
+      : compact && layoutId === "horizontal" && !compareChartLayoutUserPicked
+        ? " Phone layout: horizontal bars (readable without pinch-zoom)."
+        : "";
   cap.textContent = `${metricLabel} by unit — ${names}. ${normalizeModeHint(statNormalizeMode)}${layoutNote}`;
   main.append(cap);
 
-  const chartH =
-    layoutId === "horizontal"
-      ? undefined
-      : Math.min(560, 380 + Math.max(0, tribes.length - 2) * 20);
+  if (layoutId === "split") {
+    renderSplitSlotCharts(main, { tribes, series, metric, formatVal, containerW, compact });
+  } else {
+    const chartH =
+      layoutId === "horizontal"
+        ? undefined
+        : Math.min(560, 380 + Math.max(0, tribes.length - 2) * 20);
 
-  const svgMain = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  drawCompareMetricChart(svgMain, layoutId, {
-    labels: troopLabels,
-    series,
-    title: metricLabel,
-    yAxisLabel: metricLabel,
-    formatValue: formatVal,
-    showBarValues: true,
-    width: chartW,
-    height: chartH,
-  });
-  main.append(svgMain);
+    const svgMain = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    drawCompareMetricChart(svgMain, layoutId, {
+      labels: troopLabels,
+      series,
+      title: metricLabel,
+      yAxisLabel: metricLabel,
+      formatValue: formatVal,
+      showBarValues: true,
+      width: chartW,
+      height: chartH,
+    });
+    main.append(svgMain);
+  }
 
   const costWrap = $("#compare-chart-cost");
   costWrap.innerHTML = "";
@@ -1499,6 +1509,56 @@ function renderCompareCharts() {
       costWrap.append(svgCost);
     }
   }
+}
+
+/**
+ * A grid of small charts, one per troop slot, tribes along each x-axis.
+ *
+ * Slots where nobody has a number are dropped rather than drawn empty — every
+ * scout has zero attack, and eleven charts of which two are blank is worse than
+ * nine that all say something.
+ */
+function renderSplitSlotCharts(host, { tribes, series, metric, formatVal, containerW, compact }) {
+  const grid = document.createElement("div");
+  grid.className = "compare-slot-grid";
+
+  const perRow = compact ? 1 : containerW >= 1080 ? 3 : containerW >= 720 ? 2 : 1;
+  const gap = 12;
+  const chartW = Math.max(240, Math.floor((containerW - gap * (perRow - 1)) / perRow) - 2);
+  const chartH = Math.max(210, Math.min(300, 190 + tribes.length * 12));
+
+  data.roster.forEach((_, slotIndex) => {
+    const bars = series.map((s, si) => ({
+      name: tribes[si].name,
+      unitName: s.unitNames?.[slotIndex],
+      value: s.values[slotIndex] ?? 0,
+      color: s.color,
+    }));
+    if (!bars.some((b) => b.value > 0)) return;
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    drawSlotBarChart(svg, {
+      title: slotCategoryLabel(slotIndex),
+      bars,
+      formatValue: (v, i) => formatVal(v, slotIndex, i),
+      width: chartW,
+      height: chartH,
+    });
+
+    const card = document.createElement("div");
+    card.className = "compare-slot-card";
+    card.append(svg);
+    grid.append(card);
+  });
+
+  if (!grid.children.length) {
+    const empty = document.createElement("p");
+    empty.className = "muted";
+    empty.textContent = `No unit has a ${metric.label.toLowerCase()} value to chart.`;
+    host.append(empty);
+    return;
+  }
+  host.append(grid);
 }
 
 /** Slot-by-slot cost bars — readable on narrow screens without shrinking SVG text. */
