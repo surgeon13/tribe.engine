@@ -13,6 +13,7 @@ import {
 import {
   computeGlobalScales,
   drawMultiRadar,
+  formatStatValue,
   mountRadarCard,
   overallRating,
   statBarPercent,
@@ -31,6 +32,7 @@ import {
   drawMultiHorizontalCompareChart,
   drawMultiLineCompareChart,
   drawSlotBarChart,
+  slotBarChartWidth,
 } from "./charts.js";
 import { mountPaletteContrastHint } from "./palette-hint.js";
 import { SMITHY_MAX_LEVEL, smithyGainRange, upgradeTribe } from "./smithy.js";
@@ -1387,7 +1389,8 @@ function renderCompareGraphSlots(tribes) {
 
   const hint = $("#compare-graphs-hint");
   if (hint) {
-    hint.textContent = `Every axis is scaled against the best any tribe reaches in that slot, so a full corner means best in class and a short one means worst. Training time and cost are inverted — faster and cheaper reach further out. OVR is the average of all ${axes.length} axes.`;
+    hint.textContent =
+      "Every axis is scaled against the best any tribe reaches in that slot, so a full corner means best in class and a short one means worst — training time and cost are inverted, where faster and cheaper reach further out. One unit at a time shows its real numbers at the corners: point at a row, or tap it, to read another. Rating is that unit's average across all seven axes, out of 100.";
   }
 
   data.roster.forEach((_, slotIndex) => {
@@ -1402,10 +1405,16 @@ function renderCompareGraphSlots(tribes) {
         unitName: troop.name,
         color: colors[ti],
         values,
+        raw: axes.map((ax) => view[ax.key] ?? 0),
+        metrics: troop.metrics,
         rating: overallRating(values),
       });
     });
     if (!entries.length) return;
+
+    // Best first, so the shape reading its numbers by default is the one worth
+    // looking at, and the list doubles as the answer to "who wins this slot".
+    entries.sort((a, b) => b.rating - a.rating);
 
     const card = document.createElement("article");
     card.className = "compare-radar-card";
@@ -1416,22 +1425,56 @@ function renderCompareGraphSlots(tribes) {
     card.append(title);
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    drawMultiRadar(svg, { axes, series: entries, size: compact ? 230 : 250 });
     card.append(svg);
 
-    const ranked = [...entries].sort((a, b) => b.rating - a.rating);
     const list = document.createElement("ol");
     list.className = "compare-radar-rank";
-    for (const entry of ranked) {
-      const item = document.createElement("li");
-      item.innerHTML = `
-        <span class="compare-radar-swatch" style="background:${entry.color}"></span>
-        <span class="compare-radar-unit">${entry.unitName}<small>${entry.name}</small></span>
-        <b class="compare-radar-rating" title="Overall: the average of all ${axes.length} axes against the best in this slot">${entry.rating}</b>
-      `;
-      list.append(item);
-    }
+    list.innerHTML = entries
+      .map(
+        (entry, i) => `
+        <li data-series="${i}" style="--rank-col:${entry.color};--rank-fill:${entry.rating}%">
+          <span class="compare-radar-swatch"></span>
+          <span class="compare-radar-unit">${entry.unitName}<small>${entry.name}</small></span>
+          <b class="compare-radar-rating">${entry.rating}</b>
+        </li>`
+      )
+      .join("");
     card.append(list);
+
+    const rows = [...list.children];
+    let focus = 0;
+    const paint = () => {
+      const shown = entries[focus];
+      drawMultiRadar(svg, {
+        axes,
+        series: entries,
+        focus,
+        size: compact ? 240 : 260,
+        formatValue: (key, raw) =>
+          formatStatValue(key, raw, shown.metrics, { normalizeMode: RADAR_PROFILE_MODE }),
+      });
+      rows.forEach((row, i) => row.classList.toggle("focused", i === focus));
+      for (const poly of svg.querySelectorAll("polygon[data-series]")) {
+        const index = Number(poly.dataset.series);
+        poly.addEventListener("pointerenter", () => setFocus(index));
+        poly.addEventListener("click", () => setFocus(index));
+      }
+    };
+    const setFocus = (index) => {
+      if (index === focus || !entries[index]) return;
+      focus = index;
+      paint();
+    };
+
+    rows.forEach((row, i) => {
+      row.addEventListener("pointerenter", () => setFocus(i));
+      row.addEventListener("click", () => setFocus(i));
+    });
+    // Back to the leader once the pointer leaves, so a card at rest always
+    // reads the same way rather than keeping whatever was last brushed past.
+    card.addEventListener("pointerleave", () => setFocus(0));
+
+    paint();
     grid.append(card);
   });
 }
@@ -1613,9 +1656,11 @@ function finishSmallMultiples(host, grid, metric) {
 function renderSlotBarCharts(host, { tribes, series, metric, formatVal, compact }) {
   // Each bar has to stay wide enough to hold a name, so the column count
   // follows how many tribes are on the axis rather than the window alone.
+  // Past the point where even one chart per row cannot hold them all, the
+  // chart keeps its width and the card scrolls sideways.
   const { grid, chartW } = smallMultiplesGrid(host, {
     compact,
-    minChartW: 200 + tribes.length * 55,
+    minChartW: slotBarChartWidth(tribes.length),
     maxPerRow: 3,
   });
   const chartH = Math.max(210, Math.min(300, 190 + tribes.length * 12));

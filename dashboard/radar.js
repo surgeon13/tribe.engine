@@ -480,10 +480,18 @@ function polygonPoints(cx, cy, radius, values) {
  * difference in shape rather than a pile of translucency, and the fill fades
  * further as tribes are added.
  *
+ * One shape can be focused. Six outlines at equal weight are unreadable however
+ * carefully they are drawn, so the focused one keeps its colour and fill while
+ * the rest drop back to thin grey, and it alone prints its real numbers at the
+ * corners — seven figures a reader can take in, rather than forty-two they
+ * cannot. The percentages position the corners; the labels report the stat.
+ *
  * @param {SVGSVGElement} svg
  * @param {{
  *   axes: Array<{ key: string, label: string, name: string }>,
- *   series: Array<{ name: string, color: string, values: number[], unitName?: string }>,
+ *   series: Array<{ name: string, color: string, values: number[], raw?: number[], unitName?: string }>,
+ *   focus?: number,
+ *   formatValue?: (axisKey: string, raw: number) => string,
  *   size?: number,
  * }} opts
  */
@@ -494,10 +502,11 @@ export function drawMultiRadar(svg, opts) {
   const size = opts.size ?? 250;
   const cx = size / 2;
   const cy = size / 2;
-  const maxR = size * 0.33;
+  const maxR = size * 0.31;
   const step = (Math.PI * 2) / n;
   const start = -Math.PI / 2;
   const chrome = getRadarChromeColors();
+  const focus = Number.isInteger(opts.focus) && series[opts.focus] ? opts.focus : -1;
   const fillOpacity = series.length <= 2 ? 0.2 : series.length <= 4 ? 0.12 : 0.07;
 
   svg.innerHTML = "";
@@ -534,33 +543,69 @@ export function drawMultiRadar(svg, opts) {
     svg.append(line);
   }
 
-  for (const s of series) {
+  // Focused shape last so it sits over the others.
+  const order = series.map((_, i) => i).sort((a, b) => (a === focus ? 1 : b === focus ? -1 : 0));
+  for (const index of order) {
+    const s = series[index];
+    const isFocus = index === focus;
+    const dimmed = focus >= 0 && !isFocus;
     const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     poly.setAttribute("points", polygonPoints(cx, cy, maxR, s.values));
     poly.setAttribute("fill", s.color);
-    poly.setAttribute("fill-opacity", String(fillOpacity));
-    poly.setAttribute("stroke", s.color);
-    poly.setAttribute("stroke-width", "2.5");
+    poly.setAttribute("fill-opacity", String(dimmed ? 0 : isFocus ? 0.18 : fillOpacity));
+    poly.setAttribute("stroke", dimmed ? chrome.axis : s.color);
+    poly.setAttribute("stroke-width", isFocus ? "3" : dimmed ? "1.5" : "2.5");
     poly.setAttribute("stroke-linejoin", "round");
+    poly.setAttribute("data-series", String(index));
+    poly.style.cursor = "pointer";
     const tip = document.createElementNS("http://www.w3.org/2000/svg", "title");
     tip.textContent = `${s.name}${s.unitName ? ` — ${s.unitName}` : ""}`;
     poly.append(tip);
     svg.append(poly);
 
+    if (dimmed) continue;
     s.values.forEach((v, i) => {
       const p = polar(cx, cy, (v / 100) * maxR, start + i * step);
       const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       dot.setAttribute("cx", String(p.x));
       dot.setAttribute("cy", String(p.y));
-      dot.setAttribute("r", "3");
+      dot.setAttribute("r", isFocus ? "3.5" : "3");
       dot.setAttribute("fill", s.color);
       svg.append(dot);
     });
   }
 
   const axisColors = getStatAxisColors();
+
+  if (focus >= 0 && series[focus].raw) {
+    const s = series[focus];
+    const fmt = opts.formatValue || ((_key, raw) => String(Math.round(raw)));
+    s.values.forEach((v, i) => {
+      const vertex = (v / 100) * maxR;
+      // Outside the corner where there is room, inside it near the rim so the
+      // number does not crowd the axis label. Corners at zero are nudged off
+      // the centre, or several of them stack in the middle of the chart.
+      const r = v < 76 ? Math.max(vertex, 16) + 12 : vertex - 13;
+      const p = polar(cx, cy, r, start + i * step);
+      const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      label.setAttribute("x", String(p.x));
+      label.setAttribute("y", String(p.y + 3.5));
+      label.setAttribute("text-anchor", "middle");
+      label.setAttribute("fill", s.color);
+      label.setAttribute("font-size", "10");
+      label.setAttribute("font-weight", "700");
+      label.setAttribute("font-family", "JetBrains Mono, ui-monospace, monospace");
+      label.setAttribute("stroke", chrome.radarBg);
+      label.setAttribute("stroke-width", "3.5");
+      label.setAttribute("paint-order", "stroke fill");
+      label.style.pointerEvents = "none";
+      label.textContent = fmt(axes[i].key, s.raw[i]);
+      svg.append(label);
+    });
+  }
+
   axes.forEach((ax, i) => {
-    const p = polar(cx, cy, maxR + 20, start + i * step);
+    const p = polar(cx, cy, maxR + 30, start + i * step);
     const lbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
     lbl.setAttribute("x", String(p.x));
     lbl.setAttribute("y", String(p.y + 4));
