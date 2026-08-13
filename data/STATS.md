@@ -34,6 +34,11 @@ The per-slot anchor prices the generator charges were measured from the six
 Travian-canonical cores below, so the game still sits where **Travian Legends
 (T4.6)** put it — see `data/balance/BALANCE.md` for the model.
 
+Their attack, defence, carry and costs are all multiples of five, matching how
+Travian's own tables read. Speed, crop upkeep and training times are not, also
+matching Travian. The default tribes keep whatever Travian published, including
+the handful of values that sit off the grid.
+
 ## Original sources
 
 | Tribe | Source | Notes |

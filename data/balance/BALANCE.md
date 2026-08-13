@@ -126,6 +126,36 @@ Crop upkeep is a small integer bracket, so rounding decides what a unit really
 costs in population; resources then settle the difference. A unit that rounded
 down in crop pays more per point of power in wood and iron, and the reverse.
 
+### Everything lands on a five-point grid
+
+Attack, both defences, carrying capacity and all four resource costs are
+multiples of five for every tribe we author. `lib/balance/quantize.js` owns the
+rule and `validate:balance` enforces it.
+
+This is measured from Travian, not imposed on it. Across the 80 published units
+in the canon, every attack value, every one of the cost figures, and every carry
+outside the oasis animals is already a multiple of five; three defence values
+stray. Rosters of 37s and 68s sitting beside Travian's 35s and 70s read as
+arithmetic left showing rather than as design.
+
+Three things are deliberately exempt, on the same evidence:
+
+| Exempt | Why |
+|--------|-----|
+| speed | Travian's own are 3, 4, 6, 7, 9, 13, 16, 19 — a scale too short to round without collapsing light, medium and heavy horse together |
+| crop upkeep | a 1–6 bracket, for the same reason |
+| training time | arbitrary seconds in Travian too, and not a number players compare across tribes |
+
+Quantization happens **before** pricing. Cost is derived from the combat index,
+so rounding afterwards would price every unit for a slightly different unit than
+the one on display.
+
+The heavy cavalry is the one number that cannot merely be rounded: its job is a
+stated margin over the rest of the roster and the gate fails on a tie, so half a
+step in the wrong direction could break it. `settleCenterpiece` rounds it, then
+checks the margin and tops it back up one step at a time along its own growth
+axis until it clears. That is why Persia sits on exactly 1.400.
+
 ### What still makes tribes different
 
 | Dial | Effect |
