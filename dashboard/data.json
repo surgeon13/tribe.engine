@@ -2,75 +2,86 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-13T09:17:43.791Z",
+  "generatedAt": "2026-08-13T09:29:58.871Z",
   "roster": [
     {
       "slot": 1,
       "role": "infantry",
       "index": 1,
-      "baseUnitId": "inf_t1"
+      "baseUnitId": "inf_t1",
+      "label": "Infantry I"
     },
     {
       "slot": 2,
       "role": "infantry",
       "index": 2,
-      "baseUnitId": "inf_t2"
+      "baseUnitId": "inf_t2",
+      "label": "Infantry II"
     },
     {
       "slot": 3,
       "role": "infantry",
       "index": 3,
-      "baseUnitId": "inf_t3"
+      "baseUnitId": "inf_t3",
+      "label": "Infantry III"
     },
     {
       "slot": 4,
       "role": "scout",
       "index": 1,
-      "baseUnitId": "scout"
+      "baseUnitId": "scout",
+      "label": "Scout"
     },
     {
       "slot": 5,
       "role": "cavalry",
       "index": 1,
-      "baseUnitId": "cav_t1"
+      "baseUnitId": "cav_t1",
+      "label": "Cavalry I"
     },
     {
       "slot": 6,
       "role": "cavalry",
       "index": 2,
-      "baseUnitId": "cav_t2"
+      "baseUnitId": "cav_t2",
+      "label": "Cavalry II"
     },
     {
       "slot": 7,
       "role": "cavalry",
       "index": 3,
-      "baseUnitId": "cav_t3"
+      "baseUnitId": "cav_t3",
+      "label": "Cavalry III"
     },
     {
       "slot": 8,
       "role": "siege",
       "index": 1,
       "baseUnitId": "ram",
-      "siegeType": "wall"
+      "siegeType": "wall",
+      "label": "Ram"
     },
     {
       "slot": 9,
       "role": "siege",
       "index": 2,
       "baseUnitId": "catapult",
-      "siegeType": "building"
+      "siegeType": "building",
+      "label": "Catapult"
     },
     {
       "slot": 10,
       "role": "chief",
       "index": 1,
-      "baseUnitId": "chief"
+      "baseUnitId": "chief",
+      "label": "Chieftain"
     },
     {
       "slot": 11,
       "role": "settler",
       "index": 1,
-      "baseUnitId": "settler"
+      "baseUnitId": "settler",
+      "label": "Settler"
     }
   ],
   "logoGroups": {

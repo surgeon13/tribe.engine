@@ -2568,12 +2568,29 @@ html[data-compare-compact="1"] #compare-table-wrap {
   align-items: center;
 }
 
+/* The unit leads because the card is about one slot across several tribes, so
+   what each tribe calls it is the answer to the question the row is asking. */
 .compare-cost-mobile-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
   font-size: 12px;
   font-weight: 700;
   overflow: hidden;
+}
+
+.compare-cost-mobile-unit,
+.compare-cost-mobile-tribe {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.compare-cost-mobile-tribe {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.72;
 }
 
 .compare-cost-mobile-track {

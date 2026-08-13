@@ -869,6 +869,9 @@ export function drawMultiGroupedBarChart(svg, opts) {
       bar.setAttribute("fill", s.color);
       bar.setAttribute("stroke", "rgba(0,0,0,0.12)");
       bar.setAttribute("stroke-width", "1");
+      // The axis is labelled by category, so the bar carries the tribe's own
+      // name for the unit; a vertical bar is too narrow to print it on.
+      bar.append(pointTitle(s, i, val, fmt, label, si));
       svg.append(bar);
       if (showBarValues && val > 0) {
         const ta = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -949,6 +952,9 @@ export function drawMultiLineCompareChart(svg, opts) {
       c.setAttribute("fill", s.color);
       c.setAttribute("stroke", "var(--bg-elevated)");
       c.setAttribute("stroke-width", "2");
+      // The axis is labelled by category, so the point carries the tribe's own
+      // name for the unit; there is nowhere to print it in this layout.
+      c.append(pointTitle(s, p.i, p.val, fmt, opts.labels?.[p.i], series.indexOf(s)));
       svg.append(c);
       if (showValues) {
         const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -970,33 +976,55 @@ export function drawMultiLineCompareChart(svg, opts) {
   });
 }
 
+/**
+ * Grouped horizontal bars: one block per roster slot, one bar per tribe.
+ *
+ * The block is headed by the slot's generic category ("Infantry I"), and each
+ * bar is labelled in the gutter with what that tribe calls the unit. Naming the
+ * rows after one tribe's units, as this used to, made a six-tribe chart look
+ * like it was about the Romans and meant reordering the picker renamed every
+ * row. The category names the thing being compared; the gutter names the
+ * things doing the comparing.
+ */
 export function drawMultiHorizontalCompareChart(svg, opts) {
   const series = resolveChartSeries(opts);
   const k = series.length;
   const labels = opts.labels;
   const width = Math.max(280, opts.width ?? 720);
   const narrow = width < 560;
-  const idealLeft = Math.min(
-    narrow ? 140 : 280,
-    Math.max(narrow ? 96 : 160, ...labels.map((l) => String(l).length * CHAR_PX + 24))
-  );
-  // Keep room for bars + value labels on phones (wide left pads crush readability).
-  const leftPad = Math.min(idealLeft, Math.max(narrow ? 88 : 120, Math.floor(width * (narrow ? 0.3 : 0.38))));
-  const rightPad = narrow ? 44 : 28;
-  const innerW = Math.max(120, width - leftPad - rightPad);
-  const legendH = measureLegendHeight(series, innerW);
-  const rowH = Math.max(narrow ? 48 : 40, (narrow ? 28 : 24) + k * (narrow ? 16 : 14));
-  const height = Math.max(360, labels.length * rowH + 100) + legendH;
-  const pad = { top: narrow ? 56 : 48, right: rightPad, bottom: 20 + legendH, left: leftPad };
-  const innerH = height - pad.top - pad.bottom;
-  const n = opts.labels.length;
-  const allVals = series.flatMap((s) => s.values);
-  const maxVal = Math.max(1, ...allVals);
-  const gridRowH = innerH / Math.max(n, 1);
-  const barH = Math.min(narrow ? 16 : 14, (gridRowH * 0.6) / Math.max(k, 1));
   const fmt = opts.formatValue || ((v) => String(Math.round(v)));
   const labelFont = narrow ? 11 : CHART_FONT.label;
   const valueFont = narrow ? 12 : CHART_FONT.value;
+  const unitFont = narrow ? 10 : 11;
+  const headFont = narrow ? 12 : 13;
+
+  // The gutter now holds unit names rather than one label per row, so it is
+  // sized from the longest name any tribe uses. The category header sits above
+  // its block on the full width, so it never has to fit in here.
+  const unitNames = series.map((s) => s.unitNames || []);
+  const hasUnitNames = unitNames.some((names) => names.length > 0);
+  const longestUnit = Math.max(
+    8,
+    ...unitNames.flat().map((nm) => String(nm).length),
+    ...(hasUnitNames ? [] : labels.map((l) => String(l).length))
+  );
+  const idealLeft = Math.min(narrow ? 132 : 210, longestUnit * CHAR_PX + 18);
+  const leftPad = Math.max(narrow ? 76 : 110, Math.min(idealLeft, Math.floor(width * (narrow ? 0.36 : 0.32))));
+  const rightPad = narrow ? 44 : 28;
+  const innerW = Math.max(110, width - leftPad - rightPad);
+  const legendH = measureLegendHeight(series, innerW);
+
+  const barH = narrow ? 15 : 14;
+  const barGap = 2;
+  const blockH = barH * k + barGap * (k - 1);
+  const headH = headFont + 8;
+  const groupGap = narrow ? 16 : 18;
+  const rowH = headH + blockH + groupGap;
+
+  const n = labels.length;
+  const pad = { top: narrow ? 56 : 48, right: rightPad, bottom: 20 + legendH, left: leftPad };
+  const height = pad.top + n * rowH + pad.bottom;
+  const maxVal = Math.max(1, ...series.flatMap((s) => s.values));
 
   svg.innerHTML = "";
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
@@ -1017,38 +1045,57 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
   }
   drawSeriesLegend(svg, series, width, height, pad);
 
-  opts.labels.forEach((label, i) => {
-    const yMid = pad.top + gridRowH * i + gridRowH / 2;
-    const blockH = barH * k + 2 * (k - 1);
-    const yStart = yMid - blockH / 2;
+  const maxUnitChars = Math.max(6, Math.floor((leftPad - 12) / CHAR_PX));
 
-    const maxChars = Math.max(8, Math.floor((leftPad - 14) / CHAR_PX));
-    const lines = wrapLabelLines(label, maxChars, narrow ? 2 : 2);
-    const lineH = labelFont + 3;
-    const labelBlockH = lines.length * lineH;
-    const labelStartY = yMid - labelBlockH / 2 + labelFont;
+  labels.forEach((label, i) => {
+    const top = pad.top + rowH * i;
+    const yStart = top + headH;
 
-    const nameLbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    nameLbl.setAttribute("x", String(pad.left - 10));
-    nameLbl.setAttribute("text-anchor", "end");
-    nameLbl.setAttribute("fill", "currentColor");
-    nameLbl.setAttribute("font-size", String(labelFont));
-    nameLbl.setAttribute("font-weight", "600");
-    nameLbl.setAttribute("font-family", "DM Sans, system-ui, sans-serif");
-    lines.forEach((line, li) => {
-      const tsp = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-      tsp.setAttribute("x", String(pad.left - 10));
-      if (li === 0) tsp.setAttribute("y", String(labelStartY));
-      else tsp.setAttribute("dy", String(lineH));
-      tsp.textContent = line;
-      nameLbl.append(tsp);
-    });
-    svg.append(nameLbl);
+    // Category header, on the full width so long names are never clipped.
+    const head = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    head.setAttribute("x", "12");
+    head.setAttribute("y", String(top + headFont));
+    head.setAttribute("fill", "currentColor");
+    head.setAttribute("font-size", String(headFont));
+    head.setAttribute("font-weight", "700");
+    head.setAttribute("font-family", "DM Sans, system-ui, sans-serif");
+    head.textContent = String(label);
+    svg.append(head);
+
+    const rule = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    rule.setAttribute("x1", String(12));
+    rule.setAttribute("x2", String(width - pad.right));
+    rule.setAttribute("y1", String(top + headFont + 4));
+    rule.setAttribute("y2", String(top + headFont + 4));
+    rule.setAttribute("stroke", "currentColor");
+    rule.setAttribute("stroke-opacity", "0.14");
+    rule.setAttribute("stroke-width", "1");
+    svg.append(rule);
 
     series.forEach((s, si) => {
       const val = s.values[i] ?? 0;
       const w = (val / maxVal) * innerW;
-      const y = yStart + si * (barH + 2);
+      const y = yStart + si * (barH + barGap);
+      const unitName = s.unitNames?.[i];
+
+      if (unitName) {
+        const nameLbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        nameLbl.setAttribute("x", String(pad.left - 8));
+        nameLbl.setAttribute("y", String(y + barH - Math.max(1, (barH - unitFont) / 2) - 0.5));
+        nameLbl.setAttribute("text-anchor", "end");
+        // Tinted to its series so the gutter doubles as the legend: you can read
+        // which tribe a bar belongs to without counting down from the top.
+        nameLbl.setAttribute("fill", s.color);
+        nameLbl.setAttribute("font-size", String(unitFont));
+        nameLbl.setAttribute("font-weight", "600");
+        nameLbl.setAttribute("font-family", "DM Sans, system-ui, sans-serif");
+        nameLbl.textContent = clipLabel(unitName, maxUnitChars);
+        const nameTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        nameTitle.textContent = `${unitName} — ${s.name}`;
+        nameLbl.append(nameTitle);
+        svg.append(nameLbl);
+      }
+
       const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       bar.setAttribute("x", String(pad.left));
       bar.setAttribute("y", String(y));
@@ -1058,7 +1105,11 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
       bar.setAttribute("fill", s.color);
       bar.setAttribute("stroke", "rgba(0,0,0,0.12)");
       bar.setAttribute("stroke-width", "1");
+      const tip = document.createElementNS("http://www.w3.org/2000/svg", "title");
+      tip.textContent = `${s.name} — ${unitName || label}: ${fmt(val, i, si)}`;
+      bar.append(tip);
       svg.append(bar);
+
       const tb = document.createElementNS("http://www.w3.org/2000/svg", "text");
       const valueOutside = w < innerW * 0.45;
       tb.setAttribute("x", String(valueOutside ? pad.left + w + 6 : pad.left + w - 6));
@@ -1071,6 +1122,33 @@ export function drawMultiHorizontalCompareChart(svg, opts) {
       svg.append(tb);
     });
   });
+}
+
+/**
+ * Hover text naming the tribe, its own name for the unit, and the value.
+ * @param {{ name: string, unitNames?: string[] }} s
+ * @param {number} i slot index
+ * @param {number} val
+ * @param {(v: number, i: number, si: number) => string} fmt
+ * @param {string} [fallback] the slot category, when the series has no names
+ * @param {number} [si] series index
+ */
+function pointTitle(s, i, val, fmt, fallback, si = 0) {
+  const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+  const unit = s.unitNames?.[i] || fallback || "";
+  title.textContent = `${s.name}${unit ? ` — ${unit}` : ""}: ${fmt(val, i, si)}`;
+  return title;
+}
+
+/**
+ * Trim to fit the gutter, keeping the ellipsis inside the budget.
+ * @param {string} text
+ * @param {number} maxChars
+ */
+function clipLabel(text, maxChars) {
+  const value = String(text || "").trim();
+  if (value.length <= maxChars) return value;
+  return `${value.slice(0, Math.max(1, maxChars - 1))}…`;
 }
 
 /**
@@ -1147,6 +1225,10 @@ export function drawMultiCostStackChart(svg, opts) {
         r.setAttribute("opacity", String(0.95 - si * 0.06));
         r.setAttribute("stroke", "rgba(0,0,0,0.1)");
         r.setAttribute("stroke-width", "0.5");
+        const rt = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        const unit = slot.unitNames?.[si] || slot.label;
+        rt.textContent = `${s.name} — ${unit}: ${res.label || res.key} ${v.toLocaleString()}`;
+        r.append(rt);
         svg.append(r);
       }
       if (total > 0) {

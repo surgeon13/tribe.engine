@@ -1029,15 +1029,37 @@ function defaultCompareSelection() {
   return [first, rest[0]].filter(Boolean);
 }
 
-function compareSlotChartLabels(tribes) {
-  const ref = tribes[0];
+/**
+ * Row labels for the comparison charts.
+ *
+ * A row spans every selected tribe, so it is named after the slot rather than
+ * after any one tribe's unit. Labelling the rows from the first tribe made the
+ * whole chart look like it was about the Romans, and reordering the tribe
+ * picker silently renamed every row.
+ */
+function compareSlotChartLabels() {
   return data.roster.map((slot, i) => ({
-    main: ref.troops[i]?.name || slot.role,
+    main: slotCategoryLabel(i),
   }));
 }
 
-function chartTroopName(tribes, slotIndex) {
-  return tribes[0]?.troops[slotIndex]?.name || data.roster[slotIndex]?.role || "—";
+/**
+ * The generic name of what a slot holds — "Infantry I", "Cavalry III".
+ * @param {number} slotIndex
+ */
+function slotCategoryLabel(slotIndex) {
+  const slot = data.roster[slotIndex];
+  if (!slot) return "—";
+  return slot.label || slot.baseUnitId || `Slot ${slot.slot}`;
+}
+
+/**
+ * What each tribe calls the unit in this slot, in the same order as the series.
+ * @param {Array<object>} tribes
+ * @param {number} slotIndex
+ */
+function slotUnitNames(tribes, slotIndex) {
+  return tribes.map((t) => t.troops[slotIndex]?.name || slotCategoryLabel(slotIndex));
 }
 
 function buildCompareChartSeries(tribes, metric, colors, normalizeMode) {
@@ -1045,6 +1067,9 @@ function buildCompareChartSeries(tribes, metric, colors, normalizeMode) {
     name: tribe.name,
     color: colors[i],
     values: tribe.troops.map((t) => chartMetricValue(t, metric.key, normalizeMode)),
+    // Every tribe's own name for each slot, so a bar can say what it actually is
+    // rather than borrowing the label of whichever tribe happens to be first.
+    unitNames: data.roster.map((_, si) => tribe.troops[si]?.name || slotCategoryLabel(si)),
   }));
 }
 
@@ -1413,15 +1438,13 @@ function renderCompareCharts() {
 
     const svgCost = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     drawMultiCostStackChart(svgCost, {
-      width: computeChartWidth(
-        tribes.map((_, i) => chartTroopName(tribes, i)),
-        containerW
-      ),
+      width: computeChartWidth(troopLabels, containerW),
       height: Math.min(480, 340 + tribes.length * 16),
       title: "Training resources (W / C / I / Cr)",
       series: tribes.map((t, i) => ({ name: t.name, color: colors[i] })),
       slots: data.roster.map((slot, i) => ({
-        label: chartTroopName(tribes, i),
+        label: slotCategoryLabel(i),
+        unitNames: slotUnitNames(tribes, i),
         costs: tribes.map((t) => t.troops[i].cost),
         totals: tribes.map((t) => t.troops[i].totalCost),
       })),
@@ -1445,12 +1468,12 @@ function renderMobileCostCompare(container, tribes, colors) {
     const maxCost = Math.max(1, ...totals);
     const card = document.createElement("article");
     card.className = "compare-cost-mobile-card";
-    const unitLabel = chartTroopName(tribes, i);
+    const unitNames = slotUnitNames(tribes, i);
     card.innerHTML = `
       <header class="compare-cost-mobile-head">
-        <strong>Slot ${slot.slot}</strong>
+        <strong>${slotCategoryLabel(i)}</strong>
         <span class="role-badge">${slot.role}</span>
-        <span class="muted">${unitLabel}</span>
+        <span class="muted">Slot ${slot.slot}</span>
       </header>
       <div class="compare-cost-mobile-rows">
         ${tribes
@@ -1458,7 +1481,10 @@ function renderMobileCostCompare(container, tribes, colors) {
             const total = totals[ti];
             const pct = Math.round((total / maxCost) * 100);
             return `<div class="compare-cost-mobile-row">
-              <span class="compare-cost-mobile-name" style="color:${colors[ti]}">${t.name}</span>
+              <span class="compare-cost-mobile-name" style="color:${colors[ti]}">
+                <span class="compare-cost-mobile-unit">${unitNames[ti]}</span>
+                <span class="compare-cost-mobile-tribe">${t.name}</span>
+              </span>
               <div class="compare-cost-mobile-track" role="presentation">
                 <div class="compare-cost-mobile-fill" style="width:${pct}%;background:${colors[ti]}"></div>
               </div>
