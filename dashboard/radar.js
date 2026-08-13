@@ -452,13 +452,18 @@ function polar(cx, cy, r, angle) {
   };
 }
 
-function polygonPoints(cx, cy, radius, values, maxR) {
+/**
+ * @param {number} cx @param {number} cy
+ * @param {number} radius pixel radius of the 100 ring
+ * @param {number[]} values 0–100 per axis
+ */
+function polygonPoints(cx, cy, radius, values) {
   const n = values.length;
   const step = (Math.PI * 2) / n;
   const start = -Math.PI / 2;
   return values
     .map((v, i) => {
-      const r = (v / 100) * maxR;
+      const r = (v / 100) * radius;
       const p = polar(cx, cy, r, start + i * step);
       return `${p.x.toFixed(1)},${p.y.toFixed(1)}`;
     })
@@ -466,49 +471,40 @@ function polygonPoints(cx, cy, radius, values, maxR) {
 }
 
 /**
- * @param {SVGElement} svg
- * @param {number[]} values 0–100 per axis
- * @param {{ primary?: string, secondary?: string, title?: string, subtitle?: string, compareValues?: number[], size?: number }} opts
+ * Several tribes' shapes on one radar.
+ *
+ * Deliberately flat. The single-entity radar this replaces gave its one shape
+ * gradients, a glow and a lit orb behind it, which reads well alone and turns
+ * to mud the moment a fourth polygon lands on top. Here there is nothing but
+ * outlines in the tribe colours over a shared grid, so what you see is the
+ * difference in shape rather than a pile of translucency, and the fill fades
+ * further as tribes are added.
+ *
+ * @param {SVGSVGElement} svg
+ * @param {{
+ *   axes: Array<{ key: string, label: string, name: string }>,
+ *   series: Array<{ name: string, color: string, values: number[], unitName?: string }>,
+ *   size?: number,
+ * }} opts
  */
-export function drawRadar(svg, values, opts = {}) {
-  const size = opts.size ?? 280;
+export function drawMultiRadar(svg, opts) {
+  const axes = opts.axes || PROFILE_AXES;
+  const series = opts.series || [];
+  const n = axes.length;
+  const size = opts.size ?? 250;
   const cx = size / 2;
   const cy = size / 2;
-  const maxR = size * 0.36;
-  const n = values.length;
+  const maxR = size * 0.33;
   const step = (Math.PI * 2) / n;
   const start = -Math.PI / 2;
-  const primary = opts.primary || "#c9a227";
-  const secondary = opts.secondary || "#4fc3f7";
-  const axisColors = getStatAxisColors();
-  const chrome = opts.chrome || getRadarChromeColors();
-  const uid = `glow-${Math.random().toString(36).slice(2, 9)}`;
+  const chrome = getRadarChromeColors();
+  const fillOpacity = series.length <= 2 ? 0.2 : series.length <= 4 ? 0.12 : 0.07;
 
   svg.innerHTML = "";
   svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
   svg.setAttribute("width", String(size));
   svg.setAttribute("height", String(size));
-  svg.classList.add("radar-svg");
-
-  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-  defs.innerHTML = `
-    <radialGradient id="${uid}-orb" cx="50%" cy="45%" r="50%">
-      <stop offset="0%" stop-color="${primary}" stop-opacity="0.7"/>
-      <stop offset="50%" stop-color="${secondary}" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="${chrome.radarBg}" stop-opacity="0"/>
-    </radialGradient>
-    <filter id="${uid}-blur" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="6"/>
-    </filter>
-    <linearGradient id="${uid}-fill" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="${primary}" stop-opacity="0.72"/>
-      <stop offset="100%" stop-color="${secondary}" stop-opacity="0.48"/>
-    </linearGradient>
-    <filter id="${uid}-glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="${primary}" flood-opacity="0.5"/>
-    </filter>
-  `;
-  svg.append(defs);
+  svg.classList.add("radar-svg", "radar-svg-multi");
 
   const bg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   bg.setAttribute("cx", String(cx));
@@ -516,21 +512,11 @@ export function drawRadar(svg, values, opts = {}) {
   bg.setAttribute("r", String(maxR + 4));
   bg.setAttribute("fill", chrome.radarBg);
   bg.setAttribute("stroke", chrome.grid);
-  bg.setAttribute("stroke-width", "1");
   svg.append(bg);
 
-  const orb = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  orb.setAttribute("cx", String(cx));
-  orb.setAttribute("cy", String(cy));
-  orb.setAttribute("r", String(maxR * 0.72));
-  orb.setAttribute("fill", `url(#${uid}-orb)`);
-  orb.setAttribute("filter", `url(#${uid}-blur)`);
-  svg.append(orb);
-
-  for (const ring of [20, 40, 60, 80, 100]) {
-    const ringVals = Array(n).fill(ring);
+  for (const ring of [25, 50, 75, 100]) {
     const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    poly.setAttribute("points", polygonPoints(cx, cy, maxR, ringVals, 1));
+    poly.setAttribute("points", polygonPoints(cx, cy, maxR, Array(n).fill(ring)));
     poly.setAttribute("fill", "none");
     poly.setAttribute("stroke", chrome.grid);
     poly.setAttribute("stroke-width", ring === 100 ? "1.5" : "1");
@@ -545,119 +531,53 @@ export function drawRadar(svg, values, opts = {}) {
     line.setAttribute("x2", String(end.x));
     line.setAttribute("y2", String(end.y));
     line.setAttribute("stroke", chrome.axis);
-    line.setAttribute("stroke-width", "1.2");
     svg.append(line);
   }
 
-  if (opts.compareValues) {
-    const cmp = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    cmp.setAttribute("points", polygonPoints(cx, cy, maxR, opts.compareValues, 1));
-    cmp.setAttribute("fill", secondary);
-    cmp.setAttribute("fill-opacity", "0.12");
-    cmp.setAttribute("stroke", secondary);
-    cmp.setAttribute("stroke-width", "2.5");
-    cmp.setAttribute("stroke-dasharray", "5 3");
-    svg.append(cmp);
+  for (const s of series) {
+    const poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    poly.setAttribute("points", polygonPoints(cx, cy, maxR, s.values));
+    poly.setAttribute("fill", s.color);
+    poly.setAttribute("fill-opacity", String(fillOpacity));
+    poly.setAttribute("stroke", s.color);
+    poly.setAttribute("stroke-width", "2.5");
+    poly.setAttribute("stroke-linejoin", "round");
+    const tip = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    tip.textContent = `${s.name}${s.unitName ? ` — ${s.unitName}` : ""}`;
+    poly.append(tip);
+    svg.append(poly);
+
+    s.values.forEach((v, i) => {
+      const p = polar(cx, cy, (v / 100) * maxR, start + i * step);
+      const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      dot.setAttribute("cx", String(p.x));
+      dot.setAttribute("cy", String(p.y));
+      dot.setAttribute("r", "3");
+      dot.setAttribute("fill", s.color);
+      svg.append(dot);
+    });
   }
 
-  const main = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-  main.setAttribute("points", polygonPoints(cx, cy, maxR, values, 1));
-  main.setAttribute("fill", `url(#${uid}-fill)`);
-  main.setAttribute("stroke", primary);
-  main.setAttribute("stroke-width", "3");
-  main.setAttribute("stroke-linejoin", "round");
-  main.setAttribute("filter", `url(#${uid}-glow)`);
-  svg.append(main);
-
-  values.forEach((v, i) => {
-    const ax = PROFILE_AXES[i];
-    const color = axisColors[ax?.key] || primary;
-    const r = (v / 100) * maxR;
-    const p = polar(cx, cy, r, start + i * step);
-    const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    dot.setAttribute("cx", String(p.x));
-    dot.setAttribute("cy", String(p.y));
-    dot.setAttribute("r", size < 120 ? "4" : "5");
-    dot.setAttribute("fill", color);
-    dot.setAttribute("stroke", "#fff");
-    dot.setAttribute("stroke-width", "1.5");
-    svg.append(dot);
+  const axisColors = getStatAxisColors();
+  axes.forEach((ax, i) => {
+    const p = polar(cx, cy, maxR + 20, start + i * step);
+    const lbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    lbl.setAttribute("x", String(p.x));
+    lbl.setAttribute("y", String(p.y + 4));
+    lbl.setAttribute("text-anchor", "middle");
+    lbl.setAttribute("fill", axisColors[ax.key] || chrome.label);
+    lbl.setAttribute("font-size", "11");
+    lbl.setAttribute("font-weight", "700");
+    lbl.setAttribute("font-family", "DM Sans, system-ui, sans-serif");
+    lbl.setAttribute("stroke", chrome.radarBg);
+    lbl.setAttribute("stroke-width", "4");
+    lbl.setAttribute("paint-order", "stroke fill");
+    lbl.textContent = ax.label;
+    const tip = document.createElementNS("http://www.w3.org/2000/svg", "title");
+    tip.textContent = ax.name;
+    lbl.append(tip);
+    svg.append(lbl);
   });
-
-  if (opts.showOvr) {
-    const ovr = overallRating(values);
-    const ovrBg = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    ovrBg.setAttribute("cx", String(cx));
-    ovrBg.setAttribute("cy", String(cy));
-    ovrBg.setAttribute("r", "28");
-    ovrBg.setAttribute("fill", chrome.ovrBg);
-    ovrBg.setAttribute("stroke", primary);
-    ovrBg.setAttribute("stroke-width", "2");
-    svg.append(ovrBg);
-
-    const ovrText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    ovrText.setAttribute("x", String(cx));
-    ovrText.setAttribute("y", String(cy + 6));
-    ovrText.setAttribute("text-anchor", "middle");
-    ovrText.setAttribute("fill", chrome.ovrText);
-    ovrText.setAttribute("font-size", "22");
-    ovrText.setAttribute("font-weight", "700");
-    ovrText.setAttribute("font-family", "DM Sans, sans-serif");
-    ovrText.textContent = String(ovr);
-    svg.append(ovrText);
-  }
-
-  PROFILE_AXES.forEach((ax, i) => {
-    const labelR = maxR + (size < 120 ? 16 : size < 200 ? 22 : 26);
-    const p = polar(cx, cy, labelR, start + i * step);
-    const color = axisColors[ax.key] || chrome.label;
-    const fontSize = size < 120 ? "10" : size < 200 ? "11" : "12";
-
-    const statLbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    statLbl.setAttribute("x", String(p.x));
-    statLbl.setAttribute("y", String(p.y + 4));
-    statLbl.setAttribute("text-anchor", "middle");
-    statLbl.setAttribute("fill", color);
-    statLbl.setAttribute("font-size", fontSize);
-    statLbl.setAttribute("font-weight", "700");
-    statLbl.setAttribute("font-family", "DM Sans, system-ui, sans-serif");
-    statLbl.setAttribute("stroke", chrome.radarBg);
-    statLbl.setAttribute("stroke-width", "4");
-    statLbl.setAttribute("paint-order", "stroke fill");
-    statLbl.textContent = ax.label;
-    svg.append(statLbl);
-
-    if (opts.metrics) {
-      const raw = formatStatValue(ax.key, opts.metrics[ax.key] ?? 0, opts.metrics);
-      const valR = labelR + (size < 120 ? 12 : 14);
-      const valP = polar(cx, cy, valR, start + i * step);
-      const valLbl = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      valLbl.setAttribute("x", String(valP.x));
-      valLbl.setAttribute("y", String(valP.y + (size < 120 ? 3 : 4)));
-      valLbl.setAttribute("text-anchor", "middle");
-      valLbl.setAttribute("fill", chrome.title);
-      valLbl.setAttribute("font-size", size < 120 ? "9" : "10");
-      valLbl.setAttribute("font-weight", "700");
-      valLbl.setAttribute("font-family", "JetBrains Mono, ui-monospace, monospace");
-      valLbl.setAttribute("stroke", chrome.radarBg);
-      valLbl.setAttribute("stroke-width", "3");
-      valLbl.setAttribute("paint-order", "stroke fill");
-      valLbl.textContent = raw;
-      svg.append(valLbl);
-    }
-  });
-
-  if (opts.title) {
-    const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    t.setAttribute("x", String(cx));
-    t.setAttribute("y", String(size - 8));
-    t.setAttribute("text-anchor", "middle");
-    t.setAttribute("fill", chrome.title);
-    t.setAttribute("font-size", "11");
-    t.setAttribute("font-weight", "600");
-    t.textContent = opts.title;
-    svg.append(t);
-  }
 }
 
 /**

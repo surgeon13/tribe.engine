@@ -229,8 +229,8 @@
             <div class="panel-head panel-head-split">
               <div>
                 <h3>Multi-tribe comparison</h3>
-                <p class="muted compare-intro">Select tribes below, then switch tabs for the stat table, per-unit graphs, or charts.</p>
-                <p class="muted compare-intro-mobile">On phones: Charts use horizontal bars; Graphs stacks each unit’s tribes vertically so labels stay readable.</p>
+                <p class="muted compare-intro">Select tribes below, then switch tabs for the stat table, the per-unit stat radars, or charts.</p>
+                <p class="muted compare-intro-mobile">On phones: Charts use horizontal bars; Graphs puts one radar per unit, one card at a time.</p>
               </div>
               <div class="compare-picks">
                 <div id="compare-tribe-picker" class="compare-tribe-picker" aria-label="Tribes to compare"></div>
@@ -273,19 +273,8 @@
               <div id="compare-chart-cost" class="chart-panel"></div>
             </div>
             <div id="compare-graphs-wrap" class="compare-content compare-graphs-wrap hidden">
-              <div class="compare-graphs-toolbar">
-                <label class="stat-toolbar-field">
-                  <span class="muted">Normalize</span>
-                  <select id="stat-normalize-compare" data-stat-normalize aria-label="Compare stat normalization"></select>
-                </label>
-                <div class="stat-display-tabs" role="tablist" aria-label="Stat display mode">
-                  <button type="button" class="view-tab active" data-stat-display="bars" role="tab">Bar list</button>
-                  <button type="button" class="view-tab" data-stat-display="grid" role="tab">Stat grid</button>
-                </div>
-              </div>
               <p id="compare-graphs-hint" class="muted compare-graphs-note"></p>
-              <div id="compare-banners" class="compare-banners"></div>
-              <div id="compare-graphs-slots" class="compare-graphs-slots compare-graphs-slots-scroll"></div>
+              <div id="compare-graphs-slots" class="compare-graphs-slots"></div>
             </div>
           </div>
         </section>

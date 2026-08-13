@@ -308,47 +308,6 @@ function mountRasterPortrait(el, url, alt, fallback) {
   el.append(fallback);
 }
 
-/**
- * @param {HTMLElement} container
- * @param {object} tribe
- */
-export function renderTribeBanner(container, tribe) {
-  container.innerHTML = "";
-  const banner = document.createElement("article");
-  banner.className = "tribe-banner";
-  banner.style.setProperty("--banner-a", tribe.palette?.primary || "#666");
-  banner.style.setProperty("--banner-b", tribe.palette?.secondary || "#999");
-
-  const art = document.createElement("div");
-  art.className = "tribe-banner-art";
-  const img = document.createElement("img");
-  img.alt = `${tribe.name} banner`;
-  img.loading = "lazy";
-  const url = tribe.graphicsUrls?.banner;
-  if (url) {
-    img.src = url;
-    img.onerror = () => art.classList.add("no-img");
-    art.append(img);
-  } else {
-    art.classList.add("no-img");
-  }
-
-  const body = document.createElement("div");
-  body.className = "tribe-banner-body";
-  body.innerHTML = `<h4>${tribe.name}</h4><p class="muted">${tribe.theme || ""}</p>`;
-
-  const swatches = document.createElement("div");
-  swatches.className = "tribe-banner-swatches";
-  for (const hex of [tribe.palette?.primary, tribe.palette?.secondary].filter(Boolean)) {
-    const s = document.createElement("span");
-    s.style.background = hex;
-    s.title = hex;
-    swatches.append(s);
-  }
-
-  banner.append(art, body, swatches);
-  container.append(banner);
-}
 
 /**
  * Compact logo cell for troop tables.

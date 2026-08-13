@@ -931,15 +931,6 @@ body.tribe-editing #troop-table thead th {
   font-family: var(--mono);
 }
 
-.compare-graphs-slots-scroll {
-  overflow-x: auto;
-  padding-bottom: 8px;
-}
-
-.compare-graphs-slots-scroll .compare-graphs-row {
-  min-width: max(100%, calc(120px + var(--compare-cols, 2) * var(--compare-col-min, 160px)));
-}
-
 .compare-tribe-col {
   color: var(--tribe-col) !important;
   border-bottom: 2px solid color-mix(in srgb, var(--tribe-col) 50%, transparent);
@@ -1005,15 +996,6 @@ body.tribe-editing #troop-table thead th {
 
 .compare-best-cell {
   font-weight: 600;
-}
-
-.compare-graphs-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 20px;
-  margin-bottom: 16px;
 }
 
 .topbar h2 {
@@ -1907,14 +1889,6 @@ body.tribe-editing #troop-table thead th {
   padding: 0;
 }
 
-.compare-graphs-empty {
-  display: grid;
-  place-items: center;
-  min-height: 80px;
-  color: var(--text-muted);
-  font-size: 18px;
-}
-
 #compare-table-wrap {
   overflow-x: auto;
 }
@@ -1926,51 +1900,89 @@ body.tribe-editing #troop-table thead th {
 }
 
 .compare-graphs-slots {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 12px;
 }
 
-.compare-graphs-row {
-  display: grid;
-  grid-template-columns: minmax(100px, 120px) repeat(var(--compare-cols, 2), minmax(var(--compare-col-min, 160px), 1fr));
-  gap: 16px;
-  align-items: stretch;
-  padding: 14px;
+.compare-radar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 10px 10px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface);
 }
 
-.compare-grid-header {
-  background: transparent;
-  border: none;
-  padding: 0 12px 8px;
-  align-items: end;
-}
-
-.compare-col-title {
-  margin: 0;
-  font-size: clamp(12px, 1.1vw, 15px);
+.compare-radar-title {
+  margin: 0 0 2px;
+  align-self: flex-start;
+  font-size: 14px;
   font-weight: 700;
-  text-align: center;
-  line-height: 1.3;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  hyphens: auto;
 }
 
-.compare-graphs-row .unit-stat-name {
-  word-break: break-word;
-  overflow-wrap: anywhere;
-  line-height: 1.25;
-  white-space: normal;
+.compare-radar-card .radar-svg-multi {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
 }
 
-.compare-slot-units {
+.compare-radar-rank {
+  width: 100%;
   margin: 6px 0 0;
-  font-size: 11px;
-  line-height: 1.35;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.compare-radar-rank li {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 3px 4px;
+  border-radius: 6px;
+}
+
+.compare-radar-rank li:first-child {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.compare-radar-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.compare-radar-unit {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.compare-radar-unit,
+.compare-radar-unit small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compare-radar-unit small {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.compare-radar-rating {
+  font-size: 15px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .chart-caption {
@@ -1981,68 +1993,6 @@ body.tribe-editing #troop-table thead th {
   color: var(--text);
 }
 
-.compare-banners {
-  display: grid;
-  grid-template-columns: repeat(var(--compare-cols, 2), minmax(var(--compare-col-min, 200px), 1fr));
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.tribe-banner {
-  display: grid;
-  grid-template-columns: 96px 1fr auto;
-  gap: 14px;
-  align-items: center;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--banner-a) 22%, var(--surface)), var(--surface));
-}
-
-.tribe-banner-art {
-  width: 96px;
-  height: 64px;
-  border-radius: 8px;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--banner-a), var(--banner-b));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tribe-banner-art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tribe-banner-art.no-img img {
-  display: none;
-}
-
-.tribe-banner h4 {
-  margin: 0 0 4px;
-  font-size: 16px;
-}
-
-.tribe-banner-swatches {
-  display: flex;
-  gap: 6px;
-}
-
-.tribe-banner-swatches span {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-}
-
-.compare-slot-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  justify-content: center;
-}
 
 .unit-portrait {
   width: 96px;
@@ -2331,14 +2281,6 @@ body.tribe-editing #troop-table thead th {
   .stat-profile-body {
     grid-template-columns: 1fr;
   }
-  .compare-banners,
-  .compare-graphs-row {
-    grid-template-columns: 1fr;
-  }
-  .compare-graphs-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
   .compare-versus-body {
     grid-template-columns: 1fr;
   }
@@ -2360,48 +2302,6 @@ body.tribe-editing #troop-table thead th {
 
 html[data-compare-compact="1"] .compare-intro-mobile {
   display: block;
-}
-
-html[data-compare-compact="1"] .compare-graphs-slots-scroll {
-  overflow-x: visible;
-  padding-bottom: 0;
-}
-
-html[data-compare-compact="1"] .compare-graphs-slots-scroll .compare-graphs-row {
-  min-width: 0;
-  width: 100%;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-html[data-compare-compact="1"] .compare-grid-header {
-  display: none;
-}
-
-html[data-compare-compact="1"] .compare-banners {
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-html[data-compare-compact="1"] .compare-slot-label {
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--border);
-}
-
-html[data-compare-compact="1"] .compare-tribe-block {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid color-mix(in srgb, var(--tribe-col, var(--border)) 35%, var(--border));
-  background: color-mix(in srgb, var(--tribe-col, transparent) 6%, var(--surface));
-}
-
-html[data-compare-compact="1"] .compare-tribe-tag {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
 html[data-compare-compact="1"] .chart-toolbar {
