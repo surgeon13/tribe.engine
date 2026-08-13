@@ -28,6 +28,7 @@ import {
   pricePaid,
   totalCost,
 } from "../lib/balance/anchors.js";
+import { isCanonTribe } from "../lib/balance/canon.js";
 import {
   CROP_PRESSURE_RANGE,
   FAIRNESS_TOLERANCE,
@@ -90,6 +91,10 @@ for (const entry of index.tribes || []) {
 
   tribes.push({
     id,
+    // Travian's own tribes are transcribed, not designed here. They are the
+    // reference our anchors were measured from, so holding them to our model's
+    // invariants would be marking the ruler against the thing it measures.
+    canon: isCanonTribe(id),
     tier: spec?.tier || (spec ? "player" : "unspecified"),
     // >1 means the tribe gets more power per unit of that currency than the anchor.
     cropEfficiency: crop ? anchorCrop / crop : 0,
@@ -109,6 +114,7 @@ for (const [id, spec] of Object.entries(TRIBE_IDENTITIES)) {
 }
 
 for (const t of tribes) {
+  if (t.canon) continue;
   if (t.tier === "unspecified") {
     // The median tribe is derived from the cores by compute-median-tribe.js, so
     // it has no identity of its own to price — it *is* the reference point.
@@ -163,6 +169,7 @@ if (boss && guard && boss.power <= guard.power) {
 // Travian too, and neither is an army unit you mass.
 const ARMY_REFS = SCORED_REFS.filter((ref) => ref !== "ram" && ref !== "catapult");
 for (const t of tribes) {
+  if (t.canon) continue;
   const horse = t.troops.get("cav_t3");
   if (!horse) continue;
   const rivals = ARMY_REFS.filter((ref) => ref !== "cav_t3" && t.troops.has(ref));
@@ -225,6 +232,8 @@ for (const [name, read] of Object.entries({ ...SHOP_COLUMNS })) {
 const BATTLE_REFS = ARMY_REFS.filter((ref) => ref !== "scout");
 
 for (const t of tribes) {
+  // Travian ships what it ships; flagging its filler is noise we cannot act on.
+  if (t.canon) continue;
   const army = BATTLE_REFS.filter((ref) => t.troops.has(ref));
   for (const ref of army) {
     const unit = t.troops.get(ref);

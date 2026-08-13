@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Phalanx" },
-        "stats": { "attack": 10, "defenseInfantry": 31, "defenseCavalry": 55, "speed": 8, "carry": 42 },
-        "cost": { "wood": 75, "clay": 60, "iron": 35, "crop": 45 },
+        "stats": { "attack": 15, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 7, "carry": 35 },
+        "cost": { "wood": 95, "clay": 75, "iron": 45, "crop": 55 },
         "cropUpkeep": 1
       }
     },
@@ -24,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Swordsman" },
-        "stats": { "attack": 33, "defenseInfantry": 37, "defenseCavalry": 44, "speed": 7, "carry": 47 },
-        "cost": { "wood": 125, "clay": 110, "iron": 115, "crop": 50 },
+        "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 20, "speed": 6, "carry": 45 },
+        "cost": { "wood": 200, "clay": 170, "iron": 180, "crop": 80 },
         "cropUpkeep": 1
       }
     },
@@ -36,8 +36,8 @@
         "description": {
           "en": "Tevel slot 3 — Travian Gauls have two infantry units; this slot completes the Tevel roster."
         },
-        "stats": { "attack": 66, "defenseInfantry": 41, "defenseCavalry": 30, "speed": 8, "carry": 53 },
-        "cost": { "wood": 210, "clay": 165, "iron": 180, "crop": 80 },
+        "stats": { "attack": 40, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 8, "carry": 60 },
+        "cost": { "wood": 110, "clay": 85, "iron": 95, "crop": 40 },
         "cropUpkeep": 1
       }
     },
@@ -45,8 +45,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Pathfinder" },
-        "stats": { "attack": 0, "defenseInfantry": 19, "defenseCavalry": 10, "speed": 19, "carry": 0 },
-        "cost": { "wood": 160, "clay": 130, "iron": 35, "crop": 50 },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 },
+        "cost": { "wood": 170, "clay": 135, "iron": 35, "crop": 50 },
         "cropUpkeep": 2
       }
     },
@@ -54,8 +54,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Theutates Thunder" },
-        "stats": { "attack": 104, "defenseInfantry": 50, "defenseCavalry": 46, "speed": 17, "carry": 82 },
-        "cost": { "wood": 580, "clay": 430, "iron": 290, "crop": 140 },
+        "stats": { "attack": 90, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 },
+        "cost": { "wood": 380, "clay": 280, "iron": 190, "crop": 90 },
         "cropUpkeep": 2
       }
     },
@@ -63,8 +63,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Druidrider" },
-        "stats": { "attack": 48, "defenseInfantry": 100, "defenseCavalry": 43, "speed": 12, "carry": 143 },
-        "cost": { "wood": 240, "clay": 215, "iron": 185, "crop": 70 },
+        "stats": { "attack": 45, "defenseInfantry": 115, "defenseCavalry": 55, "speed": 16, "carry": 35 },
+        "cost": { "wood": 280, "clay": 250, "iron": 210, "crop": 80 },
         "cropUpkeep": 2
       }
     },
@@ -72,17 +72,17 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Haeduan" },
-        "stats": { "attack": 154, "defenseInfantry": 69, "defenseCavalry": 178, "speed": 14, "carry": 58 },
-        "cost": { "wood": 690, "clay": 610, "iron": 490, "crop": 180 },
-        "cropUpkeep": 4
+        "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 165, "speed": 13, "carry": 65 },
+        "cost": { "wood": 570, "clay": 510, "iron": 410, "crop": 150 },
+        "cropUpkeep": 3
       }
     },
     {
       "ref": "ram",
       "overrides": {
         "name": { "en": "Ram" },
-        "stats": { "attack": 64, "defenseInfantry": 30, "defenseCavalry": 74, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1050, "clay": 350, "iron": 390, "crop": 80 },
+        "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 105, "speed": 4, "carry": 0 },
+        "cost": { "wood": 1080, "clay": 360, "iron": 400, "crop": 80 },
         "cropUpkeep": 3
       }
     },
@@ -90,8 +90,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Trebuchet" },
-        "stats": { "attack": 54, "defenseInfantry": 59, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 890, "clay": 1100, "iron": 410, "crop": 80 },
+        "stats": { "attack": 70, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 1080, "clay": 1340, "iron": 500, "crop": 100 },
         "cropUpkeep": 6
       }
     },
@@ -99,8 +99,8 @@
       "ref": "chief",
       "overrides": {
         "name": { "en": "Chieftain" },
-        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 35750, "clay": 25750, "iron": 36850, "crop": 42050 },
+        "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 0 },
+        "cost": { "wood": 35450, "clay": 25500, "iron": 36500, "crop": 41650 },
         "cropUpkeep": 4
       }
     },
@@ -109,7 +109,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3825, "clay": 4125, "iron": 1800, "crop": 4450 },
+        "cost": { "wood": 3900, "clay": 4200, "iron": 1850, "crop": 4550 },
         "cropUpkeep": 1
       }
     }
@@ -137,8 +137,9 @@
   },
   "meta": {
     "balance": {
-      "model": "identity-budget",
-      "identity": "Fast and defensive: everything outruns its counterpart, and the Haeduan fights on both sides of the wall.",
+      "model": "travian-canon",
+      "source": "Travian: Legends published unit tables",
+      "extendedSlot": "inf_t3",
       "tier": "player"
     }
   }

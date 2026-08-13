@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Clubswinger" },
-        "stats": { "attack": 60, "defenseInfantry": 29, "defenseCavalry": 21, "speed": 7, "carry": 59 },
-        "cost": { "wood": 205, "clay": 165, "iron": 70, "crop": 95 },
+        "stats": { "attack": 40, "defenseInfantry": 20, "defenseCavalry": 5, "speed": 7, "carry": 60 },
+        "cost": { "wood": 80, "clay": 65, "iron": 30, "crop": 35 },
         "cropUpkeep": 1
       }
     },
@@ -24,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Spearman" },
-        "stats": { "attack": 12, "defenseInfantry": 29, "defenseCavalry": 51, "speed": 7, "carry": 47 },
-        "cost": { "wood": 80, "clay": 70, "iron": 50, "crop": 25 },
+        "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 },
+        "cost": { "wood": 85, "clay": 75, "iron": 55, "crop": 25 },
         "cropUpkeep": 1
       }
     },
@@ -33,8 +33,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Axeman" },
-        "stats": { "attack": 72, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 7, "carry": 59 },
-        "cost": { "wood": 235, "clay": 190, "iron": 145, "crop": 70 },
+        "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 30, "speed": 6, "carry": 50 },
+        "cost": { "wood": 180, "clay": 150, "iron": 115, "crop": 55 },
         "cropUpkeep": 1
       }
     },
@@ -42,17 +42,17 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 17, "defenseCavalry": 8, "speed": 10, "carry": 0 },
-        "cost": { "wood": 115, "clay": 95, "iron": 20, "crop": 25 },
-        "cropUpkeep": 2
+        "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 5, "speed": 9, "carry": 0 },
+        "cost": { "wood": 90, "clay": 70, "iron": 15, "crop": 20 },
+        "cropUpkeep": 1
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Paladin" },
-        "stats": { "attack": 38, "defenseInfantry": 71, "defenseCavalry": 31, "speed": 12, "carry": 119 },
-        "cost": { "wood": 225, "clay": 170, "iron": 85, "crop": 45 },
+        "stats": { "attack": 55, "defenseInfantry": 100, "defenseCavalry": 40, "speed": 10, "carry": 110 },
+        "cost": { "wood": 430, "clay": 320, "iron": 160, "crop": 80 },
         "cropUpkeep": 2
       }
     },
@@ -60,9 +60,9 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Teutonic Knight" },
-        "stats": { "attack": 125, "defenseInfantry": 47, "defenseCavalry": 43, "speed": 12, "carry": 124 },
-        "cost": { "wood": 520, "clay": 480, "iron": 290, "crop": 120 },
-        "cropUpkeep": 2
+        "stats": { "attack": 150, "defenseInfantry": 50, "defenseCavalry": 75, "speed": 9, "carry": 80 },
+        "cost": { "wood": 530, "clay": 490, "iron": 300, "crop": 120 },
+        "cropUpkeep": 3
       }
     },
     {
@@ -70,17 +70,17 @@
       "overrides": {
         "name": { "en": "Teutonic Raider" },
         "description": { "en": "Tevel slot 7 — Travian Teutons have two cavalry types." },
-        "stats": { "attack": 178, "defenseInfantry": 56, "defenseCavalry": 52, "speed": 12, "carry": 85 },
-        "cost": { "wood": 530, "clay": 480, "iron": 270, "crop": 100 },
-        "cropUpkeep": 4
+        "stats": { "attack": 90, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 11, "carry": 130 },
+        "cost": { "wood": 360, "clay": 320, "iron": 180, "crop": 70 },
+        "cropUpkeep": 3
       }
     },
     {
       "ref": "ram",
       "overrides": {
         "name": { "en": "Ram" },
-        "stats": { "attack": 71, "defenseInfantry": 33, "defenseCavalry": 82, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1370, "clay": 470, "iron": 370, "crop": 80 },
+        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
+        "cost": { "wood": 1200, "clay": 410, "iron": 320, "crop": 70 },
         "cropUpkeep": 3
       }
     },
@@ -88,8 +88,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Catapult" },
-        "stats": { "attack": 60, "defenseInfantry": 65, "defenseCavalry": 11, "speed": 3, "carry": 0 },
-        "cost": { "wood": 1140, "clay": 1440, "iron": 380, "crop": 80 },
+        "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 860, "clay": 1090, "iron": 290, "crop": 60 },
         "cropUpkeep": 6
       }
     },
@@ -98,7 +98,7 @@
       "overrides": {
         "name": { "en": "Chief" },
         "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 41300, "clay": 30400, "iron": 31150, "crop": 37550 },
+        "cost": { "wood": 40850, "clay": 30050, "iron": 30800, "crop": 37100 },
         "cropUpkeep": 4
       }
     },
@@ -106,8 +106,8 @@
       "ref": "settler",
       "overrides": {
         "name": { "en": "Settler" },
-        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 4000, "clay": 4400, "iron": 1375, "crop": 3575 },
+        "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 5000, "clay": 5500, "iron": 1750, "crop": 4450 },
         "cropUpkeep": 1
       }
     }
@@ -135,8 +135,9 @@
   },
   "meta": {
     "balance": {
-      "model": "identity-budget",
-      "identity": "Cheap brutal mass: the most army per resource and the fastest to replace, at the worst crop rate.",
+      "model": "travian-canon",
+      "source": "Travian: Legends published unit tables",
+      "extendedSlot": "cav_t3",
       "tier": "player"
     }
   }

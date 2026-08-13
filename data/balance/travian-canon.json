@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "source": "Travian: Legends published unit tables",
+  "$comment": [
+    "Travian's own tribes, transcribed. These numbers are not ours to balance:",
+    "players know them by heart and every combat calculator on the internet",
+    "assumes them, so scripts/validate-canon.js fails the build if a tribe file",
+    "drifts off them and scripts/rebuild-troop-tables.js copies rather than",
+    "generates them.",
+    "",
+    "Stats are BASE values at smithy level 0. Beware the official support.travian",
+    "comparison table, which publishes level-20 upgraded values — it lists a",
+    "Legionnaire at 52.4 attack where the base figure is 40.",
+    "",
+    "Travian gives each tribe ten units and our roster has eleven slots, so every",
+    "canonical tribe has exactly one 'extension' slot that is ours to invent.",
+    "Those are marked separately and are held, by the same validator, to sitting",
+    "alongside the published units rather than outclassing them.",
+    "",
+    "Units carry a cost only where the published figure has been verified;",
+    "where it has not, the slot is priced by our own model from the real stats.",
+    "Wildlife has no published price at all because it cannot be trained."
+  ],
+  "sources": {
+    "roman": ["support.kingdoms.com/en/articles/109-troop-specifications"],
+    "teuton": ["support.kingdoms.com/en/articles/109-troop-specifications"],
+    "gaul": ["support.kingdoms.com/en/articles/109-troop-specifications"],
+    "hun": ["travian.fandom.com/wiki/Huns (citing t4.answers.travian.com aid=414)"]
+  },
+  "tribes": {
+    "roman": {
+      "extendedSlot": "cav_t3",
+      "units": {
+        "inf_t1": { "name": "Legionnaire", "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
+        "inf_t2": { "name": "Praetorian", "stats": { "attack": 30, "defenseInfantry": 65, "defenseCavalry": 35, "speed": 5, "carry": 20 }, "cropUpkeep": 1 },
+        "inf_t3": { "name": "Imperian", "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 25, "speed": 7, "carry": 50 }, "cropUpkeep": 1 },
+        "scout": { "name": "Equites Legati", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 }, "cropUpkeep": 2 },
+        "cav_t1": { "name": "Equites Imperatoris", "stats": { "attack": 120, "defenseInfantry": 65, "defenseCavalry": 50, "speed": 14, "carry": 100 }, "cropUpkeep": 3 },
+        "cav_t2": { "name": "Equites Caesaris", "stats": { "attack": 180, "defenseInfantry": 80, "defenseCavalry": 105, "speed": 10, "carry": 70 }, "cropUpkeep": 4 },
+        "ram": { "name": "Battering Ram", "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
+        "catapult": { "name": "Fire Catapult", "stats": { "attack": 75, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
+        "chief": { "name": "Senator", "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 4, "carry": 0 }, "cropUpkeep": 5 },
+        "settler": { "name": "Settler", "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+      },
+      "extension": {
+        "cav_t3": {
+          "name": "Equites Regales",
+          "$comment": "Ours, not Travian's. Rome has a hammer and no anvil, so this is the anvil: barely a threat on the charge, and the wall a legion forms up behind. One field slower than the Caesaris it stands beside.",
+          "stats": { "attack": 45, "defenseInfantry": 125, "defenseCavalry": 175, "speed": 9, "carry": 65 },
+          "cropUpkeep": 4
+        }
+      }
+    },
+    "teuton": {
+      "extendedSlot": "cav_t3",
+      "units": {
+        "inf_t1": { "name": "Clubswinger", "stats": { "attack": 40, "defenseInfantry": 20, "defenseCavalry": 5, "speed": 7, "carry": 60 }, "cropUpkeep": 1 },
+        "inf_t2": { "name": "Spearman", "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 }, "cropUpkeep": 1 },
+        "inf_t3": { "name": "Axeman", "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 30, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
+        "scout": { "name": "Scout", "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 5, "speed": 9, "carry": 0 }, "cropUpkeep": 1 },
+        "cav_t1": { "name": "Paladin", "stats": { "attack": 55, "defenseInfantry": 100, "defenseCavalry": 40, "speed": 10, "carry": 110 }, "cropUpkeep": 2 },
+        "cav_t2": { "name": "Teutonic Knight", "stats": { "attack": 150, "defenseInfantry": 50, "defenseCavalry": 75, "speed": 9, "carry": 80 }, "cropUpkeep": 3 },
+        "ram": { "name": "Ram", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
+        "catapult": { "name": "Catapult", "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
+        "chief": { "name": "Chief", "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 }, "cropUpkeep": 4 },
+        "settler": { "name": "Settler", "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+      },
+      "extension": {
+        "cav_t3": {
+          "name": "Teutonic Raider",
+          "$comment": "Ours, not Travian's. Teutons raid, so the spare slot is the plunder horse: the biggest saddlebags in the tribe and enough bite to take a farm, without touching the Knight's job.",
+          "stats": { "attack": 90, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 11, "carry": 130 },
+          "cropUpkeep": 3
+        }
+      }
+    },
+    "gaul": {
+      "extendedSlot": "inf_t3",
+      "units": {
+        "inf_t1": { "name": "Phalanx", "stats": { "attack": 15, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 7, "carry": 35 }, "cropUpkeep": 1 },
+        "inf_t2": { "name": "Swordsman", "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 20, "speed": 6, "carry": 45 }, "cropUpkeep": 1 },
+        "scout": { "name": "Pathfinder", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 }, "cropUpkeep": 2 },
+        "cav_t1": { "name": "Theutates Thunder", "stats": { "attack": 90, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 }, "cropUpkeep": 2 },
+        "cav_t2": { "name": "Druidrider", "stats": { "attack": 45, "defenseInfantry": 115, "defenseCavalry": 55, "speed": 16, "carry": 35 }, "cropUpkeep": 2 },
+        "cav_t3": { "name": "Haeduan", "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 165, "speed": 13, "carry": 65 }, "cropUpkeep": 3 },
+        "ram": { "name": "Ram", "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 105, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
+        "catapult": { "name": "Trebuchet", "stats": { "attack": 70, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
+        "chief": { "name": "Chieftain", "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 0 }, "cropUpkeep": 4 },
+        "settler": { "name": "Settler", "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+      },
+      "extension": {
+        "inf_t3": {
+          "name": "Gaul Tracker",
+          "$comment": "Ours, not Travian's. Gauls field only two footmen, so this is the third: a woodsman who moves quicker than either and asks nothing of the granary.",
+          "stats": { "attack": 40, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 8, "carry": 60 },
+          "cropUpkeep": 1
+        }
+      }
+    },
+    "hun": {
+      "extendedSlot": "inf_t3",
+      "units": {
+        "inf_t1": { "name": "Mercenary", "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
+        "inf_t2": { "name": "Bowman", "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 6, "carry": 30 }, "cropUpkeep": 1 },
+        "scout": { "name": "Spotter", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 19, "carry": 0 }, "cropUpkeep": 2 },
+        "cav_t1": { "name": "Steppe Rider", "stats": { "attack": 120, "defenseInfantry": 30, "defenseCavalry": 15, "speed": 16, "carry": 75 }, "cropUpkeep": 2 },
+        "cav_t2": { "name": "Marksman", "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 16, "carry": 105 }, "cropUpkeep": 2 },
+        "cav_t3": { "name": "Marauder", "stats": { "attack": 180, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 14, "carry": 80 }, "cropUpkeep": 3 },
+        "ram": { "name": "Ram", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 90, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
+        "catapult": { "name": "Catapult", "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
+        "chief": { "name": "Logades", "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 5, "carry": 0 }, "cropUpkeep": 4 },
+        "settler": { "name": "Settler", "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+      },
+      "extension": {
+        "inf_t3": {
+          "name": "Hun Warrior",
+          "$comment": "Ours, not Travian's. The Huns get two footmen and three horses; this is the footman who can actually hold a gate long enough for the horses to come back.",
+          "stats": { "attack": 60, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 6, "carry": 45 },
+          "cropUpkeep": 1
+        }
+      }
+    }
+  }
+}
