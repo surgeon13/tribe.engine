@@ -1,6 +1,31 @@
 # Tevel troop stat sources
 
-Troop tables are **generated** from `lib/balance/identities.js` by
+## The default tribes do not change
+
+The Romans, Teutons, Gauls, Egyptians, Huns, Spartans, Natars and Nature are
+Travian's, and they are **frozen**. Their every number lives in
+`data/balance/travian-canon.json` and is copied verbatim into the tribe files;
+nothing about them is generated, so no rebalance, dial, or model change
+anywhere else can move them. `npm run validate:canon` fails the build if one
+drifts, and the file carries a checksum so editing a default tribe cannot be
+done quietly.
+
+**If you are here to change a default tribe, you almost certainly should not
+be.** If you have actually been asked to:
+
+1. Edit `data/balance/travian-canon.json`.
+2. Run `npm run canon:seal` — the new checksum lands in the diff as its own
+   line, which is the point.
+3. Run `npm run balance:rebuild`.
+
+Each of those tribes has exactly one slot that is ours rather than Travian's,
+because Travian gives ten units and our roster has eleven. Those are marked
+`extension` in the canon file and are the only part of a default tribe that is
+open to design — see `data/balance/BALANCE.md`.
+
+## Everything else is generated
+
+The other ten tribes' tables are generated from `lib/balance/identities.js` by
 `npm run balance:rebuild`; edit a tribe's identity rather than its numbers, or
 the next rebuild will overwrite the change. Names, descriptions, logos, and
 heroes are flavor and stay hand-authored.
@@ -8,6 +33,11 @@ heroes are flavor and stay hand-authored.
 The per-slot anchor prices the generator charges were measured from the six
 Travian-canonical cores below, so the game still sits where **Travian Legends
 (T4.6)** put it — see `data/balance/BALANCE.md` for the model.
+
+Their attack, defence, carry and costs are all multiples of five, matching how
+Travian's own tables read. Speed, crop upkeep and training times are not, also
+matching Travian. The default tribes keep whatever Travian published, including
+the handful of values that sit off the grid.
 
 ## Original sources
 

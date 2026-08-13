@@ -42,7 +42,13 @@ const payload = {
   // Relative so the PWA / GitHub Pages site root resolves correctly.
   assetBase: "assets",
   generatedAt: new Date().toISOString(),
-  roster: roster.slots,
+  // Each slot carries the generic name of the thing it holds ("Infantry I",
+  // "Cavalry III") alongside its ref. Comparison charts label their rows with
+  // it, because a row that spans six tribes cannot be called "Legionnaire".
+  roster: roster.slots.map((slot) => ({
+    ...slot,
+    label: base.units[slot.baseUnitId]?.name?.en || slot.baseUnitId,
+  })),
   logoGroups: logoGroups.groups,
   heroSystem: {
     maxLevel: heroSystem.leveling.maxLevel,

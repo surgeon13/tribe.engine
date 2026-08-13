@@ -15,6 +15,7 @@
  *   5. no two tribes ship the same stat block (copy-paste rosters)
  *   6. tier ordering holds: boss > NPC guard > players > wildlife
  *   7. stats stay inside sane ranges and tiers do not go backwards
+ *   8. every stat and cost we author lands on the five-point grid Travian uses
  *
  * Usage: npm run validate:balance [-- --json]
  */
@@ -28,6 +29,8 @@ import {
   pricePaid,
   totalCost,
 } from "../lib/balance/anchors.js";
+import { isCanonTribe } from "../lib/balance/canon.js";
+import { STAT_STEP, onStep } from "../lib/balance/quantize.js";
 import {
   CROP_PRESSURE_RANGE,
   FAIRNESS_TOLERANCE,
@@ -90,6 +93,10 @@ for (const entry of index.tribes || []) {
 
   tribes.push({
     id,
+    // Travian's own tribes are transcribed, not designed here. They are the
+    // reference our anchors were measured from, so holding them to our model's
+    // invariants would be marking the ruler against the thing it measures.
+    canon: isCanonTribe(id),
     tier: spec?.tier || (spec ? "player" : "unspecified"),
     // >1 means the tribe gets more power per unit of that currency than the anchor.
     cropEfficiency: crop ? anchorCrop / crop : 0,
@@ -109,6 +116,7 @@ for (const [id, spec] of Object.entries(TRIBE_IDENTITIES)) {
 }
 
 for (const t of tribes) {
+  if (t.canon) continue;
   if (t.tier === "unspecified") {
     // The median tribe is derived from the cores by compute-median-tribe.js, so
     // it has no identity of its own to price — it *is* the reference point.
@@ -138,6 +146,11 @@ const tierPower = (tier) => POWER_TIERS[tier] ?? 1;
 const strongestPlayer = Math.max(...players.map((t) => t.power));
 for (const t of tribes) {
   if (t.tier === "player" || t.tier === "unspecified") continue;
+  // Nature and the Natars are as strong as Travian makes them. An oasis
+  // elephant really does out-fight anything a player can field one-for-one,
+  // so the wildlife-sits-below-players rule was an artefact of the weakened
+  // numbers we used to generate, not something to hold the real ones to.
+  if (t.canon) continue;
   const expected = tierPower(t.tier);
   if (expected > 1 && t.power <= strongestPlayer) {
     errors.push(
@@ -163,6 +176,12 @@ if (boss && guard && boss.power <= guard.power) {
 // Travian too, and neither is an army unit you mass.
 const ARMY_REFS = SCORED_REFS.filter((ref) => ref !== "ram" && ref !== "catapult");
 for (const t of tribes) {
+  if (t.canon) continue;
+  // The median tribe is the per-slot median of the cores, not a design. Travian
+  // does not make every tribe's third horse its best one — Rome's third horse
+  // is our anvil and the Teutons' is our raider — so the median honestly comes
+  // out without a centerpiece, and demanding one would only mean fudging it.
+  if (t.tier === "unspecified") continue;
   const horse = t.troops.get("cav_t3");
   if (!horse) continue;
   const rivals = ARMY_REFS.filter((ref) => ref !== "cav_t3" && t.troops.has(ref));
@@ -225,6 +244,8 @@ for (const [name, read] of Object.entries({ ...SHOP_COLUMNS })) {
 const BATTLE_REFS = ARMY_REFS.filter((ref) => ref !== "scout");
 
 for (const t of tribes) {
+  // Travian ships what it ships; flagging its filler is noise we cannot act on.
+  if (t.canon) continue;
   const army = BATTLE_REFS.filter((ref) => t.troops.has(ref));
   for (const ref of army) {
     const unit = t.troops.get(ref);
@@ -282,6 +303,11 @@ for (const t of tribes) {
     }
     if ((u.cropUpkeep ?? 0) < 0) errors.push(`${t.id}/${ref} — negative crop upkeep`);
   }
+  // Travian's roster is not ours to reorder, and the eleventh slot we add to it
+  // is deliberately not the family's best — that is the whole point of holding
+  // an extension to sitting alongside the published units. The median inherits
+  // the same shape, being the per-slot median of exactly those rosters.
+  if (t.canon || t.tier === "unspecified") continue;
   for (const family of [["inf_t1", "inf_t2", "inf_t3"], ["cav_t1", "cav_t2", "cav_t3"]]) {
     const tiers = family.map((ref) => t.troops.get(ref)).filter(Boolean);
     if (tiers.length < 3) continue;
@@ -293,6 +319,32 @@ for (const t of tribes) {
       warnings.push(
         `${t.id} — ${family[2]} (${tiers[2].name}) is weaker than an earlier tier; the last unlock in a family should be its best`
       );
+    }
+  }
+}
+
+// Tribes we write ourselves are held to the five-point grid Travian's own
+// tables use. Travian's tribes are exempt because they are transcribed rather
+// than designed, and a handful of their numbers genuinely sit off it: a
+// Spartan Sentinel defends 22 against cavalry and a bear hauls 19.
+const GRID_STATS = ["attack", "defenseInfantry", "defenseCavalry"];
+for (const t of tribes) {
+  if (t.canon) continue;
+  for (const [ref, u] of t.troops) {
+    // Settlers carry 3000 in Travian and ours inherit it; that is a payload,
+    // not a stat anyone compares across tribes.
+    const keys = ref === "settler" ? GRID_STATS : [...GRID_STATS, "carry"];
+    for (const key of keys) {
+      if (!onStep(u.stats[key])) {
+        errors.push(
+          `${t.id}/${ref} — ${key} is ${u.stats[key]}, off the ${STAT_STEP}-point grid; regenerate with \`npm run balance:rebuild\``
+        );
+      }
+    }
+    for (const [res, value] of Object.entries(u.cost || {})) {
+      if (!onStep(value)) {
+        errors.push(`${t.id}/${ref} — ${res} cost is ${value}, off the ${STAT_STEP}-point grid`);
+      }
     }
   }
 }

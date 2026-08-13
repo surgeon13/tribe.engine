@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Highland Spearman" },
-        "stats": { "attack": 10, "defenseInfantry": 33, "defenseCavalry": 58, "speed": 7, "carry": 46 },
-        "cost": { "wood": 75, "clay": 65, "iron": 35, "crop": 55 },
+        "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 45 },
+        "cost": { "wood": 80, "clay": 70, "iron": 40, "crop": 60 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Aksumite levy from the Ethiopian plateau." }
@@ -26,7 +26,7 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Javelin Skirmisher" },
-        "stats": { "attack": 36, "defenseInfantry": 38, "defenseCavalry": 45, "speed": 6, "carry": 51 },
+        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 6, "carry": 50 },
         "cost": { "wood": 130, "clay": 125, "iron": 120, "crop": 65 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/barbed-spear.svg" },
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Royal Guard" },
-        "stats": { "attack": 31, "defenseInfantry": 76, "defenseCavalry": 39, "speed": 5, "carry": 25 },
-        "cost": { "wood": 145, "clay": 130, "iron": 130, "crop": 70 },
+        "stats": { "attack": 30, "defenseInfantry": 75, "defenseCavalry": 40, "speed": 5, "carry": 25 },
+        "cost": { "wood": 145, "clay": 125, "iron": 125, "crop": 70 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/battle-axe.svg" },
         "description": { "en": "Household infantry of the negus — costly elite foot." }
@@ -58,8 +58,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Highland Horse" },
-        "stats": { "attack": 106, "defenseInfantry": 49, "defenseCavalry": 45, "speed": 16, "carry": 89 },
-        "cost": { "wood": 560, "clay": 450, "iron": 290, "crop": 180 },
+        "stats": { "attack": 105, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 16, "carry": 90 },
+        "cost": { "wood": 550, "clay": 450, "iron": 290, "crop": 170 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/camel.svg" },
         "description": { "en": "Light cavalry adapted to plateau warfare." }
@@ -69,8 +69,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Noble Cavalry" },
-        "stats": { "attack": 130, "defenseInfantry": 56, "defenseCavalry": 51, "speed": 13, "carry": 120 },
-        "cost": { "wood": 520, "clay": 510, "iron": 410, "crop": 200 },
+        "stats": { "attack": 130, "defenseInfantry": 55, "defenseCavalry": 50, "speed": 13, "carry": 120 },
+        "cost": { "wood": 520, "clay": 500, "iron": 400, "crop": 200 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/horse-head-alt.svg" }
       }
@@ -79,8 +79,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Camel Corps" },
-        "stats": { "attack": 62, "defenseInfantry": 275, "defenseCavalry": 118, "speed": 11, "carry": 122 },
-        "cost": { "wood": 570, "clay": 550, "iron": 420, "crop": 190 },
+        "stats": { "attack": 60, "defenseInfantry": 280, "defenseCavalry": 115, "speed": 11, "carry": 120 },
+        "cost": { "wood": 570, "clay": 550, "iron": 410, "crop": 190 },
         "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/elephant-head.svg" },
         "description": { "en": "Desert and coastal camelry for Red Sea approaches." }
@@ -90,8 +90,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Siege Ram" },
-        "stats": { "attack": 67, "defenseInfantry": 31, "defenseCavalry": 78, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1110, "clay": 400, "iron": 420, "crop": 110 },
+        "stats": { "attack": 70, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
+        "cost": { "wood": 1180, "clay": 430, "iron": 450, "crop": 120 },
         "cropUpkeep": 3,
         "graphics": { "logo": "rams/ladder.svg" }
       }
@@ -100,8 +100,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Stone Thrower" },
-        "stats": { "attack": 57, "defenseInfantry": 62, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 940, "clay": 1260, "iron": 440, "crop": 110 },
+        "stats": { "attack": 55, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 880, "clay": 1180, "iron": 410, "crop": 100 },
         "cropUpkeep": 6,
         "graphics": { "logo": "catapults/catapult.svg" }
       }

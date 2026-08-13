@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Skeleton Warrior" },
-        "stats": { "attack": 85, "defenseInfantry": 39, "defenseCavalry": 29, "speed": 8, "carry": 43 },
-        "cost": { "wood": 235, "clay": 175, "iron": 205, "crop": 170 },
+        "stats": { "attack": 95, "defenseInfantry": 45, "defenseCavalry": 30, "speed": 8, "carry": 45 },
+        "cost": { "wood": 260, "clay": 190, "iron": 230, "crop": 190 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/bone-mace.svg" },
         "description": { "en": "Rattling bone levy — cheap pressure that still hits harder than oasis vermin." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Ghoul" },
-        "stats": { "attack": 52, "defenseInfantry": 43, "defenseCavalry": 50, "speed": 6, "carry": 38 },
-        "cost": { "wood": 180, "clay": 150, "iron": 295, "crop": 90 },
+        "stats": { "attack": 60, "defenseInfantry": 45, "defenseCavalry": 55, "speed": 6, "carry": 40 },
+        "cost": { "wood": 220, "clay": 180, "iron": 360, "crop": 110 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/sacrificial-dagger.svg" },
         "description": { "en": "Flesh-hungry raiders — outpace Natarian thorns and tear lines open." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Wight" },
-        "stats": { "attack": 102, "defenseInfantry": 47, "defenseCavalry": 35, "speed": 8, "carry": 43 },
-        "cost": { "wood": 280, "clay": 210, "iron": 440, "crop": 130 },
+        "stats": { "attack": 115, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 8, "carry": 45 },
+        "cost": { "wood": 310, "clay": 240, "iron": 490, "crop": 150 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/scythe.svg" },
         "description": { "en": "Grave-bound elites — chill blades that outmatch Natarian guardsmen." }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Shade" },
-        "stats": { "attack": 0, "defenseInfantry": 22, "defenseCavalry": 11, "speed": 17, "carry": 0 },
-        "cost": { "wood": 180, "clay": 140, "iron": 75, "crop": 65 },
+        "stats": { "attack": 0, "defenseInfantry": 25, "defenseCavalry": 10, "speed": 17, "carry": 0 },
+        "cost": { "wood": 200, "clay": 155, "iron": 80, "crop": 75 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/whirlpool-shuriken.svg" },
         "description": { "en": "Spectral scout — faster and harder to pin than living eyes." }
@@ -59,8 +59,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Skeletal Horse" },
-        "stats": { "attack": 154, "defenseInfantry": 55, "defenseCavalry": 51, "speed": 17, "carry": 66 },
-        "cost": { "wood": 600, "clay": 430, "iron": 560, "crop": 190 },
+        "stats": { "attack": 170, "defenseInfantry": 60, "defenseCavalry": 55, "speed": 17, "carry": 65 },
+        "cost": { "wood": 720, "clay": 510, "iron": 670, "crop": 220 },
         "cropUpkeep": 3,
         "graphics": { "logo": "cavalry/cloaked-rider.svg" },
         "description": { "en": "Skeletal light horse — mounted pressure above Natarian axeriders." }
@@ -70,10 +70,10 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Black Rider" },
-        "stats": { "attack": 190, "defenseInfantry": 63, "defenseCavalry": 58, "speed": 14, "carry": 90 },
-        "cost": { "wood": 550, "clay": 470, "iron": 770, "crop": 210 },
+        "stats": { "attack": 210, "defenseInfantry": 70, "defenseCavalry": 65, "speed": 14, "carry": 90 },
+        "cost": { "wood": 680, "clay": 580, "iron": 940, "crop": 250 },
         "cropUpkeep": 3,
-        "graphics": { "logo": "animals/ram.svg" },
+        "graphics": { "logo": "cavalry/mounted-knight.svg" },
         "description": { "en": "Cursed heavy cavalry — dread charge that breaks Natarian knights." }
       }
     },
@@ -81,8 +81,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Black Steed" },
-        "stats": { "attack": 292, "defenseInfantry": 76, "defenseCavalry": 70, "speed": 13, "carry": 61 },
-        "cost": { "wood": 980, "clay": 830, "iron": 1270, "crop": 310 },
+        "stats": { "attack": 320, "defenseInfantry": 90, "defenseCavalry": 80, "speed": 13, "carry": 60 },
+        "cost": { "wood": 1200, "clay": 1000, "iron": 1550, "crop": 400 },
         "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/mammoth.svg" },
         "description": { "en": "Night-mares of the necropolis — stronger than Natarian lancers." }
@@ -92,8 +92,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Bone Ram" },
-        "stats": { "attack": 96, "defenseInfantry": 44, "defenseCavalry": 111, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1860, "clay": 600, "iron": 1260, "crop": 180 },
+        "stats": { "attack": 105, "defenseInfantry": 50, "defenseCavalry": 125, "speed": 4, "carry": 0 },
+        "cost": { "wood": 2050, "clay": 650, "iron": 1400, "crop": 200 },
         "cropUpkeep": 3,
         "graphics": { "logo": "rams/wrecking-ball.svg" },
         "description": { "en": "Ossuary colossus — bone siege that crushes walls harder than oasis crocodiles." }
@@ -103,8 +103,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Mangonel" },
-        "stats": { "attack": 81, "defenseInfantry": 89, "defenseCavalry": 15, "speed": 3, "carry": 0 },
-        "cost": { "wood": 1800, "clay": 2100, "iron": 1500, "crop": 200 },
+        "stats": { "attack": 90, "defenseInfantry": 100, "defenseCavalry": 15, "speed": 3, "carry": 0 },
+        "cost": { "wood": 2000, "clay": 2350, "iron": 1650, "crop": 250 },
         "cropUpkeep": 6,
         "graphics": { "logo": "catapults/trebuchet.svg" },
         "description": { "en": "Hurls crypt-stone with force beyond oasis tigers." }
@@ -114,7 +114,7 @@
       "ref": "chief",
       "overrides": {
         "name": { "en": "Necromancer" },
-        "stats": { "attack": 50, "defenseInfantry": 74, "defenseCavalry": 50, "speed": 4, "carry": 0 },
+        "stats": { "attack": 55, "defenseInfantry": 85, "defenseCavalry": 55, "speed": 4, "carry": 0 },
         "cost": { "wood": 27800, "clay": 19200, "iron": 52550, "crop": 40900 },
         "cropUpkeep": 4,
         "graphics": { "logo": "chiefs/commander-helm.svg" },

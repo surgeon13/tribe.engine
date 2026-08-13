@@ -13,6 +13,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { quantizeCost, quantizeStats } from "../lib/balance/quantize.js";
 import { formatJson } from "../lib/json-format.js";
 import { resolveTribe } from "../lib/merge.js";
 
@@ -174,9 +175,17 @@ function main() {
       cropUpkeep: round1(mean(series.cropUpkeep)),
       timeSeconds: roundInt(mean(series.timeSeconds)),
     };
+    // The precise median above is kept exact for the analysis file. The playable
+    // copy is a unit in the game, so it goes on the same five-point grid as
+    // every other unit — a median of an even count lands between two values,
+    // which is how this tribe alone ended up with a 153-iron Warrior.
     const playable = {
-      stats: Object.fromEntries(STAT_KEYS.map((k) => [k, roundInt(preciseMedian.stats[k])])),
-      cost: Object.fromEntries(COST_KEYS.map((k) => [k, roundInt(preciseMedian.cost[k])])),
+      stats: quantizeStats(
+        Object.fromEntries(STAT_KEYS.map((k) => [k, roundInt(preciseMedian.stats[k])]))
+      ),
+      cost: quantizeCost(
+        Object.fromEntries(COST_KEYS.map((k) => [k, roundInt(preciseMedian.cost[k])]))
+      ),
       cropUpkeep: roundInt(preciseMedian.cropUpkeep),
       timeSeconds: roundInt(preciseMedian.timeSeconds),
     };

@@ -15,6 +15,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { SCORED_REFS, combatIndex, totalCost } from "../lib/balance/anchors.js";
+import { TRAVIAN_CANON, isCanonTribe } from "../lib/balance/canon.js";
 import { buildAllTables } from "../lib/balance/generate-troops.js";
 import { TRIBE_IDENTITIES } from "../lib/balance/identities.js";
 import { formatJson } from "../lib/json-format.js";
@@ -33,6 +34,30 @@ const index = readJson("tribes/index.json");
 const training = readJson("tribe-training.json");
 const { calibration, tables } = buildAllTables();
 
+/**
+ * A Travian tribe's table, transcribed rather than generated: its ten published
+ * units, plus the one slot Travian leaves us to fill, which is hand-authored to
+ * sit alongside them instead of towering over them.
+ * @param {string} id
+ */
+function canonTable(id) {
+  const tribe = TRAVIAN_CANON.tribes[id];
+  const out = {};
+  for (const [ref, unit] of Object.entries({ ...tribe.units, ...tribe.extension })) {
+    // Pure transcription, on purpose. Nothing here consults the identity model
+    // or the calibration, so no amount of rebalancing elsewhere can reach a
+    // default tribe. Gaps were filled once by scripts/freeze-canon.js and are
+    // data now; validate-canon.js fails the build if any are left open.
+    out[ref] = {
+      stats: unit.stats,
+      cost: unit.cost,
+      cropUpkeep: unit.cropUpkeep,
+      timeSeconds: unit.timeSeconds,
+    };
+  }
+  return out;
+}
+
 const before = [];
 const after = [];
 let written = 0;
@@ -41,7 +66,7 @@ for (const entry of index.tribes || []) {
   const rel = `tribes/${entry.file}`;
   const doc = readJson(rel);
   const id = entry.id || doc.tribe?.id;
-  const table = tables[id];
+  const table = isCanonTribe(id) ? canonTable(id) : tables[id];
   if (!table) {
     console.warn(`  skipped ${id} — no identity spec`);
     continue;
@@ -73,19 +98,29 @@ for (const entry of index.tribes || []) {
     if (!next) continue;
     troop.overrides = troop.overrides || {};
     troop.overrides.stats = next.stats;
-    troop.overrides.cost = next.cost;
-    troop.overrides.cropUpkeep = next.cropUpkeep;
+    // Wildlife is never trained, so it has no price and no upkeep to write.
+    if (next.cost) troop.overrides.cost = next.cost;
+    else delete troop.overrides.cost;
+    if (next.cropUpkeep != null) troop.overrides.cropUpkeep = next.cropUpkeep;
+    else delete troop.overrides.cropUpkeep;
   }
 
   after.push(snapshot(doc.troops, (troops, ref) => troops.find((x) => x.ref === ref)?.overrides));
 
   doc.meta = {
     ...doc.meta,
-    balance: {
-      model: "identity-budget",
-      identity: TRIBE_IDENTITIES[id].notes,
-      tier: TRIBE_IDENTITIES[id].tier || "player",
-    },
+    balance: isCanonTribe(id)
+      ? {
+          model: "travian-canon",
+          source: TRAVIAN_CANON.source,
+          extendedSlot: TRAVIAN_CANON.tribes[id].extendedSlot,
+          tier: TRIBE_IDENTITIES[id]?.tier || "player",
+        }
+      : {
+          model: "identity-budget",
+          identity: TRIBE_IDENTITIES[id].notes,
+          tier: TRIBE_IDENTITIES[id].tier || "player",
+        },
   };
 
   writeJson(rel, doc);
@@ -94,7 +129,7 @@ for (const entry of index.tribes || []) {
   const slot = training.tribes?.[id];
   if (slot) {
     for (const [ref, next] of Object.entries(table)) {
-      if (!slot[ref]) continue;
+      if (!slot[ref] || next.timeSeconds == null) continue;
       slot[ref].timeSeconds = next.timeSeconds;
     }
   }

@@ -4,6 +4,7 @@
  *   - the SVG file exists under assets/
  *   - it has a full-canvas background tile and at least one glyph shape
  *   - it declares a viewBox (so the dashboard can scale it to any cell size)
+ *   - a cavalry slot draws a rider, not an animal (Nature excepted)
  *
  * Runs as part of the dashboard/Netlify build so a missing or oddly shaped
  * icon fails loudly instead of rendering as a blank tile.
@@ -13,6 +14,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { WILDLIFE_MOUNTS } from "../lib/tribe-generator/mount-logos.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -99,8 +101,31 @@ function inspectSvg(svgText) {
   return problems;
 }
 
+/**
+ * A mounted unit should look mounted. Spreading icons across the roster had
+ * put a ram on the Gallic Haeduan and a pegasus on the Hun Marauder, so those
+ * tribes read as fielding two horsemen and an animal.
+ * @returns {string[]} problems
+ */
+function checkMountedIcons() {
+  const cavalry = new Set(readJson("logo-groups.json").groups?.cavalry?.icons || []);
+  const problems = [];
+  const tribeLogos = readJson("tribe-logos.json");
+
+  for (const [tribeId, byRef] of Object.entries(tribeLogos.tribes || {})) {
+    if (WILDLIFE_MOUNTS.includes(tribeId)) continue;
+    for (const [ref, icon] of Object.entries(byRef || {})) {
+      if (!ref.startsWith("cav_") || cavalry.has(icon)) continue;
+      problems.push(
+        `${tribeId}.${ref} rides ${icon} — a cavalry unit needs an icon from the cavalry pool`
+      );
+    }
+  }
+  return problems;
+}
+
 const refs = collectLogoRefs();
-const errors = [];
+const errors = checkMountedIcons();
 
 for (const [logo, sources] of [...refs].sort()) {
   const file = path.join(assetsDir, logo);

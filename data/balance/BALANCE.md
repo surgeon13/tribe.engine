@@ -1,9 +1,103 @@
 # Balance models for Tevel tribes
 
-## What the game runs on: identity budgets
+## First: eight tribes we do not balance
 
-Every troop table in `data/tribes/*.json` is generated from one model rather
-than hand-tuned per tribe. The contract is short:
+The Romans, Teutons, Gauls, Egyptians, Huns and Spartans are Travian's tribes,
+and the Natars and Nature are its NPCs. Their numbers are published, players
+know them by heart, and every combat calculator on the internet assumes them.
+We transcribe them; we do not tune them.
+
+| Piece | Where |
+|-------|-------|
+| The published tables | `data/balance/travian-canon.json` |
+| Loader and helpers | `lib/balance/canon.js` |
+| Gate that fails the build on drift | `npm run validate:canon` |
+
+Three rules follow from this, and all three are enforced:
+
+1. **The canon does not move.** `validate-canon.js` compares every published
+   unit's name, stats, crop upkeep and cost against the canon file. A Hun
+   Marksman is 110/80/70. It once drifted to 142/46/42 through the generator,
+   which is what prompted all of this.
+2. **Nothing about a default tribe is computed.** Travian does not publish a
+   price for every unit, and publishes nothing at all for oasis animals, which
+   never move and cannot be bought. Those gaps used to be filled at rebuild
+   time by our pricing model — which meant a default tribe's costs shifted
+   whenever an unrelated dial moved, because the calibration is a mean across
+   all player tribes. They were filled once by `npm run canon:freeze` and are
+   plain data now. `canonTable()` consults neither the model nor the
+   calibration, and the validator fails on any gap that could reopen the door.
+3. **The canonical tribes are exempt from the identity model below.** The
+   anchors that model prices against were measured *from* these tribes, so
+   holding them to it would be marking the ruler against the thing it measures.
+   They are skipped by the fairness band, the centerpiece rule, tier ordering
+   and filler detection.
+
+### Changing a default tribe on purpose
+
+The canon carries a `lock`: a checksum over every number in it. This is not
+security, it is intent — a default tribe should only change when somebody asks
+for that, so changing one is a visible act rather than a nudge.
+
+```
+npm run canon:seal      # re-seal after a deliberate edit
+npm run canon:freeze    # fill any new gap from the model, then seal
+```
+
+Edit the canon, re-seal, rebuild. The new checksum lands in the diff on its own
+line. Skip the re-seal and the build fails with the old and new hashes side by
+side. Prose and `$comment` keys are excluded from the checksum, so
+documentation can be improved freely.
+
+Where a cost is Travian's own it is marked in `sources`; the rest are ours,
+frozen at the value the model last produced, and can be replaced with published
+figures as they are verified.
+
+### The eleventh slot
+
+Travian gives each tribe ten units. Our roster has eleven, so exactly one slot
+per canonical tribe is ours to invent:
+
+| Tribe | Slot | Unit |
+|-------|------|------|
+| Rome | `cav_t3` | Equites Regales — the anvil Rome never had |
+| Teutons | `cav_t3` | Teutonic Raider — the plunder horse |
+| Gauls | `inf_t3` | Gaul Tracker — a third footman |
+| Egyptians | `cav_t3` | Royal Chariot — Egypt's only mounted attacker |
+| Huns | `inf_t3` | Hun Warrior — a footman who can hold a gate |
+| Spartans | `cav_t3` | Spartan Horseman — a flank guard |
+| Natars | `cav_t3` | Natarian Lancer |
+| Nature | `settler` | Herd |
+
+These are marked `extension` in the canon file and held by the same validator
+to **sitting alongside the published units rather than outclassing them**. An
+extension that out-weighs everything Travian gives its tribe fails the build.
+
+That is also why the canonical tribes have no centerpiece: Travian does not
+make every tribe's third horse its best one. Rome's third horse is our anvil
+and the Teutons' is our raider, so the rule is simply not applied to them —
+and not to the median tribe either, which is the per-slot median of exactly
+these rosters and honestly inherits the same shape.
+
+### Reading Travian's own tables
+
+The official comparison table at `support.travian.com` publishes **smithy
+level 20** values — it lists a Legionnaire at 52.4 attack where the base figure
+is 40. Those can be back-solved to base with
+
+```
+upgraded = base + (base + 300 * crop / 7) * 0.149
+```
+
+which reproduces every unit whose base figure is published independently. It is
+how the Egyptian, Spartan and Natar transcriptions were cross-checked against a
+second source, and it is worth re-deriving before trusting any new figure.
+
+## What the rest of the game runs on: identity budgets
+
+The other ten tribes are ours, and every troop table in `data/tribes/*.json` is
+generated from one model rather than hand-tuned per tribe. The contract is
+short:
 
 > **Identity is shape. Fairness is price.**
 > A tribe may put its power wherever it likes. Every point of power costs the
@@ -31,6 +125,36 @@ which is the failure mode hand-tuning always drifts into.
 Crop upkeep is a small integer bracket, so rounding decides what a unit really
 costs in population; resources then settle the difference. A unit that rounded
 down in crop pays more per point of power in wood and iron, and the reverse.
+
+### Everything lands on a five-point grid
+
+Attack, both defences, carrying capacity and all four resource costs are
+multiples of five for every tribe we author. `lib/balance/quantize.js` owns the
+rule and `validate:balance` enforces it.
+
+This is measured from Travian, not imposed on it. Across the 80 published units
+in the canon, every attack value, every one of the cost figures, and every carry
+outside the oasis animals is already a multiple of five; three defence values
+stray. Rosters of 37s and 68s sitting beside Travian's 35s and 70s read as
+arithmetic left showing rather than as design.
+
+Three things are deliberately exempt, on the same evidence:
+
+| Exempt | Why |
+|--------|-----|
+| speed | Travian's own are 3, 4, 6, 7, 9, 13, 16, 19 — a scale too short to round without collapsing light, medium and heavy horse together |
+| crop upkeep | a 1–6 bracket, for the same reason |
+| training time | arbitrary seconds in Travian too, and not a number players compare across tribes |
+
+Quantization happens **before** pricing. Cost is derived from the combat index,
+so rounding afterwards would price every unit for a slightly different unit than
+the one on display.
+
+The heavy cavalry is the one number that cannot merely be rounded: its job is a
+stated margin over the rest of the roster and the gate fails on a tie, so half a
+step in the wrong direction could break it. `settleCenterpiece` rounds it, then
+checks the margin and tops it back up one step at a time along its own growth
+axis until it clears. That is why Persia sits on exactly 1.400.
 
 ### What still makes tribes different
 
