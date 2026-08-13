@@ -25,8 +25,22 @@
     "roman": ["support.kingdoms.com/en/articles/109-troop-specifications"],
     "teuton": ["support.kingdoms.com/en/articles/109-troop-specifications"],
     "gaul": ["support.kingdoms.com/en/articles/109-troop-specifications"],
-    "hun": ["travian.fandom.com/wiki/Huns (citing t4.answers.travian.com aid=414)"]
+    "hun": ["travian.fandom.com/wiki/Huns (citing t4.answers.travian.com aid=414)"],
+    "egyptian": [
+      "travian.fandom.com/wiki/Egyptians",
+      "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
+    ],
+    "natar": [
+      "wikitravian.free.fr/voir.php?page=Natars",
+      "support.travian.com/en/support/solutions/articles/7000094171 (defence values)"
+    ]
   },
+  "$smithy": [
+    "Travian's level-20 comparison tables can be back-solved to base values with",
+    "up = base + (base + 300 * crop / 7) * 0.149, which reproduces every unit",
+    "whose base figure is published independently. It is how the Egyptian and",
+    "Natar transcriptions here were cross-checked against a second source."
+  ],
   "tribes": {
     "roman": {
       "extendedSlot": "cav_t3",
@@ -117,6 +131,53 @@
           "$comment": "Ours, not Travian's. The Huns get two footmen and three horses; this is the footman who can actually hold a gate long enough for the horses to come back.",
           "stats": { "attack": 60, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 6, "carry": 45 },
           "cropUpkeep": 1
+        }
+      }
+    },
+    "egyptian": {
+      "extendedSlot": "cav_t3",
+      "units": {
+        "inf_t1": { "name": "Slave Militia", "stats": { "attack": 10, "defenseInfantry": 30, "defenseCavalry": 20, "speed": 7, "carry": 15 }, "cost": { "wood": 45, "clay": 60, "iron": 30, "crop": 15 }, "cropUpkeep": 1, "timeSeconds": 530 },
+        "inf_t2": { "name": "Ash Warden", "stats": { "attack": 30, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 }, "cost": { "wood": 115, "clay": 100, "iron": 145, "crop": 60 }, "cropUpkeep": 1, "timeSeconds": 1320 },
+        "inf_t3": { "name": "Khopesh Warrior", "stats": { "attack": 65, "defenseInfantry": 50, "defenseCavalry": 20, "speed": 7, "carry": 45 }, "cost": { "wood": 170, "clay": 180, "iron": 220, "crop": 80 }, "cropUpkeep": 1, "timeSeconds": 1440 },
+        "scout": { "name": "Sopdu Explorer", "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 }, "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 }, "cropUpkeep": 2, "timeSeconds": 1360 },
+        "cav_t1": { "name": "Anhur Guard", "stats": { "attack": 50, "defenseInfantry": 110, "defenseCavalry": 50, "speed": 15, "carry": 50 }, "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 }, "cropUpkeep": 2, "timeSeconds": 2560 },
+        "cav_t2": { "name": "Resheph Chariot", "stats": { "attack": 110, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 10, "carry": 70 }, "cost": { "wood": 450, "clay": 560, "iron": 610, "crop": 180 }, "cropUpkeep": 3, "timeSeconds": 3240 },
+        "ram": { "name": "Ram", "stats": { "attack": 55, "defenseInfantry": 30, "defenseCavalry": 95, "speed": 4, "carry": 0 }, "cost": { "wood": 995, "clay": 575, "iron": 340, "crop": 80 }, "cropUpkeep": 3, "timeSeconds": 4800 },
+        "catapult": { "name": "Stone Catapult", "stats": { "attack": 65, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cost": { "wood": 980, "clay": 1510, "iron": 660, "crop": 100 }, "cropUpkeep": 6, "timeSeconds": 9000 },
+        "chief": { "name": "Nomarch", "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 4, "carry": 0 }, "cost": { "wood": 34000, "clay": 50000, "iron": 34000, "crop": 42000 }, "cropUpkeep": 4, "timeSeconds": 90700 },
+        "settler": { "name": "Settler", "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cost": { "wood": 5040, "clay": 6510, "iron": 4830, "crop": 4620 }, "cropUpkeep": 1, "timeSeconds": 24800 }
+      },
+      "extension": {
+        "cav_t3": {
+          "name": "Royal Chariot",
+          "$comment": "Ours, not Travian's. Egypt has no cavalry that attacks; this is the pharaoh's own, quick enough to answer a raid without becoming the hammer the tribe is deliberately denied.",
+          "stats": { "attack": 130, "defenseInfantry": 60, "defenseCavalry": 70, "speed": 11, "carry": 80 },
+          "cropUpkeep": 3
+        }
+      }
+    },
+    "natar": {
+      "extendedSlot": "cav_t3",
+      "$comment": "Natar troops have fixed stats and take no smithy upgrades. They cannot be trained by players, so Travian publishes no price for them and our own model supplies one.",
+      "units": {
+        "inf_t1": { "name": "Pikeman", "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 10 }, "cropUpkeep": 1 },
+        "inf_t2": { "name": "Thorned Warrior", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 7, "carry": 10 }, "cropUpkeep": 1 },
+        "inf_t3": { "name": "Guardsman", "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 75, "speed": 6, "carry": 10 }, "cropUpkeep": 1 },
+        "scout": { "name": "Birds of Prey", "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 10, "speed": 25, "carry": 10 }, "cropUpkeep": 1 },
+        "cav_t1": { "name": "Axerider", "stats": { "attack": 155, "defenseInfantry": 80, "defenseCavalry": 50, "speed": 14, "carry": 10 }, "cropUpkeep": 2 },
+        "cav_t2": { "name": "Natarian Knight", "stats": { "attack": 170, "defenseInfantry": 140, "defenseCavalry": 80, "speed": 12, "carry": 10 }, "cropUpkeep": 3 },
+        "ram": { "name": "War Elephant", "stats": { "attack": 250, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 5, "carry": 10 }, "cropUpkeep": 4 },
+        "catapult": { "name": "Ballista", "stats": { "attack": 60, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 10 }, "cropUpkeep": 5 },
+        "chief": { "name": "Natarian Emperor", "stats": { "attack": 80, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 10 }, "cropUpkeep": 1 },
+        "settler": { "name": "Settler", "stats": { "attack": 30, "defenseInfantry": 40, "defenseCavalry": 40, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+      },
+      "extension": {
+        "cav_t3": {
+          "name": "Natarian Lancer",
+          "$comment": "Ours, not Travian's. A second Natarian horse between the Axerider and the Knight — enough to make an artefact village hurt, well short of the Warelephant.",
+          "stats": { "attack": 160, "defenseInfantry": 70, "defenseCavalry": 95, "speed": 13, "carry": 10 },
+          "cropUpkeep": 3
         }
       }
     }

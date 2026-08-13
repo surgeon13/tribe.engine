@@ -170,6 +170,11 @@ if (boss && guard && boss.power <= guard.power) {
 const ARMY_REFS = SCORED_REFS.filter((ref) => ref !== "ram" && ref !== "catapult");
 for (const t of tribes) {
   if (t.canon) continue;
+  // The median tribe is the per-slot median of the cores, not a design. Travian
+  // does not make every tribe's third horse its best one — Rome's third horse
+  // is our anvil and the Teutons' is our raider — so the median honestly comes
+  // out without a centerpiece, and demanding one would only mean fudging it.
+  if (t.tier === "unspecified") continue;
   const horse = t.troops.get("cav_t3");
   if (!horse) continue;
   const rivals = ARMY_REFS.filter((ref) => ref !== "cav_t3" && t.troops.has(ref));
