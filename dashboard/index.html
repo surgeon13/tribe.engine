@@ -247,6 +247,28 @@
               </div>
             </div>
             <div id="compare-legend" class="compare-legend hidden" aria-label="Tribe colors"></div>
+            <div id="compare-smithy" class="smithy-bar hidden">
+              <label class="smithy-head" for="smithy-level">
+                <span class="smithy-title">Smithy</span>
+                <output id="smithy-level-out" for="smithy-level" class="smithy-level">Level 0</output>
+              </label>
+              <input
+                type="range"
+                id="smithy-level"
+                class="smithy-range"
+                min="0"
+                max="20"
+                step="1"
+                value="0"
+                aria-describedby="smithy-note"
+              />
+              <div class="smithy-steps">
+                <button type="button" class="smithy-step" data-smithy-level="0">0</button>
+                <button type="button" class="smithy-step" data-smithy-level="10">10</button>
+                <button type="button" class="smithy-step" data-smithy-level="20">20</button>
+              </div>
+              <p id="smithy-note" class="muted smithy-note"></p>
+            </div>
             <div id="compare-summary" class="compare-summary hidden" aria-label="Tribe summary"></div>
             <div id="compare-table-wrap" class="compare-content table-wrap">
               <table class="data-table compare-table" id="compare-table">

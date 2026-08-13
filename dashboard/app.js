@@ -33,6 +33,7 @@ import {
   drawSlotBarChart,
 } from "./charts.js";
 import { mountPaletteContrastHint } from "./palette-hint.js";
+import { SMITHY_MAX_LEVEL, smithyGainRange, upgradeTribe } from "./smithy.js";
 import {
   mountTroopLogoCell,
   mountPortrait,
@@ -89,6 +90,8 @@ let compareChartLayout = "bars";
 let compareChartLayoutUserPicked = false;
 let statDisplayMode = "bars";
 let statNormalizeMode = "crop";
+/** Smithy upgrade level applied to compared tribes, 0–20. */
+let smithyLevel = 0;
 let compareTribeIds = [];
 let selectedTroopIndex = 0;
 let compareChartMetricBound = false;
@@ -1051,8 +1054,25 @@ function shortUnitName(name, max = 16) {
   return s.length > max ? `${s.slice(0, max - 1)}…` : s;
 }
 
+/**
+ * Every tribe with the current smithy level applied.
+ *
+ * Upgrading is pure and cheap, but it rebuilds every troop object, so the
+ * result is memoised: the per-slot radar yardsticks are drawn from the whole
+ * roster and would otherwise re-derive 198 units on each repaint.
+ */
+let smithyTribeCache = { level: null, tribes: null };
+
+function smithyTribes() {
+  if (smithyTribeCache.level === smithyLevel) return smithyTribeCache.tribes;
+  const tribes = smithyLevel ? data.tribes.map((t) => upgradeTribe(t, smithyLevel)) : data.tribes;
+  smithyTribeCache = { level: smithyLevel, tribes };
+  return tribes;
+}
+
 function getCompareTribes() {
-  return compareTribeIds.map((id) => tribeById(id)).filter(Boolean);
+  const upgraded = smithyTribes();
+  return compareTribeIds.map((id) => upgraded.find((t) => t.id === id)).filter(Boolean);
 }
 
 function setCompareColumnCount(n) {
@@ -1328,7 +1348,7 @@ function slotProfileScales() {
       maxes[ax.key] = 1;
       mins[ax.key] = ax.higherBetter === false ? Infinity : 0;
     }
-    for (const tribe of data.tribes) {
+    for (const tribe of smithyTribes()) {
       const troop = tribe.troops?.[slotIndex];
       if (!troop) continue;
       const view = buildViewMetrics(troop.metrics, RADAR_PROFILE_MODE);
@@ -1877,6 +1897,72 @@ function bindCompareChartLayout() {
   }
 }
 
+const SMITHY_STORAGE_KEY = "tevel-smithy-level";
+
+function clampSmithyLevel(value) {
+  const n = Math.round(Number(value));
+  if (!Number.isFinite(n)) return 0;
+  return Math.min(SMITHY_MAX_LEVEL, Math.max(0, n));
+}
+
+function setSmithyLevel(level) {
+  const next = clampSmithyLevel(level);
+  if (next === smithyLevel) return;
+  smithyLevel = next;
+  // Both caches are keyed on the level, but the radar yardsticks are also
+  // rebuilt from the upgraded roster, so they have to go with it.
+  slotScaleCache = null;
+  try {
+    localStorage.setItem(SMITHY_STORAGE_KEY, String(smithyLevel));
+  } catch {
+    /* ignore */
+  }
+  if (compareMode) renderCompare();
+}
+
+function renderSmithyControl() {
+  const host = $("#compare-smithy");
+  if (!host) return;
+  host.classList.remove("hidden");
+
+  const range = $("#smithy-level");
+  if (range && Number(range.value) !== smithyLevel) range.value = String(smithyLevel);
+  const out = $("#smithy-level-out");
+  if (out) out.textContent = `Level ${smithyLevel}`;
+  host.classList.toggle("active", smithyLevel > 0);
+  for (const btn of host.querySelectorAll("[data-smithy-level]")) {
+    btn.classList.toggle("active", Number(btn.dataset.smithyLevel) === smithyLevel);
+  }
+
+  const note = $("#smithy-note");
+  if (note) {
+    // Measured against base stats, not the upgraded ones already on screen.
+    const base = compareTribeIds.map((id) => tribeById(id)).filter(Boolean);
+    const gain = smithyGainRange(base, smithyLevel);
+    note.textContent = gain
+      ? `Attack and both defence values rise by ${pct(gain.min)}–${pct(gain.max)}. The gain scales with a unit's crop upkeep measured against the stat itself, so a catapult's small cavalry defence gains far more than a heavy horseman's attack. Speed, carry, cost and training time are unchanged.`
+      : "Base values, no upgrades. Raising the level improves attack and both defence values; the gain scales with each unit's crop upkeep, so a small stat on a hungry unit improves most.";
+  }
+}
+
+function pct(fraction) {
+  return `${Math.round(fraction * 100)}%`;
+}
+
+function bindSmithyControl() {
+  const range = $("#smithy-level");
+  range?.addEventListener("input", () => setSmithyLevel(range.value));
+  for (const btn of document.querySelectorAll("[data-smithy-level]")) {
+    btn.addEventListener("click", () => setSmithyLevel(btn.dataset.smithyLevel));
+  }
+  try {
+    const stored = localStorage.getItem(SMITHY_STORAGE_KEY);
+    if (stored != null) smithyLevel = clampSmithyLevel(stored);
+  } catch {
+    /* ignore */
+  }
+}
+
 function renderCompare() {
   const tribes = getCompareTribes();
   const hint = $("#compare-picker-hint");
@@ -1886,6 +1972,7 @@ function renderCompare() {
     $("#compare-table-wrap")?.classList.add("hidden");
     $("#compare-graphs-wrap")?.classList.add("hidden");
     $("#compare-charts-wrap")?.classList.add("hidden");
+    $("#compare-smithy")?.classList.add("hidden");
     renderCompareLegend([]);
     renderCompareSummary([]);
     return;
@@ -1894,6 +1981,7 @@ function renderCompare() {
   setCompareColumnCount(tribes.length);
 
   renderCompareLegend(tribes);
+  renderSmithyControl();
   renderCompareSummary(tribes);
 
   $("#compare-table-wrap")?.classList.toggle("hidden", compareViewMode !== "table");
@@ -1953,6 +2041,7 @@ function bindSort() {
 }
 
 function bindUi() {
+  bindSmithyControl();
   document.querySelectorAll(".view-tab[data-view]").forEach((btn) => {
     btn.addEventListener("click", () => {
       if (editMode && btn.dataset.view !== "table") {
