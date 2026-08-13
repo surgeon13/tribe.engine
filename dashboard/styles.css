@@ -2229,6 +2229,29 @@ body.tribe-editing #troop-table thead th {
   background: var(--surface);
 }
 
+/* Small multiples: one chart per troop slot. The column count is set inline by
+   the renderer, which sizes each SVG to match, so the charts are drawn at their
+   real width rather than scaled down into a column CSS chose on its own. */
+.compare-slot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+.compare-slot-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  padding: 4px;
+  min-width: 0;
+}
+
+.compare-slot-card .chart-svg-slot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .chart-svg {
   display: block;
   width: 100%;
