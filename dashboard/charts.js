@@ -163,10 +163,9 @@ function drawYAxisTicks(svg, pad, innerW, innerH, maxVal, formatTick = (v) => St
 }
 
 export const CHART_LAYOUTS = [
-  { id: "split", name: "One graph per unit", description: "A small chart per slot, bars are tribes" },
-  { id: "bars", name: "Vertical bars", description: "Grouped columns per slot" },
-  { id: "lines", name: "Line chart", description: "Trend across slots 1–11" },
-  { id: "horizontal", name: "Horizontal bars", description: "Side-by-side bars per slot" },
+  { id: "bars", name: "Vertical bars", description: "One chart per unit, a bar per tribe" },
+  { id: "lines", name: "Line chart", description: "One chart per family, a line per tribe" },
+  { id: "horizontal", name: "Horizontal bars", description: "Every unit in one chart, grouped by unit" },
 ];
 
 /**
@@ -194,6 +193,37 @@ function niceAxis(maxVal) {
     }
   }
   return best || { step: target / 4, intervals: 4, top: target };
+}
+
+/**
+ * Grid lines and labels on rounded values. Returns the axis top, which is at or
+ * above the data's own maximum, so callers scale against it rather than the raw
+ * figure.
+ */
+function drawNiceYAxis(svg, pad, innerW, innerH, maxVal, fmt) {
+  const axis = niceAxis(maxVal);
+  for (let tick = 0; tick <= axis.intervals; tick++) {
+    const yVal = axis.step * tick;
+    const y = pad.top + innerH - (yVal / axis.top) * innerH;
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", String(pad.left));
+    line.setAttribute("x2", String(pad.left + innerW));
+    line.setAttribute("y1", String(y));
+    line.setAttribute("y2", String(y));
+    line.setAttribute("stroke", "var(--chart-grid)");
+    line.setAttribute("stroke-width", "1");
+    svg.append(line);
+    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.setAttribute("x", String(pad.left - 8));
+    label.setAttribute("y", String(y + 4));
+    label.setAttribute("text-anchor", "end");
+    label.setAttribute("fill", "var(--text-muted)");
+    label.setAttribute("font-size", String(CHART_FONT.tick));
+    label.setAttribute("font-weight", "600");
+    label.textContent = fmt(yVal);
+    svg.append(label);
+  }
+  return axis.top;
 }
 
 /**
@@ -231,8 +261,7 @@ export function drawSlotBarChart(svg, opts) {
   const pad = { top: 42, right: 12, bottom: hasUnitNames ? 48 : 32, left: 44 };
   const innerW = width - pad.left - pad.right;
   const innerH = height - pad.top - pad.bottom;
-  const axis = niceAxis(Math.max(1, ...bars.map((b) => b.value || 0)));
-  const maxVal = axis.top;
+  const dataMax = Math.max(1, ...bars.map((b) => b.value || 0));
   const colW = innerW / n;
   const barW = Math.min(56, Math.max(12, colW * 0.62));
 
@@ -251,27 +280,7 @@ export function drawSlotBarChart(svg, opts) {
   title.textContent = opts.title || "";
   svg.append(title);
 
-  for (let tick = 0; tick <= axis.intervals; tick++) {
-    const yVal = axis.step * tick;
-    const y = pad.top + innerH - (yVal / maxVal) * innerH;
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("x1", String(pad.left));
-    line.setAttribute("x2", String(pad.left + innerW));
-    line.setAttribute("y1", String(y));
-    line.setAttribute("y2", String(y));
-    line.setAttribute("stroke", "var(--chart-grid)");
-    line.setAttribute("stroke-width", "1");
-    svg.append(line);
-    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    label.setAttribute("x", String(pad.left - 8));
-    label.setAttribute("y", String(y + 4));
-    label.setAttribute("text-anchor", "end");
-    label.setAttribute("fill", "var(--text-muted)");
-    label.setAttribute("font-size", String(CHART_FONT.tick));
-    label.setAttribute("font-weight", "600");
-    label.textContent = fmt(yVal);
-    svg.append(label);
-  }
+  const maxVal = drawNiceYAxis(svg, pad, innerW, innerH, dataMax, fmt);
 
   const baseY = pad.top + innerH;
   const nameChars = Math.max(4, Math.floor(colW / 5.4));
@@ -964,112 +973,26 @@ function drawSeriesLegend(svg, series, width, totalHeight, pad) {
 }
 
 /**
- * Grouped vertical bars for any number of tribes.
+ * A line per tribe across an ordered run of slots.
+ *
+ * Points are not labelled with their value. Four tribes bunched around the same
+ * number put four labels in the same few pixels, and every way of pulling them
+ * apart — stacking, nudging — lands them on the markers and strokes underneath.
+ * The axis gives the magnitude, hovering gives the exact figure and the unit's
+ * name, and the bar layout prints every number outright. This chart is for the
+ * shape of a tribe's progression, so let it show that.
  */
-export function drawMultiGroupedBarChart(svg, opts) {
-  const series = resolveChartSeries(opts);
-  const k = series.length;
-  const n = opts.labels.length;
-  const padLeft = 58;
-  const padRight = 20;
-  const labels = opts.labels;
-  const minGroupW = minGroupWidthForLabels(labels);
-  const width = Math.max(opts.width ?? 720, n * minGroupW + padLeft + padRight);
-  const innerW = width - padLeft - padRight;
-  const groupW = innerW / Math.max(n, 1);
-  const xAxisBottom = chartBottomPad(labels, groupW);
-  const legendH = measureLegendHeight(series, innerW);
-  const height = (opts.height ?? Math.min(520, 380 + k * 8)) + xAxisBottom + legendH;
-  const pad = { top: 48, right: padRight, bottom: xAxisBottom + legendH, left: padLeft };
-  const showValues = opts.showBarValues !== false;
-  const fmt =
-    opts.formatValue ||
-    ((v) => (Number.isInteger(v) ? String(v) : v % 1 === 0 ? String(v) : v.toFixed(1)));
-  const innerH = height - pad.top - pad.bottom;
-  const allVals = series.flatMap((s) => s.values);
-  const maxVal = Math.max(1, ...allVals);
-  const barW = Math.min(22, Math.max(8, (groupW * 0.78) / Math.max(k, 1)));
-  const totalBarSpan = barW * k + 2 * Math.max(k - 1, 0);
-  const showBarValues = showValues && barW >= 10;
-
-  svg.innerHTML = "";
-  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-  svg.setAttribute("width", String(width));
-  svg.setAttribute("height", String(height));
-  svg.classList.add("chart-svg");
-
-  if (opts.title) {
-    const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    t.setAttribute("x", String(pad.left));
-    t.setAttribute("y", "24");
-    t.setAttribute("fill", "currentColor");
-    t.setAttribute("font-size", String(CHART_FONT.title));
-    t.setAttribute("font-weight", "700");
-    t.textContent = opts.title;
-    svg.append(t);
-  }
-
-  if (opts.yAxisLabel) {
-    const yl = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    yl.setAttribute("x", "14");
-    yl.setAttribute("y", String(pad.top + innerH / 2));
-    yl.setAttribute("fill", "var(--text-muted)");
-    yl.setAttribute("font-size", String(CHART_FONT.tick));
-    yl.setAttribute("text-anchor", "middle");
-    yl.setAttribute("transform", `rotate(-90 14 ${pad.top + innerH / 2})`);
-    yl.textContent = opts.yAxisLabel;
-    svg.append(yl);
-  }
-
-  drawSeriesLegend(svg, series, width, height, pad);
-  drawYAxisTicks(svg, pad, innerW, innerH, maxVal, fmt);
-
-  opts.labels.forEach((label, i) => {
-    const cx = pad.left + groupW * i + groupW / 2;
-    const baseY = pad.top + innerH;
-    const x0 = cx - totalBarSpan / 2;
-
-    series.forEach((s, si) => {
-      const val = s.values[i] ?? 0;
-      const h = (val / maxVal) * innerH;
-      const x = x0 + si * (barW + 2);
-      const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      bar.setAttribute("x", String(x));
-      bar.setAttribute("y", String(baseY - h));
-      bar.setAttribute("width", String(barW));
-      bar.setAttribute("height", String(Math.max(h, val > 0 ? 2 : 0)));
-      bar.setAttribute("rx", "4");
-      bar.setAttribute("fill", s.color);
-      bar.setAttribute("stroke", "rgba(0,0,0,0.12)");
-      bar.setAttribute("stroke-width", "1");
-      // The axis is labelled by category, so the bar carries the tribe's own
-      // name for the unit; a vertical bar is too narrow to print it on.
-      bar.append(pointTitle(s, i, val, fmt, label, si));
-      svg.append(bar);
-      if (showBarValues && val > 0) {
-        const ta = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        ta.setAttribute("x", String(x + barW / 2));
-        ta.setAttribute("y", String(baseY - h - 5));
-        ta.setAttribute("text-anchor", "middle");
-        ta.setAttribute("fill", s.color);
-        ta.setAttribute("font-size", String(Math.min(CHART_FONT.value, barW >= 14 ? 11 : 9)));
-        ta.setAttribute("font-weight", "700");
-        ta.textContent = fmt(val, i, si);
-        svg.append(ta);
-      }
-    });
-
-    appendXAxisLabel(svg, cx, height, label, { groupW, bottomInset: legendH });
-  });
-}
-
 export function drawMultiLineCompareChart(svg, opts) {
   const series = resolveChartSeries(opts);
   const n = opts.labels.length;
   const padLeft = 58;
   const padRight = 20;
   const labels = opts.labels;
-  const minGroupW = minGroupWidthForLabels(labels);
+  // The floor keeps categories apart on a full-width chart. In a small multiple
+  // it is the thing that forces the SVG wider than its card, and the browser
+  // then scales the whole chart — text included — down to fit, so callers with
+  // a known narrow slot can lower it.
+  const minGroupW = minGroupWidthForLabels(labels, opts.minGroupWidth);
   const width = Math.max(opts.width ?? 720, n * minGroupW + padLeft + padRight);
   const innerW = width - padLeft - padRight;
   const groupW = innerW / Math.max(n, 1);
@@ -1079,9 +1002,8 @@ export function drawMultiLineCompareChart(svg, opts) {
   const pad = { top: 48, right: padRight, bottom: xAxisBottom + legendH, left: padLeft };
   const innerH = height - pad.top - pad.bottom;
   const allVals = series.flatMap((s) => s.values);
-  const maxVal = Math.max(1, ...allVals);
+  const dataMax = Math.max(1, ...allVals);
   const fmt = opts.formatValue || ((v) => String(Math.round(v)));
-  const showValues = opts.showBarValues !== false;
 
   svg.innerHTML = "";
   svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
@@ -1091,24 +1013,22 @@ export function drawMultiLineCompareChart(svg, opts) {
 
   if (opts.title) {
     const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    t.setAttribute("x", String(pad.left));
-    t.setAttribute("y", "24");
+    t.setAttribute("x", "14");
+    t.setAttribute("y", "20");
     t.setAttribute("fill", "currentColor");
-    t.setAttribute("font-size", String(CHART_FONT.title));
+    t.setAttribute("font-size", String(CHART_FONT.label + 1));
     t.setAttribute("font-weight", "700");
     t.textContent = opts.title;
     svg.append(t);
   }
-  drawYAxisTicks(svg, pad, innerW, innerH, maxVal, fmt);
+  const maxVal = drawNiceYAxis(svg, pad, innerW, innerH, dataMax, fmt);
   drawSeriesLegend(svg, series, width, height, pad);
 
-  series.forEach((s) => {
-    const pts = [];
-    s.values.forEach((val, i) => {
-      const x = pad.left + (innerW * (i + 0.5)) / Math.max(n, 1);
-      const y = pad.top + innerH - (val / maxVal) * innerH;
-      pts.push({ x, y, val, i });
-    });
+  const xAt = (i) => pad.left + (innerW * (i + 0.5)) / Math.max(n, 1);
+  const yAt = (val) => pad.top + innerH - (val / maxVal) * innerH;
+
+  series.forEach((s, si) => {
+    const pts = s.values.map((val, i) => ({ x: xAt(i), y: yAt(val), val, i }));
     const poly = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
     poly.setAttribute("fill", "none");
     poly.setAttribute("stroke", s.color);
@@ -1127,19 +1047,8 @@ export function drawMultiLineCompareChart(svg, opts) {
       c.setAttribute("stroke-width", "2");
       // The axis is labelled by category, so the point carries the tribe's own
       // name for the unit; there is nowhere to print it in this layout.
-      c.append(pointTitle(s, p.i, p.val, fmt, opts.labels?.[p.i], series.indexOf(s)));
+      c.append(pointTitle(s, p.i, p.val, fmt, opts.labels?.[p.i], si));
       svg.append(c);
-      if (showValues) {
-        const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        t.setAttribute("x", String(p.x));
-        t.setAttribute("y", String(p.y - 10));
-        t.setAttribute("text-anchor", "middle");
-        t.setAttribute("fill", s.color);
-        t.setAttribute("font-size", String(CHART_FONT.value));
-        t.setAttribute("font-weight", "700");
-        t.textContent = fmt(p.val, p.i, series.indexOf(s));
-        svg.append(t);
-      }
     }
   });
 
@@ -1432,13 +1341,3 @@ export function drawMultiCostStackChart(svg, opts) {
   });
 }
 
-/**
- * Dispatch compare metric chart by layout id.
- */
-export function drawCompareMetricChart(svg, layoutId, opts) {
-  const series = resolveChartSeries(opts);
-  const multi = { ...opts, series };
-  if (layoutId === "lines") return drawMultiLineCompareChart(svg, multi);
-  if (layoutId === "horizontal") return drawMultiHorizontalCompareChart(svg, multi);
-  return drawMultiGroupedBarChart(svg, multi);
-}
