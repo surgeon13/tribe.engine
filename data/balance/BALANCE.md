@@ -61,6 +61,18 @@ The third follows from the first, because cost is derived from power. Siege is
 excluded from the comparison: a catapult outcosts an Equites Caesaris in
 Travian too, and neither is a unit you mass.
 
+"Most expensive" is measured in both currencies. A unit is bought once at the
+marketplace and then forever out of the granary, and the centerpiece usually
+rounds up into a higher crop bracket — for which the model hands it a resource
+discount. Read the market columns alone and a Teutonic Raider looks cheaper
+than a Teutonic Knight while quietly eating twice the population.
+
+The lead is added along the axis the unit's role is about: a hammer hits
+harder, a guard gets harder to kill, and only armored off-cavalry like the
+Haeduan grows both. Growing both by default made hammers out-defend their own
+tribe's wall — an inflated Equites Regales shaded a Praetorian on raw
+anti-infantry defense — which quietly cost the defensive infantry its job.
+
 `centerpiece` sets how far ahead it sits, as a multiple of the next best unit.
 The floor is **1.4**, the low end of Travian's own range — an Equites Caesaris
 is about 1.5× an Equites Imperatoris, a Haeduan about 2× a Theutates Thunder.
@@ -73,6 +85,33 @@ gap between one role and another, a tribe whose top horse *defends* landed
 behind its own tier-2 hammer no matter how the tier was tuned, and five tribes
 carried bespoke multipliers to paper over it. The rule is now structural, and
 `validate:balance` fails the build if any tribe breaks it.
+
+### Every slot needs a job
+
+A unit earns its place by being the best pick for *something*: a stat, a speed,
+a haul, or any of those per crop or per resource. If nothing on that list picks
+it out, nobody has a reason to train it, and the slot is filler.
+
+The middle of a family is where filler collects, squeezed between a cheap tier
+one and a powerful tier three. The cavalry line fixes this by giving each tier
+a column of its own — the first outruns everything, the second hauls the most
+and is what a raid is actually made of, the third wins the fight. Before the
+split the light horse held both speed and carry, and the middle horse was left
+best at nothing in seven tribes.
+
+Rome is the worked example. It fielded three offensive horses, and the middle
+one was slower and lighter than the Imperatoris and beaten on every combat stat
+by the tier three. A legion is a hammer *and* an anvil, so the slot became the
+anvil: `Equites Cataphractarii`, expensive, armored, and the tribe's best
+defense, the way a Haeduan or a Paladin is for its own. That freed the
+canonical name to return to the canonical job, and the hammer is an
+`Equites Caesaris` again.
+
+`validate:balance` fails on a unit that is matched or beaten everywhere for no
+more crop and no more money, and warns on one that merely tops no column. Seven
+warnings stand today, all of them middle infantry in the hybrid `line` role,
+whose average stats at an average price cannot win an efficiency column by
+construction.
 
 ### Tiers outside the player band
 

@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Levy Shield Bearer" },
-        "stats": { "attack": 10, "defenseInfantry": 33, "defenseCavalry": 58, "speed": 7, "carry": 40 },
-        "cost": { "wood": 65, "clay": 75, "iron": 40, "crop": 45 },
+        "stats": { "attack": 11, "defenseInfantry": 33, "defenseCavalry": 59, "speed": 7, "carry": 40 },
+        "cost": { "wood": 70, "clay": 80, "iron": 45, "crop": 50 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Tribal muster with spear and shield — backbone of highland defense." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Javelin Thrower" },
-        "stats": { "attack": 36, "defenseInfantry": 39, "defenseCavalry": 46, "speed": 6, "carry": 45 },
-        "cost": { "wood": 120, "clay": 145, "iron": 135, "crop": 55 },
+        "stats": { "attack": 36, "defenseInfantry": 39, "defenseCavalry": 47, "speed": 6, "carry": 45 },
+        "cost": { "wood": 120, "clay": 150, "iron": 135, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/boomerang.svg" },
         "description": { "en": "Judean and Benjaminite slingers — famous skirmish arm." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Champion" },
-        "stats": { "attack": 71, "defenseInfantry": 43, "defenseCavalry": 31, "speed": 7, "carry": 50 },
-        "cost": { "wood": 190, "clay": 220, "iron": 210, "crop": 85 },
+        "stats": { "attack": 72, "defenseInfantry": 43, "defenseCavalry": 32, "speed": 7, "carry": 50 },
+        "cost": { "wood": 200, "clay": 230, "iron": 215, "crop": 90 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },
         "description": { "en": "Royal ‘mighty men’ — elite infantry of the king’s household." }
@@ -48,8 +48,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Hill Scout" },
-        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
-        "cost": { "wood": 140, "clay": 155, "iron": 40, "crop": 50 },
+        "stats": { "attack": 0, "defenseInfantry": 21, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 145, "clay": 165, "iron": 40, "crop": 50 },
         "cropUpkeep": 2,
         "graphics": { "logo": "infantry/harpoon-chain.svg" },
         "description": { "en": "Hill-country scouts and city lookouts." }
@@ -59,7 +59,7 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Light Horse" },
-        "stats": { "attack": 101, "defenseInfantry": 47, "defenseCavalry": 43, "speed": 15, "carry": 95 },
+        "stats": { "attack": 102, "defenseInfantry": 47, "defenseCavalry": 44, "speed": 15, "carry": 78 },
         "cost": { "wood": 450, "clay": 480, "iron": 290, "crop": 130 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/donkey.svg" },
@@ -70,8 +70,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Royal Chariot" },
-        "stats": { "attack": 124, "defenseInfantry": 53, "defenseCavalry": 49, "speed": 13, "carry": 81 },
-        "cost": { "wood": 410, "clay": 530, "iron": 400, "crop": 150 },
+        "stats": { "attack": 126, "defenseInfantry": 54, "defenseCavalry": 50, "speed": 13, "carry": 105 },
+        "cost": { "wood": 430, "clay": 550, "iron": 410, "crop": 150 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/horse-head.svg" },
         "description": { "en": "Heavy chariots of the royal stables — strike arm on open ground." }
@@ -81,8 +81,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Horse Guard" },
-        "stats": { "attack": 150, "defenseInfantry": 65, "defenseCavalry": 167, "speed": 12, "carry": 55 },
-        "cost": { "wood": 520, "clay": 660, "iron": 470, "crop": 160 },
+        "stats": { "attack": 152, "defenseInfantry": 66, "defenseCavalry": 169, "speed": 12, "carry": 55 },
+        "cost": { "wood": 530, "clay": 680, "iron": 480, "crop": 160 },
         "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/chess-knight.svg" },
         "description": { "en": "Mounted retainers expanding the older chariot tradition." }
