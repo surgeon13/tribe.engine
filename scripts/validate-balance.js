@@ -11,16 +11,23 @@
  *   1. every identity spec's crop pressure stays inside the allowed range
  *   2. every player tribe's realized power price sits inside the tolerance band
  *   3. every tribe's heavy cavalry is its strongest and dearest army unit
- *   4. no two tribes ship the same stat block (copy-paste rosters)
- *   5. tier ordering holds: boss > NPC guard > players > wildlife
- *   6. stats stay inside sane ranges and tiers do not go backwards
+ *   4. no slot is filler — every unit is the best pick for something
+ *   5. no two tribes ship the same stat block (copy-paste rosters)
+ *   6. tier ordering holds: boss > NPC guard > players > wildlife
+ *   7. stats stay inside sane ranges and tiers do not go backwards
  *
  * Usage: npm run validate:balance [-- --json]
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { SCORED_REFS, SLOT_ANCHORS, combatIndex, totalCost } from "../lib/balance/anchors.js";
+import {
+  SCORED_REFS,
+  SLOT_ANCHORS,
+  combatIndex,
+  pricePaid,
+  totalCost,
+} from "../lib/balance/anchors.js";
 import {
   CROP_PRESSURE_RANGE,
   FAIRNESS_TOLERANCE,
@@ -178,12 +185,76 @@ for (const t of tribes) {
       `${t.id} — ${horse.name} leans ${offensive ? "offensive" : "defensive"} but ${t.troops.get(better).name} (${better}) beats it on ${offensive ? "attack" : "defense"}; a centerpiece should top the column it is built for`
     );
   }
-  // Wildlife is not trained, so its price is not a promise to anyone.
+  // Wildlife is not trained, so its price is not a promise to anyone. Price is
+  // resources plus upkeep: the centerpiece often rounds up into a higher crop
+  // bracket and takes a resource discount for it, so the market columns alone
+  // would call it the cheaper unit.
   if (t.tier !== "wild") {
-    const dearer = rivals.find((ref) => totalCost(t.troops.get(ref).cost) > totalCost(horse.cost));
+    const paid = (u) => pricePaid(u.cost, u.cropUpkeep);
+    const dearer = rivals.find((ref) => paid(t.troops.get(ref)) > paid(horse));
     if (dearer) {
+      const rival = t.troops.get(dearer);
       errors.push(
-        `${t.id} — ${horse.name} costs ${totalCost(horse.cost)} but ${t.troops.get(dearer).name} (${dearer}) costs ${totalCost(t.troops.get(dearer).cost)}; the centerpiece should be the most expensive unit in the barracks`
+        `${t.id} — ${horse.name} costs ${paid(horse)} (${totalCost(horse.cost)} plus ${horse.cropUpkeep} crop) but ${rival.name} (${dearer}) costs ${paid(rival)} (${totalCost(rival.cost)} plus ${rival.cropUpkeep} crop); the centerpiece should be the most expensive unit in the barracks`
+      );
+    }
+  }
+}
+
+// No slot should be filler. A unit earns its place by being the best pick for
+// something, so these are the columns a player actually shops on: a raw stat
+// when they want the biggest single unit, and the same stat per crop or per
+// resource when population or money is the constraint.
+const SHOP_COLUMNS = {
+  attack: (u) => u.stats.attack || 0,
+  "defence vs infantry": (u) => u.stats.defenseInfantry || 0,
+  "defence vs cavalry": (u) => u.stats.defenseCavalry || 0,
+  "total defence": (u) => (u.stats.defenseInfantry || 0) + (u.stats.defenseCavalry || 0),
+  power: (u) => combatIndex(u.stats),
+  speed: (u) => u.stats.speed || 0,
+  carry: (u) => u.stats.carry || 0,
+};
+for (const [name, read] of Object.entries({ ...SHOP_COLUMNS })) {
+  SHOP_COLUMNS[`${name} per crop`] = (u) => read(u) / (u.cropUpkeep || 1);
+  SHOP_COLUMNS[`${name} per resource`] = (u) => read(u) / Math.max(1, totalCost(u.cost));
+}
+
+// Scouts sit out: nobody weighs a scout against a battle horse, and letting
+// the fastest unit in the game hold the speed crown would make every light
+// cavalry look like filler when its job is raiding, not racing.
+const BATTLE_REFS = ARMY_REFS.filter((ref) => ref !== "scout");
+
+for (const t of tribes) {
+  const army = BATTLE_REFS.filter((ref) => t.troops.has(ref));
+  for (const ref of army) {
+    const unit = t.troops.get(ref);
+    const rivals = army.filter((o) => o !== ref).map((o) => t.troops.get(o));
+
+    // Outright dominated: another unit is at least as good everywhere and
+    // costs no more in either currency. Nobody could defend training this.
+    const dominator = rivals.find(
+      (r) =>
+        ["attack", "defenseInfantry", "defenseCavalry", "speed", "carry"].every(
+          (k) => (r.stats[k] || 0) >= (unit.stats[k] || 0)
+        ) &&
+        totalCost(r.cost) <= totalCost(unit.cost) &&
+        (r.cropUpkeep ?? 0) <= (unit.cropUpkeep ?? 0)
+    );
+    if (dominator) {
+      errors.push(
+        `${t.id} — ${unit.name} (${ref}) is matched or beaten on every stat by ${dominator.name} for no more crop and no more resources, so nobody would ever train it`
+      );
+      continue;
+    }
+
+    // Best at nothing: not dominated, but tops no column either, so for any
+    // goal a player has some other unit in the same roster serves it better.
+    const tops = Object.entries(SHOP_COLUMNS)
+      .filter(([, read]) => rivals.every((r) => read(unit) >= read(r)))
+      .map(([name]) => name);
+    if (!tops.length) {
+      warnings.push(
+        `${t.id} — ${unit.name} (${ref}) tops no column: it is not the best pick for any stat, nor per crop, nor per resource, so the slot is filler`
       );
     }
   }
