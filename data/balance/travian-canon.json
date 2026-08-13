@@ -250,10 +250,10 @@
       "extension": {
         "cav_t3": {
           "name": "Teutonic Raider",
-          "$comment": "Ours, not Travian's. The plunder horse, and it has to actually plunder best: 130 carry on two crop is 65 a head, ahead of the Paladin's 55 and the Clubswinger's 60, and nothing in the barracks moves faster. The Knight keeps the hammer's job; this one takes the farms.",
-          "stats": { "attack": 95, "defenseInfantry": 40, "defenseCavalry": 35, "speed": 12, "carry": 130 },
+          "$comment": "Ours, not Travian's. The mirror of the Paladin, which is the anti-infantry horse: 40 against foot and 100 against horse where the Paladin is 100 and 40, so Teutons finally have something mounted to meet cavalry with. It raids on the way home -- 130 carry on two crop is 65 a head against the Paladin's 55, and at 13 it is the fastest thing the tribe trains, comfortably clear of the Paladin's 10. Attack is 70 on purpose: enough to clear a farm, nowhere near enough to take the Knight's job.",
+          "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 100, "speed": 13, "carry": 130 },
           "cropUpkeep": 2,
-          "cost": { "wood": 400, "clay": 380, "iron": 230, "crop": 90 },
+          "cost": { "wood": 420, "clay": 380, "iron": 270, "crop": 100 },
           "timeSeconds": 1150
         }
       }
@@ -771,5 +771,5 @@
       }
     }
   },
-  "lock": "7a9cc5847163caba"
+  "lock": "d7e7d3b0c97062fc"
 }

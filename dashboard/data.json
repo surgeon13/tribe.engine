@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-13T10:54:01.480Z",
+  "generatedAt": "2026-08-13T11:56:10.940Z",
   "roster": [
     {
       "slot": 1,
@@ -1211,11 +1211,11 @@
         "unitCount": 11,
         "maxAttack": 150,
         "maxDefenseInfantry": 100,
-        "maxDefenseCavalry": 80,
-        "maxSpeed": 12,
+        "maxDefenseCavalry": 100,
+        "maxSpeed": 13,
         "maxCarry": 130,
-        "avgAttack": 58,
-        "avgDefenseCombined": 40,
+        "avgAttack": 56,
+        "avgDefenseCombined": 44,
         "totalCropUpkeep": 25
       },
       "troops": [
@@ -1629,20 +1629,20 @@
           "name": "Teutonic Raider",
           "category": "cavalry",
           "stats": {
-            "attack": 95,
+            "attack": 70,
             "defenseInfantry": 40,
-            "defenseCavalry": 35,
-            "speed": 12,
+            "defenseCavalry": 100,
+            "speed": 13,
             "carry": 130
           },
           "cost": {
-            "wood": 400,
+            "wood": 420,
             "clay": 380,
-            "iron": 230,
-            "crop": 90
+            "iron": 270,
+            "crop": 100
           },
           "cropUpkeep": 2,
-          "totalCost": 1100,
+          "totalCost": 1170,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
@@ -1665,19 +1665,19 @@
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 95,
+            "offense": 70,
             "defenseInfantry": 40,
-            "defenseCavalry": 35,
-            "defenseCombined": 38,
-            "defenseTotal": 75,
-            "speed": 12,
+            "defenseCavalry": 100,
+            "defenseCombined": 70,
+            "defenseTotal": 140,
+            "speed": 13,
             "carry": 130,
             "cropUpkeep": 2,
-            "attackPerCrop": 47.5,
-            "defensePerCrop": 37.5,
+            "attackPerCrop": 35,
+            "defensePerCrop": 70,
             "trainTimeSeconds": 1150,
             "trainTimeFormatted": "19:10",
-            "resourceCost": 1100
+            "resourceCost": 1170
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/07_cavalry_icon.png",
@@ -14466,11 +14466,11 @@
         "unitCount": 11,
         "maxAttack": 130,
         "maxDefenseInfantry": 85,
-        "maxDefenseCavalry": 95,
+        "maxDefenseCavalry": 120,
         "maxSpeed": 16,
         "maxCarry": 90,
-        "avgAttack": 67,
-        "avgDefenseCombined": 49,
+        "avgAttack": 65,
+        "avgDefenseCombined": 51,
         "totalCropUpkeep": 27
       },
       "troops": [
@@ -14884,10 +14884,10 @@
           "name": "Median Guard Cavalry",
           "category": "cavalry",
           "stats": {
-            "attack": 120,
+            "attack": 105,
             "defenseInfantry": 60,
-            "defenseCavalry": 95,
-            "speed": 12,
+            "defenseCavalry": 120,
+            "speed": 13,
             "carry": 75
           },
           "cost": {
@@ -14920,16 +14920,16 @@
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 120,
+            "offense": 105,
             "defenseInfantry": 60,
-            "defenseCavalry": 95,
-            "defenseCombined": 78,
-            "defenseTotal": 155,
-            "speed": 12,
+            "defenseCavalry": 120,
+            "defenseCombined": 90,
+            "defenseTotal": 180,
+            "speed": 13,
             "carry": 75,
             "cropUpkeep": 3,
-            "attackPerCrop": 40,
-            "defensePerCrop": 51.7,
+            "attackPerCrop": 35,
+            "defensePerCrop": 60,
             "trainTimeSeconds": 2385,
             "trainTimeFormatted": "39:45",
             "resourceCost": 1665

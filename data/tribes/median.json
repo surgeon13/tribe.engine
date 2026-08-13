@@ -75,7 +75,7 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Median Guard Cavalry" },
-        "stats": { "attack": 120, "defenseInfantry": 60, "defenseCavalry": 95, "speed": 12, "carry": 75 },
+        "stats": { "attack": 105, "defenseInfantry": 60, "defenseCavalry": 120, "speed": 13, "carry": 75 },
         "cost": { "wood": 465, "clay": 495, "iron": 585, "crop": 120 },
         "cropUpkeep": 3,
         "description": { "en": "Statistical median of roman, teuton, gaul, egyptian, hun, spartan for slot cav_t3." }
@@ -150,6 +150,6 @@
     "aggregator": "median",
     "sources": ["roman", "teuton", "gaul", "egyptian", "hun", "spartan"],
     "preciseSource": "balance/median-baseline.json",
-    "createdAt": "2026-08-13T10:54:01.451Z"
+    "createdAt": "2026-08-13T11:56:10.910Z"
   }
 }

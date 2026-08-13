@@ -61,7 +61,7 @@ per canonical tribe is ours to invent:
 | Tribe | Slot | Unit |
 |-------|------|------|
 | Rome | `cav_t3` | Equites Regales — the anvil Rome never had |
-| Teutons | `cav_t3` | Teutonic Raider — the tribe's best hauler per head of crop |
+| Teutons | `cav_t3` | Teutonic Raider — the Paladin's mirror: anti-cavalry, fast, and the best hauler per head of crop |
 | Gauls | `inf_t3` | Gaul Tracker — the quality wall, where the Phalanx is the cheap one |
 | Egyptians | `cav_t3` | Royal Chariot — Egypt's one blade |
 | Huns | `inf_t3` | Hun Warrior — the raid you can afford before the horses arrive |
