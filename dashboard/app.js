@@ -29,7 +29,6 @@ import {
 import { mountPaletteContrastHint } from "./palette-hint.js";
 import {
   renderTribeBanner,
-  renderUnitCard,
   mountTroopLogoCell,
   mountPortrait,
   portraitOptsFromUnit,
@@ -1213,20 +1212,33 @@ function renderCompareSummary(tribes) {
     .join("");
 }
 
-function renderCompareRadar() {
+function renderCompareGraphs() {
   const tribes = getCompareTribes();
   if (tribes.length < COMPARE_MIN_TRIBES || !globalScales) return;
-  renderCompareRadarSlots(tribes);
+  renderCompareBanners(tribes);
+  renderCompareGraphSlots(tribes);
 }
 
-function renderCompareRadarSlots(tribes) {
-  const grid = $("#compare-radar-slots");
+function renderCompareBanners(tribes) {
+  const banners = $("#compare-banners");
+  if (!banners) return;
+  banners.innerHTML = "";
+  setCompareColumnCount(tribes.length);
+  tribes.forEach((tribe) => {
+    const slot = document.createElement("div");
+    renderTribeBanner(slot, tribe);
+    banners.append(slot);
+  });
+}
+
+function renderCompareGraphSlots(tribes) {
+  const grid = $("#compare-graphs-slots");
   if (!grid || !globalScales) return;
   grid.innerHTML = "";
   syncCompareCompactAttr();
   setCompareColumnCount(tribes.length);
 
-  const hint = $("#compare-radar-hint");
+  const hint = $("#compare-graphs-hint");
   if (hint) {
     const base = normalizeModeHint(statNormalizeMode);
     hint.textContent = isCompareCompact()
@@ -1235,7 +1247,7 @@ function renderCompareRadarSlots(tribes) {
   }
 
   const header = document.createElement("article");
-  header.className = "compare-radar-row compare-grid-header";
+  header.className = "compare-graphs-row compare-grid-header";
   const headerCells = tribes
     .map(
       (t) =>
@@ -1247,7 +1259,7 @@ function renderCompareRadarSlots(tribes) {
 
   data.roster.forEach((slot, i) => {
     const row = document.createElement("article");
-    row.className = "compare-radar-row";
+    row.className = "compare-graphs-row";
 
     const unitNames = formatSlotUnitNames(tribes, i);
     const label = document.createElement("div");
@@ -1265,7 +1277,7 @@ function renderCompareRadarSlots(tribes) {
       setTribeColorVars(col, tribe);
       const troop = tribe.troops[i];
       if (!troop) {
-        col.className = "compare-radar-empty compare-tribe-block";
+        col.className = "compare-graphs-empty compare-tribe-block";
         col.textContent = "—";
         row.append(col);
         return;
@@ -1290,69 +1302,6 @@ function renderCompareRadarSlots(tribes) {
       row.append(col);
     });
 
-    grid.append(row);
-  });
-}
-
-function renderCompareGraphics() {
-  const tribes = getCompareTribes();
-  if (tribes.length < COMPARE_MIN_TRIBES) return;
-
-  syncCompareCompactAttr();
-  const banners = $("#compare-banners");
-  if (banners) {
-    banners.innerHTML = "";
-    setCompareColumnCount(tribes.length);
-    tribes.forEach((tribe) => {
-      const slot = document.createElement("div");
-      renderTribeBanner(slot, tribe);
-      banners.append(slot);
-    });
-  }
-
-  const grid = $("#compare-graphics-grid");
-  grid.innerHTML = "";
-
-  const header = document.createElement("article");
-  header.className = "compare-graphics-row compare-grid-header";
-  const headerCells = tribes
-    .map(
-      (t) =>
-        `<h4 class="compare-col-title" style="color:${tribeInkColor(t.palette)}">${t.name}</h4>`
-    )
-    .join("");
-  header.innerHTML = `<div class="compare-slot-label"><strong>Unit</strong></div>${headerCells}`;
-  grid.append(header);
-
-  data.roster.forEach((slot, i) => {
-    const row = document.createElement("article");
-    row.className = "compare-graphics-row";
-
-    const unitNames = formatSlotUnitNames(tribes, i);
-    const label = document.createElement("div");
-    label.className = "compare-slot-label";
-    label.innerHTML = `
-      <strong>Slot ${slot.slot}</strong>
-      <span class="role-badge">${slot.role}</span>
-      <p class="compare-slot-units muted">${unitNames}</p>
-    `;
-
-    row.append(label);
-    tribes.forEach((tribe) => {
-      const col = document.createElement("div");
-      col.className = "compare-tribe-block";
-      if (isCompareCompact()) {
-        const tribeTag = document.createElement("div");
-        tribeTag.className = "compare-tribe-tag";
-        tribeTag.style.color = tribeInkColor(tribe.palette);
-        tribeTag.textContent = tribe.name;
-        col.append(tribeTag);
-      }
-      const cardHost = document.createElement("div");
-      renderUnitCard(cardHost, tribe.troops[i], tribe.palette, globalScales);
-      col.append(cardHost);
-      row.append(col);
-    });
     grid.append(row);
   });
 }
@@ -1667,9 +1616,8 @@ function renderCompare() {
   if (tribes.length < COMPARE_MIN_TRIBES) {
     hint?.classList.remove("hidden");
     $("#compare-table-wrap")?.classList.add("hidden");
-    $("#compare-graphics-wrap")?.classList.add("hidden");
+    $("#compare-graphs-wrap")?.classList.add("hidden");
     $("#compare-charts-wrap")?.classList.add("hidden");
-    $("#compare-radar-wrap")?.classList.add("hidden");
     renderCompareLegend([]);
     renderCompareSummary([]);
     return;
@@ -1681,12 +1629,10 @@ function renderCompare() {
   renderCompareSummary(tribes);
 
   $("#compare-table-wrap")?.classList.toggle("hidden", compareViewMode !== "table");
-  $("#compare-graphics-wrap")?.classList.toggle("hidden", compareViewMode !== "graphics");
+  $("#compare-graphs-wrap")?.classList.toggle("hidden", compareViewMode !== "graphs");
   $("#compare-charts-wrap")?.classList.toggle("hidden", compareViewMode !== "charts");
-  $("#compare-radar-wrap")?.classList.toggle("hidden", compareViewMode !== "radar");
 
-  if (compareViewMode === "radar") renderCompareRadar();
-  if (compareViewMode === "graphics") renderCompareGraphics();
+  if (compareViewMode === "graphs") renderCompareGraphs();
   if (compareViewMode === "charts") renderCompareCharts();
   if (compareViewMode === "table") renderCompareTable(tribes);
 

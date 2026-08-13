@@ -1,8 +1,6 @@
 /** Unit portraits, SVG troop logos, and tribe banners for compare / roster views. */
 
 import { adaptToBackground, MIN_GRAPHIC_CONTRAST } from "./color.js";
-import { buildViewMetrics } from "./metrics-normalize.js";
-import { mountStatBars } from "./radar.js";
 
 const svgCache = new Map();
 
@@ -350,53 +348,6 @@ export function renderTribeBanner(container, tribe) {
 
   banner.append(art, body, swatches);
   container.append(banner);
-}
-
-/**
- * @param {HTMLElement} container
- * @param {object} unit
- * @param {object} palette
- * @param {Record<string, number>} [maxes]
- * @param {{ showOvr?: boolean }} [opts]
- */
-export function renderUnitCard(container, unit, palette, scales, opts = {}) {
-  container.innerHTML = "";
-  const card = document.createElement("article");
-  card.className = "compare-unit-card compare-unit-card--large";
-
-  const top = document.createElement("div");
-  top.className = "compare-unit-top";
-
-  const portrait = document.createElement("div");
-  mountPortrait(portrait, portraitOptsFromUnit(unit, palette));
-
-  const meta = document.createElement("div");
-  meta.className = "compare-unit-meta";
-  const m = unit.metrics;
-  meta.innerHTML = `
-    <span class="role-badge">${unit.role}</span>
-    <h4>${unit.name}</h4>
-    <p class="compare-unit-keyline">
-      <span><b>${m.offense ?? 0}</b> ATK</span>
-      <span><b>${m.defenseInfantry ?? 0}</b> DEF-I</span>
-      <span><b>${m.defenseCavalry ?? 0}</b> DEF-C</span>
-      <span><b>${m.speed ?? 0}</b> SPD</span>
-      <span><b>${m.carry ?? 0}</b> CRR</span>
-    </p>
-  `;
-
-  top.append(portrait, meta);
-
-  const bars = document.createElement("div");
-  bars.className = "compare-unit-bars";
-  if (scales) {
-    const viewMetrics = buildViewMetrics(unit.metrics, scales.normalizeMode || "raw");
-    mountStatBars(bars, viewMetrics, scales, palette, { compact: false });
-  }
-
-  card.append(top, bars);
-  container.append(card);
-  return card;
 }
 
 /**
