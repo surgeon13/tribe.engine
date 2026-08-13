@@ -16,7 +16,7 @@
       "overrides": {
         "name": { "en": "Hoplite" },
         "stats": { "attack": 50, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 6, "carry": 60 },
-        "cost": { "wood": 150, "clay": 105, "iron": 145, "crop": 105 },
+        "cost": { "wood": 110, "clay": 185, "iron": 110, "crop": 35 },
         "cropUpkeep": 1
       }
     },
@@ -25,7 +25,7 @@
       "overrides": {
         "name": { "en": "Shieldsman" },
         "stats": { "attack": 40, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 8, "carry": 40 },
-        "cost": { "wood": 200, "clay": 150, "iron": 360, "crop": 90 },
+        "cost": { "wood": 145, "clay": 95, "iron": 245, "crop": 45 },
         "cropUpkeep": 1
       }
     },
@@ -34,7 +34,7 @@
       "overrides": {
         "name": { "en": "Twinsteel Therion" },
         "stats": { "attack": 90, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
-        "cost": { "wood": 260, "clay": 190, "iron": 450, "crop": 120 },
+        "cost": { "wood": 130, "clay": 200, "iron": 400, "crop": 65 },
         "cropUpkeep": 1
       }
     },
@@ -44,7 +44,7 @@
         "name": { "en": "Sentinel" },
         "description": { "en": "Infantry scout — 1 crop/h, strong vs enemy scouts." },
         "stats": { "attack": 0, "defenseInfantry": 40, "defenseCavalry": 22, "speed": 9, "carry": 0 },
-        "cost": { "wood": 410, "clay": 290, "iron": 180, "crop": 150 },
+        "cost": { "wood": 185, "clay": 150, "iron": 35, "crop": 75 },
         "cropUpkeep": 1
       }
     },
@@ -53,7 +53,7 @@
       "overrides": {
         "name": { "en": "Elpida Rider" },
         "stats": { "attack": 55, "defenseInfantry": 120, "defenseCavalry": 90, "speed": 16, "carry": 110 },
-        "cost": { "wood": 540, "clay": 360, "iron": 560, "crop": 160 },
+        "cost": { "wood": 555, "clay": 445, "iron": 330, "crop": 110 },
         "cropUpkeep": 2
       }
     },
@@ -62,7 +62,7 @@
       "overrides": {
         "name": { "en": "Corinthian Crusher" },
         "stats": { "attack": 195, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 9, "carry": 80 },
-        "cost": { "wood": 640, "clay": 510, "iron": 980, "crop": 230 },
+        "cost": { "wood": 660, "clay": 495, "iron": 995, "crop": 165 },
         "cropUpkeep": 3
       }
     },
@@ -81,7 +81,7 @@
       "overrides": {
         "name": { "en": "Ram" },
         "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
-        "cost": { "wood": 930, "clay": 280, "iron": 700, "crop": 90 },
+        "cost": { "wood": 525, "clay": 260, "iron": 790, "crop": 130 },
         "cropUpkeep": 3
       }
     },
@@ -90,7 +90,7 @@
       "overrides": {
         "name": { "en": "Ballista" },
         "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 870, "clay": 970, "iron": 820, "crop": 100 },
+        "cost": { "wood": 550, "clay": 1240, "iron": 825, "crop": 135 },
         "cropUpkeep": 6
       }
     },
@@ -99,7 +99,7 @@
       "overrides": {
         "name": { "en": "Ephor" },
         "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 26850, "clay": 17400, "iron": 56650, "crop": 37900 },
+        "cost": { "wood": 33450, "clay": 30665, "iron": 36240, "crop": 13935 },
         "cropUpkeep": 4
       }
     },
@@ -108,7 +108,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3850, "clay": 3750, "iron": 3750, "crop": 5350 },
+        "cost": { "wood": 5115, "clay": 5580, "iron": 6045, "crop": 3255 },
         "cropUpkeep": 1
       }
     }

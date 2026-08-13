@@ -42,7 +42,7 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Birds of Prey" },
-        "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 10, "speed": 25, "carry": 10 },
+        "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 0, "speed": 25, "carry": 10 },
         "cost": { "wood": 140, "clay": 160, "iron": 60, "crop": 50 },
         "cropUpkeep": 1
       }

@@ -16,7 +16,7 @@
       "overrides": {
         "name": { "en": "Clubswinger" },
         "stats": { "attack": 40, "defenseInfantry": 20, "defenseCavalry": 5, "speed": 7, "carry": 60 },
-        "cost": { "wood": 80, "clay": 65, "iron": 30, "crop": 35 },
+        "cost": { "wood": 95, "clay": 75, "iron": 40, "crop": 40 },
         "cropUpkeep": 1
       }
     },
@@ -25,7 +25,7 @@
       "overrides": {
         "name": { "en": "Spearman" },
         "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 },
-        "cost": { "wood": 85, "clay": 75, "iron": 55, "crop": 25 },
+        "cost": { "wood": 145, "clay": 70, "iron": 85, "crop": 40 },
         "cropUpkeep": 1
       }
     },
@@ -34,7 +34,7 @@
       "overrides": {
         "name": { "en": "Axeman" },
         "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 30, "speed": 6, "carry": 50 },
-        "cost": { "wood": 180, "clay": 150, "iron": 115, "crop": 55 },
+        "cost": { "wood": 130, "clay": 120, "iron": 170, "crop": 70 },
         "cropUpkeep": 1
       }
     },
@@ -43,7 +43,7 @@
       "overrides": {
         "name": { "en": "Scout" },
         "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 5, "speed": 9, "carry": 0 },
-        "cost": { "wood": 90, "clay": 70, "iron": 15, "crop": 20 },
+        "cost": { "wood": 160, "clay": 100, "iron": 50, "crop": 50 },
         "cropUpkeep": 1
       }
     },
@@ -52,7 +52,7 @@
       "overrides": {
         "name": { "en": "Paladin" },
         "stats": { "attack": 55, "defenseInfantry": 100, "defenseCavalry": 40, "speed": 10, "carry": 110 },
-        "cost": { "wood": 430, "clay": 320, "iron": 160, "crop": 80 },
+        "cost": { "wood": 370, "clay": 270, "iron": 290, "crop": 75 },
         "cropUpkeep": 2
       }
     },
@@ -61,7 +61,7 @@
       "overrides": {
         "name": { "en": "Teutonic Knight" },
         "stats": { "attack": 150, "defenseInfantry": 50, "defenseCavalry": 75, "speed": 9, "carry": 80 },
-        "cost": { "wood": 530, "clay": 490, "iron": 300, "crop": 120 },
+        "cost": { "wood": 450, "clay": 515, "iron": 480, "crop": 80 },
         "cropUpkeep": 3
       }
     },
@@ -80,7 +80,7 @@
       "overrides": {
         "name": { "en": "Ram" },
         "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1200, "clay": 410, "iron": 320, "crop": 70 },
+        "cost": { "wood": 1000, "clay": 300, "iron": 350, "crop": 70 },
         "cropUpkeep": 3
       }
     },
@@ -89,7 +89,7 @@
       "overrides": {
         "name": { "en": "Catapult" },
         "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 860, "clay": 1090, "iron": 290, "crop": 60 },
+        "cost": { "wood": 900, "clay": 1200, "iron": 600, "crop": 60 },
         "cropUpkeep": 6
       }
     },
@@ -98,7 +98,7 @@
       "overrides": {
         "name": { "en": "Chief" },
         "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 40850, "clay": 30050, "iron": 30800, "crop": 37100 },
+        "cost": { "wood": 35500, "clay": 26600, "iron": 25000, "crop": 27200 },
         "cropUpkeep": 4
       }
     },
@@ -107,7 +107,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 5000, "clay": 5500, "iron": 1750, "crop": 4450 },
+        "cost": { "wood": 5800, "clay": 4400, "iron": 4600, "crop": 5200 },
         "cropUpkeep": 1
       }
     }

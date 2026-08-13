@@ -16,7 +16,7 @@
       "overrides": {
         "name": { "en": "Legionnaire" },
         "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 50 },
-        "cost": { "wood": 130, "clay": 120, "iron": 155, "crop": 95 },
+        "cost": { "wood": 120, "clay": 100, "iron": 150, "crop": 30 },
         "cropUpkeep": 1
       }
     },
@@ -25,7 +25,7 @@
       "overrides": {
         "name": { "en": "Praetorian" },
         "stats": { "attack": 30, "defenseInfantry": 65, "defenseCavalry": 35, "speed": 5, "carry": 20 },
-        "cost": { "wood": 100, "clay": 100, "iron": 220, "crop": 45 },
+        "cost": { "wood": 100, "clay": 130, "iron": 160, "crop": 70 },
         "cropUpkeep": 1
       }
     },
@@ -34,7 +34,7 @@
       "overrides": {
         "name": { "en": "Imperian" },
         "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 25, "speed": 7, "carry": 50 },
-        "cost": { "wood": 140, "clay": 135, "iron": 300, "crop": 65 },
+        "cost": { "wood": 150, "clay": 160, "iron": 210, "crop": 80 },
         "cropUpkeep": 1
       }
     },
@@ -43,7 +43,7 @@
       "overrides": {
         "name": { "en": "Equites Legati" },
         "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
-        "cost": { "wood": 135, "clay": 125, "iron": 75, "crop": 50 },
+        "cost": { "wood": 140, "clay": 160, "iron": 20, "crop": 40 },
         "cropUpkeep": 2
       }
     },
@@ -52,7 +52,7 @@
       "overrides": {
         "name": { "en": "Equites Imperatoris" },
         "stats": { "attack": 120, "defenseInfantry": 65, "defenseCavalry": 50, "speed": 14, "carry": 100 },
-        "cost": { "wood": 380, "clay": 340, "iron": 480, "crop": 120 },
+        "cost": { "wood": 550, "clay": 440, "iron": 320, "crop": 100 },
         "cropUpkeep": 3
       }
     },
@@ -61,7 +61,7 @@
       "overrides": {
         "name": { "en": "Equites Caesaris" },
         "stats": { "attack": 180, "defenseInfantry": 80, "defenseCavalry": 105, "speed": 10, "carry": 70 },
-        "cost": { "wood": 540, "clay": 580, "iron": 1030, "crop": 200 },
+        "cost": { "wood": 550, "clay": 640, "iron": 800, "crop": 180 },
         "cropUpkeep": 4,
         "description": { "en": "The emperor's own heavy cavalry: the hammer a Roman army swings." }
       }
@@ -83,7 +83,7 @@
       "overrides": {
         "name": { "en": "Battering Ram" },
         "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
-        "cost": { "wood": 730, "clay": 290, "iron": 670, "crop": 70 },
+        "cost": { "wood": 900, "clay": 360, "iron": 500, "crop": 70 },
         "cropUpkeep": 3
       }
     },
@@ -92,7 +92,7 @@
       "overrides": {
         "name": { "en": "Fire Catapult" },
         "stats": { "attack": 75, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 1030, "clay": 1530, "iron": 1170, "crop": 120 },
+        "cost": { "wood": 950, "clay": 1350, "iron": 600, "crop": 90 },
         "cropUpkeep": 6
       }
     },
@@ -101,7 +101,7 @@
       "overrides": {
         "name": { "en": "Senator" },
         "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 4, "carry": 0 },
-        "cost": { "wood": 21100, "clay": 18200, "iron": 54100, "crop": 30450 },
+        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
         "cropUpkeep": 5
       }
     },
@@ -110,7 +110,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 2950, "clay": 3850, "iron": 3500, "crop": 4250 },
+        "cost": { "wood": 4600, "clay": 4200, "iron": 5800, "crop": 4400 },
         "cropUpkeep": 1
       }
     }

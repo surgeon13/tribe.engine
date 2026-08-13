@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-13T09:02:11.104Z",
+  "generatedAt": "2026-08-13T09:05:25.666Z",
   "roster": [
     {
       "slot": 1,
@@ -394,18 +394,18 @@
             "carry": 50
           },
           "cost": {
-            "wood": 130,
-            "clay": 120,
-            "iron": 155,
-            "crop": 95
+            "wood": 120,
+            "clay": 100,
+            "iron": 150,
+            "crop": 30
           },
           "cropUpkeep": 1,
-          "totalCost": 500,
+          "totalCost": 400,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1425,
-            "timeFormatted": "23:45",
+            "timeSeconds": 1600,
+            "timeFormatted": "26:40",
             "requirements": [
               {
                 "type": "building",
@@ -433,9 +433,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 40,
             "defensePerCrop": 85,
-            "trainTimeSeconds": 1425,
-            "trainTimeFormatted": "23:45",
-            "resourceCost": 500
+            "trainTimeSeconds": 1600,
+            "trainTimeFormatted": "26:40",
+            "resourceCost": 400
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/01_infantry_icon.png",
@@ -462,17 +462,17 @@
           },
           "cost": {
             "wood": 100,
-            "clay": 100,
-            "iron": 220,
-            "crop": 45
+            "clay": 130,
+            "iron": 160,
+            "crop": 70
           },
           "cropUpkeep": 1,
-          "totalCost": 465,
+          "totalCost": 460,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1590,
-            "timeFormatted": "26:30",
+            "timeSeconds": 1760,
+            "timeFormatted": "29:20",
             "requirements": [
               {
                 "type": "building",
@@ -500,9 +500,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 30,
             "defensePerCrop": 100,
-            "trainTimeSeconds": 1590,
-            "trainTimeFormatted": "26:30",
-            "resourceCost": 465
+            "trainTimeSeconds": 1760,
+            "trainTimeFormatted": "29:20",
+            "resourceCost": 460
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/02_infantry_icon.png",
@@ -528,18 +528,18 @@
             "carry": 50
           },
           "cost": {
-            "wood": 140,
-            "clay": 135,
-            "iron": 300,
-            "crop": 65
+            "wood": 150,
+            "clay": 160,
+            "iron": 210,
+            "crop": 80
           },
           "cropUpkeep": 1,
-          "totalCost": 640,
+          "totalCost": 600,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1690,
-            "timeFormatted": "28:10",
+            "timeSeconds": 1920,
+            "timeFormatted": "32:00",
             "requirements": [
               {
                 "type": "building",
@@ -567,9 +567,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 70,
             "defensePerCrop": 65,
-            "trainTimeSeconds": 1690,
-            "trainTimeFormatted": "28:10",
-            "resourceCost": 640
+            "trainTimeSeconds": 1920,
+            "trainTimeFormatted": "32:00",
+            "resourceCost": 600
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/03_infantry_icon.png",
@@ -595,18 +595,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 135,
-            "clay": 125,
-            "iron": 75,
-            "crop": 50
+            "wood": 140,
+            "clay": 160,
+            "iron": 20,
+            "crop": 40
           },
           "cropUpkeep": 2,
-          "totalCost": 385,
+          "totalCost": 360,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1570,
-            "timeFormatted": "26:10",
+            "timeSeconds": 1360,
+            "timeFormatted": "22:40",
             "requirements": [
               {
                 "type": "building",
@@ -634,9 +634,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 0,
             "defensePerCrop": 15,
-            "trainTimeSeconds": 1570,
-            "trainTimeFormatted": "26:10",
-            "resourceCost": 385
+            "trainTimeSeconds": 1360,
+            "trainTimeFormatted": "22:40",
+            "resourceCost": 360
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/04_scout_icon.png",
@@ -662,18 +662,18 @@
             "carry": 100
           },
           "cost": {
-            "wood": 380,
-            "clay": 340,
-            "iron": 480,
-            "crop": 120
+            "wood": 550,
+            "clay": 440,
+            "iron": 320,
+            "crop": 100
           },
           "cropUpkeep": 3,
-          "totalCost": 1320,
+          "totalCost": 1410,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 2235,
-            "timeFormatted": "37:15",
+            "timeSeconds": 2640,
+            "timeFormatted": "44:00",
             "requirements": [
               {
                 "type": "building",
@@ -701,9 +701,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 40,
             "defensePerCrop": 38.3,
-            "trainTimeSeconds": 2235,
-            "trainTimeFormatted": "37:15",
-            "resourceCost": 1320
+            "trainTimeSeconds": 2640,
+            "trainTimeFormatted": "44:00",
+            "resourceCost": 1410
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/05_cavalry_icon.png",
@@ -729,18 +729,18 @@
             "carry": 70
           },
           "cost": {
-            "wood": 540,
-            "clay": 580,
-            "iron": 1030,
-            "crop": 200
+            "wood": 550,
+            "clay": 640,
+            "iron": 800,
+            "crop": 180
           },
           "cropUpkeep": 4,
-          "totalCost": 2350,
+          "totalCost": 2170,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 3105,
-            "timeFormatted": "51:45",
+            "timeSeconds": 3520,
+            "timeFormatted": "58:40",
             "requirements": [
               {
                 "type": "building",
@@ -768,9 +768,9 @@
             "cropUpkeep": 4,
             "attackPerCrop": 45,
             "defensePerCrop": 46.3,
-            "trainTimeSeconds": 3105,
-            "trainTimeFormatted": "51:45",
-            "resourceCost": 2350
+            "trainTimeSeconds": 3520,
+            "trainTimeFormatted": "58:40",
+            "resourceCost": 2170
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/06_cavalry_icon.png",
@@ -863,18 +863,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 730,
-            "clay": 290,
-            "iron": 670,
+            "wood": 900,
+            "clay": 360,
+            "iron": 500,
             "crop": 70
           },
           "cropUpkeep": 3,
-          "totalCost": 1760,
+          "totalCost": 1830,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 5285,
-            "timeFormatted": "1:28:05",
+            "timeSeconds": 4600,
+            "timeFormatted": "1:16:40",
             "requirements": [
               {
                 "type": "building",
@@ -902,9 +902,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 20,
             "defensePerCrop": 35,
-            "trainTimeSeconds": 5285,
-            "trainTimeFormatted": "1:28:05",
-            "resourceCost": 1760
+            "trainTimeSeconds": 4600,
+            "trainTimeFormatted": "1:16:40",
+            "resourceCost": 1830
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/08_ram_icon.png",
@@ -930,18 +930,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 1030,
-            "clay": 1530,
-            "iron": 1170,
-            "crop": 120
+            "wood": 950,
+            "clay": 1350,
+            "iron": 600,
+            "crop": 90
           },
           "cropUpkeep": 6,
-          "totalCost": 3850,
+          "totalCost": 2990,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 12310,
-            "timeFormatted": "3:25:10",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
             "requirements": [
               {
                 "type": "building",
@@ -969,9 +969,9 @@
             "cropUpkeep": 6,
             "attackPerCrop": 12.5,
             "defensePerCrop": 11.7,
-            "trainTimeSeconds": 12310,
-            "trainTimeFormatted": "3:25:10",
-            "resourceCost": 3850
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 2990
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/09_catapult_icon.png",
@@ -997,18 +997,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 21100,
-            "clay": 18200,
-            "iron": 54100,
-            "crop": 30450
+            "wood": 30750,
+            "clay": 27200,
+            "iron": 45000,
+            "crop": 37500
           },
           "cropUpkeep": 5,
-          "totalCost": 123850,
+          "totalCost": 140450,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 98655,
-            "timeFormatted": "27:24:15",
+            "timeSeconds": 90700,
+            "timeFormatted": "25:11:40",
             "requirements": [
               {
                 "type": "building",
@@ -1041,9 +1041,9 @@
             "cropUpkeep": 5,
             "attackPerCrop": 10,
             "defensePerCrop": 14,
-            "trainTimeSeconds": 98655,
-            "trainTimeFormatted": "27:24:15",
-            "resourceCost": 123850
+            "trainTimeSeconds": 90700,
+            "trainTimeFormatted": "25:11:40",
+            "resourceCost": 140450
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/10_chief_icon.png",
@@ -1069,18 +1069,18 @@
             "carry": 3000
           },
           "cost": {
-            "wood": 2950,
-            "clay": 3850,
-            "iron": 3500,
-            "crop": 4250
+            "wood": 4600,
+            "clay": 4200,
+            "iron": 5800,
+            "crop": 4400
           },
           "cropUpkeep": 1,
-          "totalCost": 14550,
+          "totalCost": 19000,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 31815,
-            "timeFormatted": "8:50:15",
+            "timeSeconds": 26900,
+            "timeFormatted": "7:28:20",
             "requirements": [
               {
                 "type": "building",
@@ -1108,9 +1108,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 0,
             "defensePerCrop": 160,
-            "trainTimeSeconds": 31815,
-            "trainTimeFormatted": "8:50:15",
-            "resourceCost": 14550
+            "trainTimeSeconds": 26900,
+            "trainTimeFormatted": "7:28:20",
+            "resourceCost": 19000
           },
           "graphicsUrls": {
             "icon": "assets/tribes/roman/units/11_settler_icon.png",
@@ -1223,18 +1223,18 @@
             "carry": 60
           },
           "cost": {
-            "wood": 80,
-            "clay": 65,
-            "iron": 30,
-            "crop": 35
+            "wood": 95,
+            "clay": 75,
+            "iron": 40,
+            "crop": 40
           },
           "cropUpkeep": 1,
-          "totalCost": 210,
+          "totalCost": 250,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 560,
-            "timeFormatted": "9:20",
+            "timeSeconds": 720,
+            "timeFormatted": "12:00",
             "requirements": [
               {
                 "type": "building",
@@ -1262,9 +1262,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 40,
             "defensePerCrop": 25,
-            "trainTimeSeconds": 560,
-            "trainTimeFormatted": "9:20",
-            "resourceCost": 210
+            "trainTimeSeconds": 720,
+            "trainTimeFormatted": "12:00",
+            "resourceCost": 250
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/01_infantry_icon.png",
@@ -1290,18 +1290,18 @@
             "carry": 40
           },
           "cost": {
-            "wood": 85,
-            "clay": 75,
-            "iron": 55,
-            "crop": 25
+            "wood": 145,
+            "clay": 70,
+            "iron": 85,
+            "crop": 40
           },
           "cropUpkeep": 1,
-          "totalCost": 240,
+          "totalCost": 340,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 735,
-            "timeFormatted": "12:15",
+            "timeSeconds": 1120,
+            "timeFormatted": "18:40",
             "requirements": [
               {
                 "type": "building",
@@ -1329,9 +1329,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 10,
             "defensePerCrop": 95,
-            "trainTimeSeconds": 735,
-            "trainTimeFormatted": "12:15",
-            "resourceCost": 240
+            "trainTimeSeconds": 1120,
+            "trainTimeFormatted": "18:40",
+            "resourceCost": 340
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/02_infantry_icon.png",
@@ -1357,18 +1357,18 @@
             "carry": 50
           },
           "cost": {
-            "wood": 180,
-            "clay": 150,
-            "iron": 115,
-            "crop": 55
+            "wood": 130,
+            "clay": 120,
+            "iron": 170,
+            "crop": 70
           },
           "cropUpkeep": 1,
-          "totalCost": 500,
+          "totalCost": 490,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 995,
-            "timeFormatted": "16:35",
+            "timeSeconds": 1200,
+            "timeFormatted": "20:00",
             "requirements": [
               {
                 "type": "building",
@@ -1396,9 +1396,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 60,
             "defensePerCrop": 60,
-            "trainTimeSeconds": 995,
-            "trainTimeFormatted": "16:35",
-            "resourceCost": 500
+            "trainTimeSeconds": 1200,
+            "trainTimeFormatted": "20:00",
+            "resourceCost": 490
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/03_infantry_icon.png",
@@ -1424,18 +1424,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 90,
-            "clay": 70,
-            "iron": 15,
-            "crop": 20
+            "wood": 160,
+            "clay": 100,
+            "iron": 50,
+            "crop": 50
           },
           "cropUpkeep": 1,
-          "totalCost": 195,
+          "totalCost": 360,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 705,
-            "timeFormatted": "11:45",
+            "timeSeconds": 1120,
+            "timeFormatted": "18:40",
             "requirements": [
               {
                 "type": "building",
@@ -1463,9 +1463,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 0,
             "defensePerCrop": 15,
-            "trainTimeSeconds": 705,
-            "trainTimeFormatted": "11:45",
-            "resourceCost": 195
+            "trainTimeSeconds": 1120,
+            "trainTimeFormatted": "18:40",
+            "resourceCost": 360
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/04_scout_icon.png",
@@ -1491,18 +1491,18 @@
             "carry": 110
           },
           "cost": {
-            "wood": 430,
-            "clay": 320,
-            "iron": 160,
-            "crop": 80
+            "wood": 370,
+            "clay": 270,
+            "iron": 290,
+            "crop": 75
           },
           "cropUpkeep": 2,
-          "totalCost": 990,
+          "totalCost": 1005,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1290,
-            "timeFormatted": "21:30",
+            "timeSeconds": 2400,
+            "timeFormatted": "40:00",
             "requirements": [
               {
                 "type": "building",
@@ -1530,9 +1530,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 27.5,
             "defensePerCrop": 70,
-            "trainTimeSeconds": 1290,
-            "trainTimeFormatted": "21:30",
-            "resourceCost": 990
+            "trainTimeSeconds": 2400,
+            "trainTimeFormatted": "40:00",
+            "resourceCost": 1005
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/05_cavalry_icon.png",
@@ -1558,18 +1558,18 @@
             "carry": 80
           },
           "cost": {
-            "wood": 530,
-            "clay": 490,
-            "iron": 300,
-            "crop": 120
+            "wood": 450,
+            "clay": 515,
+            "iron": 480,
+            "crop": 80
           },
           "cropUpkeep": 3,
-          "totalCost": 1440,
+          "totalCost": 1525,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1570,
-            "timeFormatted": "26:10",
+            "timeSeconds": 2960,
+            "timeFormatted": "49:20",
             "requirements": [
               {
                 "type": "building",
@@ -1597,9 +1597,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 50,
             "defensePerCrop": 41.7,
-            "trainTimeSeconds": 1570,
-            "trainTimeFormatted": "26:10",
-            "resourceCost": 1440
+            "trainTimeSeconds": 2960,
+            "trainTimeFormatted": "49:20",
+            "resourceCost": 1525
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/06_cavalry_icon.png",
@@ -1692,18 +1692,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 1200,
-            "clay": 410,
-            "iron": 320,
+            "wood": 1000,
+            "clay": 300,
+            "iron": 350,
             "crop": 70
           },
           "cropUpkeep": 3,
-          "totalCost": 2000,
+          "totalCost": 1720,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 3995,
-            "timeFormatted": "1:06:35",
+            "timeSeconds": 4200,
+            "timeFormatted": "1:10:00",
             "requirements": [
               {
                 "type": "building",
@@ -1731,9 +1731,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 21.7,
             "defensePerCrop": 36.7,
-            "trainTimeSeconds": 3995,
-            "trainTimeFormatted": "1:06:35",
-            "resourceCost": 2000
+            "trainTimeSeconds": 4200,
+            "trainTimeFormatted": "1:10:00",
+            "resourceCost": 1720
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/08_ram_icon.png",
@@ -1759,18 +1759,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 860,
-            "clay": 1090,
-            "iron": 290,
+            "wood": 900,
+            "clay": 1200,
+            "iron": 600,
             "crop": 60
           },
           "cropUpkeep": 6,
-          "totalCost": 2300,
+          "totalCost": 2760,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 6125,
-            "timeFormatted": "1:42:05",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
             "requirements": [
               {
                 "type": "building",
@@ -1798,9 +1798,9 @@
             "cropUpkeep": 6,
             "attackPerCrop": 8.3,
             "defensePerCrop": 11.7,
-            "trainTimeSeconds": 6125,
-            "trainTimeFormatted": "1:42:05",
-            "resourceCost": 2300
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 2760
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/09_catapult_icon.png",
@@ -1826,18 +1826,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 40850,
-            "clay": 30050,
-            "iron": 30800,
-            "crop": 37100
+            "wood": 35500,
+            "clay": 26600,
+            "iron": 25000,
+            "crop": 27200
           },
           "cropUpkeep": 4,
-          "totalCost": 138800,
+          "totalCost": 114300,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 73820,
-            "timeFormatted": "20:30:20",
+            "timeSeconds": 70500,
+            "timeFormatted": "19:35:00",
             "requirements": [
               {
                 "type": "building",
@@ -1870,9 +1870,9 @@
             "cropUpkeep": 4,
             "attackPerCrop": 10,
             "defensePerCrop": 25,
-            "trainTimeSeconds": 73820,
-            "trainTimeFormatted": "20:30:20",
-            "resourceCost": 138800
+            "trainTimeSeconds": 70500,
+            "trainTimeFormatted": "19:35:00",
+            "resourceCost": 114300
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/10_chief_icon.png",
@@ -1898,18 +1898,18 @@
             "carry": 3000
           },
           "cost": {
-            "wood": 5000,
-            "clay": 5500,
-            "iron": 1750,
-            "crop": 4450
+            "wood": 5800,
+            "clay": 4400,
+            "iron": 4600,
+            "crop": 5200
           },
           "cropUpkeep": 1,
-          "totalCost": 16700,
+          "totalCost": 20000,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 24180,
-            "timeFormatted": "6:43:00",
+            "timeSeconds": 31000,
+            "timeFormatted": "8:36:40",
             "requirements": [
               {
                 "type": "building",
@@ -1937,9 +1937,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 10,
             "defensePerCrop": 160,
-            "trainTimeSeconds": 24180,
-            "trainTimeFormatted": "6:43:00",
-            "resourceCost": 16700
+            "trainTimeSeconds": 31000,
+            "trainTimeFormatted": "8:36:40",
+            "resourceCost": 20000
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/11_settler_icon.png",
@@ -2029,7 +2029,7 @@
         "maxDefenseCavalry": 165,
         "maxSpeed": 19,
         "maxCarry": 75,
-        "avgAttack": 57,
+        "avgAttack": 58,
         "avgDefenseCombined": 50,
         "totalCropUpkeep": 26
       },
@@ -2049,18 +2049,18 @@
             "carry": 35
           },
           "cost": {
-            "wood": 95,
-            "clay": 75,
-            "iron": 45,
-            "crop": 55
+            "wood": 100,
+            "clay": 130,
+            "iron": 55,
+            "crop": 30
           },
           "cropUpkeep": 1,
-          "totalCost": 270,
+          "totalCost": 315,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 760,
-            "timeFormatted": "12:40",
+            "timeSeconds": 1040,
+            "timeFormatted": "17:20",
             "requirements": [
               {
                 "type": "building",
@@ -2088,9 +2088,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 15,
             "defensePerCrop": 90,
-            "trainTimeSeconds": 760,
-            "trainTimeFormatted": "12:40",
-            "resourceCost": 270
+            "trainTimeSeconds": 1040,
+            "trainTimeFormatted": "17:20",
+            "resourceCost": 315
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/01_infantry_icon.png",
@@ -2116,18 +2116,18 @@
             "carry": 45
           },
           "cost": {
-            "wood": 200,
-            "clay": 170,
-            "iron": 180,
-            "crop": 80
+            "wood": 140,
+            "clay": 150,
+            "iron": 185,
+            "crop": 60
           },
           "cropUpkeep": 1,
-          "totalCost": 630,
+          "totalCost": 535,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1555,
-            "timeFormatted": "25:55",
+            "timeSeconds": 1440,
+            "timeFormatted": "24:00",
             "requirements": [
               {
                 "type": "building",
@@ -2155,9 +2155,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 65,
             "defensePerCrop": 55,
-            "trainTimeSeconds": 1555,
-            "trainTimeFormatted": "25:55",
-            "resourceCost": 630
+            "trainTimeSeconds": 1440,
+            "trainTimeFormatted": "24:00",
+            "resourceCost": 535
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/02_infantry_icon.png",
@@ -2251,17 +2251,17 @@
           },
           "cost": {
             "wood": 170,
-            "clay": 135,
-            "iron": 35,
-            "crop": 50
+            "clay": 150,
+            "iron": 20,
+            "crop": 40
           },
           "cropUpkeep": 2,
-          "totalCost": 390,
+          "totalCost": 380,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1275,
-            "timeFormatted": "21:15",
+            "timeSeconds": 1360,
+            "timeFormatted": "22:40",
             "requirements": [
               {
                 "type": "building",
@@ -2289,9 +2289,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 0,
             "defensePerCrop": 15,
-            "trainTimeSeconds": 1275,
-            "trainTimeFormatted": "21:15",
-            "resourceCost": 390
+            "trainTimeSeconds": 1360,
+            "trainTimeFormatted": "22:40",
+            "resourceCost": 380
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/04_scout_icon.png",
@@ -2310,25 +2310,25 @@
           "name": "Theutates Thunder",
           "category": "cavalry",
           "stats": {
-            "attack": 90,
+            "attack": 100,
             "defenseInfantry": 25,
             "defenseCavalry": 40,
             "speed": 19,
             "carry": 75
           },
           "cost": {
-            "wood": 380,
-            "clay": 280,
-            "iron": 190,
-            "crop": 90
+            "wood": 350,
+            "clay": 450,
+            "iron": 230,
+            "crop": 60
           },
           "cropUpkeep": 2,
-          "totalCost": 940,
+          "totalCost": 1090,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1460,
-            "timeFormatted": "24:20",
+            "timeSeconds": 2480,
+            "timeFormatted": "41:20",
             "requirements": [
               {
                 "type": "building",
@@ -2346,7 +2346,7 @@
             "baseLogo": "cavalry/horse-head.svg"
           },
           "metrics": {
-            "offense": 90,
+            "offense": 100,
             "defenseInfantry": 25,
             "defenseCavalry": 40,
             "defenseCombined": 33,
@@ -2354,11 +2354,11 @@
             "speed": 19,
             "carry": 75,
             "cropUpkeep": 2,
-            "attackPerCrop": 45,
+            "attackPerCrop": 50,
             "defensePerCrop": 32.5,
-            "trainTimeSeconds": 1460,
-            "trainTimeFormatted": "24:20",
-            "resourceCost": 940
+            "trainTimeSeconds": 2480,
+            "trainTimeFormatted": "41:20",
+            "resourceCost": 1090
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/05_cavalry_icon.png",
@@ -2384,18 +2384,18 @@
             "carry": 35
           },
           "cost": {
-            "wood": 280,
-            "clay": 250,
-            "iron": 210,
-            "crop": 80
+            "wood": 360,
+            "clay": 330,
+            "iron": 280,
+            "crop": 120
           },
           "cropUpkeep": 2,
-          "totalCost": 820,
+          "totalCost": 1090,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1260,
-            "timeFormatted": "21:00",
+            "timeSeconds": 2560,
+            "timeFormatted": "42:40",
             "requirements": [
               {
                 "type": "building",
@@ -2423,9 +2423,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 22.5,
             "defensePerCrop": 85,
-            "trainTimeSeconds": 1260,
-            "trainTimeFormatted": "21:00",
-            "resourceCost": 820
+            "trainTimeSeconds": 2560,
+            "trainTimeFormatted": "42:40",
+            "resourceCost": 1090
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/06_cavalry_icon.png",
@@ -2451,18 +2451,18 @@
             "carry": 65
           },
           "cost": {
-            "wood": 570,
-            "clay": 510,
-            "iron": 410,
-            "crop": 150
+            "wood": 500,
+            "clay": 620,
+            "iron": 675,
+            "crop": 170
           },
           "cropUpkeep": 3,
-          "totalCost": 1640,
+          "totalCost": 1965,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1985,
-            "timeFormatted": "33:05",
+            "timeSeconds": 3120,
+            "timeFormatted": "52:00",
             "requirements": [
               {
                 "type": "building",
@@ -2490,9 +2490,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 46.7,
             "defensePerCrop": 75,
-            "trainTimeSeconds": 1985,
-            "trainTimeFormatted": "33:05",
-            "resourceCost": 1640
+            "trainTimeSeconds": 3120,
+            "trainTimeFormatted": "52:00",
+            "resourceCost": 1965
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/07_cavalry_icon.png",
@@ -2518,18 +2518,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 1080,
-            "clay": 360,
-            "iron": 400,
-            "crop": 80
+            "wood": 950,
+            "clay": 555,
+            "iron": 330,
+            "crop": 75
           },
           "cropUpkeep": 3,
-          "totalCost": 1920,
+          "totalCost": 1910,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 4505,
-            "timeFormatted": "1:15:05",
+            "timeSeconds": 5000,
+            "timeFormatted": "1:23:20",
             "requirements": [
               {
                 "type": "building",
@@ -2557,9 +2557,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 16.7,
             "defensePerCrop": 45,
-            "trainTimeSeconds": 4505,
-            "trainTimeFormatted": "1:15:05",
-            "resourceCost": 1920
+            "trainTimeSeconds": 5000,
+            "trainTimeFormatted": "1:23:20",
+            "resourceCost": 1910
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/08_ram_icon.png",
@@ -2585,18 +2585,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 1080,
-            "clay": 1340,
-            "iron": 500,
-            "crop": 100
+            "wood": 960,
+            "clay": 1450,
+            "iron": 630,
+            "crop": 90
           },
           "cropUpkeep": 6,
-          "totalCost": 3020,
+          "totalCost": 3130,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 8475,
-            "timeFormatted": "2:21:15",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
             "requirements": [
               {
                 "type": "building",
@@ -2624,9 +2624,9 @@
             "cropUpkeep": 6,
             "attackPerCrop": 11.7,
             "defensePerCrop": 9.2,
-            "trainTimeSeconds": 8475,
-            "trainTimeFormatted": "2:21:15",
-            "resourceCost": 3020
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 3130
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/09_catapult_icon.png",
@@ -2652,18 +2652,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 35450,
-            "clay": 25500,
-            "iron": 36500,
-            "crop": 41650
+            "wood": 30750,
+            "clay": 45400,
+            "iron": 31000,
+            "crop": 37500
           },
           "cropUpkeep": 4,
-          "totalCost": 139100,
+          "totalCost": 144650,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 85645,
-            "timeFormatted": "23:47:25",
+            "timeSeconds": 90700,
+            "timeFormatted": "25:11:40",
             "requirements": [
               {
                 "type": "building",
@@ -2696,9 +2696,9 @@
             "cropUpkeep": 4,
             "attackPerCrop": 10,
             "defensePerCrop": 25,
-            "trainTimeSeconds": 85645,
-            "trainTimeFormatted": "23:47:25",
-            "resourceCost": 139100
+            "trainTimeSeconds": 90700,
+            "trainTimeFormatted": "25:11:40",
+            "resourceCost": 144650
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/10_chief_icon.png",
@@ -2724,18 +2724,18 @@
             "carry": 3000
           },
           "cost": {
-            "wood": 3900,
-            "clay": 4200,
-            "iron": 1850,
-            "crop": 4550
+            "wood": 4400,
+            "clay": 5600,
+            "iron": 4200,
+            "crop": 3900
           },
           "cropUpkeep": 1,
-          "totalCost": 14500,
+          "totalCost": 18100,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 25615,
-            "timeFormatted": "7:06:55",
+            "timeSeconds": 22700,
+            "timeFormatted": "6:18:20",
             "requirements": [
               {
                 "type": "building",
@@ -2763,9 +2763,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 0,
             "defensePerCrop": 160,
-            "trainTimeSeconds": 25615,
-            "trainTimeFormatted": "7:06:55",
-            "resourceCost": 14500
+            "trainTimeSeconds": 22700,
+            "trainTimeFormatted": "6:18:20",
+            "resourceCost": 18100
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/11_settler_icon.png",
@@ -2952,8 +2952,8 @@
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1320,
-            "timeFormatted": "22:00",
+            "timeSeconds": 1380,
+            "timeFormatted": "23:00",
             "requirements": [
               {
                 "type": "building",
@@ -2981,8 +2981,8 @@
             "cropUpkeep": 1,
             "attackPerCrop": 30,
             "defensePerCrop": 95,
-            "trainTimeSeconds": 1320,
-            "trainTimeFormatted": "22:00",
+            "trainTimeSeconds": 1380,
+            "trainTimeFormatted": "23:00",
             "resourceCost": 420
           },
           "graphicsUrls": {
@@ -3704,18 +3704,18 @@
             "carry": 50
           },
           "cost": {
-            "wood": 95,
-            "clay": 95,
-            "iron": 75,
-            "crop": 100
+            "wood": 130,
+            "clay": 80,
+            "iron": 40,
+            "crop": 40
           },
           "cropUpkeep": 1,
-          "totalCost": 365,
+          "totalCost": 290,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 880,
-            "timeFormatted": "14:40",
+            "timeSeconds": 810,
+            "timeFormatted": "13:30",
             "requirements": [
               {
                 "type": "building",
@@ -3743,9 +3743,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 35,
             "defensePerCrop": 70,
-            "trainTimeSeconds": 880,
-            "trainTimeFormatted": "14:40",
-            "resourceCost": 365
+            "trainTimeSeconds": 810,
+            "trainTimeFormatted": "13:30",
+            "resourceCost": 290
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/01_infantry_icon.png",
@@ -3771,18 +3771,18 @@
             "carry": 30
           },
           "cost": {
-            "wood": 85,
-            "clay": 90,
-            "iron": 125,
+            "wood": 140,
+            "clay": 110,
+            "iron": 60,
             "crop": 60
           },
           "cropUpkeep": 1,
-          "totalCost": 360,
+          "totalCost": 370,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1030,
-            "timeFormatted": "17:10",
+            "timeSeconds": 1120,
+            "timeFormatted": "18:40",
             "requirements": [
               {
                 "type": "building",
@@ -3810,9 +3810,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 50,
             "defensePerCrop": 40,
-            "trainTimeSeconds": 1030,
-            "trainTimeFormatted": "17:10",
-            "resourceCost": 360
+            "trainTimeSeconds": 1120,
+            "trainTimeFormatted": "18:40",
+            "resourceCost": 370
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/02_infantry_icon.png",
@@ -3905,18 +3905,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 135,
-            "clay": 135,
-            "iron": 50,
-            "crop": 75
+            "wood": 170,
+            "clay": 150,
+            "iron": 20,
+            "crop": 40
           },
           "cropUpkeep": 2,
-          "totalCost": 395,
+          "totalCost": 380,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1225,
-            "timeFormatted": "20:25",
+            "timeSeconds": 1360,
+            "timeFormatted": "22:40",
             "requirements": [
               {
                 "type": "building",
@@ -3944,9 +3944,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 0,
             "defensePerCrop": 15,
-            "trainTimeSeconds": 1225,
-            "trainTimeFormatted": "20:25",
-            "resourceCost": 395
+            "trainTimeSeconds": 1360,
+            "trainTimeFormatted": "22:40",
+            "resourceCost": 380
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/04_scout_icon.png",
@@ -3972,18 +3972,18 @@
             "carry": 75
           },
           "cost": {
-            "wood": 390,
+            "wood": 290,
             "clay": 370,
-            "iron": 330,
-            "crop": 180
+            "iron": 190,
+            "crop": 45
           },
           "cropUpkeep": 2,
-          "totalCost": 1270,
+          "totalCost": 895,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1675,
-            "timeFormatted": "27:55",
+            "timeSeconds": 2400,
+            "timeFormatted": "40:00",
             "requirements": [
               {
                 "type": "building",
@@ -4011,9 +4011,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 60,
             "defensePerCrop": 22.5,
-            "trainTimeSeconds": 1675,
-            "trainTimeFormatted": "27:55",
-            "resourceCost": 1270
+            "trainTimeSeconds": 2400,
+            "trainTimeFormatted": "40:00",
+            "resourceCost": 895
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/05_cavalry_icon.png",
@@ -4035,22 +4035,22 @@
             "attack": 110,
             "defenseInfantry": 80,
             "defenseCavalry": 70,
-            "speed": 16,
+            "speed": 15,
             "carry": 105
           },
           "cost": {
-            "wood": 420,
-            "clay": 480,
-            "iron": 530,
-            "crop": 230
+            "wood": 320,
+            "clay": 350,
+            "iron": 330,
+            "crop": 50
           },
           "cropUpkeep": 2,
-          "totalCost": 1660,
+          "totalCost": 1050,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1890,
-            "timeFormatted": "31:30",
+            "timeSeconds": 2480,
+            "timeFormatted": "41:20",
             "requirements": [
               {
                 "type": "building",
@@ -4073,14 +4073,14 @@
             "defenseCavalry": 70,
             "defenseCombined": 75,
             "defenseTotal": 150,
-            "speed": 16,
+            "speed": 15,
             "carry": 105,
             "cropUpkeep": 2,
             "attackPerCrop": 55,
             "defensePerCrop": 75,
-            "trainTimeSeconds": 1890,
-            "trainTimeFormatted": "31:30",
-            "resourceCost": 1660
+            "trainTimeSeconds": 2480,
+            "trainTimeFormatted": "41:20",
+            "resourceCost": 1050
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/06_cavalry_icon.png",
@@ -4106,18 +4106,18 @@
             "carry": 80
           },
           "cost": {
-            "wood": 480,
-            "clay": 540,
-            "iron": 570,
-            "crop": 230
+            "wood": 450,
+            "clay": 560,
+            "iron": 610,
+            "crop": 140
           },
           "cropUpkeep": 3,
-          "totalCost": 1820,
+          "totalCost": 1760,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 2015,
-            "timeFormatted": "33:35",
+            "timeSeconds": 2990,
+            "timeFormatted": "49:50",
             "requirements": [
               {
                 "type": "building",
@@ -4145,9 +4145,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 60,
             "defensePerCrop": 33.3,
-            "trainTimeSeconds": 2015,
-            "trainTimeFormatted": "33:35",
-            "resourceCost": 1820
+            "trainTimeSeconds": 2990,
+            "trainTimeFormatted": "49:50",
+            "resourceCost": 1760
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/07_cavalry_icon.png",
@@ -4173,18 +4173,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 1000,
-            "clay": 420,
-            "iron": 610,
-            "crop": 140
+            "wood": 1060,
+            "clay": 330,
+            "iron": 360,
+            "crop": 70
           },
           "cropUpkeep": 3,
-          "totalCost": 2170,
+          "totalCost": 1820,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 4620,
-            "timeFormatted": "1:17:00",
+            "timeSeconds": 4400,
+            "timeFormatted": "1:13:20",
             "requirements": [
               {
                 "type": "building",
@@ -4212,9 +4212,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 21.7,
             "defensePerCrop": 40,
-            "trainTimeSeconds": 4620,
-            "trainTimeFormatted": "1:17:00",
-            "resourceCost": 2170
+            "trainTimeSeconds": 4400,
+            "trainTimeFormatted": "1:13:20",
+            "resourceCost": 1820
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/08_ram_icon.png",
@@ -4240,18 +4240,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 650,
-            "clay": 1030,
-            "iron": 500,
-            "crop": 110
+            "wood": 950,
+            "clay": 1280,
+            "iron": 620,
+            "crop": 60
           },
           "cropUpkeep": 6,
-          "totalCost": 2290,
+          "totalCost": 2910,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 6715,
-            "timeFormatted": "1:51:55",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
             "requirements": [
               {
                 "type": "building",
@@ -4279,9 +4279,9 @@
             "cropUpkeep": 6,
             "attackPerCrop": 7.5,
             "defensePerCrop": 10.8,
-            "trainTimeSeconds": 6715,
-            "trainTimeFormatted": "1:51:55",
-            "resourceCost": 2290
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 2910
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/09_catapult_icon.png",
@@ -4307,18 +4307,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 21450,
-            "clay": 19600,
-            "iron": 36700,
-            "crop": 46450
+            "wood": 37200,
+            "clay": 27600,
+            "iron": 25200,
+            "crop": 27600
           },
           "cropUpkeep": 4,
-          "totalCost": 124200,
+          "totalCost": 117600,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 75360,
-            "timeFormatted": "20:56:00",
+            "timeSeconds": 90700,
+            "timeFormatted": "25:11:40",
             "requirements": [
               {
                 "type": "building",
@@ -4351,9 +4351,9 @@
             "cropUpkeep": 4,
             "attackPerCrop": 12.5,
             "defensePerCrop": 17.5,
-            "trainTimeSeconds": 75360,
-            "trainTimeFormatted": "20:56:00",
-            "resourceCost": 124200
+            "trainTimeSeconds": 90700,
+            "trainTimeFormatted": "25:11:40",
+            "resourceCost": 117600
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/10_chief_icon.png",
@@ -4379,18 +4379,18 @@
             "carry": 3000
           },
           "cost": {
-            "wood": 3150,
-            "clay": 4300,
-            "iron": 2500,
-            "crop": 6750
+            "wood": 6100,
+            "clay": 4600,
+            "iron": 4800,
+            "crop": 5400
           },
           "cropUpkeep": 1,
-          "totalCost": 16700,
+          "totalCost": 20900,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 26535,
-            "timeFormatted": "7:22:15",
+            "timeSeconds": 28950,
+            "timeFormatted": "8:02:30",
             "requirements": [
               {
                 "type": "building",
@@ -4418,9 +4418,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 10,
             "defensePerCrop": 160,
-            "trainTimeSeconds": 26535,
-            "trainTimeFormatted": "7:22:15",
-            "resourceCost": 16700
+            "trainTimeSeconds": 28950,
+            "trainTimeFormatted": "8:02:30",
+            "resourceCost": 20900
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/11_settler_icon.png",
@@ -4533,18 +4533,18 @@
             "carry": 60
           },
           "cost": {
-            "wood": 150,
-            "clay": 105,
-            "iron": 145,
-            "crop": 105
+            "wood": 110,
+            "clay": 185,
+            "iron": 110,
+            "crop": 35
           },
           "cropUpkeep": 1,
-          "totalCost": 505,
+          "totalCost": 440,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1450,
-            "timeFormatted": "24:10",
+            "timeSeconds": 1700,
+            "timeFormatted": "28:20",
             "requirements": [
               {
                 "type": "building",
@@ -4572,9 +4572,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 50,
             "defensePerCrop": 65,
-            "trainTimeSeconds": 1450,
-            "trainTimeFormatted": "24:10",
-            "resourceCost": 505
+            "trainTimeSeconds": 1700,
+            "trainTimeFormatted": "28:20",
+            "resourceCost": 440
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/01_infantry_icon.png",
@@ -4600,18 +4600,18 @@
             "carry": 40
           },
           "cost": {
-            "wood": 200,
-            "clay": 150,
-            "iron": 360,
-            "crop": 90
+            "wood": 145,
+            "clay": 95,
+            "iron": 245,
+            "crop": 45
           },
           "cropUpkeep": 1,
-          "totalCost": 800,
+          "totalCost": 530,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 2315,
-            "timeFormatted": "38:35",
+            "timeSeconds": 1936,
+            "timeFormatted": "32:16",
             "requirements": [
               {
                 "type": "building",
@@ -4639,9 +4639,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 40,
             "defensePerCrop": 130,
-            "trainTimeSeconds": 2315,
-            "trainTimeFormatted": "38:35",
-            "resourceCost": 800
+            "trainTimeSeconds": 1936,
+            "trainTimeFormatted": "32:16",
+            "resourceCost": 530
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/02_infantry_icon.png",
@@ -4667,18 +4667,18 @@
             "carry": 50
           },
           "cost": {
-            "wood": 260,
-            "clay": 190,
-            "iron": 450,
-            "crop": 120
+            "wood": 130,
+            "clay": 200,
+            "iron": 400,
+            "crop": 65
           },
           "cropUpkeep": 1,
-          "totalCost": 1020,
+          "totalCost": 795,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 2320,
-            "timeFormatted": "38:40",
+            "timeSeconds": 2112,
+            "timeFormatted": "35:12",
             "requirements": [
               {
                 "type": "building",
@@ -4706,9 +4706,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 90,
             "defensePerCrop": 95,
-            "trainTimeSeconds": 2320,
-            "trainTimeFormatted": "38:40",
-            "resourceCost": 1020
+            "trainTimeSeconds": 2112,
+            "trainTimeFormatted": "35:12",
+            "resourceCost": 795
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/03_infantry_icon.png",
@@ -4734,18 +4734,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 410,
-            "clay": 290,
-            "iron": 180,
-            "crop": 150
+            "wood": 185,
+            "clay": 150,
+            "iron": 35,
+            "crop": 75
           },
           "cropUpkeep": 1,
-          "totalCost": 1030,
+          "totalCost": 445,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 3045,
-            "timeFormatted": "50:45",
+            "timeSeconds": 1232,
+            "timeFormatted": "20:32",
             "requirements": [
               {
                 "type": "building",
@@ -4773,9 +4773,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 0,
             "defensePerCrop": 62,
-            "trainTimeSeconds": 3045,
-            "trainTimeFormatted": "50:45",
-            "resourceCost": 1030
+            "trainTimeSeconds": 1232,
+            "trainTimeFormatted": "20:32",
+            "resourceCost": 445
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/04_scout_icon.png",
@@ -4801,18 +4801,18 @@
             "carry": 110
           },
           "cost": {
-            "wood": 540,
-            "clay": 360,
-            "iron": 560,
-            "crop": 160
+            "wood": 555,
+            "clay": 445,
+            "iron": 330,
+            "crop": 110
           },
           "cropUpkeep": 2,
-          "totalCost": 1620,
+          "totalCost": 1440,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 2600,
-            "timeFormatted": "43:20",
+            "timeSeconds": 2816,
+            "timeFormatted": "46:56",
             "requirements": [
               {
                 "type": "building",
@@ -4840,9 +4840,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 27.5,
             "defensePerCrop": 105,
-            "trainTimeSeconds": 2600,
-            "trainTimeFormatted": "43:20",
-            "resourceCost": 1620
+            "trainTimeSeconds": 2816,
+            "trainTimeFormatted": "46:56",
+            "resourceCost": 1440
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/05_cavalry_icon.png",
@@ -4868,18 +4868,18 @@
             "carry": 80
           },
           "cost": {
-            "wood": 640,
-            "clay": 510,
-            "iron": 980,
-            "crop": 230
+            "wood": 660,
+            "clay": 495,
+            "iron": 995,
+            "crop": 165
           },
           "cropUpkeep": 3,
-          "totalCost": 2360,
+          "totalCost": 2315,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 3160,
-            "timeFormatted": "52:40",
+            "timeSeconds": 3432,
+            "timeFormatted": "57:12",
             "requirements": [
               {
                 "type": "building",
@@ -4907,9 +4907,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 65,
             "defensePerCrop": 51.7,
-            "trainTimeSeconds": 3160,
-            "trainTimeFormatted": "52:40",
-            "resourceCost": 2360
+            "trainTimeSeconds": 3432,
+            "trainTimeFormatted": "57:12",
+            "resourceCost": 2315
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/06_cavalry_icon.png",
@@ -5002,18 +5002,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 930,
-            "clay": 280,
-            "iron": 700,
-            "crop": 90
+            "wood": 525,
+            "clay": 260,
+            "iron": 790,
+            "crop": 130
           },
           "cropUpkeep": 3,
-          "totalCost": 2000,
+          "totalCost": 1705,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 5845,
-            "timeFormatted": "1:37:25",
+            "timeSeconds": 4620,
+            "timeFormatted": "1:17:00",
             "requirements": [
               {
                 "type": "building",
@@ -5041,9 +5041,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 21.7,
             "defensePerCrop": 36.7,
-            "trainTimeSeconds": 5845,
-            "trainTimeFormatted": "1:37:25",
-            "resourceCost": 2000
+            "trainTimeSeconds": 4620,
+            "trainTimeFormatted": "1:17:00",
+            "resourceCost": 1705
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/08_ram_icon.png",
@@ -5069,18 +5069,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 870,
-            "clay": 970,
-            "iron": 820,
-            "crop": 100
+            "wood": 550,
+            "clay": 1240,
+            "iron": 825,
+            "crop": 135
           },
           "cropUpkeep": 6,
-          "totalCost": 2760,
+          "totalCost": 2750,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 10090,
-            "timeFormatted": "2:48:10",
+            "timeSeconds": 9900,
+            "timeFormatted": "2:45:00",
             "requirements": [
               {
                 "type": "building",
@@ -5108,9 +5108,9 @@
             "cropUpkeep": 6,
             "attackPerCrop": 8.3,
             "defensePerCrop": 11.7,
-            "trainTimeSeconds": 10090,
-            "trainTimeFormatted": "2:48:10",
-            "resourceCost": 2760
+            "trainTimeSeconds": 9900,
+            "trainTimeFormatted": "2:45:00",
+            "resourceCost": 2750
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/09_catapult_icon.png",
@@ -5136,18 +5136,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 26850,
-            "clay": 17400,
-            "iron": 56650,
-            "crop": 37900
+            "wood": 33450,
+            "clay": 30665,
+            "iron": 36240,
+            "crop": 13935
           },
           "cropUpkeep": 4,
-          "totalCost": 138800,
+          "totalCost": 114290,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 108030,
-            "timeFormatted": "30:00:30",
+            "timeSeconds": 77550,
+            "timeFormatted": "21:32:30",
             "requirements": [
               {
                 "type": "building",
@@ -5180,9 +5180,9 @@
             "cropUpkeep": 4,
             "attackPerCrop": 10,
             "defensePerCrop": 25,
-            "trainTimeSeconds": 108030,
-            "trainTimeFormatted": "30:00:30",
-            "resourceCost": 138800
+            "trainTimeSeconds": 77550,
+            "trainTimeFormatted": "21:32:30",
+            "resourceCost": 114290
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/10_chief_icon.png",
@@ -5208,18 +5208,18 @@
             "carry": 3000
           },
           "cost": {
-            "wood": 3850,
-            "clay": 3750,
-            "iron": 3750,
-            "crop": 5350
+            "wood": 5115,
+            "clay": 5580,
+            "iron": 6045,
+            "crop": 3255
           },
           "cropUpkeep": 1,
-          "totalCost": 16700,
+          "totalCost": 19995,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 35380,
-            "timeFormatted": "9:49:40",
+            "timeSeconds": 34100,
+            "timeFormatted": "9:28:20",
             "requirements": [
               {
                 "type": "building",
@@ -5247,9 +5247,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 10,
             "defensePerCrop": 160,
-            "trainTimeSeconds": 35380,
-            "trainTimeFormatted": "9:49:40",
-            "resourceCost": 16700
+            "trainTimeSeconds": 34100,
+            "trainTimeFormatted": "9:28:20",
+            "resourceCost": 19995
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/11_settler_icon.png",
@@ -5555,7 +5555,7 @@
           "stats": {
             "attack": 0,
             "defenseInfantry": 10,
-            "defenseCavalry": 10,
+            "defenseCavalry": 0,
             "speed": 25,
             "carry": 10
           },
@@ -5591,14 +5591,14 @@
           "metrics": {
             "offense": 0,
             "defenseInfantry": 10,
-            "defenseCavalry": 10,
-            "defenseCombined": 10,
-            "defenseTotal": 20,
+            "defenseCavalry": 0,
+            "defenseCombined": 5,
+            "defenseTotal": 10,
             "speed": 25,
             "carry": 10,
             "cropUpkeep": 1,
             "attackPerCrop": 0,
-            "defensePerCrop": 20,
+            "defensePerCrop": 10,
             "trainTimeSeconds": 1740,
             "trainTimeFormatted": "29:00",
             "resourceCost": 410
@@ -14478,18 +14478,18 @@
             "carry": 50
           },
           "cost": {
-            "wood": 95,
-            "clay": 85,
-            "iron": 60,
-            "crop": 75
+            "wood": 105,
+            "clay": 90,
+            "iron": 48,
+            "crop": 33
           },
           "cropUpkeep": 1,
-          "totalCost": 315,
+          "totalCost": 276,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 820,
-            "timeFormatted": "13:40",
+            "timeSeconds": 925,
+            "timeFormatted": "15:25",
             "requirements": [
               {
                 "type": "building",
@@ -14517,9 +14517,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 38,
             "defensePerCrop": 65,
-            "trainTimeSeconds": 820,
-            "trainTimeFormatted": "13:40",
-            "resourceCost": 315
+            "trainTimeSeconds": 925,
+            "trainTimeFormatted": "15:25",
+            "resourceCost": 276
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/01_infantry_icon.png",
@@ -14545,18 +14545,18 @@
             "carry": 40
           },
           "cost": {
-            "wood": 108,
-            "clay": 100,
-            "iron": 163,
+            "wood": 140,
+            "clay": 105,
+            "iron": 153,
             "crop": 60
           },
           "cropUpkeep": 1,
-          "totalCost": 431,
+          "totalCost": 458,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1438,
-            "timeFormatted": "23:58",
+            "timeSeconds": 1410,
+            "timeFormatted": "23:30",
             "requirements": [
               {
                 "type": "building",
@@ -14584,9 +14584,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 35,
             "defensePerCrop": 83,
-            "trainTimeSeconds": 1438,
-            "trainTimeFormatted": "23:58",
-            "resourceCost": 431
+            "trainTimeSeconds": 1410,
+            "trainTimeFormatted": "23:30",
+            "resourceCost": 458
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/02_infantry_icon.png",
@@ -14612,18 +14612,18 @@
             "carry": 50
           },
           "cost": {
-            "wood": 155,
-            "clay": 143,
-            "iron": 195,
-            "crop": 73
+            "wood": 130,
+            "clay": 140,
+            "iron": 190,
+            "crop": 75
           },
           "cropUpkeep": 1,
-          "totalCost": 566,
+          "totalCost": 535,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1265,
-            "timeFormatted": "21:05",
+            "timeSeconds": 1320,
+            "timeFormatted": "22:00",
             "requirements": [
               {
                 "type": "building",
@@ -14651,9 +14651,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 63,
             "defensePerCrop": 66,
-            "trainTimeSeconds": 1265,
-            "trainTimeFormatted": "21:05",
-            "resourceCost": 566
+            "trainTimeSeconds": 1320,
+            "trainTimeFormatted": "22:00",
+            "resourceCost": 535
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/03_infantry_icon.png",
@@ -14679,18 +14679,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 153,
-            "clay": 135,
-            "iron": 43,
-            "crop": 50
+            "wood": 170,
+            "clay": 150,
+            "iron": 20,
+            "crop": 40
           },
           "cropUpkeep": 2,
-          "totalCost": 381,
+          "totalCost": 380,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1318,
-            "timeFormatted": "21:58",
+            "timeSeconds": 1360,
+            "timeFormatted": "22:40",
             "requirements": [
               {
                 "type": "building",
@@ -14718,9 +14718,9 @@
             "cropUpkeep": 2,
             "attackPerCrop": 0,
             "defensePerCrop": 15,
-            "trainTimeSeconds": 1318,
-            "trainTimeFormatted": "21:58",
-            "resourceCost": 381
+            "trainTimeSeconds": 1360,
+            "trainTimeFormatted": "22:40",
+            "resourceCost": 380
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/04_scout_icon.png",
@@ -14739,25 +14739,25 @@
           "name": "Median Light Cavalry",
           "category": "cavalry",
           "stats": {
-            "attack": 73,
+            "attack": 78,
             "defenseInfantry": 83,
             "defenseCavalry": 45,
             "speed": 16,
             "carry": 88
           },
           "cost": {
-            "wood": 385,
-            "clay": 335,
-            "iron": 305,
-            "crop": 120
+            "wood": 365,
+            "clay": 405,
+            "iron": 285,
+            "crop": 88
           },
           "cropUpkeep": 2,
-          "totalCost": 1145,
+          "totalCost": 1143,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1955,
-            "timeFormatted": "32:35",
+            "timeSeconds": 2520,
+            "timeFormatted": "42:00",
             "requirements": [
               {
                 "type": "building",
@@ -14775,7 +14775,7 @@
             "baseLogo": "cavalry/horse-head.svg"
           },
           "metrics": {
-            "offense": 73,
+            "offense": 78,
             "defenseInfantry": 83,
             "defenseCavalry": 45,
             "defenseCombined": 64,
@@ -14783,11 +14783,11 @@
             "speed": 16,
             "carry": 88,
             "cropUpkeep": 2,
-            "attackPerCrop": 36.5,
+            "attackPerCrop": 39,
             "defensePerCrop": 64,
-            "trainTimeSeconds": 1955,
-            "trainTimeFormatted": "32:35",
-            "resourceCost": 1145
+            "trainTimeSeconds": 2520,
+            "trainTimeFormatted": "42:00",
+            "resourceCost": 1143
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/05_cavalry_icon.png",
@@ -14813,18 +14813,18 @@
             "carry": 75
           },
           "cost": {
-            "wood": 490,
-            "clay": 500,
-            "iron": 570,
-            "crop": 190
+            "wood": 450,
+            "clay": 505,
+            "iron": 545,
+            "crop": 143
           },
           "cropUpkeep": 3,
-          "totalCost": 1750,
+          "totalCost": 1643,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 2498,
-            "timeFormatted": "41:38",
+            "timeSeconds": 3100,
+            "timeFormatted": "51:40",
             "requirements": [
               {
                 "type": "building",
@@ -14852,9 +14852,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 43.3,
             "defensePerCrop": 51.7,
-            "trainTimeSeconds": 2498,
-            "trainTimeFormatted": "41:38",
-            "resourceCost": 1750
+            "trainTimeSeconds": 3100,
+            "trainTimeFormatted": "51:40",
+            "resourceCost": 1643
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/06_cavalry_icon.png",
@@ -14880,18 +14880,18 @@
             "carry": 75
           },
           "cost": {
-            "wood": 420,
-            "clay": 455,
-            "iron": 485,
-            "crop": 125
+            "wood": 405,
+            "clay": 480,
+            "iron": 585,
+            "crop": 120
           },
           "cropUpkeep": 3,
-          "totalCost": 1485,
+          "totalCost": 1590,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 2000,
-            "timeFormatted": "33:20",
+            "timeSeconds": 2385,
+            "timeFormatted": "39:45",
             "requirements": [
               {
                 "type": "building",
@@ -14919,9 +14919,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 38.3,
             "defensePerCrop": 45,
-            "trainTimeSeconds": 2000,
-            "trainTimeFormatted": "33:20",
-            "resourceCost": 1485
+            "trainTimeSeconds": 2385,
+            "trainTimeFormatted": "39:45",
+            "resourceCost": 1590
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/07_cavalry_icon.png",
@@ -14947,18 +14947,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 998,
-            "clay": 385,
-            "iron": 505,
-            "crop": 80
+            "wood": 973,
+            "clay": 345,
+            "iron": 355,
+            "crop": 73
           },
           "cropUpkeep": 3,
-          "totalCost": 1968,
+          "totalCost": 1746,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 4710,
-            "timeFormatted": "1:18:30",
+            "timeSeconds": 4610,
+            "timeFormatted": "1:16:50",
             "requirements": [
               {
                 "type": "building",
@@ -14986,9 +14986,9 @@
             "cropUpkeep": 3,
             "attackPerCrop": 21,
             "defensePerCrop": 38.3,
-            "trainTimeSeconds": 4710,
-            "trainTimeFormatted": "1:18:30",
-            "resourceCost": 1968
+            "trainTimeSeconds": 4610,
+            "trainTimeFormatted": "1:16:50",
+            "resourceCost": 1746
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/08_ram_icon.png",
@@ -15014,18 +15014,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 925,
-            "clay": 1215,
-            "iron": 580,
-            "crop": 100
+            "wood": 950,
+            "clay": 1315,
+            "iron": 625,
+            "crop": 90
           },
           "cropUpkeep": 6,
-          "totalCost": 2820,
+          "totalCost": 2980,
           "training": {
             "building": "workshop",
             "buildingLabel": "Workshop",
-            "timeSeconds": 8738,
-            "timeFormatted": "2:25:38",
+            "timeSeconds": 9000,
+            "timeFormatted": "2:30:00",
             "requirements": [
               {
                 "type": "building",
@@ -15053,9 +15053,9 @@
             "cropUpkeep": 6,
             "attackPerCrop": 9.7,
             "defensePerCrop": 11.3,
-            "trainTimeSeconds": 8738,
-            "trainTimeFormatted": "2:25:38",
-            "resourceCost": 2820
+            "trainTimeSeconds": 9000,
+            "trainTimeFormatted": "2:30:00",
+            "resourceCost": 2980
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/09_catapult_icon.png",
@@ -15081,18 +15081,18 @@
             "carry": 0
           },
           "cost": {
-            "wood": 30425,
-            "clay": 22550,
-            "iron": 36600,
-            "crop": 39775
+            "wood": 33725,
+            "clay": 29133,
+            "iron": 32500,
+            "crop": 32550
           },
           "cropUpkeep": 4,
-          "totalCost": 129350,
+          "totalCost": 127908,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 88173,
-            "timeFormatted": "24:29:33",
+            "timeSeconds": 90700,
+            "timeFormatted": "25:11:40",
             "requirements": [
               {
                 "type": "building",
@@ -15125,9 +15125,9 @@
             "cropUpkeep": 4,
             "attackPerCrop": 10,
             "defensePerCrop": 22.5,
-            "trainTimeSeconds": 88173,
-            "trainTimeFormatted": "24:29:33",
-            "resourceCost": 129350
+            "trainTimeSeconds": 90700,
+            "trainTimeFormatted": "25:11:40",
+            "resourceCost": 127908
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/10_chief_icon.png",
@@ -15153,18 +15153,18 @@
             "carry": 3000
           },
           "cost": {
-            "wood": 3875,
-            "clay": 4250,
-            "iron": 3000,
-            "crop": 4585
+            "wood": 5078,
+            "clay": 5090,
+            "iron": 4815,
+            "crop": 4510
           },
           "cropUpkeep": 1,
-          "totalCost": 15710,
+          "totalCost": 19493,
           "training": {
             "building": "residence",
             "buildingLabel": "Residence / Palace",
-            "timeSeconds": 26075,
-            "timeFormatted": "7:14:35",
+            "timeSeconds": 27925,
+            "timeFormatted": "7:45:25",
             "requirements": [
               {
                 "type": "building",
@@ -15192,9 +15192,9 @@
             "cropUpkeep": 1,
             "attackPerCrop": 5,
             "defensePerCrop": 160,
-            "trainTimeSeconds": 26075,
-            "trainTimeFormatted": "7:14:35",
-            "resourceCost": 15710
+            "trainTimeSeconds": 27925,
+            "trainTimeFormatted": "7:45:25",
+            "resourceCost": 19493
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/11_settler_icon.png",

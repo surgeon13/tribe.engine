@@ -16,7 +16,7 @@
       "overrides": {
         "name": { "en": "Phalanx" },
         "stats": { "attack": 15, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 7, "carry": 35 },
-        "cost": { "wood": 95, "clay": 75, "iron": 45, "crop": 55 },
+        "cost": { "wood": 100, "clay": 130, "iron": 55, "crop": 30 },
         "cropUpkeep": 1
       }
     },
@@ -25,7 +25,7 @@
       "overrides": {
         "name": { "en": "Swordsman" },
         "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 20, "speed": 6, "carry": 45 },
-        "cost": { "wood": 200, "clay": 170, "iron": 180, "crop": 80 },
+        "cost": { "wood": 140, "clay": 150, "iron": 185, "crop": 60 },
         "cropUpkeep": 1
       }
     },
@@ -46,7 +46,7 @@
       "overrides": {
         "name": { "en": "Pathfinder" },
         "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 },
-        "cost": { "wood": 170, "clay": 135, "iron": 35, "crop": 50 },
+        "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
         "cropUpkeep": 2
       }
     },
@@ -54,8 +54,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Theutates Thunder" },
-        "stats": { "attack": 90, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 },
-        "cost": { "wood": 380, "clay": 280, "iron": 190, "crop": 90 },
+        "stats": { "attack": 100, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 },
+        "cost": { "wood": 350, "clay": 450, "iron": 230, "crop": 60 },
         "cropUpkeep": 2
       }
     },
@@ -64,7 +64,7 @@
       "overrides": {
         "name": { "en": "Druidrider" },
         "stats": { "attack": 45, "defenseInfantry": 115, "defenseCavalry": 55, "speed": 16, "carry": 35 },
-        "cost": { "wood": 280, "clay": 250, "iron": 210, "crop": 80 },
+        "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 },
         "cropUpkeep": 2
       }
     },
@@ -73,7 +73,7 @@
       "overrides": {
         "name": { "en": "Haeduan" },
         "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 165, "speed": 13, "carry": 65 },
-        "cost": { "wood": 570, "clay": 510, "iron": 410, "crop": 150 },
+        "cost": { "wood": 500, "clay": 620, "iron": 675, "crop": 170 },
         "cropUpkeep": 3
       }
     },
@@ -82,7 +82,7 @@
       "overrides": {
         "name": { "en": "Ram" },
         "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 105, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1080, "clay": 360, "iron": 400, "crop": 80 },
+        "cost": { "wood": 950, "clay": 555, "iron": 330, "crop": 75 },
         "cropUpkeep": 3
       }
     },
@@ -91,7 +91,7 @@
       "overrides": {
         "name": { "en": "Trebuchet" },
         "stats": { "attack": 70, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 1080, "clay": 1340, "iron": 500, "crop": 100 },
+        "cost": { "wood": 960, "clay": 1450, "iron": 630, "crop": 90 },
         "cropUpkeep": 6
       }
     },
@@ -100,7 +100,7 @@
       "overrides": {
         "name": { "en": "Chieftain" },
         "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 0 },
-        "cost": { "wood": 35450, "clay": 25500, "iron": 36500, "crop": 41650 },
+        "cost": { "wood": 30750, "clay": 45400, "iron": 31000, "crop": 37500 },
         "cropUpkeep": 4
       }
     },
@@ -109,7 +109,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3900, "clay": 4200, "iron": 1850, "crop": 4550 },
+        "cost": { "wood": 4400, "clay": 5600, "iron": 4200, "crop": 3900 },
         "cropUpkeep": 1
       }
     }

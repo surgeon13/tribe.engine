@@ -22,24 +22,65 @@
     "Wildlife has no published price at all because it cannot be trained."
   ],
   "sources": {
-    "roman": ["support.kingdoms.com/en/articles/109-troop-specifications"],
-    "teuton": ["support.kingdoms.com/en/articles/109-troop-specifications"],
-    "gaul": ["support.kingdoms.com/en/articles/109-troop-specifications"],
-    "hun": ["travian.fandom.com/wiki/Huns (citing t4.answers.travian.com aid=414)"],
+    "roman": [
+      "answers.travian.com aid=150-159 via web.archive.org (official, 'value at troop level 0')",
+      "travian.kirilloid.ru/js/units.js T4.6",
+      "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
+    ],
+    "teuton": [
+      "answers.travian.com aid=162-171 via web.archive.org (official, base values)",
+      "travian.kirilloid.ru/js/units.js T4.6",
+      "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
+    ],
+    "gaul": [
+      "support.travian.com/en/articles/199 (official Community Week list, unchanged rows are standard)",
+      "travian.kirilloid.ru/js/units.js T4.6",
+      "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
+    ],
+    "hun": [
+      "travian.kirilloid.ru/js/units.js T4.6",
+      "travian.fandom.com/wiki/Huns",
+      "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
+    ],
     "egyptian": [
       "travian.fandom.com/wiki/Egyptians",
+      "travian.kirilloid.ru/js/units.js T4.6",
       "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
     ],
     "natar": [
-      "wikitravian.free.fr/voir.php?page=Natars",
-      "support.travian.com/en/support/solutions/articles/7000094171 (defence values)"
+      "travian.kirilloid.ru/js/units.js T4.6",
+      "support.travian.com/.../7000094171-strongest-natars-defenses-artefacts via web.archive.org",
+      "wikitravian.free.fr/voir.php?page=Natars"
     ],
     "spartan": [
       "travian.fandom.com/wiki/Troops",
+      "travian.kirilloid.ru/js/units.js T4.6",
       "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
     ],
-    "nature": ["support.kingdoms.com/en/articles/115-nature", "wikitravian.free.fr/voir.php?page=Animals"]
+    "nature": [
+      "travian.kirilloid.ru/js/units.js T4.6",
+      "support.kingdoms.com/en/articles/115-nature",
+      "wikitravian.free.fr/voir.php?page=Animals"
+    ]
   },
+  "$conflicts": [
+    "Numbers where sources disagreed, and why this file reads the way it does.",
+    "",
+    "Gaul Theutates Thunder attack is 100, not 90. 90 is Travian Kingdoms, a",
+    "different game with its own balance — the one trap in using a Kingdoms",
+    "table for Legends, and this file fell into it once already.",
+    "Gaul Haeduan defence vs infantry is 60, not 50; 50 is the pre-T4 value.",
+    "Hun Marksman is 110 attack at speed 15. The 115/16 pairing comes from the",
+    "retired Travian Answers page as it stood in 2018 and was rebalanced after.",
+    "Natar Birds of Prey defends 10 against infantry and 0 against cavalry.",
+    "Roman settler costs 4600/4200/5800/4400; the higher figure still on some",
+    "tables is T3.6. The same pages carry T3.6 training times, 25% longer.",
+    "",
+    "Held at low confidence: Natar carrying capacity (10 here, kirilloid says 0,",
+    "and no official source publishes it — Natars never raid, so it is",
+    "untestable), and the Egyptian Ash Warden's 1380s training time, which fits",
+    "the official level-20 figure where the alternative 1320s does not."
+  ],
   "$smithy": [
     "Travian's level-20 comparison tables can be back-solved to base values with",
     "up = base + (base + 300 * crop / 7) * 0.149, which reproduces every unit",
@@ -54,71 +95,71 @@
           "name": "Legionnaire",
           "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 50, "speed": 6, "carry": 50 },
           "cropUpkeep": 1,
-          "cost": { "wood": 130, "clay": 120, "iron": 155, "crop": 95 },
-          "timeSeconds": 1425
+          "cost": { "wood": 120, "clay": 100, "iron": 150, "crop": 30 },
+          "timeSeconds": 1600
         },
         "inf_t2": {
           "name": "Praetorian",
           "stats": { "attack": 30, "defenseInfantry": 65, "defenseCavalry": 35, "speed": 5, "carry": 20 },
           "cropUpkeep": 1,
-          "cost": { "wood": 100, "clay": 100, "iron": 220, "crop": 45 },
-          "timeSeconds": 1590
+          "cost": { "wood": 100, "clay": 130, "iron": 160, "crop": 70 },
+          "timeSeconds": 1760
         },
         "inf_t3": {
           "name": "Imperian",
           "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 25, "speed": 7, "carry": 50 },
           "cropUpkeep": 1,
-          "cost": { "wood": 140, "clay": 135, "iron": 300, "crop": 65 },
-          "timeSeconds": 1690
+          "cost": { "wood": 150, "clay": 160, "iron": 210, "crop": 80 },
+          "timeSeconds": 1920
         },
         "scout": {
           "name": "Equites Legati",
           "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
           "cropUpkeep": 2,
-          "cost": { "wood": 135, "clay": 125, "iron": 75, "crop": 50 },
-          "timeSeconds": 1570
+          "cost": { "wood": 140, "clay": 160, "iron": 20, "crop": 40 },
+          "timeSeconds": 1360
         },
         "cav_t1": {
           "name": "Equites Imperatoris",
           "stats": { "attack": 120, "defenseInfantry": 65, "defenseCavalry": 50, "speed": 14, "carry": 100 },
           "cropUpkeep": 3,
-          "cost": { "wood": 380, "clay": 340, "iron": 480, "crop": 120 },
-          "timeSeconds": 2235
+          "cost": { "wood": 550, "clay": 440, "iron": 320, "crop": 100 },
+          "timeSeconds": 2640
         },
         "cav_t2": {
           "name": "Equites Caesaris",
           "stats": { "attack": 180, "defenseInfantry": 80, "defenseCavalry": 105, "speed": 10, "carry": 70 },
           "cropUpkeep": 4,
-          "cost": { "wood": 540, "clay": 580, "iron": 1030, "crop": 200 },
-          "timeSeconds": 3105
+          "cost": { "wood": 550, "clay": 640, "iron": 800, "crop": 180 },
+          "timeSeconds": 3520
         },
         "ram": {
           "name": "Battering Ram",
           "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
           "cropUpkeep": 3,
-          "cost": { "wood": 730, "clay": 290, "iron": 670, "crop": 70 },
-          "timeSeconds": 5285
+          "cost": { "wood": 900, "clay": 360, "iron": 500, "crop": 70 },
+          "timeSeconds": 4600
         },
         "catapult": {
           "name": "Fire Catapult",
           "stats": { "attack": 75, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
           "cropUpkeep": 6,
-          "cost": { "wood": 1030, "clay": 1530, "iron": 1170, "crop": 120 },
-          "timeSeconds": 12310
+          "cost": { "wood": 950, "clay": 1350, "iron": 600, "crop": 90 },
+          "timeSeconds": 9000
         },
         "chief": {
           "name": "Senator",
           "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 4, "carry": 0 },
           "cropUpkeep": 5,
-          "cost": { "wood": 21100, "clay": 18200, "iron": 54100, "crop": 30450 },
-          "timeSeconds": 98655
+          "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+          "timeSeconds": 90700
         },
         "settler": {
           "name": "Settler",
           "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
           "cropUpkeep": 1,
-          "cost": { "wood": 2950, "clay": 3850, "iron": 3500, "crop": 4250 },
-          "timeSeconds": 31815
+          "cost": { "wood": 4600, "clay": 4200, "iron": 5800, "crop": 4400 },
+          "timeSeconds": 26900
         }
       },
       "extension": {
@@ -139,71 +180,71 @@
           "name": "Clubswinger",
           "stats": { "attack": 40, "defenseInfantry": 20, "defenseCavalry": 5, "speed": 7, "carry": 60 },
           "cropUpkeep": 1,
-          "cost": { "wood": 80, "clay": 65, "iron": 30, "crop": 35 },
-          "timeSeconds": 560
+          "cost": { "wood": 95, "clay": 75, "iron": 40, "crop": 40 },
+          "timeSeconds": 720
         },
         "inf_t2": {
           "name": "Spearman",
           "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 },
           "cropUpkeep": 1,
-          "cost": { "wood": 85, "clay": 75, "iron": 55, "crop": 25 },
-          "timeSeconds": 735
+          "cost": { "wood": 145, "clay": 70, "iron": 85, "crop": 40 },
+          "timeSeconds": 1120
         },
         "inf_t3": {
           "name": "Axeman",
           "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 30, "speed": 6, "carry": 50 },
           "cropUpkeep": 1,
-          "cost": { "wood": 180, "clay": 150, "iron": 115, "crop": 55 },
-          "timeSeconds": 995
+          "cost": { "wood": 130, "clay": 120, "iron": 170, "crop": 70 },
+          "timeSeconds": 1200
         },
         "scout": {
           "name": "Scout",
           "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 5, "speed": 9, "carry": 0 },
           "cropUpkeep": 1,
-          "cost": { "wood": 90, "clay": 70, "iron": 15, "crop": 20 },
-          "timeSeconds": 705
+          "cost": { "wood": 160, "clay": 100, "iron": 50, "crop": 50 },
+          "timeSeconds": 1120
         },
         "cav_t1": {
           "name": "Paladin",
           "stats": { "attack": 55, "defenseInfantry": 100, "defenseCavalry": 40, "speed": 10, "carry": 110 },
           "cropUpkeep": 2,
-          "cost": { "wood": 430, "clay": 320, "iron": 160, "crop": 80 },
-          "timeSeconds": 1290
+          "cost": { "wood": 370, "clay": 270, "iron": 290, "crop": 75 },
+          "timeSeconds": 2400
         },
         "cav_t2": {
           "name": "Teutonic Knight",
           "stats": { "attack": 150, "defenseInfantry": 50, "defenseCavalry": 75, "speed": 9, "carry": 80 },
           "cropUpkeep": 3,
-          "cost": { "wood": 530, "clay": 490, "iron": 300, "crop": 120 },
-          "timeSeconds": 1570
+          "cost": { "wood": 450, "clay": 515, "iron": 480, "crop": 80 },
+          "timeSeconds": 2960
         },
         "ram": {
           "name": "Ram",
           "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
           "cropUpkeep": 3,
-          "cost": { "wood": 1200, "clay": 410, "iron": 320, "crop": 70 },
-          "timeSeconds": 3995
+          "cost": { "wood": 1000, "clay": 300, "iron": 350, "crop": 70 },
+          "timeSeconds": 4200
         },
         "catapult": {
           "name": "Catapult",
           "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
           "cropUpkeep": 6,
-          "cost": { "wood": 860, "clay": 1090, "iron": 290, "crop": 60 },
-          "timeSeconds": 6125
+          "cost": { "wood": 900, "clay": 1200, "iron": 600, "crop": 60 },
+          "timeSeconds": 9000
         },
         "chief": {
           "name": "Chief",
           "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
           "cropUpkeep": 4,
-          "cost": { "wood": 40850, "clay": 30050, "iron": 30800, "crop": 37100 },
-          "timeSeconds": 73820
+          "cost": { "wood": 35500, "clay": 26600, "iron": 25000, "crop": 27200 },
+          "timeSeconds": 70500
         },
         "settler": {
           "name": "Settler",
           "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
           "cropUpkeep": 1,
-          "cost": { "wood": 5000, "clay": 5500, "iron": 1750, "crop": 4450 },
-          "timeSeconds": 24180
+          "cost": { "wood": 5800, "clay": 4400, "iron": 4600, "crop": 5200 },
+          "timeSeconds": 31000
         }
       },
       "extension": {
@@ -224,71 +265,71 @@
           "name": "Phalanx",
           "stats": { "attack": 15, "defenseInfantry": 40, "defenseCavalry": 50, "speed": 7, "carry": 35 },
           "cropUpkeep": 1,
-          "cost": { "wood": 95, "clay": 75, "iron": 45, "crop": 55 },
-          "timeSeconds": 760
+          "cost": { "wood": 100, "clay": 130, "iron": 55, "crop": 30 },
+          "timeSeconds": 1040
         },
         "inf_t2": {
           "name": "Swordsman",
           "stats": { "attack": 65, "defenseInfantry": 35, "defenseCavalry": 20, "speed": 6, "carry": 45 },
           "cropUpkeep": 1,
-          "cost": { "wood": 200, "clay": 170, "iron": 180, "crop": 80 },
-          "timeSeconds": 1555
+          "cost": { "wood": 140, "clay": 150, "iron": 185, "crop": 60 },
+          "timeSeconds": 1440
         },
         "scout": {
           "name": "Pathfinder",
           "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 17, "carry": 0 },
           "cropUpkeep": 2,
-          "cost": { "wood": 170, "clay": 135, "iron": 35, "crop": 50 },
-          "timeSeconds": 1275
+          "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
+          "timeSeconds": 1360
         },
         "cav_t1": {
           "name": "Theutates Thunder",
-          "stats": { "attack": 90, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 },
+          "stats": { "attack": 100, "defenseInfantry": 25, "defenseCavalry": 40, "speed": 19, "carry": 75 },
           "cropUpkeep": 2,
-          "cost": { "wood": 380, "clay": 280, "iron": 190, "crop": 90 },
-          "timeSeconds": 1460
+          "cost": { "wood": 350, "clay": 450, "iron": 230, "crop": 60 },
+          "timeSeconds": 2480
         },
         "cav_t2": {
           "name": "Druidrider",
           "stats": { "attack": 45, "defenseInfantry": 115, "defenseCavalry": 55, "speed": 16, "carry": 35 },
           "cropUpkeep": 2,
-          "cost": { "wood": 280, "clay": 250, "iron": 210, "crop": 80 },
-          "timeSeconds": 1260
+          "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 },
+          "timeSeconds": 2560
         },
         "cav_t3": {
           "name": "Haeduan",
           "stats": { "attack": 140, "defenseInfantry": 60, "defenseCavalry": 165, "speed": 13, "carry": 65 },
           "cropUpkeep": 3,
-          "cost": { "wood": 570, "clay": 510, "iron": 410, "crop": 150 },
-          "timeSeconds": 1985
+          "cost": { "wood": 500, "clay": 620, "iron": 675, "crop": 170 },
+          "timeSeconds": 3120
         },
         "ram": {
           "name": "Ram",
           "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 105, "speed": 4, "carry": 0 },
           "cropUpkeep": 3,
-          "cost": { "wood": 1080, "clay": 360, "iron": 400, "crop": 80 },
-          "timeSeconds": 4505
+          "cost": { "wood": 950, "clay": 555, "iron": 330, "crop": 75 },
+          "timeSeconds": 5000
         },
         "catapult": {
           "name": "Trebuchet",
           "stats": { "attack": 70, "defenseInfantry": 45, "defenseCavalry": 10, "speed": 3, "carry": 0 },
           "cropUpkeep": 6,
-          "cost": { "wood": 1080, "clay": 1340, "iron": 500, "crop": 100 },
-          "timeSeconds": 8475
+          "cost": { "wood": 960, "clay": 1450, "iron": 630, "crop": 90 },
+          "timeSeconds": 9000
         },
         "chief": {
           "name": "Chieftain",
           "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 5, "carry": 0 },
           "cropUpkeep": 4,
-          "cost": { "wood": 35450, "clay": 25500, "iron": 36500, "crop": 41650 },
-          "timeSeconds": 85645
+          "cost": { "wood": 30750, "clay": 45400, "iron": 31000, "crop": 37500 },
+          "timeSeconds": 90700
         },
         "settler": {
           "name": "Settler",
           "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
           "cropUpkeep": 1,
-          "cost": { "wood": 3900, "clay": 4200, "iron": 1850, "crop": 4550 },
-          "timeSeconds": 25615
+          "cost": { "wood": 4400, "clay": 5600, "iron": 4200, "crop": 3900 },
+          "timeSeconds": 22700
         }
       },
       "extension": {
@@ -309,71 +350,71 @@
           "name": "Mercenary",
           "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 6, "carry": 50 },
           "cropUpkeep": 1,
-          "cost": { "wood": 95, "clay": 95, "iron": 75, "crop": 100 },
-          "timeSeconds": 880
+          "cost": { "wood": 130, "clay": 80, "iron": 40, "crop": 40 },
+          "timeSeconds": 810
         },
         "inf_t2": {
           "name": "Bowman",
           "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 6, "carry": 30 },
           "cropUpkeep": 1,
-          "cost": { "wood": 85, "clay": 90, "iron": 125, "crop": 60 },
-          "timeSeconds": 1030
+          "cost": { "wood": 140, "clay": 110, "iron": 60, "crop": 60 },
+          "timeSeconds": 1120
         },
         "scout": {
           "name": "Spotter",
           "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 19, "carry": 0 },
           "cropUpkeep": 2,
-          "cost": { "wood": 135, "clay": 135, "iron": 50, "crop": 75 },
-          "timeSeconds": 1225
+          "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
+          "timeSeconds": 1360
         },
         "cav_t1": {
           "name": "Steppe Rider",
           "stats": { "attack": 120, "defenseInfantry": 30, "defenseCavalry": 15, "speed": 16, "carry": 75 },
           "cropUpkeep": 2,
-          "cost": { "wood": 390, "clay": 370, "iron": 330, "crop": 180 },
-          "timeSeconds": 1675
+          "cost": { "wood": 290, "clay": 370, "iron": 190, "crop": 45 },
+          "timeSeconds": 2400
         },
         "cav_t2": {
           "name": "Marksman",
-          "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 16, "carry": 105 },
+          "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 15, "carry": 105 },
           "cropUpkeep": 2,
-          "cost": { "wood": 420, "clay": 480, "iron": 530, "crop": 230 },
-          "timeSeconds": 1890
+          "cost": { "wood": 320, "clay": 350, "iron": 330, "crop": 50 },
+          "timeSeconds": 2480
         },
         "cav_t3": {
           "name": "Marauder",
           "stats": { "attack": 180, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 14, "carry": 80 },
           "cropUpkeep": 3,
-          "cost": { "wood": 480, "clay": 540, "iron": 570, "crop": 230 },
-          "timeSeconds": 2015
+          "cost": { "wood": 450, "clay": 560, "iron": 610, "crop": 140 },
+          "timeSeconds": 2990
         },
         "ram": {
           "name": "Ram",
           "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 90, "speed": 4, "carry": 0 },
           "cropUpkeep": 3,
-          "cost": { "wood": 1000, "clay": 420, "iron": 610, "crop": 140 },
-          "timeSeconds": 4620
+          "cost": { "wood": 1060, "clay": 330, "iron": 360, "crop": 70 },
+          "timeSeconds": 4400
         },
         "catapult": {
           "name": "Catapult",
           "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
           "cropUpkeep": 6,
-          "cost": { "wood": 650, "clay": 1030, "iron": 500, "crop": 110 },
-          "timeSeconds": 6715
+          "cost": { "wood": 950, "clay": 1280, "iron": 620, "crop": 60 },
+          "timeSeconds": 9000
         },
         "chief": {
           "name": "Logades",
           "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 5, "carry": 0 },
           "cropUpkeep": 4,
-          "cost": { "wood": 21450, "clay": 19600, "iron": 36700, "crop": 46450 },
-          "timeSeconds": 75360
+          "cost": { "wood": 37200, "clay": 27600, "iron": 25200, "crop": 27600 },
+          "timeSeconds": 90700
         },
         "settler": {
           "name": "Settler",
           "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
           "cropUpkeep": 1,
-          "cost": { "wood": 3150, "clay": 4300, "iron": 2500, "crop": 6750 },
-          "timeSeconds": 26535
+          "cost": { "wood": 6100, "clay": 4600, "iron": 4800, "crop": 5400 },
+          "timeSeconds": 28950
         }
       },
       "extension": {
@@ -402,7 +443,7 @@
           "stats": { "attack": 30, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
           "cost": { "wood": 115, "clay": 100, "iron": 145, "crop": 60 },
           "cropUpkeep": 1,
-          "timeSeconds": 1320
+          "timeSeconds": 1380
         },
         "inf_t3": {
           "name": "Khopesh Warrior",
@@ -499,7 +540,7 @@
         },
         "scout": {
           "name": "Birds of Prey",
-          "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 10, "speed": 25, "carry": 10 },
+          "stats": { "attack": 0, "defenseInfantry": 10, "defenseCavalry": 0, "speed": 25, "carry": 10 },
           "cropUpkeep": 1,
           "cost": { "wood": 140, "clay": 160, "iron": 60, "crop": 50 },
           "timeSeconds": 1740
@@ -565,71 +606,71 @@
           "name": "Hoplite",
           "stats": { "attack": 50, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 6, "carry": 60 },
           "cropUpkeep": 1,
-          "cost": { "wood": 150, "clay": 105, "iron": 145, "crop": 105 },
-          "timeSeconds": 1450
+          "cost": { "wood": 110, "clay": 185, "iron": 110, "crop": 35 },
+          "timeSeconds": 1700
         },
         "inf_t2": {
           "name": "Shieldsman",
           "stats": { "attack": 40, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 8, "carry": 40 },
           "cropUpkeep": 1,
-          "cost": { "wood": 200, "clay": 150, "iron": 360, "crop": 90 },
-          "timeSeconds": 2315
+          "cost": { "wood": 145, "clay": 95, "iron": 245, "crop": 45 },
+          "timeSeconds": 1936
         },
         "inf_t3": {
           "name": "Twinsteel Therion",
           "stats": { "attack": 90, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
           "cropUpkeep": 1,
-          "cost": { "wood": 260, "clay": 190, "iron": 450, "crop": 120 },
-          "timeSeconds": 2320
+          "cost": { "wood": 130, "clay": 200, "iron": 400, "crop": 65 },
+          "timeSeconds": 2112
         },
         "scout": {
           "name": "Sentinel",
           "stats": { "attack": 0, "defenseInfantry": 40, "defenseCavalry": 22, "speed": 9, "carry": 0 },
           "cropUpkeep": 1,
-          "cost": { "wood": 410, "clay": 290, "iron": 180, "crop": 150 },
-          "timeSeconds": 3045
+          "cost": { "wood": 185, "clay": 150, "iron": 35, "crop": 75 },
+          "timeSeconds": 1232
         },
         "cav_t1": {
           "name": "Elpida Rider",
           "stats": { "attack": 55, "defenseInfantry": 120, "defenseCavalry": 90, "speed": 16, "carry": 110 },
           "cropUpkeep": 2,
-          "cost": { "wood": 540, "clay": 360, "iron": 560, "crop": 160 },
-          "timeSeconds": 2600
+          "cost": { "wood": 555, "clay": 445, "iron": 330, "crop": 110 },
+          "timeSeconds": 2816
         },
         "cav_t2": {
           "name": "Corinthian Crusher",
           "stats": { "attack": 195, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 9, "carry": 80 },
           "cropUpkeep": 3,
-          "cost": { "wood": 640, "clay": 510, "iron": 980, "crop": 230 },
-          "timeSeconds": 3160
+          "cost": { "wood": 660, "clay": 495, "iron": 995, "crop": 165 },
+          "timeSeconds": 3432
         },
         "ram": {
           "name": "Ram",
           "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
           "cropUpkeep": 3,
-          "cost": { "wood": 930, "clay": 280, "iron": 700, "crop": 90 },
-          "timeSeconds": 5845
+          "cost": { "wood": 525, "clay": 260, "iron": 790, "crop": 130 },
+          "timeSeconds": 4620
         },
         "catapult": {
           "name": "Ballista",
           "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
           "cropUpkeep": 6,
-          "cost": { "wood": 870, "clay": 970, "iron": 820, "crop": 100 },
-          "timeSeconds": 10090
+          "cost": { "wood": 550, "clay": 1240, "iron": 825, "crop": 135 },
+          "timeSeconds": 9900
         },
         "chief": {
           "name": "Ephor",
           "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
           "cropUpkeep": 4,
-          "cost": { "wood": 26850, "clay": 17400, "iron": 56650, "crop": 37900 },
-          "timeSeconds": 108030
+          "cost": { "wood": 33450, "clay": 30665, "iron": 36240, "crop": 13935 },
+          "timeSeconds": 77550
         },
         "settler": {
           "name": "Settler",
           "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
           "cropUpkeep": 1,
-          "cost": { "wood": 3850, "clay": 3750, "iron": 3750, "crop": 5350 },
-          "timeSeconds": 35380
+          "cost": { "wood": 5115, "clay": 5580, "iron": 6045, "crop": 3255 },
+          "timeSeconds": 34100
         }
       },
       "extension": {
@@ -730,5 +771,5 @@
       }
     }
   },
-  "lock": "45f17ead59556328"
+  "lock": "daa54b09240b9d43"
 }

@@ -16,7 +16,7 @@
       "overrides": {
         "name": { "en": "Mercenary" },
         "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 6, "carry": 50 },
-        "cost": { "wood": 95, "clay": 95, "iron": 75, "crop": 100 },
+        "cost": { "wood": 130, "clay": 80, "iron": 40, "crop": 40 },
         "cropUpkeep": 1
       }
     },
@@ -25,7 +25,7 @@
       "overrides": {
         "name": { "en": "Bowman" },
         "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 6, "carry": 30 },
-        "cost": { "wood": 85, "clay": 90, "iron": 125, "crop": 60 },
+        "cost": { "wood": 140, "clay": 110, "iron": 60, "crop": 60 },
         "cropUpkeep": 1
       }
     },
@@ -44,7 +44,7 @@
       "overrides": {
         "name": { "en": "Spotter" },
         "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 19, "carry": 0 },
-        "cost": { "wood": 135, "clay": 135, "iron": 50, "crop": 75 },
+        "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
         "cropUpkeep": 2
       }
     },
@@ -53,7 +53,7 @@
       "overrides": {
         "name": { "en": "Steppe Rider" },
         "stats": { "attack": 120, "defenseInfantry": 30, "defenseCavalry": 15, "speed": 16, "carry": 75 },
-        "cost": { "wood": 390, "clay": 370, "iron": 330, "crop": 180 },
+        "cost": { "wood": 290, "clay": 370, "iron": 190, "crop": 45 },
         "cropUpkeep": 2
       }
     },
@@ -61,8 +61,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Marksman" },
-        "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 16, "carry": 105 },
-        "cost": { "wood": 420, "clay": 480, "iron": 530, "crop": 230 },
+        "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 15, "carry": 105 },
+        "cost": { "wood": 320, "clay": 350, "iron": 330, "crop": 50 },
         "cropUpkeep": 2
       }
     },
@@ -71,7 +71,7 @@
       "overrides": {
         "name": { "en": "Marauder" },
         "stats": { "attack": 180, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 14, "carry": 80 },
-        "cost": { "wood": 480, "clay": 540, "iron": 570, "crop": 230 },
+        "cost": { "wood": 450, "clay": 560, "iron": 610, "crop": 140 },
         "cropUpkeep": 3
       }
     },
@@ -80,7 +80,7 @@
       "overrides": {
         "name": { "en": "Ram" },
         "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 90, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1000, "clay": 420, "iron": 610, "crop": 140 },
+        "cost": { "wood": 1060, "clay": 330, "iron": 360, "crop": 70 },
         "cropUpkeep": 3
       }
     },
@@ -89,7 +89,7 @@
       "overrides": {
         "name": { "en": "Catapult" },
         "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 650, "clay": 1030, "iron": 500, "crop": 110 },
+        "cost": { "wood": 950, "clay": 1280, "iron": 620, "crop": 60 },
         "cropUpkeep": 6
       }
     },
@@ -98,7 +98,7 @@
       "overrides": {
         "name": { "en": "Logades" },
         "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 5, "carry": 0 },
-        "cost": { "wood": 21450, "clay": 19600, "iron": 36700, "crop": 46450 },
+        "cost": { "wood": 37200, "clay": 27600, "iron": 25200, "crop": 27600 },
         "cropUpkeep": 4
       }
     },
@@ -107,7 +107,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3150, "clay": 4300, "iron": 2500, "crop": 6750 },
+        "cost": { "wood": 6100, "clay": 4600, "iron": 4800, "crop": 5400 },
         "cropUpkeep": 1
       }
     }
