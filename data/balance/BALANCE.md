@@ -70,8 +70,18 @@ than a Teutonic Knight while quietly eating twice the population.
 The lead is added along the axis the unit's role is about: a hammer hits
 harder, a guard gets harder to kill, and only armored off-cavalry like the
 Haeduan grows both. Growing both by default made hammers out-defend their own
-tribe's wall — an inflated Equites Regales shaded a Praetorian on raw
+tribe's wall — an inflated Roman horse shaded a Praetorian on raw
 anti-infantry defense — which quietly cost the defensive infantry its job.
+
+Attack and defense share one ceiling, 320. A point of defense counts half a
+point of attack in the combat index, so a wall needs about twice the raw number
+to weigh what a hammer weighs; while the defense ceiling sat lower than the
+attack ceiling, every defensive centerpiece in the game ran into it and stopped.
+Five of them sat on exactly the same anti-infantry number, and four tribes
+silently missed the lead their dial asked for — Rome by 0.32. Where the lift
+does reach the ceiling, the excess moves to the other defense stat rather than
+being thrown away, because the role shapes are lopsided on purpose and
+multiplying a lopsided pair saturates one side long before the other.
 
 `centerpiece` sets how far ahead it sits, as a multiple of the next best unit.
 The floor is **1.4**, the low end of Travian's own range — an Equites Caesaris
@@ -99,13 +109,14 @@ and is what a raid is actually made of, the third wins the fight. Before the
 split the light horse held both speed and carry, and the middle horse was left
 best at nothing in seven tribes.
 
-Rome is the worked example. It fielded three offensive horses, and the middle
-one was slower and lighter than the Imperatoris and beaten on every combat stat
-by the tier three. A legion is a hammer *and* an anvil, so the slot became the
-anvil: `Equites Cataphractarii`, expensive, armored, and the tribe's best
-defense, the way a Haeduan or a Paladin is for its own. That freed the
-canonical name to return to the canonical job, and the hammer is an
-`Equites Caesaris` again.
+Rome is the worked example. It fielded three offensive horses and owned no
+anvil at all, and the `Equites Regales` was the one earning no keep — the
+Caesaris hit harder for less. A legion is a hammer *and* an anvil, so the
+Regales became the anvil: 45 attack against 320 anti-infantry defence, the one
+thing in the stable that cannot raid, and by a distance the most expensive unit
+Rome trains. Being the centerpiece is what makes it expensive, since price is
+derived from power — an elite defender has to be the top slot to be priced like
+one.
 
 `validate:balance` fails on a unit that is matched or beaten everywhere for no
 more crop and no more money, and warns on one that merely tops no column. Seven

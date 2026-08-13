@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Hoplite" },
-        "stats": { "attack": 40, "defenseInfantry": 42, "defenseCavalry": 50, "speed": 6, "carry": 41 },
-        "cost": { "wood": 160, "clay": 110, "iron": 155, "crop": 115 },
+        "stats": { "attack": 39, "defenseInfantry": 42, "defenseCavalry": 49, "speed": 6, "carry": 41 },
+        "cost": { "wood": 155, "clay": 110, "iron": 150, "crop": 110 },
         "cropUpkeep": 1
       }
     },
@@ -24,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Shieldsman" },
-        "stats": { "attack": 34, "defenseInfantry": 83, "defenseCavalry": 43, "speed": 5, "carry": 20 },
-        "cost": { "wood": 165, "clay": 130, "iron": 305, "crop": 80 },
+        "stats": { "attack": 34, "defenseInfantry": 81, "defenseCavalry": 42, "speed": 5, "carry": 20 },
+        "cost": { "wood": 160, "clay": 125, "iron": 295, "crop": 75 },
         "cropUpkeep": 1
       }
     },
@@ -33,8 +33,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Twinsteel Therion" },
-        "stats": { "attack": 86, "defenseInfantry": 51, "defenseCavalry": 37, "speed": 7, "carry": 45 },
-        "cost": { "wood": 240, "clay": 180, "iron": 430, "crop": 110 },
+        "stats": { "attack": 84, "defenseInfantry": 50, "defenseCavalry": 37, "speed": 7, "carry": 45 },
+        "cost": { "wood": 240, "clay": 170, "iron": 420, "crop": 110 },
         "cropUpkeep": 1
       }
     },
@@ -52,8 +52,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Elpida Rider" },
-        "stats": { "attack": 50, "defenseInfantry": 97, "defenseCavalry": 42, "speed": 13, "carry": 91 },
-        "cost": { "wood": 300, "clay": 200, "iron": 310, "crop": 90 },
+        "stats": { "attack": 49, "defenseInfantry": 96, "defenseCavalry": 41, "speed": 13, "carry": 91 },
+        "cost": { "wood": 290, "clay": 190, "iron": 300, "crop": 90 },
         "cropUpkeep": 2
       }
     },
@@ -61,8 +61,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Corinthian Crusher" },
-        "stats": { "attack": 163, "defenseInfantry": 64, "defenseCavalry": 58, "speed": 12, "carry": 95 },
-        "cost": { "wood": 430, "clay": 350, "iron": 670, "crop": 150 },
+        "stats": { "attack": 160, "defenseInfantry": 63, "defenseCavalry": 57, "speed": 12, "carry": 95 },
+        "cost": { "wood": 420, "clay": 340, "iron": 650, "crop": 150 },
         "cropUpkeep": 3
       }
     },
@@ -71,8 +71,8 @@
       "overrides": {
         "name": { "en": "Spartan Horseman" },
         "description": { "en": "Tevel slot 7 — completes three cavalry slots for Spartans." },
-        "stats": { "attack": 224, "defenseInfantry": 77, "defenseCavalry": 70, "speed": 12, "carry": 65 },
-        "cost": { "wood": 640, "clay": 510, "iron": 920, "crop": 200 },
+        "stats": { "attack": 219, "defenseInfantry": 76, "defenseCavalry": 69, "speed": 12, "carry": 65 },
+        "cost": { "wood": 610, "clay": 490, "iron": 890, "crop": 190 },
         "cropUpkeep": 4
       }
     },
