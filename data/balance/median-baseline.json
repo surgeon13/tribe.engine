@@ -1,7 +1,7 @@
 {
   "version": 1,
   "game": "Tevel",
-  "generatedAt": "2026-08-13T08:48:52.055Z",
+  "generatedAt": "2026-08-13T08:52:52.008Z",
   "methodology": {
     "sources": ["roman", "teuton", "gaul", "egyptian", "hun", "spartan"],
     "excluded": ["natar", "nature"],
@@ -16,8 +16,8 @@
     "gaul": { "combatIndex": 759.9, "resourceCost": 5020, "efficiency": 151.4 },
     "egyptian": { "combatIndex": 810.9, "resourceCost": 5810, "efficiency": 139.6 },
     "hun": { "combatIndex": 818.5, "resourceCost": 6365, "efficiency": 128.6 },
-    "spartan": { "combatIndex": 968.7, "resourceCost": 7260, "efficiency": 133.4 },
-    "median": { "combatIndex": 812.2, "resourceCost": 5975, "efficiency": 135.9 }
+    "spartan": { "combatIndex": 988.3, "resourceCost": 9105, "efficiency": 108.5 },
+    "median": { "combatIndex": 797.3, "resourceCost": 6070, "efficiency": 131.3 }
   },
   "hero": {
     "preciseMedian": {
@@ -32,26 +32,26 @@
   "slots": {
     "inf_t1": {
       "preciseMedian": {
-        "stats": { "attack": 37, "defenseInfantry": 37.5, "defenseCavalry": 39.5, "speed": 6.5, "carry": 45.5 },
+        "stats": { "attack": 37.5, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 6.5, "carry": 50 },
         "cost": { "wood": 95, "clay": 85, "iron": 60, "crop": 75 },
         "cropUpkeep": 1,
         "timeSeconds": 820
       },
       "preciseMean": {
-        "stats": { "attack": 29.8, "defenseInfantry": 34.5, "defenseCavalry": 34, "speed": 6.5, "carry": 41.8 },
-        "cost": { "wood": 100, "clay": 88, "iron": 81, "crop": 68 },
+        "stats": { "attack": 31.7, "defenseInfantry": 33.3, "defenseCavalry": 30.8, "speed": 6.5, "carry": 45 },
+        "cost": { "wood": 99, "clay": 87, "iron": 80, "crop": 68 },
         "cropUpkeep": 1,
-        "timeSeconds": 941
+        "timeSeconds": 934
       },
       "playableInteger": {
-        "stats": { "attack": 37, "defenseInfantry": 38, "defenseCavalry": 40, "speed": 7, "carry": 46 },
+        "stats": { "attack": 38, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 7, "carry": 50 },
         "cost": { "wood": 95, "clay": 85, "iron": 60, "crop": 75 },
         "cropUpkeep": 1,
         "timeSeconds": 820
       },
       "range": {
-        "attack": { "min": 10, "max": 40, "spread": 30 },
-        "defenseInfantry": { "min": 20, "max": 42, "spread": 22 },
+        "attack": { "min": 10, "max": 50, "spread": 40 },
+        "defenseInfantry": { "min": 20, "max": 40, "spread": 20 },
         "defenseCavalry": { "min": 5, "max": 50, "spread": 45 },
         "speed": { "min": 6, "max": 7, "spread": 1 },
         "carry": { "min": 15, "max": 60, "spread": 45 }
@@ -78,35 +78,35 @@
           "cost": { "wood": 95, "clay": 95, "iron": 75, "crop": 100 }
         },
         "spartan": {
-          "stats": { "attack": 39, "defenseInfantry": 42, "defenseCavalry": 49, "speed": 6, "carry": 41 },
-          "cost": { "wood": 155, "clay": 110, "iron": 150, "crop": 110 }
+          "stats": { "attack": 50, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 6, "carry": 60 },
+          "cost": { "wood": 150, "clay": 105, "iron": 145, "crop": 105 }
         }
       }
     },
     "inf_t2": {
       "preciseMedian": {
-        "stats": { "attack": 32, "defenseInfantry": 45, "defenseCavalry": 37.5, "speed": 6, "carry": 35 },
+        "stats": { "attack": 35, "defenseInfantry": 45, "defenseCavalry": 37.5, "speed": 6, "carry": 40 },
         "cost": { "wood": 107.5, "clay": 100, "iron": 162.5, "crop": 60 },
         "cropUpkeep": 1,
         "timeSeconds": 1437.5
       },
       "preciseMean": {
-        "stats": { "attack": 36.5, "defenseInfantry": 50.2, "defenseCavalry": 34.5, "speed": 5.8, "carry": 34.2 },
-        "cost": { "wood": 124, "clay": 110, "iron": 170, "crop": 58 },
+        "stats": { "attack": 37.5, "defenseInfantry": 50.8, "defenseCavalry": 35, "speed": 6.3, "carry": 37.5 },
+        "cost": { "wood": 131, "clay": 114, "iron": 181, "crop": 60 },
         "cropUpkeep": 1,
-        "timeSeconds": 1377
+        "timeSeconds": 1424
       },
       "playableInteger": {
-        "stats": { "attack": 32, "defenseInfantry": 45, "defenseCavalry": 38, "speed": 6, "carry": 35 },
+        "stats": { "attack": 35, "defenseInfantry": 45, "defenseCavalry": 38, "speed": 6, "carry": 40 },
         "cost": { "wood": 108, "clay": 100, "iron": 163, "crop": 60 },
         "cropUpkeep": 1,
         "timeSeconds": 1438
       },
       "range": {
         "attack": { "min": 10, "max": 65, "spread": 55 },
-        "defenseInfantry": { "min": 30, "max": 81, "spread": 51 },
+        "defenseInfantry": { "min": 30, "max": 85, "spread": 55 },
         "defenseCavalry": { "min": 10, "max": 60, "spread": 50 },
-        "speed": { "min": 5, "max": 7, "spread": 2 },
+        "speed": { "min": 5, "max": 8, "spread": 3 },
         "carry": { "min": 20, "max": 50, "spread": 30 }
       },
       "byTribe": {
@@ -131,34 +131,34 @@
           "cost": { "wood": 85, "clay": 90, "iron": 125, "crop": 60 }
         },
         "spartan": {
-          "stats": { "attack": 34, "defenseInfantry": 81, "defenseCavalry": 42, "speed": 5, "carry": 20 },
-          "cost": { "wood": 160, "clay": 125, "iron": 295, "crop": 75 }
+          "stats": { "attack": 40, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 8, "carry": 40 },
+          "cost": { "wood": 200, "clay": 150, "iron": 360, "crop": 90 }
         }
       }
     },
     "inf_t3": {
       "preciseMedian": {
-        "stats": { "attack": 62.5, "defenseInfantry": 37.5, "defenseCavalry": 27.5, "speed": 7, "carry": 47.5 },
+        "stats": { "attack": 62.5, "defenseInfantry": 37.5, "defenseCavalry": 27.5, "speed": 6.5, "carry": 50 },
         "cost": { "wood": 155, "clay": 142.5, "iron": 195, "crop": 72.5 },
         "cropUpkeep": 1,
         "timeSeconds": 1265
       },
       "preciseMean": {
-        "stats": { "attack": 63.2, "defenseInfantry": 39.2, "defenseCavalry": 28.7, "speed": 6.8, "carry": 49.2 },
-        "cost": { "wood": 160, "clay": 140, "iron": 220, "crop": 73 },
+        "stats": { "attack": 64.2, "defenseInfantry": 40, "defenseCavalry": 29.2, "speed": 6.7, "carry": 50 },
+        "cost": { "wood": 163, "clay": 143, "iron": 225, "crop": 74 },
         "cropUpkeep": 1,
-        "timeSeconds": 1384
+        "timeSeconds": 1403
       },
       "playableInteger": {
-        "stats": { "attack": 63, "defenseInfantry": 38, "defenseCavalry": 28, "speed": 7, "carry": 48 },
+        "stats": { "attack": 63, "defenseInfantry": 38, "defenseCavalry": 28, "speed": 7, "carry": 50 },
         "cost": { "wood": 155, "clay": 143, "iron": 195, "crop": 73 },
         "cropUpkeep": 1,
         "timeSeconds": 1265
       },
       "range": {
-        "attack": { "min": 40, "max": 84, "spread": 44 },
-        "defenseInfantry": { "min": 30, "max": 50, "spread": 20 },
-        "defenseCavalry": { "min": 20, "max": 37, "spread": 17 },
+        "attack": { "min": 40, "max": 90, "spread": 50 },
+        "defenseInfantry": { "min": 30, "max": 55, "spread": 25 },
+        "defenseCavalry": { "min": 20, "max": 40, "spread": 20 },
         "speed": { "min": 6, "max": 8, "spread": 2 },
         "carry": { "min": 45, "max": 60, "spread": 15 }
       },
@@ -184,8 +184,8 @@
           "cost": { "wood": 120, "clay": 120, "iron": 170, "crop": 85 }
         },
         "spartan": {
-          "stats": { "attack": 84, "defenseInfantry": 50, "defenseCavalry": 37, "speed": 7, "carry": 45 },
-          "cost": { "wood": 240, "clay": 170, "iron": 420, "crop": 110 }
+          "stats": { "attack": 90, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
+          "cost": { "wood": 260, "clay": 190, "iron": 450, "crop": 120 }
         }
       }
     },
@@ -197,10 +197,10 @@
         "timeSeconds": 1317.5
       },
       "preciseMean": {
-        "stats": { "attack": 0, "defenseInfantry": 19, "defenseCavalry": 9.5, "speed": 15.5, "carry": 0 },
-        "cost": { "wood": 152, "clay": 128, "iron": 48, "crop": 52 },
-        "cropUpkeep": 1.8,
-        "timeSeconds": 1353
+        "stats": { "attack": 0, "defenseInfantry": 21.7, "defenseCavalry": 11.2, "speed": 14.3, "carry": 0 },
+        "cost": { "wood": 185, "clay": 151, "iron": 63, "crop": 64 },
+        "cropUpkeep": 1.7,
+        "timeSeconds": 1530
       },
       "playableInteger": {
         "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
@@ -210,8 +210,8 @@
       },
       "range": {
         "attack": { "min": 0, "max": 0, "spread": 0 },
-        "defenseInfantry": { "min": 10, "max": 24, "spread": 14 },
-        "defenseCavalry": { "min": 5, "max": 12, "spread": 7 },
+        "defenseInfantry": { "min": 10, "max": 40, "spread": 30 },
+        "defenseCavalry": { "min": 5, "max": 22, "spread": 17 },
         "speed": { "min": 9, "max": 19, "spread": 10 },
         "carry": { "min": 0, "max": 0, "spread": 0 }
       },
@@ -237,34 +237,34 @@
           "cost": { "wood": 135, "clay": 135, "iron": 50, "crop": 75 }
         },
         "spartan": {
-          "stats": { "attack": 0, "defenseInfantry": 24, "defenseCavalry": 12, "speed": 16, "carry": 0 },
-          "cost": { "wood": 210, "clay": 150, "iron": 95, "crop": 75 }
+          "stats": { "attack": 0, "defenseInfantry": 40, "defenseCavalry": 22, "speed": 9, "carry": 0 },
+          "cost": { "wood": 410, "clay": 290, "iron": 180, "crop": 150 }
         }
       }
     },
     "cav_t1": {
       "preciseMedian": {
-        "stats": { "attack": 72.5, "defenseInfantry": 80.5, "defenseCavalry": 40.5, "speed": 14.5, "carry": 83 },
-        "cost": { "wood": 380, "clay": 325, "iron": 290, "crop": 105 },
+        "stats": { "attack": 72.5, "defenseInfantry": 82.5, "defenseCavalry": 45, "speed": 15.5, "carry": 87.5 },
+        "cost": { "wood": 385, "clay": 335, "iron": 305, "crop": 120 },
         "cropUpkeep": 2,
-        "timeSeconds": 1710
+        "timeSeconds": 1955
       },
       "preciseMean": {
-        "stats": { "attack": 80.7, "defenseInfantry": 71, "defenseCavalry": 39.3, "speed": 14.5, "carry": 83.5 },
-        "cost": { "wood": 372, "clay": 305, "iron": 290, "crop": 113 },
+        "stats": { "attack": 81.7, "defenseInfantry": 75, "defenseCavalry": 47.5, "speed": 15, "carry": 86.7 },
+        "cost": { "wood": 413, "clay": 333, "iron": 333, "crop": 125 },
         "cropUpkeep": 2.2,
-        "timeSeconds": 1828
+        "timeSeconds": 1970
       },
       "playableInteger": {
-        "stats": { "attack": 73, "defenseInfantry": 81, "defenseCavalry": 41, "speed": 15, "carry": 83 },
-        "cost": { "wood": 380, "clay": 325, "iron": 290, "crop": 105 },
+        "stats": { "attack": 73, "defenseInfantry": 83, "defenseCavalry": 45, "speed": 16, "carry": 88 },
+        "cost": { "wood": 385, "clay": 335, "iron": 305, "crop": 120 },
         "cropUpkeep": 2,
-        "timeSeconds": 1710
+        "timeSeconds": 1955
       },
       "range": {
-        "attack": { "min": 49, "max": 120, "spread": 71 },
-        "defenseInfantry": { "min": 25, "max": 110, "spread": 85 },
-        "defenseCavalry": { "min": 15, "max": 50, "spread": 35 },
+        "attack": { "min": 50, "max": 120, "spread": 70 },
+        "defenseInfantry": { "min": 25, "max": 120, "spread": 95 },
+        "defenseCavalry": { "min": 15, "max": 90, "spread": 75 },
         "speed": { "min": 10, "max": 19, "spread": 9 },
         "carry": { "min": 50, "max": 110, "spread": 60 }
       },
@@ -290,32 +290,32 @@
           "cost": { "wood": 390, "clay": 370, "iron": 330, "crop": 180 }
         },
         "spartan": {
-          "stats": { "attack": 49, "defenseInfantry": 96, "defenseCavalry": 41, "speed": 13, "carry": 91 },
-          "cost": { "wood": 290, "clay": 190, "iron": 300, "crop": 90 }
+          "stats": { "attack": 55, "defenseInfantry": 120, "defenseCavalry": 90, "speed": 16, "carry": 110 },
+          "cost": { "wood": 540, "clay": 360, "iron": 560, "crop": 160 }
         }
       }
     },
     "cav_t2": {
       "preciseMedian": {
-        "stats": { "attack": 130, "defenseInfantry": 80, "defenseCavalry": 72.5, "speed": 11, "carry": 75 },
-        "cost": { "wood": 435, "clay": 485, "iron": 570, "crop": 165 },
+        "stats": { "attack": 130, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 10, "carry": 75 },
+        "cost": { "wood": 490, "clay": 500, "iron": 570, "crop": 190 },
         "cropUpkeep": 3,
-        "timeSeconds": 2147.5
+        "timeSeconds": 2497.5
       },
       "preciseMean": {
-        "stats": { "attack": 125.8, "defenseInfantry": 84.7, "defenseCavalry": 85.3, "speed": 12.2, "carry": 75.8 },
-        "cost": { "wood": 440, "clay": 450, "iron": 555, "crop": 160 },
+        "stats": { "attack": 131.7, "defenseInfantry": 87.5, "defenseCavalry": 88.3, "speed": 11.7, "carry": 73.3 },
+        "cost": { "wood": 477, "clay": 478, "iron": 610, "crop": 173 },
         "cropUpkeep": 2.8,
-        "timeSeconds": 2245
+        "timeSeconds": 2371
       },
       "playableInteger": {
-        "stats": { "attack": 130, "defenseInfantry": 80, "defenseCavalry": 73, "speed": 11, "carry": 75 },
-        "cost": { "wood": 435, "clay": 485, "iron": 570, "crop": 165 },
+        "stats": { "attack": 130, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 10, "carry": 75 },
+        "cost": { "wood": 490, "clay": 500, "iron": 570, "crop": 190 },
         "cropUpkeep": 3,
-        "timeSeconds": 2148
+        "timeSeconds": 2498
       },
       "range": {
-        "attack": { "min": 45, "max": 180, "spread": 135 },
+        "attack": { "min": 45, "max": 195, "spread": 150 },
         "defenseInfantry": { "min": 50, "max": 120, "spread": 70 },
         "defenseCavalry": { "min": 55, "max": 150, "spread": 95 },
         "speed": { "min": 9, "max": 16, "spread": 7 },
@@ -343,32 +343,32 @@
           "cost": { "wood": 420, "clay": 480, "iron": 530, "crop": 230 }
         },
         "spartan": {
-          "stats": { "attack": 160, "defenseInfantry": 63, "defenseCavalry": 57, "speed": 12, "carry": 95 },
-          "cost": { "wood": 420, "clay": 340, "iron": 650, "crop": 150 }
+          "stats": { "attack": 195, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 9, "carry": 80 },
+          "cost": { "wood": 640, "clay": 510, "iron": 980, "crop": 230 }
         }
       }
     },
     "cav_t3": {
       "preciseMedian": {
-        "stats": { "attack": 135, "defenseInfantry": 60, "defenseCavalry": 69.5, "speed": 11.5, "carry": 72.5 },
-        "cost": { "wood": 420, "clay": 500, "iron": 485, "crop": 125 },
+        "stats": { "attack": 115, "defenseInfantry": 60, "defenseCavalry": 75, "speed": 11.5, "carry": 75 },
+        "cost": { "wood": 420, "clay": 455, "iron": 485, "crop": 125 },
         "cropUpkeep": 3,
         "timeSeconds": 2000
       },
       "preciseMean": {
-        "stats": { "attack": 134, "defenseInfantry": 70.2, "defenseCavalry": 94, "speed": 11.7, "carry": 80.8 },
-        "cost": { "wood": 445, "clay": 460, "iron": 488, "crop": 140 },
-        "cropUpkeep": 3.3,
-        "timeSeconds": 1989
+        "stats": { "attack": 114.2, "defenseInfantry": 72.5, "defenseCavalry": 95.8, "speed": 11.7, "carry": 81.7 },
+        "cost": { "wood": 427, "clay": 445, "iron": 460, "crop": 133 },
+        "cropUpkeep": 3,
+        "timeSeconds": 1926
       },
       "playableInteger": {
-        "stats": { "attack": 135, "defenseInfantry": 60, "defenseCavalry": 70, "speed": 12, "carry": 73 },
-        "cost": { "wood": 420, "clay": 500, "iron": 485, "crop": 125 },
+        "stats": { "attack": 115, "defenseInfantry": 60, "defenseCavalry": 75, "speed": 12, "carry": 75 },
+        "cost": { "wood": 420, "clay": 455, "iron": 485, "crop": 125 },
         "cropUpkeep": 3,
         "timeSeconds": 2000
       },
       "range": {
-        "attack": { "min": 45, "max": 219, "spread": 174 },
+        "attack": { "min": 45, "max": 180, "spread": 135 },
         "defenseInfantry": { "min": 40, "max": 125, "spread": 85 },
         "defenseCavalry": { "min": 40, "max": 175, "spread": 135 },
         "speed": { "min": 9, "max": 14, "spread": 5 },
@@ -396,8 +396,8 @@
           "cost": { "wood": 480, "clay": 540, "iron": 570, "crop": 230 }
         },
         "spartan": {
-          "stats": { "attack": 219, "defenseInfantry": 76, "defenseCavalry": 69, "speed": 12, "carry": 65 },
-          "cost": { "wood": 610, "clay": 490, "iron": 890, "crop": 190 }
+          "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 80, "speed": 12, "carry": 70 },
+          "cost": { "wood": 500, "clay": 400, "iron": 720, "crop": 150 }
         }
       }
     },
@@ -409,10 +409,10 @@
         "timeSeconds": 4710
       },
       "preciseMean": {
-        "stats": { "attack": 60.3, "defenseInfantry": 30.2, "defenseCavalry": 87.2, "speed": 4, "carry": 0 },
-        "cost": { "wood": 993, "clay": 391, "iron": 510, "crop": 88 },
+        "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 87.5, "speed": 4, "carry": 0 },
+        "cost": { "wood": 989, "clay": 389, "iron": 507, "crop": 88 },
         "cropUpkeep": 3,
-        "timeSeconds": 4858
+        "timeSeconds": 4842
       },
       "playableInteger": {
         "stats": { "attack": 63, "defenseInfantry": 30, "defenseCavalry": 85, "speed": 4, "carry": 0 },
@@ -421,8 +421,8 @@
         "timeSeconds": 4710
       },
       "range": {
-        "attack": { "min": 50, "max": 67, "spread": 17 },
-        "defenseInfantry": { "min": 30, "max": 31, "spread": 1 },
+        "attack": { "min": 50, "max": 65, "spread": 15 },
+        "defenseInfantry": { "min": 30, "max": 30, "spread": 0 },
         "defenseCavalry": { "min": 75, "max": 105, "spread": 30 },
         "speed": { "min": 4, "max": 4, "spread": 0 },
         "carry": { "min": 0, "max": 0, "spread": 0 }
@@ -449,33 +449,33 @@
           "cost": { "wood": 1000, "clay": 420, "iron": 610, "crop": 140 }
         },
         "spartan": {
-          "stats": { "attack": 67, "defenseInfantry": 31, "defenseCavalry": 78, "speed": 4, "carry": 0 },
-          "cost": { "wood": 950, "clay": 290, "iron": 720, "crop": 90 }
+          "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 },
+          "cost": { "wood": 930, "clay": 280, "iron": 700, "crop": 90 }
         }
       }
     },
     "catapult": {
       "preciseMedian": {
-        "stats": { "attack": 61, "defenseInfantry": 57.5, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 1005, "clay": 1250, "iron": 580, "crop": 105 },
+        "stats": { "attack": 57.5, "defenseInfantry": 57.5, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 925, "clay": 1215, "iron": 580, "crop": 100 },
         "cropUpkeep": 6,
         "timeSeconds": 8737.5
       },
       "preciseMean": {
-        "stats": { "attack": 60.3, "defenseInfantry": 56.2, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 940, "clay": 1277, "iron": 683, "crop": 102 },
-        "cropUpkeep": 5.8,
-        "timeSeconds": 8993
+        "stats": { "attack": 59.2, "defenseInfantry": 55.8, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 912, "clay": 1245, "iron": 657, "crop": 98 },
+        "cropUpkeep": 6,
+        "timeSeconds": 8786
       },
       "playableInteger": {
-        "stats": { "attack": 61, "defenseInfantry": 58, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 1005, "clay": 1250, "iron": 580, "crop": 105 },
+        "stats": { "attack": 58, "defenseInfantry": 58, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 925, "clay": 1215, "iron": 580, "crop": 100 },
         "cropUpkeep": 6,
         "timeSeconds": 8738
       },
       "range": {
         "attack": { "min": 45, "max": 75, "spread": 30 },
-        "defenseInfantry": { "min": 45, "max": 62, "spread": 17 },
+        "defenseInfantry": { "min": 45, "max": 60, "spread": 15 },
         "defenseCavalry": { "min": 10, "max": 10, "spread": 0 },
         "speed": { "min": 3, "max": 3, "spread": 0 },
         "carry": { "min": 0, "max": 0, "spread": 0 }
@@ -502,27 +502,27 @@
           "cost": { "wood": 650, "clay": 1030, "iron": 500, "crop": 110 }
         },
         "spartan": {
-          "stats": { "attack": 57, "defenseInfantry": 62, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-          "cost": { "wood": 1040, "clay": 1160, "iron": 980, "crop": 120 }
+          "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+          "cost": { "wood": 870, "clay": 970, "iron": 820, "crop": 100 }
         }
       }
     },
     "chief": {
       "preciseMedian": {
         "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 30600, "clay": 22550, "iron": 36600, "crop": 40000 },
+        "cost": { "wood": 30425, "clay": 22550, "iron": 36600, "crop": 39775 },
         "cropUpkeep": 4,
         "timeSeconds": 88172.5
       },
       "preciseMean": {
         "stats": { "attack": 43.3, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 4.3, "carry": 0 },
-        "cost": { "wood": 30008, "clay": 26825, "iron": 41567, "crop": 39333 },
+        "cost": { "wood": 29950, "clay": 26792, "iron": 41458, "crop": 39258 },
         "cropUpkeep": 4.2,
-        "timeSeconds": 88837
+        "timeSeconds": 88702
       },
       "playableInteger": {
         "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 30600, "clay": 22550, "iron": 36600, "crop": 40000 },
+        "cost": { "wood": 30425, "clay": 22550, "iron": 36600, "crop": 39775 },
         "cropUpkeep": 4,
         "timeSeconds": 88173
       },
@@ -556,26 +556,26 @@
         },
         "spartan": {
           "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-          "cost": { "wood": 27200, "clay": 17600, "iron": 57300, "crop": 38350 }
+          "cost": { "wood": 26850, "clay": 17400, "iron": 56650, "crop": 37900 }
         }
       }
     },
     "settler": {
       "preciseMedian": {
-        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3900, "clay": 4250, "iron": 3000, "crop": 4585 },
+        "stats": { "attack": 5, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3875, "clay": 4250, "iron": 3000, "crop": 4585 },
         "cropUpkeep": 1,
         "timeSeconds": 26075
       },
       "preciseMean": {
-        "stats": { "attack": 3.3, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3990, "clay": 4689, "iron": 3030, "crop": 5003 },
+        "stats": { "attack": 5, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3982, "clay": 4685, "iron": 3030, "crop": 4995 },
         "cropUpkeep": 1,
-        "timeSeconds": 27538
+        "timeSeconds": 28054
       },
       "playableInteger": {
-        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3900, "clay": 4250, "iron": 3000, "crop": 4585 },
+        "stats": { "attack": 5, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3875, "clay": 4250, "iron": 3000, "crop": 4585 },
         "cropUpkeep": 1,
         "timeSeconds": 26075
       },
@@ -608,8 +608,8 @@
           "cost": { "wood": 3150, "clay": 4300, "iron": 2500, "crop": 6750 }
         },
         "spartan": {
-          "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-          "cost": { "wood": 3900, "clay": 3775, "iron": 3750, "crop": 5400 }
+          "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+          "cost": { "wood": 3850, "clay": 3750, "iron": 3750, "crop": 5350 }
         }
       }
     }

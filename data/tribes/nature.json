@@ -15,63 +15,63 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Rat" },
-        "stats": { "attack": 21, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 7, "carry": 9 },
-        "cost": { "wood": 80, "clay": 75, "iron": 55, "crop": 50 },
-        "cropUpkeep": 0
+        "stats": { "attack": 10, "defenseInfantry": 25, "defenseCavalry": 20, "speed": 7, "carry": 9 },
+        "cost": { "wood": 50, "clay": 45, "iron": 35, "crop": 30 },
+        "cropUpkeep": 1
       }
     },
     {
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Spider" },
-        "stats": { "attack": 18, "defenseInfantry": 57, "defenseCavalry": 30, "speed": 6, "carry": 4 },
-        "cost": { "wood": 95, "clay": 100, "iron": 120, "crop": 40 },
-        "cropUpkeep": 0
+        "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 40, "speed": 6, "carry": 4 },
+        "cost": { "wood": 90, "clay": 95, "iron": 110, "crop": 35 },
+        "cropUpkeep": 1
       }
     },
     {
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Snake" },
-        "stats": { "attack": 16, "defenseInfantry": 44, "defenseCavalry": 78, "speed": 8, "carry": 8 },
-        "cost": { "wood": 115, "clay": 110, "iron": 140, "crop": 45 },
-        "cropUpkeep": 0
+        "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 60, "speed": 8, "carry": 8 },
+        "cost": { "wood": 165, "clay": 160, "iron": 200, "crop": 65 },
+        "cropUpkeep": 1
       }
     },
     {
       "ref": "scout",
       "overrides": {
         "name": { "en": "Bat" },
-        "stats": { "attack": 0, "defenseInfantry": 17, "defenseCavalry": 8, "speed": 18, "carry": 0 },
-        "cost": { "wood": 130, "clay": 125, "iron": 40, "crop": 40 },
-        "cropUpkeep": 0
+        "stats": { "attack": 80, "defenseInfantry": 66, "defenseCavalry": 50, "speed": 18, "carry": 0 },
+        "cost": { "wood": 1270, "clay": 1200, "iron": 390, "crop": 390 },
+        "cropUpkeep": 1
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Wild Boar" },
-        "stats": { "attack": 36, "defenseInfantry": 71, "defenseCavalry": 30, "speed": 14, "carry": 20 },
-        "cost": { "wood": 240, "clay": 215, "iron": 170, "crop": 60 },
-        "cropUpkeep": 0
+        "stats": { "attack": 50, "defenseInfantry": 70, "defenseCavalry": 33, "speed": 14, "carry": 20 },
+        "cost": { "wood": 280, "clay": 250, "iron": 200, "crop": 70 },
+        "cropUpkeep": 2
       }
     },
     {
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Wolf" },
-        "stats": { "attack": 117, "defenseInfantry": 46, "defenseCavalry": 43, "speed": 14, "carry": 21 },
-        "cost": { "wood": 340, "clay": 360, "iron": 360, "crop": 110 },
-        "cropUpkeep": 0
+        "stats": { "attack": 100, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 14, "carry": 21 },
+        "cost": { "wood": 370, "clay": 390, "iron": 390, "crop": 110 },
+        "cropUpkeep": 2
       }
     },
     {
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Bear" },
-        "stats": { "attack": 56, "defenseInfantry": 194, "defenseCavalry": 83, "speed": 11, "carry": 19 },
-        "cost": { "wood": 430, "clay": 450, "iron": 430, "crop": 110 },
-        "cropUpkeep": 0
+        "stats": { "attack": 250, "defenseInfantry": 140, "defenseCavalry": 200, "speed": 11, "carry": 19 },
+        "cost": { "wood": 920, "clay": 980, "iron": 920, "crop": 240 },
+        "cropUpkeep": 3
       }
     },
     {
@@ -79,9 +79,9 @@
       "overrides": {
         "name": { "en": "Crocodile" },
         "description": { "en": "Mapped to siege slot — heavy oasis predator." },
-        "stats": { "attack": 55, "defenseInfantry": 26, "defenseCavalry": 64, "speed": 4, "carry": 0 },
-        "cost": { "wood": 810, "clay": 320, "iron": 420, "crop": 60 },
-        "cropUpkeep": 0
+        "stats": { "attack": 450, "defenseInfantry": 380, "defenseCavalry": 240, "speed": 4, "carry": 0 },
+        "cost": { "wood": 6150, "clay": 2450, "iron": 3200, "crop": 500 },
+        "cropUpkeep": 3
       }
     },
     {
@@ -89,9 +89,9 @@
       "overrides": {
         "name": { "en": "Tiger" },
         "description": { "en": "Mapped to siege slot — high attack oasis beast." },
-        "stats": { "attack": 47, "defenseInfantry": 51, "defenseCavalry": 9, "speed": 3, "carry": 0 },
-        "cost": { "wood": 730, "clay": 1080, "iron": 470, "crop": 70 },
-        "cropUpkeep": 0
+        "stats": { "attack": 200, "defenseInfantry": 170, "defenseCavalry": 250, "speed": 3, "carry": 0 },
+        "cost": { "wood": 3850, "clay": 5700, "iron": 2500, "crop": 350 },
+        "cropUpkeep": 3
       }
     },
     {
@@ -99,9 +99,9 @@
       "overrides": {
         "name": { "en": "Elephant" },
         "description": { "en": "Strongest nature unit — cannot conquer villages in Travian." },
-        "stats": { "attack": 33, "defenseInfantry": 49, "defenseCavalry": 33, "speed": 4, "carry": 0 },
-        "cost": { "wood": 30900, "clay": 26700, "iron": 44950, "crop": 37900 },
-        "cropUpkeep": 0
+        "stats": { "attack": 600, "defenseInfantry": 440, "defenseCavalry": 520, "speed": 4, "carry": 0 },
+        "cost": { "wood": 371400, "clay": 320750, "iron": 540200, "crop": 455800 },
+        "cropUpkeep": 5
       }
     },
     {
@@ -109,9 +109,9 @@
       "overrides": {
         "name": { "en": "Herd" },
         "description": { "en": "Nature does not settle — placeholder for roster slot 11." },
-        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3475, "clay": 4500, "iron": 2325, "crop": 4200 },
-        "cropUpkeep": 0
+        "stats": { "attack": 0, "defenseInfantry": 60, "defenseCavalry": 60, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3000, "clay": 3850, "iron": 2000, "crop": 3600 },
+        "cropUpkeep": 1
       }
     }
   ],
@@ -139,8 +139,9 @@
   },
   "meta": {
     "balance": {
-      "model": "identity-budget",
-      "identity": "Oasis animals: no upkeep and no training queue, cleared by heroes rather than fought by armies.",
+      "model": "travian-canon",
+      "source": "Travian: Legends published unit tables",
+      "extendedSlot": "settler",
       "tier": "wild"
     }
   }

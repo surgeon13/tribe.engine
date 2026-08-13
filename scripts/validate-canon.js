@@ -108,11 +108,10 @@ for (const entry of index.tribes || []) {
     );
   }
   const cost = totalCost({ ...base[ref]?.cost, ...troop.overrides?.cost });
-  const dearest = Object.entries(canon.units)
-    .filter(([r]) => r !== "chief" && r !== "settler")
-    .map(([, u]) => totalCost(u.cost || {}))
-    .reduce((a, b) => Math.max(a, b), 0);
-  if (cost > dearest) {
+  const priced = Object.entries(canon.units).filter(([r, u]) => r !== "chief" && r !== "settler" && u.cost);
+  const dearest = priced.map(([, u]) => totalCost(u.cost)).reduce((a, b) => Math.max(a, b), 0);
+  // Only meaningful where Travian actually publishes what its units cost.
+  if (priced.length && cost > dearest) {
     warnings.push(
       `${id} — ${name} (${ref}) costs ${cost}, more than any unit Travian gives the tribe (${dearest})`
     );

@@ -1,9 +1,75 @@
 # Balance models for Tevel tribes
 
-## What the game runs on: identity budgets
+## First: eight tribes we do not balance
 
-Every troop table in `data/tribes/*.json` is generated from one model rather
-than hand-tuned per tribe. The contract is short:
+The Romans, Teutons, Gauls, Egyptians, Huns and Spartans are Travian's tribes,
+and the Natars and Nature are its NPCs. Their numbers are published, players
+know them by heart, and every combat calculator on the internet assumes them.
+We transcribe them; we do not tune them.
+
+| Piece | Where |
+|-------|-------|
+| The published tables | `data/balance/travian-canon.json` |
+| Loader and helpers | `lib/balance/canon.js` |
+| Gate that fails the build on drift | `npm run validate:canon` |
+
+Two rules follow from this, and both are enforced:
+
+1. **The canon does not move.** `validate-canon.js` compares every published
+   unit's name, stats, crop upkeep and — where the price is verified — cost
+   against the canon file. A Hun Marksman is 110/80/70. It once drifted to
+   142/46/42 through the generator, which is what prompted all of this.
+2. **The canonical tribes are exempt from the identity model below.** The
+   anchors that model prices against were measured *from* these tribes, so
+   holding them to it would be marking the ruler against the thing it measures.
+   They are skipped by the fairness band, the centerpiece rule, tier ordering
+   and filler detection.
+
+### The eleventh slot
+
+Travian gives each tribe ten units. Our roster has eleven, so exactly one slot
+per canonical tribe is ours to invent:
+
+| Tribe | Slot | Unit |
+|-------|------|------|
+| Rome | `cav_t3` | Equites Regales — the anvil Rome never had |
+| Teutons | `cav_t3` | Teutonic Raider — the plunder horse |
+| Gauls | `inf_t3` | Gaul Tracker — a third footman |
+| Egyptians | `cav_t3` | Royal Chariot — Egypt's only mounted attacker |
+| Huns | `inf_t3` | Hun Warrior — a footman who can hold a gate |
+| Spartans | `cav_t3` | Spartan Horseman — a flank guard |
+| Natars | `cav_t3` | Natarian Lancer |
+| Nature | `settler` | Herd |
+
+These are marked `extension` in the canon file and held by the same validator
+to **sitting alongside the published units rather than outclassing them**. An
+extension that out-weighs everything Travian gives its tribe fails the build.
+
+That is also why the canonical tribes have no centerpiece: Travian does not
+make every tribe's third horse its best one. Rome's third horse is our anvil
+and the Teutons' is our raider, so the rule is simply not applied to them —
+and not to the median tribe either, which is the per-slot median of exactly
+these rosters and honestly inherits the same shape.
+
+### Reading Travian's own tables
+
+The official comparison table at `support.travian.com` publishes **smithy
+level 20** values — it lists a Legionnaire at 52.4 attack where the base figure
+is 40. Those can be back-solved to base with
+
+```
+upgraded = base + (base + 300 * crop / 7) * 0.149
+```
+
+which reproduces every unit whose base figure is published independently. It is
+how the Egyptian, Spartan and Natar transcriptions were cross-checked against a
+second source, and it is worth re-deriving before trusting any new figure.
+
+## What the rest of the game runs on: identity budgets
+
+The other ten tribes are ours, and every troop table in `data/tribes/*.json` is
+generated from one model rather than hand-tuned per tribe. The contract is
+short:
 
 > **Identity is shape. Fairness is price.**
 > A tribe may put its power wherever it likes. Every point of power costs the

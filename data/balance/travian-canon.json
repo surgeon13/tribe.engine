@@ -33,6 +33,14 @@
     "natar": [
       "wikitravian.free.fr/voir.php?page=Natars",
       "support.travian.com/en/support/solutions/articles/7000094171 (defence values)"
+    ],
+    "spartan": [
+      "travian.fandom.com/wiki/Troops",
+      "support.travian.com/en/articles/187 (level-20 table, back-solved to base)"
+    ],
+    "nature": [
+      "support.kingdoms.com/en/articles/115-nature",
+      "wikitravian.free.fr/voir.php?page=Animals"
     ]
   },
   "$smithy": [
@@ -178,6 +186,53 @@
           "$comment": "Ours, not Travian's. A second Natarian horse between the Axerider and the Knight — enough to make an artefact village hurt, well short of the Warelephant.",
           "stats": { "attack": 160, "defenseInfantry": 70, "defenseCavalry": 95, "speed": 13, "carry": 10 },
           "cropUpkeep": 3
+        }
+      }
+    },
+    "spartan": {
+      "extendedSlot": "cav_t3",
+      "units": {
+        "inf_t1": { "name": "Hoplite", "stats": { "attack": 50, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 6, "carry": 60 }, "cropUpkeep": 1 },
+        "inf_t2": { "name": "Shieldsman", "stats": { "attack": 40, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 8, "carry": 40 }, "cropUpkeep": 1 },
+        "inf_t3": { "name": "Twinsteel Therion", "stats": { "attack": 90, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 }, "cropUpkeep": 1 },
+        "scout": { "name": "Sentinel", "stats": { "attack": 0, "defenseInfantry": 40, "defenseCavalry": 22, "speed": 9, "carry": 0 }, "cropUpkeep": 1 },
+        "cav_t1": { "name": "Elpida Rider", "stats": { "attack": 55, "defenseInfantry": 120, "defenseCavalry": 90, "speed": 16, "carry": 110 }, "cropUpkeep": 2 },
+        "cav_t2": { "name": "Corinthian Crusher", "stats": { "attack": 195, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 9, "carry": 80 }, "cropUpkeep": 3 },
+        "ram": { "name": "Ram", "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 80, "speed": 4, "carry": 0 }, "cropUpkeep": 3 },
+        "catapult": { "name": "Ballista", "stats": { "attack": 50, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 }, "cropUpkeep": 6 },
+        "chief": { "name": "Ephor", "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 }, "cropUpkeep": 4 },
+        "settler": { "name": "Settler", "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 }, "cropUpkeep": 1 }
+      },
+      "extension": {
+        "cav_t3": {
+          "name": "Spartan Horseman",
+          "$comment": "Ours, not Travian's. Sparta trusts its shield wall and keeps two horses; this is the third, a flank guard that neither out-charges the Crusher nor out-holds the Elpida.",
+          "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 80, "speed": 12, "carry": 70 },
+          "cropUpkeep": 2
+        }
+      }
+    },
+    "nature": {
+      "extendedSlot": "settler",
+      "$comment": "Oasis animals. Travian publishes their combat values and crop, but they never move and cannot be trained, so speed, carry and price are left to our model rather than invented here.",
+      "units": {
+        "inf_t1": { "name": "Rat", "stats": { "attack": 10, "defenseInfantry": 25, "defenseCavalry": 20 }, "cropUpkeep": 1 },
+        "inf_t2": { "name": "Spider", "stats": { "attack": 20, "defenseInfantry": 35, "defenseCavalry": 40 }, "cropUpkeep": 1 },
+        "inf_t3": { "name": "Snake", "stats": { "attack": 60, "defenseInfantry": 40, "defenseCavalry": 60 }, "cropUpkeep": 1 },
+        "scout": { "name": "Bat", "stats": { "attack": 80, "defenseInfantry": 66, "defenseCavalry": 50 }, "cropUpkeep": 1 },
+        "cav_t1": { "name": "Wild Boar", "stats": { "attack": 50, "defenseInfantry": 70, "defenseCavalry": 33 }, "cropUpkeep": 2 },
+        "cav_t2": { "name": "Wolf", "stats": { "attack": 100, "defenseInfantry": 80, "defenseCavalry": 70 }, "cropUpkeep": 2 },
+        "cav_t3": { "name": "Bear", "stats": { "attack": 250, "defenseInfantry": 140, "defenseCavalry": 200 }, "cropUpkeep": 3 },
+        "ram": { "name": "Crocodile", "stats": { "attack": 450, "defenseInfantry": 380, "defenseCavalry": 240 }, "cropUpkeep": 3 },
+        "catapult": { "name": "Tiger", "stats": { "attack": 200, "defenseInfantry": 170, "defenseCavalry": 250 }, "cropUpkeep": 3 },
+        "chief": { "name": "Elephant", "stats": { "attack": 600, "defenseInfantry": 440, "defenseCavalry": 520 }, "cropUpkeep": 5 }
+      },
+      "extension": {
+        "settler": {
+          "name": "Herd",
+          "$comment": "Ours, not Travian's. Wildlife does not settle, so the slot holds the herd an oasis grows back with.",
+          "stats": { "attack": 0, "defenseInfantry": 60, "defenseCavalry": 60 },
+          "cropUpkeep": 1
         }
       }
     }

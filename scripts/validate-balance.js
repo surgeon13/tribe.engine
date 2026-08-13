@@ -144,6 +144,11 @@ const tierPower = (tier) => POWER_TIERS[tier] ?? 1;
 const strongestPlayer = Math.max(...players.map((t) => t.power));
 for (const t of tribes) {
   if (t.tier === "player" || t.tier === "unspecified") continue;
+  // Nature and the Natars are as strong as Travian makes them. An oasis
+  // elephant really does out-fight anything a player can field one-for-one,
+  // so the wildlife-sits-below-players rule was an artefact of the weakened
+  // numbers we used to generate, not something to hold the real ones to.
+  if (t.canon) continue;
   const expected = tierPower(t.tier);
   if (expected > 1 && t.power <= strongestPlayer) {
     errors.push(
@@ -296,6 +301,11 @@ for (const t of tribes) {
     }
     if ((u.cropUpkeep ?? 0) < 0) errors.push(`${t.id}/${ref} — negative crop upkeep`);
   }
+  // Travian's roster is not ours to reorder, and the eleventh slot we add to it
+  // is deliberately not the family's best — that is the whole point of holding
+  // an extension to sitting alongside the published units. The median inherits
+  // the same shape, being the per-slot median of exactly those rosters.
+  if (t.canon || t.tier === "unspecified") continue;
   for (const family of [["inf_t1", "inf_t2", "inf_t3"], ["cav_t1", "cav_t2", "cav_t3"]]) {
     const tiers = family.map((ref) => t.troops.get(ref)).filter(Boolean);
     if (tiers.length < 3) continue;

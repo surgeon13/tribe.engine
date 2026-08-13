@@ -40,19 +40,24 @@ const { calibration, tables } = buildAllTables();
  * sit alongside them instead of towering over them.
  * @param {string} id
  */
-function canonTable(id) {
+function canonTable(id, generated) {
   const tribe = TRAVIAN_CANON.tribes[id];
   const spec = TRIBE_IDENTITIES[id];
   const out = {};
   for (const [ref, unit] of Object.entries({ ...tribe.units, ...tribe.extension })) {
-    // Wildlife cannot be trained, so Travian publishes no price for it. Those
-    // slots get one from our own pricing model, applied to the real stats.
-    const priced = unit.cost && unit.cropUpkeep != null ? null : priceUnit(ref, unit.stats, spec);
+    // Anything the canon leaves out stays with our model. Travian publishes no
+    // meaningful speed or carry for oasis animals, which never move, and no
+    // price for anything that cannot be trained.
+    const stats = { ...generated?.[ref]?.stats, ...unit.stats };
+    const priced =
+      unit.cost && unit.cropUpkeep != null && unit.timeSeconds != null
+        ? null
+        : priceUnit(ref, stats, spec);
     out[ref] = {
-      stats: unit.stats,
+      stats,
       cost: unit.cost ?? priced.cost,
       cropUpkeep: unit.cropUpkeep ?? priced.cropUpkeep,
-      timeSeconds: unit.timeSeconds ?? priced?.timeSeconds,
+      timeSeconds: unit.timeSeconds ?? priced.timeSeconds,
     };
   }
   return out;
@@ -66,7 +71,7 @@ for (const entry of index.tribes || []) {
   const rel = `tribes/${entry.file}`;
   const doc = readJson(rel);
   const id = entry.id || doc.tribe?.id;
-  const table = isCanonTribe(id) ? canonTable(id) : tables[id];
+  const table = isCanonTribe(id) ? canonTable(id, tables[id]) : tables[id];
   if (!table) {
     console.warn(`  skipped ${id} — no identity spec`);
     continue;
