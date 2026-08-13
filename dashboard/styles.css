@@ -2004,9 +2004,24 @@ body.tribe-editing #troop-table thead th {
   height: auto;
 }
 
+.compare-radar-rank-head {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  gap: 8px;
+  width: 100%;
+  margin-top: 6px;
+  padding: 0 5px 3px;
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .compare-radar-rank {
   width: 100%;
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   padding: 0;
   list-style: none;
   display: flex;

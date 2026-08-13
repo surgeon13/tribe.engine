@@ -1427,6 +1427,17 @@ function renderCompareGraphSlots(tribes) {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     card.append(svg);
 
+    // The rating is a made-up scale, so the column says so. Without a heading
+    // it reads as a mystery number sitting next to a unit name.
+    const listHead = document.createElement("div");
+    listHead.className = "compare-radar-rank-head";
+    listHead.innerHTML = `
+      <span></span>
+      <span>Unit</span>
+      <b title="Average of all ${axes.length} axes, each scored against the best any tribe reaches in this slot">Rating /100</b>
+    `;
+    card.append(listHead);
+
     const list = document.createElement("ol");
     list.className = "compare-radar-rank";
     list.innerHTML = entries
