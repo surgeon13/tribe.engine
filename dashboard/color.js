@@ -76,6 +76,55 @@ export function readableInkOn(background, dark = "#14161a", light = "#f7f9fc") {
 }
 
 /**
+ * CIELAB, for asking "do these two tribes look like the same color?" — RGB
+ * distance says yes to pairs the eye separates easily and no to pairs it cannot.
+ * @param {string} hex
+ * @returns {{ L: number, a: number, b: number } | null}
+ */
+export function hexToLab(hex) {
+  const rgb = parseHex(hex);
+  if (!rgb) return null;
+  const [r, g, b] = [rgb.r, rgb.g, rgb.b].map(linearize);
+  // sRGB D65 → XYZ, then normalized against the D65 white point.
+  const x = (0.4124 * r + 0.3576 * g + 0.1805 * b) / 0.95047;
+  const y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  const z = (0.0193 * r + 0.1192 * g + 0.9505 * b) / 1.08883;
+  const f = (t) => (t > 216 / 24389 ? Math.cbrt(t) : (841 / 108) * t + 4 / 29);
+  const [fx, fy, fz] = [f(x), f(y), f(z)];
+  return { L: 116 * fy - 16, a: 500 * (fx - fy), b: 200 * (fy - fz) };
+}
+
+/**
+ * CIE76 color difference. Roughly: under ~2.3 is invisible, ~10 is a subtle
+ * shade change, over ~30 reads as a different color.
+ * @param {string} a
+ * @param {string} b
+ * @returns {number} NaN for unparseable input
+ */
+export function deltaE(a, b) {
+  const la = hexToLab(a);
+  const lb = hexToLab(b);
+  if (!la || !lb) return NaN;
+  return Math.hypot(la.L - lb.L, la.a - lb.a, la.b - lb.b);
+}
+
+/**
+ * Hue angle in degrees, plus how colorful the color is. Near-neutral colors
+ * (chroma under ~10) have no meaningful hue, so they compare as "neutral".
+ * @param {string} hex
+ * @returns {{ hue: number, chroma: number, lightness: number } | null}
+ */
+export function hueOf(hex) {
+  const lab = hexToLab(hex);
+  if (!lab) return null;
+  return {
+    hue: (Math.atan2(lab.b, lab.a) * (180 / Math.PI) + 360) % 360,
+    chroma: Math.hypot(lab.a, lab.b),
+    lightness: lab.L,
+  };
+}
+
+/**
  * @param {string} hex
  * @returns {{ h: number, s: number, l: number } | null} h 0–360, s/l 0–100
  */

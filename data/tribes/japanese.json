@@ -13,8 +13,8 @@
     }
   },
   "palette": {
-    "primary": "#8B1A1A",
-    "secondary": "#F5F0E6"
+    "primary": "#D62828",
+    "secondary": "#FBF7ED"
   },
   "buildings": {
     "usePalette": true,
