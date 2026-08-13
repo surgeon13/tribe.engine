@@ -80,6 +80,29 @@ function medianPalette() {
   return { primary: "#5E6E86", secondary: "#EDF1F6", notes: "Neutral baseline — slate + pale steel" };
 }
 
+/**
+ * Same story as the palette: refresh-troop-logos.js spreads icons across the
+ * whole roster so no two tribes share one, and re-registering median must not
+ * pull its icons back out from under that.
+ */
+function medianLogos() {
+  const existing = readJson("tribe-logos.json").tribes?.median;
+  if (existing && Object.keys(existing).length) return existing;
+  return {
+    inf_t1: "infantry/stone-spear.svg",
+    inf_t2: "infantry/battle-axe.svg",
+    inf_t3: "infantry/gladius.svg",
+    scout: "infantry/heavy-arrow.svg",
+    cav_t1: "cavalry/horse-head.svg",
+    cav_t2: "cavalry/chess-knight.svg",
+    cav_t3: "cavalry/donkey.svg",
+    ram: "rams/siege-ram.svg",
+    catapult: "catapults/catapult.svg",
+    chief: "chiefs/scepter.svg",
+    settler: "settlers/farmer.svg",
+  };
+}
+
 function median(arr) {
   const a = [...arr].sort((x, y) => x - y);
   const m = Math.floor(a.length / 2);
@@ -340,19 +363,7 @@ function main() {
     writeJson("tribe-training.json", training);
 
     const logos = readJson("tribe-logos.json");
-    logos.tribes.median = {
-      inf_t1: "infantry/stone-spear.svg",
-      inf_t2: "infantry/battle-axe.svg",
-      inf_t3: "infantry/gladius.svg",
-      scout: "infantry/heavy-arrow.svg",
-      cav_t1: "cavalry/horse-head.svg",
-      cav_t2: "cavalry/chess-knight.svg",
-      cav_t3: "cavalry/donkey.svg",
-      ram: "rams/siege-ram.svg",
-      catapult: "catapults/catapult.svg",
-      chief: "chiefs/scepter.svg",
-      settler: "settlers/farmer.svg",
-    };
+    logos.tribes.median = medianLogos();
     writeJson("tribe-logos.json", logos);
 
     const heroSystem = readJson("hero.system.json");
