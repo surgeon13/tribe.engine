@@ -13,6 +13,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { formatJson } from "../lib/json-format.js";
 import { resolveTribe } from "../lib/merge.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -65,7 +66,18 @@ function readJson(rel) {
 function writeJson(rel, value) {
   const filePath = path.join(dataDir, rel);
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  fs.writeFileSync(filePath, formatJson(value), "utf8");
+}
+
+/**
+ * The catalog owns tribe colors — the distinctness gate in
+ * scripts/validate-palettes.js balances all eighteen against each other, so
+ * re-registering median must not overwrite whatever it settled on.
+ */
+function medianPalette() {
+  const existing = readJson("tribes/palettes.json").palettes?.median;
+  if (existing?.primary && existing?.secondary) return existing;
+  return { primary: "#5E6E86", secondary: "#EDF1F6", notes: "Neutral baseline — slate + pale steel" };
 }
 
 function median(arr) {
@@ -259,8 +271,8 @@ function main() {
       graphics: { banner: "tribes/median/banner.png" },
     },
     palette: {
-      primary: "#4A5568",
-      secondary: "#A0AEC0",
+      primary: medianPalette().primary,
+      secondary: medianPalette().secondary,
     },
     buildings: {
       usePalette: true,
@@ -311,11 +323,7 @@ function main() {
     }
 
     const palettes = readJson("tribes/palettes.json");
-    palettes.palettes.median = {
-      primary: "#4A5568",
-      secondary: "#A0AEC0",
-      notes: "Neutral baseline — slate",
-    };
+    palettes.palettes.median = medianPalette();
     writeJson("tribes/palettes.json", palettes);
 
     const training = readJson("tribe-training.json");
