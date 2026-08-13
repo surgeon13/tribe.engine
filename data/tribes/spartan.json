@@ -6,25 +6,17 @@
     "id": "spartan",
     "name": { "en": "Spartans" },
     "theme": "Crop-efficient defense, infantry scout, elite late-game hammer",
-    "graphics": {
-      "banner": "tribes/spartan/banner.png"
-    }
+    "graphics": { "banner": "tribes/spartan/banner.png" }
   },
-  "palette": {
-    "primary": "#D98A38",
-    "secondary": "#4A0E12"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/spartan/buildings"
-  },
+  "palette": { "primary": "#D98A38", "secondary": "#4A0E12" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/spartan/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Hoplite" },
-        "stats": { "attack": 50, "defenseInfantry": 46, "defenseCavalry": 40, "speed": 6, "carry": 50 },
-        "cost": { "wood": 120, "clay": 100, "iron": 150, "crop": 30 },
+        "stats": { "attack": 41, "defenseInfantry": 43, "defenseCavalry": 51, "speed": 6, "carry": 41 },
+        "cost": { "wood": 165, "clay": 115, "iron": 165, "crop": 120 },
         "cropUpkeep": 1
       }
     },
@@ -32,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Shieldsman" },
-        "stats": { "attack": 52, "defenseInfantry": 104, "defenseCavalry": 58, "speed": 8, "carry": 30 },
-        "cost": { "wood": 130, "clay": 150, "iron": 180, "crop": 70 },
+        "stats": { "attack": 35, "defenseInfantry": 84, "defenseCavalry": 43, "speed": 5, "carry": 20 },
+        "cost": { "wood": 170, "clay": 135, "iron": 315, "crop": 80 },
         "cropUpkeep": 1
       }
     },
@@ -41,9 +33,9 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Twinsteel Therion" },
-        "stats": { "attack": 110, "defenseInfantry": 70, "defenseCavalry": 52, "speed": 6, "carry": 50 },
-        "cost": { "wood": 200, "clay": 180, "iron": 250, "crop": 90 },
-        "cropUpkeep": 2
+        "stats": { "attack": 87, "defenseInfantry": 52, "defenseCavalry": 38, "speed": 7, "carry": 45 },
+        "cost": { "wood": 250, "clay": 180, "iron": 440, "crop": 110 },
+        "cropUpkeep": 1
       }
     },
     {
@@ -51,17 +43,17 @@
       "overrides": {
         "name": { "en": "Sentinel" },
         "description": { "en": "Infantry scout — 1 crop/h, strong vs enemy scouts." },
-        "stats": { "attack": 0, "defenseInfantry": 52, "defenseCavalry": 31, "speed": 9, "carry": 0 },
-        "cost": { "wood": 125, "clay": 105, "iron": 155, "crop": 35 },
-        "cropUpkeep": 1
+        "stats": { "attack": 0, "defenseInfantry": 25, "defenseCavalry": 12, "speed": 16, "carry": 0 },
+        "cost": { "wood": 225, "clay": 160, "iron": 100, "crop": 80 },
+        "cropUpkeep": 2
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Elpida Rider" },
-        "stats": { "attack": 76, "defenseInfantry": 151, "defenseCavalry": 116, "speed": 16, "carry": 50 },
-        "cost": { "wood": 400, "clay": 500, "iron": 350, "crop": 120 },
+        "stats": { "attack": 54, "defenseInfantry": 104, "defenseCavalry": 44, "speed": 12, "carry": 111 },
+        "cost": { "wood": 350, "clay": 230, "iron": 360, "crop": 100 },
         "cropUpkeep": 2
       }
     },
@@ -69,9 +61,9 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Corinthian Crusher" },
-        "stats": { "attack": 243, "defenseInfantry": 111, "defenseCavalry": 105, "speed": 9, "carry": 50 },
-        "cost": { "wood": 550, "clay": 650, "iron": 600, "crop": 180 },
-        "cropUpkeep": 4
+        "stats": { "attack": 172, "defenseInfantry": 67, "defenseCavalry": 62, "speed": 13, "carry": 73 },
+        "cost": { "wood": 480, "clay": 390, "iron": 750, "crop": 170 },
+        "cropUpkeep": 3
       }
     },
     {
@@ -79,8 +71,8 @@
       "overrides": {
         "name": { "en": "Spartan Horseman" },
         "description": { "en": "Tevel slot 7 — completes three cavalry slots for Spartans." },
-        "stats": { "attack": 130, "defenseInfantry": 90, "defenseCavalry": 85, "speed": 12, "carry": 60 },
-        "cost": { "wood": 480, "clay": 520, "iron": 450, "crop": 140 },
+        "stats": { "attack": 196, "defenseInfantry": 74, "defenseCavalry": 68, "speed": 12, "carry": 65 },
+        "cost": { "wood": 690, "clay": 550, "iron": 990, "crop": 210 },
         "cropUpkeep": 3
       }
     },
@@ -88,8 +80,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Ram" },
-        "stats": { "attack": 60, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
-        "cost": { "wood": 900, "clay": 360, "iron": 500, "crop": 70 },
+        "stats": { "attack": 67, "defenseInfantry": 31, "defenseCavalry": 78, "speed": 4, "carry": 0 },
+        "cost": { "wood": 950, "clay": 290, "iron": 720, "crop": 90 },
         "cropUpkeep": 3
       }
     },
@@ -97,17 +89,17 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Catapult" },
-        "stats": { "attack": 70, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 960, "clay": 1450, "iron": 630, "crop": 90 },
-        "cropUpkeep": 6
+        "stats": { "attack": 57, "defenseInfantry": 62, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 1040, "clay": 1160, "iron": 980, "crop": 120 },
+        "cropUpkeep": 5
       }
     },
     {
       "ref": "chief",
       "overrides": {
         "name": { "en": "Ephor" },
-        "stats": { "attack": 45, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 5, "carry": 0 },
-        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 27200, "clay": 17600, "iron": 57300, "crop": 38350 },
         "cropUpkeep": 4
       }
     },
@@ -116,7 +108,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3500, "clay": 4500, "iron": 2300, "crop": 4200 },
+        "cost": { "wood": 3900, "clay": 3775, "iron": 3750, "crop": 5400 },
         "cropUpkeep": 1
       }
     }
@@ -131,11 +123,22 @@
     "stats": { "attack": 110, "defenseInfantry": 150, "defenseCavalry": 90, "speed": 8, "carry": 80 },
     "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
-    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
     "graphics": {
       "sprite": "tribes/spartan/hero/hero.png",
       "icon": "tribes/spartan/hero/hero_icon.png",
       "portrait": "tribes/spartan/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "balance": {
+      "model": "identity-budget",
+      "identity": "Crop-efficient professionals: the fewest mouths per point of power, and the longest queue.",
+      "tier": "player"
     }
   }
 }

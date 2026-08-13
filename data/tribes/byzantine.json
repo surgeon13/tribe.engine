@@ -4,314 +4,127 @@
   "game": "Tevel",
   "tribe": {
     "id": "byzantine",
-    "name": {
-      "en": "Byzantines"
-    },
+    "name": { "en": "Byzantines" },
     "theme": "Cataphracts, disciplined themes, and combined-arms doctrine (Eastern Roman Empire (6th–11th c. CE), Anatolia / Balkans / eastern Mediterranean)",
-    "graphics": {
-      "banner": "tribes/byzantine/banner.png"
-    }
+    "graphics": { "banner": "tribes/byzantine/banner.png" }
   },
-  "palette": {
-    "primary": "#1F3878",
-    "secondary": "#D2A238"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/byzantine/buildings"
-  },
+  "palette": { "primary": "#1F3878", "secondary": "#D2A238" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/byzantine/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
-        "name": {
-          "en": "Skoutatos"
-        },
-        "stats": {
-          "attack": 38,
-          "defenseInfantry": 50,
-          "defenseCavalry": 55,
-          "speed": 5,
-          "carry": 45
-        },
-        "cost": {
-          "wood": 125,
-          "clay": 110,
-          "iron": 155,
-          "crop": 40
-        },
+        "name": { "en": "Skoutatos" },
+        "stats": { "attack": 36, "defenseInfantry": 37, "defenseCavalry": 44, "speed": 6, "carry": 44 },
+        "cost": { "wood": 105, "clay": 140, "iron": 110, "crop": 80 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/gladius.svg"
-        },
-        "description": {
-          "en": "Thematic heavy infantry with spear and large shield."
-        }
+        "graphics": { "logo": "infantry/gladius.svg" },
+        "description": { "en": "Thematic heavy infantry with spear and large shield." }
       }
     },
     {
       "ref": "inf_t2",
       "overrides": {
-        "name": {
-          "en": "Peltast"
-        },
-        "stats": {
-          "attack": 40,
-          "defenseInfantry": 35,
-          "defenseCavalry": 30,
-          "speed": 8,
-          "carry": 35
-        },
-        "cost": {
-          "wood": 115,
-          "clay": 95,
-          "iron": 90,
-          "crop": 45
-        },
+        "name": { "en": "Peltast" },
+        "stats": { "attack": 13, "defenseInfantry": 37, "defenseCavalry": 66, "speed": 7, "carry": 39 },
+        "cost": { "wood": 60, "clay": 95, "iron": 120, "crop": 30 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/stone-spear.svg"
-        },
-        "description": {
-          "en": "Javelin light infantry screening the line."
-        }
+        "graphics": { "logo": "infantry/stone-spear.svg" },
+        "description": { "en": "Javelin light infantry screening the line." }
       }
     },
     {
       "ref": "inf_t3",
       "overrides": {
-        "name": {
-          "en": "Optimatoi"
-        },
-        "stats": {
-          "attack": 60,
-          "defenseInfantry": 35,
-          "defenseCavalry": 25,
-          "speed": 7,
-          "carry": 40
-        },
-        "cost": {
-          "wood": 155,
-          "clay": 140,
-          "iron": 120,
-          "crop": 70
-        },
+        "name": { "en": "Optimatoi" },
+        "stats": { "attack": 78, "defenseInfantry": 45, "defenseCavalry": 33, "speed": 7, "carry": 49 },
+        "cost": { "wood": 170, "clay": 240, "iron": 330, "crop": 90 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/crossbow.svg"
-        },
-        "description": {
-          "en": "Professional archers of the tagmata / themes."
-        }
+        "graphics": { "logo": "infantry/crossbow.svg" },
+        "description": { "en": "Professional archers of the tagmata / themes." }
       }
     },
     {
       "ref": "scout",
       "overrides": {
-        "name": {
-          "en": "Akritai Scout"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 22,
-          "defenseCavalry": 12,
-          "speed": 16,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 145,
-          "clay": 160,
-          "iron": 25,
-          "crop": 45
-        },
+        "name": { "en": "Akritai Scout" },
+        "stats": { "attack": 0, "defenseInfantry": 21, "defenseCavalry": 11, "speed": 16, "carry": 0 },
+        "cost": { "wood": 135, "clay": 180, "iron": 65, "crop": 50 },
         "cropUpkeep": 2,
-        "graphics": {
-          "logo": "infantry/double-shot.svg"
-        }
+        "graphics": { "logo": "infantry/double-shot.svg" }
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
-        "name": {
-          "en": "Light Horse"
-        },
-        "stats": {
-          "attack": 125,
-          "defenseInfantry": 60,
-          "defenseCavalry": 55,
-          "speed": 15,
-          "carry": 95
-        },
-        "cost": {
-          "wood": 540,
-          "clay": 430,
-          "iron": 330,
-          "crop": 105
-        },
+        "name": { "en": "Light Horse" },
+        "stats": { "attack": 134, "defenseInfantry": 60, "defenseCavalry": 55, "speed": 15, "carry": 93 },
+        "cost": { "wood": 410, "clay": 520, "iron": 460, "crop": 130 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "cavalry/horse-head.svg"
-        },
-        "description": {
-          "en": "Light cavalry for pursuit and screening."
-        }
+        "graphics": { "logo": "cavalry/horse-head.svg" },
+        "description": { "en": "Light cavalry for pursuit and screening." }
       }
     },
     {
       "ref": "cav_t2",
       "overrides": {
-        "name": {
-          "en": "Kataphraktos"
-        },
-        "stats": {
-          "attack": 190,
-          "defenseInfantry": 90,
-          "defenseCavalry": 110,
-          "speed": 9,
-          "carry": 60
-        },
-        "cost": {
-          "wood": 580,
-          "clay": 680,
-          "iron": 850,
-          "crop": 200
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "cavalry/chess-knight.svg"
-        },
-        "description": {
-          "en": "Fully armored shock cavalry — Byzantine signature."
-        }
+        "name": { "en": "Kataphraktos" },
+        "stats": { "attack": 163, "defenseInfantry": 68, "defenseCavalry": 62, "speed": 13, "carry": 79 },
+        "cost": { "wood": 360, "clay": 560, "iron": 600, "crop": 140 },
+        "cropUpkeep": 3,
+        "graphics": { "logo": "cavalry/chess-knight.svg" },
+        "description": { "en": "Fully armored shock cavalry — Byzantine signature." }
       }
     },
     {
       "ref": "cav_t3",
       "overrides": {
-        "name": {
-          "en": "Scholai Cavalry"
-        },
-        "stats": {
-          "attack": 175,
-          "defenseInfantry": 95,
-          "defenseCavalry": 115,
-          "speed": 8,
-          "carry": 55
-        },
-        "cost": {
-          "wood": 600,
-          "clay": 700,
-          "iron": 900,
-          "crop": 210
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "cavalry/cavalry.svg"
-        },
-        "description": {
-          "en": "Super-heavy household cavalry."
-        }
+        "name": { "en": "Scholai Cavalry" },
+        "stats": { "attack": 180, "defenseInfantry": 74, "defenseCavalry": 192, "speed": 13, "carry": 54 },
+        "cost": { "wood": 570, "clay": 870, "iron": 880, "crop": 190 },
+        "cropUpkeep": 4,
+        "graphics": { "logo": "cavalry/cavalry.svg" },
+        "description": { "en": "Super-heavy household cavalry." }
       }
     },
     {
       "ref": "ram",
       "overrides": {
-        "name": {
-          "en": "Battering Ram"
-        },
-        "stats": {
-          "attack": 60,
-          "defenseInfantry": 35,
-          "defenseCavalry": 75,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 920,
-          "clay": 370,
-          "iron": 510,
-          "crop": 75
-        },
+        "name": { "en": "Battering Ram" },
+        "stats": { "attack": 74, "defenseInfantry": 34, "defenseCavalry": 86, "speed": 4, "carry": 0 },
+        "cost": { "wood": 1000, "clay": 580, "iron": 810, "crop": 100 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "rams/siege-tower.svg"
-        }
+        "graphics": { "logo": "rams/siege-tower.svg" }
       }
     },
     {
       "ref": "catapult",
       "overrides": {
-        "name": {
-          "en": "Mangonel"
-        },
-        "stats": {
-          "attack": 80,
-          "defenseInfantry": 65,
-          "defenseCavalry": 10,
-          "speed": 3,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 980,
-          "clay": 1400,
-          "iron": 620,
-          "crop": 95
-        },
+        "name": { "en": "Mangonel" },
+        "stats": { "attack": 63, "defenseInfantry": 69, "defenseCavalry": 11, "speed": 3, "carry": 0 },
+        "cost": { "wood": 790, "clay": 1690, "iron": 800, "crop": 100 },
         "cropUpkeep": 6,
-        "graphics": {
-          "logo": "catapults/ballista.svg"
-        }
+        "graphics": { "logo": "catapults/ballista.svg" }
       }
     },
     {
       "ref": "chief",
       "overrides": {
-        "name": {
-          "en": "Strategos"
-        },
-        "stats": {
-          "attack": 50,
-          "defenseInfantry": 45,
-          "defenseCavalry": 35,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 32000,
-          "clay": 28000,
-          "iron": 46000,
-          "crop": 38000
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "chiefs/war-standard.svg"
-        }
+        "name": { "en": "Strategos" },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 23200, "clay": 28850, "iron": 52800, "crop": 35600 },
+        "cropUpkeep": 4,
+        "graphics": { "logo": "chiefs/war-standard.svg" }
       }
     },
     {
       "ref": "settler",
       "overrides": {
-        "name": {
-          "en": "Colonist"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 80,
-          "defenseCavalry": 80,
-          "speed": 5,
-          "carry": 3000
-        },
-        "cost": {
-          "wood": 5900,
-          "clay": 5400,
-          "iron": 7300,
-          "crop": 5600
-        },
+        "name": { "en": "Colonist" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 2900, "clay": 5375, "iron": 3025, "crop": 4375 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "settlers/old-wagon.svg"
-        }
+        "graphics": { "logo": "settlers/old-wagon.svg" }
       }
     }
   ],
@@ -320,26 +133,11 @@
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
-    "name": {
-      "en": "Byzantine Hero"
-    },
-    "description": {
-      "en": "Theme commander schooled in combined arms and siege."
-    },
+    "name": { "en": "Byzantine Hero" },
+    "description": { "en": "Theme commander schooled in combined arms and siege." },
     "isBase": false,
-    "stats": {
-      "attack": 110,
-      "defenseInfantry": 125,
-      "defenseCavalry": 115,
-      "speed": 8,
-      "carry": 100
-    },
-    "cost": {
-      "wood": 0,
-      "clay": 0,
-      "iron": 0,
-      "crop": 0
-    },
+    "stats": { "attack": 110, "defenseInfantry": 125, "defenseCavalry": 115, "speed": 8, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
     "training": {
       "building": "hero_mansion",
@@ -362,10 +160,11 @@
     "regeneratedAt": "2026-08-12T06:15:23.639Z",
     "archetype": "cavalry",
     "flavorId": "byzantine",
-    "algorithms": [
-      "troop-lexicon",
-      "culture-profile-stats",
-      "game-icons-logos"
-    ]
+    "algorithms": ["troop-lexicon", "culture-profile-stats", "game-icons-logos"],
+    "balance": {
+      "model": "identity-budget",
+      "identity": "Combined arms: no weak slot anywhere, and cataphracts that defend as well as they charge.",
+      "tier": "player"
+    }
   }
 }

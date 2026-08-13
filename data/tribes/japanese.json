@@ -4,305 +4,124 @@
   "game": "Tevel",
   "tribe": {
     "id": "japanese",
-    "name": {
-      "en": "Japanese"
-    },
+    "name": { "en": "Japanese" },
     "theme": "Ashigaru masses, samurai quality, weak native cavalry tradition (Sengoku / late medieval Japan (15th–16th c. CE), Japanese archipelago)",
-    "graphics": {
-      "banner": "tribes/japanese/banner.png"
-    }
+    "graphics": { "banner": "tribes/japanese/banner.png" }
   },
-  "palette": {
-    "primary": "#D62828",
-    "secondary": "#FBF7ED"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/japanese/buildings"
-  },
+  "palette": { "primary": "#D62828", "secondary": "#FBF7ED" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/japanese/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
-        "name": {
-          "en": "Ashigaru Spearman"
-        },
-        "stats": {
-          "attack": 35,
-          "defenseInfantry": 45,
-          "defenseCavalry": 55,
-          "speed": 6,
-          "carry": 40
-        },
-        "cost": {
-          "wood": 100,
-          "clay": 85,
-          "iron": 100,
-          "crop": 35
-        },
+        "name": { "en": "Ashigaru Spearman" },
+        "stats": { "attack": 11, "defenseInfantry": 33, "defenseCavalry": 58, "speed": 7, "carry": 37 },
+        "cost": { "wood": 80, "clay": 50, "iron": 65, "crop": 45 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/stone-spear.svg"
-        },
-        "description": {
-          "en": "Pike ashigaru — backbone of Sengoku armies."
-        }
+        "graphics": { "logo": "infantry/stone-spear.svg" },
+        "description": { "en": "Pike ashigaru — backbone of Sengoku armies." }
       }
     },
     {
       "ref": "inf_t2",
       "overrides": {
-        "name": {
-          "en": "Ashigaru Archer"
-        },
-        "stats": {
-          "attack": 50,
-          "defenseInfantry": 30,
-          "defenseCavalry": 25,
-          "speed": 7,
-          "carry": 30
-        },
-        "cost": {
-          "wood": 130,
-          "clay": 90,
-          "iron": 70,
-          "crop": 45
-        },
+        "name": { "en": "Ashigaru Archer" },
+        "stats": { "attack": 30, "defenseInfantry": 69, "defenseCavalry": 36, "speed": 5, "carry": 20 },
+        "cost": { "wood": 135, "clay": 95, "iron": 210, "crop": 50 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/kusarigama.svg"
-        },
-        "description": {
-          "en": "Bow ashigaru supporting the spear line."
-        }
+        "graphics": { "logo": "infantry/kusarigama.svg" },
+        "description": { "en": "Bow ashigaru supporting the spear line." }
       }
     },
     {
       "ref": "inf_t3",
       "overrides": {
-        "name": {
-          "en": "Samurai"
-        },
-        "stats": {
-          "attack": 80,
-          "defenseInfantry": 55,
-          "defenseCavalry": 40,
-          "speed": 7,
-          "carry": 45
-        },
-        "cost": {
-          "wood": 170,
-          "clay": 160,
-          "iron": 230,
-          "crop": 100
-        },
+        "name": { "en": "Samurai" },
+        "stats": { "attack": 75, "defenseInfantry": 43, "defenseCavalry": 31, "speed": 7, "carry": 46 },
+        "cost": { "wood": 220, "clay": 145, "iron": 325, "crop": 80 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/machete.svg"
-        },
-        "description": {
-          "en": "Elite retainers — costly, versatile melee."
-        }
+        "graphics": { "logo": "infantry/machete.svg" },
+        "description": { "en": "Elite retainers — costly, versatile melee." }
       }
     },
     {
       "ref": "scout",
       "overrides": {
-        "name": {
-          "en": "Pathfinder"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 20,
-          "defenseCavalry": 10,
-          "speed": 16,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 130,
-          "clay": 145,
-          "iron": 30,
-          "crop": 40
-        },
+        "name": { "en": "Pathfinder" },
+        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
+        "cost": { "wood": 165, "clay": 105, "iron": 65, "crop": 45 },
         "cropUpkeep": 2,
-        "graphics": {
-          "logo": "infantry/shuriken.svg"
-        }
+        "graphics": { "logo": "infantry/shuriken.svg" }
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
-        "name": {
-          "en": "Kihei"
-        },
-        "stats": {
-          "attack": 110,
-          "defenseInfantry": 55,
-          "defenseCavalry": 50,
-          "speed": 14,
-          "carry": 90
-        },
-        "cost": {
-          "wood": 520,
-          "clay": 420,
-          "iron": 340,
-          "crop": 100
-        },
-        "cropUpkeep": 3,
-        "graphics": {
-          "logo": "cavalry/horse-head-alt.svg"
-        }
+        "name": { "en": "Kihei" },
+        "stats": { "attack": 38, "defenseInfantry": 81, "defenseCavalry": 35, "speed": 12, "carry": 113 },
+        "cost": { "wood": 220, "clay": 130, "iron": 190, "crop": 50 },
+        "cropUpkeep": 2,
+        "graphics": { "logo": "cavalry/horse-head-alt.svg" }
       }
     },
     {
       "ref": "cav_t2",
       "overrides": {
-        "name": {
-          "en": "Samurai Cavalry"
-        },
-        "stats": {
-          "attack": 160,
-          "defenseInfantry": 75,
-          "defenseCavalry": 95,
-          "speed": 11,
-          "carry": 70
-        },
-        "cost": {
-          "wood": 560,
-          "clay": 620,
-          "iron": 760,
-          "crop": 175
-        },
-        "cropUpkeep": 4,
-        "graphics": {
-          "logo": "cavalry/chess-knight.svg"
-        }
+        "name": { "en": "Samurai Cavalry" },
+        "stats": { "attack": 121, "defenseInfantry": 52, "defenseCavalry": 48, "speed": 13, "carry": 74 },
+        "cost": { "wood": 420, "clay": 310, "iron": 560, "crop": 120 },
+        "cropUpkeep": 2,
+        "graphics": { "logo": "cavalry/chess-knight.svg" }
       }
     },
     {
       "ref": "cav_t3",
       "overrides": {
-        "name": {
-          "en": "Guard Cavalry"
-        },
-        "stats": {
-          "attack": 150,
-          "defenseInfantry": 70,
-          "defenseCavalry": 85,
-          "speed": 12,
-          "carry": 75
-        },
-        "cost": {
-          "wood": 540,
-          "clay": 580,
-          "iron": 700,
-          "crop": 160
-        },
-        "cropUpkeep": 4,
-        "graphics": {
-          "logo": "cavalry/mounted-knight.svg"
-        }
+        "name": { "en": "Guard Cavalry" },
+        "stats": { "attack": 138, "defenseInfantry": 58, "defenseCavalry": 53, "speed": 12, "carry": 66 },
+        "cost": { "wood": 400, "clay": 290, "iron": 490, "crop": 100 },
+        "cropUpkeep": 3,
+        "graphics": { "logo": "cavalry/mounted-knight.svg" }
       }
     },
     {
       "ref": "ram",
       "overrides": {
-        "name": {
-          "en": "Siege Ram"
-        },
-        "stats": {
-          "attack": 60,
-          "defenseInfantry": 30,
-          "defenseCavalry": 75,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 900,
-          "clay": 360,
-          "iron": 500,
-          "crop": 70
-        },
+        "name": { "en": "Siege Ram" },
+        "stats": { "attack": 64, "defenseInfantry": 30, "defenseCavalry": 74, "speed": 4, "carry": 0 },
+        "cost": { "wood": 940, "clay": 260, "iron": 600, "crop": 70 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "rams/ladder.svg"
-        }
+        "graphics": { "logo": "rams/ladder.svg" }
       }
     },
     {
       "ref": "catapult",
       "overrides": {
-        "name": {
-          "en": "Mangonel"
-        },
-        "stats": {
-          "attack": 75,
-          "defenseInfantry": 60,
-          "defenseCavalry": 10,
-          "speed": 3,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 950,
-          "clay": 1350,
-          "iron": 600,
-          "crop": 90
-        },
-        "cropUpkeep": 6,
-        "graphics": {
-          "logo": "catapults/trebuchet.svg"
-        }
+        "name": { "en": "Mangonel" },
+        "stats": { "attack": 54, "defenseInfantry": 59, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 1030, "clay": 1050, "iron": 820, "crop": 90 },
+        "cropUpkeep": 5,
+        "graphics": { "logo": "catapults/trebuchet.svg" }
       }
     },
     {
       "ref": "chief",
       "overrides": {
-        "name": {
-          "en": "Daimyo"
-        },
-        "stats": {
-          "attack": 50,
-          "defenseInfantry": 40,
-          "defenseCavalry": 30,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 30500,
-          "clay": 27000,
-          "iron": 44500,
-          "crop": 37000
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "chiefs/ring-of-office.svg"
-        }
+        "name": { "en": "Daimyo" },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 31300, "clay": 18400, "iron": 55850, "crop": 34900 },
+        "cropUpkeep": 4,
+        "graphics": { "logo": "chiefs/ring-of-office.svg" }
       }
     },
     {
       "ref": "settler",
       "overrides": {
-        "name": {
-          "en": "Village Settler"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 80,
-          "defenseCavalry": 80,
-          "speed": 5,
-          "carry": 3000
-        },
-        "cost": {
-          "wood": 5800,
-          "clay": 5300,
-          "iron": 7200,
-          "crop": 5500
-        },
+        "name": { "en": "Village Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3675, "clay": 3225, "iron": 3000, "crop": 4025 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "settlers/old-wagon.svg"
-        }
+        "graphics": { "logo": "settlers/old-wagon.svg" }
       }
     }
   ],
@@ -311,26 +130,11 @@
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
-    "name": {
-      "en": "Japanese Hero"
-    },
-    "description": {
-      "en": "Sengoku warlord — infantry discipline and retainer quality."
-    },
+    "name": { "en": "Japanese Hero" },
+    "description": { "en": "Sengoku warlord — infantry discipline and retainer quality." },
     "isBase": false,
-    "stats": {
-      "attack": 110,
-      "defenseInfantry": 120,
-      "defenseCavalry": 95,
-      "speed": 8,
-      "carry": 100
-    },
-    "cost": {
-      "wood": 0,
-      "clay": 0,
-      "iron": 0,
-      "crop": 0
-    },
+    "stats": { "attack": 110, "defenseInfantry": 120, "defenseCavalry": 95, "speed": 8, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
     "training": {
       "building": "hero_mansion",
@@ -353,10 +157,11 @@
     "regeneratedAt": "2026-08-12T06:15:23.635Z",
     "archetype": "infantry",
     "flavorId": "japanese",
-    "algorithms": [
-      "troop-lexicon",
-      "culture-profile-stats",
-      "game-icons-logos"
-    ]
+    "algorithms": ["troop-lexicon", "culture-profile-stats", "game-icons-logos"],
+    "balance": {
+      "model": "identity-budget",
+      "identity": "Ashigaru wall, samurai edge: the best infantry in the game and cavalry that never caught up.",
+      "tier": "player"
+    }
   }
 }

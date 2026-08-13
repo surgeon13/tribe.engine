@@ -4,320 +4,129 @@
   "game": "Tevel",
   "tribe": {
     "id": "israelite",
-    "name": {
-      "en": "Israelites"
-    },
+    "name": { "en": "Israelites" },
     "theme": "Hill-country infantry, slingers, and chariot elites of the kingdoms of Israel and Judah (Iron Age Israel & Judah (c. 1000–586 BCE), Levant / Canaan)",
-    "graphics": {
-      "banner": "tribes/israelite/banner.png"
-    }
+    "graphics": { "banner": "tribes/israelite/banner.png" }
   },
-  "palette": {
-    "primary": "#F5F8FF",
-    "secondary": "#1D4ED8"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/israelite/buildings"
-  },
+  "palette": { "primary": "#F5F8FF", "secondary": "#1D4ED8" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/israelite/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
-        "name": {
-          "en": "Levy Shield Bearer"
-        },
-        "stats": {
-          "attack": 35,
-          "defenseInfantry": 42,
-          "defenseCavalry": 48,
-          "speed": 6,
-          "carry": 40
-        },
-        "cost": {
-          "wood": 105,
-          "clay": 90,
-          "iron": 110,
-          "crop": 35
-        },
+        "name": { "en": "Levy Shield Bearer" },
+        "stats": { "attack": 11, "defenseInfantry": 34, "defenseCavalry": 60, "speed": 7, "carry": 40 },
+        "cost": { "wood": 75, "clay": 80, "iron": 45, "crop": 50 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/stone-spear.svg"
-        },
-        "description": {
-          "en": "Tribal muster with spear and shield — backbone of highland defense."
-        }
+        "graphics": { "logo": "infantry/stone-spear.svg" },
+        "description": { "en": "Tribal muster with spear and shield — backbone of highland defense." }
       }
     },
     {
       "ref": "inf_t2",
       "overrides": {
-        "name": {
-          "en": "Javelin Thrower"
-        },
-        "stats": {
-          "attack": 48,
-          "defenseInfantry": 28,
-          "defenseCavalry": 22,
-          "speed": 8,
-          "carry": 30
-        },
-        "cost": {
-          "wood": 125,
-          "clay": 85,
-          "iron": 55,
-          "crop": 40
-        },
+        "name": { "en": "Javelin Thrower" },
+        "stats": { "attack": 37, "defenseInfantry": 40, "defenseCavalry": 47, "speed": 6, "carry": 45 },
+        "cost": { "wood": 125, "clay": 155, "iron": 140, "crop": 60 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/boomerang.svg"
-        },
-        "description": {
-          "en": "Judean and Benjaminite slingers — famous skirmish arm."
-        }
+        "graphics": { "logo": "infantry/boomerang.svg" },
+        "description": { "en": "Judean and Benjaminite slingers — famous skirmish arm." }
       }
     },
     {
       "ref": "inf_t3",
       "overrides": {
-        "name": {
-          "en": "Champion"
-        },
-        "stats": {
-          "attack": 72,
-          "defenseInfantry": 55,
-          "defenseCavalry": 40,
-          "speed": 7,
-          "carry": 45
-        },
-        "cost": {
-          "wood": 165,
-          "clay": 155,
-          "iron": 215,
-          "crop": 90
-        },
+        "name": { "en": "Champion" },
+        "stats": { "attack": 73, "defenseInfantry": 44, "defenseCavalry": 32, "speed": 7, "carry": 50 },
+        "cost": { "wood": 205, "clay": 235, "iron": 220, "crop": 90 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/gladius.svg"
-        },
-        "description": {
-          "en": "Royal ‘mighty men’ — elite infantry of the king’s household."
-        }
+        "graphics": { "logo": "infantry/gladius.svg" },
+        "description": { "en": "Royal ‘mighty men’ — elite infantry of the king’s household." }
       }
     },
     {
       "ref": "scout",
       "overrides": {
-        "name": {
-          "en": "Hill Scout"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 20,
-          "defenseCavalry": 12,
-          "speed": 15,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 130,
-          "clay": 145,
-          "iron": 25,
-          "crop": 40
-        },
+        "name": { "en": "Hill Scout" },
+        "stats": { "attack": 0, "defenseInfantry": 21, "defenseCavalry": 11, "speed": 16, "carry": 0 },
+        "cost": { "wood": 155, "clay": 175, "iron": 45, "crop": 55 },
         "cropUpkeep": 2,
-        "graphics": {
-          "logo": "infantry/harpoon-chain.svg"
-        },
-        "description": {
-          "en": "Hill-country scouts and city lookouts."
-        }
+        "graphics": { "logo": "infantry/harpoon-chain.svg" },
+        "description": { "en": "Hill-country scouts and city lookouts." }
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
-        "name": {
-          "en": "Light Horse"
-        },
-        "stats": {
-          "attack": 105,
-          "defenseInfantry": 50,
-          "defenseCavalry": 45,
-          "speed": 14,
-          "carry": 85
-        },
-        "cost": {
-          "wood": 490,
-          "clay": 400,
-          "iron": 300,
-          "crop": 95
-        },
-        "cropUpkeep": 3,
-        "graphics": {
-          "logo": "cavalry/donkey.svg"
-        },
-        "description": {
-          "en": "Light escort attached to chariot teams."
-        }
+        "name": { "en": "Light Horse" },
+        "stats": { "attack": 109, "defenseInfantry": 50, "defenseCavalry": 46, "speed": 15, "carry": 95 },
+        "cost": { "wood": 520, "clay": 550, "iron": 330, "crop": 150 },
+        "cropUpkeep": 2,
+        "graphics": { "logo": "cavalry/donkey.svg" },
+        "description": { "en": "Light escort attached to chariot teams." }
       }
     },
     {
       "ref": "cav_t2",
       "overrides": {
-        "name": {
-          "en": "Royal Chariot"
-        },
-        "stats": {
-          "attack": 165,
-          "defenseInfantry": 70,
-          "defenseCavalry": 90,
-          "speed": 11,
-          "carry": 65
-        },
-        "cost": {
-          "wood": 550,
-          "clay": 600,
-          "iron": 740,
-          "crop": 170
-        },
-        "cropUpkeep": 4,
-        "graphics": {
-          "logo": "cavalry/horse-head.svg"
-        },
-        "description": {
-          "en": "Heavy chariots of the royal stables — strike arm on open ground."
-        }
+        "name": { "en": "Royal Chariot" },
+        "stats": { "attack": 133, "defenseInfantry": 57, "defenseCavalry": 53, "speed": 13, "carry": 81 },
+        "cost": { "wood": 470, "clay": 610, "iron": 450, "crop": 170 },
+        "cropUpkeep": 2,
+        "graphics": { "logo": "cavalry/horse-head.svg" },
+        "description": { "en": "Heavy chariots of the royal stables — strike arm on open ground." }
       }
     },
     {
       "ref": "cav_t3",
       "overrides": {
-        "name": {
-          "en": "Horse Guard"
-        },
-        "stats": {
-          "attack": 145,
-          "defenseInfantry": 65,
-          "defenseCavalry": 80,
-          "speed": 13,
-          "carry": 80
-        },
-        "cost": {
-          "wood": 520,
-          "clay": 540,
-          "iron": 620,
-          "crop": 150
-        },
-        "cropUpkeep": 4,
-        "graphics": {
-          "logo": "cavalry/chess-knight.svg"
-        },
-        "description": {
-          "en": "Mounted retainers expanding the older chariot tradition."
-        }
+        "name": { "en": "Horse Guard" },
+        "stats": { "attack": 147, "defenseInfantry": 63, "defenseCavalry": 163, "speed": 12, "carry": 55 },
+        "cost": { "wood": 660, "clay": 850, "iron": 600, "crop": 200 },
+        "cropUpkeep": 3,
+        "graphics": { "logo": "cavalry/chess-knight.svg" },
+        "description": { "en": "Mounted retainers expanding the older chariot tradition." }
       }
     },
     {
       "ref": "ram",
       "overrides": {
-        "name": {
-          "en": "Siege Ram"
-        },
-        "stats": {
-          "attack": 58,
-          "defenseInfantry": 30,
-          "defenseCavalry": 72,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 890,
-          "clay": 355,
-          "iron": 490,
-          "crop": 70
-        },
+        "name": { "en": "Siege Ram" },
+        "stats": { "attack": 64, "defenseInfantry": 30, "defenseCavalry": 74, "speed": 4, "carry": 0 },
+        "cost": { "wood": 920, "clay": 440, "iron": 430, "crop": 80 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "rams/siege-ram.svg"
-        }
+        "graphics": { "logo": "rams/siege-ram.svg" }
       }
     },
     {
       "ref": "catapult",
       "overrides": {
-        "name": {
-          "en": "Petrary"
-        },
-        "stats": {
-          "attack": 72,
-          "defenseInfantry": 58,
-          "defenseCavalry": 10,
-          "speed": 3,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 940,
-          "clay": 1320,
-          "iron": 590,
-          "crop": 90
-        },
-        "cropUpkeep": 6,
-        "graphics": {
-          "logo": "catapults/catapult.svg"
-        }
+        "name": { "en": "Petrary" },
+        "stats": { "attack": 54, "defenseInfantry": 59, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 860, "clay": 1530, "iron": 500, "crop": 100 },
+        "cropUpkeep": 5,
+        "graphics": { "logo": "catapults/catapult.svg" }
       }
     },
     {
       "ref": "chief",
       "overrides": {
-        "name": {
-          "en": "Judge"
-        },
-        "stats": {
-          "attack": 48,
-          "defenseInfantry": 42,
-          "defenseCavalry": 30,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 30000,
-          "clay": 26800,
-          "iron": 44000,
-          "crop": 36500
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "chiefs/scepter.svg"
-        },
-        "description": {
-          "en": "Prince or appointed governor empowered to receive cities."
-        }
+        "name": { "en": "Judge" },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 29550, "clay": 30600, "iron": 38650, "crop": 41650 },
+        "cropUpkeep": 4,
+        "graphics": { "logo": "chiefs/scepter.svg" },
+        "description": { "en": "Prince or appointed governor empowered to receive cities." }
       }
     },
     {
       "ref": "settler",
       "overrides": {
-        "name": {
-          "en": "Settler"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 80,
-          "defenseCavalry": 80,
-          "speed": 5,
-          "carry": 3000
-        },
-        "cost": {
-          "wood": 5750,
-          "clay": 5250,
-          "iron": 7100,
-          "crop": 5450
-        },
+        "name": { "en": "Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 3100, "clay": 4800, "iron": 1850, "crop": 4300 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "settlers/old-wagon.svg"
-        }
+        "graphics": { "logo": "settlers/old-wagon.svg" }
       }
     }
   ],
@@ -326,26 +135,11 @@
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
-    "name": {
-      "en": "Israelite Hero"
-    },
-    "description": {
-      "en": "Royal captain in the tradition of David’s gibborim — infantry grit and chariot coordination."
-    },
+    "name": { "en": "Israelite Hero" },
+    "description": { "en": "Royal captain in the tradition of David’s gibborim — infantry grit and chariot coordination." },
     "isBase": false,
-    "stats": {
-      "attack": 108,
-      "defenseInfantry": 118,
-      "defenseCavalry": 100,
-      "speed": 8,
-      "carry": 100
-    },
-    "cost": {
-      "wood": 0,
-      "clay": 0,
-      "iron": 0,
-      "crop": 0
-    },
+    "stats": { "attack": 108, "defenseInfantry": 118, "defenseCavalry": 100, "speed": 8, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
     "training": {
       "building": "hero_mansion",
@@ -368,10 +162,11 @@
     "regeneratedAt": "2026-08-12T06:15:23.640Z",
     "archetype": "infantry",
     "flavorId": "israelite",
-    "algorithms": [
-      "troop-lexicon",
-      "culture-profile-stats",
-      "game-icons-logos"
-    ]
+    "algorithms": ["troop-lexicon", "culture-profile-stats", "game-icons-logos"],
+    "balance": {
+      "model": "identity-budget",
+      "identity": "Hill-country levies: cheap standing defense in depth, with chariots as the one expensive luxury.",
+      "tier": "player"
+    }
   }
 }

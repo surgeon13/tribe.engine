@@ -5,832 +5,238 @@
   "source": "Travian Legends T4.6 base times at minimum building level (before Barracks/Stable/Workshop upgrades).",
   "tribes": {
     "roman": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1600
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1760
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1960
-      },
-      "scout": {
-        "building": "stable",
-        "timeSeconds": 1360
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 2440
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2920
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2920
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 1355 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1825 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 2070 },
+      "scout": { "building": "stable", "timeSeconds": 1745 },
+      "cav_t1": { "building": "stable", "timeSeconds": 2355 },
+      "cav_t2": { "building": "stable", "timeSeconds": 2370 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2920 },
+      "ram": { "building": "workshop", "timeSeconds": 6825 },
+      "catapult": { "building": "workshop", "timeSeconds": 11590 },
+      "chief": { "building": "residence", "timeSeconds": 107040 },
+      "settler": { "building": "residence", "timeSeconds": 31740 }
     },
     "teuton": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 720
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1120
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "scout": {
-        "building": "stable",
-        "timeSeconds": 1120
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1360
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 1920
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 1800
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 31020
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 1080 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 695 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1215 },
+      "scout": { "building": "stable", "timeSeconds": 875 },
+      "cav_t1": { "building": "stable", "timeSeconds": 950 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1290 },
+      "cav_t3": { "building": "stable", "timeSeconds": 1595 },
+      "ram": { "building": "workshop", "timeSeconds": 4365 },
+      "catapult": { "building": "workshop", "timeSeconds": 7365 },
+      "chief": { "building": "residence", "timeSeconds": 74400 },
+      "settler": { "building": "residence", "timeSeconds": 22080 }
     },
     "gaul": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1040
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1440
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1300
-      },
-      "scout": {
-        "building": "stable",
-        "timeSeconds": 1360
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1360
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 1440
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2120
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 675 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1225 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1400 },
+      "scout": { "building": "stable", "timeSeconds": 1295 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1645 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1255 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2185 },
+      "ram": { "building": "workshop", "timeSeconds": 4430 },
+      "catapult": { "building": "workshop", "timeSeconds": 7475 },
+      "chief": { "building": "residence", "timeSeconds": 86160 },
+      "settler": { "building": "residence", "timeSeconds": 25560 }
     },
     "egyptian": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 72
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 840
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1360
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1960
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2280
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2100
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 810 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1110 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1175 },
+      "scout": { "building": "barracks", "timeSeconds": 1170 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1025 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1675 },
+      "cav_t3": { "building": "stable", "timeSeconds": 1575 },
+      "ram": { "building": "workshop", "timeSeconds": 4355 },
+      "catapult": { "building": "workshop", "timeSeconds": 7385 },
+      "chief": { "building": "residence", "timeSeconds": 79860 },
+      "settler": { "building": "residence", "timeSeconds": 23700 }
     },
     "hun": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 810
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1120
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1400
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 1680
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 1800
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 1125 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1020 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1270 },
+      "scout": { "building": "barracks", "timeSeconds": 890 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1950 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1965 },
+      "cav_t3": { "building": "stable", "timeSeconds": 1870 },
+      "ram": { "building": "workshop", "timeSeconds": 3915 },
+      "catapult": { "building": "workshop", "timeSeconds": 7395 },
+      "chief": { "building": "residence", "timeSeconds": 81660 },
+      "settler": { "building": "residence", "timeSeconds": 24240 }
     },
     "spartan": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1440
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1760
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1360
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 2440
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2920
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2400
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 1565 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 2115 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 2260 },
+      "scout": { "building": "barracks", "timeSeconds": 2045 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1955 },
+      "cav_t2": { "building": "stable", "timeSeconds": 2635 },
+      "cav_t3": { "building": "stable", "timeSeconds": 3250 },
+      "ram": { "building": "workshop", "timeSeconds": 5940 },
+      "catapult": { "building": "workshop", "timeSeconds": 11335 },
+      "chief": { "building": "residence", "timeSeconds": 108840 },
+      "settler": { "building": "residence", "timeSeconds": 32280 }
     },
     "natar": {
-      "inf_t1": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "inf_t2": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "inf_t3": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "scout": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "cav_t1": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "cav_t2": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "cav_t3": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "ram": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "catapult": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "chief": {
-        "building": "natar",
-        "timeSeconds": 0
-      },
-      "settler": {
-        "building": "natar",
-        "timeSeconds": 0
-      }
+      "inf_t1": { "building": "natar", "timeSeconds": 1210 },
+      "inf_t2": { "building": "natar", "timeSeconds": 2750 },
+      "inf_t3": { "building": "natar", "timeSeconds": 2370 },
+      "scout": { "building": "natar", "timeSeconds": 2200 },
+      "cav_t1": { "building": "natar", "timeSeconds": 2885 },
+      "cav_t2": { "building": "natar", "timeSeconds": 2905 },
+      "cav_t3": { "building": "natar", "timeSeconds": 2980 },
+      "ram": { "building": "natar", "timeSeconds": 9520 },
+      "catapult": { "building": "natar", "timeSeconds": 16925 },
+      "chief": { "building": "natar", "timeSeconds": 113400 },
+      "settler": { "building": "natar", "timeSeconds": 33660 }
     },
     "nature": {
-      "inf_t1": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "inf_t2": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "inf_t3": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "scout": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "cav_t1": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "cav_t2": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "cav_t3": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "ram": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "catapult": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "chief": {
-        "building": "nature",
-        "timeSeconds": 0
-      },
-      "settler": {
-        "building": "nature",
-        "timeSeconds": 0
-      }
+      "inf_t1": { "building": "nature", "timeSeconds": 790 },
+      "inf_t2": { "building": "nature", "timeSeconds": 1155 },
+      "inf_t3": { "building": "nature", "timeSeconds": 1105 },
+      "scout": { "building": "nature", "timeSeconds": 1245 },
+      "cav_t1": { "building": "nature", "timeSeconds": 1315 },
+      "cav_t2": { "building": "nature", "timeSeconds": 1755 },
+      "cav_t3": { "building": "nature", "timeSeconds": 1810 },
+      "ram": { "building": "nature", "timeSeconds": 4250 },
+      "catapult": { "building": "nature", "timeSeconds": 7565 },
+      "chief": { "building": "nature", "timeSeconds": 90720 },
+      "settler": { "building": "nature", "timeSeconds": 26940 }
     },
     "carthaginian": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1440
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1680
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1280
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1600
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2200
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2800
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 720 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1365 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1630 },
+      "scout": { "building": "barracks", "timeSeconds": 1300 },
+      "cav_t1": { "building": "stable", "timeSeconds": 2115 },
+      "cav_t2": { "building": "stable", "timeSeconds": 2125 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2245 },
+      "ram": { "building": "workshop", "timeSeconds": 5590 },
+      "catapult": { "building": "workshop", "timeSeconds": 9430 },
+      "chief": { "building": "residence", "timeSeconds": 95280 },
+      "settler": { "building": "residence", "timeSeconds": 28260 }
     },
     "japanese": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 960
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1500
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1100
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 2000
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2400
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2500
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 705 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1330 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1525 },
+      "scout": { "building": "barracks", "timeSeconds": 1265 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1075 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1795 },
+      "cav_t3": { "building": "stable", "timeSeconds": 1700 },
+      "ram": { "building": "workshop", "timeSeconds": 4430 },
+      "catapult": { "building": "workshop", "timeSeconds": 8415 },
+      "chief": { "building": "residence", "timeSeconds": 86160 },
+      "settler": { "building": "residence", "timeSeconds": 25560 }
     },
     "byzantine": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1400
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1600
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1800
-      },
-      "scout": {
-        "building": "stable",
-        "timeSeconds": 1360
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 2200
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2800
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 3000
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 1180 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1115 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1835 },
+      "scout": { "building": "stable", "timeSeconds": 1550 },
+      "cav_t1": { "building": "stable", "timeSeconds": 2255 },
+      "cav_t2": { "building": "stable", "timeSeconds": 2265 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2975 },
+      "ram": { "building": "workshop", "timeSeconds": 6070 },
+      "catapult": { "building": "workshop", "timeSeconds": 10345 },
+      "chief": { "building": "residence", "timeSeconds": 97980 },
+      "settler": { "building": "residence", "timeSeconds": 29100 }
     },
     "israelite": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1000
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1520
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1180
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1800
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2300
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2500
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 755 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1345 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1555 },
+      "scout": { "building": "barracks", "timeSeconds": 1405 },
+      "cav_t1": { "building": "stable", "timeSeconds": 2065 },
+      "cav_t2": { "building": "stable", "timeSeconds": 2090 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2560 },
+      "ram": { "building": "workshop", "timeSeconds": 4570 },
+      "catapult": { "building": "workshop", "timeSeconds": 8680 },
+      "chief": { "building": "residence", "timeSeconds": 88920 },
+      "settler": { "building": "residence", "timeSeconds": 26400 }
     },
     "undead": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 900
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1100
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1500
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1150
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1700
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2300
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2550
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4400
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 8800
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 1810 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 2040 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 2220 },
+      "scout": { "building": "barracks", "timeSeconds": 1765 },
+      "cav_t1": { "building": "stable", "timeSeconds": 2825 },
+      "cav_t2": { "building": "stable", "timeSeconds": 2850 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2935 },
+      "ram": { "building": "workshop", "timeSeconds": 8270 },
+      "catapult": { "building": "workshop", "timeSeconds": 14680 },
+      "chief": { "building": "residence", "timeSeconds": 99780 },
+      "settler": { "building": "residence", "timeSeconds": 29640 }
     },
     "median": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 925
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1320
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1250
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1360
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1680
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2100
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2110
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 1103 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1168 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1335 },
+      "scout": { "building": "barracks", "timeSeconds": 1233 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1798 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1820 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2028 },
+      "ram": { "building": "workshop", "timeSeconds": 4398 },
+      "catapult": { "building": "workshop", "timeSeconds": 7435 },
+      "chief": { "building": "residence", "timeSeconds": 83910 },
+      "settler": { "building": "residence", "timeSeconds": 24900 }
     },
     "persian": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 900
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1600
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1120
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1680
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2100
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2300
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 590 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1090 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1205 },
+      "scout": { "building": "barracks", "timeSeconds": 1115 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1450 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1455 },
+      "cav_t3": { "building": "stable", "timeSeconds": 1825 },
+      "ram": { "building": "workshop", "timeSeconds": 4790 },
+      "catapult": { "building": "workshop", "timeSeconds": 8085 },
+      "chief": { "building": "residence", "timeSeconds": 81660 },
+      "settler": { "building": "residence", "timeSeconds": 24240 }
     },
     "axum": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1100
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1300
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1550
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1700
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2100
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2400
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 770 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1375 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1220 },
+      "scout": { "building": "barracks", "timeSeconds": 1380 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1745 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1750 },
+      "cav_t3": { "building": "stable", "timeSeconds": 2205 },
+      "ram": { "building": "workshop", "timeSeconds": 4950 },
+      "catapult": { "building": "workshop", "timeSeconds": 8390 },
+      "chief": { "building": "residence", "timeSeconds": 90720 },
+      "settler": { "building": "residence", "timeSeconds": 26940 }
     },
     "arab": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1400
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1600
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1280
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1800
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2400
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2500
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 520 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 995 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1210 },
+      "scout": { "building": "barracks", "timeSeconds": 965 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1420 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1430 },
+      "cav_t3": { "building": "stable", "timeSeconds": 1770 },
+      "ram": { "building": "workshop", "timeSeconds": 3830 },
+      "catapult": { "building": "workshop", "timeSeconds": 7230 },
+      "chief": { "building": "residence", "timeSeconds": 79860 },
+      "settler": { "building": "residence", "timeSeconds": 23700 }
     },
     "nabateans": {
-      "inf_t1": {
-        "building": "barracks",
-        "timeSeconds": 1200
-      },
-      "inf_t2": {
-        "building": "barracks",
-        "timeSeconds": 1400
-      },
-      "inf_t3": {
-        "building": "barracks",
-        "timeSeconds": 1600
-      },
-      "scout": {
-        "building": "barracks",
-        "timeSeconds": 1280
-      },
-      "cav_t1": {
-        "building": "stable",
-        "timeSeconds": 1800
-      },
-      "cav_t2": {
-        "building": "stable",
-        "timeSeconds": 2400
-      },
-      "cav_t3": {
-        "building": "stable",
-        "timeSeconds": 2500
-      },
-      "ram": {
-        "building": "workshop",
-        "timeSeconds": 4600
-      },
-      "catapult": {
-        "building": "workshop",
-        "timeSeconds": 9000
-      },
-      "chief": {
-        "building": "residence",
-        "timeSeconds": 90720
-      },
-      "settler": {
-        "building": "residence",
-        "timeSeconds": 26920
-      }
+      "inf_t1": { "building": "barracks", "timeSeconds": 820 },
+      "inf_t2": { "building": "barracks", "timeSeconds": 1440 },
+      "inf_t3": { "building": "barracks", "timeSeconds": 1305 },
+      "scout": { "building": "barracks", "timeSeconds": 1505 },
+      "cav_t1": { "building": "stable", "timeSeconds": 1450 },
+      "cav_t2": { "building": "stable", "timeSeconds": 1760 },
+      "cav_t3": { "building": "stable", "timeSeconds": 1915 },
+      "ram": { "building": "workshop", "timeSeconds": 4755 },
+      "catapult": { "building": "workshop", "timeSeconds": 9035 },
+      "chief": { "building": "residence", "timeSeconds": 92520 },
+      "settler": { "building": "residence", "timeSeconds": 27480 }
     }
   }
 }

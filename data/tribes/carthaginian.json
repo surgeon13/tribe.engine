@@ -4,320 +4,129 @@
   "game": "Tevel",
   "tribe": {
     "id": "carthaginian",
-    "name": {
-      "en": "Carthaginians"
-    },
+    "name": { "en": "Carthaginians" },
     "theme": "Mercenary armies, elephants, and naval wealth — soft core infantry, elite mounted punch (Punic Wars (3rd–2nd c. BCE), North Africa / western Mediterranean)",
-    "graphics": {
-      "banner": "tribes/carthaginian/banner.png"
-    }
+    "graphics": { "banner": "tribes/carthaginian/banner.png" }
   },
-  "palette": {
-    "primary": "#7A1F5C",
-    "secondary": "#EFE6D2"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/carthaginian/buildings"
-  },
+  "palette": { "primary": "#7A1F5C", "secondary": "#EFE6D2" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/carthaginian/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
-        "name": {
-          "en": "Libyan Spearman"
-        },
-        "stats": {
-          "attack": 35,
-          "defenseInfantry": 40,
-          "defenseCavalry": 45,
-          "speed": 6,
-          "carry": 45
-        },
-        "cost": {
-          "wood": 110,
-          "clay": 95,
-          "iron": 120,
-          "crop": 35
-        },
+        "name": { "en": "Libyan Spearman" },
+        "stats": { "attack": 11, "defenseInfantry": 30, "defenseCavalry": 54, "speed": 7, "carry": 42 },
+        "cost": { "wood": 50, "clay": 70, "iron": 40, "crop": 45 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/stone-spear.svg"
-        },
-        "description": {
-          "en": "Levy spearmen from Libyan subject cities — solid line infantry."
-        }
+        "graphics": { "logo": "infantry/stone-spear.svg" },
+        "description": { "en": "Levy spearmen from Libyan subject cities — solid line infantry." }
       }
     },
     {
       "ref": "inf_t2",
       "overrides": {
-        "name": {
-          "en": "Balearic Slinger"
-        },
-        "stats": {
-          "attack": 45,
-          "defenseInfantry": 25,
-          "defenseCavalry": 20,
-          "speed": 8,
-          "carry": 30
-        },
-        "cost": {
-          "wood": 130,
-          "clay": 80,
-          "iron": 55,
-          "crop": 45
-        },
+        "name": { "en": "Balearic Slinger" },
+        "stats": { "attack": 38, "defenseInfantry": 36, "defenseCavalry": 42, "speed": 6, "carry": 48 },
+        "cost": { "wood": 95, "clay": 145, "iron": 140, "crop": 55 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/boomerang.svg"
-        },
-        "description": {
-          "en": "Famous island skirmishers — weak in melee, strong vs unarmored hosts."
-        }
+        "graphics": { "logo": "infantry/boomerang.svg" },
+        "description": { "en": "Famous island skirmishers — weak in melee, strong vs unarmored hosts." }
       }
     },
     {
       "ref": "inf_t3",
       "overrides": {
-        "name": {
-          "en": "Iberian Swordsman"
-        },
-        "stats": {
-          "attack": 65,
-          "defenseInfantry": 55,
-          "defenseCavalry": 40,
-          "speed": 6,
-          "carry": 50
-        },
-        "cost": {
-          "wood": 160,
-          "clay": 150,
-          "iron": 200,
-          "crop": 90
-        },
+        "name": { "en": "Iberian Swordsman" },
+        "stats": { "attack": 75, "defenseInfantry": 39, "defenseCavalry": 29, "speed": 7, "carry": 53 },
+        "cost": { "wood": 165, "clay": 235, "iron": 235, "crop": 90 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/battle-axe.svg"
-        },
-        "description": {
-          "en": "Citizen elite of Carthage — costly, disciplined heavy infantry."
-        }
+        "graphics": { "logo": "infantry/battle-axe.svg" },
+        "description": { "en": "Citizen elite of Carthage — costly, disciplined heavy infantry." }
       }
     },
     {
       "ref": "scout",
       "overrides": {
-        "name": {
-          "en": "Numidian Scout"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 18,
-          "defenseCavalry": 12,
-          "speed": 17,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 130,
-          "clay": 140,
-          "iron": 25,
-          "crop": 40
-        },
+        "name": { "en": "Numidian Scout" },
+        "stats": { "attack": 0, "defenseInfantry": 19, "defenseCavalry": 9, "speed": 17, "carry": 0 },
+        "cost": { "wood": 105, "clay": 150, "iron": 40, "crop": 45 },
         "cropUpkeep": 2,
-        "graphics": {
-          "logo": "infantry/harpoon-chain.svg"
-        },
-        "description": {
-          "en": "Light riders used for reconnaissance across Maghreb plains."
-        }
+        "graphics": { "logo": "infantry/harpoon-chain.svg" },
+        "description": { "en": "Light riders used for reconnaissance across Maghreb plains." }
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
-        "name": {
-          "en": "Numidian Cavalry"
-        },
-        "stats": {
-          "attack": 110,
-          "defenseInfantry": 50,
-          "defenseCavalry": 45,
-          "speed": 16,
-          "carry": 90
-        },
-        "cost": {
-          "wood": 480,
-          "clay": 380,
-          "iron": 280,
-          "crop": 95
-        },
+        "name": { "en": "Numidian Cavalry" },
+        "stats": { "attack": 132, "defenseInfantry": 56, "defenseCavalry": 52, "speed": 15, "carry": 101 },
+        "cost": { "wood": 410, "clay": 530, "iron": 340, "crop": 150 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "cavalry/horse-head.svg"
-        },
-        "description": {
-          "en": "Swift javelin horsemen — Hannibal’s screening and pursuit arm."
-        }
+        "graphics": { "logo": "cavalry/horse-head.svg" },
+        "description": { "en": "Swift javelin horsemen — Hannibal’s screening and pursuit arm." }
       }
     },
     {
       "ref": "cav_t2",
       "overrides": {
-        "name": {
-          "en": "Punic Lancer"
-        },
-        "stats": {
-          "attack": 165,
-          "defenseInfantry": 70,
-          "defenseCavalry": 95,
-          "speed": 11,
-          "carry": 70
-        },
-        "cost": {
-          "wood": 540,
-          "clay": 600,
-          "iron": 720,
-          "crop": 170
-        },
-        "cropUpkeep": 4,
-        "graphics": {
-          "logo": "cavalry/camel.svg"
-        },
-        "description": {
-          "en": "Armored citizen cavalry for decisive charges."
-        }
+        "name": { "en": "Punic Lancer" },
+        "stats": { "attack": 160, "defenseInfantry": 64, "defenseCavalry": 59, "speed": 14, "carry": 86 },
+        "cost": { "wood": 370, "clay": 580, "iron": 460, "crop": 160 },
+        "cropUpkeep": 3,
+        "graphics": { "logo": "cavalry/camel.svg" },
+        "description": { "en": "Armored citizen cavalry for decisive charges." }
       }
     },
     {
       "ref": "cav_t3",
       "overrides": {
-        "name": {
-          "en": "War Elephant"
-        },
-        "stats": {
-          "attack": 175,
-          "defenseInfantry": 85,
-          "defenseCavalry": 55,
-          "speed": 8,
-          "carry": 40
-        },
-        "cost": {
-          "wood": 600,
-          "clay": 520,
-          "iron": 650,
-          "crop": 220
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "cavalry/elephant.svg"
-        },
-        "description": {
-          "en": "North African elephants — shock vs infantry, slow and costly."
-        }
+        "name": { "en": "War Elephant" },
+        "stats": { "attack": 93, "defenseInfantry": 231, "defenseCavalry": 99, "speed": 5, "carry": 56 },
+        "cost": { "wood": 410, "clay": 650, "iron": 480, "crop": 150 },
+        "cropUpkeep": 4,
+        "graphics": { "logo": "cavalry/elephant.svg" },
+        "description": { "en": "North African elephants — shock vs infantry, slow and costly." }
       }
     },
     {
       "ref": "ram",
       "overrides": {
-        "name": {
-          "en": "Battering Ram"
-        },
-        "stats": {
-          "attack": 55,
-          "defenseInfantry": 30,
-          "defenseCavalry": 70,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 880,
-          "clay": 350,
-          "iron": 480,
-          "crop": 70
-        },
+        "name": { "en": "Battering Ram" },
+        "stats": { "attack": 71, "defenseInfantry": 33, "defenseCavalry": 82, "speed": 4, "carry": 0 },
+        "cost": { "wood": 990, "clay": 580, "iron": 610, "crop": 110 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "rams/siege-tower.svg"
-        }
+        "graphics": { "logo": "rams/siege-tower.svg" }
       }
     },
     {
       "ref": "catapult",
       "overrides": {
-        "name": {
-          "en": "Catapult"
-        },
-        "stats": {
-          "attack": 70,
-          "defenseInfantry": 55,
-          "defenseCavalry": 10,
-          "speed": 3,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 920,
-          "clay": 1300,
-          "iron": 580,
-          "crop": 90
-        },
+        "name": { "en": "Catapult" },
+        "stats": { "attack": 60, "defenseInfantry": 65, "defenseCavalry": 11, "speed": 3, "carry": 0 },
+        "cost": { "wood": 750, "clay": 1630, "iron": 570, "crop": 100 },
         "cropUpkeep": 6,
-        "graphics": {
-          "logo": "catapults/ballista.svg"
-        }
+        "graphics": { "logo": "catapults/ballista.svg" }
       }
     },
     {
       "ref": "chief",
       "overrides": {
-        "name": {
-          "en": "Sufete"
-        },
-        "stats": {
-          "attack": 45,
-          "defenseInfantry": 40,
-          "defenseCavalry": 30,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 30000,
-          "clay": 27000,
-          "iron": 44000,
-          "crop": 36000
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "chiefs/scroll-seal.svg"
-        },
-        "description": {
-          "en": "Elected magistrate-general empowered to receive cities."
-        }
+        "name": { "en": "Sufete" },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 24600, "clay": 31200, "iron": 42050, "crop": 42600 },
+        "cropUpkeep": 4,
+        "graphics": { "logo": "chiefs/scroll-seal.svg" },
+        "description": { "en": "Elected magistrate-general empowered to receive cities." }
       }
     },
     {
       "ref": "settler",
       "overrides": {
-        "name": {
-          "en": "Colony Settler"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 80,
-          "defenseCavalry": 80,
-          "speed": 5,
-          "carry": 3000
-        },
-        "cost": {
-          "wood": 5600,
-          "clay": 5200,
-          "iron": 7000,
-          "crop": 5400
-        },
+        "name": { "en": "Colony Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 2850, "clay": 5425, "iron": 2225, "crop": 4875 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "settlers/old-wagon.svg"
-        }
+        "graphics": { "logo": "settlers/old-wagon.svg" }
       }
     }
   ],
@@ -326,26 +135,11 @@
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
-    "name": {
-      "en": "Punic Hero"
-    },
-    "description": {
-      "en": "Carthaginian commander in the mold of Barcid generals — cavalry and elephant coordination."
-    },
+    "name": { "en": "Punic Hero" },
+    "description": { "en": "Carthaginian commander in the mold of Barcid generals — cavalry and elephant coordination." },
     "isBase": false,
-    "stats": {
-      "attack": 105,
-      "defenseInfantry": 110,
-      "defenseCavalry": 105,
-      "speed": 9,
-      "carry": 100
-    },
-    "cost": {
-      "wood": 0,
-      "clay": 0,
-      "iron": 0,
-      "crop": 0
-    },
+    "stats": { "attack": 105, "defenseInfantry": 110, "defenseCavalry": 105, "speed": 9, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
     "training": {
       "building": "hero_mansion",
@@ -368,10 +162,11 @@
     "regeneratedAt": "2026-08-12T06:15:23.632Z",
     "archetype": "balanced",
     "flavorId": "carthaginian",
-    "algorithms": [
-      "troop-lexicon",
-      "culture-profile-stats",
-      "game-icons-logos"
-    ]
+    "algorithms": ["troop-lexicon", "culture-profile-stats", "game-icons-logos"],
+    "balance": {
+      "model": "identity-budget",
+      "identity": "Bought armies: soft native infantry, a mercenary mounted punch, and elephants that anchor a line.",
+      "tier": "player"
+    }
   }
 }

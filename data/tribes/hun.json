@@ -6,25 +6,17 @@
     "id": "hun",
     "name": { "en": "Huns" },
     "theme": "Pure offense, fast cavalry, weak defense",
-    "graphics": {
-      "banner": "tribes/hun/banner.png"
-    }
+    "graphics": { "banner": "tribes/hun/banner.png" }
   },
-  "palette": {
-    "primary": "#5B2A9E",
-    "secondary": "#F0C64F"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/hun/buildings"
-  },
+  "palette": { "primary": "#5B2A9E", "secondary": "#F0C64F" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/hun/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Mercenary" },
-        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 6, "carry": 50 },
-        "cost": { "wood": 120, "clay": 100, "iron": 80, "crop": 50 },
+        "stats": { "attack": 61, "defenseInfantry": 27, "defenseCavalry": 20, "speed": 8, "carry": 56 },
+        "cost": { "wood": 135, "clay": 135, "iron": 110, "crop": 150 },
         "cropUpkeep": 1
       }
     },
@@ -32,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Bowman" },
-        "stats": { "attack": 50, "defenseInfantry": 30, "defenseCavalry": 10, "speed": 6, "carry": 30 },
-        "cost": { "wood": 140, "clay": 150, "iron": 100, "crop": 50 },
+        "stats": { "attack": 37, "defenseInfantry": 29, "defenseCavalry": 35, "speed": 7, "carry": 50 },
+        "cost": { "wood": 85, "clay": 90, "iron": 120, "crop": 60 },
         "cropUpkeep": 1
       }
     },
@@ -42,8 +34,8 @@
       "overrides": {
         "name": { "en": "Hun Warrior" },
         "description": { "en": "Tevel slot 3 — Travian Huns have two infantry units; Spotter is the scout." },
-        "stats": { "attack": 42, "defenseInfantry": 38, "defenseCavalry": 22, "speed": 7, "carry": 40 },
-        "cost": { "wood": 130, "clay": 120, "iron": 110, "crop": 55 },
+        "stats": { "attack": 73, "defenseInfantry": 32, "defenseCavalry": 24, "speed": 8, "carry": 56 },
+        "cost": { "wood": 150, "clay": 155, "iron": 215, "crop": 105 },
         "cropUpkeep": 1
       }
     },
@@ -51,8 +43,8 @@
       "ref": "scout",
       "overrides": {
         "name": { "en": "Spotter" },
-        "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 19, "carry": 0 },
-        "cost": { "wood": 160, "clay": 150, "iron": 50, "crop": 50 },
+        "stats": { "attack": 0, "defenseInfantry": 15, "defenseCavalry": 8, "speed": 17, "carry": 0 },
+        "cost": { "wood": 85, "clay": 85, "iron": 30, "crop": 45 },
         "cropUpkeep": 2
       }
     },
@@ -60,8 +52,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Steppe Rider" },
-        "stats": { "attack": 120, "defenseInfantry": 30, "defenseCavalry": 15, "speed": 16, "carry": 75 },
-        "cost": { "wood": 360, "clay": 300, "iron": 250, "crop": 80 },
+        "stats": { "attack": 120, "defenseInfantry": 42, "defenseCavalry": 38, "speed": 17, "carry": 107 },
+        "cost": { "wood": 500, "clay": 470, "iron": 420, "crop": 230 },
         "cropUpkeep": 2
       }
     },
@@ -69,8 +61,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Marksman" },
-        "stats": { "attack": 110, "defenseInfantry": 80, "defenseCavalry": 70, "speed": 15, "carry": 105 },
-        "cost": { "wood": 450, "clay": 400, "iron": 350, "crop": 90 },
+        "stats": { "attack": 146, "defenseInfantry": 47, "defenseCavalry": 43, "speed": 15, "carry": 90 },
+        "cost": { "wood": 450, "clay": 510, "iron": 560, "crop": 250 },
         "cropUpkeep": 2
       }
     },
@@ -78,8 +70,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Marauder" },
-        "stats": { "attack": 180, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 14, "carry": 80 },
-        "cost": { "wood": 500, "clay": 620, "iron": 480, "crop": 100 },
+        "stats": { "attack": 167, "defenseInfantry": 52, "defenseCavalry": 48, "speed": 14, "carry": 81 },
+        "cost": { "wood": 430, "clay": 490, "iron": 510, "crop": 200 },
         "cropUpkeep": 3
       }
     },
@@ -87,8 +79,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Ram" },
-        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 90, "speed": 4, "carry": 0 },
-        "cost": { "wood": 1000, "clay": 300, "iron": 350, "crop": 70 },
+        "stats": { "attack": 61, "defenseInfantry": 28, "defenseCavalry": 70, "speed": 4, "carry": 0 },
+        "cost": { "wood": 770, "clay": 330, "iron": 470, "crop": 110 },
         "cropUpkeep": 3
       }
     },
@@ -96,17 +88,17 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Catapult" },
-        "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 900, "clay": 1200, "iron": 200, "crop": 80 },
-        "cropUpkeep": 6
+        "stats": { "attack": 51, "defenseInfantry": 56, "defenseCavalry": 9, "speed": 3, "carry": 0 },
+        "cost": { "wood": 760, "clay": 1190, "iron": 580, "crop": 130 },
+        "cropUpkeep": 5
       }
     },
     {
       "ref": "chief",
       "overrides": {
         "name": { "en": "Logades" },
-        "stats": { "attack": 50, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 5, "carry": 0 },
-        "cost": { "wood": 30750, "clay": 27200, "iron": 45000, "crop": 37500 },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 24250, "clay": 22200, "iron": 41500, "crop": 52500 },
         "cropUpkeep": 4
       }
     },
@@ -114,8 +106,8 @@
       "ref": "settler",
       "overrides": {
         "name": { "en": "Settler" },
-        "stats": { "attack": 10, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 3500, "clay": 4500, "iron": 2300, "crop": 4200 },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 2600, "clay": 3575, "iron": 2050, "crop": 5550 },
         "cropUpkeep": 1
       }
     }
@@ -131,11 +123,22 @@
     "stats": { "attack": 120, "defenseInfantry": 70, "defenseCavalry": 60, "speed": 16, "carry": 120 },
     "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
-    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
     "graphics": {
       "sprite": "tribes/hun/hero/hero.png",
       "icon": "tribes/hun/hero/hero_icon.png",
       "portrait": "tribes/hun/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "balance": {
+      "model": "identity-budget",
+      "identity": "All horse, no wall: the deepest offense in the game and nothing to hide behind when it is away.",
+      "tier": "player"
     }
   }
 }

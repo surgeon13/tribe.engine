@@ -4,329 +4,132 @@
   "game": "Tevel",
   "tribe": {
     "id": "arab",
-    "name": {
-      "en": "Arabs"
-    },
+    "name": { "en": "Arabs" },
     "theme": "Desert cavalry, tribal spears, and camel riders",
-    "graphics": {
-      "banner": "tribes/arab/banner.png"
-    }
+    "graphics": { "banner": "tribes/arab/banner.png" }
   },
-  "palette": {
-    "primary": "#F0D9A8",
-    "secondary": "#2E4A1E"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/arab/buildings"
-  },
+  "palette": { "primary": "#F0D9A8", "secondary": "#2E4A1E" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/arab/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
-        "name": {
-          "en": "Shield Bearer"
-        },
-        "stats": {
-          "attack": 11,
-          "defenseInfantry": 33,
-          "defenseCavalry": 59,
-          "speed": 7,
-          "carry": 40
-        },
-        "cost": {
-          "wood": 101,
-          "clay": 87,
-          "iron": 110,
-          "crop": 32
-        },
+        "name": { "en": "Shield Bearer" },
+        "stats": { "attack": 10, "defenseInfantry": 27, "defenseCavalry": 47, "speed": 8, "carry": 46 },
+        "cost": { "wood": 45, "clay": 50, "iron": 30, "crop": 45 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/stone-spear.svg"
-        },
-        "description": {
-          "en": "Shield Bearer — Desert cavalry, tribal spears, and camel riders [def_cav]"
-        }
+        "graphics": { "logo": "infantry/stone-spear.svg" },
+        "description": { "en": "Shield Bearer — Desert cavalry, tribal spears, and camel riders [def_cav]" }
       }
     },
     {
       "ref": "inf_t2",
       "overrides": {
-        "name": {
-          "en": "Najdi Skirmisher"
-        },
-        "stats": {
-          "attack": 35,
-          "defenseInfantry": 36,
-          "defenseCavalry": 43,
-          "speed": 6,
-          "carry": 45
-        },
-        "cost": {
-          "wood": 135,
-          "clay": 119,
-          "iron": 151,
-          "crop": 59
-        },
+        "name": { "en": "Najdi Skirmisher" },
+        "stats": { "attack": 35, "defenseInfantry": 31, "defenseCavalry": 37, "speed": 7, "carry": 52 },
+        "cost": { "wood": 85, "clay": 105, "iron": 110, "crop": 55 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/battle-axe.svg"
-        },
-        "description": {
-          "en": "Najdi Skirmisher — Desert cavalry, tribal spears, and camel riders [line]"
-        }
+        "graphics": { "logo": "infantry/battle-axe.svg" },
+        "description": { "en": "Najdi Skirmisher — Desert cavalry, tribal spears, and camel riders [line]" }
       }
     },
     {
       "ref": "inf_t3",
       "overrides": {
-        "name": {
-          "en": "Abna Infantry"
-        },
-        "stats": {
-          "attack": 63,
-          "defenseInfantry": 36,
-          "defenseCavalry": 27,
-          "speed": 7,
-          "carry": 50
-        },
-        "cost": {
-          "wood": 181,
-          "clay": 170,
-          "iron": 238,
-          "crop": 96
-        },
+        "name": { "en": "Abna Infantry" },
+        "stats": { "attack": 69, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 8, "carry": 58 },
+        "cost": { "wood": 150, "clay": 170, "iron": 190, "crop": 95 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "infantry/gladius.svg"
-        },
-        "description": {
-          "en": "Abna Infantry — Desert cavalry, tribal spears, and camel riders [off_inf]"
-        }
+        "graphics": { "logo": "infantry/gladius.svg" },
+        "description": { "en": "Abna Infantry — Desert cavalry, tribal spears, and camel riders [off_inf]" }
       }
     },
     {
       "ref": "scout",
       "overrides": {
-        "name": {
-          "en": "Desert Scout"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 19,
-          "defenseCavalry": 10,
-          "speed": 17,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 146,
-          "clay": 162,
-          "iron": 27,
-          "crop": 43
-        },
+        "name": { "en": "Desert Scout" },
+        "stats": { "attack": 0, "defenseInfantry": 17, "defenseCavalry": 8, "speed": 18, "carry": 0 },
+        "cost": { "wood": 95, "clay": 105, "iron": 30, "crop": 50 },
         "cropUpkeep": 2,
-        "graphics": {
-          "logo": "infantry/heavy-arrow.svg"
-        },
-        "description": {
-          "en": "Desert Scout — Desert cavalry, tribal spears, and camel riders [scout]"
-        }
+        "graphics": { "logo": "infantry/heavy-arrow.svg" },
+        "description": { "en": "Desert Scout — Desert cavalry, tribal spears, and camel riders [scout]" }
       }
     },
     {
       "ref": "cav_t1",
       "overrides": {
-        "name": {
-          "en": "Light Faris"
-        },
-        "stats": {
-          "attack": 145,
-          "defenseInfantry": 52,
-          "defenseCavalry": 48,
-          "speed": 15,
-          "carry": 89
-        },
-        "cost": {
-          "wood": 567,
-          "clay": 465,
-          "iron": 352,
-          "crop": 113
-        },
+        "name": { "en": "Light Faris" },
+        "stats": { "attack": 113, "defenseInfantry": 45, "defenseCavalry": 41, "speed": 17, "carry": 110 },
+        "cost": { "wood": 320, "clay": 330, "iron": 240, "crop": 130 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "cavalry/camel-head.svg"
-        },
-        "description": {
-          "en": "Light Faris — Desert cavalry, tribal spears, and camel riders [cav_off]"
-        }
+        "graphics": { "logo": "cavalry/camel-head.svg" },
+        "description": { "en": "Light Faris — Desert cavalry, tribal spears, and camel riders [cav_off]" }
       }
     },
     {
       "ref": "cav_t2",
       "overrides": {
-        "name": {
-          "en": "Faris"
-        },
-        "stats": {
-          "attack": 185,
-          "defenseInfantry": 60,
-          "defenseCavalry": 55,
-          "speed": 13,
-          "carry": 77
-        },
-        "cost": {
-          "wood": 624,
-          "clay": 703,
-          "iron": 862,
-          "crop": 198
-        },
-        "cropUpkeep": 4,
-        "graphics": {
-          "logo": "cavalry/camel.svg"
-        },
-        "description": {
-          "en": "Faris — Desert cavalry, tribal spears, and camel riders [cav_off]"
-        }
+        "name": { "en": "Faris" },
+        "stats": { "attack": 138, "defenseInfantry": 51, "defenseCavalry": 46, "speed": 15, "carry": 94 },
+        "cost": { "wood": 290, "clay": 360, "iron": 330, "crop": 150 },
+        "cropUpkeep": 3,
+        "graphics": { "logo": "cavalry/camel.svg" },
+        "description": { "en": "Faris — Desert cavalry, tribal spears, and camel riders [cav_off]" }
       }
     },
     {
       "ref": "cav_t3",
       "overrides": {
-        "name": {
-          "en": "Royal Mamluk"
-        },
-        "stats": {
-          "attack": 165,
-          "defenseInfantry": 57,
-          "defenseCavalry": 52,
-          "speed": 14,
-          "carry": 81
-        },
-        "cost": {
-          "wood": 601,
-          "clay": 624,
-          "iron": 737,
-          "crop": 170
-        },
-        "cropUpkeep": 4,
-        "graphics": {
-          "logo": "cavalry/cloaked-rider.svg"
-        },
-        "description": {
-          "en": "Royal Mamluk — Desert cavalry, tribal spears, and camel riders [cav_off]"
-        }
+        "name": { "en": "Royal Mamluk" },
+        "stats": { "attack": 158, "defenseInfantry": 56, "defenseCavalry": 51, "speed": 14, "carry": 84 },
+        "cost": { "wood": 410, "clay": 520, "iron": 440, "crop": 180 },
+        "cropUpkeep": 3,
+        "graphics": { "logo": "cavalry/cloaked-rider.svg" },
+        "description": { "en": "Royal Mamluk — Desert cavalry, tribal spears, and camel riders [cav_off]" }
       }
     },
     {
       "ref": "ram",
       "overrides": {
-        "name": {
-          "en": "Siege Ram"
-        },
-        "stats": {
-          "attack": 62,
-          "defenseInfantry": 29,
-          "defenseCavalry": 71,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 972,
-          "clay": 389,
-          "iron": 540,
-          "crop": 76
-        },
+        "name": { "en": "Siege Ram" },
+        "stats": { "attack": 61, "defenseInfantry": 28, "defenseCavalry": 70, "speed": 4, "carry": 0 },
+        "cost": { "wood": 780, "clay": 370, "iron": 430, "crop": 100 },
         "cropUpkeep": 3,
-        "graphics": {
-          "logo": "rams/ladder.svg"
-        },
-        "description": {
-          "en": "Siege Ram — Desert cavalry, tribal spears, and camel riders"
-        }
+        "graphics": { "logo": "rams/ladder.svg" },
+        "description": { "en": "Siege Ram — Desert cavalry, tribal spears, and camel riders" }
       }
     },
     {
       "ref": "catapult",
       "overrides": {
-        "name": {
-          "en": "Arradah"
-        },
-        "stats": {
-          "attack": 77,
-          "defenseInfantry": 57,
-          "defenseCavalry": 10,
-          "speed": 3,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 1026,
-          "clay": 1458,
-          "iron": 648,
-          "crop": 97
-        },
-        "cropUpkeep": 6,
-        "graphics": {
-          "logo": "catapults/trebuchet.svg"
-        },
-        "description": {
-          "en": "Arradah — Desert cavalry, tribal spears, and camel riders"
-        }
+        "name": { "en": "Arradah" },
+        "stats": { "attack": 51, "defenseInfantry": 56, "defenseCavalry": 9, "speed": 3, "carry": 0 },
+        "cost": { "wood": 740, "clay": 1290, "iron": 510, "crop": 120 },
+        "cropUpkeep": 5,
+        "graphics": { "logo": "catapults/trebuchet.svg" },
+        "description": { "en": "Arradah — Desert cavalry, tribal spears, and camel riders" }
       }
     },
     {
       "ref": "chief",
       "overrides": {
-        "name": {
-          "en": "Arab Sheikh"
-        },
-        "stats": {
-          "attack": 52,
-          "defenseInfantry": 38,
-          "defenseCavalry": 29,
-          "speed": 4,
-          "carry": 0
-        },
-        "cost": {
-          "wood": 32400,
-          "clay": 29160,
-          "iron": 47520,
-          "crop": 38880
-        },
-        "cropUpkeep": 5,
-        "graphics": {
-          "logo": "chiefs/scepter.svg"
-        },
-        "description": {
-          "en": "Arab Sheikh — Desert cavalry, tribal spears, and camel riders"
-        }
+        "name": { "en": "Arab Sheikh" },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 25200, "clay": 25600, "iron": 38800, "crop": 50900 },
+        "cropUpkeep": 4,
+        "graphics": { "logo": "chiefs/scepter.svg" },
+        "description": { "en": "Arab Sheikh — Desert cavalry, tribal spears, and camel riders" }
       }
     },
     {
       "ref": "settler",
       "overrides": {
-        "name": {
-          "en": "Arab Settler"
-        },
-        "stats": {
-          "attack": 0,
-          "defenseInfantry": 76,
-          "defenseCavalry": 76,
-          "speed": 5,
-          "carry": 3000
-        },
-        "cost": {
-          "wood": 6264,
-          "clay": 5724,
-          "iron": 7776,
-          "crop": 5940
-        },
+        "name": { "en": "Arab Settler" },
+        "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
+        "cost": { "wood": 2575, "clay": 3925, "iron": 1825, "crop": 5150 },
         "cropUpkeep": 1,
-        "graphics": {
-          "logo": "settlers/old-wagon.svg"
-        },
-        "description": {
-          "en": "Arab Settler — Desert cavalry, tribal spears, and camel riders"
-        }
+        "graphics": { "logo": "settlers/old-wagon.svg" },
+        "description": { "en": "Arab Settler — Desert cavalry, tribal spears, and camel riders" }
       }
     }
   ],
@@ -335,26 +138,11 @@
     "progression": "hero.system.json",
     "role": "hero",
     "category": "hero",
-    "name": {
-      "en": "Hero"
-    },
-    "description": {
-      "en": "Player hero — defaults to the account's in-game name; editable later."
-    },
+    "name": { "en": "Hero" },
+    "description": { "en": "Player hero — defaults to the account's in-game name; editable later." },
     "isBase": false,
-    "stats": {
-      "attack": 103,
-      "defenseInfantry": 105,
-      "defenseCavalry": 95,
-      "speed": 8,
-      "carry": 100
-    },
-    "cost": {
-      "wood": 0,
-      "clay": 0,
-      "iron": 0,
-      "crop": 0
-    },
+    "stats": { "attack": 103, "defenseInfantry": 105, "defenseCavalry": 95, "speed": 8, "carry": 100 },
+    "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
     "training": {
       "building": "hero_mansion",
@@ -375,6 +163,11 @@
     "era": "Arabian / early Islamic",
     "region": "Arabia & Near East",
     "historicalContext": "Arab tribal and early Islamic armies with camel cavalry, faris lancers, and desert scouts across Arabia and the Near East",
-    "createdAt": "2026-08-12T06:42:50.142Z"
+    "createdAt": "2026-08-12T06:42:50.142Z",
+    "balance": {
+      "model": "identity-budget",
+      "identity": "Desert raiders: three offensive horses, the cheapest remounts, and nothing worth defending with.",
+      "tier": "player"
+    }
   }
 }

@@ -6,25 +6,17 @@
     "id": "egyptian",
     "name": { "en": "Egyptians" },
     "theme": "Strong defense, cheap militia, stone wall synergy",
-    "graphics": {
-      "banner": "tribes/egyptian/banner.png"
-    }
+    "graphics": { "banner": "tribes/egyptian/banner.png" }
   },
-  "palette": {
-    "primary": "#C9A227",
-    "secondary": "#163F5E"
-  },
-  "buildings": {
-    "usePalette": true,
-    "spriteRoot": "tribes/egyptian/buildings"
-  },
+  "palette": { "primary": "#C9A227", "secondary": "#163F5E" },
+  "buildings": { "usePalette": true, "spriteRoot": "tribes/egyptian/buildings" },
   "troops": [
     {
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Slave Militia" },
-        "stats": { "attack": 10, "defenseInfantry": 30, "defenseCavalry": 20, "speed": 7, "carry": 15 },
-        "cost": { "wood": 45, "clay": 60, "iron": 30, "crop": 15 },
+        "stats": { "attack": 29, "defenseInfantry": 35, "defenseCavalry": 41, "speed": 6, "carry": 43 },
+        "cost": { "wood": 90, "clay": 130, "iron": 55, "crop": 60 },
         "cropUpkeep": 1
       }
     },
@@ -32,8 +24,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Ash Warden" },
-        "stats": { "attack": 30, "defenseInfantry": 55, "defenseCavalry": 40, "speed": 6, "carry": 50 },
-        "cost": { "wood": 115, "clay": 100, "iron": 145, "crop": 60 },
+        "stats": { "attack": 25, "defenseInfantry": 67, "defenseCavalry": 35, "speed": 5, "carry": 21 },
+        "cost": { "wood": 100, "clay": 160, "iron": 115, "crop": 45 },
         "cropUpkeep": 1
       }
     },
@@ -41,8 +33,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Khopesh Warrior" },
-        "stats": { "attack": 65, "defenseInfantry": 50, "defenseCavalry": 20, "speed": 7, "carry": 45 },
-        "cost": { "wood": 170, "clay": 180, "iron": 220, "crop": 80 },
+        "stats": { "attack": 61, "defenseInfantry": 41, "defenseCavalry": 31, "speed": 7, "carry": 48 },
+        "cost": { "wood": 140, "clay": 210, "iron": 160, "crop": 60 },
         "cropUpkeep": 1
       }
     },
@@ -51,7 +43,7 @@
       "overrides": {
         "name": { "en": "Sopdu Explorer" },
         "stats": { "attack": 0, "defenseInfantry": 20, "defenseCavalry": 10, "speed": 16, "carry": 0 },
-        "cost": { "wood": 170, "clay": 150, "iron": 20, "crop": 40 },
+        "cost": { "wood": 125, "clay": 180, "iron": 35, "crop": 40 },
         "cropUpkeep": 2
       }
     },
@@ -59,8 +51,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Anhur Guard" },
-        "stats": { "attack": 50, "defenseInfantry": 110, "defenseCavalry": 50, "speed": 15, "carry": 50 },
-        "cost": { "wood": 360, "clay": 330, "iron": 280, "crop": 120 },
+        "stats": { "attack": 37, "defenseInfantry": 85, "defenseCavalry": 37, "speed": 12, "carry": 117 },
+        "cost": { "wood": 185, "clay": 255, "iron": 125, "crop": 55 },
         "cropUpkeep": 2
       }
     },
@@ -68,9 +60,9 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Resheph Chariot" },
-        "stats": { "attack": 110, "defenseInfantry": 120, "defenseCavalry": 150, "speed": 10, "carry": 70 },
-        "cost": { "wood": 450, "clay": 560, "iron": 610, "crop": 180 },
-        "cropUpkeep": 3
+        "stats": { "attack": 119, "defenseInfantry": 55, "defenseCavalry": 51, "speed": 13, "carry": 77 },
+        "cost": { "wood": 360, "clay": 590, "iron": 360, "crop": 120 },
+        "cropUpkeep": 2
       }
     },
     {
@@ -78,8 +70,8 @@
       "overrides": {
         "name": { "en": "Royal Chariot" },
         "description": { "en": "Tevel slot 7 — Travian Egyptians have two chariot lines." },
-        "stats": { "attack": 95, "defenseInfantry": 100, "defenseCavalry": 130, "speed": 12, "carry": 60 },
-        "cost": { "wood": 420, "clay": 500, "iron": 550, "crop": 150 },
+        "stats": { "attack": 135, "defenseInfantry": 61, "defenseCavalry": 56, "speed": 12, "carry": 69 },
+        "cost": { "wood": 330, "clay": 550, "iron": 310, "crop": 100 },
         "cropUpkeep": 3
       }
     },
@@ -87,8 +79,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Ram" },
-        "stats": { "attack": 55, "defenseInfantry": 30, "defenseCavalry": 95, "speed": 4, "carry": 0 },
-        "cost": { "wood": 995, "clay": 575, "iron": 340, "crop": 80 },
+        "stats": { "attack": 67, "defenseInfantry": 31, "defenseCavalry": 78, "speed": 4, "carry": 0 },
+        "cost": { "wood": 930, "clay": 580, "iron": 460, "crop": 80 },
         "cropUpkeep": 3
       }
     },
@@ -96,8 +88,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Stone Catapult" },
-        "stats": { "attack": 65, "defenseInfantry": 55, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 980, "clay": 1510, "iron": 660, "crop": 100 },
+        "stats": { "attack": 57, "defenseInfantry": 62, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 680, "clay": 1580, "iron": 420, "crop": 70 },
         "cropUpkeep": 6
       }
     },
@@ -105,8 +97,8 @@
       "ref": "chief",
       "overrides": {
         "name": { "en": "Nomarch" },
-        "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 50, "speed": 4, "carry": 0 },
-        "cost": { "wood": 34000, "clay": 50000, "iron": 34000, "crop": 42000 },
+        "stats": { "attack": 40, "defenseInfantry": 60, "defenseCavalry": 40, "speed": 4, "carry": 0 },
+        "cost": { "wood": 27650, "clay": 37150, "iron": 37950, "crop": 37700 },
         "cropUpkeep": 4
       }
     },
@@ -115,7 +107,7 @@
       "overrides": {
         "name": { "en": "Settler" },
         "stats": { "attack": 0, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 5040, "clay": 6510, "iron": 4830, "crop": 4620 },
+        "cost": { "wood": 2625, "clay": 5275, "iron": 1650, "crop": 3525 },
         "cropUpkeep": 1
       }
     }
@@ -131,11 +123,22 @@
     "stats": { "attack": 75, "defenseInfantry": 130, "defenseCavalry": 90, "speed": 10, "carry": 80 },
     "cost": { "wood": 0, "clay": 0, "iron": 0, "crop": 0 },
     "cropUpkeep": 6,
-    "training": { "building": "hero_mansion", "timeSeconds": 0, "requirements": [] },
+    "training": {
+      "building": "hero_mansion",
+      "timeSeconds": 0,
+      "requirements": []
+    },
     "graphics": {
       "sprite": "tribes/egyptian/hero/hero.png",
       "icon": "tribes/egyptian/hero/hero_icon.png",
       "portrait": "tribes/egyptian/hero/hero_portrait.png"
+    }
+  },
+  "meta": {
+    "balance": {
+      "model": "identity-budget",
+      "identity": "Cheap militia behind stone: wide defensive infantry that a young village can already afford.",
+      "tier": "player"
     }
   }
 }
