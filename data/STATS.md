@@ -1,6 +1,15 @@
 # Tevel troop stat sources
 
-Base combat values match **Travian Legends (T4.6)** unless noted.
+Troop tables are **generated** from `lib/balance/identities.js` by
+`npm run balance:rebuild`; edit a tribe's identity rather than its numbers, or
+the next rebuild will overwrite the change. Names, descriptions, logos, and
+heroes are flavor and stay hand-authored.
+
+The per-slot anchor prices the generator charges were measured from the six
+Travian-canonical cores below, so the game still sits where **Travian Legends
+(T4.6)** put it — see `data/balance/BALANCE.md` for the model.
+
+## Original sources
 
 | Tribe | Source | Notes |
 |-------|--------|-------|
@@ -16,13 +25,14 @@ Base combat values match **Travian Legends (T4.6)** unless noted.
 
 ## Troop role balance
 
-Custom / generated tribes follow Travian role doctrine: standing defense is infantry;
+Every tribe follows Travian role doctrine: standing defense is infantry;
 cavalry is offense- **or** defense-oriented; Paladin-style def-cav keeps high carry;
 cheap spears for anti-cav spam. See:
 
 - **`data/balance/TROOP_ROLES.md`** — design doctrine
 - **`npm run balance:roles`** — audit registered tribes
 - **`npm run balance:roles:demo`** — print role-shaped stats per archetype
+- **`npm run validate:balance`** — price every roster against the anchor
 
 Hero stats are **Tevel placeholders** (Travian heroes use a separate progression system).
 

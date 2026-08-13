@@ -3,95 +3,23 @@
   "game": "Tevel",
   "description": "Canonical two-color palette per faction. Used for units, buildings, and UI.",
   "palettes": {
-    "roman": {
-      "primary": "#851818",
-      "secondary": "#D4AF37",
-      "notes": "Crimson legion red + gold trim"
-    },
-    "teuton": {
-      "primary": "#2E2217",
-      "secondary": "#B8860B",
-      "notes": "Dark wood/leather + bronze accent"
-    },
-    "gaul": {
-      "primary": "#2B5625",
-      "secondary": "#C0C0C0",
-      "notes": "Forest green + silver"
-    },
-    "egyptian": {
-      "primary": "#C9A227",
-      "secondary": "#163F5E",
-      "notes": "Desert gold + lapis blue"
-    },
-    "hun": {
-      "primary": "#F2CE66",
-      "secondary": "#A52A2A",
-      "notes": "Steppe gold + rust red"
-    },
-    "spartan": {
-      "primary": "#8B0000",
-      "secondary": "#FFD700",
-      "notes": "Deep red + gold"
-    },
-    "natar": {
-      "primary": "#A9B0BC",
-      "secondary": "#6B0000",
-      "notes": "Obsidian ash + blood red"
-    },
-    "nature": {
-      "primary": "#8FD14F",
-      "secondary": "#3B2A16",
-      "notes": "Leaf green + bark brown"
-    },
-    "carthaginian": {
-      "primary": "#153E59",
-      "secondary": "#C9A227",
-      "notes": "Tyrian sea-blue + trade gold"
-    },
-    "japanese": {
-      "primary": "#8B1A1A",
-      "secondary": "#F5F0E6",
-      "notes": "Lacquer red + rice-paper cream"
-    },
-    "byzantine": {
-      "primary": "#2C3E6B",
-      "secondary": "#D4AF37",
-      "notes": "Imperial blue + mosaic gold"
-    },
-    "israelite": {
-      "primary": "#1A3C6E",
-      "secondary": "#C9A227",
-      "notes": "Deep indigo + temple gold"
-    },
-    "undead": {
-      "primary": "#1A1A2E",
-      "secondary": "#6BCB77",
-      "notes": "Midnight crypt + corpse-glow green"
-    },
-    "median": {
-      "primary": "#373F4D",
-      "secondary": "#A0AEC0",
-      "notes": "Neutral baseline — slate"
-    },
-    "persian": {
-      "primary": "#6B2D5C",
-      "secondary": "#E8C547",
-      "notes": "Royal purple + sun gold"
-    },
-    "axum": {
-      "primary": "#6B2D1A",
-      "secondary": "#E8B84A",
-      "notes": "Laterite earth + trade gold"
-    },
-    "arab": {
-      "primary": "#6B3F2A",
-      "secondary": "#E6B422",
-      "notes": "Arabs · arab flavor from your description"
-    },
-    "nabateans": {
-      "primary": "#57351D",
-      "secondary": "#C4A35A",
-      "notes": "Nabateans · nabatean flavor from your description"
-    }
+    "roman": { "primary": "#851818", "secondary": "#D4AF37", "notes": "Crimson legion red + gold trim" },
+    "teuton": { "primary": "#0D0F12", "secondary": "#A8B0B8", "notes": "Iron black + steel grey" },
+    "gaul": { "primary": "#2B5625", "secondary": "#C0C0C0", "notes": "Forest green + silver" },
+    "egyptian": { "primary": "#C9A227", "secondary": "#163F5E", "notes": "Desert gold + lapis blue" },
+    "hun": { "primary": "#5B2A9E", "secondary": "#F0C64F", "notes": "Steppe purple + horde gold" },
+    "spartan": { "primary": "#D98A38", "secondary": "#4A0E12", "notes": "Bronze shield + oxblood cloak" },
+    "natar": { "primary": "#FF7043", "secondary": "#2A0B0B", "notes": "Molten ember + charred blood" },
+    "nature": { "primary": "#A8DC63", "secondary": "#33240F", "notes": "Leaf green + bark brown" },
+    "carthaginian": { "primary": "#7A1F5C", "secondary": "#EFE6D2", "notes": "Tyrian purple + ivory sail" },
+    "japanese": { "primary": "#D62828", "secondary": "#FBF7ED", "notes": "Lacquer red + rice-paper cream" },
+    "byzantine": { "primary": "#1F3878", "secondary": "#D2A238", "notes": "Imperial blue + mosaic gold" },
+    "israelite": { "primary": "#F5F8FF", "secondary": "#1D4ED8", "notes": "White linen + tekhelet blue" },
+    "undead": { "primary": "#C084E8", "secondary": "#141426", "notes": "Wraith violet + midnight crypt" },
+    "median": { "primary": "#5E6E86", "secondary": "#EDF1F6", "notes": "Neutral baseline — slate + pale steel" },
+    "persian": { "primary": "#35BDB6", "secondary": "#3E0D1C", "notes": "Turquoise + royal wine" },
+    "axum": { "primary": "#4ECB7B", "secondary": "#6B121C", "notes": "Highland green + deep red" },
+    "arab": { "primary": "#F0D9A8", "secondary": "#2E4A1E", "notes": "Desert linen + palm green" },
+    "nabateans": { "primary": "#5A2E22", "secondary": "#E8B98C", "notes": "Sandstone + Petra rose" }
   }
 }

@@ -13,6 +13,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { formatJson } from "../lib/json-format.js";
 import { resolveTribe } from "../lib/merge.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -65,7 +66,41 @@ function readJson(rel) {
 function writeJson(rel, value) {
   const filePath = path.join(dataDir, rel);
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+  fs.writeFileSync(filePath, formatJson(value), "utf8");
+}
+
+/**
+ * The catalog owns tribe colors — the distinctness gate in
+ * scripts/validate-palettes.js balances all eighteen against each other, so
+ * re-registering median must not overwrite whatever it settled on.
+ */
+function medianPalette() {
+  const existing = readJson("tribes/palettes.json").palettes?.median;
+  if (existing?.primary && existing?.secondary) return existing;
+  return { primary: "#5E6E86", secondary: "#EDF1F6", notes: "Neutral baseline — slate + pale steel" };
+}
+
+/**
+ * Same story as the palette: refresh-troop-logos.js spreads icons across the
+ * whole roster so no two tribes share one, and re-registering median must not
+ * pull its icons back out from under that.
+ */
+function medianLogos() {
+  const existing = readJson("tribe-logos.json").tribes?.median;
+  if (existing && Object.keys(existing).length) return existing;
+  return {
+    inf_t1: "infantry/stone-spear.svg",
+    inf_t2: "infantry/battle-axe.svg",
+    inf_t3: "infantry/gladius.svg",
+    scout: "infantry/heavy-arrow.svg",
+    cav_t1: "cavalry/horse-head.svg",
+    cav_t2: "cavalry/chess-knight.svg",
+    cav_t3: "cavalry/donkey.svg",
+    ram: "rams/siege-ram.svg",
+    catapult: "catapults/catapult.svg",
+    chief: "chiefs/scepter.svg",
+    settler: "settlers/farmer.svg",
+  };
 }
 
 function median(arr) {
@@ -259,8 +294,8 @@ function main() {
       graphics: { banner: "tribes/median/banner.png" },
     },
     palette: {
-      primary: "#4A5568",
-      secondary: "#A0AEC0",
+      primary: medianPalette().primary,
+      secondary: medianPalette().secondary,
     },
     buildings: {
       usePalette: true,
@@ -311,11 +346,7 @@ function main() {
     }
 
     const palettes = readJson("tribes/palettes.json");
-    palettes.palettes.median = {
-      primary: "#4A5568",
-      secondary: "#A0AEC0",
-      notes: "Neutral baseline — slate",
-    };
+    palettes.palettes.median = medianPalette();
     writeJson("tribes/palettes.json", palettes);
 
     const training = readJson("tribe-training.json");
@@ -332,19 +363,7 @@ function main() {
     writeJson("tribe-training.json", training);
 
     const logos = readJson("tribe-logos.json");
-    logos.tribes.median = {
-      inf_t1: "infantry/stone-spear.svg",
-      inf_t2: "infantry/battle-axe.svg",
-      inf_t3: "infantry/gladius.svg",
-      scout: "infantry/heavy-arrow.svg",
-      cav_t1: "cavalry/horse-head.svg",
-      cav_t2: "cavalry/chess-knight.svg",
-      cav_t3: "cavalry/donkey.svg",
-      ram: "rams/siege-ram.svg",
-      catapult: "catapults/catapult.svg",
-      chief: "chiefs/scepter.svg",
-      settler: "settlers/farmer.svg",
-    };
+    logos.tribes.median = medianLogos();
     writeJson("tribe-logos.json", logos);
 
     const heroSystem = readJson("hero.system.json");

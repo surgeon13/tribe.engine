@@ -242,6 +242,10 @@ function setAccent(hex) {
   // Themes ship a fixed dark --accent-text, which disappears once a tribe's
   // primary is dark too (buttons, badges, the brand mark all sit on --accent).
   style.setProperty("--accent-text", inkOn(accent));
+  // Filled surfaces can use the tribe's real color because the ink on top
+  // adapts, but thin marks drawn straight onto the page cannot: the Israelite
+  // white and the Teuton black each disappear into one of the themes.
+  style.setProperty("--accent-mark", tribeGraphicColor(accent));
 }
 
 function toast(msg) {
@@ -1850,6 +1854,9 @@ async function rebuildData(btn) {
 function refreshGraphViews() {
   if (!data?.tribes) return;
   const tribe = tribeById(activeTribeId);
+  // --accent-mark is derived from the theme's surface, so it has to be redone
+  // whenever the surface changes.
+  if (tribe?.palette?.primary) setAccent(tribe.palette.primary);
   if (activeView === "radar" && tribe) renderRadarView(tribe);
   if (!compareMode) return;
   // Tribe colors are adapted to the theme background at render time, so the
