@@ -1,6 +1,61 @@
 # Balance models for Tevel tribes
 
-## What we built: Median baseline
+## What the game runs on: identity budgets
+
+Every troop table in `data/tribes/*.json` is generated from one model rather
+than hand-tuned per tribe. The contract is short:
+
+> **Identity is shape. Fairness is price.**
+> A tribe may put its power wherever it likes. Every point of power costs the
+> same, in the two currencies players actually spend.
+
+| Piece | Where |
+|-------|-------|
+| Per-slot anchor prices, measured from the six Travian cores | `lib/balance/anchors.js` |
+| What each tribe is: roles, shape dials, eliteness, flavor | `lib/balance/identities.js` |
+| The generator that turns one into the other | `lib/balance/generate-troops.js` |
+| Rebuild the tables | `npm run balance:rebuild` |
+| Fairness gate (runs in the Netlify build) | `npm run validate:balance` |
+
+### The pipeline
+
+```
+role shape → identity dials → stats → combat index → crop upkeep → resource cost → train time
+```
+
+Cost is **derived from power**, never authored beside it. That is the whole
+trick: the only way to make a unit cheaper is to make it weaker, or to move its
+price onto the other currency. A tribe cannot end up both stronger and cheaper,
+which is the failure mode hand-tuning always drifts into.
+
+Crop upkeep is a small integer bracket, so rounding decides what a unit really
+costs in population; resources then settle the difference. A unit that rounded
+down in crop pays more per point of power in wood and iron, and the reverse.
+
+### What still makes tribes different
+
+| Dial | Effect |
+|------|--------|
+| `slotRoles` | which job each of the eleven slots does |
+| `shape` | infantry or cavalry, attack or defense, speed and carry |
+| `eliteness` | a few big units or many small ones — big units are crop-efficient and expensive, small ones the reverse |
+| `cropPressure` | how much of the price sits on population rather than resources |
+| `trainBias`, `mixBias`, `siege` | queue length, resource flavor, workshop strength |
+
+Romans and Spartans field expensive units that are worth more per crop; Teutons
+and Persians field cheap ones that eat more of a village. Both pay the same for
+the army they end up with — `npm run validate:balance` prints the receipt.
+
+### Tiers outside the player band
+
+NPC and boss rosters are content, not opponents you choose, so they are exempt
+from the price band and deliberately ordered: Undead > Natars > players > Nature.
+The validator enforces that ordering so a player tribe cannot creep past the
+Wonder garrison.
+
+---
+
+## Where the anchor came from: Median baseline
 
 `scripts/compute-median-tribe.js` aggregates the **six original playable tribes**
 (Romans, Teutons, Gauls, Egyptians, Huns, Spartans) after override resolution.
@@ -32,9 +87,9 @@ with a **budget constraint** on \(\mathbf{d}_t\) so buffs are paid for by nerfs.
 
 ---
 
-## Recommended mathematical models (best → good)
+## Mathematical models (best → good)
 
-### 1. Point-buy / identity budgets (recommended primary)
+### 1. Point-buy / identity budgets — **implemented**, see the top of this file
 
 Assign each combat axis a weight (from Median’s combat index or training cost):
 
@@ -116,9 +171,11 @@ Run PCA on the 6×(11 slots × 5 stats) matrix. Top components often recover
 5. Spot-check with combat-index + cost efficiency vs Median (±5–8%)
 6. Later: army sim / Elo gate before shipping
 
-Custom tribe archetypes in `lib/tribe-generator/custom.js` already do a light
-version of (1) via scale multipliers — they should eventually read Median as
-\(\mathbf{m}\) instead of the hand-tuned `BASE_TROOPS` blob.
+Custom tribes created in the UI still go through `lib/tribe-generator/custom.js`,
+which shapes stats from archetype multipliers rather than the identity model
+above. They land in the same role doctrine but are not priced against the
+anchor, so a newly created tribe should be given an entry in
+`lib/balance/identities.js` and rebuilt when it becomes a permanent faction.
 
 ---
 
