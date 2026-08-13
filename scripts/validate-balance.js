@@ -15,6 +15,7 @@
  *   5. no two tribes ship the same stat block (copy-paste rosters)
  *   6. tier ordering holds: boss > NPC guard > players > wildlife
  *   7. stats stay inside sane ranges and tiers do not go backwards
+ *   8. every stat and cost we author lands on the five-point grid Travian uses
  *
  * Usage: npm run validate:balance [-- --json]
  */
@@ -29,6 +30,7 @@ import {
   totalCost,
 } from "../lib/balance/anchors.js";
 import { isCanonTribe } from "../lib/balance/canon.js";
+import { STAT_STEP, onStep } from "../lib/balance/quantize.js";
 import {
   CROP_PRESSURE_RANGE,
   FAIRNESS_TOLERANCE,
@@ -317,6 +319,32 @@ for (const t of tribes) {
       warnings.push(
         `${t.id} — ${family[2]} (${tiers[2].name}) is weaker than an earlier tier; the last unlock in a family should be its best`
       );
+    }
+  }
+}
+
+// Tribes we write ourselves are held to the five-point grid Travian's own
+// tables use. Travian's tribes are exempt because they are transcribed rather
+// than designed, and a handful of their numbers genuinely sit off it: a
+// Spartan Sentinel defends 22 against cavalry and a bear hauls 19.
+const GRID_STATS = ["attack", "defenseInfantry", "defenseCavalry"];
+for (const t of tribes) {
+  if (t.canon) continue;
+  for (const [ref, u] of t.troops) {
+    // Settlers carry 3000 in Travian and ours inherit it; that is a payload,
+    // not a stat anyone compares across tribes.
+    const keys = ref === "settler" ? GRID_STATS : [...GRID_STATS, "carry"];
+    for (const key of keys) {
+      if (!onStep(u.stats[key])) {
+        errors.push(
+          `${t.id}/${ref} — ${key} is ${u.stats[key]}, off the ${STAT_STEP}-point grid; regenerate with \`npm run balance:rebuild\``
+        );
+      }
+    }
+    for (const [res, value] of Object.entries(u.cost || {})) {
+      if (!onStep(value)) {
+        errors.push(`${t.id}/${ref} — ${res} cost is ${value}, off the ${STAT_STEP}-point grid`);
+      }
     }
   }
 }

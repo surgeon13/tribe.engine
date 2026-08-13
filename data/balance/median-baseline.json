@@ -1,7 +1,7 @@
 {
   "version": 1,
   "game": "Tevel",
-  "generatedAt": "2026-08-13T09:05:25.634Z",
+  "generatedAt": "2026-08-13T09:17:43.508Z",
   "methodology": {
     "sources": ["roman", "teuton", "gaul", "egyptian", "hun", "spartan"],
     "excluded": ["natar", "nature"],
@@ -44,8 +44,8 @@
         "timeSeconds": 1067
       },
       "playableInteger": {
-        "stats": { "attack": 38, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 7, "carry": 50 },
-        "cost": { "wood": 105, "clay": 90, "iron": 48, "crop": 33 },
+        "stats": { "attack": 40, "defenseInfantry": 35, "defenseCavalry": 30, "speed": 7, "carry": 50 },
+        "cost": { "wood": 105, "clay": 90, "iron": 50, "crop": 35 },
         "cropUpkeep": 1,
         "timeSeconds": 925
       },
@@ -97,8 +97,8 @@
         "timeSeconds": 1459
       },
       "playableInteger": {
-        "stats": { "attack": 35, "defenseInfantry": 45, "defenseCavalry": 38, "speed": 6, "carry": 40 },
-        "cost": { "wood": 140, "clay": 105, "iron": 153, "crop": 60 },
+        "stats": { "attack": 35, "defenseInfantry": 45, "defenseCavalry": 40, "speed": 6, "carry": 40 },
+        "cost": { "wood": 140, "clay": 105, "iron": 155, "crop": 60 },
         "cropUpkeep": 1,
         "timeSeconds": 1410
       },
@@ -150,7 +150,7 @@
         "timeSeconds": 1440
       },
       "playableInteger": {
-        "stats": { "attack": 63, "defenseInfantry": 38, "defenseCavalry": 28, "speed": 7, "carry": 50 },
+        "stats": { "attack": 65, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 50 },
         "cost": { "wood": 130, "clay": 140, "iron": 190, "crop": 75 },
         "cropUpkeep": 1,
         "timeSeconds": 1320
@@ -256,8 +256,8 @@
         "timeSeconds": 2549
       },
       "playableInteger": {
-        "stats": { "attack": 78, "defenseInfantry": 83, "defenseCavalry": 45, "speed": 16, "carry": 88 },
-        "cost": { "wood": 365, "clay": 405, "iron": 285, "crop": 88 },
+        "stats": { "attack": 80, "defenseInfantry": 85, "defenseCavalry": 45, "speed": 16, "carry": 90 },
+        "cost": { "wood": 365, "clay": 405, "iron": 285, "crop": 90 },
         "cropUpkeep": 2,
         "timeSeconds": 2520
       },
@@ -310,7 +310,7 @@
       },
       "playableInteger": {
         "stats": { "attack": 130, "defenseInfantry": 80, "defenseCavalry": 75, "speed": 10, "carry": 75 },
-        "cost": { "wood": 450, "clay": 505, "iron": 545, "crop": 143 },
+        "cost": { "wood": 450, "clay": 505, "iron": 545, "crop": 145 },
         "cropUpkeep": 3,
         "timeSeconds": 3100
       },
@@ -415,8 +415,8 @@
         "timeSeconds": 4603
       },
       "playableInteger": {
-        "stats": { "attack": 63, "defenseInfantry": 30, "defenseCavalry": 85, "speed": 4, "carry": 0 },
-        "cost": { "wood": 973, "clay": 345, "iron": 355, "crop": 73 },
+        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 85, "speed": 4, "carry": 0 },
+        "cost": { "wood": 975, "clay": 345, "iron": 355, "crop": 75 },
         "cropUpkeep": 3,
         "timeSeconds": 4610
       },
@@ -468,7 +468,7 @@
         "timeSeconds": 9150
       },
       "playableInteger": {
-        "stats": { "attack": 58, "defenseInfantry": 58, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "stats": { "attack": 60, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
         "cost": { "wood": 950, "clay": 1315, "iron": 625, "crop": 90 },
         "cropUpkeep": 6,
         "timeSeconds": 9000
@@ -522,7 +522,7 @@
       },
       "playableInteger": {
         "stats": { "attack": 40, "defenseInfantry": 50, "defenseCavalry": 40, "speed": 4, "carry": 0 },
-        "cost": { "wood": 33725, "clay": 29133, "iron": 32500, "crop": 32550 },
+        "cost": { "wood": 33725, "clay": 29135, "iron": 32500, "crop": 32550 },
         "cropUpkeep": 4,
         "timeSeconds": 90700
       },
@@ -575,7 +575,7 @@
       },
       "playableInteger": {
         "stats": { "attack": 5, "defenseInfantry": 80, "defenseCavalry": 80, "speed": 5, "carry": 3000 },
-        "cost": { "wood": 5078, "clay": 5090, "iron": 4815, "crop": 4510 },
+        "cost": { "wood": 5080, "clay": 5090, "iron": 4815, "crop": 4510 },
         "cropUpkeep": 1,
         "timeSeconds": 27925
       },

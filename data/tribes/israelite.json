@@ -15,8 +15,8 @@
       "ref": "inf_t1",
       "overrides": {
         "name": { "en": "Levy Shield Bearer" },
-        "stats": { "attack": 10, "defenseInfantry": 33, "defenseCavalry": 58, "speed": 7, "carry": 40 },
-        "cost": { "wood": 65, "clay": 75, "iron": 40, "crop": 45 },
+        "stats": { "attack": 10, "defenseInfantry": 35, "defenseCavalry": 60, "speed": 7, "carry": 40 },
+        "cost": { "wood": 70, "clay": 80, "iron": 45, "crop": 50 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/stone-spear.svg" },
         "description": { "en": "Tribal muster with spear and shield — backbone of highland defense." }
@@ -26,8 +26,8 @@
       "ref": "inf_t2",
       "overrides": {
         "name": { "en": "Javelin Thrower" },
-        "stats": { "attack": 36, "defenseInfantry": 39, "defenseCavalry": 46, "speed": 6, "carry": 45 },
-        "cost": { "wood": 120, "clay": 145, "iron": 135, "crop": 55 },
+        "stats": { "attack": 35, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 6, "carry": 45 },
+        "cost": { "wood": 115, "clay": 145, "iron": 130, "crop": 55 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/boomerang.svg" },
         "description": { "en": "Judean and Benjaminite slingers — famous skirmish arm." }
@@ -37,8 +37,8 @@
       "ref": "inf_t3",
       "overrides": {
         "name": { "en": "Champion" },
-        "stats": { "attack": 71, "defenseInfantry": 42, "defenseCavalry": 31, "speed": 7, "carry": 50 },
-        "cost": { "wood": 190, "clay": 220, "iron": 210, "crop": 85 },
+        "stats": { "attack": 70, "defenseInfantry": 40, "defenseCavalry": 30, "speed": 7, "carry": 50 },
+        "cost": { "wood": 180, "clay": 210, "iron": 200, "crop": 80 },
         "cropUpkeep": 1,
         "graphics": { "logo": "infantry/gladius.svg" },
         "description": { "en": "Royal ‘mighty men’ — elite infantry of the king’s household." }
@@ -59,8 +59,8 @@
       "ref": "cav_t1",
       "overrides": {
         "name": { "en": "Light Horse" },
-        "stats": { "attack": 101, "defenseInfantry": 47, "defenseCavalry": 43, "speed": 15, "carry": 78 },
-        "cost": { "wood": 440, "clay": 470, "iron": 290, "crop": 130 },
+        "stats": { "attack": 100, "defenseInfantry": 45, "defenseCavalry": 45, "speed": 15, "carry": 80 },
+        "cost": { "wood": 440, "clay": 470, "iron": 280, "crop": 130 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/donkey.svg" },
         "description": { "en": "Light escort attached to chariot teams." }
@@ -70,8 +70,8 @@
       "ref": "cav_t2",
       "overrides": {
         "name": { "en": "Royal Chariot" },
-        "stats": { "attack": 124, "defenseInfantry": 53, "defenseCavalry": 49, "speed": 13, "carry": 105 },
-        "cost": { "wood": 410, "clay": 530, "iron": 400, "crop": 150 },
+        "stats": { "attack": 125, "defenseInfantry": 55, "defenseCavalry": 50, "speed": 13, "carry": 105 },
+        "cost": { "wood": 420, "clay": 540, "iron": 410, "crop": 150 },
         "cropUpkeep": 2,
         "graphics": { "logo": "cavalry/horse-head.svg" },
         "description": { "en": "Heavy chariots of the royal stables — strike arm on open ground." }
@@ -81,8 +81,8 @@
       "ref": "cav_t3",
       "overrides": {
         "name": { "en": "Horse Guard" },
-        "stats": { "attack": 149, "defenseInfantry": 64, "defenseCavalry": 166, "speed": 12, "carry": 55 },
-        "cost": { "wood": 510, "clay": 660, "iron": 460, "crop": 160 },
+        "stats": { "attack": 150, "defenseInfantry": 65, "defenseCavalry": 165, "speed": 12, "carry": 55 },
+        "cost": { "wood": 520, "clay": 660, "iron": 460, "crop": 160 },
         "cropUpkeep": 4,
         "graphics": { "logo": "cavalry/chess-knight.svg" },
         "description": { "en": "Mounted retainers expanding the older chariot tradition." }
@@ -92,8 +92,8 @@
       "ref": "ram",
       "overrides": {
         "name": { "en": "Siege Ram" },
-        "stats": { "attack": 64, "defenseInfantry": 30, "defenseCavalry": 74, "speed": 4, "carry": 0 },
-        "cost": { "wood": 920, "clay": 440, "iron": 430, "crop": 80 },
+        "stats": { "attack": 65, "defenseInfantry": 30, "defenseCavalry": 75, "speed": 4, "carry": 0 },
+        "cost": { "wood": 940, "clay": 450, "iron": 440, "crop": 90 },
         "cropUpkeep": 3,
         "graphics": { "logo": "rams/siege-ram.svg" }
       }
@@ -102,8 +102,8 @@
       "ref": "catapult",
       "overrides": {
         "name": { "en": "Petrary" },
-        "stats": { "attack": 54, "defenseInfantry": 59, "defenseCavalry": 10, "speed": 3, "carry": 0 },
-        "cost": { "wood": 860, "clay": 1530, "iron": 500, "crop": 100 },
+        "stats": { "attack": 55, "defenseInfantry": 60, "defenseCavalry": 10, "speed": 3, "carry": 0 },
+        "cost": { "wood": 890, "clay": 1580, "iron": 520, "crop": 100 },
         "cropUpkeep": 5,
         "graphics": { "logo": "catapults/catapult.svg" }
       }
