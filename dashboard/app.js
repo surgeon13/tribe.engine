@@ -6,12 +6,16 @@ import {
   chartMetricValue,
   formatNormalizedNumber,
   getNormalizeMode,
+  getProfileAxes,
   NORMALIZE_MODES,
   normalizeModeHint,
 } from "./metrics-normalize.js";
 import {
   computeGlobalScales,
+  drawMultiRadar,
   mountRadarCard,
+  overallRating,
+  statBarPercent,
   mountRawStatsGrid,
   mountStatAxisLegend,
   mountStatBars,
@@ -30,7 +34,6 @@ import {
 } from "./charts.js";
 import { mountPaletteContrastHint } from "./palette-hint.js";
 import {
-  renderTribeBanner,
   mountTroopLogoCell,
   mountPortrait,
   portraitOptsFromUnit,
@@ -1068,15 +1071,6 @@ function setCompareColumnCount(n) {
   document.documentElement.style.setProperty("--compare-col-min", compact ? "0px" : `${minCol}px`);
 }
 
-function formatSlotUnitNames(tribes, slotIndex) {
-  const names = tribes.map((t) => t.troops[slotIndex]?.name).filter(Boolean);
-  if (tribes.length <= 3) return names.join(" · ");
-  const unique = [...new Set(names)];
-  if (unique.length === 1) return unique[0];
-  if (unique.length === 2) return unique.join(" · ");
-  return `${unique.length} unit names across tribes`;
-}
-
 function formatCompareTribeList(tribes) {
   if (tribes.length <= 4) return tribes.map((t) => t.name).join(" · ");
   return `${tribes.length} tribes`;
@@ -1295,95 +1289,130 @@ function renderCompareSummary(tribes) {
 
 function renderCompareGraphs() {
   const tribes = getCompareTribes();
-  if (tribes.length < COMPARE_MIN_TRIBES || !globalScales) return;
-  renderCompareBanners(tribes);
+  if (tribes.length < COMPARE_MIN_TRIBES) return;
   renderCompareGraphSlots(tribes);
 }
 
-function renderCompareBanners(tribes) {
-  const banners = $("#compare-banners");
-  if (!banners) return;
-  banners.innerHTML = "";
-  setCompareColumnCount(tribes.length);
-  tribes.forEach((tribe) => {
-    const slot = document.createElement("div");
-    renderTribeBanner(slot, tribe);
-    banners.append(slot);
+/**
+ * The radar always plots the raw seven-axis profile.
+ *
+ * The per-crop and per-cost views exist to divide a stat by what it costs to
+ * field, but this chart already rescales every axis against the slot, and
+ * normalising twice leaves a shape nobody can reason about. It also drops the
+ * profile to the five combat stats, when upkeep and price are exactly what you
+ * want to see next to them: a unit that wins on every combat axis and has a
+ * stump where COST should be has told you its whole story. The Charts tab keeps
+ * the per-crop lens for people who want it.
+ */
+const RADAR_PROFILE_MODE = "raw";
+
+/**
+ * Per-slot yardsticks: for each stat, the best any tribe manages in that slot.
+ *
+ * Scaling every unit against the whole roster's maximum would be honest and
+ * useless — a tier-one spearman measured against heavy cavalry is a dot at the
+ * centre of the radar, and so is the next one, and you learn nothing. Measured
+ * against its own slot, a full axis means best-in-class and the shapes actually
+ * separate. The yardstick comes from every tribe rather than the selected ones
+ * so a shape does not change under you when you add a tribe to the comparison.
+ */
+let slotScaleCache = null;
+
+function slotProfileScales() {
+  if (slotScaleCache) return slotScaleCache;
+  const axes = getProfileAxes(RADAR_PROFILE_MODE);
+  slotScaleCache = data.roster.map((_, slotIndex) => {
+    const maxes = {};
+    const mins = {};
+    for (const ax of axes) {
+      maxes[ax.key] = 1;
+      mins[ax.key] = ax.higherBetter === false ? Infinity : 0;
+    }
+    for (const tribe of data.tribes) {
+      const troop = tribe.troops?.[slotIndex];
+      if (!troop) continue;
+      const view = buildViewMetrics(troop.metrics, RADAR_PROFILE_MODE);
+      for (const ax of axes) {
+        const val = view[ax.key] ?? 0;
+        if (val > maxes[ax.key]) maxes[ax.key] = val;
+        if (ax.higherBetter === false && val > 0 && val < mins[ax.key]) mins[ax.key] = val;
+      }
+    }
+    for (const ax of axes) {
+      if (!Number.isFinite(mins[ax.key])) mins[ax.key] = 1;
+    }
+    return { maxes, mins, axes, normalizeMode: RADAR_PROFILE_MODE };
   });
+  return slotScaleCache;
 }
 
+/**
+ * One radar per troop slot with every selected tribe's shape laid over it.
+ *
+ * This used to be a grid of one small radar per tribe per slot, which at four
+ * tribes is forty-four charts and a very long scroll, and put the two shapes
+ * you wanted to compare a screen apart. Overlaying them answers the question
+ * the view is for — how do these units differ in kind, not just in total — in
+ * one glance per slot, and the ranked list underneath says who comes out ahead.
+ */
 function renderCompareGraphSlots(tribes) {
   const grid = $("#compare-graphs-slots");
-  if (!grid || !globalScales) return;
+  if (!grid) return;
   grid.innerHTML = "";
-  syncCompareCompactAttr();
-  setCompareColumnCount(tribes.length);
+  const compact = syncCompareCompactAttr();
+
+  const axes = getProfileAxes(RADAR_PROFILE_MODE);
+  const scales = slotProfileScales();
+  const colors = getCompareSeriesColors(tribes.length, tribes);
 
   const hint = $("#compare-graphs-hint");
   if (hint) {
-    const base = normalizeModeHint(statNormalizeMode);
-    hint.textContent = isCompareCompact()
-      ? `${base} On phones, each unit stacks tribes vertically for easier reading.`
-      : base;
+    hint.textContent = `Every axis is scaled against the best any tribe reaches in that slot, so a full corner means best in class and a short one means worst. Training time and cost are inverted — faster and cheaper reach further out. OVR is the average of all ${axes.length} axes.`;
   }
 
-  const header = document.createElement("article");
-  header.className = "compare-graphs-row compare-grid-header";
-  const headerCells = tribes
-    .map(
-      (t) =>
-        `<h4 class="compare-col-title" style="color:${tribeInkColor(t.palette)}">${t.name}</h4>`
-    )
-    .join("");
-  header.innerHTML = `<div class="compare-slot-label"><strong>Unit</strong></div>${headerCells}`;
-  grid.append(header);
-
-  data.roster.forEach((slot, i) => {
-    const row = document.createElement("article");
-    row.className = "compare-graphs-row";
-
-    const unitNames = formatSlotUnitNames(tribes, i);
-    const label = document.createElement("div");
-    label.className = "compare-slot-label";
-    label.innerHTML = `
-      <strong>Slot ${slot.slot}</strong>
-      <span class="role-badge">${slot.role}</span>
-      <p class="compare-slot-units muted">${unitNames}</p>
-    `;
-    row.append(label);
-
+  data.roster.forEach((_, slotIndex) => {
+    const entries = [];
     tribes.forEach((tribe, ti) => {
-      const col = document.createElement("div");
-      col.className = "compare-tribe-block";
-      setTribeColorVars(col, tribe);
-      const troop = tribe.troops[i];
-      if (!troop) {
-        col.className = "compare-graphs-empty compare-tribe-block";
-        col.textContent = "—";
-        row.append(col);
-        return;
-      }
-      if (isCompareCompact()) {
-        const tribeTag = document.createElement("div");
-        tribeTag.className = "compare-tribe-tag";
-        tribeTag.style.color = tribeInkColor(tribe.palette);
-        tribeTag.textContent = tribe.name;
-        col.append(tribeTag);
-      }
-      const compareMetrics =
-        tribes.length === 2 ? tribes[1 - ti].troops[i]?.metrics : undefined;
-      const cardHost = document.createElement("div");
-      mountRadarCard(cardHost, troop, globalScales, tribe.palette, {
-        mini: true,
-        size: tribes.length <= 2 ? 140 : 120,
-        displayMode: statDisplayMode,
-        compareMetrics,
+      const troop = tribe.troops[slotIndex];
+      if (!troop) return;
+      const view = buildViewMetrics(troop.metrics, RADAR_PROFILE_MODE);
+      const values = axes.map((ax) => statBarPercent(ax.key, view[ax.key] ?? 0, scales[slotIndex]));
+      entries.push({
+        name: tribe.name,
+        unitName: troop.name,
+        color: colors[ti],
+        values,
+        rating: overallRating(values),
       });
-      col.append(cardHost);
-      row.append(col);
     });
+    if (!entries.length) return;
 
-    grid.append(row);
+    const card = document.createElement("article");
+    card.className = "compare-radar-card";
+
+    const title = document.createElement("h4");
+    title.className = "compare-radar-title";
+    title.textContent = slotCategoryLabel(slotIndex);
+    card.append(title);
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    drawMultiRadar(svg, { axes, series: entries, size: compact ? 230 : 250 });
+    card.append(svg);
+
+    const ranked = [...entries].sort((a, b) => b.rating - a.rating);
+    const list = document.createElement("ol");
+    list.className = "compare-radar-rank";
+    for (const entry of ranked) {
+      const item = document.createElement("li");
+      item.innerHTML = `
+        <span class="compare-radar-swatch" style="background:${entry.color}"></span>
+        <span class="compare-radar-unit">${entry.unitName}<small>${entry.name}</small></span>
+        <b class="compare-radar-rating" title="Overall: the average of all ${axes.length} axes against the best in this slot">${entry.rating}</b>
+      `;
+      list.append(item);
+    }
+    card.append(list);
+    grid.append(card);
   });
 }
 
