@@ -36,8 +36,8 @@
         "description": {
           "en": "Tevel slot 3 — Travian Gauls have two infantry units; this slot completes the Tevel roster."
         },
-        "stats": { "attack": 40, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 8, "carry": 60 },
-        "cost": { "wood": 110, "clay": 85, "iron": 95, "crop": 40 },
+        "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 60, "speed": 9, "carry": 60 },
+        "cost": { "wood": 245, "clay": 190, "iron": 205, "crop": 60 },
         "cropUpkeep": 1
       }
     },

@@ -250,11 +250,11 @@
       "extension": {
         "cav_t3": {
           "name": "Teutonic Raider",
-          "$comment": "Ours, not Travian's. Teutons raid, so the spare slot is the plunder horse: the biggest saddlebags in the tribe and enough bite to take a farm, without touching the Knight's job.",
-          "stats": { "attack": 90, "defenseInfantry": 40, "defenseCavalry": 45, "speed": 11, "carry": 130 },
-          "cropUpkeep": 3,
-          "cost": { "wood": 360, "clay": 320, "iron": 180, "crop": 70 },
-          "timeSeconds": 1190
+          "$comment": "Ours, not Travian's. The plunder horse, and it has to actually plunder best: 130 carry on two crop is 65 a head, ahead of the Paladin's 55 and the Clubswinger's 60, and nothing in the barracks moves faster. The Knight keeps the hammer's job; this one takes the farms.",
+          "stats": { "attack": 95, "defenseInfantry": 40, "defenseCavalry": 35, "speed": 12, "carry": 130 },
+          "cropUpkeep": 2,
+          "cost": { "wood": 400, "clay": 380, "iron": 230, "crop": 90 },
+          "timeSeconds": 1150
         }
       }
     },
@@ -335,11 +335,11 @@
       "extension": {
         "inf_t3": {
           "name": "Gaul Tracker",
-          "$comment": "Ours, not Travian's. Gauls field only two footmen, so this is the third: a woodsman who moves quicker than either and asks nothing of the granary.",
-          "stats": { "attack": 40, "defenseInfantry": 30, "defenseCavalry": 35, "speed": 8, "carry": 60 },
+          "$comment": "Ours, not Travian's. The Phalanx is the cheap wall and the Swordsman is the blade, so the third footman is the quality wall: 115 defence beats the Phalanx's 90 outright while still eating one crop, and it marches at 9 so it can reach a neighbour under attack. The Phalanx keeps the better defence per resource; this is what you send when the timer is short.",
+          "stats": { "attack": 45, "defenseInfantry": 55, "defenseCavalry": 60, "speed": 9, "carry": 60 },
           "cropUpkeep": 1,
-          "cost": { "wood": 110, "clay": 85, "iron": 95, "crop": 40 },
-          "timeSeconds": 880
+          "cost": { "wood": 245, "clay": 190, "iron": 205, "crop": 60 },
+          "timeSeconds": 1150
         }
       }
     },
@@ -420,11 +420,11 @@
       "extension": {
         "inf_t3": {
           "name": "Hun Warrior",
-          "$comment": "Ours, not Travian's. The Huns get two footmen and three horses; this is the footman who can actually hold a gate long enough for the horses to come back.",
-          "stats": { "attack": 60, "defenseInfantry": 35, "defenseCavalry": 25, "speed": 6, "carry": 45 },
+          "$comment": "Ours, not Travian's. Huns raid, and this is the raid you can afford before the horses arrive: 85 attack is well clear of the Bowman's 50, it hauls 60 on one crop, and it is the quickest footman the tribe has. It is deliberately thin on defence, because Huns are.",
+          "stats": { "attack": 85, "defenseInfantry": 40, "defenseCavalry": 20, "speed": 7, "carry": 60 },
           "cropUpkeep": 1,
-          "cost": { "wood": 120, "clay": 120, "iron": 170, "crop": 85 },
-          "timeSeconds": 1090
+          "cost": { "wood": 175, "clay": 150, "iron": 300, "crop": 75 },
+          "timeSeconds": 1150
         }
       }
     },
@@ -505,11 +505,11 @@
       "extension": {
         "cav_t3": {
           "name": "Royal Chariot",
-          "$comment": "Ours, not Travian's. Egypt has no cavalry that attacks; this is the pharaoh's own, quick enough to answer a raid without becoming the hammer the tribe is deliberately denied.",
-          "stats": { "attack": 130, "defenseInfantry": 60, "defenseCavalry": 70, "speed": 11, "carry": 80 },
+          "$comment": "Ours, not Travian's. Egypt's one true attacker. At 130 it was pointless next to the Resheph, which hits for 110 and defends far better, so it had no reason to exist; at 165 it is unambiguously the tribe's blade. Its overall weight still sits under the Resheph's, which is how Egypt stays a defensive tribe with a blade rather than a hammer tribe.",
+          "stats": { "attack": 165, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 12, "carry": 90 },
           "cropUpkeep": 3,
-          "cost": { "wood": 340, "clay": 560, "iron": 320, "crop": 100 },
-          "timeSeconds": 1595
+          "cost": { "wood": 480, "clay": 700, "iron": 470, "crop": 100 },
+          "timeSeconds": 1700
         }
       }
     },
@@ -676,10 +676,10 @@
       "extension": {
         "cav_t3": {
           "name": "Spartan Horseman",
-          "$comment": "Ours, not Travian's. Sparta trusts its shield wall and keeps two horses; this is the third, a flank guard that neither out-charges the Crusher nor out-holds the Elpida.",
-          "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 80, "speed": 12, "carry": 70 },
+          "$comment": "Ours, not Travian's. The old brief was 'out-charges nothing and out-holds nothing', which is a description of a unit nobody trains. Sparta's gap is cavalry that stops cavalry, so that is the job: 140 against horse is well past the Elpida's 90. The Elpida keeps the larger total defence and the speed, so the two answer different attacks.",
+          "stats": { "attack": 70, "defenseInfantry": 60, "defenseCavalry": 140, "speed": 11, "carry": 60 },
           "cropUpkeep": 2,
-          "cost": { "wood": 500, "clay": 400, "iron": 720, "crop": 150 },
+          "cost": { "wood": 520, "clay": 430, "iron": 800, "crop": 150 },
           "timeSeconds": 2640
         }
       }
@@ -771,5 +771,5 @@
       }
     }
   },
-  "lock": "daa54b09240b9d43"
+  "lock": "7a9cc5847163caba"
 }

@@ -71,8 +71,8 @@
       "overrides": {
         "name": { "en": "Spartan Horseman" },
         "description": { "en": "Tevel slot 7 — completes three cavalry slots for Spartans." },
-        "stats": { "attack": 100, "defenseInfantry": 90, "defenseCavalry": 80, "speed": 12, "carry": 70 },
-        "cost": { "wood": 500, "clay": 400, "iron": 720, "crop": 150 },
+        "stats": { "attack": 70, "defenseInfantry": 60, "defenseCavalry": 140, "speed": 11, "carry": 60 },
+        "cost": { "wood": 520, "clay": 430, "iron": 800, "crop": 150 },
         "cropUpkeep": 2
       }
     },

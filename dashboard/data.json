@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-13T10:19:32.955Z",
+  "generatedAt": "2026-08-13T10:53:46.221Z",
   "roster": [
     {
       "slot": 1,
@@ -1212,11 +1212,11 @@
         "maxAttack": 150,
         "maxDefenseInfantry": 100,
         "maxDefenseCavalry": 80,
-        "maxSpeed": 11,
+        "maxSpeed": 12,
         "maxCarry": 130,
         "avgAttack": 58,
-        "avgDefenseCombined": 41,
-        "totalCropUpkeep": 26
+        "avgDefenseCombined": 40,
+        "totalCropUpkeep": 25
       },
       "troops": [
         {
@@ -1629,25 +1629,25 @@
           "name": "Teutonic Raider",
           "category": "cavalry",
           "stats": {
-            "attack": 90,
+            "attack": 95,
             "defenseInfantry": 40,
-            "defenseCavalry": 45,
-            "speed": 11,
+            "defenseCavalry": 35,
+            "speed": 12,
             "carry": 130
           },
           "cost": {
-            "wood": 360,
-            "clay": 320,
-            "iron": 180,
-            "crop": 70
+            "wood": 400,
+            "clay": 380,
+            "iron": 230,
+            "crop": 90
           },
-          "cropUpkeep": 3,
-          "totalCost": 930,
+          "cropUpkeep": 2,
+          "totalCost": 1100,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1190,
-            "timeFormatted": "19:50",
+            "timeSeconds": 1150,
+            "timeFormatted": "19:10",
             "requirements": [
               {
                 "type": "building",
@@ -1665,19 +1665,19 @@
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 90,
+            "offense": 95,
             "defenseInfantry": 40,
-            "defenseCavalry": 45,
-            "defenseCombined": 43,
-            "defenseTotal": 85,
-            "speed": 11,
+            "defenseCavalry": 35,
+            "defenseCombined": 38,
+            "defenseTotal": 75,
+            "speed": 12,
             "carry": 130,
-            "cropUpkeep": 3,
-            "attackPerCrop": 30,
-            "defensePerCrop": 28.3,
-            "trainTimeSeconds": 1190,
-            "trainTimeFormatted": "19:50",
-            "resourceCost": 930
+            "cropUpkeep": 2,
+            "attackPerCrop": 47.5,
+            "defensePerCrop": 37.5,
+            "trainTimeSeconds": 1150,
+            "trainTimeFormatted": "19:10",
+            "resourceCost": 1100
           },
           "graphicsUrls": {
             "icon": "assets/tribes/teuton/units/07_cavalry_icon.png",
@@ -2040,8 +2040,8 @@
         "maxDefenseCavalry": 165,
         "maxSpeed": 19,
         "maxCarry": 75,
-        "avgAttack": 58,
-        "avgDefenseCombined": 50,
+        "avgAttack": 59,
+        "avgDefenseCombined": 53,
         "totalCropUpkeep": 26
       },
       "troops": [
@@ -2187,25 +2187,25 @@
           "name": "Gaul Tracker",
           "category": "infantry",
           "stats": {
-            "attack": 40,
-            "defenseInfantry": 30,
-            "defenseCavalry": 35,
-            "speed": 8,
+            "attack": 45,
+            "defenseInfantry": 55,
+            "defenseCavalry": 60,
+            "speed": 9,
             "carry": 60
           },
           "cost": {
-            "wood": 110,
-            "clay": 85,
-            "iron": 95,
-            "crop": 40
+            "wood": 245,
+            "clay": 190,
+            "iron": 205,
+            "crop": 60
           },
           "cropUpkeep": 1,
-          "totalCost": 330,
+          "totalCost": 700,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 880,
-            "timeFormatted": "14:40",
+            "timeSeconds": 1150,
+            "timeFormatted": "19:10",
             "requirements": [
               {
                 "type": "building",
@@ -2223,19 +2223,19 @@
             "baseLogo": "infantry/warhammer.svg"
           },
           "metrics": {
-            "offense": 40,
-            "defenseInfantry": 30,
-            "defenseCavalry": 35,
-            "defenseCombined": 33,
-            "defenseTotal": 65,
-            "speed": 8,
+            "offense": 45,
+            "defenseInfantry": 55,
+            "defenseCavalry": 60,
+            "defenseCombined": 58,
+            "defenseTotal": 115,
+            "speed": 9,
             "carry": 60,
             "cropUpkeep": 1,
-            "attackPerCrop": 40,
-            "defensePerCrop": 65,
-            "trainTimeSeconds": 880,
-            "trainTimeFormatted": "14:40",
-            "resourceCost": 330
+            "attackPerCrop": 45,
+            "defensePerCrop": 115,
+            "trainTimeSeconds": 1150,
+            "trainTimeFormatted": "19:10",
+            "resourceCost": 700
           },
           "graphicsUrls": {
             "icon": "assets/tribes/gaul/units/03_infantry_icon.png",
@@ -2861,13 +2861,13 @@
       },
       "summary": {
         "unitCount": 11,
-        "maxAttack": 130,
+        "maxAttack": 165,
         "maxDefenseInfantry": 120,
         "maxDefenseCavalry": 150,
         "maxSpeed": 16,
-        "maxCarry": 80,
-        "avgAttack": 57,
-        "avgDefenseCombined": 55,
+        "maxCarry": 90,
+        "avgAttack": 61,
+        "avgDefenseCombined": 54,
         "totalCropUpkeep": 27
       },
       "troops": [
@@ -3281,25 +3281,25 @@
           "name": "Royal Chariot",
           "category": "cavalry",
           "stats": {
-            "attack": 130,
-            "defenseInfantry": 60,
-            "defenseCavalry": 70,
-            "speed": 11,
-            "carry": 80
+            "attack": 165,
+            "defenseInfantry": 50,
+            "defenseCavalry": 45,
+            "speed": 12,
+            "carry": 90
           },
           "cost": {
-            "wood": 340,
-            "clay": 560,
-            "iron": 320,
+            "wood": 480,
+            "clay": 700,
+            "iron": 470,
             "crop": 100
           },
           "cropUpkeep": 3,
-          "totalCost": 1320,
+          "totalCost": 1750,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
-            "timeSeconds": 1595,
-            "timeFormatted": "26:35",
+            "timeSeconds": 1700,
+            "timeFormatted": "28:20",
             "requirements": [
               {
                 "type": "building",
@@ -3317,19 +3317,19 @@
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 130,
-            "defenseInfantry": 60,
-            "defenseCavalry": 70,
-            "defenseCombined": 65,
-            "defenseTotal": 130,
-            "speed": 11,
-            "carry": 80,
+            "offense": 165,
+            "defenseInfantry": 50,
+            "defenseCavalry": 45,
+            "defenseCombined": 48,
+            "defenseTotal": 95,
+            "speed": 12,
+            "carry": 90,
             "cropUpkeep": 3,
-            "attackPerCrop": 43.3,
-            "defensePerCrop": 43.3,
-            "trainTimeSeconds": 1595,
-            "trainTimeFormatted": "26:35",
-            "resourceCost": 1320
+            "attackPerCrop": 55,
+            "defensePerCrop": 31.7,
+            "trainTimeSeconds": 1700,
+            "trainTimeFormatted": "28:20",
+            "resourceCost": 1750
           },
           "graphicsUrls": {
             "icon": "assets/tribes/egyptian/units/07_cavalry_icon.png",
@@ -3695,7 +3695,7 @@
         "maxDefenseCavalry": 90,
         "maxSpeed": 19,
         "maxCarry": 105,
-        "avgAttack": 74,
+        "avgAttack": 77,
         "avgDefenseCombined": 38,
         "totalCropUpkeep": 26
       },
@@ -3842,25 +3842,25 @@
           "name": "Hun Warrior",
           "category": "infantry",
           "stats": {
-            "attack": 60,
-            "defenseInfantry": 35,
-            "defenseCavalry": 25,
-            "speed": 6,
-            "carry": 45
+            "attack": 85,
+            "defenseInfantry": 40,
+            "defenseCavalry": 20,
+            "speed": 7,
+            "carry": 60
           },
           "cost": {
-            "wood": 120,
-            "clay": 120,
-            "iron": 170,
-            "crop": 85
+            "wood": 175,
+            "clay": 150,
+            "iron": 300,
+            "crop": 75
           },
           "cropUpkeep": 1,
-          "totalCost": 495,
+          "totalCost": 700,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
-            "timeSeconds": 1090,
-            "timeFormatted": "18:10",
+            "timeSeconds": 1150,
+            "timeFormatted": "19:10",
             "requirements": [
               {
                 "type": "building",
@@ -3878,19 +3878,19 @@
             "baseLogo": "infantry/warhammer.svg"
           },
           "metrics": {
-            "offense": 60,
-            "defenseInfantry": 35,
-            "defenseCavalry": 25,
+            "offense": 85,
+            "defenseInfantry": 40,
+            "defenseCavalry": 20,
             "defenseCombined": 30,
             "defenseTotal": 60,
-            "speed": 6,
-            "carry": 45,
+            "speed": 7,
+            "carry": 60,
             "cropUpkeep": 1,
-            "attackPerCrop": 60,
+            "attackPerCrop": 85,
             "defensePerCrop": 60,
-            "trainTimeSeconds": 1090,
-            "trainTimeFormatted": "18:10",
-            "resourceCost": 495
+            "trainTimeSeconds": 1150,
+            "trainTimeFormatted": "19:10",
+            "resourceCost": 700
           },
           "graphicsUrls": {
             "icon": "assets/tribes/hun/units/03_infantry_icon.png",
@@ -4521,11 +4521,11 @@
         "unitCount": 11,
         "maxAttack": 195,
         "maxDefenseInfantry": 120,
-        "maxDefenseCavalry": 90,
+        "maxDefenseCavalry": 140,
         "maxSpeed": 16,
         "maxCarry": 110,
-        "avgAttack": 72,
-        "avgDefenseCombined": 59,
+        "avgAttack": 68,
+        "avgDefenseCombined": 61,
         "totalCropUpkeep": 25
       },
       "troops": [
@@ -4939,20 +4939,20 @@
           "name": "Spartan Horseman",
           "category": "cavalry",
           "stats": {
-            "attack": 100,
-            "defenseInfantry": 90,
-            "defenseCavalry": 80,
-            "speed": 12,
-            "carry": 70
+            "attack": 70,
+            "defenseInfantry": 60,
+            "defenseCavalry": 140,
+            "speed": 11,
+            "carry": 60
           },
           "cost": {
-            "wood": 500,
-            "clay": 400,
-            "iron": 720,
+            "wood": 520,
+            "clay": 430,
+            "iron": 800,
             "crop": 150
           },
           "cropUpkeep": 2,
-          "totalCost": 1770,
+          "totalCost": 1900,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
@@ -4975,19 +4975,19 @@
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 100,
-            "defenseInfantry": 90,
-            "defenseCavalry": 80,
-            "defenseCombined": 85,
-            "defenseTotal": 170,
-            "speed": 12,
-            "carry": 70,
+            "offense": 70,
+            "defenseInfantry": 60,
+            "defenseCavalry": 140,
+            "defenseCombined": 100,
+            "defenseTotal": 200,
+            "speed": 11,
+            "carry": 60,
             "cropUpkeep": 2,
-            "attackPerCrop": 50,
-            "defensePerCrop": 85,
+            "attackPerCrop": 35,
+            "defensePerCrop": 100,
             "trainTimeSeconds": 2640,
             "trainTimeFormatted": "44:00",
-            "resourceCost": 1770
+            "resourceCost": 1900
           },
           "graphicsUrls": {
             "icon": "assets/tribes/spartan/units/07_cavalry_icon.png",
@@ -14466,11 +14466,11 @@
         "unitCount": 11,
         "maxAttack": 130,
         "maxDefenseInfantry": 85,
-        "maxDefenseCavalry": 85,
+        "maxDefenseCavalry": 95,
         "maxSpeed": 16,
         "maxCarry": 90,
-        "avgAttack": 66,
-        "avgDefenseCombined": 48,
+        "avgAttack": 67,
+        "avgDefenseCombined": 49,
         "totalCropUpkeep": 27
       },
       "troops": [
@@ -14616,20 +14616,20 @@
           "name": "Median Elite",
           "category": "infantry",
           "stats": {
-            "attack": 65,
-            "defenseInfantry": 40,
+            "attack": 70,
+            "defenseInfantry": 45,
             "defenseCavalry": 30,
             "speed": 7,
             "carry": 50
           },
           "cost": {
-            "wood": 130,
-            "clay": 140,
-            "iron": 190,
+            "wood": 160,
+            "clay": 170,
+            "iron": 215,
             "crop": 75
           },
           "cropUpkeep": 1,
-          "totalCost": 535,
+          "totalCost": 620,
           "training": {
             "building": "barracks",
             "buildingLabel": "Barracks",
@@ -14652,19 +14652,19 @@
             "baseLogo": "infantry/warhammer.svg"
           },
           "metrics": {
-            "offense": 65,
-            "defenseInfantry": 40,
+            "offense": 70,
+            "defenseInfantry": 45,
             "defenseCavalry": 30,
-            "defenseCombined": 35,
-            "defenseTotal": 70,
+            "defenseCombined": 38,
+            "defenseTotal": 75,
             "speed": 7,
             "carry": 50,
             "cropUpkeep": 1,
-            "attackPerCrop": 65,
-            "defensePerCrop": 70,
+            "attackPerCrop": 70,
+            "defensePerCrop": 75,
             "trainTimeSeconds": 1320,
             "trainTimeFormatted": "22:00",
-            "resourceCost": 535
+            "resourceCost": 620
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/03_infantry_icon.png",
@@ -14884,20 +14884,20 @@
           "name": "Median Guard Cavalry",
           "category": "cavalry",
           "stats": {
-            "attack": 115,
+            "attack": 120,
             "defenseInfantry": 60,
-            "defenseCavalry": 75,
+            "defenseCavalry": 95,
             "speed": 12,
             "carry": 75
           },
           "cost": {
-            "wood": 405,
-            "clay": 480,
+            "wood": 465,
+            "clay": 495,
             "iron": 585,
             "crop": 120
           },
           "cropUpkeep": 3,
-          "totalCost": 1590,
+          "totalCost": 1665,
           "training": {
             "building": "stable",
             "buildingLabel": "Stable",
@@ -14920,19 +14920,19 @@
             "baseLogo": "cavalry/elephant.svg"
           },
           "metrics": {
-            "offense": 115,
+            "offense": 120,
             "defenseInfantry": 60,
-            "defenseCavalry": 75,
-            "defenseCombined": 68,
-            "defenseTotal": 135,
+            "defenseCavalry": 95,
+            "defenseCombined": 78,
+            "defenseTotal": 155,
             "speed": 12,
             "carry": 75,
             "cropUpkeep": 3,
-            "attackPerCrop": 38.3,
-            "defensePerCrop": 45,
+            "attackPerCrop": 40,
+            "defensePerCrop": 51.7,
             "trainTimeSeconds": 2385,
             "trainTimeFormatted": "39:45",
-            "resourceCost": 1590
+            "resourceCost": 1665
           },
           "graphicsUrls": {
             "icon": "assets/tribes/median/units/07_cavalry_icon.png",

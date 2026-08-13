@@ -70,8 +70,8 @@
       "overrides": {
         "name": { "en": "Royal Chariot" },
         "description": { "en": "Tevel slot 7 — Travian Egyptians have two chariot lines." },
-        "stats": { "attack": 130, "defenseInfantry": 60, "defenseCavalry": 70, "speed": 11, "carry": 80 },
-        "cost": { "wood": 340, "clay": 560, "iron": 320, "crop": 100 },
+        "stats": { "attack": 165, "defenseInfantry": 50, "defenseCavalry": 45, "speed": 12, "carry": 90 },
+        "cost": { "wood": 480, "clay": 700, "iron": 470, "crop": 100 },
         "cropUpkeep": 3
       }
     },
