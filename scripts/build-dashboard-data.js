@@ -2,6 +2,9 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { attachAssetUrls, resolveTribe } from "../lib/merge.js";
+import { computeFairness } from "../lib/balance/fairness.js";
+import { FAIRNESS_TOLERANCE, TRIBE_IDENTITIES } from "../lib/balance/identities.js";
+import { isCanonTribe } from "../lib/balance/canon.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -29,10 +32,33 @@ const tribes = index.tribes.map((entry) => {
   const resolved = attachAssetUrls(
     resolveTribe(raw, base.units, roster, tribeTraining, logoData)
   );
+  const troopsByRef = {};
+  for (const t of resolved.troops) {
+    troopsByRef[t.ref] = {
+      stats: t.stats,
+      cropUpkeep: t.cropUpkeep,
+      cost: t.cost,
+      trainSeconds: t.training?.timeSeconds,
+    };
+  }
+  const spec = TRIBE_IDENTITIES[entry.id];
+  const tier = spec?.tier || (spec ? "player" : "unspecified");
   return {
     ...resolved,
     type: entry.type,
     palette: raw.palette || palettes.palettes[entry.id],
+    // Price-fairness diagnostics (same math as `npm run validate:balance`):
+    // how this tribe's army compares to the six-core anchor rate in raw
+    // power and in each of the three currencies a unit is actually paid
+    // for in. 1.00 = exactly the anchor rate. `checked` mirrors the
+    // validator's own exemptions — Travian's own tribes are transcribed,
+    // not designed, and NPC/boss tiers are deliberately not fair, so
+    // neither is held to the band.
+    balance: {
+      ...computeFairness(troopsByRef),
+      tolerance: FAIRNESS_TOLERANCE,
+      checked: !isCanonTribe(entry.id) && tier === "player",
+    },
   };
 });
 

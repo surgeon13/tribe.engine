@@ -1309,6 +1309,98 @@ function renderCompareSummary(tribes) {
     .join("");
 }
 
+/** @param {number} value fraction, 1.00 = exactly the anchor rate */
+function fairnessDelta(value) {
+  const pct = Math.round((value - 1) * 100);
+  return `${pct > 0 ? "+" : ""}${pct}%`;
+}
+
+/**
+ * A small diverging bar: how far `value` sits from the 1.00 anchor rate.
+ * `gated` bars additionally shade the tolerance band and color the fill by
+ * whether the value actually falls inside it; ungated bars (raw power) are
+ * informational only and stay neutral.
+ * @param {number} value
+ * @param {{ gated?: boolean, tolerance?: number, domain?: number }} [opts]
+ */
+function fairnessBar(value, { gated = false, tolerance = 0.06, domain = 30 } = {}) {
+  const pct = (value - 1) * 100;
+  const clamped = Math.max(-domain, Math.min(domain, pct));
+  const fillFrac = 50 + (clamped / domain) * 50;
+  const left = Math.min(50, fillFrac);
+  const width = Math.max(Math.abs(fillFrac - 50), 1.2);
+  const outOfBand = gated && Math.abs(pct) > tolerance * 100;
+  const bandHalf = gated ? Math.min(50, (tolerance * 100 * 50) / domain) : 0;
+  return `
+    <div class="fairness-bar" role="img" aria-label="${fairnessDelta(value)} vs. anchor rate">
+      ${gated ? `<span class="fairness-band" style="left:${50 - bandHalf}%;width:${bandHalf * 2}%"></span>` : ""}
+      <span class="fairness-zero"></span>
+      <span class="fairness-fill${gated ? (outOfBand ? " is-out" : " is-in") : ""}" style="left:${left}%;width:${width}%"></span>
+    </div>`;
+}
+
+function renderCompareBalance(tribes) {
+  const host = $("#compare-balance-grid");
+  if (!host) return;
+  host.innerHTML = tribes
+    .map((tribe) => {
+      const b = tribe.balance;
+      if (!b) return "";
+      const color = tribeInkColor(tribe.palette);
+      const tolerance = b.tolerance ?? 0.06;
+      const combined = b.cropEfficiency && b.resEfficiency ? Math.sqrt(b.cropEfficiency * b.resEfficiency) : 0;
+      // Travian's own six tribes are transcribed, not designed, and NPC/boss
+      // tiers are deliberately not fair — holding either to the band the
+      // generator prices player tribes against would flag intentional
+      // design as if it were a bug.
+      const gated = Boolean(b.checked);
+      const priceOut = gated && combined > 0 && Math.abs(combined - 1) > tolerance;
+      const timeOut = gated && b.timeEfficiency > 0 && Math.abs(b.timeEfficiency - 1) > tolerance;
+
+      const flags = [];
+      if (priceOut) {
+        flags.push(`Priced ${combined > 1 ? "below" : "above"} the anchor rate for its power.`);
+      }
+      if (timeOut) {
+        flags.push(
+          `Trains ${b.timeEfficiency > 1 ? "faster" : "slower"} than the ${Math.round(tolerance * 100)}% band allows — nothing charges for this yet.`
+        );
+      }
+      const priceHint = gated
+        ? `crop + resources, held to &plusmn;${Math.round(tolerance * 100)}%`
+        : "crop + resources, not held to the band";
+      const timeHint = gated ? "held to the same band, not yet enforced" : "not held to the band";
+
+      return `<article class="compare-summary-card compare-balance-card" style="--tribe-col:${color};--tribe-ink:${inkOn(color)}">
+        <header class="compare-summary-head">
+          <span class="compare-summary-dot"></span>
+          <h4>${tribe.name}</h4>
+        </header>
+        <dl class="fairness-rows">
+          <div class="fairness-row">
+            <dt>Power<span class="fairness-hint muted">raw army, unpriced</span></dt>
+            ${fairnessBar(b.power)}
+            <dd>${fairnessDelta(b.power)}</dd>
+          </div>
+          <div class="fairness-row">
+            <dt>Price fairness<span class="fairness-hint muted">${priceHint}</span></dt>
+            ${fairnessBar(combined, { gated, tolerance })}
+            <dd>${fairnessDelta(combined)}</dd>
+          </div>
+          <p class="fairness-subrow muted">crop ${b.cropEfficiency.toFixed(2)}&times; &middot; resources ${b.resEfficiency.toFixed(2)}&times; — currency mix can shift here by identity, that's not a bug</p>
+          <div class="fairness-row">
+            <dt>Training speed<span class="fairness-hint muted">${timeHint}</span></dt>
+            ${fairnessBar(b.timeEfficiency, { gated, tolerance })}
+            <dd>${fairnessDelta(b.timeEfficiency)}</dd>
+          </div>
+        </dl>
+        ${flags.length ? `<p class="fairness-flag">${flags.join(" ")}</p>` : ""}
+        ${!gated ? `<p class="fairness-subrow muted">${tribe.name} isn't held to the fairness band — Travian's own tribes are transcribed, and NPC/boss rosters are meant to outfight it.</p>` : ""}
+      </article>`;
+    })
+    .join("");
+}
+
 function renderCompareGraphs() {
   const tribes = getCompareTribes();
   if (tribes.length < COMPARE_MIN_TRIBES) return;
@@ -2034,6 +2126,7 @@ function renderCompare() {
     $("#compare-table-wrap")?.classList.add("hidden");
     $("#compare-graphs-wrap")?.classList.add("hidden");
     $("#compare-charts-wrap")?.classList.add("hidden");
+    $("#compare-balance-wrap")?.classList.add("hidden");
     $("#compare-smithy")?.classList.add("hidden");
     renderCompareLegend([]);
     renderCompareSummary([]);
@@ -2049,10 +2142,12 @@ function renderCompare() {
   $("#compare-table-wrap")?.classList.toggle("hidden", compareViewMode !== "table");
   $("#compare-graphs-wrap")?.classList.toggle("hidden", compareViewMode !== "graphs");
   $("#compare-charts-wrap")?.classList.toggle("hidden", compareViewMode !== "charts");
+  $("#compare-balance-wrap")?.classList.toggle("hidden", compareViewMode !== "balance");
 
   if (compareViewMode === "graphs") renderCompareGraphs();
   if (compareViewMode === "charts") renderCompareCharts();
   if (compareViewMode === "table") renderCompareTable(tribes);
+  if (compareViewMode === "balance") renderCompareBalance(tribes);
 
   const names = formatCompareTribeList(tribes);
   $("#tribe-name").textContent = "Tribe comparison";

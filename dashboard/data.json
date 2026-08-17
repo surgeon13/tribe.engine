@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-13T15:46:59.765Z",
+  "generatedAt": "2026-08-17T15:53:58.193Z",
   "roster": [
     {
       "slot": 1,
@@ -1193,6 +1193,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/roman/banner.png"
+      },
+      "balance": {
+        "power": 1.086387434554974,
+        "cropEfficiency": 0.9725274757701725,
+        "resEfficiency": 1.0208563653692027,
+        "timeEfficiency": 0.922130725361138,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -2019,6 +2027,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/teuton/banner.png"
+      },
+      "balance": {
+        "power": 0.8472326103216156,
+        "cropEfficiency": 0.9386255995097287,
+        "resEfficiency": 0.9755457029529128,
+        "timeEfficiency": 0.8801097036603651,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -2845,6 +2861,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/gaul/banner.png"
+      },
+      "balance": {
+        "power": 0.949607329842932,
+        "cropEfficiency": 1.036012509278962,
+        "resEfficiency": 0.9435197938286133,
+        "timeEfficiency": 0.8830141843450756,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -3674,6 +3698,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/egyptian/banner.png"
+      },
+      "balance": {
+        "power": 0.9764397905759162,
+        "cropEfficiency": 1.0014567766106326,
+        "resEfficiency": 0.9390501137499168,
+        "timeEfficiency": 0.9211408775412061,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -4503,6 +4535,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/hun/banner.png"
+      },
+      "balance": {
+        "power": 0.9788706058339567,
+        "cropEfficiency": 1.014456322317478,
+        "resEfficiency": 1.0132980874416786,
+        "timeEfficiency": 0.886326463668451,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -5329,6 +5369,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/spartan/banner.png"
+      },
+      "balance": {
+        "power": 1.1020007479431562,
+        "cropEfficiency": 1.2436613368684997,
+        "resEfficiency": 0.9340107337374217,
+        "timeEfficiency": 0.8553394172585836,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -6158,6 +6206,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/natar/banner.png"
+      },
+      "balance": {
+        "power": 1.4593305908750935,
+        "cropEfficiency": 1.469117468569716,
+        "resEfficiency": 0.7941253932527086,
+        "timeEfficiency": 0.8241678023406872,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -6987,6 +7043,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/nature/banner.png"
+      },
+      "balance": {
+        "power": 2.07051234106208,
+        "cropEfficiency": 4.353133851974566,
+        "resEfficiency": 1.0000843989100625,
+        "timeEfficiency": 1.6756174738027763,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -7816,6 +7880,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/carthaginian/banner.png"
+      },
+      "balance": {
+        "power": 1.1040575916230366,
+        "cropEfficiency": 1.006211559845689,
+        "resEfficiency": 0.9794935974920896,
+        "timeEfficiency": 0.9660675330757114,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -8645,6 +8717,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/japanese/banner.png"
+      },
+      "balance": {
+        "power": 0.8671465968586387,
+        "cropEfficiency": 1.0026681439658967,
+        "resEfficiency": 0.9735892813848599,
+        "timeEfficiency": 1.0046972438683357,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -9474,6 +9554,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/byzantine/banner.png"
+      },
+      "balance": {
+        "power": 1.148653702318624,
+        "cropEfficiency": 1.054324150152802,
+        "resEfficiency": 0.9339426200870544,
+        "timeEfficiency": 0.9252541624163738,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -10303,6 +10391,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/israelite/banner.png"
+      },
+      "balance": {
+        "power": 0.9966342557965595,
+        "cropEfficiency": 1.050774847143226,
+        "resEfficiency": 0.9396025818213175,
+        "timeEfficiency": 0.9767095670257767,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -11132,6 +11228,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/persian/banner.png"
+      },
+      "balance": {
+        "power": 0.9649401645474944,
+        "cropEfficiency": 1.0053320938509906,
+        "resEfficiency": 0.9742385204705147,
+        "timeEfficiency": 1.101553451614473,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -11961,6 +12065,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/axum/banner.png"
+      },
+      "balance": {
+        "power": 0.9934554973821992,
+        "cropEfficiency": 1.0073569871565276,
+        "resEfficiency": 0.9723491576566845,
+        "timeEfficiency": 0.9948392216151033,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -12790,6 +12902,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/arab/banner.png"
+      },
+      "balance": {
+        "power": 0.9569932685115933,
+        "cropEfficiency": 0.9909112464730443,
+        "resEfficiency": 0.9869011910541597,
+        "timeEfficiency": 1.1096296061695718,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -13619,6 +13739,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/nabateans/banner.png"
+      },
+      "balance": {
+        "power": 0.9565258040388932,
+        "cropEfficiency": 1.0210505997183366,
+        "resEfficiency": 0.9637944909109405,
+        "timeEfficiency": 0.9452210164204076,
+        "tolerance": 0.06,
+        "checked": true
       }
     },
     {
@@ -14448,6 +14576,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/undead/banner.png"
+      },
+      "balance": {
+        "power": 1.5474943904263279,
+        "cropEfficiency": 1.4208313254187555,
+        "resEfficiency": 0.7451380253482454,
+        "timeEfficiency": 0.8761027657596044,
+        "tolerance": 0.06,
+        "checked": false
       }
     },
     {
@@ -15277,6 +15413,14 @@
       },
       "graphicsUrls": {
         "banner": "assets/tribes/median/banner.png"
+      },
+      "balance": {
+        "power": 0.9847606581899778,
+        "cropEfficiency": 1.00812514165553,
+        "resEfficiency": 0.9821001677689671,
+        "timeEfficiency": 0.91009451753863,
+        "tolerance": 0.06,
+        "checked": false
       }
     }
   ]

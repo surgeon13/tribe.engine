@@ -25,11 +25,11 @@ import path from "path";
 import { fileURLToPath } from "url";
 import {
   SCORED_REFS,
-  SLOT_ANCHORS,
   combatIndex,
   pricePaid,
   totalCost,
 } from "../lib/balance/anchors.js";
+import { computeFairness } from "../lib/balance/fairness.js";
 import { extendedSlot, isCanonTribe } from "../lib/balance/canon.js";
 import { STAT_STEP, onStep } from "../lib/balance/quantize.js";
 import {
@@ -46,6 +46,7 @@ const asJson = process.argv.includes("--json");
 const index = JSON.parse(fs.readFileSync(path.join(dataDir, "tribes/index.json"), "utf8"));
 const baseUnits = JSON.parse(fs.readFileSync(path.join(dataDir, "units.base.json"), "utf8"));
 const baseById = baseUnits.units || {};
+const trainingByTribe = JSON.parse(fs.readFileSync(path.join(dataDir, "tribe-training.json"), "utf8")).tribes || {};
 
 const errors = [];
 const warnings = [];
@@ -57,6 +58,7 @@ for (const entry of index.tribes || []) {
   const doc = JSON.parse(fs.readFileSync(path.join(dataDir, "tribes", entry.file), "utf8"));
   const id = entry.id || doc.tribe?.id;
   const spec = TRIBE_IDENTITIES[id];
+  const tribeTraining = trainingByTribe[id] || {};
   const troops = new Map();
   for (const t of doc.troops || []) {
     const base = baseById[t.ref] || {};
@@ -65,32 +67,11 @@ for (const entry of index.tribes || []) {
       cost: { ...base.cost, ...t.overrides?.cost },
       cropUpkeep: t.overrides?.cropUpkeep ?? base.cropUpkeep ?? 1,
       name: t.overrides?.name?.en || base.name?.en || t.ref,
+      trainSeconds: t.overrides?.training?.timeSeconds ?? tribeTraining[t.ref]?.timeSeconds,
     });
   }
 
-  let ci = 0;
-  let crop = 0;
-  let res = 0;
-  let anchorCi = 0;
-  for (const ref of SCORED_REFS) {
-    const u = troops.get(ref);
-    if (!u) continue;
-    ci += combatIndex(u.stats);
-    crop += u.cropUpkeep;
-    res += totalCost(u.cost);
-    anchorCi += SLOT_ANCHORS[ref].ci;
-  }
-
-  // What the anchor would charge for exactly this much power.
-  let anchorCrop = 0;
-  let anchorRes = 0;
-  for (const ref of SCORED_REFS) {
-    const u = troops.get(ref);
-    if (!u) continue;
-    const unitCi = combatIndex(u.stats);
-    anchorCrop += unitCi / SLOT_ANCHORS[ref].ciPerCrop;
-    anchorRes += (unitCi / SLOT_ANCHORS[ref].ciPerRes) * 1000;
-  }
+  const fairness = computeFairness(troops);
 
   tribes.push({
     id,
@@ -100,9 +81,13 @@ for (const entry of index.tribes || []) {
     canon: isCanonTribe(id),
     tier: spec?.tier || (spec ? "player" : "unspecified"),
     // >1 means the tribe gets more power per unit of that currency than the anchor.
-    cropEfficiency: crop ? anchorCrop / crop : 0,
-    resEfficiency: res ? anchorRes / res : 0,
-    power: anchorCi ? ci / anchorCi : 0,
+    cropEfficiency: fairness.cropEfficiency,
+    resEfficiency: fairness.resEfficiency,
+    // >1 means the tribe trains this much power faster than the anchor rate —
+    // a third currency, alongside crop and resources, that nothing priced
+    // until now.
+    timeEfficiency: fairness.timeEfficiency,
+    power: fairness.power,
     troops,
   });
 }
@@ -138,6 +123,17 @@ for (const t of tribes) {
   if (t.cropEfficiency > 1.22 || t.cropEfficiency < 0.82) {
     warnings.push(
       `${t.id} — crop efficiency ${t.cropEfficiency.toFixed(2)}× the anchor is a large identity swing; it should be paid for in resources`
+    );
+  }
+  // Training time is a third currency (SLOT_ANCHORS carries a median `time`
+  // per slot and every identity spec has a `trainBias` dial), but until now
+  // nothing checked it the way crop and resources are checked above — a
+  // tribe could pass the price band and still be free, or overcharged, on
+  // the clock. Same tolerance, same shape of check.
+  if (t.timeEfficiency && Math.abs(t.timeEfficiency - 1) > FAIRNESS_TOLERANCE) {
+    const verdict = t.timeEfficiency > 1 ? "faster" : "slower";
+    errors.push(
+      `${t.id} — trains ${t.timeEfficiency.toFixed(2)}× as fast as the anchor rate for its power, i.e. ${verdict} to field than everyone else pays for the same army; allowed band is ${(1 - FAIRNESS_TOLERANCE).toFixed(2)}–${(1 + FAIRNESS_TOLERANCE).toFixed(2)} (tune \`trainBias\` in lib/balance/identities.js)`
     );
   }
 }
@@ -432,6 +428,7 @@ if (asJson) {
 } else {
   console.log(
     "Tribe power pricing — efficiency is power per unit of price, 1.00 = the anchor rate.\n" +
+      "time-eff is power per second of training, same 1.00 baseline, now held to the same band.\n" +
       "cav-lead is how far the heavy cavalry out-fights the next best army unit.\n"
   );
   console.log(
@@ -441,6 +438,7 @@ if (asJson) {
     "crop-eff".padStart(9),
     "res-eff".padStart(8),
     "combined".padStart(9),
+    "time-eff".padStart(9),
     "cav-lead".padStart(9)
   );
   for (const t of [...tribes].sort((a, b) => b.power - a.power)) {
@@ -453,6 +451,7 @@ if (asJson) {
       rate(t.cropEfficiency).padStart(9),
       rate(t.resEfficiency).padStart(8),
       rate(Math.sqrt(t.cropEfficiency * t.resEfficiency)).padStart(9),
+      rate(t.timeEfficiency).padStart(9),
       (t.lead ? `${t.lead.toFixed(2)}x` : "—").padStart(9)
     );
   }
