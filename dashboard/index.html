@@ -229,7 +229,7 @@
             <div class="panel-head panel-head-split">
               <div>
                 <h3>Multi-tribe comparison</h3>
-                <p class="muted compare-intro">Select tribes below, then switch tabs for the stat table, the per-unit stat radars, or charts.</p>
+                <p class="muted compare-intro">Select tribes below, then switch tabs for the stat table, the per-unit stat radars, charts, or the fairness check.</p>
                 <p class="muted compare-intro-mobile">On phones: Charts use horizontal bars; Graphs puts one radar per unit, one card at a time.</p>
               </div>
               <div class="compare-picks">
@@ -244,6 +244,7 @@
                 <button type="button" class="view-tab active" data-compare-mode="table" role="tab">Table</button>
                 <button type="button" class="view-tab" data-compare-mode="graphs" role="tab">Graphs</button>
                 <button type="button" class="view-tab" data-compare-mode="charts" role="tab">Charts</button>
+                <button type="button" class="view-tab" data-compare-mode="balance" role="tab">Balance</button>
               </div>
             </div>
             <div id="compare-legend" class="compare-legend hidden" aria-label="Tribe colors"></div>
@@ -297,6 +298,16 @@
             <div id="compare-graphs-wrap" class="compare-content compare-graphs-wrap hidden">
               <p id="compare-graphs-hint" class="muted compare-graphs-note"></p>
               <div id="compare-graphs-slots" class="compare-graphs-slots"></div>
+            </div>
+            <div id="compare-balance-wrap" class="compare-content compare-balance-wrap hidden">
+              <p class="muted compare-balance-note">
+                How each tribe's army compares to the six-core anchor rate — in raw power, and in
+                each of the three currencies a unit is actually paid for in: crop upkeep,
+                resources, and training time. 1.00 is exactly average; the shaded band is the
+                &plusmn;6% the build holds crop and resources to. Training time isn&rsquo;t
+                enforced yet, so a tribe can sit outside that band on speed alone.
+              </p>
+              <div id="compare-balance-grid" class="compare-balance-grid"></div>
             </div>
           </div>
         </section>
