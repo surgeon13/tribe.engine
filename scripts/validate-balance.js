@@ -88,6 +88,12 @@ for (const entry of index.tribes || []) {
     // until now.
     timeEfficiency: fairness.timeEfficiency,
     power: fairness.power,
+    // Diagnostic only, not gated: a tribe can read as "average power" while
+    // actually being extreme on both halves in opposite directions (Huns are
+    // +21% offense / -25% defense with a blended power of 0.98). See
+    // offenseIndex/defenseIndex in anchors.js.
+    offensePower: fairness.offensePower,
+    defensePower: fairness.defensePower,
     troops,
   });
 }
@@ -428,6 +434,8 @@ if (asJson) {
 } else {
   console.log(
     "Tribe power pricing — efficiency is power per unit of price, 1.00 = the anchor rate.\n" +
+      "atk-pwr/def-pwr split power into its two halves — diagnostic only, not gated. A tribe\n" +
+      "can read as average power while being extreme on both in opposite directions.\n" +
       "time-eff is power per second of training, same 1.00 baseline, now held to the same band.\n" +
       "cav-lead is how far the heavy cavalry out-fights the next best army unit.\n"
   );
@@ -435,6 +443,8 @@ if (asJson) {
     "tribe".padEnd(14),
     "tier".padEnd(11),
     "power".padStart(5),
+    "atk-pwr".padStart(7),
+    "def-pwr".padStart(7),
     "crop-eff".padStart(9),
     "res-eff".padStart(8),
     "combined".padStart(9),
@@ -448,6 +458,8 @@ if (asJson) {
       t.id.padEnd(14),
       t.tier.padEnd(11),
       t.power.toFixed(2).padStart(5),
+      rate(t.offensePower).padStart(7),
+      rate(t.defensePower).padStart(7),
       rate(t.cropEfficiency).padStart(9),
       rate(t.resEfficiency).padStart(8),
       rate(Math.sqrt(t.cropEfficiency * t.resEfficiency)).padStart(9),

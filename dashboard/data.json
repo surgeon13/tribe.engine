@@ -2,7 +2,7 @@
   "version": 1,
   "game": "Tevel",
   "assetBase": "assets",
-  "generatedAt": "2026-08-17T16:29:46.212Z",
+  "generatedAt": "2026-08-17T18:51:56.800Z",
   "roster": [
     {
       "slot": 1,
@@ -1160,6 +1160,8 @@
       },
       "balance": {
         "power": 1.086387434554974,
+        "offensePower": 1.0829694323144106,
+        "defensePower": 1.168327796234773,
         "cropEfficiency": 0.9725274757701725,
         "resEfficiency": 1.0208563653692027,
         "timeEfficiency": 0.922130725361138,
@@ -1994,6 +1996,8 @@
       },
       "balance": {
         "power": 0.8472326103216156,
+        "offensePower": 0.8733624454148472,
+        "defensePower": 0.8637873754152824,
         "cropEfficiency": 0.9386255995097287,
         "resEfficiency": 0.9755457029529128,
         "timeEfficiency": 0.8801097036603651,
@@ -2828,6 +2832,8 @@
       },
       "balance": {
         "power": 0.949607329842932,
+        "offensePower": 0.925764192139738,
+        "defensePower": 1.0409745293466224,
         "cropEfficiency": 1.036012509278962,
         "resEfficiency": 0.9435197938286133,
         "timeEfficiency": 0.8830141843450756,
@@ -3665,6 +3671,8 @@
       },
       "balance": {
         "power": 0.9764397905759162,
+        "offensePower": 0.9606986899563319,
+        "defensePower": 1.06312292358804,
         "cropEfficiency": 1.0014567766106326,
         "resEfficiency": 0.9390501137499168,
         "timeEfficiency": 0.9211408775412061,
@@ -4502,6 +4510,8 @@
       },
       "balance": {
         "power": 0.9788706058339567,
+        "offensePower": 1.205240174672489,
+        "defensePower": 0.7530454042081949,
         "cropEfficiency": 1.014456322317478,
         "resEfficiency": 1.0132980874416786,
         "timeEfficiency": 0.886326463668451,
@@ -5336,6 +5346,8 @@
       },
       "balance": {
         "power": 1.1020007479431562,
+        "offensePower": 1.074235807860262,
+        "defensePower": 1.2148394241417497,
         "cropEfficiency": 1.2436613368684997,
         "resEfficiency": 0.9340107337374217,
         "timeEfficiency": 0.8553394172585836,
@@ -6173,6 +6185,8 @@
       },
       "balance": {
         "power": 1.4593305908750935,
+        "offensePower": 1.7117903930131004,
+        "defensePower": 1.2624584717607974,
         "cropEfficiency": 1.469117468569716,
         "resEfficiency": 0.7941253932527086,
         "timeEfficiency": 0.8241678023406872,
@@ -7010,6 +7024,8 @@
       },
       "balance": {
         "power": 2.07051234106208,
+        "offensePower": 2.131004366812227,
+        "defensePower": 2.1805094130675524,
         "cropEfficiency": 4.353133851974566,
         "resEfficiency": 1.0000843989100625,
         "timeEfficiency": 1.6756174738027763,
@@ -7847,6 +7863,8 @@
       },
       "balance": {
         "power": 0.9847606581899778,
+        "offensePower": 1.0218340611353711,
+        "defensePower": 1.0022148394241417,
         "cropEfficiency": 1.00812514165553,
         "resEfficiency": 0.9821001677689671,
         "timeEfficiency": 0.91009451753863,

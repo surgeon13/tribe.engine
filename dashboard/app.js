@@ -1371,6 +1371,14 @@ function renderCompareBalance(tribes) {
         : "crop + resources, not held to the band";
       const timeHint = gated ? "held to the same band, not yet enforced" : "not held to the band";
 
+      // Blending offense and defense into one Power number hides a tribe
+      // that's extreme on both in opposite directions — flag it as a shape
+      // note (not a fairness flag: being lopsided isn't a bug, Huns are
+      // meant to be this way) whenever the two halves are far enough apart
+      // that "Power" alone would be misleading.
+      const spread = Math.abs((b.offensePower ?? 0) - (b.defensePower ?? 0));
+      const lopsided = spread >= 0.15 && b.offensePower > 0 && b.defensePower > 0;
+
       return `<article class="compare-summary-card compare-balance-card" style="--tribe-col:${color};--tribe-ink:${inkOn(color)}">
         <header class="compare-summary-head">
           <span class="compare-summary-dot"></span>
@@ -1382,6 +1390,17 @@ function renderCompareBalance(tribes) {
             ${fairnessBar(b.power)}
             <dd>${fairnessDelta(b.power)}</dd>
           </div>
+          <div class="fairness-row fairness-row-sub">
+            <dt>Offense<span class="fairness-hint muted">attack only</span></dt>
+            ${fairnessBar(b.offensePower)}
+            <dd>${fairnessDelta(b.offensePower)}</dd>
+          </div>
+          <div class="fairness-row fairness-row-sub">
+            <dt>Defense<span class="fairness-hint muted">vs. inf + vs. cav</span></dt>
+            ${fairnessBar(b.defensePower)}
+            <dd>${fairnessDelta(b.defensePower)}</dd>
+          </div>
+          ${lopsided ? `<p class="fairness-note">${Math.round(spread * 100)} points apart on offense vs. defense — "Power" above averages this away.</p>` : ""}
           <div class="fairness-row">
             <dt>Price fairness<span class="fairness-hint muted">${priceHint}</span></dt>
             ${fairnessBar(combined, { gated, tolerance })}
